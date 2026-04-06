@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["localhost", "project-demo.in"],
+    domains: ["localhost", "project-demo.in", "glbajaj-topaz.vercel.app"],
   },
 };
 

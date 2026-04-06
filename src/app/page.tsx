@@ -3,8 +3,15 @@ import RankingAward from "../components/RankingAward";
 import Placements from "../components/Placements";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
-import ReactParser from "../components/common/reactParser/ReactParser";
 import NotificationBar from "../components/ui/NotificationBar";
+import dynamic from "next/dynamic";
+
+const ReactParser = dynamic(
+  () => import("../components/common/reactParser/ReactParser"),
+  {
+    loading: () => <div>Loading...</div>,
+  },
+);
 
 export async function generateMetadata() {
   return await getPageSEO();
@@ -34,9 +41,10 @@ export default async function Home() {
 
         <NotificationBar />
 
-        {homeData?.sections && Object.keys(homeData.sections).map((key) => {
-          return <ReactParser key={key} html={homeData.sections[key]} />;
-        })}
+        {homeData?.sections &&
+          Object.keys(homeData.sections).map((key) => {
+            return <ReactParser key={key} html={homeData.sections[key]} />;
+          })}
         <RankingAward />
         <Placements />
       </main>

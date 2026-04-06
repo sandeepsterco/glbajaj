@@ -1,7 +1,13 @@
 import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
-import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import dynamic from "next/dynamic";
+const ReactParser = dynamic(
+  () => import("@/src/components/common/reactParser/ReactParser"),
+  {
+    loading: () => <div>Loading...</div>,
+  },
+);
 
 export default async function DynamicSlugPage({
   params,
@@ -21,9 +27,10 @@ export default async function DynamicSlugPage({
 
   return (
     <>
-      {response.data?.sections && Object.keys(response.data.sections).map((key) => {
-        return <ReactParser key={key} html={response.data.sections[key]} />;
-      })}
+      {response.data?.sections &&
+        Object.keys(response.data.sections).map((key) => {
+          return <ReactParser key={key} html={response.data.sections[key]} />;
+        })}
     </>
   );
 }

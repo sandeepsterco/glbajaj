@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "glbajaj-topaz.vercel.app",
-        pathname: "/**",
+        pathname: "/images/**",
       },
       {
         protocol: "https",

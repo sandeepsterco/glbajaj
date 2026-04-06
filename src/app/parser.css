@@ -1,0 +1,311 @@
+.awards_section {
+  text-align: center;
+  padding: 16rem 0 10rem;
+  position: relative;
+}
+
+.awards_section .section_sub_title {
+  margin-bottom: 1rem;
+}
+
+.awards_section .section_main_title {
+  margin-bottom: 9rem;
+}
+
+/* Slider */
+.awards_section .swiper {
+  width: 80%;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.awards_section .swiper-slide {
+  background: #fff;
+  padding: 2rem 3.5rem;
+  height: 140px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* box-shadow: 0 0 6px rgba(0, 0, 0, 0.08); */
+  transition: 0.3s;
+  position: relative;
+}
+
+.awards_section .swiper-slide .slide-text {
+  display: block;
+}
+
+.awards_section .swiper-slide:not(:first-child):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 1px;
+  background: #707070;
+  opacity: 0.35;
+}
+
+.awards_section .swiper-slide img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.awards_section .swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Navigation buttons */
+.awards_section .nav-btn {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.awards_section .nav-prev {
+  left: 60px;
+}
+
+.awards_section .nav-next {
+  right: 60px;
+}
+
+.awards_section .nav-btn::after {
+  font-size: 14px;
+  color: #d13b2c;
+  font-weight: bold;
+}
+
+.nav-prev::after {
+  content: "<";
+}
+
+.awards_section .nav-next::after {
+  content: ">";
+}
+
+/* Top small arrow */
+.awards_section .top-arrow {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 20px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  color: #d13b2c;
+  font-size: 14px;
+}
+
+/* home courses */
+
+.courses-section {
+  padding: 60px 0;
+}
+
+.courses-section .container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT */
+.courses-section .left {
+  flex: 1;
+  position: relative;
+}
+
+.courses-section .heading {
+  font-size: 32px;
+  color: #7a5a2b;
+  margin-bottom: 25px;
+  line-height: 1.3;
+}
+
+.courses-section.tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.courses-section .tab {
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.courses-section .tab.active {
+  border-color: #7a5a2b;
+  font-weight: 600;
+}
+
+.courses-section .search-box {
+  position: relative;
+  width: 300px;
+}
+
+.courses-section .search-box input {
+  width: 100%;
+  padding: 10px 35px 10px 12px;
+  border: 1px solid #c9b7a0;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+}
+
+.courses-section .search-box span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #7a5a2b;
+}
+
+/* RIGHT IMAGE */
+.courses-section .right {
+  flex: 1;
+  position: relative;
+}
+
+.courses-section .right img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* SLIDER BOX */
+.courses-section .courses-slider-box {
+  position: absolute;
+  bottom: -60px;
+  left: -40%;
+  width: 140%;
+  background: #e8dfd3;
+  padding: 25px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.courses-section .slider-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.courses-section .swiper {
+  width: 100%;
+}
+
+.courses-section .swiper-slide {
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+}
+
+.courses-section .icon-box {
+  width: 40px;
+  height: 40px;
+  background: #a9793c;
+  margin: auto;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* NAV BUTTONS */
+.courses-section .slider-nav {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.courses-section .nav-btn {
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: red;
+  border-radius: 3px;
+}
+
+/* FOOTER BAR */
+.courses-section .admission-bar {
+  margin-top: 80px;
+  background: #6b3f1d;
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.courses-section .links {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.courses-section .apply-btn {
+  background: #c89b3c;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .courses-section .container {
+    flex-direction: column;
+  }
+
+  .courses-section .courses-slider-box {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .courses-section .admission-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .awards_section .swiper {
+    width: 95%;
+  }
+
+  .awards_section .nav-prev {
+    left: 10px;
+  }
+
+  .awards_section .nav-next {
+    right: 10px;
+  }
+}

@@ -14,8 +14,13 @@ const nextConfig: NextConfig = {
         hostname: "glbajaj-topaz.vercel.app",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "project-demo.in",
+        pathname: "/**",
+      },
     ],
-    domains: ["sd7", "localhost", "glbajaj-topaz.vercel.app"],
+    domains: ["sd7", "localhost", "glbajaj-topaz.vercel.app", "project-demo.in"],
     unoptimized: true,
   },
 

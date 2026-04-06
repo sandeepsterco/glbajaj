@@ -34,7 +34,7 @@ export default async function Home() {
 
         <NotificationBar />
 
-        {Object.keys(homeData?.sections).map((key) => {
+        {homeData?.sections && Object.keys(homeData.sections).map((key) => {
           return <ReactParser key={key} html={homeData.sections[key]} />;
         })}
         <RankingAward />

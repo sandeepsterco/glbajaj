@@ -21,7 +21,7 @@ export default async function DynamicSlugPage({
 
   return (
     <>
-      {Object.keys(response.data?.sections).map((key) => {
+      {response.data?.sections && Object.keys(response.data.sections).map((key) => {
         return <ReactParser key={key} html={response.data.sections[key]} />;
       })}
     </>

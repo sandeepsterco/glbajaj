@@ -5,24 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "sd7",
-        port: "8080",
-        pathname: "/jss/assets/img/banners/**",
-      },
-      {
         protocol: "https",
-        hostname: "glbajaj-topaz.vercel.app",
-        pathname: "/images/**",
-      },
-      {
-        protocol: "https",
-        hostname: "project-demo.in",
-        pathname: "/**",
+        hostname: "**",
       },
     ],
-    domains: ["sd7", "localhost", "glbajaj-topaz.vercel.app", "project-demo.in"],
-    unoptimized: true,
   },
 
   async rewrites() {

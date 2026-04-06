@@ -10,7 +10,6 @@ const ReactParser = dynamic(
   () => import("../components/common/reactParser/ReactParser"),
   {
     loading: () => <div>Loading...</div>,
-    ssr: false,
   },
 );
 

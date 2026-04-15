@@ -1,30 +1,29 @@
 (function () {
   "use strict";
-  const swiper = new Swiper(".home_awards_slider", {
+  //-====Ranking and Award Slider -js -start--//
+
+  var swiper = new Swiper(".award_ranking", {
     slidesPerView: 5,
-    // spaceBetween: 20,
     loop: true,
-
+    spaceBetween: 20,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
     navigation: {
-      nextEl: ".nav-next",
-      prevEl: ".nav-prev",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
-
     breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      480: {
-        slidesPerView: 2,
-      },
-      768: {
-        slidesPerView: 3,
-      },
-      1024: {
-        slidesPerView: 5,
-      },
+        0: { slidesPerView: 1 },
+        480: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 },
+        1200: { slidesPerView: 5 },  // ← full 5 on desktop
     },
-  });
+});
+//-====Ranking and Award Slider -js -end--//
 
   new Swiper(".studentsSwiper", {
     slidesPerView: "3",
@@ -49,4 +48,6 @@
       900: { slidesPerView: 5 },
     },
   });
+
+
 })();

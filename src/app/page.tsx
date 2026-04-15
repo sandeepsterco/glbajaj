@@ -6,6 +6,8 @@ import { apiFetch } from "../lib/api";
 import ReactParser from "../components/common/reactParser/ReactParser";
 import NotificationBar from "../components/ui/NotificationBar";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata() {
   return await getPageSEO();
 }
@@ -15,6 +17,7 @@ export default async function Home() {
 
   const { data: homeData, error: homeError } = await apiFetch("modular/home", {
     revalidate: 300,
+    timeoutMs: 10_000,
   });
 
   return (
@@ -28,13 +31,19 @@ export default async function Home() {
         />
       )}
       <main>
+        {homeError && (
+          <div className="px-4 py-6 text-sm text-red-600">
+            Failed to load homepage content.
+          </div>
+        )}
+
         {homeData?.modular?.banner && homeData.modular.banner.length > 0 && (
           <FullImageBanner data={homeData.modular.banner} />
         )}
 
         {/* <NotificationBar /> */}
 
-        {Object.keys(homeData?.cms).map((key) => {
+        {Object.keys(homeData?.cms ?? {}).map((key) => {
           return <ReactParser key={key} html={homeData.cms[key]} />;
         })}
 

@@ -16,14 +16,10 @@ export async function getPageSEO(slug) {
       slug = `${SEO_URL}${pathname}`;
     }
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 7_500);
-
     const res = await fetch(`${SEO_URL}seo/${encodeURIComponent(slug)}`, {
       cache: "force-cache",
       next: { revalidate: 3600 },
-      signal: controller.signal,
-    }).finally(() => clearTimeout(timeoutId));
+    });
 
     if (!res.ok) throw new Error("SEO data not found");
 

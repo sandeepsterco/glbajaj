@@ -1,24 +1,16 @@
-"use client";
 import parse, {
   attributesToProps,
   Element,
   HTMLReactParserOptions,
   domToReact,
 } from "html-react-parser";
-
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import CompanySlider from "../../parser/CompanySlider";
-
-const CourseSearch = () => {
-  return (
-    <div className="search-box">
-      <input type="text" placeholder="Search Courses" />
-      <span>🔍</span>
-    </div>
-  );
-};
+import CourseSearch from "../../parser/CourseSearch";
+import AddOnCourses from "../../parser/AddOnCourses";
+import HomeHappenings from "../../parser/HomeHappenings";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -51,10 +43,12 @@ const options: HTMLReactParserOptions = {
                 ? parseInt(props.height as string, 10)
                 : 600
             }
-            style={{ width: "100%", height: "auto", ...(props.style || {}) }}
+            style={{ ...(props.style || {}) }}
           />
         );
       }
+
+      
       if (domNode.name === "a") {
         const props = attributesToProps(domNode.attribs) as any;
         const href = props.href || "#";
@@ -66,13 +60,25 @@ const options: HTMLReactParserOptions = {
         );
       }
 
+      if(domNode.attribs && domNode.attribs.class){
+        domNode.attribs.className = domNode.attribs.class;
+      }
+
       //handle cms component
-      if (domNode.attribs.id === "course-search") {
+      if (domNode.attribs.id === "test-module") {
         return <CourseSearch />;
       }
 
-      if (domNode.attribs.id === "company_slider") {
+      if (domNode.attribs.id === "test-module") {
         return <CompanySlider />;
+      }
+
+      if (domNode.attribs.id === "test-module") {
+        return <AddOnCourses />;
+      }
+
+      if (domNode.attribs.id === "home_happenings") {
+        return <HomeHappenings />;
       }
     }
   },

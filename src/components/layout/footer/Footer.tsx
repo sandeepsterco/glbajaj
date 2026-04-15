@@ -26,7 +26,7 @@ const Footer = async () => {
           <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-[9rem] w-full">
             <div className="">
               <h3 className="text-white font-medium text-[2.1rem] leading-[3.6rem]">
-                GL Bajaj Institute of Technology and Management
+                GL Bajaj Institute of Technology and Management1111
               </h3>
               <p className="text-white text-sm md:text-[1.6rem] leading-[2.4rem] mt-[1.2rem]">
                 Plot No.2 , APJ Abdul Kalam Road, Knowledge Park 3, Greater

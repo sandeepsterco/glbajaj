@@ -1,114 +1,31 @@
-.awards_section {
-  text-align: center;
-  padding: 16rem 0 10rem;
+/************  Award and Ranking  CSS Start ************/
+.award_swipr_main {
   position: relative;
+  padding: 0 5.6rem;    margin-top: 8.5rem;
 }
+.home_rank_award{padding-block: 13.0rem 9rem;}
+.sec_title{text-align: center;}
+.sec_title .title48{color: var(--color-92);margin-top: 1rem;}
+.sec_title figure{width: 100%;height: 100%;}
+.sec_title figure img{width: 6rem; height: 6rem; margin: auto;}
+.h_r_award_Card{text-align: center; padding-inline: 3rem 3rem;position: relative;}
+.h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: #ccc; top: 0; }
+.home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
+.h_r_award_Card figure img{width: auto; height: 5.7rem;margin: auto;margin-bottom: 2rem;}
+.h_r_award_Card h6{font:var(--font-10);font-weight: var(--font-bold);line-height: 1.2rem;margin-bottom: 0.5rem;font-family: var(--font-tasa);}
+.h_r_award_Card p{font:var(--font-8);font-weight: var(--font-bold);line-height: 1rem;font-family: var(--font-tasa);}
+.h_r_award_Card span{font:var(--font-8);font-weight: var(--font-normal);line-height: 1rem;font-family: var(--font-tasa);}
+.swiper.award_ranking{width: 85%;}
+.swiper-navigation-icon{display: none;}
+.h_r_ratingbox{display: flex;gap: 0.5rem;justify-content: center;margin-top: 0.5rem;}
+.h_r_ratingbox i{color: var(--color-FF);width: 1.3rem;height: 1.2rem;}
+.award_swipr_main .swiper-button-prev::after{ content: ''; left: 0; top: 0; background-image: url('/images/icons/awards/slide_arrow_left.svg'); position: absolute; 
+    height: 6rem; width: 6rem; }
+.award_swipr_main .swiper-button-next::after{ content: ''; left: 0; top: 0; background-image: url('/images/icons/awards/slide_arrow_right.svg'); position: absolute; 
+    height: 6rem; width: 6rem; }
 
-.awards_section .section_sub_title {
-  margin-bottom: 1rem;
-}
 
-.awards_section .section_main_title {
-  margin-bottom: 9rem;
-}
-
-/* Slider */
-.awards_section .swiper {
-  width: 80%;
-  margin: auto;
-  padding: 20px 0;
-}
-
-.awards_section .swiper-slide {
-  background: #fff;
-  padding: 2rem 3.5rem;
-  height: 140px;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  /* box-shadow: 0 0 6px rgba(0, 0, 0, 0.08); */
-  transition: 0.3s;
-  position: relative;
-}
-
-.awards_section .swiper-slide .slide-text {
-  display: block;
-}
-
-.awards_section .swiper-slide:not(:first-child):before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 1px;
-  background: #707070;
-  opacity: 0.35;
-}
-
-.awards_section .swiper-slide img {
-  max-width: 100%;
-  max-height: 80px;
-  object-fit: contain;
-}
-
-.awards_section .swiper-slide:hover {
-  transform: translateY(-5px);
-}
-
-/* Navigation buttons */
-.awards_section .nav-btn {
-  position: absolute;
-  top: 60%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-.awards_section .nav-prev {
-  left: 60px;
-}
-
-.awards_section .nav-next {
-  right: 60px;
-}
-
-.awards_section .nav-btn::after {
-  font-size: 14px;
-  color: #d13b2c;
-  font-weight: bold;
-}
-
-.nav-prev::after {
-  content: "<";
-}
-
-.awards_section .nav-next::after {
-  content: ">";
-}
-
-/* Top small arrow */
-.awards_section .top-arrow {
-  width: 30px;
-  height: 30px;
-  margin: 0 auto 20px;
-  background: #fff;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  color: #d13b2c;
-  font-size: 14px;
-}
+/************  Award and Ranking  CSS End ************/
 
 /* home courses */
 
@@ -278,6 +195,176 @@
   color: #fff;
   font-size: 13px;
 }
+
+
+/* about page */
+
+/* about overview */
+
+.aboutglbitm_overview {
+  padding: 60px 0;
+}
+
+
+.aboutglbitm_overview .main-heading {
+  font-size: 34px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #6b3f2c; /* brown tone */
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+
+/* Layout */
+.aboutglbitm_overview .content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.aboutglbitm_overview .text-content {
+  flex: 1;
+}
+
+.aboutglbitm_overview .text-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.aboutglbitm_overview .image-content {
+  flex: 1;
+}
+
+.aboutglbitm_overview .image-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+/* end of about overview */
+
+/* start image section */
+
+.aboutglbitm_image_section{
+
+}
+
+/* end of image section */
+
+/* start aboutglbitm approval section */
+
+.aboutglbitm_approval_section {
+  background: #e9e9e9;
+  padding: 60px 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Container */
+.aboutglbitm_approval_section .aboutglbitm_container {
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Layout */
+.aboutglbitm_approval_section .aboutglbitm_wrapper {
+  display: flex;
+  gap: 60px;
+}
+
+/* LEFT */
+.aboutglbitm_approval_section .aboutglbitm_left {
+  flex: 1;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #6b3f2c;
+  margin-bottom: 20px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+/* Logos Section */
+.aboutglbitm_approval_section .aboutglbitm_logos {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_logo_item {
+  text-align: center;
+  max-width: 200px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_logo_item img {
+  width: 90px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_logo_item p {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_logo_item span {
+  font-size: 13px;
+  color: #8b5a3c;
+  border-bottom: 1px dashed #8b5a3c;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+/* Divider */
+.aboutglbitm_approval_section .aboutglbitm_divider {
+  width: 1px;
+  height: 100px;
+  background: #cfcfcf;
+}
+
+/* RIGHT */
+.aboutglbitm_approval_section .aboutglbitm_right {
+  width: 380px;
+}
+
+/* Card */
+.aboutglbitm_approval_section .aboutglbitm_card {
+  background: #dedede;
+  padding: 30px;
+  text-align: center;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_card img {
+  width: 110px;
+  margin-bottom: 15px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_card h3 {
+  font-size: 18px;
+  color: #6b3f2c;
+  margin-bottom: 15px;
+}
+
+.aboutglbitm_approval_section .aboutglbitm_card p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* end of aboutglbitm approval section */
+
 
 @media (max-width: 900px) {
   .courses-section .container {

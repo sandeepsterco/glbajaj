@@ -1,13 +1,7 @@
 import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
-import dynamic from "next/dynamic";
-const ReactParser = dynamic(
-  () => import("@/src/components/common/reactParser/ReactParser"),
-  {
-    loading: () => <div>Loading...</div>,
-  },
-);
+import ReactParser from "@/src/components/common/reactParser/ReactParser";
 
 export default async function DynamicSlugPage({
   params,
@@ -15,7 +9,7 @@ export default async function DynamicSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const response = await apiFetch(`modular/${slug}`);
+  const response = await apiFetch(`cms/${slug}`);
 
   if (response.error) {
     return <NotFound />;
@@ -27,10 +21,11 @@ export default async function DynamicSlugPage({
 
   return (
     <>
-      {response.data?.sections &&
-        Object.keys(response.data.sections).map((key) => {
-          return <ReactParser key={key} html={response.data.sections[key]} />;
-        })}
+      {Object.keys(response.data.data?.sections).map((key) => {
+        return (
+          <ReactParser key={key} html={response.data.data.sections[key]} />
+        );
+      })}
     </>
   );
 }

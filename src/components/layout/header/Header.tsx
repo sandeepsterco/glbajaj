@@ -1,214 +1,313 @@
 "use client";
 
 import Link from "next/link";
-import MobileMenuClient from "./MobileMenuClient";
 import Image from "next/image";
-import { BASE_URL } from "@/src/config/config";
-import { useState } from "react";
-import { SOCIAL_LINKS } from "@/src/data/header/headerData";
+import { useState, useEffect } from "react";
+import "./header.css";
 
-function TopBar() {
+const BASE_URL = "/";
+
+export default function Header({ headerData }: { headerData?: any }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+
+  console.log('headerData',headerData);
+
+  // Prevent body scroll when sidebar is open
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [sidebarOpen]);
+
+  const WHY_GLBITM = [
+    "GLBITM at a Glance", "Campus Tour", "Life @ GL Bajaj", "Entrepreneurship",
+    "International Relations", "Workshops & Seminars", "Industrial Experience",
+    "Faculty", "Placements", "Student Life", "Awards & Rankings",
+    "Clubs & Societies", "NIRF DCS", "Extra Curricular Activities",
+    "Committee & Cells", "Testimonials",
+  ];
+
+  const FACILITIES = ["Academic Facilities", "Campus Facilities", "Other Facilities", "FAQs"];
+
+  const QUALITY = [
+    "Internal Quality Assurance Cell", "IQAC Committee", "IQAC Events",
+    "Reports", "Value Education Cell", "Institute Innovation Cell - IIC",
+    "Bhashini", "GLB Digital Pathshala",
+  ];
+
+  const HAPPENINGS = [
+    "News & Events", "Media Coverage", "Notices & Announcements",
+    "Gallery", "Workshops", "Guest Lectures",
+  ];
+
+  const ALUMNI = [
+    "Overview", "Alumni Chapters", "Alumni Events & Meets",
+    "Alumni Achievements", "Distinguished Alumni", "Alumni Testimonials",
+  ];
+
+  const STUDENT_CORNER = [
+    "Dean Student Welfare", "Student Centric Policy", "Clubs & Societies",
+    "NSS & NCC", "Student Chapters", "Student Council", "Hackathons",
+    "Achievements", "Sports & GYM", "Counselling Support", "Life @ Campus",
+  ];
+
+  const DEPARTMENTS = [
+    "Civil Engineering",
+    "Computer Science and Engineering",
+    "Computer Science and Engineering (AI)",
+    "Computer Science and Engineering (AIML)",
+    "Computer Science and Engineering (Data Science)",
+    "Electronics and Communication Engineering",
+    "Mechanical Engineering",
+    "Computer Science & Information Technology",
+    "Electrical and Electronics Engineering",
+    "Applied Science and Humanities",
+    "Master of Business Administration",
+  ];
+
+  const MEGA_RIGHT_LINKS = [
+    "Teaching Practices & Pedagogy", "Our Leadership Team", "Faculty",
+    "Academic Calendar - RO", "Curriculum & Syllabi", "System of Evaluation",
+    "Examinations", "Committees", "Placements",
+    "Industry – Academia MoUs & Alliances", "Dean Strategy",
+    "Dean Student Welfare", "Code of Conduct", "Library", "Anti-Ragging",
+    "GLB Digital Pathshala", "Guidelines & Policies", "Grievance",
+    "Notices & Announcements",
+  ];
+
+  const SOCIALS = [
+    { icon: "facebook.png", label: "Facebook" },
+    { icon: "x-social.png", label: "X / Twitter" },
+    { icon: "youtube.png", label: "YouTube" },
+    { icon: "insta.png", label: "Instagram" },
+    { icon: "linkedin.png", label: "LinkedIn" },
+  ];
+
   return (
-    <div className="hidden lg:flex">
-      <div className="container mx-auto lg:flex justify-end">
-        <div className="bg-[#000000] lg:inline-flex items-center text-[#fff] px-[1.5rem] py-[0.5rem] text-[1.8rem] leading-[2.4rem]">
-          <span className="flex items-center gap-[1rem]">
-            Toll free No:{" "}
-            <Link
-              href="tel:8010002234"
-              className="text-white font-semibold hover:text-amber-300 transition-colors"
-            >
-              801 000 2234
-            </Link>
-          </span>
-          <span className="w-[1px] h-[1.5rem] bg-[#D2AB67] mx-[2rem]" />
-          <div className="flex items-center gap-[2rem]">
-            {SOCIAL_LINKS.map((s) => (
-              <Link
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="w-[1.2rem] h-[1.2rem] flex items-center justify-center text-white"
-              >
+    <>
+      {/* ── HEADER ─────────────────────────────────────────────────── */}
+      <header className={`main_header${megaMenuOpen ? " active" : ""}`}>
+
+        {/* Top bar */}
+        <div className="top_header">
+          <div className="container-fluid">
+            <div className="top_menu">
+              <div className="toll_sec">
+                <ul>
+                  <li>
+                    <span>Toll free No</span>
+                    <Link href="tel:8010000234">801 000 234</Link>
+                  </li>
+                </ul>
+              </div>
+              <ul className="h_social_sec">
+                {SOCIALS.map(({ icon, label }) => (
+                  <li key={label}>
+                    <Link href="#" aria-label={label} target="_blank">
+                      <img src={`/images/icons/social/${icon}`} alt={label} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom nav bar */}
+        <div className="bottom_header">
+          <div className="container-fluid">
+
+            {/* Logo */}
+            <div className="site_brand">
+              <Link href={BASE_URL} className="navbar-brand" aria-label="GL Bajaj home">
                 <Image
-                  src={s.icon}
-                  alt={s.label}
-                  width={12}
-                  height={12}
+                  src="/images/logo/logo.png"
+                  alt="GL Bajaj University"
+                  className="img-fluid white_logo"
+                  width={415}
+                  height={112}
                   priority
-                  className="max-w-[max-content] h-auto"
+                />
+                <Image
+                  src="/images/logo/logo.png"
+                  alt="GL Bajaj University"
+                  className="img-fluid blue_logo"
+                  width={415}
+                  height={112}
+                  priority
                 />
               </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DesktopNav({
-  hoveredIndex,
-  setHoveredIndex,
-  menuItems,
-}: {
-  hoveredIndex: null | number;
-  setHoveredIndex: (i: number | null) => void;
-  menuItems: any;
-}) {
-  const hoveredItem = hoveredIndex !== null ? menuItems?.[hoveredIndex] : null;
-  const subMenus =
-    hoveredItem && "subMenus" in hoveredItem ? hoveredItem.subMenus : null;
-
-  return (
-    <nav
-      className="hidden lg:flex gap-[4rem] relative"
-      aria-label="Primary navigation"
-      // onMouseLeave={() => setHoveredIndex(null)}
-    >
-      {menuItems?.map((item: any, index: number) => (
-        <div
-          key={index}
-          className="relative"
-          onMouseEnter={() => setHoveredIndex(index)}
-        >
-          <Link
-            href={`${BASE_URL}${item.url}`}
-            className={`relative  py-[1.5rem] text-[2.1rem] leading-[3.6rem] transition-colors duration-200 whitespace-nowrap flex items-center h-full ${hoveredIndex === index ? "text-[#FECE49]" : "text-[#fff]"}`}
-          >
-            {item.title}
-            <span
-              className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] bg-[#926B29] transition-all duration-300 z-10 ${hoveredIndex === index ? "w-full" : "w-0"}`}
-            />
-          </Link>
-        </div>
-      ))}
-    </nav>
-  );
-}
-
-export default function GLBajajHeader({ headerData }: { headerData: any }) {
-  console.log("header data headerData", headerData);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const hoveredItem =
-    hoveredIndex !== null ? headerData?.menuItems?.[hoveredIndex] : null;
-  const hasSubMenus = hoveredItem && "subMenus" in hoveredItem;
-  const subMenus =
-    hoveredItem && "subMenus" in hoveredItem ? hoveredItem.subMenus : null;
-
-  return (
-    <header className="w-full absolute top-0 z-999">
-      <TopBar />
-      <div className="bg-transparent relative">
-        <div className="container">
-          <div className="flex gap-[3rem] justify-between">
-            <div className="logo" onMouseEnter={() => setHoveredIndex(null)}>
-              <Image
-                src={"/images/logo/logo.png"}
-                width={520}
-                height={168}
-                alt="Logo"
-                priority
-                className="max-w-[41.5rem]"
-              />
             </div>
-            <div className="flex gap-[3rem] relative">
-              <div className="hidden lg:flex flex-1 justify-end">
-                <DesktopNav
-                  hoveredIndex={hoveredIndex}
-                  setHoveredIndex={setHoveredIndex}
-                  menuItems={headerData?.menuItems || []}
-                />
-              </div>
-              <div className="">
-                <MobileMenuClient />
-              </div>
 
-              {/* Outer Mega Menu Dropdown */}
-              <div
-                className={`absolute left-0 top-[calc(100%-3px)] w-full transition-all duration-300 z-[9999] ${subMenus ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-              >
-                <div className=" text-white pt-[6.6rem] flex gap-[24.6rem] border-t border-white/10 pointer-events-auto pr-[15rem]">
-                  {subMenus && (
-                    <>
-                      <div className="flex-1 flex flex-col gap-[10rem]">
-                        {subMenus.leftMenus?.map(
-                          (section: any, idx: number) => (
-                            <div key={idx}>
-                              {section.title ? (
-                                <h4 className="text-[#D2AB67] text-[2.4rem] leading-[3.6rem] font-semibold mb-[5rem] tracking-wide">
-                                  {section.title}
-                                </h4>
-                              ) : (
-                                <h4 className="text-transparent select-none text-[1.8rem] font-semibold mb-[1.5rem] tracking-wide pointer-events-none border-none"></h4>
-                              )}
-                              <ul className="flex flex-col">
-                                {section.menus.map(
-                                  (link: any, lidx: number) => (
-                                    <li
-                                      key={lidx}
-                                      className="border-b border-[#C08552]/30 relative group/link"
-                                    >
-                                      <Link
-                                        href={link.href}
-                                        className="block py-[1rem] text-[1.6rem] leading-[2.4rem] transition-all duration-200 hover:text-[#D2AB67] hover:translate-x-[0.5rem] flex items-center font-normal"
-                                      >
-                                        {link.label}
-                                      </Link>
-                                    </li>
-                                  ),
-                                )}
-                              </ul>
-                            </div>
-                          ),
-                        )}
+            {/* Navigation */}
+            <div className="site_nav">
+              <ul>
+                <li><Link href="/about-us">About Us</Link></li>
+                <li><Link href="/courses">Courses &amp; Admission</Link></li>
+
+                {/* ── Mega Menu ── */}
+                <li
+                  className={`drom_menu${megaMenuOpen ? " active" : ""}`}
+                  onMouseEnter={() => setMegaMenuOpen(true)}
+                  onMouseLeave={() => setMegaMenuOpen(false)}
+                >
+                  <Link href="#">Academics</Link>
+
+                  <div
+                    className="dropdown_item"
+                    style={{
+                      transform: megaMenuOpen
+                        ? "translateX(0%) scaleY(1)"
+                        : "translateX(0%) scaleY(0)",
+                      opacity: megaMenuOpen ? 1 : 0,
+                    }}
+                  >
+                    <div className="mega_container">
+                      {/* Left */}
+                      <div className="mega_left">
+                        <div className="megg_lft_top">
+                          <h4>Programs</h4>
+                          <ul>
+                            <li><Link href="#">Undergraduate</Link></li>
+                            <li><Link href="#">Post Graduate</Link></li>
+                          </ul>
+                        </div>
+                        <div className="mega_left_btm">
+                          <h4>Departments</h4>
+                          <ul>
+                            {DEPARTMENTS.map((dept) => (
+                              <li key={dept}><Link href="#">{dept}</Link></li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
 
-                      <div className="flex-1 flex flex-col gap-[3.5rem]">
-                        {subMenus.rightMenus?.map(
-                          (section: any, idx: number) => (
-                            <div key={idx}>
-                              {section.title && (
-                                <h4 className="text-[#D2AB67] text-[2.4rem] leading-[3.6rem] font-semibold mb-[1.5rem]">
-                                  {section.title}
-                                </h4>
-                              )}
-                              <ul className="flex flex-col">
-                                {section.menus.map(
-                                  (link: any, lidx: number) => (
-                                    <li
-                                      key={lidx}
-                                      className="border-b border-[#C08552]/30 last:border-0 relative group/link"
-                                    >
-                                      <Link
-                                        href={link.href}
-                                        className="block py-[1.2rem] text-[1.5rem] text-white/90 transition-all duration-200 hover:text-[#D2AB67] hover:translate-x-[0.5rem]"
-                                      >
-                                        {link.label}
-                                      </Link>
-                                    </li>
-                                  ),
-                                )}
-                              </ul>
-                            </div>
-                          ),
-                        )}
+                      {/* Right */}
+                      <div className="mega_right">
+                        <ul>
+                          {MEGA_RIGHT_LINKS.map((item) => (
+                            <li key={item}><Link href="#">{item}</Link></li>
+                          ))}
+                        </ul>
                       </div>
-                    </>
-                  )}
-                </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li><Link href="#">Departments</Link></li>
+                <li><Link href="#">Training &amp; Placement</Link></li>
+                <li><Link href="#">Research</Link></li>
+              </ul>
+
+              {/* Icons */}
+              <div className="menu_bars">
+                <Link href="#" className="search_open" aria-label="Search">
+                  <img
+                    src="/images/icons/header/search-icon.svg"
+                    alt="search"
+                    className="img-fluid w-100"
+                  />
+                </Link>
+                <button
+                  type="button"
+                  className="hamb_open"
+                  aria-label="Open menu"
+                  aria-expanded={sidebarOpen}
+                  onClick={() => setSidebarOpen(true)}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                >
+                  <img
+                    src="/images/icons/header/hamburger.svg"
+                    alt="menu"
+                    className="img-fluid w-100"
+                  />
+                </button>
               </div>
             </div>
+
           </div>
         </div>
-      </div>
+      </header>
 
       <div
-        className={`backdrop${hasSubMenus ? " fixed bg-[#333333] left-0 top-0 w-full h-screen opacity-90 z-[-1]" : ""} `}
+        id="humburgeroverlay"
+        className={sidebarOpen ? "active" : ""}
+        onClick={() => setSidebarOpen(false)}
       />
-    </header>
+
+      <div
+        className={`humburger_mainsec${sidebarOpen ? " active" : ""}`}
+        id="humburger_sidebar"
+      >
+        <div className="close_icon">
+          <figure>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setSidebarOpen(false)}
+              style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            >
+              <img src="/images/icons/header/close_icon.svg" alt="Close" />
+            </button>
+          </figure>
+        </div>
+
+        <div className="hmburger_grid">
+
+          {/* Why GLBITM */}
+          <div className="hmburger_col why_col">
+            <h4 className="title24">Why GLBITM?</h4>
+            <ul>
+              {WHY_GLBITM.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Facilities + Quality */}
+          <div className="hmburger_col facilities_col">
+            <h4 className="title24">Facilities</h4>
+            <ul>
+              {FACILITIES.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+            <h4 className="title24">Quality Initiatives</h4>
+            <ul>
+              {QUALITY.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Happenings + Alumni */}
+          <div className="hmburger_col happenings_col">
+            <h4 className="title24">Happenings</h4>
+            <ul>
+              {HAPPENINGS.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+            <h4 className="title24">Alumni</h4>
+            <ul>
+              {ALUMNI.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Student Corner */}
+          <div className="hmburger_col">
+            <h4 className="title24">Student Corner</h4>
+            <ul>
+              {STUDENT_CORNER.map((item) => (
+                <li key={item}><Link href="#">{item}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </>
   );
 }

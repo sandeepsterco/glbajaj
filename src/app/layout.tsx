@@ -7,6 +7,7 @@ import "./globals.css";
 import "./parser.css";
 
 import { apiFetch } from "../lib/api";
+import Providers from "../lib/providers";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${tasaOrbiter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Header headerData={headerData} />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <Header headerData={headerData} />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
         <ScriptLoader />
       </body>
     </html>

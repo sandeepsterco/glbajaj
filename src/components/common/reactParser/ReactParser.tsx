@@ -1,3 +1,5 @@
+"use client";
+
 import parse, {
   attributesToProps,
   Element,
@@ -6,7 +8,7 @@ import parse, {
 } from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "dompurify";
 import CompanySlider from "../../parser/CompanySlider";
 import CourseSearch from "../../parser/CourseSearch";
 import AddOnCourses from "../../parser/AddOnCourses";

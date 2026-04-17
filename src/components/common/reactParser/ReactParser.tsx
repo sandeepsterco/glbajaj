@@ -19,32 +19,44 @@ const options: HTMLReactParserOptions = {
     if (domNode instanceof Element && domNode.attribs) {
       if (domNode.name === "img") {
         const props = attributesToProps(domNode.attribs) as any;
+        const resolvedSrc = (() => {
+          const s = props.src || "";
+          if (!s)
+            return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+          if (s.startsWith("http") || s.startsWith("/") || s.startsWith("data:"))
+            return s;
+          return "/" + s;
+        })();
+
+        const parsedWidth =
+          props.width && !isNaN(parseInt(props.width as string, 10))
+            ? parseInt(props.width as string, 10)
+            : undefined;
+        const parsedHeight =
+          props.height && !isNaN(parseInt(props.height as string, 10))
+            ? parseInt(props.height as string, 10)
+            : undefined;
+
+        // `next/image` requires explicit dimensions unless using `fill`.
+        // For CMS HTML where width/height may be missing, fall back to a plain <img>.
+        if (!parsedWidth || !parsedHeight) {
+          const { src: _src, width: _w, height: _h, ...rest } = props;
+          return (
+            <img
+              {...rest}
+              src={resolvedSrc}
+              alt={props.alt || ""}
+              style={{ ...(props.style || {}) }}
+            />
+          );
+        }
         return (
           <Image
             {...props}
-            src={(() => {
-              const s = props.src || "";
-              if (!s)
-                return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-              if (
-                s.startsWith("http") ||
-                s.startsWith("/") ||
-                s.startsWith("data:")
-              )
-                return s;
-              return "/" + s;
-            })()}
+            src={resolvedSrc}
             alt={props.alt || ""}
-            width={
-              props.width && !isNaN(parseInt(props.width as string, 10))
-                ? parseInt(props.width as string, 10)
-                : 800
-            }
-            height={
-              props.height && !isNaN(parseInt(props.height as string, 10))
-                ? parseInt(props.height as string, 10)
-                : 600
-            }
+            width={parsedWidth}
+            height={parsedHeight}
             style={{ ...(props.style || {}) }}
           />
         );
@@ -67,15 +79,15 @@ const options: HTMLReactParserOptions = {
       }
 
       //handle cms component
-      if (domNode.attribs.id === "test-module") {
+      if (domNode.attribs.id === "course-search") {
         return <CourseSearch />;
       }
 
-      if (domNode.attribs.id === "test-module") {
-        return <CompanySlider />;
-      }
+      // if (domNode.attribs.id === "test-module") {
+      //   return <CompanySlider />;
+      // }
 
-      if (domNode.attribs.id === "test-module") {
+      if (domNode.attribs.id === "add-on-courses") {
         return <AddOnCourses />;
       }
 

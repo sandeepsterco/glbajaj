@@ -1,12 +1,8 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/src/lib/api";
-import { SkeletonGroup } from "../ui/Skeleton";
-import Image from "next/image";
 
 const fetchCourses = async () => {
   const { data, error } = await apiFetch("modular/home", {
@@ -23,53 +19,41 @@ export default function AddOnCourses() {
     queryFn: fetchCourses,
   });
 
-  const sliderData = data?.sections?.["add-on-courses"];
+  const sliderData = data?.modular?.["facts-and-figure"];
 
   return (
-    <div className="courses-slider-box">
-      <div className="slider-title">Mechanical Add-on Courses</div>
+    <div className="courses_slider">
+      <div className="courses_header">
+          <h4 className="title24">Mechanical Add-on Courses</h4>
 
-      {/* Custom Nav */}
-      <div className="slider-nav">
-        <div className="nav-btn prevCompanyReact">‹</div>
-        <div className="nav-btn nextCompanyReact">›</div>
+          <div className="slider_btns">
+              <div className="swiper-button-prev prev_swiper_btn"></div>
+              <div className="swiper-button-next next_swiper_btn"></div>
+          </div>
       </div>
 
-      {isLoading ? (
-        <SkeletonGroup count={7} className="bg-gray-300 h-[8.1rem] w-[100%]" />
-      ) : (
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={16}
-          slidesPerView={7}
-          loop={true}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          navigation={{
-            prevEl: ".prevCompanyReact",
-            nextEl: ".nextCompanyReact",
-          }}
-          breakpoints={{
-            320: { slidesPerView: 2 },
-            640: { slidesPerView: 3 },
-            1024: { slidesPerView: 7 },
-          }}
-          className="addOnCoursesSwiper"
-        >
-          {sliderData?.map((slide: any, sliderIdx: number) => (
-            <SwiperSlide key={sliderIdx}>
-              <div className="icon-box">
-                <Image
-                  src={slide.icon}
-                  alt={slide.alt}
-                  width={224}
-                  height={81}
-                />
+      <div className="overflow-hidden">
+          <div className="swiper courses_slider_wrapper">
+              <div className="swiper-wrapper">
+                {sliderData && sliderData.length > 0 && sliderData.map((singleSlide :any, slideIdx:any)=>(
+                  <div key={slideIdx} className="swiper-slide">
+                    {singleSlide?.image && (
+                      <span className="icon">
+                        <img src={singleSlide.image} alt="internet logo" />
+                    </span>
+                    )}
+                    
+                    {singleSlide?.title && (
+                      <p>{singleSlide.title}</p>
+                    )}
+                </div>
+                ))}
+
+                  
+
               </div>
-              {slide.title}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
-    </div>
+          </div>
+      </div>
+  </div>
   );
 }

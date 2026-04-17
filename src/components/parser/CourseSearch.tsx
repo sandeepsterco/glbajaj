@@ -35,36 +35,41 @@ export default function CourseSearch() {
   }, [searchQuery]);
 
   return (
-    <div className="search-box">
+    <div className="search-box input_group">
       <input
         type="text"
         placeholder="Search Courses"
         onChange={(e) => setSearchQuery(e.target.value)}
         value={searchQuery}
+        className="search_input"
       />
-      <span>🔍</span>
+      <img src="/images/icons/search.png" alt="search icon" className="search_icon" />
 
       {/* dropdown */}
       {debouncedQuery && (
-        <div className="absolute top-full left-0 w-full bg-white border rounded shadow mt-2 max-h-60 overflow-y-auto z-50">
+        <div
+          className="absolute top-full left-0 w-full bg-white border rounded shadow mt-2 h-[30rem] overflow-y-auto z-50"
+          style={{ fontFamily: "var(--font-tasa)" }}
+        >
           {/* Loading */}
-          {isLoading && <p className="p-3 text-sm text-gray-500">Loading...</p>}
+          {isLoading && <p className="py-[1rem] px-[2rem] text-[2rem] text-center">Loading...</p>}
 
           {/* Error */}
           {isError && (
-            <p className="p-3 text-sm text-red-500">Something went wrong</p>
+            <p className="py-[1rem] px-[2rem] text-[2rem] text-red-500 text-center">Something went wrong</p>
           )}
 
           {/* No Results */}
           {!isLoading && data?.length === 0 && (
-            <p className="p-3 text-sm text-gray-500">No courses found</p>
+            <p className="py-[1rem] px-[2rem] text-[2rem] text-center">No courses found</p>
           )}
 
           {/* results */}
           {data?.map((course: any) => (
             <div
               key={course.id}
-              className="p-3 hover:bg-gray-100 cursor-pointer border-b last:border-none"
+              className="py-[1rem] px-[2rem] hover:bg-gray-100 cursor-pointer border-b last:border-none text-[1.6rem]"
+              style={{ fontFamily: "var(--font-tasa)" }}
             >
               {course.name}
             </div>

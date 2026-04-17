@@ -4,7 +4,7 @@
 .scrolled .top_menu{background:var(--color-92)}
 .main_header { position: fixed; top: 0; left: 0; right: 0; padding-bottom:3.5rem; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
     overflow-x: clip; z-index: 999; transition: all .5s ease; }
-.main_header.scrolled{background:#fff;}
+.main_header.scrolled{background:#fff; box-shadow: 0px 2px 5rem rgba(0 0 0 / 6%);}
 .main_header a { color: var(--color-white); }
 /* .main_header .blue_logo{display:none;} */
 .h_social_sec { display: flex; gap: 1.6rem; }
@@ -23,7 +23,7 @@
     -o-transition: all .5s ease; }
 .site_brand { transition: all .5s ease-in; -webkit-transition: all .5s ease-in; -moz-transition: all .5s ease-in; -ms-transition: all .5s ease-in; 
     -o-transition: all .5s ease-in; }
-.site_brand .navbar-brand { display: grid; padding: 0; margin: 0; width: 27.6rem; transition: all .5s ease-in; }
+.site_brand .navbar-brand { display: grid; padding: 0; margin: 0; width: 41.5rem; transition: all .5s ease-in; }
 .site_brand .navbar-brand>img { grid-area: 1 / 1; transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; 
     -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
 .menu_bars { display: flex; align-items: center; }

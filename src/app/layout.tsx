@@ -16,20 +16,33 @@ const tasaOrbiter = TASA_Orbiter({
   display: "swap",
 });
 
-const { data: headerData, error: headerError } = await apiFetch(
-  "menu?location=header",
-  { revalidate: 300 },
-);
+async function getHeaderData(){
+  const [headerRes, sidebarRes] = await Promise.all([
+    apiFetch(
+      "menu?location=header",
+      { cache:'no-store'},
+    ),
+    apiFetch(
+      "menu?location=sidebar",
+      { cache:'no-store' },
+    )
+  ])
 
-if (headerError) {
-  console.error("Header fetch failed:", headerError);
+  return {
+    headerMenu: headerRes.data,
+    sidebarMenu: sidebarRes.data,
+    error: headerRes.error || sidebarRes.error,
+  }
+  // const { data: headerData, error: headerError } = await 
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerData = await getHeaderData();
+
   return (
     <html lang="en" className={`${tasaOrbiter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">

@@ -1,9 +1,12 @@
 /************  Top header CSS Start ************/
 .top_header { text-align: right; }
 .top_menu { display: inline-flex; justify-content: end; align-items: center; background-color: #00000066; padding-inline: 1.5rem; }
-.main_header { position: fixed; top: 0; left: 0; right: 0; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
+.scrolled .top_menu{background:var(--color-92)}
+.main_header { position: fixed; top: 0; left: 0; right: 0; padding-bottom:3.5rem; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
     overflow-x: clip; z-index: 999; transition: all .5s ease; }
+.main_header.scrolled{background:#fff;}
 .main_header a { color: var(--color-white); }
+/* .main_header .blue_logo{display:none;} */
 .h_social_sec { display: flex; gap: 1.6rem; }
 .h_social_sec img { height: 1.2rem; }
 .toll_sec a { padding-left: 1rem; font-weight: 500; margin-right: 2rem; padding-right: 2rem; border-right: 0.18rem solid var(--color-92); }
@@ -30,6 +33,9 @@
 .site_nav>ul>li>a { display: inline-block; position: relative; font: var(--font-21); color: var(--color-white); letter-spacing: -0.19px; 
     font-weight: var(--font-normal); z-index: 1; text-decoration: none; transition: all .5s ease; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; 
     -ms-transition: all .5s ease; -o-transition: all .5s ease; }
+.scrolled .site_nav > ul > li > a{
+    color:var(--color-black)
+}
 .drom_menu { position: relative; }
 .drom_menu:hover .dropdown_item { opacity: 1; visibility: visible; }
 .drom_menu { position: static; }

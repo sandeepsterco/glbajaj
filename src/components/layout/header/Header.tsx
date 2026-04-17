@@ -10,6 +10,16 @@ const BASE_URL = "/";
 export default function Header({ headerData }: { headerData?: any }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(()=>{
+    const handleScroll = ()=>{
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
   console.log('headerData',headerData);
 
@@ -86,7 +96,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   return (
     <>
       {/* ── HEADER ─────────────────────────────────────────────────── */}
-      <header className={`main_header${megaMenuOpen ? " active" : ""}`}>
+      <header className={`main_header${megaMenuOpen ? " active" : ""} ${isScrolled ? 'scrolled' : ''}`}>
 
         {/* Top bar */}
         <div className="top_header">
@@ -120,22 +130,25 @@ export default function Header({ headerData }: { headerData?: any }) {
             {/* Logo */}
             <div className="site_brand">
               <Link href={BASE_URL} className="navbar-brand" aria-label="GL Bajaj home">
+                {isScrolled ? 
+                 <Image
+                 src="/images/logo/colored-logo.png"
+                 alt="GL Bajaj University"
+                 className="img-fluid blue_logo"
+                 width={415}
+                 height={112}
+                 priority
+               /> :
                 <Image
-                  src="/images/logo/logo.png"
-                  alt="GL Bajaj University"
-                  className="img-fluid white_logo"
-                  width={415}
-                  height={112}
-                  priority
-                />
-                <Image
-                  src="/images/logo/logo.png"
-                  alt="GL Bajaj University"
-                  className="img-fluid blue_logo"
-                  width={415}
-                  height={112}
-                  priority
-                />
+                src="/images/logo/logo.png"
+                alt="GL Bajaj University"
+                className="img-fluid white_logo"
+                width={415}
+                height={112}
+                priority
+              />}
+                
+                
               </Link>
             </div>
 
@@ -202,11 +215,20 @@ export default function Header({ headerData }: { headerData?: any }) {
               {/* Icons */}
               <div className="menu_bars">
                 <Link href="#" className="search_open" aria-label="Search">
+                {isScrolled ? (
+                  <img
+                    src="/images/icons/header/search-icon-black.svg"
+                    alt="search"
+                    className="img-fluid w-100"
+                  />
+                ) : (
                   <img
                     src="/images/icons/header/search-icon.svg"
                     alt="search"
                     className="img-fluid w-100"
                   />
+                )}
+                  
                 </Link>
                 <button
                   type="button"
@@ -216,11 +238,20 @@ export default function Header({ headerData }: { headerData?: any }) {
                   onClick={() => setSidebarOpen(true)}
                   style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
                 >
-                  <img
-                    src="/images/icons/header/hamburger.svg"
+                  {isScrolled ? (
+                    <img
+                    src="/images/icons/header/hamburger-black.svg"
                     alt="menu"
                     className="img-fluid w-100"
                   />
+                  ) : (
+                    <img
+                      src="/images/icons/header/hamburger.svg"
+                      alt="menu"
+                      className="img-fluid w-100"
+                    />
+                  )}
+                  
                 </button>
               </div>
             </div>

@@ -46,17 +46,11 @@
 
     //-====Ranking and Award Slider -js -start--//
     new Swiper(".award_ranking", {
-      slidesPerView: 5,
       loop: true,
       spaceBetween: 20,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".award_swipr_main .swiper-button-next",
+        prevEl: ".award_swipr_main .swiper-button-prev",
       },
       breakpoints: {
         0: { slidesPerView: 1 },

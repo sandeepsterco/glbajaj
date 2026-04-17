@@ -112,11 +112,11 @@ const Footer = async () => {
         {/* Bottom Section */}
         <div className=" ml-[29.7rem] mt-[2rem] relative flex flex-col lg:flex-row justify-between items-center text-[1.4rem] leading-[2.1rem] text-white">
           <div className="flex items-center gap-[5rem]">
-            <p>
+            <p className=" text-white">
               Copyright © 2026 GL Bajaj Institute of Technology and Management
             </p>
 
-            <p>
+            <p className=" text-white">
               Website Design and Development by{" "}
               <a
                 href="https://www.stercodigitex.com/"

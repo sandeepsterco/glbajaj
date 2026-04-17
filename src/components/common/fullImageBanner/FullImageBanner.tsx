@@ -66,7 +66,7 @@ export default function HeroBanner({ data }: { data: any }) {
       </Swiper>
 
       {/* ── Notification Bar ── */}
-      <div className="hero_notificationmain">
+      {/* <div className="hero_notificationmain">
         <div className="container">
           <div className="hero_nofi_card">
             <h5 className="notifi_title">Notifications</h5>
@@ -86,7 +86,7 @@ export default function HeroBanner({ data }: { data: any }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -1,9 +1,12 @@
 /************  Award and Ranking  CSS Start ************/
-.award_swipr_main {
-  position: relative;
-  padding: 0 5.6rem;    margin-top: 8.5rem;
+.swiper-button-prev,
+.swiper-button-next{
+  top:unset;
+  left:unset;
 }
-.home_rank_award{padding-block: 13.0rem 9rem;}
+.sec_title.center{
+  text-align: center;
+}
 .sec_title.left{text-align: left;}
 .sec_title .title48{color: var(--color-92);
   margin-top: 1rem;
@@ -17,14 +20,22 @@
   line-height: 2.4rem;
   margin-top: 3rem;
 }
-.h_r_award_Card{text-align: center; padding-inline: 3rem 3rem;position: relative;}
+.award_swipr_main {
+  position: relative;
+  padding: 0 5.6rem;    margin-top: 8.5rem;
+  width: 68%;
+    margin-inline: auto;
+    padding: 0;
+}
+.home_rank_award{padding-block: 13.0rem 9rem;}
+.h_r_award_Card{text-align: center; padding-inline: 3rem 3rem;position: relative; padding-block: 2rem;}
 .h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: #ccc; top: 0; }
 .home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
 .h_r_award_Card figure img{width: auto; height: 5.7rem;margin: auto;margin-bottom: 2rem;}
 .h_r_award_Card h6{font:var(--font-10);font-weight: var(--font-bold);line-height: 1.2rem;margin-bottom: 0.5rem;font-family: var(--font-tasa);}
 .h_r_award_Card p{font:var(--font-8);font-weight: var(--font-bold);line-height: 1rem;font-family: var(--font-tasa);}
 .h_r_award_Card span{font:var(--font-8);font-weight: var(--font-normal);line-height: 1rem;font-family: var(--font-tasa);}
-.swiper.award_ranking{width: 85%;}
+/* .swiper.award_ranking{width: 72.9%;} */
 .swiper-navigation-icon{display: none;}
 .h_r_ratingbox{display: flex;gap: 0.5rem;justify-content: center;margin-top: 0.5rem;}
 .h_r_ratingbox i{color: var(--color-FF);width: 1.3rem;height: 1.2rem;}
@@ -32,6 +43,23 @@
     height: 6rem; width: 6rem; }
 .award_swipr_main .swiper-button-next::after{ content: ''; left: 0; top: 0; background-image: url('/images/icons/awards/slide_arrow_right.svg'); position: absolute; 
     height: 6rem; width: 6rem; }
+.home_rank_award .more_btn{margin-top:2rem;}
+.home_rank_award .swiper-button-prev,
+.home_rank_award .swiper-button-next{
+  top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    bottom: unset;
+    left: -18.1rem;
+    display: block;
+    width: 6rem;
+    height: 6rem;
+}
+
+.home_rank_award .swiper-button-next{
+  right:-18.1rem;
+  left:unset;
+}
 
 
 /************  Award and Ranking  CSS End ************/
@@ -155,6 +183,10 @@
 
 .home_placement_static_card .slider_btns div {
   position: relative;
+  width: 4rem;
+    height: 4rem;
+    padding: 0;
+    display: unset;
 }
 
 /* STUDENT SLIDER */
@@ -229,6 +261,10 @@
 
 .home_placement_company_header .slider_btns div {
   position: relative;
+  width: 4rem;
+    height: 4rem;
+    padding: 0;
+    display: unset;
 }
 
 .home_placement_company_slider .swiper-slide img {
@@ -354,6 +390,11 @@
 
 .home_courses_section .slider_btns div {
   position: relative;
+  
+  width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+    display: unset;
 }
 
 .home_courses_section .courses_slider_wrapper {

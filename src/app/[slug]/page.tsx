@@ -15,7 +15,7 @@ export default async function DynamicSlugPage({
     return <NotFound />;
   }
 
-  if (!response.data.sections || response.data.status !== true) {
+  if (response.data.data.sections.length == 0) {
     return <ComingSoon />;
   }
 

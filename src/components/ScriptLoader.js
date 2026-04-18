@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { useState } from "react";
+import RouteChangeHandler from "./parser/RouteChangeHandler";
 
 export default function ScriptLoader() {
   const [swiperReady, setSwiperReady] = useState(false);
@@ -14,6 +15,7 @@ export default function ScriptLoader() {
         onLoad={() => setSwiperReady(true)}
       />
       {swiperReady && <Script src="/js/custom.js" strategy="afterInteractive" />}
+      {swiperReady && <RouteChangeHandler />}
     </>
   );
 }

@@ -44,6 +44,12 @@
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
 
+    // Destroy any existing instances before re-init
+    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper"].forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el?.swiper) el.swiper.destroy(true, true);
+    });
+
     //-====Ranking and Award Slider -js -start--//
     new Swiper(".award_ranking", {
       loop: true,
@@ -127,23 +133,21 @@
     return true;
   }
 
+  function initAll() {
+    initWhyGlbSection();
+    if (!initSwipers()) {
+      window.addEventListener("load", initSwipers, { once: true });
+    }
+  }
+
+  // Expose for Next.js client-side re-init
+  window.__initCustomJS = initAll;
+
   // Initialize DOM-based interactions as soon as possible.
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initWhyGlbSection, { once: true });
+    document.addEventListener("DOMContentLoaded", initAll, { once: true });
   } else {
-    initWhyGlbSection();
+    initAll();
   }
 
-  if (!initSwipers()) {
-    window.addEventListener(
-      "load",
-      function () {
-        initSwipers();
-      },
-      { once: true },
-    );
-  }
-
-
-  
 })();

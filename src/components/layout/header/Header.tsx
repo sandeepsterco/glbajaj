@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import "./header.css";
 import { BASE_URL } from "@/src/config/config";
+import { usePathname } from "next/navigation";
 
 type MenuItem = {
   title: string;
@@ -56,6 +57,10 @@ export default function Header({ headerData }: { headerData?: any }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const pathname = usePathname();
+
+  const isHome = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -75,7 +80,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   return (
     <>
       {/* ── HEADER ─────────────────────────────────────────────────── */}
-      <header className={`main_header${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""}`}>
+      <header className={`main_header${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? 'home_header' : 'inner_header'}`}>
 
         {/* Top bar */}
         <div className="top_header">
@@ -112,7 +117,7 @@ export default function Header({ headerData }: { headerData?: any }) {
               {/* Logo */}
               <div className="site_brand">
                 <Link href={BASE_URL ?? '/'} className="navbar-brand" aria-label="GL Bajaj home">
-                  {isScrolled ? (
+                  {isScrolled || !isHome ? (
                     <Image
                       src="/images/logo/colored-logo.png"
                       alt="GL Bajaj University"
@@ -148,7 +153,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                 {/* Icons */}
                 <div className="menu_bars">
                   <Link href="#" className="search_open" aria-label="Search">
-                    {isScrolled ? (
+                    {isScrolled || !isHome ? (
                       <img
                         src="/images/icons/header/search-icon-black.svg"
                         alt="search"
@@ -170,7 +175,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                     onClick={() => setSidebarOpen(true)}
                     style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
                   >
-                    {isScrolled ? (
+                    {isScrolled || !isHome ? (
                       <img
                         src="/images/icons/header/hamburger-black.svg"
                         alt="menu"

@@ -1,0 +1,104 @@
+.about_menu_bar {
+}
+
+.about_top {
+    background-color: var(--color-64);
+    padding: 1.5rem 0;
+    opacity: 1;
+}
+
+.about_glbim_p {
+    font: var(--font-30);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Flex replacement */
+.about_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Breadcrumb section */
+.about_breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    /* gap-9 = 36px = 2.25rem */
+}
+
+.about_breadcrump_text {
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 2.1rem;
+    font-family: var(--font-tasa);
+}
+
+.breadcrumb_main {
+    opacity: 1;
+}
+
+.breadcrumb_icon {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.breadcrumb_sub {
+    opacity: 0.5;
+}
+
+.bottom_menus{
+    border-bottom: 1px solid #d7d4d4;
+    position:sticky;
+    top:0;
+}
+
+
+/* Menu Container */
+.about_menu_container {
+    padding: 3.6rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* About Us Label */
+.about_menu_container .about_menu_label {
+    font-weight: 600;
+    color: #000;
+    padding-right: 15px;
+    border-right: 1px solid #ccc;
+    /* Vertical separator */
+}
+
+/* Navigation Links Wrapper */
+.about_menu_links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.about_menu_links li {
+    padding: 5px 12px;
+}
+
+/* Link Styling */
+.about_menu_links a {
+    text-decoration: none;
+    /* Standard gray color */
+    transition: color 0.3s ease;
+}
+
+/* Specific Highlight Color for first link */
+.about_menu_links li:first-child a {
+    font-weight: 600;
+    color: var(--color-92);
+}
+
+/* Hover effect */
+.about_menu_links a:hover {
+    color: var(--color-92);
+}

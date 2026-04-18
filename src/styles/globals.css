@@ -100,6 +100,10 @@
 	margin-right: auto;
   }
 
+  .inner-box {
+	width: clamp(900px, 48.1vw, 1224px); margin: auto;
+  }
+
   .inner_center_container{
 	width: clamp(900px, 51.0815vw, 1300px);
 	margin-left: auto;

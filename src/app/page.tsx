@@ -4,7 +4,7 @@ import Placements from "../components/Placements";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
 import ReactParser from "../components/common/reactParser/ReactParser";
-import NotificationBar from "../components/ui/NotificationBar";
+import NotificationBar from "../components/ui/notificationBar/NotificationBar";
 
 export const dynamic = "force-dynamic";
 

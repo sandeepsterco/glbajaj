@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { FaChevronRight } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./banner.css";
+import NotificationBar from "../../ui/notificationBar/NotificationBar";
 
 export default function HeroBanner({ data }: { data: any }) {
   return (
@@ -15,8 +17,8 @@ export default function HeroBanner({ data }: { data: any }) {
       <Swiper
         className="home_slide"
         modules={[Pagination, Autoplay]}
-        loop={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        // loop={true}
+        // autoplay={{ delay: 4000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         onBeforeInit={(sw) => {
           sw.el.style.setProperty("--swiper-duration", "4000ms");
@@ -38,7 +40,7 @@ export default function HeroBanner({ data }: { data: any }) {
             </picture>
 
             <div className="slider_caption">
-              <div className="container-fluid">
+              <div className="container">
                 <div className="caption_wrap">
                   {slide?.title && (
                     <blockquote className="title48">{slide.title}</blockquote>
@@ -68,25 +70,26 @@ export default function HeroBanner({ data }: { data: any }) {
       {/* ── Notification Bar ── */}
       {/* <div className="hero_notificationmain">
         <div className="container">
-          <div className="hero_nofi_card">
-            <h5 className="notifi_title">Notifications</h5>
-            <div className="notifi_text">
-              <p>
-                International Conference on Next-Generation Communication and
-                Computing • International Conference on Next-Generation Comm....
-              </p>
-              <figure>
-                <Image
-                  src="/images/icons/notification_down_icon.svg"
-                  alt="notification"
-                  width={20}
-                  height={20}
-                />
-              </figure>
+          <div className="inner_center_container">
+            <div className="hero_nofi_card">
+              <h5 className="notifi_title">Notifications</h5>
+              <div className="notifi_text">
+                <p>
+                  International Conference on Next-Generation Communication and
+                  Computing • International Conference on Next-Generation  International Conference on Next-Generation Communication and
+                  Computing • International Conference on Next-Generation
+                </p>
+                <div className="icon">
+                  <FaChevronRight fontSize={12} />
+                </div>
+              </div>
             </div>
           </div>
+          
         </div>
       </div> */}
+
+      <NotificationBar />
     </section>
   );
 }

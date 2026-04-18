@@ -1,0 +1,19 @@
+.hero_notificationmain .container{margin: auto;}
+.hero_nofi_card{display: grid;align-items: center;background: var(--color-03);width: 128.6rem;backdrop-filter: blur(4px);padding: 1.6rem 3.2rem 1.6rem 5.3rem;gap: 4.6rem;margin: auto;margin-top: -3rem;z-index: 9;position: relative; grid-template-columns: auto 81.3%; position:absolute; left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%);}
+.hero_nofi_card img{width: 0.9rem;height: 0.4rem;cursor: pointer;    margin: auto;}
+.notifi_title{color: var(--color-white);font: var(--font-24);font-weight: bold ;}
+.notifi_text{ display: grid; color: var(--color-white); gap: 2.7rem; grid-template-columns: 95% 2.3%; align-items: center; overflow: hidden;}
+/* .notifi_text p{font: var(--font-16);white-space: nowrap;overflow: hidden;text-overflow: ellipsis; color:#fff;} */
+/* .notifi_text .animate-ticker{overflow:hidden;} */
+.hero_nofi_card .close_btn{background: #fff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    display: flex;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;}
+.ticker-track{overflow:hidden;}
+/* .ticker-track p:first-child{color:red;} */

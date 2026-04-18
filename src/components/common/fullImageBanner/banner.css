@@ -4,18 +4,29 @@
     background-size: contain; z-index: 2; background-repeat: no-repeat; }
 .home_banner .swiper-slide::before { width: 100%; height: 25%; position: absolute; left: 0; top: 0; 
     background: linear-gradient(180deg, rgb(0 0 0 / 50%) 50%, rgba(255, 255, 255, 0) 100%); content: ""; z-index: 1; }
-.home_banner .slider_caption { position: absolute; inset: 0; width: 100%; height: 100%; align-content: flex-end; z-index: 2; padding-bottom: 23.8rem; }
+.home_banner .slider_caption { position: absolute; inset: 0; width: 100%; height: 100%; align-content: flex-end; z-index: 2; padding-bottom:18.7rem; }
 .caption_wrap { background-color: var(--color-0D); width: 51.9rem; padding: 4rem 5rem 6rem 6rem;position: relative;z-index: 9999; }
-.caption_wrap .title48 { color: var(--color-white); font: var(--font-48); letter-spacing: -2.4px; font-weight: var(--font-normal);line-height: 4.8rem; }
-.caption_wrap .cap_desc { display: grid; gap: 3rem; align-items: center; grid-template-columns: 80.7% 12%; }
+.caption_wrap .title48 { color: var(--color-white); font: var(--font-48); letter-spacing: -2.4px; font-weight: var(--font-normal);line-height: 4.8rem; position:relative;}
+.caption_wrap .title48:before{
+    position:absolute;
+    content:'';
+    width:0.4rem;
+    height:80%;
+    background:var(--color-FE);
+    left:-6.2rem;
+    top:50%;
+    transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+}
+.caption_wrap .cap_desc { display: grid; gap: 3rem; align-items: center; grid-template-columns: 80.7% 12%; margin-top:1.9rem;}
 .caption_wrap .cap_desc p { color: var(--color-white); font: var(--font-16); }
 .caption_wrap .cap_desc img { height: 6rem; width: 6rem; }
 .hero_notificationmain .container{margin: auto;}
-.hero_nofi_card{display: flex;align-items: center;background: var(--color-03);max-width: 123.6rem;backdrop-filter: blur(4px);padding: 1.6rem 3.2rem 1.6rem 5.3rem;gap: 4.6rem;margin: auto;margin-top: -3.1rem;z-index: 9;position: relative;}
+.hero_nofi_card{display: flex;align-items: center;background: var(--color-03);max-width: 128.6rem;backdrop-filter: blur(4px);padding: 1.6rem 3.2rem 1.6rem 5.3rem;gap: 4.6rem;margin: auto;margin-top: -3rem;z-index: 9;position: relative;}
 .hero_nofi_card img{width: 0.9rem;height: 0.4rem;cursor: pointer;    margin: auto;}
 .notifi_title{color: var(--color-white);font: var(--font-24);font-weight: bold ;}
 .notifi_text{ display: grid; color: var(--color-white); gap: 2.7rem; grid-template-columns: 95% 2.3%; align-items: center; }
-.notifi_text p{font: var(--font-16);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.notifi_text p{font: var(--font-16);white-space: nowrap;color:#fff;}
 .swiper.home_slide .swiper-pagination-bullet::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--color-D2); border-radius: 1rem; }
 .swiper.home_slide .swiper-pagination-bullet{position: relative;width: 1rem;height: 1rem;background-color: #FFFFFF;opacity: 1;}
 .swiper.home_slide .swiper-pagination-bullet-active{width: 1rem;height: 5rem;border-radius: 1rem;}

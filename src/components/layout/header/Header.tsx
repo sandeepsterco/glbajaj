@@ -79,108 +79,112 @@ export default function Header({ headerData }: { headerData?: any }) {
 
         {/* Top bar */}
         <div className="top_header">
-          <div className="container-fluid">
-            <div className="top_menu">
-              <div className="toll_sec">
-                <ul>
-                  <li>
-                    <span>Toll free No</span>
-                    <Link href="tel:8010000234">801 000 234</Link>
-                  </li>
+          <div className="container">
+            <div className="row justify-end">
+              <div className="top_menu">
+                <div className="toll_sec">
+                  <ul>
+                    <li>
+                      <span>Toll free No</span>
+                      <Link href="tel:8010000234">801 000 234</Link>
+                    </li>
+                  </ul>
+                </div>
+                <ul className="h_social_sec">
+                  {SOCIALS.map(({ icon, label }) => (
+                    <li key={label}>
+                      <Link href="#" aria-label={label} target="_blank">
+                        <img src={`/images/icons/social/${icon}`} alt={label} />
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
-              <ul className="h_social_sec">
-                {SOCIALS.map(({ icon, label }) => (
-                  <li key={label}>
-                    <Link href="#" aria-label={label} target="_blank">
-                      <img src={`/images/icons/social/${icon}`} alt={label} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
 
         {/* Bottom nav bar */}
         <div className="bottom_header">
-          <div className="container-fluid">
+          <div className="container">
 
-            {/* Logo */}
-            <div className="site_brand">
-              <Link href={BASE_URL ?? '/'} className="navbar-brand" aria-label="GL Bajaj home">
-                {isScrolled ? (
-                  <Image
-                    src="/images/logo/colored-logo.png"
-                    alt="GL Bajaj University"
-                    className="img-fluid blue_logo"
-                    width={415}
-                    height={112}
-                    priority
-                  />
-                ) : (
-                  <Image
-                    src="/images/logo/logo.png"
-                    alt="GL Bajaj University"
-                    className="white_logo"
-                    width={415}
-                    height={112}
-                    priority
-                  />
-                )}
-              </Link>
-            </div>
-
-            {/* Navigation */}
-            <div className="site_nav">
-              <ul>
-                {headerData?.headerMenu?.menuItems?.length > 0 &&
-                  headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => (
-                    <li key={itemIdx}>
-                      <Link href={item.url}>{item.title}</Link>
-                    </li>
-                  ))}
-              </ul>
-
-              {/* Icons */}
-              <div className="menu_bars">
-                <Link href="#" className="search_open" aria-label="Search">
+            <div className="row justify-between">
+              {/* Logo */}
+              <div className="site_brand">
+                <Link href={BASE_URL ?? '/'} className="navbar-brand" aria-label="GL Bajaj home">
                   {isScrolled ? (
-                    <img
-                      src="/images/icons/header/search-icon-black.svg"
-                      alt="search"
-                      className="img-fluid w-100"
+                    <Image
+                      src="/images/logo/colored-logo.png"
+                      alt="GL Bajaj University"
+                      className="img-fluid blue_logo"
+                      width={415}
+                      height={112}
+                      priority
                     />
                   ) : (
-                    <img
-                      src="/images/icons/header/search-icon.svg"
-                      alt="search"
-                      className="img-fluid w-100"
+                    <Image
+                      src="/images/logo/logo.png"
+                      alt="GL Bajaj University"
+                      className="white_logo"
+                      width={415}
+                      height={112}
+                      priority
                     />
                   )}
                 </Link>
-                <button
-                  type="button"
-                  className="hamb_open"
-                  aria-label="Open menu"
-                  aria-expanded={sidebarOpen}
-                  onClick={() => setSidebarOpen(true)}
-                  style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
-                >
-                  {isScrolled ? (
-                    <img
-                      src="/images/icons/header/hamburger-black.svg"
-                      alt="menu"
-                      className="img-fluid w-100"
-                    />
-                  ) : (
-                    <img
-                      src="/images/icons/header/hamburger.svg"
-                      alt="menu"
-                      className="img-fluid w-100"
-                    />
-                  )}
-                </button>
+              </div>
+
+              {/* Navigation */}
+              <div className="site_nav">
+                <ul>
+                  {headerData?.headerMenu?.menuItems?.length > 0 &&
+                    headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => (
+                      <li key={itemIdx}>
+                        <Link href={item.url}>{item.title}</Link>
+                      </li>
+                    ))}
+                </ul>
+
+                {/* Icons */}
+                <div className="menu_bars">
+                  <Link href="#" className="search_open" aria-label="Search">
+                    {isScrolled ? (
+                      <img
+                        src="/images/icons/header/search-icon-black.svg"
+                        alt="search"
+                        className="img-fluid w-100"
+                      />
+                    ) : (
+                      <img
+                        src="/images/icons/header/search-icon.svg"
+                        alt="search"
+                        className="img-fluid w-100"
+                      />
+                    )}
+                  </Link>
+                  <button
+                    type="button"
+                    className="hamb_open"
+                    aria-label="Open menu"
+                    aria-expanded={sidebarOpen}
+                    onClick={() => setSidebarOpen(true)}
+                    style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                  >
+                    {isScrolled ? (
+                      <img
+                        src="/images/icons/header/hamburger-black.svg"
+                        alt="menu"
+                        className="img-fluid w-100"
+                      />
+                    ) : (
+                      <img
+                        src="/images/icons/header/hamburger.svg"
+                        alt="menu"
+                        className="img-fluid w-100"
+                      />
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
 

@@ -1,0 +1,25 @@
+.notifi_text_wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .marquee_track {
+    overflow: hidden;
+  }
+  
+  .marquee_content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee-scroll 18s linear infinite;
+  }
+  
+  .marquee_content:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }

@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 type MenuItem = {
   title: string;
-  url: string;
+  slug: string;
   children: MenuItem[];
 };
 
@@ -145,7 +145,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                   {headerData?.headerMenu?.menuItems?.length > 0 &&
                     headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => (
                       <li key={itemIdx}>
-                        <Link href={item.url}>{item.title}</Link>
+                        <Link href={item?.slug ? item.slug : ''}>{item.title}</Link>
                       </li>
                     ))}
                 </ul>
@@ -236,7 +236,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                   <ul>
                     {menuData.children.map((item, itemIdx) => (
                       <li key={itemIdx}>
-                        <Link href={item?.url ? item.url : ''}>{item.title}</Link>
+                        <Link href={item?.slug ? item.slug : ''}>{item.title}</Link>
                       </li>
                     ))}
                   </ul>

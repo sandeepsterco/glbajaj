@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 type MenuItem = {
   title: string;
   slug: string;
+  url:string;
   children: MenuItem[];
 };
 

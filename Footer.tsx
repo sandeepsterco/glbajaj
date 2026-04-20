@@ -98,7 +98,7 @@ const Footer = async () => {
                 </li>
                 <li>
                   <Link
-                    href={item.url}
+                    href={item?.slug ? item.slug : ''}
                     className="text-[1.4rem] leading-[2.1rem] text-white"
                   >
                     {item.title}

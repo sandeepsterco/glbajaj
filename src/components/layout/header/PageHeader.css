@@ -52,6 +52,7 @@
     border-bottom: 1px solid #d7d4d4;
     position:sticky;
     top:0;
+    background:#fff;
 }
 
 
@@ -86,19 +87,19 @@
 }
 
 /* Link Styling */
-.about_menu_links a {
+.about_menu_links .paragraph {
     text-decoration: none;
     /* Standard gray color */
     transition: color 0.3s ease;
 }
 
 /* Specific Highlight Color for first link */
-.about_menu_links li:first-child a {
+.about_menu_links li .paragraph.active {
     font-weight: 600;
     color: var(--color-92);
 }
 
 /* Hover effect */
-.about_menu_links a:hover {
+.about_menu_links .paragraph:hover {
     color: var(--color-92);
 }

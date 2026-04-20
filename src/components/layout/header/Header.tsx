@@ -236,7 +236,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                   <ul>
                     {menuData.children.map((item, itemIdx) => (
                       <li key={itemIdx}>
-                        <Link href={item.url}>{item.title}</Link>
+                        <Link href={item?.url ? item.url : ''}>{item.title}</Link>
                       </li>
                     ))}
                   </ul>

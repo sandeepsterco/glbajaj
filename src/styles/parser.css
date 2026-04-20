@@ -1149,3 +1149,229 @@
 
 
 /************  end of home_happenings_section ************/
+
+
+
+/************  start of home testimonial section ************/
+
+.home_testimonials{
+  padding:16.8rem 0 12.6rem;
+}
+
+.home_testimonials .grid{
+  display:grid;
+  gap:12.5rem;
+  grid-template-columns: auto 37.5%;
+  margin-left: 9.5rem;
+}
+
+.home_testimonials .left_col{
+  position:relative;
+}
+
+.home_testimonials .left_col .pattern_img{
+  position: absolute;
+  right: calc(100% - 2rem);
+  top: 27.7rem;
+}
+
+.home_testimonials .grid .sec_title{
+  margin-left: 12.5rem;
+  margin-right: 1.8rem;
+}
+
+.home_testimonials .heading{
+  margin-top:2rem;
+}
+
+.home_testimonials .desc_content{
+  display:flex;
+  margin:8.6rem 0 11.1rem;
+  gap: 8.2rem;
+  margin-left: 13.9rem;
+}
+
+.home_testimonials .quote-icon{
+  font-size:70px;
+  color:#f3c26b;
+  line-height:0;
+  margin-bottom:10px;
+}
+
+.home_testimonials .desc{
+  margin-top: 2.4rem;
+  font:var(--font-21);
+  line-height:3rem;
+  color:#333;
+  flex: 1;
+  display:none;
+}
+
+.home_testimonials .desc.active{
+  display:block;
+}
+
+/* zigzag decoration */
+.home_testimonials .zigzag{
+  position:absolute;
+  left:-40px;
+  top:120px;
+  opacity:0.3;
+}
+
+/* thumbnails */
+.home_testimonials .thumbs{
+  display:flex;
+  gap:5.6rem;
+  margin-top:30px;
+  align-items:flex-end;
+  margin-right:4.2rem;
+}
+
+.home_testimonials .thumb-group{
+  display:none;
+  gap:5.6rem;
+  margin-top:30px;
+  align-items:flex-end;
+  margin-right:4.2rem;
+}
+
+.home_testimonials .thumb-group.active{
+  
+  display:flex;
+}
+
+.home_testimonials .thumb{
+  cursor:pointer;
+  flex:1;
+}
+
+.home_testimonials .thumb img{
+  /* width:85px;
+  height:85px; */
+  object-fit:cover;
+  transition:0.3s;
+}
+
+.home_testimonials .thumb.active img{
+  transform:translateY(-6px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  transform: scale(1.32);
+  -webkit-transform: scale(1.32);
+  transform-origin: top center;
+}
+
+.home_testimonials .thumb .name{
+  font:var(--font-18);
+  color:#000;
+  font-weight: 600;
+  margin-top:2rem;
+}
+
+.home_testimonials .thumb .designation{
+  font:var(--font-16);
+  margin-top:1rem;
+}
+
+/* =========================
+   RIGHT SECTION
+========================= */
+.home_testimonials .right{
+  flex:0.9;
+  display:flex;
+  flex-direction:column;
+}
+
+.home_testimonials .tabs{
+  display:flex;
+  gap:3rem;
+  font:var(--font-18);
+  font-weight: 600;  
+  margin-bottom: 5.5rem;
+  justify-content: flex-end;
+}
+
+.home_testimonials .tab{
+  cursor:pointer;
+  color:#000;
+  padding-bottom:1.5rem;
+  
+  position:relative;
+}
+
+.home_testimonials .tab:before{
+  position:absolute;
+  content:'';
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  border-bottom: 2px dashed var(--color-92);;
+  opacity: 0.3;
+}
+
+.home_testimonials .tab.active{
+  color:var(--color-92);
+  font-weight:500;
+}
+
+.home_testimonials .tab.active:before{
+  border-color:#895737;
+  opacity:0.5;
+}
+
+.home_testimonials .main-images .main-img{
+  display:none;
+}
+
+.home_testimonials .main-images .main-img.active{
+  display:block;
+}
+
+
+.home_testimonials .right .tab_image_content{
+  margin-top:3rem;
+  position:relative;
+  padding-bottom: 7.2rem;
+}
+
+.home_testimonials .right .tab_image_content:before{
+  position:absolute;
+  content:'';
+  height:1rem;
+  width:15rem;
+  background:var(--color-FE);
+  bottom:0;
+}
+
+.home_testimonials .right .person-info{
+  display:none;
+}
+
+.home_testimonials .right .person-info.active{
+  display:block;
+}
+
+.home_testimonials .right .name{
+  font:var(--font-18);
+  color:#000;
+  font-weight:600;
+}
+
+.home_testimonials .right .role{
+  margin-top:2rem;
+  font:var(--font-16);
+}
+
+/************  end of home testimonial section ************/
+
+
+
+
+/************  start of about-glbitm ************/
+
+.about_content_padding{
+  padding:5rem 0;
+}
+
+/************  end of about-glbitm ************/

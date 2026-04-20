@@ -1,15 +1,18 @@
-import './PageHeader.css'
+import Link from 'next/link';
+import './PageHeader.css';
 
-export default function PageHeader(){
+export default async function PageHeader({data, slug}:{data:any, slug:string}){
+    const currentPage = data.tabs.find((tab:any)=>tab.slug === slug)
+
     return(
         <>
             <div className="about_menu_bar">
                 <div className="about_top">
                     <div className="container">
                         <div className="inner-box">
-                        <div className="about_content_padding about_flex">
+                        <div className="about_flex">
                                 <div>
-                                    <p className="about_glbim_p">About GLBITM</p>
+                                    <p className="about_glbim_p">{currentPage?.title}</p>
                                 </div>
                                 <div className="about_breadcrumb">
                                     <p className="breadcrumb_main about_breadcrump_text">About Us</p>
@@ -24,18 +27,15 @@ export default function PageHeader(){
             <div className='bottom_menus'>
                     <div className="container">
                         <div className="inner-box">
-                        <div className="about_content_padding">
+                        <div className="">
                             <div className="about_menu_container">
-                                <div className="about_menu_label paragraph">About Us</div>
+                                <div className="about_menu_label paragraph">{data?.heading}</div>
                                 <ul className="about_menu_links">
-                                    <li><a href="#" className="paragraph">About GLBITM</a></li>
-                                    <li><a href="#" className="paragraph">The Group</a></li>
-                                    <li><a href="#" className="paragraph">Messages</a></li>
-                                    <li><a href="#" className="paragraph">Administration</a></li>
-                                    <li><a href="#" className="paragraph">Governance and Advisory Boards</a></li>
-                                    <li><a href="#" className="paragraph">CSR & Activities</a></li>
-                                    <li><a href="#" className="paragraph">Policies</a></li>
-                                    <li><a href="#" className="paragraph">News Letter - BUZZ</a></li>
+                                    {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
+                                        <li key={itemIdx}>
+                                            <Link href={item.slug} className={`paragraph ${item.slug === slug ? 'active' : ''}`}>{item.title}</Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>

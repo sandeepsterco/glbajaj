@@ -21,6 +21,12 @@ export default async function Home() {
     revalidate: 300,
   });
 
+  if(!homeData.modular && !homeData.cms){
+    return <div className="min-h-[100vh] flex items-center justify-center">
+      <h1 className="text-[5rem] font-bold">Something wrong...</h1>
+    </div>
+  }
+
   return (
     <>
       {seoData.schema && (

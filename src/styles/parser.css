@@ -1384,3 +1384,26 @@
 }
 
 /************  end of about-glbitm ************/
+
+
+
+/* ==============HOD's Message page Start============= */
+.hod_section{ padding-block: 8.2rem 11.6rem;}
+.hod_grid{ display: grid; grid-template-columns: 54% auto; gap: 8.6rem; align-items: flex-start;}
+.hod_left h3{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 7.8rem;}
+.hod_left p{ padding-right: 6rem;}
+.hod_details{ margin-top: 5rem; padding-top: 6rem; position: relative;}
+.hod_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.hod_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.hod_right{ margin-top: 3rem; position: relative;}
+.hod_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.hod_right figure img{ width: 100%;}
+.hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+.hod_right::before { content: ""; position: absolute; right:0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
+
+@media (max-width:2440px){
+    .hod_right::before{ height: auto;}
+}
+
+/* ==============HOD's Message page Start============= */

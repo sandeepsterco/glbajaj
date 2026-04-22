@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 
 export default async function PageHeader({data, slug}:{data:any, slug:string}){
-    const currentPage = data.tabs.find((tab:any)=>tab.slug === slug)
+    const currentPage = data?.find((tab:any)=>tab.slug === slug)
 
     return(
         <>

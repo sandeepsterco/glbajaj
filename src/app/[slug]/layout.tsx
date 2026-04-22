@@ -18,8 +18,10 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
 
     return(
-        <div>
-            <PageHeader data={data?.data?.tabs} slug={slug} />
+        <div className="happenings_page">
+            {data?.data?.tabs && (
+                <PageHeader data={data.data.tabs} slug={slug} />
+            )}
             {children}
         </div>
     )

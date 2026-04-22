@@ -12,8 +12,8 @@ export default function NewsListing({data}:{data:any}) {
                         <div className="news_list_right">
                             {item?.date && <p className="date">{new Date(item.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</p>}
 
-                            {item?.subtitle && (
-                                <h3>{item.subtitle}</h3>
+                            {item?.heading && (
+                                <h4>{item.heading}</h4>
                             )}
 
                             {item?.description && (

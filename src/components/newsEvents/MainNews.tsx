@@ -23,8 +23,8 @@ export default function MainNews({data}:{data:any}){
                     <div className="news_cnt">
                         {data?.date && <p className="date">{new Date(data.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</p>}
 
-                        {data?.subtitle && (
-                            <h3>{data.subtitle}</h3>
+                        {data?.heading && (
+                            <h3>{data.heading}</h3>
                         )}
 
                         {data?.description && (

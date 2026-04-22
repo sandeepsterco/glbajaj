@@ -1,0 +1,28 @@
+/* =========== news list page css ============ */
+
+.news_section{ padding-block: 10rem 4rem; background-color: var(--color-F4);}
+.front_news{ display: grid; grid-template-columns:58% auto; gap: 0rem;}
+.news_head{ display: flex; justify-content: flex-end;}
+.news_head .form-select{ appearance: none; -webkit-appearance: none; -moz-appearance: none; background: #fff url("/images/icons/arrow-down.webp"); /* your custom icon */ background-repeat: no-repeat; background-position: right 15px center; background-size: 1.3rem; padding-right: 40px; height: 4.6rem; padding-inline: 1.5rem; font: var(--font-16); color: var(--color-black); border: 1px solid #E1E1E1; min-width: 35rem; box-shadow: none; outline: none;}
+.news_right{ display: flex; flex-direction: column; justify-content: space-between; padding-inline: 9rem 10rem;}
+
+
+.news_right .date{ font: var(--font-16); color: var(--color-33);}
+.news_right h3{ color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 3rem;}
+.news_right p{ font: var(--font-16); color: var(--color-33);}
+.news_right a{ margin-left: -1.5rem; display: inline-block; margin-top: 2rem;}
+.news_listing{ padding-block:2rem 12rem;}
+.news_list{ display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0;}
+.news_list_right span{ display: inline-block; margin-left: -1.5rem; margin-top:3rem;}
+.news_list_right .date{ font: var(--font-16); color: var(--color-33);}
+.news_list_right h4{ color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block:2rem;}
+.news_list_right p{ font: var(--font-16); color: var(--color-33);}
+.news_list_right{ padding-right:10rem;}
+
+@media (max-width:2400px){
+    .news_right{ padding-inline: 13rem 6rem;}
+}
+
+@media (max-width:2200px){
+    .news_right{ padding-inline: 15rem 0rem;}
+}

@@ -17,7 +17,7 @@ export default function HomeHappenings() {
     queryFn:fetchHappeningsData,
   })
 
-  const happeningsData = data?.modular?.["happenings"];
+  const happeningsData = data?.modular?.["news-events"];
 
   return (
     <div className="grid_data">

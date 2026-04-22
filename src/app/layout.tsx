@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer/Footer";
 import "../styles/custom.css";
 import "../styles/globals.css";
 import "../styles/parser.css";
+import "../styles/module.css";
 
 import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";

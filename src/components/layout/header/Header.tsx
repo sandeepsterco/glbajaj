@@ -57,6 +57,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<number | null>(null);
 
   const pathname = usePathname();
 
@@ -81,7 +82,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   return (
     <>
       {/* ── HEADER ─────────────────────────────────────────────────── */}
-      <header className={`main_header${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? 'home_header' : 'inner_header'}`}>
+      <header className={`main_header ${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? 'home_header' : 'inner_header'}`}>
 
         {/* Top bar */}
         <div className="top_header">
@@ -144,11 +145,78 @@ export default function Header({ headerData }: { headerData?: any }) {
               <div className="site_nav">
                 <ul>
                   {headerData?.headerMenu?.menuItems?.length > 0 &&
-                    headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => (
-                      <li key={itemIdx}>
-                        <Link href={item?.slug ? item.slug : ''}>{item.title}</Link>
-                      </li>
-                    ))}
+                    headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => {
+                      const programsItem = item?.children?.find((programs:any)=>programs.title == 'Programs');
+                      const departmentItems = item?.children?.find((department:any)=>department.title == 'Departments');
+                      const allPages = item?.children.filter((page:any)=>page.type == 'page');
+                      const isActive = activeMegaMenu === itemIdx;
+
+                      return (
+                        <li key={itemIdx} className={`${item?.children?.length > 0 ? 'drom_menu' : ''} ${isActive?'active':''}`}
+                          onMouseEnter={()=>{
+                            if(item?.children?.length > 0){
+                              setActiveMegaMenu(itemIdx);
+                              setMegaMenuOpen(true);
+                            }
+                          }}
+                          onMouseLeave={()=>{
+                            setActiveMegaMenu(null);
+                            setMegaMenuOpen(false);
+                          }}
+                        >
+                          <Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.title}</Link>
+                          {item?.children?.length > 0 && (
+                            <div className="dropdown_item" style={{
+                              transform:isActive ? "translateX(0%) scaleY(1)" : "translateX(0%) scaleY(0)",
+                              opacity:isActive?1 : 0,
+                            }}>
+                              <div className="mega_container">
+                                  <div className="mega_left">
+                                    {programsItem && (
+                                      <div className="megg_lft_top">
+                                        <h4>{programsItem.title}</h4>
+                                        {programsItem.entries?.length > 0 && (
+                                          <ul>
+                                            {programsItem.entries.map((item:any, itemIdx:number)=>(
+                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.data.name}</Link></li>
+                                            ))}
+                                          </ul>
+                                        )}
+                                        
+                                    </div>
+                                    )}
+                                      
+                                    {departmentItems && (
+                                      <div className="mega_left_btm">
+                                        <h4>{departmentItems.title}</h4>
+                                        {departmentItems?.entries?.length > 0 && (
+                                          <ul>
+                                            {departmentItems?.entries.map((item:any, itemIdx:number)=>(
+                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''}>{item?.data?.name}</Link></li>
+                                            ))}
+                                          </ul>
+                                        )}
+                                    </div>
+                                    )}
+
+                                  </div>
+
+                                  <div className="mega_right">
+                                      <ul>
+                                          <ul>
+                                            {allPages?.length > 0 && allPages.map((page:any, pageIdx:number)=>(
+                                              <li key={pageIdx}><Link href={BASE_URL + page?.slug}>{page?.title}</Link></li>
+                                            ))}
+                                          </ul>
+                                      </ul>
+                                  </div>
+
+                              </div>
+                            </div>
+                          )}
+                        </li>
+                      )
+                    })}
                 </ul>
 
                 {/* Icons */}
@@ -237,7 +305,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                   <ul>
                     {menuData.children.map((item, itemIdx) => (
                       <li key={itemIdx}>
-                        <Link href={item?.slug ? item.slug : ''}>{item.title}</Link>
+                        <Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.title}</Link>
                       </li>
                     ))}
                   </ul>

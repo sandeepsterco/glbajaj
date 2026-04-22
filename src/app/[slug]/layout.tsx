@@ -1,6 +1,6 @@
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
-import NotFound from "../not-found";
+import NotFound from "@/src/app/not-found";
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug} = await params;

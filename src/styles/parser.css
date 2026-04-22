@@ -1,3 +1,7 @@
+.title36{
+  font: var(--font-36);
+}
+
 /************  Award and Ranking  CSS Start ************/
 .swiper-button-prev,
 .swiper-button-next{
@@ -627,6 +631,7 @@
   font:var(--font-36);
   line-height:4.8rem;
   letter-spacing: -1.8px;
+  cursor: pointer;
 }
 
 .why_glb_section .tabs li .arrow{
@@ -714,6 +719,10 @@
 .why_glb_section .right_content .btns{
   display:flex;
   gap:3px;
+}
+
+.why_glb_section .right_content .btns .icon{
+  cursor: pointer;
 }
 
 
@@ -1370,8 +1379,8 @@
 
 /************  start of about-glbitm ************/
 
-.about_content_padding{
-  padding:5rem 0;
+.about_glb_overview{
+  padding:5rem 0 8.3rem;
 }
 
 /************  end of about-glbitm ************/

@@ -1,5 +1,6 @@
 /* =========== news list page css ============ */
 
+.happenings_page::before{ background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; z-index: 999;}
 .news_section{ padding-block: 10rem 4rem; background-color: var(--color-F4);}
 .front_news{ display: grid; grid-template-columns:58% auto; gap: 0rem;}
 .news_head{ display: flex; justify-content: flex-end;}
@@ -26,3 +27,14 @@
 @media (max-width:2200px){
     .news_right{ padding-inline: 15rem 0rem;}
 }
+
+
+/* ==============Notices & Announcements page Start============= */
+.notice_announcement{padding-block: 10rem;}
+.notice_grid{ display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem;}
+.notice_list{ background-color: var(--color-F5); padding: 2rem 3rem; position: relative;}
+.notice_list h4{ font: var(--font-16); font-weight: 600; margin-block:0 1rem; color: var(--color-black);}
+.notice_list p{ font: var(--font-16); color: var(--color-33);}
+.notice_list:hover{ background-color: var(--color-fa);}
+.fancybox__thumbs { display: none !important; }
+.media_grid_Bx { cursor: pointer; }

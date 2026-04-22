@@ -87,3 +87,18 @@ export const SOCIAL_LINKS = [
     icon: "/images/icons/social/linkedin-white.svg",
   },
 ] as const;
+
+
+export const HappeningsTabs = {
+  "heading": "Happenings",
+  "tabs": [
+      {
+          "slug": "news-events",
+          "title": "News & Events"
+      },
+      {
+          "slug": "notices-announcements",
+          "title": "Notices & Announcements"
+      }
+  ]
+}

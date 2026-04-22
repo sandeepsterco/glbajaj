@@ -1,4 +1,6 @@
+/* About section start */
 .about_menu_bar {
+    border-bottom: 1px solid #d7d4d4;
 }
 
 .about_top {
@@ -18,15 +20,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 30.5rem;
 }
 
 /* Breadcrumb section */
 .about_breadcrumb {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 2.25rem;
-    /* gap-9 = 36px = 2.25rem */
 }
+
+.about_breadcrumb p{ margin-bottom: 0;}
 
 .about_breadcrump_text {
     color: #fff;
@@ -48,31 +53,8 @@
     opacity: 0.5;
 }
 
-.bottom_menus{
-    border-bottom: 1px solid #d7d4d4;
-    position:sticky;
-    top:0;
-    background:#fff;
-}
-
-
-/* Menu Container */
-.about_menu_container {
-    padding: 3.6rem 0;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-/* About Us Label */
-.about_menu_container .about_menu_label {
-    font-weight: 600;
-    color: #000;
-    padding-right: 15px;
-    border-right: 1px solid #ccc;
-    /* Vertical separator */
-}
-
+.inner_nav{ display: flex; align-items: center; padding-block: 1.5rem; }
+.inner_nav .about_menu_label{ font-weight: 700; border-right: 1px solid #ddd; padding-right: 1.5rem;}
 /* Navigation Links Wrapper */
 .about_menu_links {
     display: flex;
@@ -87,19 +69,19 @@
 }
 
 /* Link Styling */
-.about_menu_links .paragraph {
+.about_menu_links a {
     text-decoration: none;
     /* Standard gray color */
     transition: color 0.3s ease;
 }
 
 /* Specific Highlight Color for first link */
-.about_menu_links li .paragraph.active {
+.about_menu_links li .active {
     font-weight: 600;
     color: var(--color-92);
 }
 
 /* Hover effect */
-.about_menu_links .paragraph:hover {
+.about_menu_links a:hover {
     color: var(--color-92);
 }

@@ -9,21 +9,13 @@ export default async function DynamicSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const response = await apiFetch(`cms/${slug}`);
-
-  if (response.error) {
-    return <NotFound />;
-  }
-
-  if (response.data.data.sections.length == 0) {
-    return <ComingSoon />;
-  }
+  const {data, error} = await apiFetch(`cms/${slug}`);
 
   return (
     <>
-      {Object.keys(response.data.data?.sections).map((key) => {
+      {Object.keys(data.data?.sections).map((key) => {
         return (
-          <ReactParser key={key} html={response.data.data.sections[key]} />
+          <ReactParser key={key} html={data.data.sections[key]} />
         );
       })}
     </>

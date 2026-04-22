@@ -1,6 +1,7 @@
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
+import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug} = await params;
@@ -10,6 +11,10 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
     if(error){
         return <NotFound />;
     }
+
+    if (data.data.sections.length == 0) {
+        return <ComingSoon />;
+      }
 
 
     return(

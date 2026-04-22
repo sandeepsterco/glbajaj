@@ -5,6 +5,7 @@ import Footer from "../components/layout/footer/Footer";
 
 import "../styles/custom.css";
 import "../styles/globals.css";
+import "../styles/inner.css";
 import "../styles/parser.css";
 import "../styles/module.css";
 

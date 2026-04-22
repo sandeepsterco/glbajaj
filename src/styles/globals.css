@@ -71,8 +71,8 @@
   --container-lg-ideal: 69.78vw;
   --container-lg-max: 1775px;
 
-   --container25-min: 1000px;
-  --container25-ideal: 65.36vw;
+  --container25-min: 950px;
+  --container25-ideal: 56.36vw;
   --container25-max: 1255px;
 
   --container55-min: 1100px;
@@ -162,7 +162,7 @@
   
   /* Use 2545 full container size */
   html {
-	font-size: clamp(5px, 0.3929273vw, 10px);
+    font-size: clamp(8px, 0.301vw + 3.07px, 10px);
   }
   
   ul li {
@@ -183,8 +183,8 @@
 	}
   
 	html {
-	  font-size: clamp(6px, 0.520833333vw, 10px);
-	}
+    font-size: clamp(6px, 0.520833333vw, 10px);
+  }
   }
   
   @media (max-width: 767px) {
@@ -484,3 +484,7 @@
         max-width: unset;
     }
 }
+
+
+
+.strech_link{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9;}

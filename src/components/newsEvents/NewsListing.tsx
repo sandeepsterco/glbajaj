@@ -1,6 +1,7 @@
+import { BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 
-export default function NewsListing({data}:{data:any}) {
+export default function NewsListing({data, slug}:{data:any, slug:string}) {
     return (
         <section className="news_listing">
             <div className="container25">
@@ -27,7 +28,7 @@ export default function NewsListing({data}:{data:any}) {
                             
                         </div>
                         {item?.slug && (
-                            <Link href={item.slug} className="strech_link" />
+                            <Link href={BASE_URL + slug +'/'+ item.slug} className="strech_link" />
                         )}
                     </div>
                 ))}

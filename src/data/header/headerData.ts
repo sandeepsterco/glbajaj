@@ -97,6 +97,10 @@ export const HappeningsTabs = {
           "title": "News & Events"
       },
       {
+        "slug": "media-coverage",
+        "title": "Media Coverage"
+      },
+      {
           "slug": "notices-announcements",
           "title": "Notices & Announcements"
       }

@@ -38,24 +38,6 @@ export default async function PageHeader({data, slug}:{data:any, slug:string}){
                 </div>
                 
             </div>
-            {/* <div className='bottom_menus'>
-                    <div className="container">
-                        <div className="inner-box">
-                        <div className="">
-                            <div className="about_menu_container">
-                                <div className="about_menu_label paragraph">{data?.heading}</div>
-                                <ul className="about_menu_links">
-                                    {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
-                                        <li key={itemIdx}>
-                                            <Link href={BASE_URL+ item.slug} className={`paragraph ${item.slug === slug ? 'active' : ''}`}>{item.title}</Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div> */}
         </>
     )
 }

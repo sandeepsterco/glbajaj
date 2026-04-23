@@ -18,7 +18,7 @@ export async function getPageSEO(slug) {
 
     const res = await fetch(`${SEO_URL}seo/${encodeURIComponent(slug)}`, {
       cache: "force-cache",
-      next: { revalidate: 3600 },
+      next: { revalidate: 360 },
     });
 
     if (!res.ok) throw new Error("SEO data not found");

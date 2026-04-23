@@ -5,9 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useState, useMemo } from "react";
 
 const fetchAlumniData = async () => {
-    const { data, error } = await apiFetch(`modular/home`, {
-        revalidate: 600
-    });
+    const { data, error } = await apiFetch(`modular/home`);
     if (error) throw new Error(error);
     return data;
 }

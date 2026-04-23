@@ -8,13 +8,13 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     const {data, error} = await apiFetch(`cms/${slug}`, { cache:'no-store'});
 
-    if(error){
-        return <NotFound />;
-    }
+    // if(error){
+    //     return <NotFound />;
+    // }
 
-    if (data.data.sections.length == 0) {
-        return <ComingSoon />;
-      }
+    // if (data.data.sections.length == 0) {
+    //     return <ComingSoon />;
+    //   }
 
 
     return(
@@ -22,7 +22,8 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
             {data?.data?.tabs && (
                 <PageHeader data={data.data.tabs} slug={slug} />
             )}
-            {children}
+            {error ? <NotFound /> : data.data.sections.length == 0 ? <ComingSoon /> : {children}}
+            
         </div>
     )
 }

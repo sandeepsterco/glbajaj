@@ -27,11 +27,9 @@
 .about_breadcrumb {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 2.25rem;
+    /* gap-9 = 36px = 2.25rem */
 }
-
-.about_breadcrumb p{ margin-bottom: 0;}
 
 .about_breadcrump_text {
     color: #fff;
@@ -53,8 +51,24 @@
     opacity: 0.5;
 }
 
-.inner_nav{ display: flex; align-items: center; padding-block: 1.5rem; }
-.inner_nav .about_menu_label{ font-weight: 700; border-right: 1px solid #ddd; padding-right: 1.5rem;}
+
+/* Menu Container */
+.about_menu_container {
+    padding: 3.6rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* About Us Label */
+.about_menu_container .about_menu_label {
+    font-weight: 600;
+    color: #000;
+    padding-right: 15px;
+    border-right: 1px solid #ccc;
+    /* Vertical separator */
+}
+
 /* Navigation Links Wrapper */
 .about_menu_links {
     display: flex;
@@ -76,7 +90,7 @@
 }
 
 /* Specific Highlight Color for first link */
-.about_menu_links li .active {
+.about_menu_links li:first-child a {
     font-weight: 600;
     color: var(--color-92);
 }
@@ -85,3 +99,764 @@
 .about_menu_links a:hover {
     color: var(--color-92);
 }
+
+/* Padding */
+.about_content_padding {
+    padding-left: 25.0rem;
+    padding-right: 15rem;
+}
+
+/* Existing styles (unchanged) */
+.about_philosophy {
+    background-color: var(--color-F4);
+    width: 52rem;
+    padding: 3.7rem 6rem;
+    text-align: left;
+}
+
+.about_philosophy img {
+    width: 185px;
+    height: 135px;
+}
+
+.about_apprvl_university img {
+    width: 142px;
+    height: 142px;
+}
+
+/* Heading */
+.about_heading {
+    /* margin-top: 3.5rem; */
+    letter-spacing: -0.18rem;
+    color: var(--color-64);
+}
+
+/* Section row */
+.about_section_row {
+    margin-top: 5rem;
+    /* !mt-20 */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+
+/* Text */
+.about_text {
+    flex: 1;
+    color: #333;
+    line-height: 1.625;
+}
+
+/* Paragraph spacing */
+.paragraph_mt {
+    margin-top: 3rem;
+    /* !mt-12 */
+}
+
+.paragraph_mt_small {
+    margin-top: 2.5rem;
+    /* !mt-10 */
+}
+
+/* Image */
+.about_image {
+    flex: 1;
+}
+
+.about_image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.125rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner */
+.about_banner {
+    margin-top: 7.5rem;
+    /* !mt-30 */
+}
+
+/* Affiliation Section */
+.about_affiliation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6rem;
+    /* reduced from 10rem */
+    margin-top: 3.5rem;
+}
+
+/* LEFT SIDE */
+.about_aff_left {
+    max-width: 60%;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+/* Paragraph spacing */
+.paragraph_mt_small {
+    margin-top: 1.5rem;
+    /* tighter like design */
+    max-width: 70rem;
+}
+
+/* Cards wrapper */
+.about_cards_wrapper {
+    margin-top: 10rem;
+}
+
+/* Cards */
+.about_cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14rem;
+}
+
+/* Card */
+.about_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about_card img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Text */
+.about_card_text {
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Link */
+.about_card_link {
+    margin-top: 4rem;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    color: var(--color-89);
+    font-weight: 600;
+    font-family: 'TASA Orbiter';
+    display: inline-block;
+    /* border-bottom: 1px dotted #895737; */
+    /* padding-bottom: 2rem; */
+}
+
+.about_card_link {
+    position: relative;
+}
+
+.about_card_link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -13px;
+    width: 100%;
+    height: 1px;
+    background-image: repeating-linear-gradient(to right, var(--color-89) 0, var(--color-89) 4px,
+            /* dash length */
+            transparent 3px, transparent 8px
+            /* gap */
+        )
+}
+
+/* Divider */
+.about_divider {
+    position: relative;
+}
+
+.about_divider::before {
+    content: '';
+    right: 0;
+    height: 18.3rem;
+    width: 0.1rem;
+    background-color: var(--color-AE);
+    right: -7rem;
+    opacity: 0.5;
+    position: absolute;
+
+}
+
+/* RIGHT SIDE (Logo Philosophy Box) */
+.about_philosophy {
+    background-color: var(--color-F4);
+    padding: 4.6rem 6rem 8.6rem;
+    max-width: 47.6rem;
+    margin: 0 auto;
+}
+
+/* Content */
+.about_philosophy_content {
+    margin-top: 1rem;
+}
+
+.about_philosophy_content .paragraph {
+    margin-top: 1rem;
+}
+
+.about_philosophy .title24 {
+    padding: 3.5rem 0;
+}
+
+.about_card .paragraph {
+    font-weight: 600;
+}
+
+/* about_further_enhancing */
+.about_further_enhancing {
+    background-color: var(--color-F4);
+    margin-inline: auto;
+    margin-top: 11.6rem;
+    /* position: relative; */
+}
+
+
+.about_further_main_div {
+    padding: 8.1rem 12.5rem 19rem;
+}
+
+.about_academic_boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 4rem;
+    gap: 2.4em;
+}
+
+/* Individual Card Styling */
+.academic_card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid var(--color-AE);
+}
+
+/* Last card ki border remove karne ke liye */
+.academic_card:last-child {
+    border-right: none;
+}
+
+/* Image Container to maintain height alignment */
+.academic_card .img_wrapper {
+    height: 120px;
+    /* Fixed height for image area to keep text aligned */
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.academic_card img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+
+/* Bottom long text styling */
+.about_bottom_text {
+    margin-top: 5rem;
+    max-width: 85%;
+    /* Thoda narrow jaisa XD mein hai */
+}
+
+.about_slider_wrapper {
+    position: relative;
+    top: -10.7rem;
+    /* left: 31.5rem; */
+}
+
+.about_slider_wrapper .container-md {
+    padding: 0;
+    margin-right: 0;
+}
+
+/* Swiper wrapper ko stable rakhein */
+.myCampusSwiper {
+    width: 100%;
+    overflow: hidden;
+    /* Flick rokne ke liye */
+    visibility: hidden;
+    /* Jab tak load na ho, chhupa kar rakhein */
+}
+
+/* Jab Swiper initialize ho jaye, tab dikhayein */
+.myCampusSwiper.swiper-initialized {
+    visibility: visible;
+}
+
+.management_slider {
+    width: 100%;
+    overflow: hidden;
+    /* Flick rokne ke liye */
+    visibility: hidden;
+    /* Jab tak load na ho, chhupa kar rakhein */
+}
+
+/* Jab Swiper initialize ho jaye, tab dikhayein */
+.management_slider.swiper-initialized {
+    visibility: visible;
+}
+
+.campus_card img {
+    width: 100%;
+    height: 400px;
+    /* XD ke height ke hisaab se adjust karein */
+    object-fit: cover;
+    display: block;
+}
+
+.campus_card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    /* Fixed ratio layout shift rokne ke liye */
+    object-fit: cover;
+    display: block;
+    /* Image load hone tak placeholder color */
+}
+
+.campus_card p {
+    margin-top: 2rem;
+}
+
+/* Buttons ko visibility confirm karein */
+.slider_nav_buttons {
+    display: flex;
+    position: relative;
+    z-index: 10;
+    margin: 20px 0;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid #ddd; */
+    display: flex !important;
+    gap: 22rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fd6969;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+    background: var(--color-AE);
+    color: #fff;
+}
+
+/* our inspiration */
+.our_inspiration {
+    padding-top: 10.2rem;
+    padding-bottom: 8.5rem;
+    position: relative;
+}
+
+.our_inspiration::before {
+position: absolute;
+    left: 0;
+    top: 0;
+    content: ''; 
+    background-color: var(--color-64);
+    width: 100%;
+    height: 45.4rem; 
+    display: block;  
+    z-index: -1;     
+}
+
+.our_inspiration .title24 {
+    color: var(--color-white);
+    line-height: 3.6rem;
+}
+
+.inspiration_image img {
+    width: 47.5rem;
+    height: 61.9rem;
+}
+
+.our_insp_grid {
+       display: grid;
+    grid-template-columns: 57.7% 32.1%;
+    gap: 15rem;
+}
+
+.our_inspiration .title36 {
+    color: var(--color-white);
+    margin: 4rem 0;
+}
+
+.our_inspiration .paragraph {
+    color: var(--color-white);
+}
+
+.vision_mission {
+    margin-top: 8rem;
+}
+
+.vision .title24 {
+    margin-bottom: 2.9rem;
+}
+
+.vision .title30 {
+    width: 37.3rem;
+}
+
+.mission .title24 {
+    margin-bottom: 3.5rem;
+}
+
+.vision_mission .container-md {
+    padding: 0;
+    margin-right: 0;
+}
+
+.vision_mission_inside {
+    width: 85.0rem;
+    display: flex;
+    gap: 12.7rem;
+}
+
+/* management */
+.management {
+    background-color: var(--color-F4);
+    padding-top: 14.7rem;
+    margin-top: 10.5rem;
+    padding-bottom: 5rem;
+}
+
+.management .title24 {
+    margin-bottom: 3.8rem;
+}
+
+.management .container-md {
+    padding: 0;
+    margin-right: 0;
+}
+
+.management_card .title18 {
+    margin-top: 2rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 992px) {
+    .about_academic_boxes {
+        flex-direction: column;
+    }
+
+    .academic_card {
+        border-right: none;
+        border-bottom: 1px solid #d1ccb8;
+        padding: 3rem 0;
+    }
+
+    .academic_card:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .about_section_row {
+        flex-direction: row;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .about_section_row {
+        gap: 8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********=================================MY CSS Start=================================***********/
+
+/* ==============news listing page Start============= */
+
+.about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
+.about_breadcrumb p{ margin-bottom: 0;}
+.inner_nav{ display: flex; align-items: center; padding-block: 1.5rem; }
+.inner_nav .about_menu_label{ font-weight: 700; border-right: 1px solid #ddd; padding-right: 1.5rem;}
+.happenings_page::before{ background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain;}
+.news_section{ padding-block: 10rem 4rem; background-color: var(--color-F4);}
+.front_news{ display: grid; grid-template-columns:58% auto; gap: 0rem;}
+.news_head{ display: flex; justify-content: flex-end;}
+.news_head .form-select{ appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url("/images/icons/arrow-down.webp"); /* your custom icon */ background-repeat: no-repeat; background-position: right 15px center; background-size: 1.3rem; padding-right: 40px; height: 4.6rem; padding-inline: 1.5rem; font: var(--font-16); color: var(--color-black); border: 1px solid #E1E1E1; min-width: 35rem; box-shadow: none; outline: none;}
+.news_right{ display: flex; flex-direction: column; justify-content: space-between; padding-inline: 9rem 10rem;}
+.news_right .date{ font: var(--font-16); color: var(--color-33);}
+.news_right h3{ color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 3rem;}
+.news_right p{ font: var(--font-16); color: var(--color-33);}
+.news_right a{ margin-left: -1.5rem; display: inline-block; margin-top: 2rem;}
+.news_listing{ padding-block:2rem 12rem;}
+.news_list{ display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0;}
+.news_list_right span{ display: inline-block; margin-left: -1.5rem; margin-top:3rem;}
+.news_list_right .date{ font: var(--font-16); color: var(--color-33);}
+.news_list_right h4{ color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block:2rem;}
+.news_list_right p{ font: var(--font-16); color: var(--color-33);}
+.news_list_right{ padding-right:10rem;}
+
+@media (max-width:2400px){
+    .news_right{ padding-inline: 13rem 6rem;}
+}
+
+@media (max-width:2200px){
+    .news_right{ padding-inline: 15rem 0rem;}
+}
+
+/* ==============news details page Start============= */
+.news_details{ padding-block: 10rem;}
+.newst_details_header{ display: flex; align-items: center;}
+.newst_details_header .date{ font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom: 0;}
+.news_details h1{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}
+.news_details_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem;}
+.news_details_cnt p{ font: var(--font-16); color: var(--color-33); margin-bottom: 2rem;}
+.news_details_img{ display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative;}
+.news_details_img figure{ position: relative; z-index: 9;}
+.news_details_img::after{ background-image: url(/images/pattern/patch-2.png); height: 30.9rem; width: 100%; content: ""; position: absolute; top: 0; bottom: 0; margin: auto 0; right: -10rem; z-index: 0; background-size: contain; background-repeat: no-repeat;}
+.related_stories{ background-color: var(--color-F4);  padding-block: 7rem 14.6rem;}
+.related_stories h2{ font: var(--font-24); color: var(--color-64); margin-bottom: 3rem; font-weight: 700;}
+.related_story_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; position: relative;}
+.related_story_grid img{ width: 100%;}
+.related_stroty_Bx{ position: relative; z-index: 2;}
+.related_stroty_Bx::after{background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box;
+opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; height: 20.6rem;}
+.related_stroty_Bx figcaption{ position: absolute; bottom: 0; left: 0; right: 0; padding: 0 6rem 4rem; z-index: 9;}
+.related_stroty_Bx figcaption .date{ font: var(--font-16); color: var(--color-white); font-weight: 600;}
+.related_stroty_Bx figcaption p{ font: var(--font-16); color: var(--color-white); font-weight: 400; max-width: 36.2rem;}
+.related_story_grid::after{ background-image: url(/images/pattern/long-patch.png); width: 20.6rem; content: ""; position: absolute; top: -8rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: 0; background-size: cover; background-repeat: no-repeat; }
+.social_buttons { position: absolute; top: -2rem; /* adjust as needed */ left: 5rem; opacity: 0; visibility: hidden; transition: all 0.4s ease; display: flex; }
+.social_buttons.active { opacity: 1; visibility: visible; }
+.social_buttons.active {
+    opacity: 1;
+    visibility: visible;
+}
+.newst_details_header figure{ position: relative;}
+.social_buttons a { width: 4rem; height: 4rem; display: flex; color: #fff; text-align: center; line-height: 2rem; margin: 5px; border-radius: 50%; transition: all 0.3s ease; padding: 1.2rem; justify-content: center; }
+
+.social_buttons a:nth-child(1){ background-color: #3b5998; }
+.social_buttons a:nth-child(2) { background-color: #dd4b39; }
+.social_buttons a:nth-child(3) { background-color: #55acee; }
+.social_buttons a:nth-child(4) { background-color: #cc2127; }
+.social_buttons a:nth-child(5) { background-color: #0077b5; }
+.social_buttons a:nth-child(6){ background-color: #777; }
+
+
+.social_buttons a:nth-child(6) img{ filter: invert(1);}
+    .social_buttons a:nth-child(4) img{ filter: brightness(0) invert(1);}
+
+
+
+
+
+/* ==============media coverage page Start============= */
+.media_coverage{ padding-block: 10rem;}
+.media_grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem;}
+.media_grid_Bx{ background-color: var(--color-F5); padding: 2rem 2rem 3rem;}
+.media_grid_Bx figure{ background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center;}
+.media_grid_Bx figure img{ max-width: 22rem; margin: 0 auto;}
+.media_txt h5{ font: var(--font-16); font-weight: 600; margin-block:0 1.5rem;}
+.media_txt p{ font: var(--font-16); }
+.media_txt{ padding: 2rem 0 0 2.7rem; position: relative;}
+.media_txt::before{ background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem;}
+
+
+/* ==============Notices & Announcements page Start============= */
+.notice_announcement{padding-block: 10rem;}
+.notice_grid{ display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem;}
+.notice_list{ background-color: var(--color-F5); padding: 2rem 3rem; position: relative;}
+.notice_list h4{ font: var(--font-16); font-weight: 600; margin-block:0 1rem; color: var(--color-black);}
+.notice_list p{ font: var(--font-16); color: var(--color-33);}
+.notice_list:hover{ background-color: var(--color-fa);}
+.fancybox__thumbs { display: none !important; }
+.media_grid_Bx { cursor: pointer; }
+
+
+/* ==============Gallery page Start============= */
+.media_gallery{ padding-block: 10rem 4rem; background-color: var(--color-F4);}
+.gallery_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.6rem;}
+.gallery_grid_Bx{ position: relative; }
+.gallery_grid_Bx figure{ position: relative;}
+.gallery_grid_Bx span{ position: absolute; bottom: 0; left: 4.4rem; display: flex; background-color: rgba(0, 0, 0, 0.7); padding:0.8rem 1rem; gap: 1rem;}
+.gallery_grid_Bx span figcaption{ display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400;}
+.gallery_grid h5{ font: var(--font-24); color: var(--color-64); font-weight: 700; padding-inline: 4.4rem; margin-block: 2rem;}
+.gallery_list_section{ padding-block: 4rem 11.6rem;}
+.gallery_list{ column-count: 3; gap: 3rem; margin-inline: -2rem;}
+.gallery_list_bx{ position: relative; background-color: var(--color-F5);break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem;}
+.gallery_list_bx figure{ position: relative;}
+.gallery_list_bx span{ position: absolute; bottom: 0; left:2.5rem; display: flex; background-color: rgba(0, 0, 0, 0.7); padding:0.8rem 1rem; gap: 1rem;}
+.gallery_list_bx span figcaption{ display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400;}
+.gallery_list_bx p{ font: var(--font-16); color: var(--color-33); font-weight: 400; padding-inline:2.5rem; margin-block: 2rem;}
+.fancybox__caption{ font: var(--font-18); padding-top:5rem!important;}
+.fancybox__counter span{ color: var(--color-white);}
+.fancybox__nav .carousel__button.is-next { right: 30%; background-color: var(--color-white); border-radius:0; color: #FF0000;}
+.fancybox__nav .carousel__button.is-prev { left: 30%; background-color: var(--color-white); border-radius: 0; color: #FF0000;}
+.fancybox__nav .carousel__button.is-prev svg, .fancybox__nav .carousel__button.is-next svg{ width: 1.3rem;} 
+.gallery_list_header{ padding-block:6rem 5rem; display: flex; justify-content: space-between;}
+.gallery_list_section h1{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px;}
+.gallery_details{ position: relative; background-color: var(--color-F5);break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem;}
+.gallery_details figure{ position: relative; cursor: pointer;}
+.gallery_details figure:has(span)::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.37); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 0; }
+.gallery_details figure span{ position: absolute; top: 0; left:0 ; right: 0; bottom: 0; content: ""; height: 2.8rem; width: 2.7rem; margin: auto; z-index: 2;}
+.gallery_tab{ display: flex; align-items: center; }
+.gallery_tab span{ font: var(--font-16); color: var(--color-black); display: flex; gap: 1rem; align-items: center; border: 1px solid #E1E1E1; padding: 1.3rem 2rem;}
+.gallery_tab span:first-child{ margin-right: -1px;}
+
+
+
+/* ==============HOD's Message page Start============= */
+.hod_section{ padding-block: 8.2rem 11.6rem;}
+.hod_grid{ display: grid; grid-template-columns: 54% auto; gap: 8.6rem; align-items: flex-start;}
+.hod_left h3{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 7.8rem;}
+.hod_left p{ padding-right: 6rem;}
+.hod_details{ margin-top: 5rem; padding-top: 6rem; position: relative;}
+.hod_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.hod_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.hod_right{ margin-top: 3rem; position: relative;}
+.hod_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.hod_right figure img{ width: 100%;}
+.hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+.hod_right::before { content: ""; position: absolute; right:0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
+
+@media (max-width:2440px){
+    .hod_right::before{ height: auto;}
+}
+
+/* ==============Faculty page Start============= */
+.faculty_section{ padding-block:0 12.6rem;}
+.faculty_grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block:9rem 0rem; row-gap: 7rem; position: relative;}
+.faculty_grid::before{ background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: 22rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
+
+.faculty_Bx{ background-color: var(--color-F5); padding: 1.3rem; position: relative;}
+.faculty_Bx h5{ font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:1.6rem 0.6rem;}
+.faculty_Bx p{ margin-bottom: 0;}
+.faculty_Bx figure{ margin-top: -5rem;}
+.faculty_Bx figure img{ width: 100%;}
+.faculty_header{ display: flex; justify-content: space-between; padding-top: 8.2rem;}
+.faculty_header .form-select{ appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url("/images/icons/arrow-down.webp"); background-repeat: no-repeat; background-position: right 15px center; background-size: 1.3rem; padding-right: 40px; height: 4.6rem; padding-inline: 1.5rem; font: var(--font-16); color: var(--color-black); border: 1px solid #E1E1E1; max-width: 45rem; width: 100%; box-shadow: none; outline: none;}
+.faculty_header .sort_by{ max-width: 14.6rem;}
+.affiliations-sec .media_txt p{margin-bottom: 0; font: var(--font-18);}
+
+
+/* ==============Our Inspiration page Start============= */
+.inspiration_section{ padding-block: 5rem 14.2rem;}
+.inspiration_grid{ display: grid; grid-template-columns: 49% auto; gap: 15.7rem;}
+.inspiration_section h3{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 7.2rem;}
+.inspiration_details{ margin-top: 4rem; padding-top: 4rem; position: relative;}
+.inspiration_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.inspiration_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.inspiration_right{ position: relative;}
+.inspiration_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.inspiration_right figure img{ width: 100%;}
+.inspiration_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.inspiration_details p{ margin-bottom: 0;}
+
+
+/* ==============Logo Philosophy page Start============= */
+.philosophy_section{ padding-block: 8.2rem 13rem;}
+.philosophy_grid{ display: grid; grid-template-columns: 52% auto; gap: 12.3rem; align-items: flex-start;}
+.philosophy_section h2{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}
+.philosophy_left{ position: relative; padding-bottom: 5rem;}
+.philosophy_left::after{background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; bottom: 0; left: 0;}
+.philosophy_left p{ padding-right: 2rem;}
+.philosophy_details{ margin-top: 4rem; padding-top: 4rem; position: relative;}
+.philosophy_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.philosophy_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.philosophy_right{ position: relative; background-color: var(--color-F4); padding: 8.2rem 3rem 10rem; margin-top:4rem;}
+.philosophy_right::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -9rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.philosophy_right figure img{ width: 100%;}
+.philosophy_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.philosophy_details p{ margin-bottom: 0;}
+
+
+/* ==============Visionary Messages page Start============= */
+.visionary_section{ padding-block: 5rem 13rem;}
+.visionary_message h3{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}
+.visionary_message h2{ color: var(--color-64); font: var(--font-24); margin-bottom: 4rem; font-weight: 700;}
+.visionary_message figure{ margin-top: 8rem; position: relative;}
+.visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+.message_details{ padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative;}
+.message_details::before{background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
+.message_details figure{ text-align: center;}
+.message_details figure img{ margin: 0 auto;}
+.message_details h5{ font: var(--font-16); font-weight: 700; margin-bottom: 2rem;}
+.message_cnt h3{ color: var(--color-92); font: var(--font-48); letter-spacing: -2.4px; margin-bottom: 4rem; font-weight: 400; padding-block: 2rem 0;}
+.message_cnt .inspiration_details::before{ max-width: 33.3rem;}
+
+
+/* ==============Faculty page Start============= */
+.administration_section{ padding-block:0 20rem;}
+.administration_grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block:9rem 0rem; row-gap: 7rem; position: relative;}
+.administration_grid::before{ background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
+.administration_Bx{ background-color: var(--color-F5); padding: 1.3rem; position: relative;}
+.administration_Bx h5{ font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:1.6rem 0.5rem;}
+.administration_Bx p{ margin-bottom: 0;}
+.administration_Bx figure{ margin-top: -5rem; background: linear-gradient( to bottom, #6f6f6f 0%, #8f8f8f 40%, #bfbfbf 100% );}
+.administration_Bx figure img{ width: 100%;}
+.administration_Bx a{ display: flex; align-items: center; font: var(--font-16); gap: 1rem; color: var(--color-33); padding-top: 0.5rem;}
+.administration_Bx a:hover{ color: var(--color-92);}
+.administration_Bx a img{ max-width: 1.6rem;}
+
+
+/* ==============The Group page Start============= */
+.group_section{ padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}
+.group_section h2{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}
+.group_counter_grid{ display: grid; grid-template-columns: 50% auto; gap: 14.4rem; padding-top: 8rem;}
+.group_counter ul{ display: grid; grid-template-columns: repeat(3, 1fr);}
+.group_counter ul li{ border: 1px solid #C08552; padding: 3rem; margin-right: -1px;}
+.group_counter ul li h4{ font: var(--font-48); letter-spacing: -2.4px; color: var(--color-92);}
+.group_counter ul li h4 sup{ font: var(--font-16); color: var(--color-33); font-weight: 400; letter-spacing: 0; top: -2.5rem; padding-left: 0.5rem;}
+.group_counter ul li p{ margin-bottom: 0;}
+
+.chairman_section{ padding-block: 8.2rem 11.6rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}
+.chairman_grid{ display: grid; grid-template-columns: 53% auto; gap: 8.6rem; align-items: flex-start;}
+.chairman_left h3{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom:5rem;}
+.chairman_left p{ padding-right: 5rem;}
+.chairman_details{ margin-top: 5rem; padding-top: 6rem; position: relative;}
+.chairman_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.chairman_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.chairman_right{ position: relative;}
+.chairman_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 0.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.chairman_right figure img{ width: 100%;}
+.chairman_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.chairman_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+
+.shaping_future{ padding-block:9.4rem;}
+.shaping_future .container{ background-color: var(--color-F4); padding-block: 10rem;}
+.shaping_future_leader{ margin-bottom: 4rem;}
+.shaping_future_leader h4{ color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block:0 2rem;}
+.shaping_future_leader h5{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px;}
+.shaping_future_Bx{ position: relative;}
+.shaping_future_Bx figcaption{ padding: 3rem 3rem 0;}
+.shaping_future_Bx figcaption h5{ font: var(--font-18); font-weight: 600; color: var(--color-black);}
+.shaping_future_Bx figcaption span{ margin-left: -1rem; margin-top: 2rem; display: block;}
+.shaping_future_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem;}
+
+/* ==============About GLBITM page Start============= */
+.the_institute_grid{ display: grid; grid-template-columns: 36% auto; gap: 11rem;}
+.about_section h2{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}

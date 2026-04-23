@@ -5,8 +5,7 @@ import React from "react";
 
 const Footer = async () => {
   const { data: footerData, error: footerError } = await apiFetch(
-    "menu?location=footer",
-    { revalidate: 300 },
+    "menu?location=footer"
   );
 
   return (

@@ -3,9 +3,7 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchHappeningsData=async()=>{
-  const {data, error} = await apiFetch(`modular/home`, {
-    revalidate:600
-  });
+  const {data, error} = await apiFetch(`modular/home`);
 
   if (error) throw new Error(error);
   return data;

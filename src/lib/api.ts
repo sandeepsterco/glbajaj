@@ -1,13 +1,15 @@
-import { API_URL } from "../config/config";
+import { API_URL, REVALIDATE } from "../config/config";
 
 type ApiFetchOptions = Omit<RequestInit, 'cache'> & {
   revalidate?: number;
   cache?: 'no-store' | 'force-cache' | 'default';
 };
 
+const DEFAULT_REVALIDATE = Number(REVALIDATE ?? 120);
+
 export async function apiFetch(endpoint: string, options?: ApiFetchOptions) {
     try {
-      const { revalidate = 3600, cache, ...restOptions } = options ?? {};
+      const { revalidate = DEFAULT_REVALIDATE, cache, ...restOptions } = options ?? {};
   
       const response = await fetch(`${API_URL}${endpoint}`, {
         ...restOptions,

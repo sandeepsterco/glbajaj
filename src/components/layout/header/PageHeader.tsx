@@ -16,9 +16,9 @@ export default async function PageHeader({data, slug}:{data:any, slug:string}){
                                 <p className="about_glbim_p">{currentPage?.title}</p>
                             </div>
                             <div className="about_breadcrumb">
-                                <p className="breadcrumb_main about_breadcrump_text">Happenings</p>
+                                <p className="breadcrumb_main about_breadcrump_text">{data?.heading}</p>
                                 <FaChevronRight color='#fff' size={10} />
-                                <p className="breadcrumb_sub about_breadcrump_text">News & Events</p>
+                                <p className="breadcrumb_sub about_breadcrump_text">{currentPage?.title}</p>
                             </div>
                         </div>
                     </div>

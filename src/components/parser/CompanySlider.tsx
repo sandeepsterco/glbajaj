@@ -12,9 +12,7 @@ import { SkeletonGroup } from "../ui/Skeleton";
 import Image from "next/image";
 
 const fetchSliderData = async () => {
-  const { data, error } = await apiFetch("modular/home", {
-    revalidate: 300,
-  });
+  const { data, error } = await apiFetch("modular/home");
   if (error) throw new Error(error);
   return data;
 };

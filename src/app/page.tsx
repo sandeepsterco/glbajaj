@@ -17,9 +17,7 @@ export async function generateMetadata() {
 export default async function Home() {
   const seoData = await getPageSEO();
 
-  const { data: homeData, error: homeError } = await apiFetch("modular/home", {
-    revalidate: 300,
-  });
+  const { data: homeData, error: homeError } = await apiFetch("modular/home");
 
   if(!homeData.modular && !homeData.cms){
     return <div className="min-h-[100vh] flex items-center justify-center">

@@ -90,7 +90,7 @@
 }
 
 /* Specific Highlight Color for first link */
-.about_menu_links li:first-child a {
+.about_menu_links li .active {
     font-weight: 600;
     color: var(--color-92);
 }

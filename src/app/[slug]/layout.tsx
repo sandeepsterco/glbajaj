@@ -8,21 +8,16 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     const {data, error} = await apiFetch(`cms/${slug}`, { cache:'no-store'});
 
-    // if(error){
-    //     return <NotFound />;
-    // }
-
-    // if (data.data.sections.length == 0) {
-    //     return <ComingSoon />;
-    //   }
-
+    if(error){
+        return <NotFound />;
+    }
 
     return(
         <div className="happenings_page">
             {data?.data?.tabs && (
                 <PageHeader data={data.data.tabs} slug={slug} />
             )}
-            {error ? <NotFound /> : data.data.sections.length == 0 ? <ComingSoon /> : {children}}
+            {data.data.sections.length == 0 ? <ComingSoon /> : children}
             
         </div>
     )

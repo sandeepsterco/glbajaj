@@ -4,8 +4,8 @@ import RelatedStories from "@/src/components/newsEvents/RelatedStories";
 import { apiFetch } from "@/src/lib/api";
 
 export default async function NewsDetailPage({params}:{params:any}){
-    const {id} = await params;
-    const { data, error } = await apiFetch(`news-and-events/${id}`);
+    const {slug} = await params;
+    const { data, error } = await apiFetch(`news-and-events/${slug}`);
 
     if (error) {
         return (

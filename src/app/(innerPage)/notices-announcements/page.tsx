@@ -1,4 +1,5 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
+import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
 
@@ -27,7 +28,7 @@ export default async function NoticesAnnouncement() {
                                 <p dangerouslySetInnerHTML={{__html:item.title}} />
                             )}
                             {item?.slug && (
-                                <Link href={item.slug} className="strech_link" />
+                                <Link href={`${BASE_URL}notices-announcements/${item.slug}`} className="strech_link" />
                             )}
                         </div>
                     ))}

@@ -103,6 +103,10 @@ export const HappeningsTabs = {
       {
           "slug": "notices-announcements",
           "title": "Notices & Announcements"
+      },
+      {
+        "slug": "gallery",
+        "title": "Gallery"
       }
   ]
 }

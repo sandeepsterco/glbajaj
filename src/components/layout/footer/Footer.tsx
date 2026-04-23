@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import Link from "next/link";
@@ -85,6 +86,7 @@ const Footer = async () => {
             <li>
               <Link
                 href="#"
+                role="button"
                 className="text-[1.4rem] leading-[2.1rem] text-white"
               >
                 Quick Links
@@ -97,7 +99,7 @@ const Footer = async () => {
                 </li>
                 <li>
                   <Link
-                    href={item?.slug ? item.slug : ''}
+                    href={item?.slug ? BASE_URL+ item.slug : ''}
                     className="text-[1.4rem] leading-[2.1rem] text-white"
                   >
                     {item.title}

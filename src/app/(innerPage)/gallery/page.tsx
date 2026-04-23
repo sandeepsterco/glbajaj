@@ -14,8 +14,8 @@ export default async function GalleryPage(){
 
     return(
         <>
-            <MainGallery data={data?.gallery_latest} />
-            <GalleryList data={data?.gallery} />
+            <MainGallery data={data?.featured} />
+            <GalleryList data={data?.others} />
         </>
     )
 }

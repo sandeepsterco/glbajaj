@@ -17,21 +17,21 @@ export default async function NewsEvent({searchParams, params}:{searchParams:Pro
     }
 
     const pagination = data?.news_and_events;
-    const mainData = pagination?.data[0];
-    const otherListing = pagination?.data.slice(1);
+    const mainData = data?.news_and_events_first;
+    const otherListing = pagination?.data;
 
     const slug = 'news-events'
 
     return (
         <>
-                <MainNews data={mainData} slug={slug} />
-                {otherListing?.length > 0 && (
-                    <NewsListing data={otherListing} slug={slug} />
-                )}
-                <PaginationWrapper
-                    currentPage={pagination?.current_page || 1}
-                    totalPages={pagination?.last_page || 1}
-                />
+            <MainNews data={mainData} slug={slug} />
+            {otherListing?.length > 0 && (
+                <NewsListing data={otherListing} slug={slug} />
+            )}
+            <PaginationWrapper
+                currentPage={pagination?.current_page || 1}
+                totalPages={pagination?.last_page || 1}
+            />
         </>
     )
 }

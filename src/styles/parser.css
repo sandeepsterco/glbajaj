@@ -1407,3 +1407,43 @@
 }
 
 /* ==============HOD's Message page Start============= */
+
+
+
+
+/* ==============The Group page Start============= */
+.group_section{ padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}
+.group_section h2{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}
+.group_counter_grid{ display: grid; grid-template-columns: 50% auto; gap: 14.4rem; padding-top: 8rem;}
+.group_counter ul{ display: grid; grid-template-columns: repeat(3, 1fr);}
+.group_counter ul li{ border: 1px solid #C08552; padding: 3rem; margin-right: -1px;}
+.group_counter ul li h4{ font: var(--font-48); letter-spacing: -2.4px; color: var(--color-92);}
+.group_counter ul li h4 sup{ font: var(--font-16); color: var(--color-33); font-weight: 400; letter-spacing: 0; top: -2.5rem; padding-left: 0.5rem;}
+.group_counter ul li p{ margin-bottom: 0;}
+
+.chairman_section{ padding-block: 8.2rem 11.6rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}
+.chairman_grid{ display: grid; grid-template-columns: 53% auto; gap: 8.6rem; align-items: flex-start;}
+.chairman_left h3{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom:5rem;}
+.chairman_left p{ padding-right: 5rem;}
+.chairman_details{ margin-top: 5rem; padding-top: 6rem; position: relative;}
+.chairman_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.chairman_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
+.chairman_right{ position: relative;}
+.chairman_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 0.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
+.chairman_right figure img{ width: 100%;}
+.chairman_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.chairman_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+
+.shaping_future{ padding-block:9.4rem;}
+.shaping_future .container{ background-color: var(--color-F4); padding-block: 10rem;}
+.shaping_future_leader{ margin-bottom: 4rem;}
+.shaping_future_leader h4{ color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block:0 2rem;}
+.shaping_future_leader h5{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px;}
+.shaping_future_Bx{ position: relative;}
+.shaping_future_Bx figcaption{ padding: 3rem 3rem 0;}
+.shaping_future_Bx figcaption h5{ font: var(--font-18); font-weight: 600; color: var(--color-black);}
+.shaping_future_Bx figcaption span{ margin-left: -1rem; margin-top: 2rem; display: block;}
+
+.shaping_future_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem;}
+
+/* ==============The Group page End============= */

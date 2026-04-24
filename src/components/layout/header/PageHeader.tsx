@@ -16,7 +16,7 @@ export default async function PageHeader({data, slug}:{data:any, slug:string}){
                                 <p className="about_glbim_p">{currentPage?.title}</p>
                             </div>
                             <div className="about_breadcrumb">
-                                <p className="breadcrumb_main about_breadcrump_text">{data?.heading}</p>
+                                <p className="breadcrumb_main about_breadcrump_text">{data?.tab_title}</p>
                                 <FaChevronRight color='#fff' size={10} />
                                 <p className="breadcrumb_sub about_breadcrump_text">{currentPage?.title}</p>
                             </div>
@@ -26,7 +26,7 @@ export default async function PageHeader({data, slug}:{data:any, slug:string}){
 
                 <div className="container25">
                     <div className="inner_nav">
-                        <div className="about_menu_label paragraph">{data?.heading}</div>
+                        <div className="about_menu_label paragraph">{data?.tab_title}</div>
                         <ul className="about_menu_links">
                             {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
                                 <li key={itemIdx}>

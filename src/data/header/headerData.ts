@@ -90,7 +90,7 @@ export const SOCIAL_LINKS = [
 
 
 export const HappeningsTabs = {
-  "heading": "Happenings",
+  "tab_title": "Happenings",
   "tabs": [
       {
           "slug": "news-events",

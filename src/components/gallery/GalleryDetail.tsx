@@ -19,17 +19,20 @@ export default function GalleryDetailPage({ data }: { data: any }) {
                 </div>
                 <div className="gallery_list">
                     {data?.gallery_urls?.map((item:any, idx:number)=>{
-                        if(item){}
-                        return (
-                            <div key={idx} className="gallery_details" data-src="assets/images/gallery-list_01.webp" data-caption="Donec vitae sapien ut libero venenatis faucibus. Sed consequat, leo eget bibendum sodales, augue velit. Vestibulum purus quam">
-                                <figure>
-                                    <video
-                                        src={item}
-                                    />
-                                    {/* <img src="assets/images/gallery-list_01.webp" className="img-fluid" alt="alt" /> */}
-                                </figure>
-                            </div>
-                        )
+                        if(item.includes('.mp4')){
+                            return (
+                                <div key={idx} className="gallery_details" data-src="assets/images/gallery-list_01.webp" data-caption="Donec vitae sapien ut libero venenatis faucibus. Sed consequat, leo eget bibendum sodales, augue velit. Vestibulum purus quam">
+                                    <figure>
+                                        <video
+                                            src={item}
+                                        />
+                                        <span><img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" /></span>
+                                        {/* <img src="assets/images/gallery-list_01.webp" className="img-fluid" alt="alt" /> */}
+                                    </figure>
+                                </div>
+                            )
+                        }
+                        
                     })}
                     
 

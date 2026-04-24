@@ -17,7 +17,7 @@ export default async function NewsEvent({searchParams, params}:{searchParams:Pro
     }
 
     const pagination = data?.news_and_events;
-    const mainData = data?.news_and_events_first;
+    const mainData = data?.news_and_events_first; 
     const otherListing = pagination?.data;
 
     const slug = 'news-events'

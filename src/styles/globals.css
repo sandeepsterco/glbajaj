@@ -520,3 +520,5 @@ h6 {
 .has-html .fancybox__content{padding:0;}
 .gallery_tab span.active{background-color: var(--color-64); color:#fff;}
 .gallery_tab .resetBtn{background: #ddd; margin-right: 0.1rem; font: var(--font-16); color: var(--color-black); border: 1px solid #e1e1e1; align-items: center; gap: 1rem; padding-inline: 2rem; display: flex; height: 100%;}
+.about_menu_bar {position:sticky; top:0; z-index: 99;}
+.about_menu_bar .bottom_menus{background:#fff;}

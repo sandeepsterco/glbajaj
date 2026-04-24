@@ -517,3 +517,6 @@ h6 {
 
 
 .strech_link{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9;}
+.has-html .fancybox__content{padding:0;}
+.gallery_tab span.active{background-color: var(--color-64); color:#fff;}
+.gallery_tab .resetBtn{background: #ddd; margin-right: 0.1rem; font: var(--font-16); color: var(--color-black); border: 1px solid #e1e1e1; align-items: center; gap: 1rem; padding-inline: 2rem; display: flex; height: 100%;}

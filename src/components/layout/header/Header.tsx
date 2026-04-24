@@ -64,7 +64,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   const isHome = pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -81,7 +81,6 @@ export default function Header({ headerData }: { headerData?: any }) {
 
   return (
     <>
-      {/* ── HEADER ─────────────────────────────────────────────────── */}
       <header className={`main_header ${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? 'home_header' : 'inner_header'}`}>
 
         {/* Top bar */}

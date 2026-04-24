@@ -777,6 +777,8 @@
   gap:5.6rem;
   grid-template-columns: 59.9% auto;
   margin-left: 4.5rem;
+  background:none;
+  padding: 0;
 }
 
 .home_about_glb_section .about_top .heading{
@@ -1079,6 +1081,7 @@
   justify-content: flex-end;
   height: 100%;
   padding: 0 4.1rem 4.2rem 5rem;
+  margin:0;
 }
 
 .home_happenings_section .top_data{

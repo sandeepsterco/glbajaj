@@ -40,6 +40,45 @@
     setActive(0);
     return true;
   }
+  
+  
+  // ✅ ADD NEW FUNCTION HERE — between initWhyGlbSection and initSwipers
+  function initAccordion() {
+    const headers = document.querySelectorAll(".accordion-header");
+    if (!headers.length) return false;
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".accordion-body");
+
+        // Close all others
+        document.querySelectorAll(".accordion-item").forEach(item => {
+          if (item !== currentItem) {
+            item.classList.remove("active");
+            const body = item.querySelector(".accordion-body");
+            body.style.maxHeight = null;
+            item.querySelector(".icon").textContent = "+";
+          }
+        });
+
+        // Toggle current
+        currentItem.classList.toggle("active");
+
+        if (currentItem.classList.contains("active")) {
+          currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+          header.querySelector(".icon").textContent = "−";
+        } else {
+          currentBody.style.maxHeight = null;
+          header.querySelector(".icon").textContent = "+";
+        }
+      });
+    });
+
+    headers[0].click();
+
+    return true;
+  }
 
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
@@ -135,6 +174,7 @@
 
   function initAll() {
     initWhyGlbSection();
+    initAccordion();
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
     }

@@ -112,7 +112,7 @@ export const HappeningsTabs = {
 }
 
 export const FacultyTabs = {
-  "tab_title": "Academics",
+  "tab_title": "Leadership",
   "tabs": [
       {
           "slug": "news-events",
@@ -133,6 +133,10 @@ export const FacultyTabs = {
       {
         "slug": "faculty",
         "title": "Faculty"
+      },
+      {
+        "slug": "leadership",
+        "title": "Leadership"
       }
   ]
 }

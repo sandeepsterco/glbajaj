@@ -768,7 +768,9 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .inspiration_grid{ display: grid; grid-template-columns: 49% auto; gap: 15.7rem;}
 .inspiration_section h3{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 7.2rem;}
 .inspiration_details{ margin-top: 4rem; padding-top: 4rem; position: relative;}
+.message_details.bottom .inspiration_details{margin:0;}
 .inspiration_details::before{ background-color: #D2AB67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0;}
+.message_details.bottom::before{display:none;}
 .inspiration_details h4{ font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom:1rem; }
 .inspiration_right{ position: relative;}
 .inspiration_right figure::before{ background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
@@ -801,6 +803,7 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .visionary_message figure{ margin-top: 8rem; position: relative;}
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .message_details{ padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative;}
+.message_details.bottom{padding-top:0;}
 .message_details::before{background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
 .message_details figure{ text-align: center;}
 .message_details figure img{ margin: 0 auto;}
@@ -860,3 +863,7 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 /* ==============About GLBITM page Start============= */
 .the_institute_grid{ display: grid; grid-template-columns: 36% auto; gap: 11rem;}
 .about_section h2{ color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem;}
+
+
+/* leadership section */
+.leadership_section{padding-top:8.2rem;}

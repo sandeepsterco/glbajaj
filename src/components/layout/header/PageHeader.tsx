@@ -6,6 +6,8 @@ import { FaChevronRight } from "react-icons/fa";
 export default async function PageHeader({data, slug, showTabs}:{data:any, slug:string, showTabs:boolean}){
     const currentPage = data?.tabs?.find((tab:any)=>tab.slug === slug)
 
+    console.log('leadership slug',data)
+
     return(
         <>
             <div className="about_menu_bar">

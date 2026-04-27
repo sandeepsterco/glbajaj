@@ -3,7 +3,7 @@ import { BASE_URL } from '@/src/config/config';
 import { FaChevronRight } from "react-icons/fa";
 
 
-export default async function PageHeader({data, slug}:{data:any, slug:string}){
+export default async function PageHeader({data, slug, showTabs}:{data:any, slug:string, showTabs:boolean}){
     const currentPage = data?.tabs?.find((tab:any)=>tab.slug === slug)
 
     return(
@@ -24,20 +24,22 @@ export default async function PageHeader({data, slug}:{data:any, slug:string}){
                     </div>
                 </div>
 
-                <div className='bottom_menus'>
-                    <div className="container25">
-                        <div className="inner_nav">
-                            <div className="about_menu_label paragraph">{data?.tab_title}</div>
-                            <ul className="about_menu_links">
-                                {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
-                                    <li key={itemIdx}>
-                                        <Link href={BASE_URL+ item.slug} className={`paragraph ${item.slug === slug ? 'active' : ''}`}>{item.title}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>                
+                {showTabs && (
+                    <div className='bottom_menus'>
+                        <div className="container25">
+                            <div className="inner_nav">
+                                <div className="about_menu_label paragraph">{data?.tab_title}</div>
+                                <ul className="about_menu_links">
+                                    {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
+                                        <li key={itemIdx}>
+                                            <Link href={BASE_URL+ item.slug} className={`paragraph ${item.slug === slug ? 'active' : ''}`}>{item.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>                
+                        </div>
                     </div>
-                </div>
+                )}
                 
             </div>
         </>

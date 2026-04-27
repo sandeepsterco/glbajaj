@@ -7,24 +7,28 @@ import { SkeletonGroup } from '../ui/Skeleton';
 
 declare const Fancybox: any
 
-export default function GalleryDetailPage({ data, slug }: { data: any, slug:string }) {
+interface GalleryItem {
+    gallery_urls: string
+    description: string
+}
+
+export default function GalleryDetailPage({ data, slug }: { data: any, slug: string }) {
     const galleryRef = useRef<HTMLDivElement>(null);
 
-    // galleryUrls holds the current list — starts from prop, updates on filter
-    const [galleryUrls, setGalleryUrls] = useState<string[]>(data?.gallery_urls ?? []);
+    const [galleryUrls, setGalleryUrls] = useState<GalleryItem[]>(data?.mapping_items?.items ?? []);
     const [activeFilter, setActiveFilter] = useState<'all' | 'images' | 'videos'>('all');
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const galleryItems = useMemo(() => {
-        return galleryUrls.map((url: string) => {
-            const isVideo = /\.(mp4|webm|ogg)$/i.test(url);
+        return galleryUrls.map((item: GalleryItem) => {
+            const isVideo = /\.(mp4|webm|ogg)$/i.test(item.gallery_urls ?? '');
             return {
-                src: url,
+                src: item.gallery_urls,      // ← fix: was `url` (the whole object)
                 type: isVideo ? 'video' : 'image',
-                caption: data?.caption ?? '',
+                caption: item.description ?? '',
             };
         });
-    }, [galleryUrls, data?.caption]);
+    }, [galleryUrls]);
 
     const openGallery = (index: number) => {
         if (typeof Fancybox === 'undefined') return;
@@ -40,8 +44,6 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug:stri
             const caption = el.getAttribute('data-caption') ?? '';
 
             if (isVideo) {
-                // For direct mp4/webm files, use type:'html' with a <video> element
-                // type:'video' is only for YouTube/Vimeo embed URLs
                 gallery.push({
                     src: `<video controls autoplay playsinline style="max-width:100%;max-height:90vh;"><source src="${src}" />Your browser does not support the video tag.</video>`,
                     type: 'html',
@@ -62,31 +64,30 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug:stri
         });
     };
 
-    const applyFilter = async(type:'all' | 'images' | 'videos')=>{
-        if (activeFilter === type) return;
+    const applyFilter = async (type: 'all' | 'images' | 'videos') => {
+        if (activeFilter === type || isLoading) return;
         setActiveFilter(type);
 
-        if(type == 'all'){
-            setGalleryUrls(data?.gallery_urls ?? []);
+        if (type === 'all') {
+            setGalleryUrls(data?.mapping_items?.items ?? []);
             return;
         }
 
-        try{
+        try {
             setIsLoading(true);
-            const {data:filteredData, error} = await apiFetch(`gallery/${slug}?filter=${type}`);
-            if(error || !filteredData){
-                throw new Error('failed to fetch gallery data');
-            };
-            const urls: string[] = filteredData?.gallery_details?.gallery_urls ?? [];
-            setGalleryUrls(urls);
-        }catch(error){
-            console.log((error as Error).message || 'Failed to fetch gallery data') ;
+            const { data: filteredData, error } = await apiFetch(`gallery/${slug}?filter=${type}`);
+            if (error || !filteredData) throw new Error('Failed to fetch gallery data');
+
+            // Adjust key to match filtered API response shape
+            const items: GalleryItem[] = filteredData?.gallery_details?.mapping_items?.items ?? [];
+            setGalleryUrls(items);
+        } catch (error) {
+            console.error((error as Error).message);
             alert('Failed to fetch gallery data');
-        }finally{
+        } finally {
             setIsLoading(false);
         }
-
-    }
+    };
 
     return (
         <>
@@ -99,26 +100,26 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug:stri
                     <div className="gallery_list_header">
                         {data?.title && <h1>{data.title}</h1>}
                         <div className="gallery_tab">
-                            
                             {activeFilter !== 'all' && (
                                 <button
-                                    type='reset'
-                                    className='resetBtn cursor-pointer'
-                                    onClick={()=>applyFilter('all')}
-                                >Reset</button>
+                                    type="button"
+                                    className="resetBtn cursor-pointer"
+                                    onClick={() => applyFilter('all')}
+                                    disabled={isLoading}
+                                >
+                                    Reset
+                                </button>
                             )}
                             <span
-                                className={` ${activeFilter == 'images' ? 'active' : ''} ${isLoading ? 'pointer-event-none opacity-50':'cursor-pointer'}`}
-                                onClick={()=>applyFilter('images')}
-                                aria-disabled
+                                className={`${activeFilter === 'images' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                onClick={() => applyFilter('images')}
                             >
                                 Photos
                                 <figure><img src="/images/icons/yellow-gallery.svg" alt="icon" className="img-fluid" /></figure>
                             </span>
                             <span
-                                className={`${activeFilter == 'videos' ? 'active' : ''} ${isLoading ? 'pointer-event-none opacity-50':'cursor-pointer'}`} 
-                                onClick={()=>applyFilter('videos')}
-                                aria-disabled    
+                                className={`${activeFilter === 'videos' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                onClick={() => applyFilter('videos')}
                             >
                                 Video
                                 <figure><img src="/images/icons/yellow-video.svg" alt="icon" className="img-fluid" /></figure>
@@ -128,13 +129,11 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug:stri
 
                     <div className="gallery_list" ref={galleryRef}>
                         {isLoading ? (
-                            <div>
-                                <SkeletonGroup  count={6} wrapperClassName="grid gap-[3rem]" className='w-full h-[50rem]' />
-                            </div>
+                            <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />
                         ) : (
-                            galleryItems?.map((item: any, idx: number) => (
+                            galleryItems.map((item, idx) => (
                                 <div
-                                    key={idx}
+                                    key={`${item.src}-${idx}`}
                                     className="gallery_details"
                                     data-src={item.src}
                                     data-type={item.type}
@@ -174,8 +173,6 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug:stri
                                 </div>
                             ))
                         )}
-
-                        
                     </div>
                 </div>
             </section>

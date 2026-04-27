@@ -110,3 +110,29 @@ export const HappeningsTabs = {
       }
   ]
 }
+
+export const FacultyTabs = {
+  "tab_title": "Academics",
+  "tabs": [
+      {
+          "slug": "news-events",
+          "title": "News & Events"
+      },
+      {
+        "slug": "media-coverage",
+        "title": "Media Coverage"
+      },
+      {
+          "slug": "notices-announcements",
+          "title": "Notices & Announcements"
+      },
+      {
+        "slug": "gallery",
+        "title": "Gallery"
+      },
+      {
+        "slug": "faculty",
+        "title": "Faculty"
+      }
+  ]
+}

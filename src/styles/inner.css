@@ -4,9 +4,9 @@
 }
 
 .about_top {
-    background-color: var(--color-64);
     padding: 1.5rem 0;
     opacity: 1;
+    background:var(--color-64) url('/images/pattern/header.png') no-repeat right;
 }
 
 .about_glbim_p {
@@ -813,10 +813,16 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 
 
 /* ==============Faculty page Start============= */
-.administration_section{ padding-block:0 20rem;}
-.administration_grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block:9rem 0rem; row-gap: 7rem; position: relative;}
-.administration_grid::before{ background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
-.administration_Bx{ background-color: var(--color-F5); padding: 1.3rem; position: relative;}
+.administration_section{ padding-block:10rem 17.8rem; background-color:var(--color-F4)}
+.administration_section .innerPage_title{font:var(--font-24); font-weight: bold; color:var(--color-64); margin-bottom: 4rem;}
+.messages_section{padding-block: 5rem 12.1rem; background:#fff;}
+.messages_section .messages_grid{grid-template-columns: repeat(2, 1fr);}
+.messages_section .messages_grid::before{display:none;}
+.administration_grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block:4rem 0rem; row-gap: 7rem; position: relative;}
+.administration_grid::before{ background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: 0; background-size: contain; background-repeat: no-repeat; }
+.administration_Bx{ background-color: #fff; padding: 1.3rem; position: relative;}
+.messages_grid .administration_Bx{background-color: var(--color-F5);}
+
 .administration_Bx h5{ font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:1.6rem 0.5rem;}
 .administration_Bx p{ margin-bottom: 0;}
 .administration_Bx figure{ margin-top: -5rem; background: linear-gradient( to bottom, #6f6f6f 0%, #8f8f8f 40%, #bfbfbf 100% );}

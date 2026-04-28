@@ -137,6 +137,10 @@ export const FacultyTabs = {
       {
         "slug": "leadership",
         "title": "Leadership"
+      },
+      {
+        "slug": "messages-and-administration",
+        "title": "Message"
       }
   ]
 }

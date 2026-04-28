@@ -1,6 +1,32 @@
 (function () {
   "use strict";
 
+  let frozenWidth = null;
+
+  function adjustMaxContent() {
+    const container = document.querySelector(".container25");
+    if (!container) return;
+
+    const windowWidth = window.innerWidth;
+    const containerOffset = container.getBoundingClientRect().left + window.scrollX;
+    const containerWidth = container.offsetWidth;
+    const rightEdge_calc = containerOffset + containerWidth;
+
+    let rightEdge = rightEdge_calc;
+
+    if (windowWidth >= 2550) {
+      if (!frozenWidth) {
+        frozenWidth = rightEdge_calc;
+      }
+      rightEdge = frozenWidth;
+    } else {
+      frozenWidth = null;
+    }
+
+    document.querySelectorAll(".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl")
+      .forEach(el => el.style.maxWidth = rightEdge + "px");
+  }
+
   function initWhyGlbSection() {
     const section = document.querySelector(".why_glb_section");
     if (!section) return false;
@@ -40,9 +66,7 @@
     setActive(0);
     return true;
   }
-  
-  
-  // ✅ ADD NEW FUNCTION HERE — between initWhyGlbSection and initSwipers
+
   function initAccordion() {
     const headers = document.querySelectorAll(".accordion-header");
     if (!headers.length) return false;
@@ -76,7 +100,6 @@
     });
 
     headers[0].click();
-
     return true;
   }
 
@@ -84,12 +107,11 @@
     if (typeof Swiper === "undefined") return false;
 
     // Destroy any existing instances before re-init
-    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper"].forEach((sel) => {
+    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper", ".leadership_slider", ".acredation_swiper"].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
     });
 
-    //-====Ranking and Award Slider -js -start--//
     new Swiper(".award_ranking", {
       loop: true,
       spaceBetween: 20,
@@ -105,7 +127,6 @@
         1200: { slidesPerView: 5 },
       },
     });
-    //-====Ranking and Award Slider -js -end--//
 
     new Swiper(".studentsSwiper", {
       slidesPerView: 3,
@@ -136,8 +157,8 @@
       spaceBetween: 27,
       loop: true,
       navigation: {
-          nextEl: ".home_placement_static_card .next_swiper_btn",
-          prevEl: ".home_placement_static_card .prev_swiper_btn",
+        nextEl: ".home_placement_static_card .next_swiper_btn",
+        prevEl: ".home_placement_static_card .prev_swiper_btn",
       },
     });
 
@@ -146,28 +167,72 @@
       spaceBetween: 28,
       loop: true,
       autoplay: {
-          delay: 2000,
+        delay: 2000,
       },
       navigation: {
-          nextEl: ".home_placement_companies .next_swiper_btn",
-          prevEl: ".home_placement_companies .prev_swiper_btn",
+        nextEl: ".home_placement_companies .next_swiper_btn",
+        prevEl: ".home_placement_companies .prev_swiper_btn",
       },
     });
-
-    // home add on course slider
 
     new Swiper(".courses_slider_wrapper", {
       slidesPerView: 6,
-      // spaceBetween: 21,
       loop: true,
       autoplay: {
-          delay: 2000,
+        delay: 2000,
       },
       navigation: {
-          nextEl: ".courses_header .next_swiper_btn",
-          prevEl: ".courses_header .prev_swiper_btn",
+        nextEl: ".courses_header .next_swiper_btn",
+        prevEl: ".courses_header .prev_swiper_btn",
       },
     });
+
+    new Swiper(".leadership_slider", {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        1200: {
+          slidesPerView: 3.5,
+          spaceBetween: 23,
+        },
+      },
+    });
+
+    new Swiper(".acredation_swiper", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 20,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: false,
+      autoplay: false,
+      navigation: {
+          nextEl: ".swiper_next_custom",
+          prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+          // Jab screen 768px se badi ho (Tablets)
+          768: {
+              slidesPerView: 2.5,
+              spaceBetween: 15,
+          },
+          // Jab screen 1200px se badi ho (Desktop - XD Match)
+          1200: {
+              slidesPerView: 3.35, // 3 full + 0.5 next slide
+              spaceBetween: 25,
+          }
+      }
+  });
 
     return true;
   }
@@ -178,12 +243,13 @@
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
     }
+    window.addEventListener("resize", adjustMaxContent);
+    adjustMaxContent(); // run once on init
   }
 
   // Expose for Next.js client-side re-init
   window.__initCustomJS = initAll;
 
-  // Initialize DOM-based interactions as soon as possible.
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initAll, { once: true });
   } else {

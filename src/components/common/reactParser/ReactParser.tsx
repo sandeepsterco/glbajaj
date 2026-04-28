@@ -15,6 +15,7 @@ import AddOnCourses from "../../parser/AddOnCourses";
 import HomeHappenings from "../../parser/HomeHappenings";
 import HomeAlumni from "../../parser/HomeAlumni";
 import ContactForm from "../../parser/ContactForm";
+import AboutLeadership from "../../parser/AboutLeadership";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -103,6 +104,10 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "contact_form") {
         return <ContactForm />;
+      }
+
+      if (domNode.attribs.id === "about_leadership") {
+        return <AboutLeadership />;
       }
     }
   },

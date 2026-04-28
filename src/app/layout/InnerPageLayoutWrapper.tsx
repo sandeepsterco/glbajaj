@@ -4,6 +4,7 @@ import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
 
 export default async function InnerPageLayoutWrapper({ slug, tabs, children, mainClass, showTabs }: { slug: string; children: React.ReactNode, tabs:any, mainClass:string, showTabs:boolean }) {
+
     let updatedTabs;
     if(tabs && tabs?.tabs?.length > 0){
         updatedTabs = tabs;
@@ -13,7 +14,6 @@ export default async function InnerPageLayoutWrapper({ slug, tabs, children, mai
 
         updatedTabs = data?.data;
     }
-
 
     return (
         <div className={mainClass || ''}>

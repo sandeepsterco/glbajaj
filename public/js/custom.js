@@ -100,6 +100,19 @@
     });
 
     headers[0].click();
+
+    // ACCORDION (mobile)
+    document.querySelectorAll(".acc-header").forEach(header => {
+      header.addEventListener("click", function () {
+          let parent = this.parentElement;
+          // close others (optional – remove if you want multiple open)
+          document.querySelectorAll(".tab-content").forEach(item => {
+              if (item !== parent) item.classList.remove("active");
+          });
+          parent.classList.toggle("active");
+      });
+    });
+
     return true;
   }
 
@@ -237,6 +250,19 @@
     return true;
   }
 
+  function tabContent(){
+    document.querySelectorAll(".tab-btn").forEach(button => {
+      button.addEventListener("click", function () {
+          document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+          document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+          this.classList.add("active");
+          document.getElementById(this.dataset.tab).classList.add("active");
+      });
+    });
+
+    return true;
+  }
+
   function initAll() {
     initWhyGlbSection();
     initAccordion();
@@ -245,6 +271,7 @@
     }
     window.addEventListener("resize", adjustMaxContent);
     adjustMaxContent(); // run once on init
+    tabContent();
   }
 
   // Expose for Next.js client-side re-init

@@ -304,7 +304,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                   <ul>
                     {menuData.children.map((item, itemIdx) => (
                       <li key={itemIdx}>
-                        <Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.title}</Link>
+                        <Link href={item?.slug ? BASE_URL + item.slug : ''} onClick={() => setSidebarOpen(false)}>{item.title}</Link>
                       </li>
                     ))}
                   </ul>

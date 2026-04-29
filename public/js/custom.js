@@ -285,6 +285,16 @@
       });
     });
 
+    // Activate first tab on load
+    const firstBtn = document.querySelector(".tab-btn");
+    if (firstBtn) {
+      firstBtn.classList.add("active");
+      const firstTabId = firstBtn.dataset.tab;
+      if (firstTabId) {
+        document.getElementById(firstTabId)?.classList.add("active");
+      }
+    }
+
     return true;
   }
 

@@ -3,12 +3,14 @@ import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 
+import '../styles/fancybox.css'
 import "../styles/custom.css";
 import "../styles/program.css";
 import "../styles/globals.css";
 import "../styles/inner.css";
 import "../styles/parser.css";
 import "../styles/module.css";
+
 
 import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";

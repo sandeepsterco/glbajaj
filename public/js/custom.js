@@ -116,6 +116,31 @@
     return true;
   }
 
+  function gridPopup(){
+    const items = document.querySelectorAll('.media_grid_Bx');
+
+    items.forEach((item, index) => {
+        item.addEventListener('click', function () {
+
+            let gallery = [];
+
+            items.forEach((el) => {
+                gallery.push({
+                    src: el.getAttribute('data-src'),
+                    type: "image"
+                });
+            });
+
+            Fancybox.show(gallery, {
+                startIndex: index
+            });
+
+        });
+    });
+
+    return true;
+  }
+
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
 
@@ -272,6 +297,7 @@
     window.addEventListener("resize", adjustMaxContent);
     adjustMaxContent(); // run once on init
     tabContent();
+    gridPopup();
   }
 
   // Expose for Next.js client-side re-init

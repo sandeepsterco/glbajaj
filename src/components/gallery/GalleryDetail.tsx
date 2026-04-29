@@ -1,6 +1,5 @@
 "use client"
 import { apiFetch } from '@/src/lib/api';
-import '@/src/styles/fancybox.css'
 import Script from 'next/script';
 import { useMemo, useRef, useState } from 'react'
 import { SkeletonGroup } from '../ui/Skeleton';
@@ -91,10 +90,6 @@ export default function GalleryDetailPage({ data, slug }: { data: any, slug: str
 
     return (
         <>
-            <Script
-                src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
-                strategy="afterInteractive"
-            />
             <section className="gallery_list_section">
                 <div className="container25">
                     <div className="gallery_list_header">

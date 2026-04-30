@@ -3,6 +3,8 @@ import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../styles/fancybox.css'
 import "../styles/custom.css";
 import "../styles/program.css";

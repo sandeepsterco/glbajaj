@@ -14,7 +14,7 @@ export function SkeletonGroup({
   wrapperClassName?: string;
 }) {
   return (
-    <div className={`flex gap-4 ${wrapperClassName}`}>
+    <div className={`grid gap-4 grid-cols-2 ${wrapperClassName}`}>
       {Array.from({ length: count }).map((_, i) => (
         <Skeleton key={i} className={className} />
       ))}

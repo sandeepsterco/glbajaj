@@ -265,7 +265,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-heading h3{ letter-spacing: -1.8px; color: var(--color-92); }
 .award-heading h3 span{ letter-spacing: -1.8px; color: var(--color-92); display: block; }
 .award-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; margin-top: 7.7rem; }
-.award-box p{font: var(--font-18); color: var(--color-black); font-weight: 600; padding: 2rem;}
+.award-box p{font: var(--font-18); color: var(--color-black); font-weight: 600; padding: 2rem; margin-bottom: 0;}
 .award-detail-sec{padding-block: 5rem 10rem;}
 .award-detail-heading{margin-bottom: 7rem;}
 .award-detail-heading h4{color: var(--color-64); font-weight: 700;}

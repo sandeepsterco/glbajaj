@@ -2,13 +2,16 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import FacultyList from "@/src/components/faculty/FacultyList";
 import { apiFetch } from "@/src/lib/api"
+import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import { getSlug } from "@/src/lib/getSlug";
 
-export default async function GalleryPage({searchParams}:{searchParams:Promise<{page?:string}>}){
-    const {page} = await searchParams;
+export default async function GalleryPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+    const { page } = await searchParams;
     const currentPage = Number(page) || 1;
-    const {data, error} = await apiFetch(`faculty?page=${currentPage}`);
+    const { data, error } = await apiFetch(`faculty?page=${currentPage}`);
+    const slug = await getSlug();
 
-    if(error){
+    if (error) {
         return (
             <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
         )
@@ -16,13 +19,15 @@ export default async function GalleryPage({searchParams}:{searchParams:Promise<{
 
     const pagination = data?.faculty;
 
-    return(
+    return (
         <>
-            <FacultyList data={data?.faculty} />
-            <PaginationWrapper
-                currentPage={pagination?.current_page || 1}
-                totalPages={pagination?.last_page || 1}
-            />
+            <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
+                <FacultyList data={data?.faculty} />
+                <PaginationWrapper
+                    currentPage={pagination?.current_page || 1}
+                    totalPages={pagination?.last_page || 1}
+                />
+            </InnerPageLayoutWrapper>
         </>
     )
 }

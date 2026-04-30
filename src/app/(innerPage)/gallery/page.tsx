@@ -2,9 +2,12 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import GalleryList from "@/src/components/gallery/GalleryList";
 import MainGallery from "@/src/components/gallery/MainGallery";
 import { apiFetch } from "@/src/lib/api"
+import { getSlug } from "@/src/lib/getSlug";
+import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 
 export default async function GalleryPage(){
     const {data, error} = await apiFetch(`gallery`);
+    const slug = await getSlug();
 
     if(error){
         return (
@@ -14,8 +17,10 @@ export default async function GalleryPage(){
 
     return(
         <>
+        <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
             <MainGallery data={data?.featured} />
             <GalleryList data={data?.others} />
+            </InnerPageLayoutWrapper>
         </>
     )
 }

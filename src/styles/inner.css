@@ -713,8 +713,8 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .gallery_list_bx p{ font: var(--font-16); color: var(--color-33); font-weight: 400; padding-inline:2.5rem; margin-block: 2rem;}
 .fancybox__caption{ font: var(--font-18); padding-top:5rem!important;}
 .fancybox__counter span{ color: var(--color-white);}
-.fancybox__nav .carousel__button.is-next { right: 30%!important; background-color: var(--color-white); border-radius:0; color: #FF0000;}
-.fancybox__nav .carousel__button.is-prev { left: 30%!important; background-color: var(--color-white); border-radius: 0; color: #FF0000;}
+.fancybox__nav .carousel__button.is-next { right: 30%; background-color: var(--color-white); border-radius:0; color: #FF0000;}
+.fancybox__nav .carousel__button.is-prev { left: 30%; background-color: var(--color-white); border-radius: 0; color: #FF0000;}
 .fancybox__nav .carousel__button.is-prev svg, .fancybox__nav .carousel__button.is-next svg{ width: 1.3rem;} 
 .gallery_list_header{ padding-block:6rem 5rem; display: flex; justify-content: space-between;}
 .gallery_list_section h1{ color: var(--color-64); font: var(--font-36); letter-spacing: -1.8px;}
@@ -936,9 +936,10 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 /* ==============Conferences & Symposium page Start============= */
 .confrence_section{padding-block:5rem 12rem; }
 .confrence_section h2{ color: var(--color-92); padding-right: 5rem;}
-.confrence_grid{ margin-top: 7.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; row-gap: 15.5rem;}
+.confrence_grid{ margin-top: 7.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; row-gap: 3.8rem;}
 .confrence_grid_Bx{ position: relative;}
 .confrence_grid_Bx p{ font: var(--font-18); font-weight: 500; color: var(--color-black); padding:2rem 3rem 0 0; margin-bottom: 0;}
+.confrence_grid_Bx .arrow_icon{margin-left: -1.2rem; margin-top:1rem;}
 
 
 /* ==============Academic Facilities page Start============= */

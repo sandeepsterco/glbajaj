@@ -378,6 +378,8 @@ a:not([href]):not([class]):hover {
 .row {
   display: flex;
   flex-wrap: wrap;  
+  margin-right: -1.5rem;
+    margin-left: -1.5rem;
 }
 
 .justify-between{

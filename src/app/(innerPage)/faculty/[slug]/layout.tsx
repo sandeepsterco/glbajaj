@@ -1,8 +1,8 @@
 import { getSlug } from "@/src/lib/getSlug";
-import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 
 export default async function NewsEventsLayout({ children }: { children: React.ReactNode }) {
-    const slug = await getSlug();
+    const slug = await getSlug(-2);
 
     if (!slug) return <>{children}</>;
 

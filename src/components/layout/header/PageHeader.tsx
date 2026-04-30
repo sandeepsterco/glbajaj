@@ -3,7 +3,7 @@ import { BASE_URL } from '@/src/config/config';
 import { FaChevronRight } from "react-icons/fa";
 
 
-export default async function PageHeader({data, slug, showTabs}:{data:any, slug:string, showTabs:boolean}){
+export default async function PageHeader({type, data, slug, showTabs}:{type:string, data:any, slug:string, showTabs:boolean}){
     const currentPage = data?.tabs?.find((tab:any)=>tab.slug === data?.active_tab_slug);
     const activeSlug = data?.active_tab_slug;
 
@@ -33,7 +33,7 @@ export default async function PageHeader({data, slug, showTabs}:{data:any, slug:
                                 <ul className="about_menu_links">
                                     {data?.tabs.length > 0 && data.tabs.map((item:any, itemIdx:number)=>(
                                         <li key={itemIdx}>
-                                            <Link href={BASE_URL+ item.slug} className={`paragraph ${item.slug === activeSlug ? 'active' : ''}`}>{item.title}</Link>
+                                            <Link href={type == 'department' ? BASE_URL+ 'department/' + item.slug : BASE_URL+ item.slug} className={`paragraph ${item.slug === activeSlug ? 'active' : ''}`}>{item.title}</Link>
                                         </li>
                                     ))}
                                 </ul>

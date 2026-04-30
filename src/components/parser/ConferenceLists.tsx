@@ -36,7 +36,9 @@ export default function ConferenceLists() {
         <div className="confrence_grid">
             {conferenceData?.data  && conferenceData.data?.map((item:any, idx:number)=>(
                 <div className="confrence_grid_Bx">
-                    <figure><Image src={item.image || '/images/default/confrence.webp'} width={380} height={275} className="img-fluid" alt={item.title} /></figure>
+                    <figure>
+                        <Image src={item.image || '/images/default/confrence.webp'} width={380} height={275} className="img-fluid" alt={item.title} />
+                    </figure>
                     {item?.title && (
                         <p>{item.title}</p>
                     )}

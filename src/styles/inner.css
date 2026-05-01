@@ -1045,9 +1045,8 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 /* ============== CSE Department Code of Conduct page Start============= */
 .cou_off_lft .cou_main_title{margin-bottom: 5.9rem;padding-left: 3.7rem;}
 .cse_course_offered{padding-block: 10rem 10rem;  border-bottom: 0.1rem solid #C0855280;   border-top: 0.1rem solid #C0855280;}
-.cou_off_grid{    display: grid;
-    grid-template-columns: auto 51.5%;
-    align-items: end;}
+.cou_off_grid{ display: grid; grid-template-columns: auto 51.5%; align-items: end;}
+.cou_main_title .title48{color: var(--color-92);}
 .cou_off_box{background-color: var(--color-f3);padding: 4.1rem 5.2rem 7.6rem 3.8rem;}
 .cse_cou_list p{font: var(--font-21);margin-bottom: 4rem;font-weight: 500;}
 .cse_course{ display: flex; justify-content: space-between; align-items: flex-start; padding: 2rem 0; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
@@ -1074,6 +1073,7 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .peo_main .tabs_section .tab-buttons{padding-left: 0;}
 .peo_main .tabs_section::before{background-color: var(--color-AE);max-height: 42.1rem; bottom: 0;right: 0;}
 .peo_main .tabs_section .tab-btn.active{color: var(--color-white)}
+.peo_main .tabs_section .tab-btn{padding-left: 0;}
 .peo_main .tabs_section .tab-btn{color:#FFFFFF80;}
 .peo_rgt_box .poe_title{font: var(--font-18);font-weight: 700;margin-bottom: 1rem;}
 .peo_rgt_box .peo_box:not(:last-child) { margin-bottom: 3rem; }
@@ -1081,11 +1081,13 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .peo_main .tab_content .acc-body::before{ background-color: transparent; }
 .peo_main{padding-top: 10rem;}
 .peo_main .tabs_section::after{background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; bottom: 8rem; content: ""; 
-    background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem;}
-.peo_rgt_box{background-color: var(--color-white);padding: 8.8rem 12.5rem 8.8rem 10rem;z-index: 99;position: relative;margin-top: -4rem;}
+    background-repeat: no-repeat; height: 21.4rem; z-index: 0; right: 0; left: 15rem;}
+.peo_rgt_box{background-color: var(--color-white);padding: 8.8rem 12.5rem 8.8rem 10rem;z-index: 1;position: relative;margin-top: -4rem;}
 .faculties_main{padding-block: 0rem 10rem;}
 .cse_faculties_slider .navigation_btn{bottom: 0; left: 0; right: unset; position: relative;}
 .faculties_main .faculties_title{margin-bottom: 3.8rem;display: flex;justify-content: space-between;}
+.faculties_main .faculties_title .font24{margin-bottom: 1rem;}
+.faculties_main .faculties_title .title48{color: var(--color-92);}
 .laboraties_mainsec{background-color: var(--color-F4);padding-block: 1.2rem 10rem;}
 .lab_grid{display: grid;    grid-template-columns: 18% 74.5%;;align-items: center;gap: 13.9rem;}
 .lab_rgtswiper h4{color: var(--color-64);margin-top: 2rem;}
@@ -1097,26 +1099,110 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
      z-index: 9; top: -1rem; left: -10rem; height: 37.8rem; }
 .lab_grid .navigation_btn{ position: relative; right: 0; bottom: 0;}
 .rese_top_title{display: flex; align-items: center; padding-block: 7.4rem 6.4rem; gap: 7.4rem;color: var(--color-white);}
-.rese_title  .title24{color: var(--color-white);}    
+.rese_title  .title24{color: var(--color-white);margin-bottom: 1rem;}    
+.rese_title .read_more_icon{    margin-top: 2.1rem;
+    display: inline-block;}
+    .rese_title .read_more_icon img{    width: 6rem;
+    height: 6rem;}
 .resboxrgt{display: flex;}
 .resboxrgt .research_box{min-width: 20.2rem; text-align: center; max-width: 20.2rem; padding-block: 2.1rem 3.9rem;border: 0.1rem solid var(--color-C0);}
 .resboxrgt .research_box p{color: var(--color-white);}
 .resboxrgt .research_box:not(:first-child) { border-left: none; }
-.cse_research_slider {    margin-bottom: 10rem;
-    position: relative;
-    top: -57rem;}
+.cse_research_main .cse_research_slider {margin-bottom: 10rem;margin-left: -12rem;}
 .cse_research_slider .navigation_btn{position: relative; bottom: 0; right: 0;}
 .cse_research_slider .navigation_btn .swiper_next_custom,
 .cse_research_slider .navigation_btn .swiper_prev_custom {box-shadow: none;}
 .research_card .res_caption{position: absolute; bottom: 0; left: 0; width: 100%; height: 11rem; background: 
     linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));}
 .research_card .res_caption p{font: var(--font-24); color: var(--color-white); position: absolute; bottom: 3rem; left: 3.4rem; right: 6.4rem;}
-.cse_research_main .resach_bgbox{position: relative; padding-bottom:58rem;   border-top: 1.1rem solid var(--color-FE);}
+.cse_research_main .resach_bgbox{position: relative; border-top: 1.1rem solid var(--color-FE);}
 .cse_research_main .resach_bgbox::before{ content: ''; background-color: #1D1D1D; bottom: 0; left: 0; top: 0; width: 100%;    
-    position: absolute;z-index: -1; }
-.cse_research_main .resach_bgbox::after{
-    background-image: url(/images/research_shap_01.png); width: 10.8rem; position: absolute; content: ""; background-repeat: repeat;
-     z-index: 9; top: -1rem; left: -10rem; height: 37.8rem;
-}
+    position: absolute;z-index: -1;padding-bottom: 96rem;;  }
+.cse_research_main .resach_bgbox::after{ background-image: url(/images/research_shap_01.png); width: 30.6rem; position: absolute; 
+    content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; z-index: -1; height: 95.6rem; }
+.achivent_bgbox{background-color: var(--color-F4);padding-block: 9.3rem 7.2rem;}
+.achivent_bgbox .font24 {margin-bottom: 2rem;}
+.achivent_bgbox .title48{color:var(--color-92) ;margin-bottom: 4rem;}
+.achivent_grid{display: grid;grid-template-columns: 1fr 1fr;gap: 2.2rem;}
+.achivecard{position: relative;}
+.achivecard .achiv_caption{padding: 3rem 2rem 0 2rem;}
+.achivecard p{font: var(--font-18);font-weight: 600;}
+.activites_sec .activies_grid{display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem;}
+.activites_sec{padding-block: 10rem 11rem;}
+.activites_sec .font24{margin-bottom: 2rem;}
+.activites_sec .title48{color: var(--color-92);margin-bottom: 10rem;}
+.activies_col{position: relative;}
+.activies_col p{padding-top: 1.3rem;}
+.dep_projects{padding-block: 17.5rem 17.1rem;background-color: var(--color-F4);}
+.dep_projects .dep_project_grid{    display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; align-items: center;}
+.dep_projects{position: relative;}
+.dep_projects::after{ background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; 
+    content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0;  height: 100%; }
+.project_contentsec h4,.project_contentsec h3{margin-bottom: 4rem;}
+.project_contentsec .cus-btn{margin-top: 2rem;}
+.dep_succ_sto .home_testimonials .desc{font: var(--font-30);line-height: 4.2rem;}
+.dep_succ_sto .home_testimonials .thumb.active .thumb_des{opacity: 0;}
 /* ============== CSE Department Code of Conduct page End============= */
+
+
+/* ============== Research Publication start============= */
+.res_publication{padding-block: 5rem 12rem;}
+.res_pub_title h4{margin-bottom: 5rem;}
+.res_publi_list{display: flex;gap: 4rem;margin-bottom: 4rem;}
+.res_publi_list li a{ gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4;    width: 100%;}
+.res_publica_tblsec:not(:last-of-type)  { padding-bottom: 7rem; }
+.res_publica_tblsec:last-of-type { padding-bottom: 0; }
+/* ============== Research Publication End============= */
+
+
+/* ============== Placement Policy start============= */
+r 
+
+.placement_accordin .accordion-header{ padding-inline: 0 0;}
+.ppolicy_accordion .ppolicy_header h3{display: flex; align-items: start; gap: 5rem;font: var(--font-21);}
+.placement_accordin .accordion-item{background-color: transparent; border-bottom: 0.1rem solid #AE7F2C80; padding-block: 3rem 3rem;}
+.placement_accordin .accordion-body{padding: 3rem 0 3rem 0;background-color: transparent;}
+.placement_accordin .accordion-item.active .accordion-body{padding: 3rem 0 3rem 0;background-color: transparent;}
+
+
+.ppolicy_sec {
+    background: #f5f5f5;
+    padding: 40px 0;
+}
+
+.ppolicy_container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.ppolicy_title {
+    margin-bottom: 20px;
+}
+
+.ppolicy_item {
+    border-bottom: 1px solid #caa56a;
+    padding: 15px 0;
+}
+
+
+.ppolicy_num {
+    font-weight: bold;
+    color: #AE7F2C;
+}
+
+.ppolicy_body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding-left: 35px;
+}
+
+.ppolicy_body ul {
+    margin-top: 10px;
+}
+
+.ppolicy_item.active .ppolicy_body {
+    max-height: 500px; /* enough height */
+}
+/* ============== Placement Policy End============= */
 

@@ -18,6 +18,7 @@ import ContactForm from "../../parser/ContactForm";
 import AboutLeadership from "../../parser/AboutLeadership";
 import AwardsList from "../../parser/AwardsList";
 import ConferenceLists from "../../parser/ConferenceLists";
+import DepartmentHomeFaculties from "../../parser/DepartmentHomeFaculties";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -118,6 +119,10 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "conference_lists") {
         return <ConferenceLists />;
+      }
+
+      if (domNode.attribs.id === "department_home_faculties") {
+        return <DepartmentHomeFaculties />;
       }
     }
   },

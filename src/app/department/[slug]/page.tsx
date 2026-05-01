@@ -8,7 +8,7 @@ import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 export default async function DepartmentPage(){
     const slug = await getSlug();
 
-    const {data, error} = await apiFetch(`department/${slug}`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`department/${slug}/home`, { cache:'no-store'});
 
     if(error){
         return <NotFound />;

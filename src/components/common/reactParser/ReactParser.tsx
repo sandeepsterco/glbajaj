@@ -19,6 +19,9 @@ import AboutLeadership from "../../parser/AboutLeadership";
 import AwardsList from "../../parser/AwardsList";
 import ConferenceLists from "../../parser/ConferenceLists";
 import DepartmentHomeFaculties from "../../parser/DepartmentHomeFaculties";
+import DepartmentHomeLaboratories from "../../parser/DepartmentHomeLaboratories";
+import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
+import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -123,6 +126,18 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "department_home_faculties") {
         return <DepartmentHomeFaculties />;
+      }
+
+      if (domNode.attribs.id === "department_home_laboratories") {
+        return <DepartmentHomeLaboratories />;
+      }
+
+      if (domNode.attribs.id === "department_home_alumni") {
+        return <DepartmentHomeAlumni />;
+      }
+
+      if (domNode.attribs.id === "department_home_courses") {
+        return <DepartmentHomeCourses />;
       }
     }
   },

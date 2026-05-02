@@ -145,7 +145,7 @@
     if (typeof Swiper === "undefined") return false;
 
     // Destroy any existing instances before re-init
-    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper", ".leadership_slider", ".acredation_swiper", ".cse_faculties_slider", ".cse_lab_slider", ".cse_research_slider", ".hod_profile_slider"].forEach((sel) => {
+    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper", ".leadership_slider", ".acredation_swiper", ".cse_faculties_slider", ".cse_research_slider", ".hod_profile_slider"].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
     });
@@ -297,31 +297,7 @@
       }
     });
 
-    new Swiper(".cse_lab_slider", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
-      spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
-      loop: true,
-      autoplay: false,
-      navigation: {
-          nextEl: ".swiper_next_custom",
-          prevEl: ".swiper_prev_custom",
-      },
-      breakpoints: {
-          // Jab screen 768px se badi ho (Tablets)
-          768: {
-              slidesPerView: 2.5,
-              spaceBetween: 15,
-          },
-          // Jab screen 1200px se badi ho (Desktop - XD Match)
-          1200: {
-              slidesPerView: 2.25, // 3 full + 0.5 next slide
-              spaceBetween: 40,
-          }
-      }
-    });
-
+    
     new Swiper(".cse_research_slider", {
       // 3 slides poori aur 4th slide thodi si dikhegi
       slidesPerView: 1.2, // Mobile ke liye

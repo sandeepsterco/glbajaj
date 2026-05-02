@@ -1059,6 +1059,7 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .ad_tabsec{background: var(--color-64); color: #fff; display: inline-flex; align-items: center; padding: 1.2rem 3.8rem 1.2rem 3.7rem; justify-content: space-between; gap: 17.4rem;}
 .ad_tabsec .ad_pro_list{ display: flex; align-items: center; margin: 0; padding: 0;} 
 .ad_tabsec .ad_pro_list .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
+.ad_tabsec .ad_pro_list li:last-child .dot{display:none}
 .ad_leftsec .ad_title{padding-block: 1rem; color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold;} 
 .ad_leftsec{display: flex; gap: 13.2rem;}
 .ad_tabsec .btn_styl1{padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem;}
@@ -1119,7 +1120,7 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .cse_research_main .resach_bgbox::before{ content: ''; background-color: #1D1D1D; bottom: 0; left: 0; top: 0; width: 100%;    
     position: absolute;z-index: -1;padding-bottom: 96rem;;  }
 .cse_research_main .resach_bgbox::after{ background-image: url(/images/research_shap_01.png); width: 30.6rem; position: absolute; 
-    content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; z-index: -1; height: 95.6rem; }
+    content: ""; background-repeat: repeat; top: 0; left: 0; z-index: 0; height: 95.6rem; }
 .achivent_bgbox{background-color: var(--color-F4);padding-block: 9.3rem 7.2rem;}
 .achivent_bgbox .font24 {margin-bottom: 2rem;}
 .achivent_bgbox .title48{color:var(--color-92) ;margin-bottom: 4rem;}
@@ -1156,53 +1157,232 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 
 
 /* ============== Placement Policy start============= */
-r 
-
-.placement_accordin .accordion-header{ padding-inline: 0 0;}
-.ppolicy_accordion .ppolicy_header h3{display: flex; align-items: start; gap: 5rem;font: var(--font-21);}
-.placement_accordin .accordion-item{background-color: transparent; border-bottom: 0.1rem solid #AE7F2C80; padding-block: 3rem 3rem;}
-.placement_accordin .accordion-body{padding: 3rem 0 3rem 0;background-color: transparent;}
-.placement_accordin .accordion-item.active .accordion-body{padding: 3rem 0 3rem 0;background-color: transparent;}
-
-
-.ppolicy_sec {
-    background: #f5f5f5;
-    padding: 40px 0;
-}
-
-.ppolicy_container {
-    max-width: 1000px;
-    margin: auto;
-}
-
-.ppolicy_title {
-    margin-bottom: 20px;
-}
-
-.ppolicy_item {
-    border-bottom: 1px solid #caa56a;
-    padding: 15px 0;
-}
-
-
-.ppolicy_num {
-    font-weight: bold;
-    color: #AE7F2C;
-}
-
-.ppolicy_body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    padding-left: 35px;
-}
-
-.ppolicy_body ul {
-    margin-top: 10px;
-}
-
-.ppolicy_item.active .ppolicy_body {
-    max-height: 500px; /* enough height */
-}
+.ppolicy_sec{padding-block: 5rem 12rem;}
+.ppolicy_accordion .ppolicy_header h3{ display: flex; align-items: start; gap: 5rem; font: var(--font-21); font-weight: 600; cursor: pointer; }
+.ppolicy_accordion .ppolicy_item{border-bottom: 0.1rem solid #AE7F2C80; padding-block: 4rem 4rem;}
+.ppolicy_accordion .ppolicy_item:last-child { border-bottom: none; }
+.ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.ppolicy_body ul{padding-top: 2.2rem;}
 /* ============== Placement Policy End============= */
+
+
+/* ============== Our Team start============= */
+.teamX_sec{ padding-block: 5rem 15rem; }
+.teamX_titlesec {margin-bottom: 15rem;;}
+.teamX_titlesec .font24{margin-bottom: 4rem;}
+.teamX_titlesec .font36{margin-bottom: 4rem;}
+.teamX_grid{display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 7rem; position: relative;}
+.teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
+.teamX_card{ background-color: var(--color-F5); padding: 1.3rem; position: relative;}
+.teamX_card figure{margin-top: -5rem;}
+.teamX_card .teamX_img img{width: 100%;}
+.teamX_info{padding-block: 1.6rem 1rem;}
+.teamX_info .teamX_name{font: var(--font-18);font-weight: 600;margin-bottom: 0.5rem;}
+.teamX_info .teamX_role{font: var(--font-16);margin-bottom: 1.5rem;}
+.teamX_coninfo a{display: flex; align-items: center; gap: 1rem;}
+.teamX_coninfo ul li{margin-bottom: 0.5rem;}
+/* ============== Our Team End============= */
+
+
+/* ==============Corporate Advisory Board start============= */
+.cabX_sec{padding-block: 5rem 11.7rem;}
+.cabX_title_sec {padding-bottom: 8.2rem;}
+.llatest_grid{display: grid; grid-template-columns:37.6% 58%; gap: 6.5rem;}
+.llatest_left  .title48{color: var(--color-92);margin-bottom: 4rem;}
+.llatest_pattern{padding-top: 5.2rem;}
+.llatest_sec{padding-bottom: 10rem;}
+.cabIntroX_text{margin-bottom: 5rem;}
+.cabIntroX_text p{font: var(--font-21);}
+.cabIntroX_grid{display: grid;grid-template-columns: repeat(3, 1fr);gap: 3.4rem;}
+.cabIntroX_card{padding: 4.3rem 8rem 4.7rem 5.3rem;background-color: var(--color-F5);}
+.cabIntroX_info .cabIntroX_name{font: var(--font-18);margin-bottom: 0.5rem;font-weight: 600;}
+.cabIntroX_info .cabIntroX_des{font: var(--font-16);}
+.cabIntroX_sex{padding-block: 0 11.7rem;}
+/* ============== Corporate Advisory Board  End============= */
+
+
+/* =============Career Guidance  start============= */
+.career_empo_sec::before {     background-image: url(/images/pattern/career_linehshape.webp); width: 20.7rem; height: 100%; content: ""; position: absolute; left: 0; background-size: contain; background-repeat: no-repeat; top: 0; bottom: 0; }
+.careergX_sec{padding-block: 5rem 10rem;}
+.careerg_title h4{margin-bottom: 4rem;}
+.careerg_title h3{margin-bottom: 8rem;}
+.careerg_imggrd{display: grid;grid-template-columns: 1fr 1fr;gap: 2.5rem;}
+.career_empo_sec{background-color: var(--color-F4);padding-block: 10rem 10rem;position: relative;}
+.career_emptitle{margin-bottom: 6.5rem;position: relative;}
+.career_emptitle:before{ content: ''; left: 0; top: -10rem; height: 1rem; width: 69.3rem; background-color: var(--color-FE); position: absolute; }
+.career_emptitle p{font: var(--font-30);padding-right: 1.5rem;}
+.careerTabsX{display: grid; grid-template-columns: 71.2% 24.6%; gap: 5rem;align-items: center;}
+.careerTabsX_btn{font: var(--font-21); padding-bottom: 1.6rem; margin-bottom: 4rem; border-bottom: 0.1rem dashed var(--color-92); display: table;cursor: pointer;}
+.careerTabsX_btn.active{color:  var(--color-92);font-weight: 600;}
+.careerTabsX_pane { display: none; }
+.careerTabsX_pane.active { display: block; }
+.careerTabsX_nav p{font: var(--font-18);margin-bottom:  4rem;}
+.careerTabsX_pane { display: none; }
+.more_view {font: var(--font-21); padding-bottom: 1.6rem; margin-bottom: 4rem; cursor: pointer;}
+.careerTabsX_pane.active { display: block; }
+.careerTabsX_accHeader { display: none; }
+@media (max-width: 768px) {
+.careerTabsX_nav { display: none; }
+.careerTabsX_pane { display: block; border-bottom: 1px solid #ddd; }
+.careerTabsX_accHeader { display: block; padding: 12px; font-weight: 600; cursor: pointer; background: #f5f5f5; }
+.careerTabsX_accBody { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.careerTabsX_pane.active .careerTabsX_accBody { max-height: 500px; }
+}
+.career_empo_sec2{padding-block: 10rem 11.6rem;}
+.tocr_grid{display: grid; grid-template-columns: 39.3% 56.4%; gap: 6.5rem; align-items: end;}
+.tocr_left h5{font: var(--font-18);font-weight: bold;margin-top: 4rem;margin-bottom: 1.5rem;}
+.tocr_left h3{color: var(--color-92); margin-bottom: 4rem;}
+/* ==============Career Guidance  End============= */
+
+
+
+/* =============Career Development Centre  start============= */
+.tcdcX_secmain{padding-block: 9rem 12.2rem;background-color: var(--color-F4);}
+.txdcx_banner_img{position: relative;}
+.txdcx_banner_img figure::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; 
+    position: absolute; left: 0; right: 0; bottom: 0; content: ""; height: 33.7rem; }
+.txdcx_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 9; }
+.txdcx_banner_img figcaption h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
+.txdcx_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); }
+.txdcx_banner_img figcaption p { color: var(--color-white); background-color: var(--color-92); padding: 0.5rem 1.5rem; display: inline-block; 
+    font: var(--font-21); font-weight: 500; }
+.tcex_btm_des{padding-top: 6.4rem;}
+.ct_area{padding-block: 10rem 10rem;}
+.tcex_btm_des .font36{margin-bottom: 5rem;}
+.ct_grid_sec{display: grid;grid-template-columns: repeat(3, 1fr);gap: 3rem;}
+.ct_grd_bx{background-color: var(--color-F5)}
+.ct_title  .font24{margin-bottom: 4rem;}
+.ct_grd_bx .ct_info {padding: 4rem 3rem 5rem 3rem; position: relative;}
+.ct_info::before{content: '';top: 0;left: 3rem;height: 1rem;width: 24.6rem;background-color: var(--color-FE);position: absolute;}
+.ct_grd_bx .ct_info h2{font: var(--font-48);color: var(--color-64);margin-bottom: 0.3rem;}
+.ct_grd_bx .ct_info h4{margin-bottom: 3rem;}
+.our_edgsec{padding-top: 10rem;}
+.our_edg_grid{    display: grid;
+    grid-template-columns: 24% 66.5%;
+    gap: 11.3rem;}
+.our_edg_grid .our_age_left h4{margin-bottom: 4.7rem;}
+.our_age_right{display: grid; grid-template-columns: repeat(2, 1fr); gap: 8.4rem;position: relative;}
+.our_gm_Sec .or_gm_profile{ position: relative; padding-inline: 2rem; padding-block: 3rem;
+    background: linear-gradient( to bottom, #643C24 0%, #643C24 60%, #F4F7F4 60%, #F4F7F4 100% );}
+.or_edge_pt{position: absolute;right: -10rem;bottom: 0;height: 21.4rem;width: 73.3rem;content: '';z-index: -1;}
+.our_gm_Sec .or_gm_profile h4{padding-bottom: 3.5rem;color: var(--color-white);line-height: 3.6rem;}
+.our_age_right .our_ts_sec{padding-top: 4rem;}
+.our_ts_sec h4{font: var(--font-21);font-weight: bold;margin-bottom: 4rem;}
+.our_ts_sec ul li a{display: flex;gap: 1rem;margin-bottom: 4rem;padding-bottom: 1rem;    border-bottom: 1px solid #d7d4d4;font: var(--font-21);align-items: center;}
+.our_ts_sec ul li a img{width: 2.6rem;height: 3.5rem;}
+.or_gm_profile .gm_name{font: var(--font-18);font-weight: 600;padding-block: 3rem 2rem;}
+.or_gm_profile .gm_pro_des{font: var(--font-16);padding-bottom: 0.5rem;}
+.or_gm_profile a{font: var(--font-16); display: flex; align-items: center; gap: 1rem;}
+.value_bgbox{position: relative;}
+.value_bgbox .title36{color: var(--color-white);margin-bottom: 6rem;font-weight: 800;padding-top: 10.6rem;}
+.value_bgbox::before{content: ''; position: absolute;
+top: 0;left: 0;width: 100%;background-color:var(--color-AE);height: 42rem;z-index: -1;}
+.value_bgbox::after{
+          background-image: url(/images/pattern/value_add_pattern.webp);
+    height: 21.4rem;
+    width: 86%;
+    content: "";
+    position: absolute;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    bottom: 1rem;
+    z-index: -1;
+}
+.value_bgbox .val_grid{display: grid;
+    grid-template-columns: 49% auto;
+    gap: 6.8rem;}
+.val_grid .val_box{
+    padding: 7.3rem 10rem 5.5rem 12.5rem;
+    background-color: var(--color-white);
+    margin-left: -12.5rem;
+    }
+.val_grid .val_box h5{font: var(--font-18);font-weight: 600;margin-bottom: 1.4rem;}
+.val_grid .val_box p{line-height: 2.4rem;}
+.val_grid .val_box p:not(:last-child) {
+    margin-bottom: 2.3rem;
+}
+.value_bgbox .val_grid .valu_rgt figure{margin-top: -11rem;}
+.valu_addmin{padding-bottom: 10rem;}
+/* =============Career Development Centre  End============= */
+
+
+
+/* =============Training & Placement - Overview  Start============= */
+.tp_overview{padding-block: 5rem 10rem;}
+.tp_ov_title{margin-bottom: 7rem;}
+.tp_ov_grid{display: grid;gap: 7.3rem;grid-template-columns:37% auto;}
+.tp_ov_left>h4{margin-bottom: 4rem;}
+.tp_ov_pattern{padding-block: 9.3rem 0;}
+.key_fun_sec{padding-block: 0 10rem;}
+.kf_title h4{margin-bottom: 4rem;}
+.kf_grid{display: grid;grid-template-columns: repeat(3, 1fr);gap: 2rem;}
+.kf_card{background-color: var(--color-F5);padding: 2.2rem;}
+.kf_card h5{font: var(--font-21);margin-bottom: 2.4rem;color: var(--color-AE);font-weight: 500;}
+.our_cmit_grid{display: grid;grid-template-columns: 56.4% auto;gap: 7.3rem;align-items: center;}
+.or_cmit_right h4{margin-bottom: 4rem;}
+.our_enqsec{padding-top: 10rem;}
+.our_enqsec h5{font: var(--font-18);font-weight: 600;margin-bottom: 2.4rem;}
+.our_enqsec a{color: var(--color-92);}
+.or_commit_sec{padding-block: 0 10rem;}
+.tp_director_msg .chairman_grid{padding-block: 17.7rem 17.7rem;padding-inline: 12.5rem 11.5rem;background-color: var(--color-F4);}
+.tp_director_msg  .chairman_left h4{margin-bottom: 4rem;}
+.tp_director_msg{border: none;}
+.tp_cam_grid{display: grid;grid-template-columns: repeat(3, 1fr);}
+.tp_cam_btmsec{background-color: var(--color-ed);padding-block: 9.2rem;}
+.tp_cam_col{text-align: center;}
+.tp_cam_col:nth-child(2){border-right: 0.1rem solid #C0855280 ;border-left: 0.1rem solid #C0855280;}
+.tp_cam_col h5{margin-bottom: 1.2rem;color: var(--color-black);}
+.tp_cam_col p{margin-bottom: 2.3rem;}
+.tp_cam_col span,.tp_cam_col a{color: var(--color-64);font: var(--font-16);font-weight: 600;}
+.tp_place_main .training_place {flex: 1;}
+.tp_place_main .training_place img {width: 100%;}
+.tp_cam_col figure img{width: 5.6rem;height: 5.6rem;margin: auto;margin-bottom: 0.8rem;}
+.tp_campus_contect{padding-block: 10rem 10rem;}
+.tp_place_main .training_place .placement_img {object-fit: cover;width: 10.2rem;position: absolute;top: 1.4rem;right: 2.2rem;}
+.tp_place_main .slider_btns div{width: 4rem;height: 4rem;display: unset;padding: 0;position: relative;}
+.tp_place_main .home_placement_static_card  .slider_btns{gap: 3rem;}
+.tp_place_main.home_placement_section{background-color: transparent;margin-bottom: 10rem;}
+.tp_place_main .font24{margin-bottom: 1rem;}
+.tp_place_main .home_placement_students{    margin-top: 5rem;}
+.alumni_testimonial_section{padding-block: 16.8rem 2.6rem;background-color: var(--color-F4);}
+.ats_textbox{display: grid;gap: 8.2rem;padding-top: 11rem;    grid-template-columns: 14% auto;}
+.ats_textbox p{font: var(--font-21);}
+.ats_slid_box{display: grid;grid-template-columns: 48.85% auto;gap: 12.5rem;}
+.ats_imgbx .ats_authinfo .ats_auname{font: var(--font-18);color: #000;font-weight: 600;}
+.ats_imgbx .ats_authinfo .ats_auth_dis{margin-top: 2rem;font: var(--font-16);}
+.ats_imgbx .ats_authinfo   {margin-top: 3rem;position: relative;padding-bottom: 7.2rem;}
+.ats_authinfo:after{position: absolute;left: 0;bottom: 0;content: '';background-color: var(--color-FE);height: 1rem;width: 14.9rem;}
+.ats_header .title48{color: var(--color-92);}
+.ats_thumbsec .swiper-slide{position: relative;cursor: pointer;}
+.ats_swip_slider{position: relative;}
+.ats_thumbsec {max-width: 88rem;position: absolute;bottom: 7rem;left: -16rem;}
+.swiper_thumbox .thu_info .name{font: var(--font-18);color: #000;font-weight: 600;margin-top: 2rem;}
+.swiper_thumbox .thu_info .designation{font: var(--font-16);margin-top: 1rem;}
+.ats_thumbsec .swiper-wrapper{gap: 5.6rem;}
+.ats_thumbsec .swiper_thumbox img{object-fit: cover; transition: 0.3s;}
+.ats_thumbsec .swiper-slide-thumb-active img{transform: translateY(-6px);padding: 0.5rem;background-color: var(--color-white);box-shadow: 0px 1px 11px #00000047;
+    transform: scale(1.32);-webkit-transform: scale(1.32);transform-origin: top center;}
+.ats_thumbsec .swiper-slide-thumb-active .thu_info{opacity: 0;}
+.tp_faq_main{padding-bottom: 10rem;}
+.tp_accbox h5{color: var(--color-black);padding-bottom: 3.8rem ;}
+.tp_faq_main .tp_accbox{background-color: #F9F9F9;padding: 4.4rem 5.5rem 2rem 6.4rem;}
+.tp_faq_main .tp_accbox .accordion-item,
+.tp_faq_main .tp_accbox .accordion-body{background: transparent;}
+.tp_faq_main .tp_accbox  .accordion-item.active .accordion-body{padding:0 0 3.8rem 0;}
+.tp_faq_main .tp_accbox .accordion-header{padding:3.8rem 0;border-top: 0.1rem solid #E1E1E1;}
+.tp_faq_main .tp_accbox .accordion-header h3{font-weight: 500;}
+/* =============Training & Placement - Overview  End============= */
+
+
+/* =============Transport Facilities  Start============= */
+.trans_tb_box .tran_roulist{background-color: var(--color-F4);}
+.tsn_rou_box{display: grid;grid-template-columns: 91% auto;align-items: center;padding: 3rem 3rem;border-top: 0.1rem solid  #C085524D;;}
+.tsn_rou_box .tr_left p{font: var(--font-18);color: var(--color-89);font-weight: 600;}
+.tsn_rou_box .tr_right p{font-weight: 600;}
+.tsn_rou_box .tr_right p span{font-weight: 500;}
+.tsn_rou_box .tr_right{padding-left: 3rem;border-left: 0.1rem solid  #C085524D;}
+/* =============Transport Facilities  End============= */
+
+
 

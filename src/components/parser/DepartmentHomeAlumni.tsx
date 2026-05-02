@@ -1,0 +1,134 @@
+"use client"
+
+import { apiFetch } from "@/src/lib/api"
+import { useQuery } from "@tanstack/react-query"
+import { SkeletonGroup } from "../ui/Skeleton";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Thumbs, EffectFade, Mousewheel } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/thumbs";
+import "swiper/css/effect-fade";
+
+interface AlumniItem {
+  name: string;
+  image: string;
+  branch: string;
+  message: string;
+  type: string;
+}
+
+const getDepartmentAlumni = async (slug: string): Promise<AlumniItem[]> => {
+  const { data, error } = await apiFetch(`department/${slug}/home`);
+  if (error) throw new Error(error);
+  return data?.data?.modular?.alumuni ?? [];
+};
+
+export default function DepartmentHomeAlumni() {
+  const pathname = usePathname();
+  const slug = pathname.split('/').filter(Boolean).pop() ?? '';
+
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+
+  const { data, isLoading, isError } = useQuery<AlumniItem[]>({
+    queryKey: ["department-home-alumni", slug],
+    queryFn: () => getDepartmentAlumni(slug),
+  });
+
+  if (isLoading) {
+    return (
+      <SkeletonGroup
+        wrapperClassName="flex mt-[7.7rem] gap-[4rem]"
+        count={2}
+        className="bg-gray-300 h-[71.5rem] w-[60rem]"
+      />
+    );
+  }
+
+  if (isError || !data?.length) return null;
+
+  return (
+    <div className="row justify-content-end">
+      <div className="col-lg-10">
+        <div className="ats_header">
+          <span className="font24">Client Testimonials</span>
+          <h2 className="title48">
+            Success Stories from our Students <br /> and Alumni
+          </h2>
+        </div>
+
+        <div className="ats_swip_slider">
+
+          {/* ── Main testimonial slider ── */}
+          <div className="ats_slid_Sec">
+            <Swiper
+              className="training_testi"
+              modules={[EffectFade, Thumbs, Mousewheel]}
+              loop={true}
+              effect="fade"
+              fadeEffect={{ crossFade: true }}
+              thumbs={{
+                swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+              }}
+              mousewheel={{ invert: false, sensitivity: 1, forceToAxis: true }}
+            >
+              {data.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="ats_slid_box">
+                    <div className="ats_textbox">
+                      <div className="quote-icon">
+                        <img src="/images/icons/quote.png" alt="quote icon" />
+                      </div>
+                      <p>{item.message}</p>
+                    </div>
+                    <div className="ats_imgbx">
+                      <img src={item.image} className="img-fluid" alt={item.name} />
+                      <div className="ats_authinfo">
+                        <div className="ats_auname">{item.name}</div>
+                        <div className="ats_auth_dis">{item.branch}</div>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* ── Thumbs slider ── */}
+          <div className="ats_thumbsec">
+            <Swiper
+              className="traing_thumb"
+              modules={[FreeMode, Thumbs, Mousewheel]}
+              onSwiper={setThumbsSwiper}
+              slidesPerView={4}
+              spaceBetween={16}
+              freeMode={true}
+              watchSlidesProgress={true}
+              mousewheel={{ sensitivity: 1 }}
+              style={{ overflow: "visible" }}
+            >
+              {data.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="swiper_thumbox">
+                    <div className="pt_thumb_img">
+                      <img src={item.image} className="img-fluid" alt={item.name} />
+                    </div>
+                    <div className="thu_info">
+                      <p className="name">{item.name}</p>
+                      <p className="designation">{item.branch}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}

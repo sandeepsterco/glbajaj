@@ -55,7 +55,7 @@ export default function DepartmentHomeAlumni() {
     <div className="row justify-content-end">
       <div className="col-lg-10">
         <div className="ats_header">
-          <span className="font24">Client Testimonials</span>
+          <span className="font24">GLBian Speaks</span>
           <h2 className="title48">
             Success Stories from our Students <br /> and Alumni
           </h2>
@@ -105,11 +105,10 @@ export default function DepartmentHomeAlumni() {
               modules={[FreeMode, Thumbs, Mousewheel]}
               onSwiper={setThumbsSwiper}
               slidesPerView={4}
-              spaceBetween={16}
+              spaceBetween={56}
               freeMode={true}
               watchSlidesProgress={true}
               mousewheel={{ sensitivity: 1 }}
-              style={{ overflow: "visible" }}
             >
               {data.map((item, index) => (
                 <SwiperSlide key={index}>

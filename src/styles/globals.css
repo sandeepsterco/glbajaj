@@ -143,6 +143,10 @@ html {
   font-size: min(0.52083333vw, 10px);
 }
 
+ol{
+  list-style-type: decimal;
+}
+
 ul li {
   list-style: none;
 }

@@ -17,7 +17,7 @@ export default async function PageHeader({data, slug, showTabs}:{data:any, slug:
                     <div className="container25">
                         <div className="about_breadcrumb">
                             <div>
-                                <p className="about_glbim_p">{currentPage?.title}</p>
+                                <p className="about_glbim_p">{data?.page_title}</p>
                             </div>
                             <div className="about_breadcrumb">
                                 <p className="breadcrumb_main about_breadcrump_text">{data?.tab_title}</p>

@@ -248,10 +248,9 @@
     });
 
     new Swiper(".acredation_swiper", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: false,
       autoplay: false,
       navigation: {
@@ -259,24 +258,21 @@
           prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          // Jab screen 768px se badi ho (Tablets)
           768: {
               slidesPerView: 2.5,
               spaceBetween: 15,
           },
-          // Jab screen 1200px se badi ho (Desktop - XD Match)
           1200: {
-              slidesPerView: 3.35, // 3 full + 0.5 next slide
+              slidesPerView: 3.35,
               spaceBetween: 25,
           }
       }
     });
 
     new Swiper(".cse_faculties_slider", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: true,
       autoplay: false,
       navigation: {
@@ -284,25 +280,21 @@
           prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          // Jab screen 768px se badi ho (Tablets)
           768: {
               slidesPerView: 2.5,
               spaceBetween: 15,
           },
-          // Jab screen 1200px se badi ho (Desktop - XD Match)
           1200: {
-              slidesPerView: 4.5, // 3 full + 0.5 next slide
+              slidesPerView: 4.5,
               spaceBetween: 40,
           }
       }
     });
 
-    
     new Swiper(".cse_research_slider", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: true,
       autoplay: false,
       navigation: {
@@ -310,24 +302,21 @@
           prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          // Jab screen 768px se badi ho (Tablets)
           768: {
               slidesPerView: 2.5,
               spaceBetween: 15,
           },
-          // Jab screen 1200px se badi ho (Desktop - XD Match)
           1200: {
-              slidesPerView: 3.35, // 3 full + 0.5 next slide
+              slidesPerView: 3.35,
               spaceBetween: 20,
           }
       }
     });
 
     new Swiper(".hod_profile_slider", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: false,
       autoplay: false,
       navigation: {
@@ -335,14 +324,12 @@
           prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          // Jab screen 768px se badi ho (Tablets)
           768: {
               slidesPerView: 1,
               spaceBetween: 15,
           },
-          // Jab screen 1200px se badi ho (Desktop - XD Match)
           1200: {
-              slidesPerView: 1, // 3 full + 0.5 next slide
+              slidesPerView: 1,
               spaceBetween: 23,
           }
       }
@@ -374,6 +361,55 @@
     return true;
   }
 
+  function tabControl() {
+    const tabbedContent = document.querySelectorAll(".tabbed-content");
+
+    tabbedContent.forEach((container) => {
+      const tabs = container.querySelector(".tabs");
+      if (!tabs) return;
+
+      const isTabsVisible = tabs.offsetParent !== null;
+
+      if (isTabsVisible) {
+        tabs.querySelectorAll("a").forEach((link) => {
+          // Clone to remove any previously attached listeners
+          const newLink = link.cloneNode(true);
+          link.parentNode.replaceChild(newLink, link);
+
+          newLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            const target = this.getAttribute("href");
+            const buttons = tabs.querySelectorAll("a");
+            const items = container.querySelectorAll(".item");
+
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            items.forEach((item) => item.classList.remove("active"));
+
+            this.classList.add("active");
+            document.querySelector(target)?.classList.add("active");
+          });
+        });
+      } else {
+        container.querySelectorAll(".item").forEach((item) => {
+          // Clone to remove any previously attached listeners
+          const newItem = item.cloneNode(true);
+          item.parentNode.replaceChild(newItem, item);
+
+          newItem.addEventListener("click", function () {
+            const currId = this.getAttribute("id");
+            const items = container.querySelectorAll(".item");
+
+            container.querySelectorAll(".tabs a").forEach((btn) => btn.classList.remove("active"));
+            items.forEach((i) => i.classList.remove("active"));
+
+            this.classList.add("active");
+            container.querySelector(`.tabs a[href$="#${currId}"]`)?.classList.add("active");
+          });
+        });
+      }
+    });
+  }
+
   function initAll() {
     initWhyGlbSection();
     initAccordion();
@@ -384,6 +420,14 @@
     adjustMaxContent(); // run once on init
     tabContent();
     gridPopup();
+    tabControl();
+
+    // Re-run tabControl on resize (debounced)
+    let resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(tabControl, 250);
+    });
   }
 
   // Expose for Next.js client-side re-init

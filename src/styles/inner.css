@@ -1359,7 +1359,7 @@ top: 0;left: 0;width: 100%;background-color:var(--color-AE);height: 42rem;z-inde
 .ats_thumbsec {max-width: 88rem;position: absolute;bottom: 7rem;left: -16rem;}
 .swiper_thumbox .thu_info .name{font: var(--font-18);color: #000;font-weight: 600;margin-top: 2rem;}
 .swiper_thumbox .thu_info .designation{font: var(--font-16);margin-top: 1rem;}
-.ats_thumbsec .swiper-wrapper{gap: 5.6rem;}
+/* .ats_thumbsec .swiper-wrapper{gap: 5.6rem;} */
 .ats_thumbsec .swiper_thumbox img{object-fit: cover; transition: 0.3s;}
 .ats_thumbsec .swiper-slide-thumb-active img{transform: translateY(-6px);padding: 0.5rem;background-color: var(--color-white);box-shadow: 0px 1px 11px #00000047;
     transform: scale(1.32);-webkit-transform: scale(1.32);transform-origin: top center;}

@@ -2,6 +2,7 @@ import { TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
+import MainWrapper from "../components/MainWrapper";
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -55,7 +56,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>
           <Header headerData={headerData} />
-          <main>{children}</main>
+          <MainWrapper>{children}</MainWrapper>
           <Footer />
         </Providers>
         <ScriptLoader />

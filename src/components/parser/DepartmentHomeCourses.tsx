@@ -26,7 +26,7 @@ interface CourseCardProps {
     program: Program;
 }
 
-function CourseCard({ program }: CourseCardProps) {
+function CourseCard({ program }: any) {
     return (
         <div className="cse_course relative">
             <div className="cse_course_title">{program.name ?? ''}</div>

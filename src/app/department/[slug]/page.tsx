@@ -17,7 +17,7 @@ export default async function DepartmentPage(){
     return(
         <div className="happenings_page">
             {data?.data?.tabs && (
-                <PageHeader type="department" data={data.data} slug={slug} showTabs={true} />
+                <PageHeader data={data.data} slug={slug} showTabs={true} />
             )}
 
             {data.data.cms.length == 0 ? <ComingSoon /> : (

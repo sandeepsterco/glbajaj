@@ -1,11 +1,15 @@
 import { headers } from 'next/headers';
 
-export async function getSlug(segmentIndex = -1): Promise<string> {
+export async function getPathname(): Promise<string> {
   const headersList = await headers();
-  const pathname = headersList.get('x-pathname') ?? '';
+  return headersList.get('x-pathname') ?? '';
+}
+
+// Keep the original if you still need slug by index
+export async function getSlug(segmentIndex = -1): Promise<string> {
+  const pathname = await getPathname();
   const parts = pathname.split('/').filter(Boolean);
 
-  // Support negative indexing: -1 = last, -2 = second-to-last
   const index = segmentIndex < 0 ? parts.length + segmentIndex : segmentIndex;
   return parts[index] ?? '';
 }

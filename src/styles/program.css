@@ -19,7 +19,8 @@ The project specific CSS starts here
 This is the minimum CSS that you will need in order for this to work
 */
 .cus-tab .tabbed-content .tabs { display: none; }
-.cus-tab .tabbed-content .item { min-height: 2em; }
+.cus-tab .tabbed-content .item { min-height: 2em; display:none;}
+.cus-tab .tabbed-content .item.active{display:block;}
 .cus-tab .tabbed-content .item::before { content: attr(data-title); }
 .cus-tab .tabbed-content .item .item-content { opacity: 0; visibility: hidden; height: 0; }
 .cus-tab .tabbed-content .item.active .item-content { opacity: 1; visibility: visible; height: auto; }

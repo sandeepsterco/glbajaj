@@ -23,7 +23,7 @@ export default function HomeHappenings() {
         <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`}>
           {item?.image && (
             <figure>
-              <img src={item.image} alt="happening image" className="img-fluid w-100" />
+              <img src={item.image} alt="happening image" className="img-fluid w-100 " />
             </figure>
           )}
           {/* <div className="content" style={{backgroundColor:item?.bg_color}}> */}

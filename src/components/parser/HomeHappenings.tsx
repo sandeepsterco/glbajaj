@@ -23,10 +23,12 @@ export default function HomeHappenings() {
         <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`}>
           {item?.image && (
             <figure>
-              <img src={item.image} alt="happening image" />
+              <img src={item.image} alt="happening image" className="img-fluid w-100" />
             </figure>
           )}
-          <div className="content" style={{backgroundColor:item?.bg_color}}>
+          {/* <div className="content" style={{backgroundColor:item?.bg_color}}> */}
+          <div className="content" >
+
               <div className="bottom_data">
                 {item?.date && (
                   <p className="date">{item.date}</p>
@@ -41,8 +43,6 @@ export default function HomeHappenings() {
           </div>
       </div>
       ))}
-      
-
   </div>
   );
 }

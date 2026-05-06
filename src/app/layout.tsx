@@ -11,6 +11,7 @@ import "../styles/custom.css";
 import "../styles/program.css";
 import "../styles/globals.css";
 import "../styles/inner.css";
+import "../styles/inner1.css";
 import "../styles/parser.css";
 import "../styles/module.css";
 

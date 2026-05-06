@@ -149,7 +149,9 @@ const options: HTMLReactParserOptions = {
 export default function ReactParser({ html }: { html: any }) {
   if (!html) return null;
 
-  const sanitizedHtml = DOMPurify.sanitize(html);
+  const sanitizedHtml = DOMPurify.sanitize(html, {
+    ADD_ATTR:["target"]
+  });
 
   return <>{parse(sanitizedHtml, options)}</>;
 }

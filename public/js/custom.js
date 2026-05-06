@@ -410,6 +410,28 @@
     });
   }
 
+  function toggleReadMore() {
+    document.querySelectorAll(".toggle-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        let content = this.closest(".content");
+        let dots = content.querySelector(".dots");
+        let moreText = content.querySelector(".more-text");
+
+        if (moreText.classList.contains("show")) {
+          dots.style.display = "inline";
+          moreText.classList.remove("show");
+          this.innerHTML = '<i class="bi bi-plus-lg"></i>';
+          this.classList.remove("active");
+        } else {
+          dots.style.display = "none";
+          moreText.classList.add("show");
+          this.innerHTML = '<i class="bi bi-dash-lg"></i>';
+          this.classList.add("active");
+        }
+      });
+    });
+  }
+
   function initAll() {
     initWhyGlbSection();
     initAccordion();
@@ -421,6 +443,7 @@
     tabContent();
     gridPopup();
     tabControl();
+    toggleReadMore();
 
     // Re-run tabControl on resize (debounced)
     let resizeTimer;

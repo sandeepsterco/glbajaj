@@ -22,11 +22,12 @@
 .swiper-navigation-icon { display: none; }
 .h_r_ratingbox { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem; }
 .h_r_ratingbox i { color: var(--color-FF); width: 1.3rem; height: 1.2rem; }
-.award_swipr_main .swiper-button-prev::after { content: ''; left: 0;top: 30%; background-image: url('/images/icons/awards/slide_arrow_left.svg'); position: absolute; height: 6rem; width: 6rem; }
-.award_swipr_main .swiper-button-next::after { content: ''; top: 30%;  background-image: url('/images/icons/awards/slide_arrow_right.svg');     position: absolute;right: 0; height: 6rem; width: 6rem; }
+.award_swipr_main .swiper-button-prev::after { content: ''; left: 0; top: 30%; background-image: url('/images/icons/awards/slide_arrow_left.svg'); position: absolute; height: 6rem; width: 6rem; }
+.award_swipr_main .swiper-button-next::after { content: ''; top: 30%; background-image: url('/images/icons/awards/slide_arrow_right.svg'); position: absolute; right: 0; height: 6rem; width: 6rem; }
 .home_rank_award .more_btn { margin-top:2rem; }
 /* .home_rank_award .swiper-button-prev { position: absolute; left: 0; top: 33%; }
-.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 33%; } */
+.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 33%; }
+*/
 /************  Award and Ranking  CSS End ************/
 /************  start home placement  CSS End ************/
 .home_placement_section { background: #eeeeee; padding: 5.5rem 0 7.9rem; }
@@ -60,8 +61,8 @@
 .home_placement_info .placement sup { font: var(--font-16); line-height: 2.1rem; letter-spacing: 0; top: -2rem; left: 0.5rem; }
 .home_placement_info p { font: var(--font-16); line-height: 2.1rem; font-weight: bold; }
 /* COMPANY */
-.home_placement_companies { background: #fff; margin-top: 6.5rem; padding: 3rem 3.8rem;position: relative;}
-.home_placement_companies .navigation_btn{top: 0;bottom: auto;}
+.home_placement_companies { background: #fff; margin-top: 6.5rem; padding: 3rem 3.1rem 3rem 3.8rem; position: relative; }
+.home_placement_companies .navigation_btn { top: 0; bottom: auto; right: 3.8rem; }
 .home_placement_company_header { margin-bottom: 2.8rem; display: flex; justify-content: space-between; }
 .home_placement_company_header .slider_btns { display: flex; gap: 0.3rem; }
 .home_placement_company_header .slider_btns div { position: relative; width: 4rem; height: 4rem; padding: 0; display: unset; }
@@ -70,8 +71,8 @@
 /************  start of courses Section ************/
 .home_courses_section { padding: 12.8rem 0; }
 .home_courses_section .content_row { margin-left: auto; }
-.home_courses_section .grid { display: grid; grid-template-columns: auto 51.5%; gap: 10rem; margin-left: 4.1rem; }
-.home_courses_section .left_content { padding-top: 3.9rem; padding-left: 3.7rem; position: relative; }
+.home_courses_section .grid { display: grid; grid-template-columns: auto 51.5%; gap: 10rem; z-index: -1;}
+.home_courses_section .left_content { padding-top: 3.9rem; position: relative; }
 .home_courses_section .left_content .watermark_logo { position: absolute; }
 .home_courses_section .left_content .title48 { color: var(--color-92); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: normal; max-width: 47.5rem; }
 .home_courses_section .left_content .courses_links { margin-top: 7.1rem; display: grid; grid-template-columns: 50% auto; gap: 2.45rem; max-width: 47.5rem; }
@@ -80,16 +81,19 @@
 .home_courses_section .input_group { position: relative; margin-top: 2.7rem; background:#fff; }
 .home_courses_section .input_group input { width: 100%; height: 5.5rem; border: 1px solid var(--color-C0); padding: 1.7rem 2.1rem 1.6rem 2.1rem; font: var(--font-18); line-height: 2.4rem; }
 .home_courses_section .search_icon { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); }
-.home_courses_section .bottom_slider { margin-right: 12.4rem; margin-top: -24.5rem; position: relative; }
+.home_courses_section .bottom_slider { margin-top: -24.5rem; position: relative; }
 .home_courses_section .courses_slider { background: rgb(243 233 220 / 93%); padding: 1.2rem 2.2rem 4.2rem 3.7rem; }
 .home_courses_section .courses_header { margin-bottom: 3.2rem; display: flex; justify-content: space-between; }
+.prev_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_left.svg"); position: absolute; height: 6rem; width: 6rem; }
+.next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_right.svg"); position: absolute; height: 6rem; width: 6rem; }
 .home_courses_section .courses_header h4 { margin-top: 1rem; }
 .home_courses_section .slider_btns { display: flex; gap: 0.3rem; }
-.home_courses_section .slider_btns div { position: relative; width: 4.4rem; height: 4.4rem; padding: 0; display: unset; }
-.home_courses_section .courses_slider_wrapper { overflow: visible; padding-right: 13.5rem; }
-.home_courses_section .courses_slider_wrapper .swiper-slide { text-align: center; position: relative; padding-inline: 4rem; height: 12.2rem; }
-.home_courses_section .courses_slider_wrapper .swiper-slide:before { content: ""; position: absolute; top: 0; right: 0; width: 1px; height: 100%; background-color: var(--color-C0); opacity: 0.5; }
-.home_courses_section .courses_slider_wrapper .icon { margin-inline: auto; height: 4rem; width: 4rem; background: var(--color-C0); display: flex; align-items: center; justify-content: center; }
+.home_courses_section .slider_btns div { position: relative; width: 4.4rem; height: 4.4rem; padding: 0; display: unset; position: relative;cursor: pointer;}
+.home_courses_section .courses_slider_wrapper { overflow: visible; }
+.home_courses_section .courses_slider_wrapper .swiper-slide { text-align: center; position: relative; padding-inline: 4rem; border-left: 0.1rem solid var(--color-C00); min-height: 12.2rem; }
+.home_courses_section .courses_slider_wrapper .swiper-slide.swiper-slide-active { border: none; }
+.home_courses_section .courses_slider_wrapper .icon { padding: 0; margin-inline: auto; height: 4rem; width: 4rem; background: var(--color-C0); display: flex; align-items: center; justify-content: center; }
+.home_courses_section .courses_slider_wrapper .icon img { width: 2.4rem; height: 2.4rem; }
 .home_courses_section .courses_slider_wrapper p { color: #000; font: var(--font-16); line-height: 2.4rem; text-transform: uppercase; font-weight: 600; margin-top: 1.3rem; }
 .home_courses_section .admission_data { background: var(--color-64); color: #fff; display: flex; align-items: center; padding: 1.2rem 1.6rem 1.2rem 3.7rem; justify-content: space-between; }
 .home_courses_section .admission_data .left { display: flex; gap: 13.2rem; }

@@ -123,8 +123,8 @@ export default function Header({ headerData }: { headerData?: any }) {
                       src="/images/logo/colored-logo.png"
                       alt="GL Bajaj University"
                       className="img-fluid blue_logo"
-                      width={275}
-                      height={89}
+                      width={415}
+                      height={112}
                       priority
                     />
                   ) : (
@@ -132,8 +132,8 @@ export default function Header({ headerData }: { headerData?: any }) {
                       src="/images/logo/logo.png"
                       alt="GL Bajaj University"
                       className="white_logo"
-                      width={275}
-                      height={89}
+                      width={415}
+                      height={112}
                       priority
                     />
                   )}

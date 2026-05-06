@@ -3,7 +3,7 @@
   --font-tasa: "TASA Orbiter", sans-serif;
 }
 
-.strech_link{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9;}
+/* .strech_link{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9;}
 .has-html .fancybox__content{padding:0;}
 .gallery_tab span.active{background-color: var(--color-64); color:#fff;}
 .gallery_tab .resetBtn{background: #ddd; margin-right: 0.1rem; font: var(--font-16); color: var(--color-black); border: 1px solid #e1e1e1; align-items: center; gap: 1rem; padding-inline: 2rem; display: flex; height: 100%;}
@@ -12,10 +12,12 @@
 .swiper-button-next.swiper-button-lock,
 .swiper-button-prev.swiper-button-lock{
 	display:none!important;
-}
+} */
 
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -50,8 +52,9 @@
   --color-70: #707070;
   --color-dc: #DC0000;
   --color-fa:#fafafa;
-   --color-ed:#EDE9E7;
-    --color-f3:#F3E9DC;
+  --color-ed:#EDE9E7;
+  --color-f3:#F3E9DC;
+  --color-C00:#C0855280;
   --mx2545: 2545px;
   --font-tasa: "TASA Orbiter", sans-serif;
   --font-93: normal normal 500 9.3rem/1.2 var(--font-tasa);
@@ -67,6 +70,7 @@
   --font-21: normal normal 300 2.1rem/1.42 var(--font-tasa);
   --font-20: normal normal 300 2rem/1.4 var(--font-tasa);
   --font-18: normal normal 300 1.8rem/1.33 var(--font-tasa);
+  --font-17: normal normal 300 1.7rem/2.1 var(--font-tasa);
   --font-16: normal normal 400 1.6rem/1.62 var(--font-tasa);
   --font-14: normal normal 400 1.4rem/1.28 var(--font-tasa);
   --font-12: normal normal 400 1.2rem/1.75 var(--font-tasa);
@@ -115,6 +119,7 @@
 
 .inner-container {
   width: clamp(900px, 76.8229vw, 1475px);
+  padding-inline: 1.5rem;
 }
 
 /* 1885px */
@@ -141,10 +146,6 @@
 /* Use 2545 full container size */
 html {
   font-size: min(0.52083333vw, 10px);
-}
-
-ol{
-  list-style-type: decimal;
 }
 
 ul li {
@@ -201,6 +202,10 @@ a {
 
   .container {
     max-width: 100%;
+    padding-inline: 1.6rem;
+  }
+  .container25{
+      max-width: 100%;
     padding-inline: 1.6rem;
   }
 }
@@ -324,6 +329,123 @@ h6 {
   font: var(--font-18);
   color: var(--color-black);
 }
+
+.title60 {
+  font: var(--font-60);
+  color: var(--color-0b);
+}
+
+.title48 {
+  font: var(--font-48);
+  color: var(--color-0b);
+}
+
+.title42 {
+  font: var(--font-42);
+  letter-spacing: 0.084rem;
+  color: var(--color-black);
+}
+
+.title32 {
+  font: var(--font-32);
+  font-weight: 300;
+  color: var(--color-black);
+}
+
+.title36 {
+  font: var(--font-36);
+}
+.title30 {
+  font-size: 3em;
+  line-height: 4.2rem;
+  color: var(--color-33);
+  text-align: left;
+  font-family: var(--font-tasa);
+}
+
+.title28 {
+  font: var(--font-28);
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.title24 {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: bold;
+  color: var(--color-64);
+  font-family: var(--font-tasa);
+}
+
+.title18 {
+  font: var(--font-18);
+  font-family: var(--font-tasa);
+  font-weight: bold;
+  color: var(--color-black);
+}
+
+
+.font24{
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: bold;
+  color: var(--color-64);
+  font-family: var(--font-tasa);
+}
+
+
+.font36{
+  color: var(--color-92);
+  font: var(--font-36);
+  letter-spacing: -0.18rem;
+  font-weight: 400;
+}
+
+
+
+blockquote.title24 {
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: 0.048rem;
+}
+
+.paragraph {
+  font:var(--font-16);
+  line-height: 2.4rem;
+  color: var(--color-33);
+  font-weight: normal;
+  font-family: var(--font-tasa);
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-0b);
+  border-radius: 0.2rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-white);
+  border-radius: 0.2rem;
+}
+.w-100{
+  width: 100%;
+}
+
+.strech_link{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9;}
+.custom_bullet li{ position: relative; padding-left: 2rem; margin-block: 1.5rem;}
+.custom_bullet li:last-child{ margin-bottom: 0;}
+.custom_bullet li::before{ width: 0.6rem; height: 0.6rem; background-color: var(--color-D2); position: absolute; left: 0; top: 1rem; content: ""; border-radius: 1rem;}
+
+
+
+
+
+
+/* override tailwind css */
+
 
 .title60 {
   font: var(--font-60);

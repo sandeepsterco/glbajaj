@@ -34,7 +34,7 @@ export default function HeroBanner({ data }: { data: any }) {
                 width={2545}
                 height={1100}
                 priority={index === 0}
-                className="relative object-cover object-center"
+                className="relative object-cover object-center w-100"
                 style={{ maxWidth: "100%", height: "auto" }}
               />
             </picture>

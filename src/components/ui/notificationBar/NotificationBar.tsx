@@ -16,8 +16,8 @@ export default function NotificationBar() {
   return (
     <>
       <div className="hero_notificationmain">
-        <div className="container">
-          <div className="inner_center_container">
+        <div className="container-fluid">
+          <div className="col-lg-9 m-auto">
             <div className="hero_nofi_card">
               <h5 className="notifi_title">Notifications</h5>
 

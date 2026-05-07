@@ -8,7 +8,8 @@
     if (!container) return;
 
     const windowWidth = window.innerWidth;
-    const containerOffset = container.getBoundingClientRect().left + window.scrollX;
+    const containerOffset =
+      container.getBoundingClientRect().left + window.scrollX;
     const containerWidth = container.offsetWidth;
     const rightEdge_calc = containerOffset + containerWidth;
 
@@ -23,8 +24,11 @@
       frozenWidth = null;
     }
 
-    document.querySelectorAll(".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl")
-      .forEach(el => el.style.maxWidth = rightEdge + "px");
+    document
+      .querySelectorAll(
+        ".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl",
+      )
+      .forEach((el) => (el.style.maxWidth = rightEdge + "px"));
   }
 
   function initWhyGlbSection() {
@@ -71,13 +75,13 @@
     const headers = document.querySelectorAll(".accordion-header");
     if (!headers.length) return false;
 
-    headers.forEach(header => {
+    headers.forEach((header) => {
       header.addEventListener("click", () => {
         const currentItem = header.parentElement;
         const currentBody = currentItem.querySelector(".accordion-body");
 
         // Close all others
-        document.querySelectorAll(".accordion-item").forEach(item => {
+        document.querySelectorAll(".accordion-item").forEach((item) => {
           if (item !== currentItem) {
             item.classList.remove("active");
             const body = item.querySelector(".accordion-body");
@@ -102,40 +106,38 @@
     headers[0].click();
 
     // ACCORDION (mobile)
-    document.querySelectorAll(".acc-header").forEach(header => {
+    document.querySelectorAll(".acc-header").forEach((header) => {
       header.addEventListener("click", function () {
-          let parent = this.parentElement;
-          // close others (optional – remove if you want multiple open)
-          document.querySelectorAll(".tab-content").forEach(item => {
-              if (item !== parent) item.classList.remove("active");
-          });
-          parent.classList.toggle("active");
+        let parent = this.parentElement;
+        // close others (optional – remove if you want multiple open)
+        document.querySelectorAll(".tab-content").forEach((item) => {
+          if (item !== parent) item.classList.remove("active");
+        });
+        parent.classList.toggle("active");
       });
     });
 
     return true;
   }
 
-  function gridPopup(){
-    const items = document.querySelectorAll('.media_grid_Bx');
+  function gridPopup() {
+    const items = document.querySelectorAll(".media_grid_Bx");
 
     items.forEach((item, index) => {
-        item.addEventListener('click', function () {
+      item.addEventListener("click", function () {
+        let gallery = [];
 
-            let gallery = [];
-
-            items.forEach((el) => {
-                gallery.push({
-                    src: el.getAttribute('data-src'),
-                    type: "image"
-                });
-            });
-
-            Fancybox.show(gallery, {
-                startIndex: index
-            });
-
+        items.forEach((el) => {
+          gallery.push({
+            src: el.getAttribute("data-src"),
+            type: "image",
+          });
         });
+
+        Fancybox.show(gallery, {
+          startIndex: index,
+        });
+      });
     });
 
     return true;
@@ -145,7 +147,19 @@
     if (typeof Swiper === "undefined") return false;
 
     // Destroy any existing instances before re-init
-    [".award_ranking", ".studentsSwiper", ".companySwiper", ".home_placement_student_slider", ".home_placement_company_slider", ".courses_slider_wrapper", ".leadership_slider", ".acredation_swiper", ".cse_faculties_slider", ".cse_research_slider", ".hod_profile_slider"].forEach((sel) => {
+    [
+      ".award_ranking",
+      ".studentsSwiper",
+      ".companySwiper",
+      ".home_placement_student_slider",
+      ".home_placement_company_slider",
+      ".courses_slider_wrapper",
+      ".leadership_slider",
+      ".acredation_swiper",
+      ".cse_faculties_slider",
+      ".cse_research_slider",
+      ".hod_profile_slider",
+    ].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
     });
@@ -254,19 +268,19 @@
       loop: false,
       autoplay: false,
       navigation: {
-          nextEl: ".swiper_next_custom",
-          prevEl: ".swiper_prev_custom",
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          768: {
-              slidesPerView: 2.5,
-              spaceBetween: 15,
-          },
-          1200: {
-              slidesPerView: 3.35,
-              spaceBetween: 25,
-          }
-      }
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        1200: {
+          slidesPerView: 3.35,
+          spaceBetween: 25,
+        },
+      },
     });
 
     new Swiper(".cse_faculties_slider", {
@@ -276,19 +290,19 @@
       loop: true,
       autoplay: false,
       navigation: {
-          nextEl: ".swiper_next_custom",
-          prevEl: ".swiper_prev_custom",
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          768: {
-              slidesPerView: 2.5,
-              spaceBetween: 15,
-          },
-          1200: {
-              slidesPerView: 4.5,
-              spaceBetween: 40,
-          }
-      }
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        1200: {
+          slidesPerView: 4.5,
+          spaceBetween: 40,
+        },
+      },
     });
 
     new Swiper(".cse_research_slider", {
@@ -298,19 +312,19 @@
       loop: true,
       autoplay: false,
       navigation: {
-          nextEl: ".swiper_next_custom",
-          prevEl: ".swiper_prev_custom",
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          768: {
-              slidesPerView: 2.5,
-              spaceBetween: 15,
-          },
-          1200: {
-              slidesPerView: 3.35,
-              spaceBetween: 20,
-          }
-      }
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        1200: {
+          slidesPerView: 3.35,
+          spaceBetween: 20,
+        },
+      },
     });
 
     new Swiper(".hod_profile_slider", {
@@ -320,31 +334,35 @@
       loop: false,
       autoplay: false,
       navigation: {
-          nextEl: ".swiper_next_custom",
-          prevEl: ".swiper_prev_custom",
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-          768: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-          },
-          1200: {
-              slidesPerView: 1,
-              spaceBetween: 23,
-          }
-      }
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        1200: {
+          slidesPerView: 1,
+          spaceBetween: 23,
+        },
+      },
     });
 
     return true;
   }
 
-  function tabContent(){
-    document.querySelectorAll(".tab-btn").forEach(button => {
+  function tabContent() {
+    document.querySelectorAll(".tab-btn").forEach((button) => {
       button.addEventListener("click", function () {
-          document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
-          document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
-          this.classList.add("active");
-          document.getElementById(this.dataset.tab).classList.add("active");
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((content) => content.classList.remove("active"));
+        this.classList.add("active");
+        document.getElementById(this.dataset.tab).classList.add("active");
       });
     });
 
@@ -399,11 +417,15 @@
             const currId = this.getAttribute("id");
             const items = container.querySelectorAll(".item");
 
-            container.querySelectorAll(".tabs a").forEach((btn) => btn.classList.remove("active"));
+            container
+              .querySelectorAll(".tabs a")
+              .forEach((btn) => btn.classList.remove("active"));
             items.forEach((i) => i.classList.remove("active"));
 
             this.classList.add("active");
-            container.querySelector(`.tabs a[href$="#${currId}"]`)?.classList.add("active");
+            container
+              .querySelector(`.tabs a[href$="#${currId}"]`)
+              ?.classList.add("active");
           });
         });
       }
@@ -461,5 +483,129 @@
   } else {
     initAll();
   }
-
 })();
+// research slider wrapper
+
+new Swiper(".workshop_slider_wrapper", {
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 21,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: true,
+  autoplay: {
+    delay: 2000,
+  },
+  navigation: {
+    nextEl: ".next_swiper_btn ",
+    prevEl: ".prev_swiper_btn ",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 2.5,
+      spaceBetween: 30,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 3.5, // 3 full + 0.5 next slide
+      spaceBetween: 30,
+    },
+  },
+});
+
+// TAB CLICK (desktop)
+document.querySelectorAll(".tab-btn").forEach((button) => {
+  button.addEventListener("click", function () {
+    document
+      .querySelectorAll(".tab-btn")
+      .forEach((btn) => btn.classList.remove("active"));
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((content) => content.classList.remove("active"));
+    this.classList.add("active");
+    document.getElementById(this.dataset.tab).classList.add("active");
+  });
+});
+
+// ACCORDION (mobile)
+document.querySelectorAll(".acc-header").forEach((header) => {
+  header.addEventListener("click", function () {
+    let parent = this.parentElement;
+    // close others (optional – remove if you want multiple open)
+    document.querySelectorAll(".tab-content").forEach((item) => {
+      if (item !== parent) item.classList.remove("active");
+    });
+    parent.classList.toggle("active");
+  });
+});
+
+
+// ✅ career-guidance Page tabs
+const tabBtns = document.querySelectorAll(".careerTabsX_btn");
+const panes = document.querySelectorAll(".careerTabsX_pane");
+const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
+
+// ===== DESKTOP TABS =====
+tabBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (window.innerWidth > 768) {
+      const target = btn.getAttribute("data-tab");
+
+      tabBtns.forEach((b) => b.classList.remove("active"));
+      panes.forEach((p) => p.classList.remove("active"));
+
+      btn.classList.add("active");
+      document.getElementById(target).classList.add("active");
+    }
+  });
+});
+
+// ===== MOBILE ACCORDION =====
+accHeaders.forEach((header) => {
+  header.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      const pane = header.parentElement;
+
+      panes.forEach((p) => {
+        if (p !== pane) p.classList.remove("active");
+      });
+
+      pane.classList.toggle("active");
+
+      const body = pane.querySelector(".careerTabsX_accBody");
+      if (pane.classList.contains("active")) {
+        body.style.maxHeight = body.scrollHeight + "px";
+      } else {
+        body.style.maxHeight = null;
+      }
+    }
+  });
+});
+// Campus Facilities page sports swiper start
+
+document.addEventListener("DOMContentLoaded", function () {
+  var swiper = new Swiper(".AKTU_Swiper", {
+    // 3 slides poori aur 4th slide thodi si dikhegi
+    slidesPerView: 1.2, // Mobile ke liye
+    spaceBetween: 20,
+    centeredSlides: false, // Left se start karne ke liye false rakhein
+    loop: false,
+    autoplay: false,
+    navigation: {
+      nextEl: ".swiper_next_custom",
+      prevEl: ".swiper_prev_custom",
+    },
+    breakpoints: {
+      // Jab screen 768px se badi ho (Tablets)
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+      },
+      // Jab screen 1200px se badi ho (Desktop - XD Match)
+      1200: {
+        slidesPerView: 1, // 3 full + 0.5 next slide
+        spaceBetween: 23,
+      },
+    },
+  });
+});
+// Campus Facilities page sports swiper start

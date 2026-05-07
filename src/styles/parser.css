@@ -219,7 +219,7 @@
 .home_happenings_section .single_grid.text-black .date,
 .home_happenings_section .single_grid.text-black .sub_title { color:#000; }
 .home_happenings_section .single_grid:nth-child(5) .content { padding-right:16.3rem; }
-.home_happenings_section .single_grid.no_image .bottom_data .date { font-weight: 600; }
+.home_happenings_section .single_grid.no_image .bottom_data .date { font-weight: 600; } 
 .home_happenings_section .single_grid:nth-child(7) { background:var(--color-AE); }
 */
 .grid_data { display: grid; grid-template-columns: repeat(4,1fr); }

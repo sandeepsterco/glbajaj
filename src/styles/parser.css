@@ -238,6 +238,10 @@
 .single_grid:nth-child(2) { background: #AE7F2C; }
 .single_grid:nth-child(3) { background: var(--color-FE); }
 .single_grid:nth-child(8) { background: var(--color-64); }
+.single_grid figure{height: 100%;}
+.single_grid figure img{height: 100%;    object-fit: cover;
+    object-position: top;}
+
 .single_grid:not(.no_image) { background: none; }
 /************  end of home_happenings_section ************/
 /************  start of home testimonial section ************/

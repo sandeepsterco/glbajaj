@@ -1133,6 +1133,8 @@ position: absolute; bottom: 0rem; left: 0rem; right: 0rem;}
 .res_publi_list li a{ gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4;    width: 100%;}
 .res_publica_tblsec:not(:last-of-type)  { padding-bottom: 7rem; }
 .res_publica_tblsec:last-of-type { padding-bottom: 0; }
+.table-description{padding-block: 10rem 5rem;}
+.table-description h2{margin-bottom: 2.5rem;}
 /* ============== Research Publication End============= */
 
 

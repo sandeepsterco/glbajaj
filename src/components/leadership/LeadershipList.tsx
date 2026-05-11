@@ -15,7 +15,7 @@ const MessageComponent = async ({ data }: { data: any }) => {
                             <figure>
                                 <Image src={item.image || '/images/default/leadership.webp'} width={567} height={387} className="img-fluid" alt={item.name ?? 'leadership image'} />
                             </figure>
-                            <div className="admini_msg_info">
+                            <div className="admini_msg_info"> 
                                 <div className="adini_msg_namsec">
                                     {item?.name && (
                                         <h5>{item.name}</h5>

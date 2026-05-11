@@ -10,7 +10,7 @@ const MessageComponent = async ({ data }: { data: any }) => {
             <div className="container25">
                 <h4 className="innerPage_title">Messages</h4>
                 <div className="administration_grid messages_grid">
-                    {data?.map((item: any, idx: number) => ( 
+                    {data?.map((item: any, idx: number) => (   
                         <div key={idx} className="administration_Bx">
                             <figure>
                                 <Image src={item.image || '/images/default/leadership.webp'} width={567} height={387} className="img-fluid" alt={item.name ?? 'leadership image'} />

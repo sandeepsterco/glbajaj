@@ -3,6 +3,7 @@ import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 import MainWrapper from "../components/MainWrapper";
+import 'animate.css';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -18,6 +19,7 @@ import "../styles/module.css";
 
 import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";
+import Wowjs from "../lib/wow";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -56,9 +58,11 @@ export default async function RootLayout({
     <html lang="en" className={`${tasaOrbiter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>
-          <Header headerData={headerData} />
-          <MainWrapper>{children}</MainWrapper>
-          <Footer />
+          <Wowjs>
+            <Header headerData={headerData} />
+            <MainWrapper>{children}</MainWrapper>
+            <Footer />
+          </Wowjs>
         </Providers>
         <ScriptLoader />
       </body>

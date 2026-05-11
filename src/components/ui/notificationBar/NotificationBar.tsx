@@ -56,7 +56,7 @@ export default function NotificationBar() {
           100% { transform: translateX(-50%); }
         }
         .animate-ticker p {
-          animation: ticker 35s linear infinite;
+          animation: ticker 5s linear infinite;
         }
         .animate-ticker p:hover {
           animation-play-state: paused;

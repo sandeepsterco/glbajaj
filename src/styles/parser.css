@@ -9,6 +9,7 @@
 .sec_title figure img { width: 6rem; height: 6rem; margin: auto; }
 .sec_title .desc { font: var(--font-16); line-height: 2.4rem; margin-top: 3rem; }
 .award_swipr_main { position: relative; margin-top: 8.5rem; }
+
 .home_rank_award { padding-block: 13rem 9rem; }
 .h_r_award_Card { text-align: center; padding-inline: 3rem 3rem; position: relative; padding-block: 2rem; }
 .h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: #ccc; top: 0; }
@@ -17,8 +18,7 @@
 .h_r_award_Card h6 { font:var(--font-10); font-weight: var(--font-bold); line-height: 1.2rem; margin-bottom: 0.5rem; font-family: var(--font-tasa); }
 .h_r_award_Card p { font:var(--font-8); font-weight: var(--font-bold); line-height: 1rem; font-family: var(--font-tasa); }
 .h_r_award_Card span { font:var(--font-8); font-weight: var(--font-normal); line-height: 1rem; font-family: var(--font-tasa); }
-/* .swiper.award_ranking { width: 72.9%; }
-*/
+.swiper.award_ranking { width: 90.2%; }
 .swiper-navigation-icon { display: none; }
 .h_r_ratingbox { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem; }
 .h_r_ratingbox i { color: var(--color-FF); width: 1.3rem; height: 1.2rem; }

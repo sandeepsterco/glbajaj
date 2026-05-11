@@ -144,13 +144,24 @@ const options: HTMLReactParserOptions = {
 };
 
 
-
-
 export default function ReactParser({ html }: { html: any }) {
   if (!html) return null;
 
   const sanitizedHtml = DOMPurify.sanitize(html, {
-    ADD_ATTR:["target"]
+    ADD_ATTR:["target"],
+    ALLOWED_TAGS: [          // ← explicitly allow these tags
+      "a", "b", "i", "em", "strong", "span", "div", "p",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "ul", "ol", "li", "br", "hr", "img",
+      "table", "thead", "tbody", "tr", "th", "td",
+      "section", "article", "aside", "header", "footer",
+      "figure", "figcaption", "blockquote", "pre", "code",
+    ],
+    ALLOWED_ATTR: [
+      "class", "id", "src", "alt", "href", "target",
+      "width", "height", "style", "rel", "type",
+    ],
+    FORCE_BODY: true,        // ← wraps in a body context, prevents the " />" artifact
   });
 
   return <>{parse(sanitizedHtml, options)}</>;

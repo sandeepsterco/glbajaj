@@ -165,8 +165,14 @@
     });
 
     new Swiper(".award_ranking", {
+      slidesPerView: 5,
       loop: true,
       spaceBetween: 20,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
       navigation: {
         nextEl: ".award_swipr_main .swiper-button-next",
         prevEl: ".award_swipr_main .swiper-button-prev",
@@ -176,7 +182,7 @@
         480: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
-        1200: { slidesPerView: 5 },
+        1200: { slidesPerView: 5 }, // ← full 5 on desktop
       },
     });
 

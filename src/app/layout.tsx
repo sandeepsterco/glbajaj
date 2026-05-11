@@ -20,6 +20,7 @@ import "../styles/module.css";
 import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";
 import Wowjs from "../lib/wow";
+import AOSProvider from "../lib/AOSProvider";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -58,11 +59,11 @@ export default async function RootLayout({
     <html lang="en" className={`${tasaOrbiter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>
-          <Wowjs>
+          <AOSProvider>
             <Header headerData={headerData} />
             <MainWrapper>{children}</MainWrapper>
             <Footer />
-          </Wowjs>
+          </AOSProvider>
         </Providers>
         <ScriptLoader />
       </body>

@@ -1135,6 +1135,7 @@ position: absolute; bottom: 0rem; left: 0rem; right: 0rem;}
 .res_publica_tblsec:last-of-type { padding-bottom: 0; }
 .table-description{padding-block: 10rem 5rem;}
 .table-description h2{margin-bottom: 2.5rem;}
+.res_publication .res_publication_ttl{margin-bottom: 3.5rem;}
 /* ============== Research Publication End============= */
 
 

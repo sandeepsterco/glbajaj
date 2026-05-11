@@ -803,10 +803,13 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 
 
 /* ==============Faculty page Start============= */
-.administration_section{ padding-block:0 20rem;}
+.administration_section.messages_section{padding-block: 5rem 12rem;background-color: var(--color-white);}
+.administration_section.messages_section .administration_Bx{background-color: var(--color-F5);}
+.administration_grid.messages_grid{grid-template-columns: repeat(2, 1fr);}
+.administration_section{ padding-block:10rem 15.9rem;background-color: var(--color-F4);}
 .administration_grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block:9rem 0rem; row-gap: 7rem; position: relative;}
 .administration_grid::before{ background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
-.administration_Bx{ background-color: var(--color-F5); padding: 1.3rem; position: relative;}
+.administration_Bx{ background-color: var(--color-white); padding: 1.3rem; position: relative;}
 .administration_Bx h5{ font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:1.6rem 0.5rem;}
 .administration_Bx p{ margin-bottom: 0;}
 .administration_Bx figure{ margin-top: -5rem; background: linear-gradient( to bottom, #6f6f6f 0%, #8f8f8f 40%, #bfbfbf 100% );}
@@ -814,7 +817,8 @@ opacity: 0.48; content: ""; position: absolute; bottom: 0; left:0; right: 0; hei
 .administration_Bx a{ display: flex; align-items: center; font: var(--font-16); gap: 1rem; color: var(--color-33); padding-top: 0.5rem;}
 .administration_Bx a:hover{ color: var(--color-92);}
 .administration_Bx a img{ max-width: 1.6rem;}
-
+.administration_Bx .admini_msg_info{display: flex;align-items: center;justify-content: space-between;padding-inline: 2rem;}
+.admin_arr_icon{background-color: var(--color-white);width: 4rem;height: 4rem;display: flex;align-items: center;justify-content: center;margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.12);}
 
 /* ==============The Group page Start============= */
 .group_section{ padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5);}

@@ -212,11 +212,10 @@ section.facilities_policy.iqac-event.institutional-distinctiveness{padding-botto
 .workshop{padding-block: 10rem; border-top: 1px solid #c085525c;}
 .workshop h2{margin-bottom: 3.8rem;}
 .workshop p{ margin-top: 2rem; font: var(--font-18); font-weight: 600;}
-.work-shop-slide-button{position: absolute; left: 2rem; margin-top: 5rem;}
+.work-shop-slide-button{position: absolute; left: 4rem; margin-top: 5rem;}
 .workshop .research_slider_wrapper{padding-bottom: 10rem;}
 .work-shop-slide-button .prev_swiper_btn::after { content: ""; left: 0; top: 0; background-image:  url(/images/home/slide_arrow_right.svg) ; position: absolute; height: 6rem; width: 6rem; }
-
-.work-shop-slide-button .next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url(/images/home/slide_arrow_left.svg); position: absolute; height: 6rem; width: 6rem; }
+.work-shop-slide-button .next_swiper_btn::after { content: ""; left: -5rem; top: 0; background-image: url(/images/home/slide_arrow_left.svg); position: absolute; height: 6rem; width: 6rem; }
 .center-of-excellence{margin-top: 5rem;}
 .center-of-excellence .auditorium_conf_grid { display: grid; gap: 13.5rem; grid-template-columns: 33.25% auto; margin-bottom: 8.4rem; }
 .center-of-excellence .auditorium_conf_title{margin-bottom: 4rem;} 
@@ -310,4 +309,4 @@ section.facilities_policy.iqac-event.institutional-distinctiveness{padding-botto
 .feature-list .item h4{font: var(--font-18); font-weight: 700; margin-bottom: 2rem;}
 .feature-list .item p{font: var(--font-16); color: var(--color-33); margin-bottom: 3rem;}
 .objective-pattern{margin-top: 9rem; }
- 
+.objective-pattern figure img{    margin-left: auto;}

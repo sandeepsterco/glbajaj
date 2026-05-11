@@ -6,6 +6,7 @@ export default async function FacultyDetailPage({params}:{params:any}){
     const {slug} = await params;
 
     const {data, error} = await apiFetch(`leadership/${slug}`);
+    
 
     if(error){
         return (
@@ -14,6 +15,6 @@ export default async function FacultyDetailPage({params}:{params:any}){
     }
 
     return(
-        <LeadershipDetail data={data?.leadership_details} />
+        <LeadershipDetail data={data?.leadership_details?.cms} />
     )
 }

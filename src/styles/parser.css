@@ -198,7 +198,7 @@
 .corporate_board{display: none;}
 /************  end of home_about_glb_section ************/
 /************  start of home_sessions_section ************/
-.home_sessions_section .grid { display:grid; grid-template-columns: 49% auto; gap: 3rem; }
+.home_sessions_section .grid { display:grid; grid-template-columns: 49% auto; margin-inline: 3.9rem; gap: 3rem; }
 .home_sessions_section .grid .left_col { position:relative; }
 .home_sessions_section .left_col .content_col { position:relative; }
 .home_sessions_section .grid .left_col figure { position:relative; }
@@ -216,7 +216,7 @@
 .home_sessions_section .left_col .date { font:var(--font-16); font-weight: normal; }
 .home_sessions_section .left_col .title { font:var(--font-24); line-height:3rem; margin-top:1.5rem; }
 .home_sessions_section .left_col .right { display: flex; align-items: center; top: 0.5rem; position: relative; }
-.home_sessions_section .right_col a { padding:3.1rem 3.9rem 3.3rem 3.4rem; background:var(--color-F5); display:flex; align-items: center; }
+.home_sessions_section .right_col a { padding:3.3rem 3.9rem 3.9rem 3.4rem; background:var(--color-F5); display:flex; align-items: center; }
 .home_sessions_section .right_col .text { flex:1; }
 .home_sessions_section .right_col .date { font:var(--font-16); line-height:2.4rem; }
 .home_sessions_section .text p { font:var(--font-21); line-height:2.5rem; margin-top:1rem; font-weight: 500; }

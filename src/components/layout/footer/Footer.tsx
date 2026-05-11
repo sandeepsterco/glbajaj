@@ -298,9 +298,9 @@ const Footer = async () => {
               Copyright © 2026 GL Bajaj Institute of Technology and Management
             </p>
             <p>
-              Website Design and Development by
+              Website Design and Development by {" "}
               <a href="https://www.stercodigitex.com/" target="_blank">
-                Sterco
+                 Sterco
               </a>
             </p>
           </div>

@@ -1,4 +1,4 @@
-import { TASA_Orbiter } from "next/font/google";
+import { Lexend, TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
@@ -28,6 +28,12 @@ const tasaOrbiter = TASA_Orbiter({
   display: "swap",
 });
 
+const fontLexend = Lexend({
+  subsets:['latin'],
+  display:'swap',
+  variable:'--font-lexend'
+})
+
 async function getHeaderData(){
   const [headerRes, sidebarRes] = await Promise.all([
     apiFetch(
@@ -56,7 +62,7 @@ export default async function RootLayout({
   const headerData = await getHeaderData();
 
   return (
-    <html lang="en" className={`${tasaOrbiter.variable} h-full antialiased`}>
+    <html lang="en" className={`${tasaOrbiter.variable} ${fontLexend.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>
           <AOSProvider>

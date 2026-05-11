@@ -116,7 +116,7 @@ const Footer = async () => {
             </p>
 
             <p>
-              Website Design and Development by{" "}
+              Website Design and Development by {" "}
               <a
                 href="https://www.stercodigitex.com/"
                 target="_blank"

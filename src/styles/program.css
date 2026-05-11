@@ -216,7 +216,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .accordion-item { background: var(--color-F5); margin-bottom: 1rem; }
 .accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3.5rem; cursor: pointer; }
 .accordion-header h3 { margin: 0; font:var(--font-21); color: var(--color-33); font-weight: 700; }
-.icon { font-size: 2.3rem; color: #c49a4a; border: 1px solid #c49a4a26; padding: .8rem 1.4rem; }
+/* .icon { font-size: 2.3rem; color: #c49a4a; border: 1px solid #c49a4a26; padding: .8rem 1.4rem; } */
 .accordion-body { max-height: 0; overflow: hidden; padding: 0 3.5rem; background: var(--color-F5); }
 .accordion-item.active .accordion-body { max-height: 1500px; /* large enough value */ padding: 3rem 3.5rem 2rem; }
 .accordion-item.active .icon { content: "−"; }

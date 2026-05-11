@@ -105,6 +105,25 @@
 .home_courses_section .admission_data .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
 .home_courses_section .admission_data .btn { padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem; }
 /************  end of courses Section ************/
+
+/************  start home_research_section ************/
+.home_research_section .container2 { width: calc(100% - ((100% - min(1475px, 76.8229vw)) / 2)); }
+.home_research_section .research_group { position: relative; border-top: 1.1rem solid var(--color-FE); }
+.home_research_section .research_group::after { background-image: url(/images/research_shap_01.png); width: 30.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; z-index: -1; height: 95.6rem; }
+.home_research_section .research_group::before { content: ''; background-color: #1D1D1D; bottom: 0; left: 0; top: 0; width: 100%; position: absolute; z-index: -1; padding-bottom: 96rem; }
+.home_research_section .research_top { display: flex; align-items: center; padding-block: 7.4rem 6.4rem; gap: 7.4rem; color: var(--color-white); }
+.home_research_section .research_slider_wrapper { margin-bottom: 8.5rem; }
+.home_research_section .research_stats { display: flex; }
+.home_research_section .single_stat { min-width: 20.2rem; text-align: center; max-width: 20.2rem; padding-block: 2.1rem 3.9rem; border: 0.1rem solid var(--color-C0); }
+.home_research_section .single_stat:not(:last-child) { border-right: 1px solid var(--color-C0); }
+.home_research_section .single_stat .count { font: var(--font-48); letter-spacing: -0.24rem; font-weight: normal; }
+.home_research_section .single_stat .count sup { font: var(--font-16); line-height: 2.4rem; letter-spacing: 0; top: -2rem; left: 0.5rem; font-weight: normal; }
+.home_research_section .single_stat p { color: #fff; font: var(--font-16); line-height: 2.4rem; margin-top: 0.5rem; }
+.home_research_section .read_more_icon { margin-top: 2.1rem; display: inline-block; }
+.home_research_section .read_more_icon .icon { margin-left: -7px; }
+/************  end of home_research_section ************/
+
+
 /************  start of research_centre_section ************/
 .research_centre_section { padding:10rem 0; }
 .research_centre_section .grid { display: grid; gap: 12.5rem; grid-template-columns: 41.8% auto; }

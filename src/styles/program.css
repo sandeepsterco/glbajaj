@@ -284,6 +284,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .tabular-sec{padding-block: 10rem; border-top: 1px solid #c0855280; margin-top: 8rem;}
 .tabular-headng h5{color: var(--color-33); font-weight: 700; margin-bottom: 5rem;}
 .table-wrapper tbody tr td figure img{width: 5rem;}
+.ltm .award-sec .award-list{grid-template-columns: repeat(3, 1fr);}
+.ltm .award-sec .award-list .award-box figure img{max-width: 100%;}
+.ltm .award-sec .award-list .award-box{padding: 0;}
+
 @media (min-width: 2300px) {
 .award-detail-text { padding-inline: 29rem 0; } .award-detail-text1 figure { margin-top: 13rem; }
 }

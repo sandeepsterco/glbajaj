@@ -1371,6 +1371,7 @@ top: 0;left: 0;width: 100%;background-color:var(--color-AE);height: 42rem;z-inde
 .tran_root_rgt .bs_rou_pattern{padding-top: 10.2rem;margin-right: -5rem;}
 .tran_root_rgt .bs_rou_pattern img{ transform: scale(1.2);}
 .team-members-sec.tras_drive_con{padding-block: 10rem;border-top: 0.1rem solid #C085524D;margin-top: 0;}
+.team-members-sec.value_education_main{padding-block: 0 10rem;border-bottom: 0.1rem solid #C085524D;}
 .cont_icon_driv{display: flex;align-items: center;gap: 0.5rem;}
 .cont_icon_driv a{font: var(--font-16); color: var(--color-33);font-weight: 400;}
 .tras_drive_con .team-members{padding: 2.9rem 1.7rem 2.8rem 2rem;}

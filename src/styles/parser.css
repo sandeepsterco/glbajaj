@@ -168,6 +168,7 @@
 .home_about_glb_section .thumbnail { position:relative; }
 .home_about_glb_section .thumbnail:before { position:absolute; content:''; height:100%; width:100%; background:#000; opacity:0.35; top:0; left:0; }
 .home_about_glb_section .thumbnail .icon { background:transparent; border:none; position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); }
+.corporate_board{display: none;}
 /************  end of home_about_glb_section ************/
 /************  start of home_sessions_section ************/
 .home_sessions_section .grid { display:grid; grid-template-columns: 49% auto; gap: 3rem; }

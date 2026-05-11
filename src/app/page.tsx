@@ -40,6 +40,8 @@ export default async function Home() {
           <FullImageBanner data={homeData.modular.banner} />
         )}
 
+       
+
         {/* <NotificationBar /> */}
 
         {Object.keys(homeData?.cms).map((key) => {

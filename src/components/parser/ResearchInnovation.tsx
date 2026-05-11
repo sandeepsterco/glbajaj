@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Loop, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/src/lib/api";
 

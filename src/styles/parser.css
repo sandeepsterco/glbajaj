@@ -73,31 +73,39 @@
 /************  start of courses Section ************/
 .home_courses_section { padding: 12.8rem 0; }
 .home_courses_section .content_row { margin-left: auto; }
-.home_courses_section .grid { display: grid; grid-template-columns: auto 51.5%; gap: 10rem; z-index: -1; }
+.home_courses_section .grid { display: grid; grid-template-columns: auto 51.5%; gap: 10rem; }
 .home_courses_section .left_content { padding-top: 3.9rem; position: relative; }
 .home_courses_section .left_content .watermark_logo { position: absolute; }
 .home_courses_section .left_content .title48 { color: var(--color-92); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: normal; max-width: 47.5rem; }
 .home_courses_section .left_content .courses_links { margin-top: 7.1rem; display: grid; grid-template-columns: 50% auto; gap: 2.45rem; max-width: 47.5rem; }
 .home_courses_section .courses_links .course_link { position: relative; font: var(--font-21); text-decoration: none; line-height: 2.5rem; color: #333; font-weight: 500; padding-bottom: 2.6rem; }
 .home_courses_section .courses_links .course_link:before { position: absolute; content: ""; height: 1px; width: 100%; background: var(--color-C0); opacity: 0.3; bottom: 0; left: 0; }
-.home_courses_section .input_group { position: relative; margin-top: 2.7rem; background:#fff; }
+.home_courses_section .input_group { position: relative; margin-top: 2.7rem; }
 .home_courses_section .input_group input { width: 100%; height: 5.5rem; border: 1px solid var(--color-C0); padding: 1.7rem 2.1rem 1.6rem 2.1rem; font: var(--font-18); line-height: 2.4rem; }
 .home_courses_section .search_icon { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); }
 .home_courses_section .bottom_slider { margin-top: -24.5rem; position: relative; }
 .home_courses_section .courses_slider { background: rgb(243 233 220 / 93%); padding: 1.2rem 2.2rem 4.2rem 3.7rem; }
 .home_courses_section .courses_header { margin-bottom: 3.2rem; display: flex; justify-content: space-between; }
-.prev_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_left.svg"); position: absolute; height: 6rem; width: 6rem; }
-.next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_right.svg"); position: absolute; height: 6rem; width: 6rem; }
 .home_courses_section .courses_header h4 { margin-top: 1rem; }
-.home_courses_section .slider_btns { display: flex; gap: 0.3rem; }
-.home_courses_section .slider_btns div { position: relative; width: 4.4rem; height: 4.4rem; padding: 0; display: unset; position: relative; cursor: pointer; }
+.home_courses_section .slider_btns { display: flex; gap: 1rem; }
+.home_courses_section .slider_btns div { position: relative; }
 .home_courses_section .courses_slider_wrapper { overflow: visible; }
 .home_courses_section .courses_slider_wrapper .swiper-slide { text-align: center; position: relative; padding-inline: 4rem; border-left: 0.1rem solid var(--color-C00); min-height: 12.2rem; }
 .home_courses_section .courses_slider_wrapper .swiper-slide.swiper-slide-active { border: none; }
-.home_courses_section .courses_slider_wrapper .icon { padding: 0; margin-inline: auto; height: 4rem; width: 4rem; background: var(--color-C0); display: flex; align-items: center; justify-content: center; }
-.home_courses_section .courses_slider_wrapper .icon img { width: 2.4rem; height: 2.4rem; }
+
+.home_courses_section .courses_slider_wrapper .icon { margin-inline: auto; height: 4rem; width: 4rem; background: var(--color-C0); display: flex; align-items: center; justify-content: center; }
 .home_courses_section .courses_slider_wrapper p { color: #000; font: var(--font-16); line-height: 2.4rem; text-transform: uppercase; font-weight: 600; margin-top: 1.3rem; }
 .home_courses_section .admission_data { background: var(--color-64); color: #fff; display: flex; align-items: center; padding: 1.2rem 1.6rem 1.2rem 3.7rem; justify-content: space-between; }
+.research_card::before { width: 100%; height: 17rem; background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0)); content:''; position: absolute; bottom: 0rem; left: 0rem; right: 0rem; }
+.research_card { position: relative; }
+.research_card .res_caption { padding: 0 5.1rem 3.3rem 3.4rem; position: absolute; bottom: 0; }
+.research_card .res_caption span { font: var(--font-17); color: var(--color-white); }
+.research_card .res_caption p { font: var(--font-24); color: var(--color-white); }
+.research_slider_wrapper .navigation_btn { position: relative; bottom: 0; right: 0; }
+.research_slider_wrapper .navigation_btn .swiper_next_custom,
+.research_slider_wrapper .navigation_btn .swiper_prev_custom { box-shadow: none; }
+.swiper_prev_custom, .swiper_next_custom { background-color: var(--color-white); height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1), 6px 17px 36px rgba(255, 255, 255, 0.8); }
+.navigation_btn { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; padding-bottom: 1rem; }
 .home_courses_section .admission_data .left { display: flex; gap: 13.2rem; }
 .home_courses_section .admission_data .title { padding-block: 1rem; color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold; }
 .home_courses_section .admission_data .links { display: flex; align-items: center; margin: 0; padding: 0; }
@@ -133,7 +141,7 @@
 .research_centre_section .left_col .read_more_icon { margin-top:5rem; display: inline-block; }
 .research_centre_section .centre_lists { display:grid; grid-template-columns: 1fr 1fr; margin-top:6rem; padding:0; margin-bottom:0; gap: 1.5rem; }
 .research_centre_section .centre_lists a { padding:1.4rem 1.6rem 1.8rem 1.3rem; display:flex; align-items: center; height:7.8rem; background:#f5f5f5; gap: 3.4rem; justify-content: space-between; }
-.research_centre_section .centre_lists p { font:var(--font-18); line-height:2.4rem; color:#000; margin-bottom: 0; }
+.research_centre_section .centre_lists p { font:var(--font-18); line-height:2.4rem; color:#000; }
 .research_centre_section .centre_lists .icon { height:6rem; width:6rem; }
 /************  end of research_centre_section ************/
 /************  start of why_glb_section ************/
@@ -146,7 +154,7 @@
 .why_glb_section .sec_title h5 { position:relative; display: inline-block; padding-bottom: 3.1rem; }
 .why_glb_section .sec_title h5:before { position:absolute; content:''; height:1rem; left:0; bottom:-10px; width: 100%; background:var(--color-FE); }
 .why_glb_section .tabs { margin-top:12.3rem; }
-.why_glb_section .tabs li p { color:#fff; opacity:0.5; font:var(--font-36); line-height:4.8rem; letter-spacing: -1.8px; cursor: pointer; margin-bottom: 0;}
+.why_glb_section .tabs li p { color:#fff; opacity:0.5; font:var(--font-36); line-height:4.8rem; letter-spacing: -1.8px; cursor: pointer;}
 .why_glb_section .tabs li .arrow { width:1rem; height: 1.4rem; background-image:url('/images/icons/right-chevron1.png'); background-repeat: no-repeat; /* border: 1px solid #707070; */ }
 .why_glb_section .tabs li { display:flex; align-items: center; gap: 2rem; }
 .why_glb_section .tabs li:not(:last-child) { margin-bottom:1rem; }
@@ -266,26 +274,25 @@
 /************  end of home_happenings_section ************/
 /************  start of home testimonial section ************/
 .home_testimonials { padding:16.8rem 0 12.6rem; }
-.home_testimonials .grid { display:grid; gap:14.5rem; grid-template-columns: auto 40.5%; }
+.home_testimonials .grid { display:grid; gap:12.5rem; grid-template-columns: auto 37.5%; margin-left: 9.5rem; }
 .home_testimonials .left_col { position:relative; }
-.home_testimonials .left_col .pattern_img { position: absolute; right: calc(100% - -12rem); top: 27.7rem; }
-.home_testimonials .grid .sec_title { margin-right: 1.8rem; }
+.home_testimonials .left_col .pattern_img { position: absolute; right: calc(100% - 2rem); top: 27.7rem; }
+.home_testimonials .grid .sec_title { margin-left: 12.5rem; margin-right: 1.8rem; }
 .home_testimonials .heading { margin-top:2rem; }
-.home_testimonials .desc_content { display:flex; padding-block:8.6rem 11.1rem; gap: 8.2rem; }
+.home_testimonials .desc_content { display:flex; margin:8.6rem 0 11.1rem; gap: 8.2rem; margin-left: 13.9rem; }
 .home_testimonials .quote-icon { font-size:70px; color:#f3c26b; line-height:0; margin-bottom:10px; }
 .home_testimonials .desc { margin-top: 2.4rem; font:var(--font-21); line-height:3rem; color:#333; flex: 1; display:none; }
 .home_testimonials .desc.active { display:block; }
 /* zigzag decoration */
 .home_testimonials .zigzag { position:absolute; left:-40px; top:120px; opacity:0.3; }
 /* thumbnails */
-.home_testimonials .thumbs { display:flex; gap:5.6rem; align-items:flex-end; margin-left: -12rem; }
-.home_testimonials .thumb-group { display:none; gap:5.6rem; align-items:flex-end; }
+.home_testimonials .thumbs { display:flex; gap:5.6rem; margin-top:30px; align-items:flex-end; margin-right:4.2rem; }
+.home_testimonials .thumb-group { display:none; gap:5.6rem; margin-top:30px; align-items:flex-end; margin-right:4.2rem; }
 .home_testimonials .thumb-group.active { display:flex; }
 .home_testimonials .thumb { cursor:pointer; flex:1; }
-.home_testimonials .thumb.active .thumb_info { opacity: 0; }
 .home_testimonials .thumb img { /* width:85px; height:85px; */
   object-fit:cover; transition:0.3s; }
-.home_testimonials .thumb.active img { transform: translateY(-6px); padding: 0.3rem; background-color: var(--color-white); box-shadow: 0px 1px 11px #00000047; transform: scale(1.32); -webkit-transform: scale(1.32); transform-origin: top center; }
+.home_testimonials .thumb.active img { transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.15); transform: scale(1.32); -webkit-transform: scale(1.32); transform-origin: top center; }
 .home_testimonials .thumb .name { font:var(--font-18); color:#000; font-weight: 600; margin-top:2rem; }
 .home_testimonials .thumb .designation { font:var(--font-16); margin-top:1rem; }
 /* =========================

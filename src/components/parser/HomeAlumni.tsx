@@ -49,93 +49,90 @@ export default function HomeAlumni() {
 
   return (
     <div className="home_testimonials">
-      <div className="container-fluid">
-        <div className="row justify-content-end">
-          <div className="col-lg-10">
-            <div className="grid">
-              {/* LEFT */}
-              <div className="left_col">
-                <img
-                  className="pattern_img"
-                  src="/images/pattern/pattern2.png"
-                />
+      <div className="container">
+        <div className="grid">
+          {/* LEFT */}
+          <div className="left_col">
+            <img
+              className="pattern_img"
+              src="/images/pattern/pattern2.png"
+            />
 
-                <div className="sec_title">
-                  <h5 className="title24">GLBian Speaks</h5>
-                  <h2 className="heading title48">
-                    Success Stories from our Students and Alumni
-                  </h2>
-                </div>
+            <div className="sec_title">
+              <h5 className="title24">GLBian Speaks</h5>
+              <h2 className="heading title48">
+                Success Stories from our Students and Alumni
+              </h2>
+            </div>
 
-                {/* Description */}
-                <div className="desc_content">
-                  <div className="quote-icon">
-                    <img src="/images/icons/quote.png" alt="quote icon" />
-                  </div>
-                  {activeItem && (
-                    <div className="desc active">{activeItem.message}</div>
-                  )}
-                </div>
-
-                {/* Thumbs */}
-                <div className="thumbs">
-                  <div className="thumb-group active">
-                    {currentItems.map((item: any, index: number) => (
-                      <div
-                        key={index}
-                        className={`thumb ${index === activeIndex ? "active" : ""}`}
-                        onClick={() => setActiveIndex(index)}
-                      >
-                        <img src={item.image} alt={item.name} />
-                        <div className="thumb_info">
-                          <p className="name">{item.name}</p>
-                          <span className="designation">{item.branch}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            {/* Description */}
+            <div className="desc_content">
+              <div className="quote-icon">
+                <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
+              {activeItem && (
+                <div className="desc active">{activeItem.message}</div>
+              )}
+            </div>
 
-              {/* RIGHT */}
-              <div className="right">
-                {/* Tabs */}
-                <div className="tabs">
-                  {tabs.map((tab) => (
-                    <div
-                      key={tab.key}
-                      className={`tab ${activeTab === tab.key ? "active" : ""}`}
-                      onClick={() => handleTabClick(tab.key)}
-                    >
-                      {tab.label}
+            {/* Thumbs */}
+            <div className="thumbs">
+              <div className="thumb-group active">
+                {currentItems.map((item: any, index: number) => (
+                  <div
+                    key={index}
+                    className={`thumb ${index === activeIndex ? "active" : ""}`}
+                    onClick={() => setActiveIndex(index)}
+                  >
+                    <img src={item.image} alt={item.name} />
+                    <div className="thumb_info">
+                      <p className="name">{item.name}</p>
+                      <span className="designation">{item.branch}</span>
                     </div>
-                  ))}
-                </div>
-
-                {/* Main Image */}
-                <div className="main-images">
-                  {activeItem && (
-                    <img
-                      className="main-img active w-100"
-                      src={activeItem.image}
-                      alt={activeItem.name}
-                    />
-                  )}
-                </div>
-
-                {/* Person Info */}
-                <div className="tab_image_content">
-                  {activeItem && (
-                    <div className="person-info active">
-                      <div className="name">{activeItem.name}</div>
-                      <div className="role">{activeItem.branch}</div>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-      </div></div>
+
+          {/* RIGHT */}
+          <div className="right">
+            {/* Tabs */}
+            <div className="tabs">
+              {tabs.map((tab) => (
+                <div
+                  key={tab.key}
+                  className={`tab ${activeTab === tab.key ? "active" : ""}`}
+                  onClick={() => handleTabClick(tab.key)}
+                >
+                  {tab.label}
+                </div>
+              ))}
+            </div>
+
+            {/* Main Image */}
+            <div className="main-images">
+              {activeItem && (
+                <img
+                  className="main-img active w-100"
+                  src={activeItem.image}
+                  alt={activeItem.name}
+                />
+              )}
+            </div>
+
+            {/* Person Info */}
+            <div className="tab_image_content">
+              {activeItem && (
+                <div className="person-info active">
+                  <div className="name">{activeItem.name}</div>
+                  <div className="role">{activeItem.branch}</div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

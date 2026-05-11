@@ -129,7 +129,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                     />
                   ) : (
                     <Image
-                      src="/images/logo/logo.png"
+                      src="/images/logo/site-logo-white.webp"
                       alt="GL Bajaj University"
                       className="white_logo"
                       width={415}

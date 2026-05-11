@@ -63,7 +63,7 @@
 .home_placement_info .placement sup { font: var(--font-16); line-height: 2.1rem; letter-spacing: 0; top: -2rem; left: 0.5rem; }
 .home_placement_info p { font: var(--font-16); line-height: 2.1rem; font-weight: bold; }
 /* COMPANY */
-.home_placement_companies { background: #fff; margin-top: 6.5rem; padding: 3rem 3.1rem 3rem 3.8rem; position: relative; }
+.home_placement_companies { background: #fff; margin-top: 6.5rem; padding: 3rem 3.8rem; }
 .home_placement_companies .navigation_btn { top: 0; bottom: auto; right: 3.8rem; }
 .home_placement_company_header { margin-bottom: 2.8rem; display: flex; justify-content: space-between; }
 .home_placement_company_header .slider_btns { display: flex; gap: 0.3rem; }

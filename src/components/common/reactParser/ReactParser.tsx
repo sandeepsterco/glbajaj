@@ -155,7 +155,7 @@ export default function ReactParser({ html }: { html: any }) {
       "ul", "ol", "li", "br", "hr", "img",
       "table", "thead", "tbody", "tr", "th", "td",
       "section", "article", "aside", "header", "footer",
-      "figure", "figcaption", "blockquote", "pre", "code",
+      "figure", "figcaption", "blockquote", "pre", "code", "sup",
     ],
     ALLOWED_ATTR: [
       "class", "id", "src", "alt", "href", "target",

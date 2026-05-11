@@ -234,11 +234,9 @@
     });
 
     new Swiper(".courses_slider_wrapper", {
-      slidesPerView: 6.57,
+      slidesPerView: 6.6,
       loop: true,
-      autoplay: {
-        delay: 2000,
-      },
+      autoplay: { delay: 2000 },
       navigation: {
         nextEl: ".courses_header .next_swiper_btn",
         prevEl: ".courses_header .prev_swiper_btn",

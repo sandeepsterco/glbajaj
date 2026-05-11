@@ -160,6 +160,7 @@ export default function ReactParser({ html }: { html: any }) {
     ALLOWED_ATTR: [
       "class", "id", "src", "alt", "href", "target",
       "width", "height", "style", "rel", "type",
+      "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
     ],
     FORCE_BODY: true,        // ← wraps in a body context, prevents the " />" artifact
   });

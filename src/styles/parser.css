@@ -11,7 +11,7 @@
 .award_swipr_main { position: relative; margin-top: 8.5rem; }
 
 .home_rank_award { padding-block: 13rem 9rem; }
-.h_r_award_Card { text-align: center; padding-inline: 3rem 3rem; position: relative; padding-block: 2rem; }
+.h_r_award_Card { text-align: center; padding-inline: 3rem 3rem; position: relative; }
 .h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: #ccc; top: 0; }
 .home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
 .h_r_award_Card figure img { width: auto; height: 5.7rem; margin: auto; margin-bottom: 2rem; }

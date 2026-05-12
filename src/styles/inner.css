@@ -1462,6 +1462,8 @@ top: 0;left: 0;width: 100%;background-color:var(--color-AE);height: 42rem;z-inde
 .acx_counter sup{font: var(--font-16);top: -1.5em;left: 0.3rem;}
 .acx_counter>li{padding: 2.8rem;}
 .acx_rgt2>.acx_list {margin-top: 7.2rem;}
+.spfx_sec{position: relative;}
+.spfx_sec::after{position: absolute;content: "";background-image: url(/images/pattern/campus-sprots-design.webp);background-position: center right;background-repeat: no-repeat;background-size: contain;width: 20.6rem;height: 100%;top: 0;right: 0;}
 .spfx_sec .sport_boxmain{padding-left: 2.5rem;}
 .spfx_sec{background-color: var(--color-F4);padding-block: 10rem 13rem;}
 .spfx_boxmain{margin-inline: 0.8rem;}

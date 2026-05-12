@@ -23,6 +23,7 @@ import DepartmentHomeLaboratories from "../../parser/DepartmentHomeLaboratories"
 import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
 import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
 import ResearchInnovation from "../../parser/ResearchInnovation";
+import HomeFacilities from "../../parser/HomeFacilities";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -103,6 +104,10 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "research_innovation") {
         return <ResearchInnovation />;
+      }
+
+      if (domNode.attribs.id === "home_facilities") {
+        return <HomeFacilities />;
       }
 
       if (domNode.attribs.id === "home_happenings") {

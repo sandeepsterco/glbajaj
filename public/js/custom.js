@@ -159,6 +159,8 @@
       ".cse_faculties_slider",
       ".cse_research_slider",
       ".hod_profile_slider",
+      ".sport_facilities",
+      ".AKTU_Swiper"
     ].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
@@ -516,6 +518,56 @@ new Swiper(".workshop_slider_wrapper", {
   },
 });
 
+new Swiper(".sport_facilities", {
+  // 3 slides poori aur 4th slide thodi si dikhegi
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 20,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: false,
+  autoplay: false,
+  navigation: {
+    nextEl: ".swiper_next_custom",
+    prevEl: ".swiper_prev_custom",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 1, // 3 full + 0.5 next slide
+      spaceBetween: 23,
+    },
+  },
+});
+
+new Swiper(".AKTU_Swiper", {
+  // 3 slides poori aur 4th slide thodi si dikhegi
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 20,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: false,
+  autoplay: false,
+  navigation: {
+    nextEl: ".swiper_next_custom",
+    prevEl: ".swiper_prev_custom",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 1, // 3 full + 0.5 next slide
+      spaceBetween: 23,
+    },
+  },
+});
+
 // TAB CLICK (desktop)
 document.querySelectorAll(".tab-btn").forEach((button) => {
   button.addEventListener("click", function () {
@@ -586,30 +638,4 @@ accHeaders.forEach((header) => {
 });
 // Campus Facilities page sports swiper start
 
-document.addEventListener("DOMContentLoaded", function () {
-  var swiper = new Swiper(".AKTU_Swiper", {
-    // 3 slides poori aur 4th slide thodi si dikhegi
-    slidesPerView: 1.2, // Mobile ke liye
-    spaceBetween: 20,
-    centeredSlides: false, // Left se start karne ke liye false rakhein
-    loop: false,
-    autoplay: false,
-    navigation: {
-      nextEl: ".swiper_next_custom",
-      prevEl: ".swiper_prev_custom",
-    },
-    breakpoints: {
-      // Jab screen 768px se badi ho (Tablets)
-      768: {
-        slidesPerView: 1,
-        spaceBetween: 15,
-      },
-      // Jab screen 1200px se badi ho (Desktop - XD Match)
-      1200: {
-        slidesPerView: 1, // 3 full + 0.5 next slide
-        spaceBetween: 23,
-      },
-    },
-  });
-});
-// Campus Facilities page sports swiper start
+

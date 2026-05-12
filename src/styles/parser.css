@@ -1,7 +1,7 @@
 .title36 { font: var(--font-36); }
 /************  Award and Ranking  CSS Start ************/
 .swiper-button-prev,
-.swiper-button-next { top:unset; left:unset; }
+.swiper-button-next { top:unset; left:unset; width: 4.4rem; height: 4.4rem;}
 .sec_title.center { text-align: center; }
 .sec_title.left { text-align: left; }
 .sec_title .title48 { color: var(--color-92); margin-top: 1rem; line-height: 4.8rem; letter-spacing: -2.4px; font-weight: normal; }
@@ -22,14 +22,11 @@
 .swiper-navigation-icon { display: none; }
 .h_r_ratingbox { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem; }
 .h_r_ratingbox i { color: var(--color-FF); width: 1.3rem; height: 1.2rem; }
-.award_swipr_main .swiper-button-next,
-.award_swipr_main .swiper-button-prev { cursor: pointer; }
-.award_swipr_main .swiper-button-prev::after { content: ''; left: 0; top: 30%; background-image: url('/images/icons/awards/slide_arrow_left.svg'); position: absolute; height: 6rem; width: 6rem; }
-.award_swipr_main .swiper-button-next::after { content: ''; top: 30%; background-image: url('/images/icons/awards/slide_arrow_right.svg'); position: absolute; right: 0; height: 6rem; width: 6rem; }
-.home_rank_award .more_btn { margin-top:2rem; }
-/* .home_rank_award .swiper-button-prev { position: absolute; left: 0; top: 33%; }
-.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 33%; }
-*/
+.prev_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_left.svg"); position: absolute; height: 6rem; width: 6rem; }
+.next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_right.svg"); position: absolute; height: 6rem; width: 6rem; }
+.home_rank_award .swiper-button-prev { position: absolute; left: 0; top: 50%; left: 0; transform: translateY(-50%); }
+.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 50%; right: 0; transform: translateY(-50%); }
+
 /************  Award and Ranking  CSS End ************/
 /************  start home placement  CSS End ************/
 .home_placement_section { background: #eeeeee; padding: 5.5rem 0 7.9rem; }
@@ -51,7 +48,7 @@
 .home_placement_static_card .top_placed { font: var(--font-24); color: var(--color-64); font-weight: bold; text-align: right; margin: 7.6rem 0 6.5rem; padding-right: 8.1rem; }
 .home_placement_static_card .pattern { position: relative; /* bottom: 0; left: 0; width: 100%; */ }
 .home_placement_static_card .slider_btns { position: absolute; display: flex; gap: 0.3rem; justify-content: center; left: 50%; bottom: 4.3rem; transform: translateX(-50%); z-index: 1; }
-.home_placement_static_card .slider_btns div { position: relative; width: 4rem; height: 4rem; padding: 0; display: unset; cursor: pointer; }
+.home_placement_static_card .slider_btns div { position: relative; padding: 0; display: unset; cursor: pointer; }
 /* STUDENT SLIDER */
 .home_placement_student_slider { flex: 1; }
 .home_placement_student_slider .swiper-slide { position: relative; }
@@ -67,7 +64,7 @@
 .home_placement_companies .navigation_btn { top: 0; bottom: auto; right: 3.8rem; }
 .home_placement_company_header { margin-bottom: 2.8rem; display: flex; justify-content: space-between; }
 .home_placement_company_header .slider_btns { display: flex; gap: 0.3rem; }
-.home_placement_company_header .slider_btns div { position: relative; width: 4rem; height: 4rem; padding: 0; display: unset; }
+.home_placement_company_header .slider_btns div { position: relative; display: unset; }
 .home_placement_company_slider .swiper-slide img { /* height: 40px; object-fit: contain; */ }
 /************  end of home placement  CSS End ************/
 /************  start of courses Section ************/
@@ -366,3 +363,37 @@
 .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============The Group page End============= */
+
+
+
+/* =============Home Facilities  start============= */
+.homeFac_sec { background-color: var(--color-F4); padding-block: 0 12.6rem; }
+.homeFac_content { position: relative; }
+.homeFac_content::after { background-image: url(/images/lab_line_shap.png); width: 10.8rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: -10rem; height: 37.8rem; }
+.homeFac_main { padding-left: 2rem; }
+.homeFac_title h4,
+.homeFac_title p { padding-bottom: 3rem; }
+.homeFac_tabs { display: grid; grid-template-columns: 21% 72%; gap: 13.9rem; align-items: center; }
+.homeFac_nav_side .navigation_btn { margin-top: 7.8rem; position:relative; bottom:unset; right:unset;}
+.homeFac_nav_side h3 { padding-block: 1rem 10rem; color: var(--color-92); }
+.homeFac_btn span { font: var(--font-21); padding-bottom: 1.2rem; margin-bottom: 2rem; border-bottom: 1px dashed var(--color-92); cursor: pointer; font-weight: 600; display: inline-block; }
+.homeFac_btn.active span { color: var(--color-92); font-weight: 600; }
+.homeFac_pane { display: none; }
+.homeFac_pane.active { display: block; }
+.homeFac_tabs_wrapper .swiper_prev_custom.swiper-button-lock,.homeFac_tabs_wrapper  .swiper_next_custom.swiper-button-lock { display: flex; }
+.homeFac_swiper_wrap { position: relative; }
+.homeFac_swiper_wrap .swiper-slide h4 { color: var(--color-64); margin-top: 2rem; }
+.homeFac_nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; z-index: 9; }
+.homeFac_prev,
+.homeFac_next { cursor: pointer; font-size: 20px; }
+.homeFac_accHeader { display: none; }
+@media (max-width: 768px) {
+ .homeFac_nav_side { display: none; }
+.homeFac_tabs { grid-template-columns: 100%; }
+.homeFac_pane { display: block; border-bottom: 1px solid #ddd; }
+.homeFac_accHeader { display: block; padding: 12px; font-weight: 600; background: #f5f5f5; cursor: pointer; }
+.homeFac_accBody { max-height: 0; overflow: hidden; transition: 0.4s; }
+.homeFac_pane.active .homeFac_accBody { max-height: 500px; }
+ }
+
+/* =============Home Facilities  start============= */

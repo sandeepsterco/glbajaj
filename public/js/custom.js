@@ -382,6 +382,78 @@
       }
     }
 
+
+    
+        // ✅ career-guidance Page tabs
+        const tabBtns = document.querySelectorAll(".careerTabsX_btn");
+        const panes = document.querySelectorAll(".careerTabsX_pane");
+        const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
+
+        // ===== SET FIRST TAB & PANE ACTIVE BY DEFAULT =====
+        if (tabBtns.length > 0 && panes.length > 0) {
+          tabBtns[0].classList.add("active");
+          panes[0].classList.add("active");
+
+          // Also set maxHeight for mobile accordion on first pane
+          const firstBody = panes[0].querySelector(".careerTabsX_accBody");
+          if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+        }
+
+        // ===== DESKTOP TABS =====
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (window.innerWidth > 768) {
+              const target = btn.getAttribute("data-tab");
+
+              // Remove active from all buttons and panes
+              tabBtns.forEach((b) => b.classList.remove("active"));
+              panes.forEach((p) => p.classList.remove("active"));
+
+              // Add active to clicked button
+              btn.classList.add("active");
+
+              // Find pane by matching data-tab value to pane's id
+              const targetPane = document.querySelector(`.careerTabsX_pane#${target}`);
+              if (targetPane) {
+                targetPane.classList.add("active");
+              } else {
+                console.warn(`No pane found with id="${target}"`);
+              }
+            }
+          });
+        });
+
+        // ===== MOBILE ACCORDION =====
+        accHeaders.forEach((header) => {
+          header.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              const pane = header.parentElement;
+
+              // Close all other panes
+              panes.forEach((p) => {
+                if (p !== pane) {
+                  p.classList.remove("active");
+                  const otherBody = p.querySelector(".careerTabsX_accBody");
+                  if (otherBody) otherBody.style.maxHeight = null;
+                }
+              });
+
+              // Toggle clicked pane
+              pane.classList.toggle("active");
+
+              const body = pane.querySelector(".careerTabsX_accBody");
+              if (body) {
+                body.style.maxHeight = pane.classList.contains("active")
+                  ? body.scrollHeight + "px"
+                  : null;
+              }
+            }
+          });
+        });
+
+
+
+
     return true;
   }
 
@@ -593,49 +665,4 @@ document.querySelectorAll(".acc-header").forEach((header) => {
     parent.classList.toggle("active");
   });
 });
-
-
-// ✅ career-guidance Page tabs
-const tabBtns = document.querySelectorAll(".careerTabsX_btn");
-const panes = document.querySelectorAll(".careerTabsX_pane");
-const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
-
-// ===== DESKTOP TABS =====
-tabBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    if (window.innerWidth > 768) {
-      const target = btn.getAttribute("data-tab");
-
-      tabBtns.forEach((b) => b.classList.remove("active"));
-      panes.forEach((p) => p.classList.remove("active"));
-
-      btn.classList.add("active");
-      document.getElementById(target).classList.add("active");
-    }
-  });
-});
-
-// ===== MOBILE ACCORDION =====
-accHeaders.forEach((header) => {
-  header.addEventListener("click", () => {
-    if (window.innerWidth <= 768) {
-      const pane = header.parentElement;
-
-      panes.forEach((p) => {
-        if (p !== pane) p.classList.remove("active");
-      });
-
-      pane.classList.toggle("active");
-
-      const body = pane.querySelector(".careerTabsX_accBody");
-      if (pane.classList.contains("active")) {
-        body.style.maxHeight = body.scrollHeight + "px";
-      } else {
-        body.style.maxHeight = null;
-      }
-    }
-  });
-});
-// Campus Facilities page sports swiper start
-
 

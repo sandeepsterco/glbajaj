@@ -1868,3 +1868,208 @@ section.facilities_policy.iqac-event.institutional-distinctiveness{padding-botto
 .comit_bx>p{color: var(--color-33);}
 
 /* ********************Anupam Css Start*********************** */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Gaurav Css Start 12/05/2026 */
+
+ /* Student Centric Policy Page Css Start */
+ .stu_cen_po_main { padding-block: 5rem 7rem; }
+.stu_cen_title { margin-bottom: 7rem; }
+.stu_cen_title>h4 { margin-bottom: 4rem; }
+.stu_cen_title>h3 { margin-bottom: 5rem; }
+.student_gri_table { margin-bottom: 7rem; }
+.gov_polbox { display: flex; gap: 4.5rem; }
+.gov_polbox > h6 { font: var(--font-21); font-weight: bold; }
+.govi_poli_icon a { display: flex; align-items: center; gap: 1rem; font: var(--font-16); font-weight: 600; border-bottom: 0.1rem solid #7070704D; padding-bottom: 2.5rem; }
+.scp-sec { margin-bottom: 12rem; }
+.scp-sec .scp-wrap { padding: 4.6rem 8.8rem  4.6rem 6.5rem; background-color:var(--color-F5); }
+.scp_email>a { font:var(--font-21); color: var(--color-AE); }
+.scp_email { display: flex; gap: 0.9rem; padding-bottom: 2rem; margin-bottom:1.5rem; border-bottom: 0.1rem solid var(--color-AE); }
+.scp-text>h6 { font: var(--font-18); }
+.scp-text>h6 a { color: #0F59D9; font-weight: 600; }
+/* Student Centric Policy Page Css End  */
+ /* Clubs & Societies Page Css Start */
+ .club_socie_main { padding-block: 5rem 0; }
+.club_grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:2.5rem; }
+.club_grid .club_textbox { padding-inline: 7.6rem 24.4rem; }
+.club_grid .club_textbox>h4 { margin-bottom: 4rem; }
+.club_grid .club_textbox>h3 { margin-bottom: 4rem; line-height: 4.6rem; }
+.club_soci_bottom { display: grid; grid-template-columns: 30% auto; position: relative; gap: 15.5rem; padding-block: 6.3rem 19.5rem; align-items: end; }
+.clb_bgbox { position: relative; }
+.clb_bgbox::before { background-color:var(--color-F4); content: ''; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; z-index: -1; }
+.club_soci_bottom h3 { margin-bottom: 4rem; }
+.club_soci_bottom h5 { margin-bottom: 4rem; }
+.con_infoclub h4 { font: var(--font-30); margin-bottom: 4rem; }
+.con_infoclub>p { padding-bottom: 2.5rem; }
+.insp_know_sec { padding-block: 10rem 13rem; }
+.insp_contentsec h4 { margin-bottom: 4rem; }
+.insp_contentsec h6 { margin-bottom: 4rem; font: var(--font-30); }
+.insp_imggrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
+.insp_contentsec p { padding-right: 11rem; }
+@media (max-width: 991px) {
+ .club_grid { grid-template-columns:repeat(1, 1fr); }
+ }
+/* Clubs & Societies Page css End */
+ /* Alumni-Overview Page css start */
+.alumni_ove { padding-block: 5rem 12rem; }
+.alumi_ov_hero h3 { margin-bottom: 4rem; }
+.alumni-vm { margin:auto; padding:4rem 0; display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
+.alumni-title { font-size:1.25rem; margin-bottom:1.25rem; color:#222; }
+.alumi_vision_mission_grid { display: grid; grid-template-columns: 25% 25% auto; gap: 10rem; padding-block: 0 10rem; z-index: 1; position: relative; }
+.alumi_vision_mission_grid h4 { margin-bottom: 3rem; }
+.al_vision_Bx p { font: var(--font-30); color: var(--color-33); }
+.alumni_objsec { position: relative; background-color: var(--color-64); padding-block: 10rem 11rem; }
+.alumni_obgrid { display: grid; grid-template-columns: 58% auto; gap: 15rem; }
+.al_ob_imbx { margin-top: -45rem }
+.al_ob_contentsec h4 { color: var(--color-white); margin-bottom: 4rem; font-weight: bold; }
+.al_ob_contentsec h3 { margin-bottom: 4rem; color: var(--color-white); }
+.al_ob_contentsec li { color: var(--color-white); margin-bottom: 2.5rem; }
+.alumni_our_tem { padding-block: 12rem 16.4rem; }
+.alumni_our_tem .teamX_titlesec { margin-bottom: 9rem; }
+.alumni_committe_member .team-members-grid { grid-template-columns: repeat(4, 1fr); }
+.alumni_committe_member .team-members-grid .team-members { padding: 3.1rem 2.2rem 3.1rem 2.2rem; }
+.committee_members.alumni_committe_member { border-bottom: none; border-top: 0.1rem solid #e3ccb9; padding-block: 12rem 13rem; }
+/* Alumni-Overview Page css End */
+/*Alumni-Chapters Page css Start */
+.alumni_evt_meetsec { padding-block: 10rem 10rem; }
+.alumni_evt_meetsec .evt_titlesec>h4 { margin-bottom: 4rem; }
+.alumni_evt_meetsec .evt_titlesec>h3 { margin-bottom: 4rem; }
+.alumni_evt_meetsec .evt_titlesec p + p { margin-bottom: 5.1rem; }
+.alumni_chaper_main .csr-new-img { z-index: 9; }
+.alumni_event h4 { margin-bottom: 4rem; }
+.alumni_event .view_btns { text-align: center; margin-top: 4.6rem; }
+.award-sec.alumni_event { padding-block: 5rem 13rem; }
+.alumni-detail-wrap { position: relative; }
+.alumni-detail-wrap::before { background-color: var(--color-F4); content: ''; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; }
+.alumni-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; padding-block: 8rem 0; }
+.alumni-detail-content { padding: 9rem 23rem 0 12rem; }
+.alumni-detail-content h3 { font: var(--font-30); }
+.alumni-pattern { position: absolute; right: 14rem; margin-top: -12rem; }
+.alumni-pattern-right { position: absolute; bottom: 0rem; left: 14rem; }
+.alumni-detail-grid-reverse .alumni-detail-content { padding: 9rem 13rem 0 26rem; }
+.alumni-detail-grid-reverse .alumni-detail-content h3 { margin-bottom: 4rem; }
+.alumni-detail-grid-reverse { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; margin-top: 6rem; padding-bottom: 15rem; }
+.alumni_spea_sec .alumni_spea_grid { display: grid; grid-template-columns: 40% auto; gap: 10.5rem; align-items: center; margin-block: 5rem 12.5rem; }
+.alumni_spea_grid .alu_spe_img { padding-left: 2.5rem; }
+.alu_spe_img figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
+.alu_spe_img figure::after { content: ""; position: absolute; left: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+.alu_spe_img figure::before { 
+    /* background-image: url(/images/pattern/alumni_spea_pattern.png); */
+  background-image:  url(/images/pattern/patch.png);
+     width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 0.3rem; margin: auto 0; left: -12rem; z-index: -1; background-size: cover; 
+     background-repeat: no-repeat; }
+.alum_spa_info h3 { font: var(--font-30); margin-bottom: 4rem; font-weight: normal; }
+.alum_calcu_grids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4.2rem; }
+.alc_contextsec h5 { margin-bottom: 4rem; font-weight: bold; }
+.alc_contextsec { margin-bottom: 13rem; }
+.alumni-detail-sec .alu-detail-title{padding-block: 5rem 5rem;}
+/*Alumni-Chapters Page css Start */
+
+
+
+
+
+/* Kundan Css Start 12/05/2026 */
+.about_iic_grid{display:grid;grid-template-columns:57.8% 42.1%; background-color:var(--color-F4);padding:9.1rem 12.6rem;}
+.about_iic_grid .about_iic_cont{padding-right:24rem;}
+.about_iic_grid .about_iic_cont figure img{max-width:277px;margin:1rem 0 0 0;display:inline-block;}
+.res_publication.innovate{padding-block:0 12rem;border-bottom:1px solid #ae7f2c5c;}
+.res_pub_title.innovate-cont h4{margin-bottom:4rem;}
+.res_pub_title.innovate-cont{margin-bottom:4rem;}
+.iic-third-sec{padding-top: 10rem;}
+.iic-achivement{padding-top: 10rem; margin-top: 10rem; border-top: 1px solid #ae7f2c5c;}
+.iic-achivement-bg{background-color: var(--color-F4); padding: 8rem 9.7rem 8rem 11.4rem;}
+.iic-achivement-grid{display: grid; grid-template-columns: 48.6% 51.4%;}
+.iic-achivement-Cnt{padding-right: 10.2rem; padding-block: 8.7rem;}
+.iic-achivement-Cnt h3{margin-block: 5rem 3rem; font: var(--font-21);}
+.iic-achivement-Cnt p{margin-bottom: 8rem; padding-right: 3.5rem;}
+.iic-achivement-img{background-color: var(--color-64); padding: 2.5rem; height: 34rem;}
+.iic-achivement-img p{font: var(--font-24); font-weight: 700; margin-bottom: 3rem; color: var(--color-white);}
+.mentor-institute{margin-bottom: 10rem;}
+.mentor-institute h2{margin-block: 5rem 4.1rem; font: var(--font-30); color: var(--color-00);}
+.mentor-grid{display: grid; grid-template-columns: repeat(2,1fr); gap: 2.4rem;}
+.mentor-bx{background-color: var(--color-F5); padding: 3.3rem 3.7rem;}
+.mentor-bx p{font: var(--font-16); display: flex; justify-content: space-between; }
+.mentor-bx p:first-child{color: var(--color-33); margin-bottom: 1rem;}
+.mentor-bx p:last-child{color: var(--color-00); font-weight: 600; margin-bottom: 0rem;}
+.nss-ncc-aim{margin-top: 5rem;}
+.nss-ncc-aim-grid{display: grid; grid-template-columns: 42.5% 57.6%; margin-bottom: 9rem;}
+.nss-ncc-aim-Cnt{padding-right: 11rem;}
+.nss-ncc-aim-Cnt p:nth-of-type(1){margin-block: 4rem; color: var(--color-33);}
+.nss-ncc-aim-Cnt p:nth-of-type(2){font: var(--font-30); margin-bottom: 13.6rem; color: var(--color-33);}
+.nss-ncc-aim-img p{margin-top: 5rem; padding-right: 25rem;}
+.nss-big-bg{margin-top: 7rem;}
+
+.motto-ncc p:nth-of-type(2){font: var(--font-30);}
+.philosophy_cnt.motto-ncc {    padding-right: 5rem;}
+.ncc-core-values{background-color: var(--color-31); padding-block: 10rem 7rem; position: relative;}
+.ncc-core-values :where(p, h2, li){color: var(--color-white);}
+.ncc-core-values h2{font: var(--font-24);}
+.ncc-core-values p{margin-block: 4rem 5.7rem; font: var(--font-36); letter-spacing: -1.8px;}
+.ncc-core-values-design{position: absolute; top: 0; right: 0; height: 100%;}
+.ncc-song-lyrics{background-color: var(--color-F4); padding-block: 9rem 11rem; position: relative; overflow: hidden;}
+.song-line{text-align: center;}
+.song-line h2{margin-block: 1.3rem 4rem;}
+.more-info{background-color: var(--color-white); padding: 3.6rem 17.6rem; margin-top: 5rem;}
+.more-info p{margin-bottom: 5rem; font: var(--font-30); font-weight: 500;}
+.more-info p a{color: var(--color-89); }
+.btn-grp{display: flex; align-items: center; gap: 5rem; justify-content: center; }
+.btn-grp a{padding: 1.3rem 2rem; background-color: var(--color-AE); color: var(--color-white); font: var(--font-16); font-weight: 600;}
+.ncc-song-pattern{position: absolute; top: 0; right: 0; height: 100%;} 
+.ncc-rank-ceremony{background-color: var(--color-white); padding-block: 13rem 7rem;}
+.ncc-rank-ceremony_cont{padding-right: 17rem;}
+.ncc-rank-ceremony_cont h3{font: var(--font-36); margin-block: 4rem; letter-spacing: -1.8px; color: var(--color-92);} 
+.ncc-rank-ceremony_cont p:nth-of-type(2) span{font-weight: 600;}
+.ncc-rank-ceremony-grid {display: grid;grid-template-columns: 43.2% 56.8%;padding-inline: 0.55rem;}
+.ncc-rank-ceremony_img{position: relative;}
+.ceremony_navigation .swiper_prev_custom, .ceremony_navigation .swiper_next_custom {position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;;}
+.ceremony_navigation .swiper_next_custom {right: -3rem;}
+.ceremony_navigation .swiper_prev_custom {left: -3rem;}
+
+.pledge{margin-block: 10rem;}
+.pledge-lab-grid{display: grid;grid-template-columns: 46.6% auto;gap: 12.4rem;position: relative;align-items: center;}
+.pledge-lab-grid-Cnt h2{font: var(--font-21); font-weight: 700; color: var(--color-64); margin-bottom: 4rem;}
+.pledge-lab-grid-Cnt p:first-child{margin-bottom: 7.7rem;}
+.pledge-lab-grid-Cnt ol { padding-right: 2rem;  } 
+.pledge-lab-grid-img{position: relative;}
+.pledge-lab-grid-img::before{position: absolute;content: "";width: 100%;height: 80%;background-color: var(--color-F5);z-index: -1;top: 47%;transform: translateY(-50%);}
+.pledge-lab-grid-Cnt h3{color: var(--color-92); padding-right: 9.55rem;font-weight: normal;}
+.ncc-flag .csr-design{
+margin-top: -1rem;
+}
+.ncc-flag .csr-text-list {
+    padding: 9rem 31rem 0 12rem;
+}
+
+.ncc-flag .csr-text h3{color: var(--color-33); font: var(--font-30); line-height: 1.4;}
+.ncc-flag .csr-list-new{align-items: center;}
+
+.alumni-achivement{padding-block: 5rem 10rem;}
+.alumni-achivement-grid{display: grid; grid-template-columns: 61.8% auto;}
+.alumni-achivement-cnt {padding-right: 15.7rem;}
+.alumni-achivement h3{margin-block: 4rem 5rem;}
+.alumni-achivement-cnt blockquote{font: var(--font-30); margin-bottom: 5rem;}
+.alumni-achivement-cnt figure{margin-top: 5rem;}
+.alumni-achivement-img{position: relative;}
+.alumni-achivement-img::after{position: absolute; content: ""; width: 100%; height: 100%; background-color: var(--color-AE); right: -3rem; bottom: -3rem; z-index: -1;}
+
+
+.distinguished-alumni{padding-block: 10rem; background-color: var(--color-F4);}
+.distinguished-alumni h2{margin-bottom: 8.6rem;}
+.distinguished-alumni-grid{display:grid; grid-template-columns: repeat(4,1fr); gap: 7.6rem 2rem;}
+.distinguished-img{padding-inline: 1.3rem; padding-bottom: 3.8rem; background-color: var(--color-white);}
+.distinguished-img figure img{ margin-top: -4.6rem;}
+.distinguished-caption{margin-top: 1.6rem;}
+.distinguished-caption h3{font: var(--font-18); font-weight: 600; padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #AE7F2C;}
+.distinguished-caption p{font: var(--font-16); font-weight: 600; color: var(--color-33); margin-bottom: 0.5rem;}
+.distinguished-caption span{font:var(--font-16); color: var(--color-33);}

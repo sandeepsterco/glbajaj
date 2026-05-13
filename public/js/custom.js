@@ -160,7 +160,8 @@
       ".cse_research_slider",
       ".hod_profile_slider",
       ".sport_facilities",
-      ".AKTU_Swiper"
+      ".AKTU_Swiper",
+      ".workshop_slider_wrapper"
     ].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
@@ -355,6 +356,84 @@
       },
     });
 
+    
+
+    new Swiper(".workshop_slider_wrapper", {
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 21,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: true,
+      autoplay: {
+        delay: 2000,
+      },
+      navigation: {
+        nextEl: ".next_swiper_btn ",
+        prevEl: ".prev_swiper_btn ",
+      },
+      breakpoints: {
+        // Jab screen 768px se badi ho (Tablets)
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 30,
+        },
+        // Jab screen 1200px se badi ho (Desktop - XD Match)
+        1200: {
+          slidesPerView: 3.5, // 3 full + 0.5 next slide
+          spaceBetween: 30,
+        },
+      },
+    });
+
+    new Swiper(".sport_facilities", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 20,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        // Jab screen 768px se badi ho (Tablets)
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        // Jab screen 1200px se badi ho (Desktop - XD Match)
+        1200: {
+          slidesPerView: 1, // 3 full + 0.5 next slide
+          spaceBetween: 23,
+        },
+      },
+    });
+
+    new Swiper(".AKTU_Swiper", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 20,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        // Jab screen 768px se badi ho (Tablets)
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        // Jab screen 1200px se badi ho (Desktop - XD Match)
+        1200: {
+          slidesPerView: 1, // 3 full + 0.5 next slide
+          spaceBetween: 23,
+        },
+      },
+    });
+
     return true;
   }
 
@@ -450,6 +529,35 @@
             }
           });
         });
+
+
+        
+
+      // TAB CLICK (desktop)
+      document.querySelectorAll(".tab-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((content) => content.classList.remove("active"));
+          this.classList.add("active");
+          document.getElementById(this.dataset.tab).classList.add("active");
+        });
+      });
+
+      // ACCORDION (mobile)
+      document.querySelectorAll(".acc-header").forEach((header) => {
+        header.addEventListener("click", function () {
+          let parent = this.parentElement;
+          // close others (optional – remove if you want multiple open)
+          document.querySelectorAll(".tab-content").forEach((item) => {
+            if (item !== parent) item.classList.remove("active");
+          });
+          parent.classList.toggle("active");
+        });
+      });
 
 
 
@@ -563,106 +671,4 @@
   }
 })();
 // research slider wrapper
-
-new Swiper(".workshop_slider_wrapper", {
-  slidesPerView: 1.2, // Mobile ke liye
-  spaceBetween: 21,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
-  loop: true,
-  autoplay: {
-    delay: 2000,
-  },
-  navigation: {
-    nextEl: ".next_swiper_btn ",
-    prevEl: ".prev_swiper_btn ",
-  },
-  breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
-    768: {
-      slidesPerView: 2.5,
-      spaceBetween: 30,
-    },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
-    1200: {
-      slidesPerView: 3.5, // 3 full + 0.5 next slide
-      spaceBetween: 30,
-    },
-  },
-});
-
-new Swiper(".sport_facilities", {
-  // 3 slides poori aur 4th slide thodi si dikhegi
-  slidesPerView: 1.2, // Mobile ke liye
-  spaceBetween: 20,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
-  loop: false,
-  autoplay: false,
-  navigation: {
-    nextEl: ".swiper_next_custom",
-    prevEl: ".swiper_prev_custom",
-  },
-  breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
-    1200: {
-      slidesPerView: 1, // 3 full + 0.5 next slide
-      spaceBetween: 23,
-    },
-  },
-});
-
-new Swiper(".AKTU_Swiper", {
-  // 3 slides poori aur 4th slide thodi si dikhegi
-  slidesPerView: 1.2, // Mobile ke liye
-  spaceBetween: 20,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
-  loop: false,
-  autoplay: false,
-  navigation: {
-    nextEl: ".swiper_next_custom",
-    prevEl: ".swiper_prev_custom",
-  },
-  breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
-    1200: {
-      slidesPerView: 1, // 3 full + 0.5 next slide
-      spaceBetween: 23,
-    },
-  },
-});
-
-// TAB CLICK (desktop)
-document.querySelectorAll(".tab-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    document
-      .querySelectorAll(".tab-btn")
-      .forEach((btn) => btn.classList.remove("active"));
-    document
-      .querySelectorAll(".tab-content")
-      .forEach((content) => content.classList.remove("active"));
-    this.classList.add("active");
-    document.getElementById(this.dataset.tab).classList.add("active");
-  });
-});
-
-// ACCORDION (mobile)
-document.querySelectorAll(".acc-header").forEach((header) => {
-  header.addEventListener("click", function () {
-    let parent = this.parentElement;
-    // close others (optional – remove if you want multiple open)
-    document.querySelectorAll(".tab-content").forEach((item) => {
-      if (item !== parent) item.classList.remove("active");
-    });
-    parent.classList.toggle("active");
-  });
-});
 

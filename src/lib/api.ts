@@ -12,6 +12,10 @@ export async function apiFetch(endpoint: string, options?: ApiFetchOptions) {
       const { revalidate = DEFAULT_REVALIDATE, cache, ...restOptions } = options ?? {};
   
       const response = await fetch(`${API_URL}${endpoint}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         ...restOptions,
         ...(cache === 'no-store'
           ? { cache: 'no-store' as const }

@@ -487,6 +487,52 @@
 .tabs_section .acc-body { display: none; padding: 1rem; }
 .tabs_section .tab-content.active .acc-body { display: block; }
  }
+.sterco_tabs_sec .sterco_tab_main { position: relative; padding-block: 8rem; }
+.sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 50%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }
+.sterco_accordion_content:before { background-color: var(--color-F4); content: ""; z-index: -1; position: absolute; inset: 10rem -2.5rem 0 -15.5rem; }
+.sterco_accordion_content { grid-template-columns: 40% auto; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-top: -38rem; 
+    padding-block: 13rem 10rem; display: grid; position: relative; }
+.academic_tab_reverse{padding-top: 12rem;}
+.academic_tab_reverse .sterco_tab_main .sterco_tabs_nav { position: absolute; right: 23rem; max-width: 57rem; }
+.academic_tab_reverse .sterco_tab_panel { margin-left: -13rem; }
+.academic_tab_reverse .sterco_accordion_content { grid-template-columns: 51% auto; margin-top: -16rem; padding-block: 13rem; display: grid;gap: 15rem; }
+.academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
+.academic_tab_reverse .sterco_accordion_content:before { left: -2.5rem; }
+/* =========================
+   NAVIGATION
+========================= */
+.sterco_tabs_nav { position: relative; z-index: 2; padding-left: 12rem; }
+.sterco_tab_btn { position: relative; display: block; padding: 1rem 2rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
+.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; }
+.sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
+/* =========================
+   TAB CONTENT
+========================= */
+.sterco_tab_panel { display: none; }
+.sterco_tab_panel.active { display: block; }
+.sterco_accordion_content { position: relative; display: grid; grid-template-columns: 40% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 13rem 10rem; margin-top: -38rem; }
+/* .sterco_accordion_content::before { content: ""; position: absolute; top: 10rem; bottom: 0; left: -15.5rem; right: -2.5rem; background-color: var(--color-F4); z-index: -1; }
+*/
+.sterco_content_box { padding-right: 11rem; }
+.sterco_content_box p { margin-bottom: 0; }
+.sterco_accordion_content figure { margin: 0; }
+.sterco_accordion_content img { width: 100%; display: block; }
+.sterco_accordion_header { display: none; }
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+ .sterco_tabs_sec { padding-block: 4rem; }
+.sterco_tabs_sec::before { display: none; }
+.sterco_tabs_nav { display: none; }
+.sterco_tab_panel { display: block; border-bottom: 1px solid #ddd; }
+.sterco_accordion_header { display: block; }
+.sterco_accordion_btn { width: 100%; padding: 1.5rem; border: none; background: #f5f5f5; text-align: left; cursor: pointer; font-weight: 600; }
+.sterco_accordion_content { display: none; grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; margin-top: 0; }
+.sterco_accordion_content::before { display: none; }
+.sterco_accordion_content.active { display: grid; }
+.sterco_content_box { padding-right: 0; }
+ }
 /* ==============Research Code of Conduct page Start============= */
 .research_conduct { padding-block: 5rem 12rem; }
 .research_conduct h3 { margin-bottom: 4rem; }
@@ -1080,8 +1126,10 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .team-members h3 { font: var(--font-21); color: var(--color-AE); margin-bottom: 2.4rem; }
 .team-members >p { font: var(--font-18); color: var(--color-black); font-weight: 700; margin-bottom: 0; }
 .team-members span { font: var(--font-16); color: var(--color-33); font-weight: 400; }
-.value-education-event { margin-top: 10rem; border-top: 1px solid #c085523b ; padding-top: 10rem; }
+.value-education-event {  padding-top: 10rem; }
 .value-education-event h2 { font:var(--font-30); }
+.value-education-event .btn-grp {margin-top: 5.4rem;}
+
 /* =========== Bhashini Sec1 ======= */
 .bhashini-sec1 { margin-top: 13rem; margin-bottom: 11.9rem }
 .bhashini-sec1 .bhashini-sec1-grid { display: grid; grid-template-columns: 25% auto; gap: 3rem; margin-inline: 3.55rem; }
@@ -1271,7 +1319,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .centobjec_caption>ul { padding-right: 3.5rem; }
 .centobjec_caption>ul>li { color:var(--color-33); }
 /* Center Benefits */
-.centbenfit_sec { padding-block:5rem 10.4rem; background-color:var(--color-white); border-top: 0.1rem solid #D2AB67; }
+.centbenfit_sec { padding-block:5rem 10.4rem; background-color:var(--color-white); border-top: 0.1rem solid #D2AB67; border-bottom: 0.1rem solid #D2AB67; }
 .entbenfit_caption>h5 { font-weight:bold; margin-bottom:2.6rem; color:var(--color-33); }
 .entbenfit_caption>p { color:var(--color-33); }
 .entbenfit_caption>ul { padding-right: 3.5rem; }
@@ -1341,8 +1389,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni_our_tem { padding-block: 12rem 16.4rem; }
 .alumni_our_tem .teamX_titlesec { margin-bottom: 9rem; }
 .alumni_committe_member.team-members-sec { margin-top: 0; border-bottom: none; border-top: 0.1rem solid #e3ccb9; padding-block: 12rem 13rem; }
-.alumni_committe_member.team-members-sec h5{    margin-bottom: 5rem;
-    font-weight: bold;}
+.alumni_committe_member.team-members-sec h5 { margin-bottom: 5rem; font-weight: bold; }
 .alumni_committe_member .team-members-grid { grid-template-columns: repeat(4, 1fr); }
 .alumni_committe_member .team-members-grid .team-members { padding: 3.1rem 2.2rem 3.1rem 2.2rem; }
 .committee_members.alumni_committe_member { border-bottom: none; border-top: 0.1rem solid #e3ccb9; padding-block: 12rem 13rem; }

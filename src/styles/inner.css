@@ -1509,20 +1509,23 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .distinguished-caption span { font:var(--font-16); color: var(--color-33); }
 .our_recruiters { padding-block: 5rem 10rem; }
 .our_recruiters .our_recruiters-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.4rem; }
-.our_recruiters .our_recruiters-grid li { transition: transform 0.4s ease; }
 .our_recruiters .our_recruiters-grid li { background-color: var(--color-F5); padding: 4.6rem 5rem 4.5rem 4.4rem; border-radius: 1rem; position: relative; }
 .our_recruiters .our_recruiters-grid li:before { background-color: var(--color-FE); content: ""; width: 62%; height: .2rem; margin-inline: auto; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
-.our_recruiters .our_recruiters-grid li:hover { transform: scale(1.08); }
+.our_recruiters .our_recruiters-grid li img { transition: transform 0.4s ease; }
+.our_recruiters .our_recruiters-grid li:hover img { transform: scale(1.08); }
 .placement_main { padding-block: 5rem 10rem; }
 .placement_grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3.5rem; }
-.place_box { background-color: var(--color-F5); border-radius: 1.5rem; }
-.place_infobox h3 { font: var(--font-24); color: var(--color-AE); margin-bottom: 1.5rem; }
-.place_infobox p { font: var(--font-18); color: var(--color-64);  }
+.place_box { background-color: #f3e9dced; border-radius: 1.5rem; }
+.place_infobox h3 { font: var(--font-24); color: #633d27; margin-bottom: 1.5rem; font-weight: bold; }
+.place_infobox p { font: var(--font-18); color: var(--color-64); margin-bottom: 2.5rem; }
 .place_infobox p strong { font-weight: bold; }
 .place_infobox { text-align: center; padding: 1.5rem; }
-.place_complog { text-align: center;position: absolute;right: 0;top: 0; }
-.place_complog img { margin: auto;    height: 7rem; }
-.place_pkg h3 { font-weight: 600; letter-spacing: 0;    color: var(--color-33); }
+.place_complog { text-align: center; position: absolute; right: 0; top: 0; }
+.place_complog img { margin: auto; height: 7rem; }
+.place_pkg h3 { font-weight: 600; letter-spacing: 0; color: var(--color-33); }
 .place_imgbox { background-color: var(--color-F4); border-radius: 1.5rem; position: relative; }
 .place_imgbox::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
-/* .place_imgbox>figure img { height: 35rem; margin: auto; } */
+.dept_gridmain { padding-block: 5rem 10rem; }
+.dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
+/* .place_imgbox>figure img { height: 35rem; margin: auto; }
+*/

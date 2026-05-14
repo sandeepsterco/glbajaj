@@ -3,6 +3,7 @@
 import "swiper/css";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/src/lib/api";
+import Image from "next/image";
 
 const fetchCourses = async () => {
   const { data, error } = await apiFetch("modular/home");
@@ -39,7 +40,12 @@ export default function AddOnCourses() {
                 <div key={slideIdx} className="swiper-slide">
                   {singleSlide?.image && (
                     <span className="icon">
-                      <img src={singleSlide.image} alt="internet logo" />
+                      <Image
+                        src={singleSlide.image}
+                        alt="internet logo" 
+                        width={24}
+                        height={24}
+                      />
                     </span>
                   )}
 

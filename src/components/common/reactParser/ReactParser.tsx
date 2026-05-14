@@ -164,19 +164,19 @@ export default function ReactParser({ html }: { html: any }) {
 
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR:["target"],
-    // ALLOWED_TAGS: [          // ← explicitly allow these tags
-    //   "a", "b", "i", "em", "strong", "span", "div", "p",
-    //   "h1", "h2", "h3", "h4", "h5", "h6",
-    //   "ul", "ol", "li", "br", "hr", "img",
-    //   "table", "thead", "tbody", "tr", "th", "td",
-    //   "section", "article", "aside", "header", "footer",
-    //   "figure", "figcaption", "blockquote", "pre", "code", "sup", "button", "small"
-    // ],
-    // ALLOWED_ATTR: [
-    //   "class", "id", "src", "alt", "href", "target",
-    //   "width", "height", "style", "rel", "type",
-    //   "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
-    // ],
+    ALLOWED_TAGS: [          // ← explicitly allow these tags
+      "a", "b", "i", "em", "strong", "span", "div", "p",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "ul", "ol", "li", "br", "hr", "img",
+      "table", "thead", "tbody", "tr", "th", "td",
+      "section", "article", "aside", "header", "footer",
+      "figure", "figcaption", "blockquote", "pre", "code", "sup", "button"
+    ],
+    ALLOWED_ATTR: [
+      "class", "id", "src", "alt", "href", "target",
+      "width", "height", "style", "rel", "type",
+      "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
+    ],
     FORCE_BODY: true,        // ← wraps in a body context, prevents the " />" artifact
   });
 

@@ -85,8 +85,8 @@ export default function Header({ headerData }: { headerData?: any }) {
 
         {/* Top bar */}
         <div className="top_header">
-          <div className="container">
-            <div className="row justify-end">
+          <div className="container-fluid">
+            <div className="row justify-end mx-0">
               <div className="top_menu">
                 <div className="toll_sec">
                   <ul>
@@ -99,7 +99,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                 <ul className="h_social_sec">
                   {SOCIALS.map(({ icon, label }) => (
                     <li key={label}>
-                      <Link href="#" aria-label={label} target="_blank">
+                      <Link href="#" aria-label={label} target="_blank" className="social_link">
                         <img src={`/images/icons/social/${icon}`} alt={label} />
                       </Link>
                     </li>
@@ -112,7 +112,7 @@ export default function Header({ headerData }: { headerData?: any }) {
 
         {/* Bottom nav bar */}
         <div className="bottom_header">
-          <div className="container">
+          <div className="container-fluid">
 
             <div className="btn_head_menu">
               {/* Logo */}
@@ -129,7 +129,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                     />
                   ) : (
                     <Image
-                      src="/images/logo/site-logo-white.webp"
+                      src="/images/logo/logo.png"
                       alt="GL Bajaj University"
                       className="white_logo"
                       width={415}
@@ -313,6 +313,14 @@ export default function Header({ headerData }: { headerData?: any }) {
             </div>
           ))}
         </div>
+
+        <Image
+          src={'/images/pattern/hamburger.png'}
+          width={1479}
+          height={138}
+          alt="hamburger pattern"
+          className="hamburger_pattern img-fluid"
+        />
       </div>
     </>
   );

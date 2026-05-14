@@ -40,7 +40,7 @@ export default function HeroBanner({ data }: { data: any }) {
             </picture>
 
             <div className="slider_caption">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="caption_wrap">
                   {slide?.title && (
                     <blockquote className="title48">{slide.title}</blockquote>
@@ -53,8 +53,8 @@ export default function HeroBanner({ data }: { data: any }) {
                         <Image
                           src="/images/home/hero/arrow_right.svg"
                           alt="Read more"
-                          width={40}
-                          height={40}
+                          width={64}
+                          height={64}
                         />
                       </figure>
                     </Link>

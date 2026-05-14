@@ -85,7 +85,7 @@ export default function Header({ headerData }: { headerData?: any }) {
 
         {/* Top bar */}
         <div className="top_header">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row justify-end">
               <div className="top_menu">
                 <div className="toll_sec">
@@ -112,7 +112,7 @@ export default function Header({ headerData }: { headerData?: any }) {
 
         {/* Bottom nav bar */}
         <div className="bottom_header">
-          <div className="container">
+          <div className="container-fluid">
 
             <div className="btn_head_menu">
               {/* Logo */}

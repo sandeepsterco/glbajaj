@@ -616,6 +616,7 @@
         });
       }
     });
+    
   }
 
   function toggleReadMore() {
@@ -672,3 +673,227 @@
 })();
 // research slider wrapper
 
+new Swiper(".workshop_slider_wrapper", {
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 21,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: true,
+  autoplay: {
+    delay: 2000,
+  },
+  navigation: {
+    nextEl: ".next_swiper_btn ",
+    prevEl: ".prev_swiper_btn ",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 2.5,
+      spaceBetween: 30,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 3.5, // 3 full + 0.5 next slide
+      spaceBetween: 30,
+    },
+  },
+});
+
+new Swiper(".sport_facilities", {
+  // 3 slides poori aur 4th slide thodi si dikhegi
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 20,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: false,
+  autoplay: false,
+  navigation: {
+    nextEl: ".swiper_next_custom",
+    prevEl: ".swiper_prev_custom",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 1, // 3 full + 0.5 next slide
+      spaceBetween: 23,
+    },
+  },
+});
+new Swiper(".ncc_rank_ceremony", {
+  // 3 slides poori aur 4th slide thodi si dikhegi
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 20,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: false,
+  autoplay: false,
+  navigation: {
+    nextEl: ".swiper_next_custom",
+    prevEl: ".swiper_prev_custom",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 1, // 3 full + 0.5 next slide
+      spaceBetween: 23,
+    },
+  },
+});
+
+new Swiper(".AKTU_Swiper", {
+  // 3 slides poori aur 4th slide thodi si dikhegi
+  slidesPerView: 1.2, // Mobile ke liye
+  spaceBetween: 20,
+  centeredSlides: false, // Left se start karne ke liye false rakhein
+  loop: false,
+  autoplay: false,
+  navigation: {
+    nextEl: ".swiper_next_custom",
+    prevEl: ".swiper_prev_custom",
+  },
+  breakpoints: {
+    // Jab screen 768px se badi ho (Tablets)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    // Jab screen 1200px se badi ho (Desktop - XD Match)
+    1200: {
+      slidesPerView: 1, // 3 full + 0.5 next slide
+      spaceBetween: 23,
+    },
+  },
+});
+
+// TAB CLICK (desktop)
+document.querySelectorAll(".tab-btn").forEach((button) => {
+  button.addEventListener("click", function () {
+    document
+      .querySelectorAll(".tab-btn")
+      .forEach((btn) => btn.classList.remove("active"));
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((content) => content.classList.remove("active"));
+    this.classList.add("active");
+    document.getElementById(this.dataset.tab).classList.add("active");
+  });
+});
+
+// ACCORDION (mobile)
+document.querySelectorAll(".acc-header").forEach((header) => {
+  header.addEventListener("click", function () {
+    let parent = this.parentElement;
+    // close others (optional – remove if you want multiple open)
+    document.querySelectorAll(".tab-content").forEach((item) => {
+      if (item !== parent) item.classList.remove("active");
+    });
+    parent.classList.toggle("active");
+  });
+});
+
+
+document.querySelectorAll('.sterco_tabs_sec').forEach(section => {
+
+    const tabButtons = section.querySelectorAll('.sterco_tab_btn');
+    const tabPanels = section.querySelectorAll('.sterco_tab_panel');
+
+    const accordionButtons = section.querySelectorAll('.sterco_accordion_btn');
+    const accordionContents = section.querySelectorAll('.sterco_accordion_content');
+
+    /* =========================
+       FIRST ACTIVE ITEM
+    ========================= */
+
+    if (tabButtons.length > 0) {
+        tabButtons[0].classList.add('active');
+    }
+
+    if (tabPanels.length > 0) {
+        tabPanels[0].classList.add('active');
+    }
+
+    if (accordionButtons.length > 0) {
+        accordionButtons[0].classList.add('active');
+    }
+
+    if (accordionContents.length > 0) {
+        accordionContents[0].classList.add('active');
+    }
+
+    /* =========================
+       DESKTOP TABS
+    ========================= */
+
+    tabButtons.forEach(button => {
+
+        button.addEventListener('click', () => {
+
+            const target = button.getAttribute('data-tab');
+
+            // remove active
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            tabPanels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // add active
+            button.classList.add('active');
+
+            const activePanel = section.querySelector('#' + target);
+
+            if (activePanel) {
+                activePanel.classList.add('active');
+            }
+
+        });
+
+    });
+
+    /* =========================
+       MOBILE ACCORDION
+    ========================= */
+
+    accordionButtons.forEach(button => {
+
+        button.addEventListener('click', () => {
+
+            const content = button.parentElement.nextElementSibling;
+
+            const isAlreadyActive = button.classList.contains('active');
+
+            // remove all active
+            accordionButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            accordionContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // open clicked
+            if (!isAlreadyActive) {
+
+                button.classList.add('active');
+
+                if (content) {
+                    content.classList.add('active');
+                }
+
+            }
+
+        });
+
+    });
+
+});

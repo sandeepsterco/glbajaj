@@ -185,7 +185,7 @@
         480: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
-        1200: { slidesPerView: 5 }, // ← full 5 on desktop
+        1200: { slidesPerView: 5 },
       },
     });
 
@@ -356,12 +356,10 @@
       },
     });
 
-    
-
     new Swiper(".workshop_slider_wrapper", {
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 21,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: true,
       autoplay: {
         delay: 2000,
@@ -371,24 +369,21 @@
         prevEl: ".prev_swiper_btn ",
       },
       breakpoints: {
-        // Jab screen 768px se badi ho (Tablets)
         768: {
           slidesPerView: 2.5,
           spaceBetween: 30,
         },
-        // Jab screen 1200px se badi ho (Desktop - XD Match)
         1200: {
-          slidesPerView: 3.5, // 3 full + 0.5 next slide
+          slidesPerView: 3.5,
           spaceBetween: 30,
         },
       },
     });
 
     new Swiper(".sport_facilities", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: false,
       autoplay: false,
       navigation: {
@@ -396,24 +391,21 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        // Jab screen 768px se badi ho (Tablets)
         768: {
           slidesPerView: 1,
           spaceBetween: 15,
         },
-        // Jab screen 1200px se badi ho (Desktop - XD Match)
         1200: {
-          slidesPerView: 1, // 3 full + 0.5 next slide
+          slidesPerView: 1,
           spaceBetween: 23,
         },
       },
     });
 
     new Swiper(".AKTU_Swiper", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1.2, // Mobile ke liye
+      slidesPerView: 1.2,
       spaceBetween: 20,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: false,
       autoplay: false,
       navigation: {
@@ -421,14 +413,12 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        // Jab screen 768px se badi ho (Tablets)
         768: {
           slidesPerView: 1,
           spaceBetween: 15,
         },
-        // Jab screen 1200px se badi ho (Desktop - XD Match)
         1200: {
-          slidesPerView: 1, // 3 full + 0.5 next slide
+          slidesPerView: 1,
           spaceBetween: 23,
         },
       },
@@ -461,106 +451,88 @@
       }
     }
 
+    // ✅ career-guidance Page tabs
+    const tabBtns = document.querySelectorAll(".careerTabsX_btn");
+    const panes = document.querySelectorAll(".careerTabsX_pane");
+    const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
 
-    
-        // ✅ career-guidance Page tabs
-        const tabBtns = document.querySelectorAll(".careerTabsX_btn");
-        const panes = document.querySelectorAll(".careerTabsX_pane");
-        const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
+    if (tabBtns.length > 0 && panes.length > 0) {
+      tabBtns[0].classList.add("active");
+      panes[0].classList.add("active");
 
-        // ===== SET FIRST TAB & PANE ACTIVE BY DEFAULT =====
-        if (tabBtns.length > 0 && panes.length > 0) {
-          tabBtns[0].classList.add("active");
-          panes[0].classList.add("active");
+      const firstBody = panes[0].querySelector(".careerTabsX_accBody");
+      if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+    }
 
-          // Also set maxHeight for mobile accordion on first pane
-          const firstBody = panes[0].querySelector(".careerTabsX_accBody");
-          if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+    tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (window.innerWidth > 768) {
+          const target = btn.getAttribute("data-tab");
+
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          panes.forEach((p) => p.classList.remove("active"));
+
+          btn.classList.add("active");
+
+          const targetPane = document.querySelector(`.careerTabsX_pane#${target}`);
+          if (targetPane) {
+            targetPane.classList.add("active");
+          } else {
+            console.warn(`No pane found with id="${target}"`);
+          }
         }
+      });
+    });
 
-        // ===== DESKTOP TABS =====
-        tabBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            if (window.innerWidth > 768) {
-              const target = btn.getAttribute("data-tab");
+    accHeaders.forEach((header) => {
+      header.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          const pane = header.parentElement;
 
-              // Remove active from all buttons and panes
-              tabBtns.forEach((b) => b.classList.remove("active"));
-              panes.forEach((p) => p.classList.remove("active"));
-
-              // Add active to clicked button
-              btn.classList.add("active");
-
-              // Find pane by matching data-tab value to pane's id
-              const targetPane = document.querySelector(`.careerTabsX_pane#${target}`);
-              if (targetPane) {
-                targetPane.classList.add("active");
-              } else {
-                console.warn(`No pane found with id="${target}"`);
-              }
+          panes.forEach((p) => {
+            if (p !== pane) {
+              p.classList.remove("active");
+              const otherBody = p.querySelector(".careerTabsX_accBody");
+              if (otherBody) otherBody.style.maxHeight = null;
             }
           });
-        });
 
-        // ===== MOBILE ACCORDION =====
-        accHeaders.forEach((header) => {
-          header.addEventListener("click", () => {
-            if (window.innerWidth <= 768) {
-              const pane = header.parentElement;
+          pane.classList.toggle("active");
 
-              // Close all other panes
-              panes.forEach((p) => {
-                if (p !== pane) {
-                  p.classList.remove("active");
-                  const otherBody = p.querySelector(".careerTabsX_accBody");
-                  if (otherBody) otherBody.style.maxHeight = null;
-                }
-              });
-
-              // Toggle clicked pane
-              pane.classList.toggle("active");
-
-              const body = pane.querySelector(".careerTabsX_accBody");
-              if (body) {
-                body.style.maxHeight = pane.classList.contains("active")
-                  ? body.scrollHeight + "px"
-                  : null;
-              }
-            }
-          });
-        });
-
-
-        
-
-      // TAB CLICK (desktop)
-      document.querySelectorAll(".tab-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          document
-            .querySelectorAll(".tab-btn")
-            .forEach((btn) => btn.classList.remove("active"));
-          document
-            .querySelectorAll(".tab-content")
-            .forEach((content) => content.classList.remove("active"));
-          this.classList.add("active");
-          document.getElementById(this.dataset.tab).classList.add("active");
-        });
+          const body = pane.querySelector(".careerTabsX_accBody");
+          if (body) {
+            body.style.maxHeight = pane.classList.contains("active")
+              ? body.scrollHeight + "px"
+              : null;
+          }
+        }
       });
+    });
 
-      // ACCORDION (mobile)
-      document.querySelectorAll(".acc-header").forEach((header) => {
-        header.addEventListener("click", function () {
-          let parent = this.parentElement;
-          // close others (optional – remove if you want multiple open)
-          document.querySelectorAll(".tab-content").forEach((item) => {
-            if (item !== parent) item.classList.remove("active");
-          });
-          parent.classList.toggle("active");
-        });
+    // TAB CLICK (desktop)
+    document.querySelectorAll(".tab-btn").forEach((button) => {
+      button.addEventListener("click", function () {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((content) => content.classList.remove("active"));
+        this.classList.add("active");
+        document.getElementById(this.dataset.tab).classList.add("active");
       });
+    });
 
-
-
+    // ACCORDION (mobile)
+    document.querySelectorAll(".acc-header").forEach((header) => {
+      header.addEventListener("click", function () {
+        let parent = this.parentElement;
+        document.querySelectorAll(".tab-content").forEach((item) => {
+          if (item !== parent) item.classList.remove("active");
+        });
+        parent.classList.toggle("active");
+      });
+    });
 
     return true;
   }
@@ -576,7 +548,6 @@
 
       if (isTabsVisible) {
         tabs.querySelectorAll("a").forEach((link) => {
-          // Clone to remove any previously attached listeners
           const newLink = link.cloneNode(true);
           link.parentNode.replaceChild(newLink, link);
 
@@ -595,7 +566,6 @@
         });
       } else {
         container.querySelectorAll(".item").forEach((item) => {
-          // Clone to remove any previously attached listeners
           const newItem = item.cloneNode(true);
           item.parentNode.replaceChild(newItem, item);
 
@@ -616,7 +586,6 @@
         });
       }
     });
-    
   }
 
   function toggleReadMore() {
@@ -641,20 +610,72 @@
     });
   }
 
+  // ─── YouTube Modal ────────────────────────────────────────────────────────────
+  function initYTModal() {
+    const overlay  = document.getElementById("ytModalOverlay");
+    const iframe   = document.getElementById("ytModalIframe");
+    const closeBtn = document.getElementById("ytModalClose");
+    const playBtn  = document.querySelector(".home_about_glb_section .thumbnail");
+  
+    if (!overlay || !iframe || !closeBtn || !playBtn) return;
+  
+    const rawSrc = iframe.getAttribute("src");
+    iframe.removeAttribute("src");
+  
+    function toEmbedUrl(url) {
+      const match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        return "https://www.youtube.com/embed/" + match[1] + "?autoplay=1&rel=0";
+      }
+      if (url.includes("/embed/")) {
+        const base = url.split("?")[0];
+        const params = new URLSearchParams(url.split("?")[1] || "");
+        params.set("autoplay", "1");
+        params.set("rel", "0");
+        return base + "?" + params.toString();
+      }
+      return url;
+    }
+  
+    function openModal() {
+      iframe.src = toEmbedUrl(rawSrc);
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+  
+    function closeModal() {
+      overlay.classList.remove("active");
+      iframe.removeAttribute("src");
+      document.body.style.overflow = "";
+    }
+  
+    playBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+  
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeModal();
+    });
+  
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
+    });
+  }
+  // ─────────────────────────────────────────────────────────────────────────────
+
   function initAll() {
     initWhyGlbSection();
     initAccordion();
+    initYTModal(); // ← YouTube modal
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
     }
     window.addEventListener("resize", adjustMaxContent);
-    adjustMaxContent(); // run once on init
+    adjustMaxContent();
     tabContent();
     gridPopup();
     tabControl();
     toggleReadMore();
 
-    // Re-run tabControl on resize (debounced)
     let resizeTimer;
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
@@ -671,12 +692,12 @@
     initAll();
   }
 })();
-// research slider wrapper
 
+// research slider wrapper
 new Swiper(".workshop_slider_wrapper", {
-  slidesPerView: 1.2, // Mobile ke liye
+  slidesPerView: 1.2,
   spaceBetween: 21,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
+  centeredSlides: false,
   loop: true,
   autoplay: {
     delay: 2000,
@@ -686,24 +707,21 @@ new Swiper(".workshop_slider_wrapper", {
     prevEl: ".prev_swiper_btn ",
   },
   breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
     768: {
       slidesPerView: 2.5,
       spaceBetween: 30,
     },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
     1200: {
-      slidesPerView: 3.5, // 3 full + 0.5 next slide
+      slidesPerView: 3.5,
       spaceBetween: 30,
     },
   },
 });
 
 new Swiper(".sport_facilities", {
-  // 3 slides poori aur 4th slide thodi si dikhegi
-  slidesPerView: 1.2, // Mobile ke liye
+  slidesPerView: 1.2,
   spaceBetween: 20,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
+  centeredSlides: false,
   loop: false,
   autoplay: false,
   navigation: {
@@ -711,23 +729,21 @@ new Swiper(".sport_facilities", {
     prevEl: ".swiper_prev_custom",
   },
   breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
     768: {
       slidesPerView: 1,
       spaceBetween: 15,
     },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
     1200: {
-      slidesPerView: 1, // 3 full + 0.5 next slide
+      slidesPerView: 1,
       spaceBetween: 23,
     },
   },
 });
+
 new Swiper(".ncc_rank_ceremony", {
-  // 3 slides poori aur 4th slide thodi si dikhegi
-  slidesPerView: 1.2, // Mobile ke liye
+  slidesPerView: 1.2,
   spaceBetween: 20,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
+  centeredSlides: false,
   loop: false,
   autoplay: false,
   navigation: {
@@ -735,24 +751,21 @@ new Swiper(".ncc_rank_ceremony", {
     prevEl: ".swiper_prev_custom",
   },
   breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
     768: {
       slidesPerView: 1,
       spaceBetween: 15,
     },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
     1200: {
-      slidesPerView: 1, // 3 full + 0.5 next slide
+      slidesPerView: 1,
       spaceBetween: 23,
     },
   },
 });
 
 new Swiper(".AKTU_Swiper", {
-  // 3 slides poori aur 4th slide thodi si dikhegi
-  slidesPerView: 1.2, // Mobile ke liye
+  slidesPerView: 1.2,
   spaceBetween: 20,
-  centeredSlides: false, // Left se start karne ke liye false rakhein
+  centeredSlides: false,
   loop: false,
   autoplay: false,
   navigation: {
@@ -760,14 +773,12 @@ new Swiper(".AKTU_Swiper", {
     prevEl: ".swiper_prev_custom",
   },
   breakpoints: {
-    // Jab screen 768px se badi ho (Tablets)
     768: {
       slidesPerView: 1,
       spaceBetween: 15,
     },
-    // Jab screen 1200px se badi ho (Desktop - XD Match)
     1200: {
-      slidesPerView: 1, // 3 full + 0.5 next slide
+      slidesPerView: 1,
       spaceBetween: 23,
     },
   },
@@ -791,7 +802,6 @@ document.querySelectorAll(".tab-btn").forEach((button) => {
 document.querySelectorAll(".acc-header").forEach((header) => {
   header.addEventListener("click", function () {
     let parent = this.parentElement;
-    // close others (optional – remove if you want multiple open)
     document.querySelectorAll(".tab-content").forEach((item) => {
       if (item !== parent) item.classList.remove("active");
     });
@@ -799,101 +809,72 @@ document.querySelectorAll(".acc-header").forEach((header) => {
   });
 });
 
-
 document.querySelectorAll('.sterco_tabs_sec').forEach(section => {
 
-    const tabButtons = section.querySelectorAll('.sterco_tab_btn');
-    const tabPanels = section.querySelectorAll('.sterco_tab_panel');
+  const tabButtons = section.querySelectorAll('.sterco_tab_btn');
+  const tabPanels = section.querySelectorAll('.sterco_tab_panel');
 
-    const accordionButtons = section.querySelectorAll('.sterco_accordion_btn');
-    const accordionContents = section.querySelectorAll('.sterco_accordion_content');
+  const accordionButtons = section.querySelectorAll('.sterco_accordion_btn');
+  const accordionContents = section.querySelectorAll('.sterco_accordion_content');
 
-    /* =========================
-       FIRST ACTIVE ITEM
-    ========================= */
+  if (tabButtons.length > 0) {
+    tabButtons[0].classList.add('active');
+  }
 
-    if (tabButtons.length > 0) {
-        tabButtons[0].classList.add('active');
-    }
+  if (tabPanels.length > 0) {
+    tabPanels[0].classList.add('active');
+  }
 
-    if (tabPanels.length > 0) {
-        tabPanels[0].classList.add('active');
-    }
+  if (accordionButtons.length > 0) {
+    accordionButtons[0].classList.add('active');
+  }
 
-    if (accordionButtons.length > 0) {
-        accordionButtons[0].classList.add('active');
-    }
+  if (accordionContents.length > 0) {
+    accordionContents[0].classList.add('active');
+  }
 
-    if (accordionContents.length > 0) {
-        accordionContents[0].classList.add('active');
-    }
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-tab');
 
-    /* =========================
-       DESKTOP TABS
-    ========================= */
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+      });
 
-    tabButtons.forEach(button => {
+      tabPanels.forEach(panel => {
+        panel.classList.remove('active');
+      });
 
-        button.addEventListener('click', () => {
+      button.classList.add('active');
 
-            const target = button.getAttribute('data-tab');
+      const activePanel = section.querySelector('#' + target);
 
-            // remove active
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            tabPanels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-
-            // add active
-            button.classList.add('active');
-
-            const activePanel = section.querySelector('#' + target);
-
-            if (activePanel) {
-                activePanel.classList.add('active');
-            }
-
-        });
-
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
     });
+  });
 
-    /* =========================
-       MOBILE ACCORDION
-    ========================= */
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.parentElement.nextElementSibling;
+      const isAlreadyActive = button.classList.contains('active');
 
-    accordionButtons.forEach(button => {
+      accordionButtons.forEach(btn => {
+        btn.classList.remove('active');
+      });
 
-        button.addEventListener('click', () => {
+      accordionContents.forEach(content => {
+        content.classList.remove('active');
+      });
 
-            const content = button.parentElement.nextElementSibling;
-
-            const isAlreadyActive = button.classList.contains('active');
-
-            // remove all active
-            accordionButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            accordionContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // open clicked
-            if (!isAlreadyActive) {
-
-                button.classList.add('active');
-
-                if (content) {
-                    content.classList.add('active');
-                }
-
-            }
-
-        });
-
+      if (!isAlreadyActive) {
+        button.classList.add('active');
+        if (content) {
+          content.classList.add('active');
+        }
+      }
     });
+  });
 
 });

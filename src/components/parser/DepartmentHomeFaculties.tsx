@@ -62,8 +62,14 @@ export default function DepartmentHomeFaculties() {
                             <figure>
                                 <Image src={item.image} alt="leader" className="img-fluid w-100" height={417} width={383} />
                             </figure>
-                            <h4>Dr. Ram Kishore Agarwal</h4>
-                            <p>Chairman</p><a className="strech_link" href="#"></a>
+                            {item?.name && (
+                                <h4>{item.name}</h4>
+                            )}
+                            {item?.type && (
+                                <p>{item.type}</p>
+                            )}
+                            <a className="strech_link" href="#"></a>
+                            
                         </div>
                     </SwiperSlide>
                 ))}

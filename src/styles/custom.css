@@ -326,7 +326,10 @@ sub {
 }
 
 sup {
-  top: -0.5em;
+  vertical-align: top;
+  top: 0.5rem;
+  font: var(--font-16);
+  left: 0.3rem;
 }
 
 a {

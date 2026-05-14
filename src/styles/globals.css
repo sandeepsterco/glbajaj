@@ -146,6 +146,19 @@ ul li {
 a {
   text-decoration: none;
 }
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* optional */
+}
+
 @media (max-width: 991px) {
   .container-fluid {
     max-width: 100%;
@@ -305,6 +318,7 @@ h6 {
 .title48 {
   font: var(--font-48);
   color: var(--color-0b);
+  position:relative;
 }
 .title42 {
   font: var(--font-42);

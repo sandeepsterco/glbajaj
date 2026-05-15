@@ -605,7 +605,8 @@
 .peo_main .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .peo_main .tab_content .acc-body::before { background-color: transparent; }
 .peo_main { padding-top: 10rem; }
-.peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; bottom: 8rem; content: ""; background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
+.peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; 
+    background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
 .peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; }
 .faculties_main { padding-block: 0rem 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
@@ -836,11 +837,12 @@
 .ats_authinfo:after { position: absolute; left: 0; bottom: 0; content: ''; background-color: var(--color-FE); height: 1rem; width: 14.9rem; }
 .ats_header .title48 { color: var(--color-92); }
 .ats_thumbsec .swiper-slide { position: relative; cursor: pointer; }
+.ats_thumbsec .traing_thumb {overflow: visible;}
 .ats_swip_slider { position: relative; }
-.ats_thumbsec { max-width: 88rem; position: absolute; bottom: 7rem; left: -16rem; }
+.ats_thumbsec { max-width: 88rem; position: absolute; bottom: 7rem; left: -16rem;width: 100%; }
 .swiper_thumbox .thu_info .name { font: var(--font-18); color: #000; font-weight: 600; margin-top: 2rem; }
 .swiper_thumbox .thu_info .designation { font: var(--font-16); margin-top: 1rem; }
-.ats_thumbsec .swiper-wrapper { gap: 5.6rem; }
+/* .ats_thumbsec .swiper-wrapper { gap: 5.6rem; } */
 .ats_thumbsec .swiper_thumbox img { object-fit: cover; transition: 0.3s; }
 .ats_thumbsec .swiper-slide-thumb-active img { transform: translateY(-6px); padding: 0.5rem; background-color: var(--color-white); box-shadow: 0px 1px 11px #00000047; transform: scale(1.32); -webkit-transform: scale(1.32); transform-origin: top center; }
 .ats_thumbsec .swiper-slide-thumb-active .thu_info { opacity: 0; }

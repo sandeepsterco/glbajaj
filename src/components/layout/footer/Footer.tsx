@@ -310,7 +310,7 @@ const Footer = async () => {
             <div className="social_icons">
               <a href="#">
                 <img
-                  src="images/icons/social/facebook-color.svg"
+                  src="/images/icons/social/facebook-color.svg"
                   alt="facebook icon"
                 />
               </a>

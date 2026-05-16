@@ -1529,5 +1529,6 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .place_imgbox::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
+.dept_maingrid figure{margin-bottom: 1rem;}
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
 */

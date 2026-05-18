@@ -7,6 +7,10 @@ import { SkeletonGroup } from "../ui/Skeleton";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 import { useSearchParams } from "next/navigation";
 
+function isNestedPolicyMap(v: unknown): v is Record<string, any[]> {
+    return typeof v === "object" && v !== null && !Array.isArray(v);
+}
+
 const getPolicyLists = async (page:number) => {
     
     const { data, error } = await apiFetch(`policies-pdf`);
@@ -81,12 +85,12 @@ export default function PoliciesDisclosures() {
                     <>
                         <h2 className="font24" data-aos="fade-up" data-aos-delay="400">{key}</h2>
 
-                        {Array.isArray(value) ? 
-                            value.map((item:any, idx:number)=>(
+                        {Array.isArray(value)
+                            ? value.map((item:any, idx:number)=>(
                                 <PolicyItem key={item.id ?? idx} item={item} idx={idx} />
-                            )) 
-                            : 
-                            Object.entries(value).map(([subKey, subItems]: [string, any]) => (
+                            ))
+                            : isNestedPolicyMap(value)
+                            ? Object.entries(value).map(([subKey, subItems]) => (
                                 <div key={subKey} className="policy_subgroup">
                                     <h4  data-aos="fade-up" data-aos-delay="400">{subKey}</h4>
                                     {subItems.map((item: any, idx: number) => (
@@ -94,7 +98,7 @@ export default function PoliciesDisclosures() {
                                     ))}
                                 </div>
                             ))
-                        }
+                            : null}
                     </>
                 )
             })}

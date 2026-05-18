@@ -1,3 +1,6 @@
+
+
+
 /************* yt modal css ***********/
 
 .yt-modal-overlay {
@@ -420,6 +423,11 @@
 .hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right:0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
+
+.swiper-button-lock {
+  display: none;
+}
+
 @media (max-width:2440px) {
  .hod_right::before { height: auto; }
  }

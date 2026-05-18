@@ -341,9 +341,10 @@
       loop: false,
       autoplay: false,
       navigation: {
-        nextEl: ".swiper_next_custom",
-        prevEl: ".swiper_prev_custom",
+        nextEl: ".vision_hod_next",
+        prevEl: ".vision_hod_prev",
       },
+      watchOverflow: true,
       breakpoints: {
         768: {
           slidesPerView: 1,

@@ -51,8 +51,8 @@ function CourseSection({ label, programs }: CourseSectionProps) {
     return (
         <div className="cse_cou_list">
             <p>{label}</p>
-            {programs.map((program) => (
-                <CourseCard key={program.id} program={program} />
+            {programs.map((program, idx:number) => (
+                <CourseCard key={idx} program={program} />
             ))}
         </div>
     );

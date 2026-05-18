@@ -9,11 +9,34 @@ import { useSearchParams } from "next/navigation";
 
 const getPolicyLists = async (page:number) => {
     
-    const { data, error } = await apiFetch(`policies-pdf?page=${page}`);
+    const { data, error } = await apiFetch(`policies-pdf`);
 
     if (error) throw new Error(error);
     return data?.policies_pdf;
 }
+
+const PolicyItem = ({ item, idx }: { item: any; idx: number }) => (
+    <div
+      className="fac_policy_list"
+      data-aos="fade-up"
+      data-aos-delay={600 + (idx + 1) * 100}
+    >
+      <div className="fac_policy_left">
+        <h5>{item?.title}</h5>
+      </div>
+      <div className="fac_policy_right">
+        <figure>
+          <img
+            src="https://project-demo.in/gl-bajaj/assets/img/page-file/1778482442_OwH01DuXvRFZa392zsX9.svg"
+            className="img-fluid"
+            alt="pdf"
+          />
+        </figure>
+        {/* <p>Download</p> */}
+      </div>
+      <a target="_blank" href={item.pdf} className="strech_link" rel="noreferrer" />
+    </div>
+  );
 
 export default function PoliciesDisclosures() {
     const searchParams = useSearchParams();
@@ -49,28 +72,37 @@ export default function PoliciesDisclosures() {
         );
     }
 
-    const policiesData = data?.data;
+    const policiesData = data;
 
     return (
         <>
-            {policiesData?.length > 0 && policiesData?.map((item:any, idx:number)=>(
-                <div key={idx} className="fac_policy_list" data-aos="fade-up" data-aos-delay={600+((idx+1)*100)}>
-                    <div className="fac_policy_left">
-                        <h5>{item?.title}</h5>
-                    </div>
-                    <div className="fac_policy_right">
-                        <figure>
-                            <img src="https://project-demo.in/gl-bajaj/assets/img/page-file/1778482442_OwH01DuXvRFZa392zsX9.svg" className="img-fluid" alt="pdf" />
-                        </figure>
-                        <p>Download</p>
-                    </div>
-                    <a target="_blank" href={item.pdf} className="strech_link"></a>
-                </div>
-            ))}
-            <PaginationWrapper
+            {Object.entries(policiesData).map(([key, value])=>{
+                return (
+                    <>
+                        <h2 className="font24" data-aos="fade-up" data-aos-delay="400">{key}</h2>
+
+                        {Array.isArray(value) ? 
+                            value.map((item:any, idx:number)=>(
+                                <PolicyItem key={item.id ?? idx} item={item} idx={idx} />
+                            )) 
+                            : 
+                            Object.entries(value).map(([subKey, subItems]: [string, any]) => (
+                                <div key={subKey} className="policy_subgroup">
+                                    <h4  data-aos="fade-up" data-aos-delay="400">{subKey}</h4>
+                                    {subItems.map((item: any, idx: number) => (
+                                    <PolicyItem key={item.id ?? idx} item={item} idx={idx} />
+                                    ))}
+                                </div>
+                            ))
+                        }
+                    </>
+                )
+            })}
+            
+            {/* <PaginationWrapper
                     currentPage={data?.current_page || 1}
                     totalPages={data?.last_page || 1}
-                />
+                /> */}
         </>
     )
 }

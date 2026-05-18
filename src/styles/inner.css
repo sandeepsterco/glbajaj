@@ -1,3 +1,7 @@
+.swiper-button-lock {
+    display: none;
+  }
+
 /* About section start */
 .about_menu_bar { border-bottom: 1px solid #d7d4d4; }
 .about_top { background-color: var(--color-64); padding: 1.5rem 0; opacity: 1; }
@@ -423,6 +427,7 @@
 .max-content { overflow: visible; }
 /* ==============Facilities & Policy page Start============= */
 .facilities_policy { padding-block:5rem 12rem; }
+.facilities_policy .policy_subgroup{margin-bottom: 5rem;}
 .facilities_policy h2 { margin-bottom: 4rem; }
 .fac_policy_list { background-color: var(--color-F5); margin-top:2rem; padding: 2.5rem 4rem; display: grid; grid-template-columns:75% auto; justify-content: space-between; position: relative; transition: .5s; }
 .fac_policy_list:hover { background-color: var(--color-ed); }
@@ -557,17 +562,23 @@
 .our_cse p { max-width: 85%; }
 .our_cse a { margin-left: -1rem; display: inline-block; margin-top: 1rem; }
 .cse_vision { padding-block: 10rem; position: relative; }
-.vision_grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 4rem; }
+.cse_vision.HideHOD .hod_profile{display:none;}
+.vision_grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 5.6rem; position:relative;}
+.vision_grid:before{content: ""; z-index: 1; background-image: url(/images/pattern/hod-pattern.png); background-repeat: no-repeat; width: 34rem; height: 21.4rem; position: absolute; right: -12.2rem; top: 35rem;}
+.HideHOD .vision_grid:before{top: 4.2rem; right: 0; left: calc(100% + 5rem);}
+.cse_vision.HideHOD .vision_grid { grid-template-columns: 28.6% auto;}
 .vision_grid > div { min-width: 0; }
 .hod_profile_slider .swiper-slide { width: 100% !important; }
 .vision_grid_bx>h4, .mission_grid_bx>h4 { margin-bottom: 3rem; }
-.vision_grid_bx p { font: var(--font-30); color: var(--color-33); }
+.vision_grid_bx p { font: var(--font-30); color: var(--color-33); line-height: 4.2rem;}
+.vision_grid_bx .vision_pattern{margin-top:1.5rem; display: inline-block;}
+.HideHOD .vision_grid_bx .vision_pattern{position: absolute; right: calc(100% + 5rem); top: 4.2rem;}
 .hod_profile { padding-left:4.8rem; }
 .profile h3 { font: var(--font-24); color: var(--color-white); font-weight: 700; padding-right: 4rem; }
 .profile h4 { font: var(--font-18); margin-block:3rem 2rem; color: var(--color-black); font-weight: 600; }
-.profile p { margin-bottom: 0; }
+.profile p { margin-bottom: 0; line-height: 2.4rem; margin-bottom: 1rem;}
 .hod_profile { position: relative; }
-.hod_profile::before { background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.4rem; position: absolute; right: -26rem; bottom: 1rem; content: ""; background-repeat: no-repeat; z-index: 1; }
+/* .hod_profile::before { background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.4rem; position: absolute; right: -26rem; bottom: 1rem; content: ""; background-repeat: no-repeat; z-index: 1; } */
 /* ============== CSE Department Code of Conduct page Start============= */
 .cou_off_lft .cou_main_title { margin-bottom: 5.9rem; padding-left: 3.7rem; }
 .cse_course_offered { padding-block: 10rem 10rem; border-bottom: 0.1rem solid #C0855280; border-top: 0.1rem solid #C0855280; }

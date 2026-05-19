@@ -403,7 +403,7 @@
 .vision_mission_grid { display: grid; grid-template-columns:30% 30% auto; gap: 10rem; margin-top: -8rem; padding-block: 0 10rem; border-bottom: 1.1rem solid var(--color-FE); z-index: 1; position: relative; }
 .vision_mission_grid h4 { margin-bottom: 3rem; }
 .vision_Bx p { font: var(--font-30); color: var(--color-33); }
-.leadership_section { padding-block: 14.7rem 7rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
+.leadership_section { padding-block: 14.7rem 10rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
 .leadership_section::before { background-image: url(/images/pattern/leadership_patch.webp); position: absolute; top: 0; bottom: 0; left: 0; width: 20.6rem; content: ""; }
 .leader_card h4 { font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:2rem 0.5rem; }
 .navigation_btn { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; padding-bottom: 1rem; }
@@ -413,6 +413,8 @@
 .swiper_prev_custom { transform: rotate(180deg); }
 .leadership_section h3 { padding-bottom: 4rem; }
 .accredation_section { padding-block: 12rem; }
+.about_leadership{position: relative;}
+.about_leadership .navigation_btn{left: 0;bottom: -6.3rem;}
 .accredation_wrapper { background-color: var(--color-F4); padding-block: 7.5rem 30.6rem; position: relative; }
 .accredation_wrapper::after { background-color: var(--color-F4); position: absolute; right: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
 .accredation_wrapper::before { background-color: var(--color-F4); position: absolute; left: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
@@ -424,6 +426,7 @@
 .accredation_bx:last-child { border-right: 0; }
 .acre_slider { margin-top: -24rem; }
 .acre_slider .acredation_swiper { padding-left: 0.5rem; }
+.acre_slider .navigation_btn{left: 0;margin-bottom: -4.5rem;}
 .max-content { overflow: visible; }
 /* ==============Facilities & Policy page Start============= */
 .facilities_policy { padding-block:5rem 12rem; }

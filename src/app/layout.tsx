@@ -16,6 +16,8 @@ import "../styles/inner.css";
 import "../styles/parser.css";
 import "../styles/module.css";
 import "../styles/responsive.css";
+import "../styles/responsive1.css";
+
 
 
 import { apiFetch } from "../lib/api";

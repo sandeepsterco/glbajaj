@@ -1,6 +1,8 @@
 "use client";
 
+import { API_URL, BASE_URL } from "@/src/config/config";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function CourseSearch() {
@@ -15,13 +17,13 @@ export default function CourseSearch() {
       if (!debouncedQuery) return [];
 
       const response = await fetch(
-        `https://project-demo.in/jss/api/courses/search?search=${debouncedQuery}`,
+        `${API_URL}programs/search?query=${debouncedQuery}`,
       );
 
       if (!response.ok) throw new Error("Failed to fetch");
 
       const data = await response.json();
-      return data.data;
+      return data.programs;
     },
     enabled: !!debouncedQuery, // only call when query exists
   });
@@ -87,7 +89,9 @@ export default function CourseSearch() {
               key={course.id}
               className="courses_lists hover:bg-gray-100 cursor-pointer last:border-none"
             >
-              {course.name}
+              <Link href={`${BASE_URL}program/${course.slug}`}>
+                {course.name}
+              </Link>
             </div>
           ))}
         </div>

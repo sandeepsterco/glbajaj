@@ -58,7 +58,7 @@ function getVideoUrl(url: string): string {
 export default function HeroBanner({ data }: { data: any }) {
   return (
     <section className="home_banner">
-      <Swiper
+      {/* <Swiper
         className="home_slide"
         modules={[Pagination, Autoplay]}
         // loop={true}
@@ -201,7 +201,62 @@ export default function HeroBanner({ data }: { data: any }) {
             )}
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
+
+
+
+                <div>
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{ width: '100%',  objectFit: 'cover', display: 'block' }}
+                  >
+                    <source
+                      src="https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due"
+                      type="video/mp4"
+                    />
+                  </video>
+                  {/* <video src="" /> */}
+
+                    <div className="slider_caption">
+                      <div className="container-fluid">
+                        <div
+                          className="caption_wrap"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          <blockquote
+                              className="title48"
+                              data-aos="fade-up"
+                              data-aos-delay="400"
+                            >
+                              Recognized. Ranked. Respected.
+                            </blockquote>
+                          <div className="cap_desc">
+                          <p data-aos="fade-up" data-aos-delay="600">
+                          Lorem ipsum dolor sit amet, consectet adipiscing elit.
+                              </p>
+                              <Link
+                                href={"/about-glbitm"}
+                                data-aos="fade-up"
+                                data-aos-delay="800"
+                              >
+                                <figure>
+                                  <Image
+                                    src="/images/home/hero/arrow_right.svg"
+                                    alt="Read more"
+                                    width={64}
+                                    height={64}
+                                  />
+                                </figure>
+                              </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
 
       <NotificationBar />
     </section>

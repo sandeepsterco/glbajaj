@@ -20,24 +20,23 @@ export default function HomeHappenings() {
   return (
     <div className="grid_data">
       {happeningsData && happeningsData.length > 0 && happeningsData.map((item:any, singleIdx:number)=>(
-        <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`}>
+        <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`} data-aos="fade-up" data-aos-delay="200">
           {item?.image && (
             <figure>
-              <img src={item.image} alt="happening image" className="img-fluid w-100 " />
+              <img src={item.image} alt="happening image" className="img-fluid w-100 " data-aos="fade-up" data-aos-delay="200"/>
             </figure>
           )}
           {/* <div className="content" style={{backgroundColor:item?.bg_color}}> */}
           <div className="content" >
-
               <div className="bottom_data">
                 {item?.date && (
-                  <p className="date">{item.date}</p>
+                  <p className="date" data-aos="fade-up" data-aos-delay="200">{item.date}</p>
                 )}
                 {item?.description && (
-                  <p className="desc">{item.description}</p>
+                  <p className="desc" data-aos="fade-up" data-aos-delay="200">{item.description}</p>
                 )}
                 {item?.subtitle && (
-                  <h4 className="sub_title">{item.subtitle}</h4>
+                  <h4 className="sub_title" data-aos="fade-up" data-aos-delay="200">{item.subtitle}</h4>
                 )}
               </div>
           </div>

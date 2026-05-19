@@ -56,8 +56,8 @@ export default function DepartmentHomeAlumni() {
     <div className="row justify-content-end">
       <div className="col-lg-10">
         <div className="ats_header">
-          <span className="font24">GLBian Speaks</span>
-          <h2 className="title48">
+          <span className="font24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</span>
+          <h2 className="title48" data-aos="fade-up" data-aos-delay="400">
             Success Stories from our Students <br /> and Alumni
           </h2>
         </div>
@@ -81,16 +81,16 @@ export default function DepartmentHomeAlumni() {
                 <SwiperSlide key={index}>
                   <div className="ats_slid_box">
                     <div className="ats_textbox">
-                      <div className="quote-icon">
+                      <div className="quote-icon" data-aos="fade-up" data-aos-delay="200">
                         <img src="/images/icons/quote.png" alt="quote icon" />
                       </div>
-                      <p>{item.message}</p>
+                      <p data-aos="fade-up" data-aos-delay="400">{item.message}</p>
                     </div>
                     <div className="ats_imgbx">
-                      <img src={item.image} className="img-fluid" alt={item.name} />
+                      <img src={item.image} className="img-fluid" alt={item.name} data-aos="fade-up" data-aos-delay="600"/>
                       <div className="ats_authinfo">
-                        <div className="ats_auname">{item.name}</div>
-                        <div className="ats_auth_dis">{item.branch}</div>
+                        <div className="ats_auname" data-aos="fade-up" data-aos-delay="800">{item.name}</div>
+                        <div className="ats_auth_dis" data-aos="fade-up" data-aos-delay="1000">{item.branch}</div>
                       </div>
                     </div>
                   </div>

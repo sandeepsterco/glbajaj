@@ -1,0 +1,41 @@
+@media (max-width: 991px) {
+ .kf_grid { grid-template-columns: repeat(2, 1fr); }
+.tp_ov_grid { grid-template-columns: repeat(1, 1fr); }
+.our_cmit_grid { grid-template-columns:1fr; }
+.chairman_grid { grid-template-columns: 1fr; }
+.tp_director_msg .chairman_grid { padding-block: 7.7rem; padding-inline: 5.5rem 5.5rem; gap: 3.5rem; }
+.or_commit_sec { padding-block: 0 5rem; }
+.chairman_section { padding-block: 0rem 5rem; }
+.tp_campus_contect { padding-block: 5rem; }
+.tp_cam_btmsec { padding-block: 4.2rem; }
+.our_enqsec { padding-top: 2rem; }
+.hod_details { margin-top: 3rem; padding-top: 3rem; }
+.tp_overview { padding-block: 5rem; }
+.key_fun_sec { padding-block: 0 5rem; }
+.tp_ov_pattern { display: none; }
+.teamX_grid { grid-template-columns: repeat(2, 1fr); }
+.our_recruiters .our_recruiters-grid { grid-template-columns: repeat(3, 1fr); }
+.value_bgbox .val_grid { grid-template-columns: 1fr; }
+.value_bgbox .val_grid .valu_rgt figure { margin-top: 0; }
+.val_grid .val_box { margin-left: 0; padding: 5rem 3.5rem; }
+.value_bgbox .title36 { margin-bottom: 2rem; padding-top: 3.6rem; }
+.ct_grid_sec { grid-template-columns: repeat(1, 1fr); }
+.our_edg_grid { grid-template-columns: 1fr; gap: 4.3rem; }
+.tcdcX_secmain { padding-block: 5rem 5.2rem; }
+.ct_area { padding-block: 5rem; }
+.our_edgsec { padding-top: 5rem; }
+.our_edg_grid .our_age_left h4 { margin-bottom: 2.5rem; }
+.valu_addmin{padding-bottom: 5rem;}
+ }
+@media (max-width: 767px) {
+ .kf_grid { grid-template-columns: repeat(1, 1fr); }
+.tp_cam_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
+.tp_cam_col:nth-child(2) { border-top: .1rem solid #c0855280; border-bottom: .1rem solid #c0855280; border-left: none; border-right: none; padding: 3rem 0; }
+.teamX_grid { grid-template-columns: repeat(1, 1fr); }
+.our_recruiters .our_recruiters-grid { grid-template-columns: repeat(2, 1fr); }
+.our_age_right { grid-template-columns: repeat(1, 1fr); gap: 0; }
+.or_edge_pt { display: none; }
+ }
+@media (max-width:480px) {
+ .our_recruiters .our_recruiters-grid { grid-template-columns: repeat(1, 1fr); }
+ }

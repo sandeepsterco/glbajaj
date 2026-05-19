@@ -52,8 +52,8 @@ export default function HomeFacilities() {
               <div className="homeFac_tabs_wrapper">
                 <div className="homeFac_tabs">
                   <div className="homeFac_nav_side">
-                    <h4 className="font24">Facilities</h4>
-                    <h3 className="title48">The Best Environment for the Best Minds</h3>
+                    <h4 className="font24" data-aos="fade-up" data-aos-delay="200">Facilities</h4>
+                    <h3 className="title48" data-aos="fade-up" data-aos-delay="400">The Best Environment for the Best Minds</h3>
 
                     <div className="homeFac_btns">
                       {tabsData?.map((item: any, idx: number) => (
@@ -61,13 +61,13 @@ export default function HomeFacilities() {
                           key={idx}
                           className={`homeFac_btn ${activeTab === idx ? "active" : ""}`}
                           onClick={() => handleTabChange(idx)}
-                        >
+                        data-aos="fade-up" data-aos-delay="200">
                           <span>{item?.tab_title}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="navigation_btn">
+                    <div className="navigation_btn" data-aos="fade-up" data-aos-delay="600">
                       <div
                         ref={prevRef}
                         className="swiper_prev_custom"
@@ -135,9 +135,9 @@ export default function HomeFacilities() {
                                 {item.mapping_items.slides?.map((slide: any, slideIdx: number) => (
                                   <SwiperSlide key={slideIdx}>
                                     <figure>
-                                      <img src={slide?.image || ""} className="w-100 img-fluid" />
+                                      <img src={slide?.image || ""} className="w-100 img-fluid" data-aos="fade-up" data-aos-delay="200"/>
                                       {slide?.title && (
-                                        <h4 className="font36">{slide.title}</h4>
+                                        <h4 className="font36" data-aos="fade-up" data-aos-delay="400">{slide.title}</h4>
                                       )}
                                     </figure>
                                   </SwiperSlide>

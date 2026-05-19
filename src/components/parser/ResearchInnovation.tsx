@@ -64,25 +64,26 @@ export default function ResearchInnovation() {
                   src={slide?.image || ""}
                   alt="leader"
                   className="img-fluid w-100"
+                  data-aos="fade-up" data-aos-delay="200"
                 />
               </figure>
               <div className="res_caption">
                 {slide?.names && (
-                  <span>{slide.names}</span>
+                  <span data-aos="fade-up" data-aos-delay="400">{slide.names}</span>
                 )}
                 {slide?.title && (
-                  <p>{slide.title}</p>
-                )}
+                  <p data-aos="fade-up" data-aos-delay="600">{slide.title}</p>
+                )} 
               </div>
               {slide?.url && (
-                <a className="strech_link" href={slide.url}></a>
+                <a className="strech_link" href={slide.url} data-aos="fade-up" data-aos-delay="800"></a>
               )}
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="navigation_btn">
+      <div className="navigation_btn" data-aos="fade-up" data-aos-delay="1000">
         <div ref={prevRef} className="swiper_prev_custom">
           <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
         </div>

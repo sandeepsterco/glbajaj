@@ -59,25 +59,25 @@ export default function HomeAlumni() {
             />
 
             <div className="sec_title">
-              <h5 className="title24">GLBian Speaks</h5>
-              <h2 className="heading title48">
+              <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
+              <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
                 Success Stories from our Students and Alumni
               </h2>
             </div>
 
             {/* Description */}
             <div className="desc_content">
-              <div className="quote-icon">
+              <div className="quote-icon" data-aos="fade-up" data-aos-delay="600">
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
               {activeItem && (
-                <div className="desc active">{activeItem.message}</div>
+                <div className="desc active" data-aos="fade-up" data-aos-delay="800">{activeItem.message}</div>
               )}
             </div>
 
             {/* Thumbs */}
             <div className="thumbs">
-              <div className="thumb-group active">
+              <div className="thumb-group active" data-aos="fade-up" data-aos-delay="800">
                 {currentItems.map((item: any, index: number) => (
                   <div
                     key={index}
@@ -86,7 +86,7 @@ export default function HomeAlumni() {
                   >
                     <img src={item.image} alt={item.name} />
                     <div className="thumb_info">
-                      <p className="name">{item.name}</p>
+                      <p className="name" >{item.name}</p>
                       <span className="designation">{item.branch}</span>
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* Main Image */}
-            <div className="main-images">
+            <div className="main-images" data-aos="fade-up" data-aos-delay="200">
               {activeItem && (
                 <img
                   className="main-img active w-100"
@@ -122,11 +122,11 @@ export default function HomeAlumni() {
             </div>
 
             {/* Person Info */}
-            <div className="tab_image_content">
+            <div className="tab_image_content" >
               {activeItem && (
                 <div className="person-info active">
-                  <div className="name">{activeItem.name}</div>
-                  <div className="role">{activeItem.branch}</div>
+                  <div className="name" data-aos="fade-up" data-aos-delay="400">{activeItem.name}</div>
+                  <div className="role" data-aos="fade-up" data-aos-delay="800">{activeItem.branch}</div>
                 </div>
               )}
             </div>

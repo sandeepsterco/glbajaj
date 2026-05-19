@@ -1,4 +1,9 @@
 
+.custom_pages_lists{font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex;}
+.custom_pages_lists .tab_btn{cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
+.custom_pages_lists .active .tab_btn{color: var(--color-92); font-weight: 500;}
+.custom_pages_lists .tab_btn:before{content: ""; border-bottom: 2px dashed var(--color-31); opacity: .3; width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+.custom_pages_lists .active .tab_btn:before{opacity: 1; border-color: var(--color-92);}
 
 /* About section start */
 .about_menu_bar { border-bottom: 1px solid #d7d4d4; }
@@ -155,7 +160,7 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
-.inner_nav { align-items: center; padding-block: 1.5rem;display: none; }
+.inner_nav { align-items: center; padding-block: 1.5rem; display:flex;}
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -319,11 +324,12 @@
 .visionary_message figure { margin-top: 8rem; position: relative; }
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .message_details { padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative; }
+.message_details.bottom{padding-top:0;}
 .message_details::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
 .message_details figure { text-align: center; }
 .message_details figure img { margin: 0 auto; }
 .message_details h5 { font: var(--font-16); font-weight: 700; margin-bottom: 2rem; }
-.message_cnt h3 { color: var(--color-92); font: var(--font-48); letter-spacing: -0.24rem; margin-bottom: 4rem; font-weight: 400; padding-block: 2rem 0; }
+.message_cnt h3 { color: var(--color-92); font: var(--font-48); letter-spacing: -0.24rem; margin-bottom: 4rem; font-weight: 400; padding-block: 2rem 0; margin-bottom: 0;}
 .message_cnt .inspiration_details::before { max-width: 33.3rem; }
 /* ==============Faculty page Start============= */
 .administration_section.messages_section { padding-block: 5rem 12rem; background-color: var(--color-white); }

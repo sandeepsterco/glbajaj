@@ -152,7 +152,7 @@
 .research_centre_section .left_col .read_more_icon { margin-top:5rem; display: inline-block; }
 .research_centre_section .centre_lists { display:grid; grid-template-columns: 1fr 1fr; margin-top:6rem; padding:0; margin-bottom:0; gap: 1.5rem; }
 .research_centre_section .centre_lists a { padding:1.4rem 1.6rem 1.8rem 1.3rem; display:flex; align-items: center; height:7.8rem; background:#f5f5f5; gap: 3.4rem; justify-content: space-between; }
-.research_centre_section .centre_lists p { font:var(--font-18); line-height:2.4rem; color:#000; }
+.research_centre_section .centre_lists p { font:var(--font-18); line-height:2.4rem; color:#000; margin-bottom: 0;}
 .research_centre_section .centre_lists .icon { height:6rem; width:6rem; }
 /************  end of research_centre_section ************/
 /************  start of why_glb_section ************/

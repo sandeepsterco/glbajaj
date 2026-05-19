@@ -673,7 +673,7 @@
     }
 
     tabContent();
-    gridPopup();
+    // gridPopup();
     tabControl();
     toggleReadMore();
   }

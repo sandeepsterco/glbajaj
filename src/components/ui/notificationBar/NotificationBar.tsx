@@ -5,21 +5,32 @@ import { IoMdClose } from "react-icons/io";
 import { FaChevronRight } from "react-icons/fa6";
 import Link from "next/link";
 import "./notificationBar.css";
+import { useQuery } from "@tanstack/react-query";
+import { apiFetch } from "@/src/lib/api";
 
 // Update your NOTIFICATIONS data to this shape:
 // { text: string; href: string }[]
 // If it's still plain strings, the fallback href="#" is used below.
 
+const getNotifications = async()=>{
+  const {data, error} = await apiFetch(`notifications`);
+  if (error) throw new Error(error);
+  return data?.notifications;
+}
+
 export default function NotificationBar() {
   const [dismissed, setDismissed] = useState(false);
+  
+  const {data, isLoading, isError} = useQuery({
+    queryKey:['home-notification'],
+    queryFn:getNotifications
+  });
+  
   if (dismissed) return null;
-
-  const items = (Array.isArray(NOTIFICATIONS) ? NOTIFICATIONS : [NOTIFICATIONS]).map(
-    (n) => (typeof n === "string" ? { text: n, href: "#" } : n)
-  );
+  if (isLoading || isError || !data?.length) return null;
 
   // Duplicate for seamless loop
-  const loopItems = [...items, ...items];
+  const loopItems = [...data, ...data];
 
   return (
     <div className="hero_notificationmain">
@@ -32,8 +43,8 @@ export default function NotificationBar() {
               {/* ✅ Animation lives on the TRACK, not individual items */}
               <div className="ticker-track">
                 {loopItems.map((n, i) => (
-                  <Link key={i} href={n.href} className="ticker-item" target="_blank">
-                    <span>{n.text}</span>
+                  <Link key={i} href={n.url ?? '#'} className="ticker-item" target="_blank">
+                    <span>{n.title}</span>
                     <FaChevronRight fontSize={10} />
                   </Link>
                 ))}

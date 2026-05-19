@@ -616,7 +616,19 @@
 .peo_main { padding-top: 10rem; }
 .peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; 
     background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
-.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; }
+ .peo_rgt_box {
+  background-color: var(--color-white);
+  padding: 8.8rem 12.5rem 8.8rem 10rem;
+  z-index: 99;
+  position: relative;
+  margin-top: -4rem;
+  min-height: 58.5rem;
+  height: 58.5rem;
+  height: 58.5rem;
+  overflow-y: auto;
+
+}
+
 .faculties_main { padding-block: 0rem 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }

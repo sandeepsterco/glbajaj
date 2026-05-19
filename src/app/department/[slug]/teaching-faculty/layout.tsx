@@ -2,13 +2,11 @@ import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
-import { redirect } from "next/navigation";
-import { BASE_URL } from "@/src/config/config";
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug, page} = await params;
 
-    const {data, error} = await apiFetch(`department/${slug}/${page}`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`department/${slug}/teaching-faculty`, { cache:'no-store'});
 
     if(error){
         return <NotFound />;

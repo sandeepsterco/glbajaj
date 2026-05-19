@@ -1,11 +1,13 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CourseSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["course-search", debouncedQuery],
@@ -34,21 +36,36 @@ export default function CourseSearch() {
     };
   }, [searchQuery]);
 
+  // Click outside listener
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="search-box input_group">
+    <div className="search-box input_group" ref={containerRef}>
       <input
         type="text"
         placeholder="Search Courses"
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+          setIsOpen(true);
+        }}
         value={searchQuery}
         className="search_input"
+        onFocus={() => setIsOpen(true)}
       />
       <img src="/images/icons/search.png" alt="search icon" className="search_icon" />
 
       {/* dropdown */}
-      {debouncedQuery && (
+      {isOpen && debouncedQuery && (
         <div
-          className="absolute top-full left-0 w-full bg-white border rounded shadow mt-2 h-[30rem] overflow-y-auto z-50"
+          className="absolute top-full left-0 w-full bg-white  rounded shadow mt-2 h-[30rem] overflow-y-auto z-50"
           style={{ fontFamily: "var(--font-tasa)" }}
         >
           {/* Loading */}
@@ -61,15 +78,14 @@ export default function CourseSearch() {
 
           {/* No Results */}
           {!isLoading && data?.length === 0 && (
-            <p className="py-[1rem] px-[2rem] text-[2rem] text-center">No courses found</p>
+            <p className="no_course text-[2rem] text-center">No courses found</p>
           )}
 
           {/* results */}
           {data?.map((course: any) => (
             <div
               key={course.id}
-              className="py-[1rem] px-[2rem] hover:bg-gray-100 cursor-pointer border-b last:border-none text-[1.6rem]"
-              style={{ fontFamily: "var(--font-tasa)" }}
+              className="courses_lists hover:bg-gray-100 cursor-pointer last:border-none"
             >
               {course.name}
             </div>

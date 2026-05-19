@@ -155,7 +155,7 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
-.inner_nav { display: flex; align-items: center; padding-block: 1.5rem; }
+.inner_nav { align-items: center; padding-block: 1.5rem;display: none; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -401,7 +401,7 @@
 .vision_mission_grid { display: grid; grid-template-columns:30% 30% auto; gap: 10rem; margin-top: -8rem; padding-block: 0 10rem; border-bottom: 1.1rem solid var(--color-FE); z-index: 1; position: relative; }
 .vision_mission_grid h4 { margin-bottom: 3rem; }
 .vision_Bx p { font: var(--font-30); color: var(--color-33); }
-.leadership_section { padding-block: 14.7rem 7rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
+.leadership_section { padding-block: 14.7rem 10rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
 .leadership_section::before { background-image: url(/images/pattern/leadership_patch.webp); position: absolute; top: 0; bottom: 0; left: 0; width: 20.6rem; content: ""; }
 .leader_card h4 { font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block:2rem 0.5rem; }
 .navigation_btn { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; padding-bottom: 1rem; }
@@ -413,6 +413,8 @@
 .leadership_slider .swiper-wrapper{padding-bottom: 7rem;}
 .leadership_slider .navigation_btn{bottom: 0; z-index: 999;}
 .accredation_section { padding-block: 12rem; }
+.about_leadership{position: relative;}
+.about_leadership .navigation_btn{left: 0;bottom: -6.3rem;}
 .accredation_wrapper { background-color: var(--color-F4); padding-block: 7.5rem 30.6rem; position: relative; }
 .accredation_wrapper::after { background-color: var(--color-F4); position: absolute; right: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
 .accredation_wrapper::before { background-color: var(--color-F4); position: absolute; left: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
@@ -424,6 +426,7 @@
 .accredation_bx:last-child { border-right: 0; }
 .acre_slider { margin-top: -24rem; }
 .acre_slider .acredation_swiper { padding-left: 0.5rem; }
+.acre_slider .navigation_btn{left: 0;margin-bottom: -4.5rem;}
 .max-content { overflow: visible; }
 .acredation_swiper .swiper-wrapper{padding-bottom: 5rem;}
 /* ==============Facilities & Policy page Start============= */
@@ -503,6 +506,7 @@
 .academic_tab_reverse .sterco_accordion_content { grid-template-columns: 51% auto; margin-top: -16rem; padding-block: 13rem; display: grid; gap: 15rem; }
 .academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
 .academic_tab_reverse .sterco_accordion_content:before { left: -2.5rem; }
+.campus-facilities-transport .sterco_accordion_content{margin-top: -25rem;}
 /* =========================
    NAVIGATION
 ========================= */

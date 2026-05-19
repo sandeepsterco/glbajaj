@@ -3,6 +3,7 @@
 
   let frozenWidth = null;
 
+  // ─── Max Content Width ────────────────────────────────────────────────────────
   function adjustMaxContent() {
     const container = document.querySelector(".container25");
     if (!container) return;
@@ -30,6 +31,7 @@
       .forEach((el) => (el.style.maxWidth = rightEdge + "px"));
   }
 
+  // ─── Why GLB Section Tabs ─────────────────────────────────────────────────────
   function initWhyGlbSection() {
     const section = document.querySelector(".why_glb_section");
     if (!section) return false;
@@ -70,6 +72,7 @@
     return true;
   }
 
+  // ─── Accordion ────────────────────────────────────────────────────────────────
   function initAccordion() {
     const headers = document.querySelectorAll(".accordion-header");
     if (!headers.length) return false;
@@ -108,7 +111,6 @@
     document.querySelectorAll(".acc-header").forEach((header) => {
       header.addEventListener("click", function () {
         let parent = this.parentElement;
-        // close others (optional – remove if you want multiple open)
         document.querySelectorAll(".tab-content").forEach((item) => {
           if (item !== parent) item.classList.remove("active");
         });
@@ -119,6 +121,7 @@
     return true;
   }
 
+  // ─── Media Grid Popup ─────────────────────────────────────────────────────────
   function gridPopup() {
     const items = document.querySelectorAll(".media_grid_Bx");
 
@@ -142,6 +145,7 @@
     return true;
   }
 
+  // ─── Swipers ──────────────────────────────────────────────────────────────────
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
 
@@ -159,8 +163,9 @@
       ".cse_research_slider",
       ".hod_profile_slider",
       ".sport_facilities",
+      ".ncc_rank_ceremony",
       ".AKTU_Swiper",
-      ".workshop_slider_wrapper"
+      ".workshop_slider_wrapper",
     ].forEach((sel) => {
       const el = document.querySelector(sel);
       if (el?.swiper) el.swiper.destroy(true, true);
@@ -256,14 +261,8 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 3.5,
-          spaceBetween: 23,
-        },
+        768: { slidesPerView: 2.5, spaceBetween: 15 },
+        1200: { slidesPerView: 3.5, spaceBetween: 23 },
       },
     });
 
@@ -278,14 +277,8 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 3.35,
-          spaceBetween: 25,
-        },
+        768: { slidesPerView: 2.5, spaceBetween: 15 },
+        1200: { slidesPerView: 3.35, spaceBetween: 25 },
       },
     });
 
@@ -300,14 +293,8 @@
         prevEl: ".department_faculty_prev",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 4.5,
-          spaceBetween: 40,
-        },
+        768: { slidesPerView: 2.5, spaceBetween: 15 },
+        1200: { slidesPerView: 4.5, spaceBetween: 40 },
       },
     });
 
@@ -322,14 +309,8 @@
         prevEl: ".department_research_prev",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 3.35,
-          spaceBetween: 20,
-        },
+        768: { slidesPerView: 2.5, spaceBetween: 15 },
+        1200: { slidesPerView: 3.35, spaceBetween: 20 },
       },
     });
 
@@ -345,14 +326,8 @@
       },
       watchOverflow: true,
       breakpoints: {
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 1,
-          spaceBetween: 23,
-        },
+        768: { slidesPerView: 1, spaceBetween: 15 },
+        1200: { slidesPerView: 1, spaceBetween: 23 },
       },
     });
 
@@ -361,22 +336,14 @@
       spaceBetween: 21,
       centeredSlides: false,
       loop: true,
-      autoplay: {
-        delay: 2000,
-      },
+      autoplay: { delay: 2000 },
       navigation: {
-        nextEl: ".next_swiper_btn ",
-        prevEl: ".prev_swiper_btn ",
+        nextEl: ".next_swiper_btn",
+        prevEl: ".prev_swiper_btn",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 30,
-        },
-        1200: {
-          slidesPerView: 3.5,
-          spaceBetween: 30,
-        },
+        768: { slidesPerView: 2.5, spaceBetween: 30 },
+        1200: { slidesPerView: 3.5, spaceBetween: 30 },
       },
     });
 
@@ -391,14 +358,24 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 1,
-          spaceBetween: 23,
-        },
+        768: { slidesPerView: 1, spaceBetween: 15 },
+        1200: { slidesPerView: 1, spaceBetween: 23 },
+      },
+    });
+
+    new Swiper(".ncc_rank_ceremony", {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        768: { slidesPerView: 1, spaceBetween: 15 },
+        1200: { slidesPerView: 1, spaceBetween: 23 },
       },
     });
 
@@ -413,31 +390,23 @@
         prevEl: ".swiper_prev_custom",
       },
       breakpoints: {
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        1200: {
-          slidesPerView: 1,
-          spaceBetween: 23,
-        },
+        768: { slidesPerView: 1, spaceBetween: 15 },
+        1200: { slidesPerView: 1, spaceBetween: 23 },
       },
     });
 
     return true;
   }
 
+  // ─── Tab + Accordion (generic) ────────────────────────────────────────────────
   function tabContent() {
+    // TAB CLICK (desktop)
     document.querySelectorAll(".tab-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelectorAll(".tab-content")
-          .forEach((content) => content.classList.remove("active"));
+        document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
         this.classList.add("active");
-        document.getElementById(this.dataset.tab).classList.add("active");
+        document.getElementById(this.dataset.tab)?.classList.add("active");
       });
     });
 
@@ -451,7 +420,7 @@
       }
     }
 
-    // ✅ career-guidance Page tabs
+    // ─── Career Guidance Page Tabs ─────────────────────────────────────────────
     const tabBtns = document.querySelectorAll(".careerTabsX_btn");
     const panes = document.querySelectorAll(".careerTabsX_pane");
     const accHeaders = document.querySelectorAll(".careerTabsX_accHeader");
@@ -468,18 +437,11 @@
       btn.addEventListener("click", () => {
         if (window.innerWidth > 768) {
           const target = btn.getAttribute("data-tab");
-
           tabBtns.forEach((b) => b.classList.remove("active"));
           panes.forEach((p) => p.classList.remove("active"));
-
           btn.classList.add("active");
-
           const targetPane = document.querySelector(`.careerTabsX_pane#${target}`);
-          if (targetPane) {
-            targetPane.classList.add("active");
-          } else {
-            console.warn(`No pane found with id="${target}"`);
-          }
+          if (targetPane) targetPane.classList.add("active");
         }
       });
     });
@@ -488,7 +450,6 @@
       header.addEventListener("click", () => {
         if (window.innerWidth <= 768) {
           const pane = header.parentElement;
-
           panes.forEach((p) => {
             if (p !== pane) {
               p.classList.remove("active");
@@ -496,9 +457,7 @@
               if (otherBody) otherBody.style.maxHeight = null;
             }
           });
-
           pane.classList.toggle("active");
-
           const body = pane.querySelector(".careerTabsX_accBody");
           if (body) {
             body.style.maxHeight = pane.classList.contains("active")
@@ -506,20 +465,6 @@
               : null;
           }
         }
-      });
-    });
-
-    // TAB CLICK (desktop)
-    document.querySelectorAll(".tab-btn").forEach((button) => {
-      button.addEventListener("click", function () {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelectorAll(".tab-content")
-          .forEach((content) => content.classList.remove("active"));
-        this.classList.add("active");
-        document.getElementById(this.dataset.tab).classList.add("active");
       });
     });
 
@@ -537,6 +482,7 @@
     return true;
   }
 
+  // ─── Tab Control (tabbed-content) ─────────────────────────────────────────────
   function tabControl() {
     const tabbedContent = document.querySelectorAll(".tabbed-content");
 
@@ -573,21 +519,18 @@
             const currId = this.getAttribute("id");
             const items = container.querySelectorAll(".item");
 
-            container
-              .querySelectorAll(".tabs a")
-              .forEach((btn) => btn.classList.remove("active"));
+            container.querySelectorAll(".tabs a").forEach((btn) => btn.classList.remove("active"));
             items.forEach((i) => i.classList.remove("active"));
 
             this.classList.add("active");
-            container
-              .querySelector(`.tabs a[href$="#${currId}"]`)
-              ?.classList.add("active");
+            container.querySelector(`.tabs a[href$="#${currId}"]`)?.classList.add("active");
           });
         });
       }
     });
   }
 
+  // ─── Toggle Read More ─────────────────────────────────────────────────────────
   function toggleReadMore() {
     document.querySelectorAll(".toggle-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -612,16 +555,16 @@
 
   // ─── YouTube Modal ────────────────────────────────────────────────────────────
   function initYTModal() {
-    const overlay  = document.getElementById("ytModalOverlay");
-    const iframe   = document.getElementById("ytModalIframe");
+    const overlay = document.getElementById("ytModalOverlay");
+    const iframe = document.getElementById("ytModalIframe");
     const closeBtn = document.getElementById("ytModalClose");
-    const playBtn  = document.querySelector(".home_about_glb_section .thumbnail");
-  
+    const playBtn = document.querySelector(".home_about_glb_section .thumbnail");
+
     if (!overlay || !iframe || !closeBtn || !playBtn) return;
-  
+
     const rawSrc = iframe.getAttribute("src");
     iframe.removeAttribute("src");
-  
+
     function toEmbedUrl(url) {
       const match = url.match(/[?&]v=([^&]+)/);
       if (match) {
@@ -636,46 +579,94 @@
       }
       return url;
     }
-  
+
     function openModal() {
       iframe.src = toEmbedUrl(rawSrc);
       overlay.classList.add("active");
       document.body.style.overflow = "hidden";
     }
-  
+
     function closeModal() {
       overlay.classList.remove("active");
       iframe.removeAttribute("src");
       document.body.style.overflow = "";
     }
-  
+
     playBtn.addEventListener("click", openModal);
     closeBtn.addEventListener("click", closeModal);
-  
+
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) closeModal();
     });
-  
+
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
     });
   }
-  // ─────────────────────────────────────────────────────────────────────────────
 
-  // ✅ Run immediately — before anything else
+  // ─── Sterco Tabs (tab + accordion, scoped per section) ───────────────────────
+  // FIX: moved inside initAll so it re-runs on every Next.js client-side navigation
+  function initStercoTabs() {
+    document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {
+      const tabButtons = section.querySelectorAll(".sterco_tab_btn");
+      const tabPanels = section.querySelectorAll(".sterco_tab_panel");
+      const accordionButtons = section.querySelectorAll(".sterco_accordion_btn");
+      const accordionContents = section.querySelectorAll(".sterco_accordion_content");
+
+      // Set first items active
+      if (tabButtons.length > 0) tabButtons[0].classList.add("active");
+      if (tabPanels.length > 0) tabPanels[0].classList.add("active");
+      if (accordionButtons.length > 0) accordionButtons[0].classList.add("active");
+      if (accordionContents.length > 0) accordionContents[0].classList.add("active");
+
+      // Desktop tab click
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.getAttribute("data-tab");
+
+          tabButtons.forEach((btn) => btn.classList.remove("active"));
+          tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+          button.classList.add("active");
+
+          const activePanel = section.querySelector("#" + target);
+          if (activePanel) activePanel.classList.add("active");
+        });
+      });
+
+      // Mobile accordion click
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = button.parentElement.nextElementSibling;
+          const isAlreadyActive = button.classList.contains("active");
+
+          accordionButtons.forEach((btn) => btn.classList.remove("active"));
+          accordionContents.forEach((c) => c.classList.remove("active"));
+
+          if (!isAlreadyActive) {
+            button.classList.add("active");
+            if (content) content.classList.add("active");
+          }
+        });
+      });
+    });
+  }
+
+  // ─── Early Max-Content (before DOMContentLoaded) ──────────────────────────────
   function adjustMaxContentEarly() {
     if (document.querySelector(".container25")) {
       adjustMaxContent();
     }
   }
 
+  // ─── Main Init (called on load AND by Next.js after route change) ─────────────
   function initAll() {
-    adjustMaxContent(); // ✅ First thing, before swipers
-    window.addEventListener("resize", adjustMaxContent);
+    adjustMaxContent();
 
     initWhyGlbSection();
     initAccordion();
     initYTModal();
+    initStercoTabs(); // ← FIX: now runs on every re-init
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
@@ -685,17 +676,31 @@
     gridPopup();
     tabControl();
     toggleReadMore();
-
-    let resizeTimer;
-    window.addEventListener("resize", function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(tabControl, 250);
-    });
   }
 
-  // Expose for Next.js client-side re-init
+  // ─── Resize Handlers (attached once, not re-attached on re-init) ──────────────
+  window.addEventListener("resize", adjustMaxContent);
+
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(tabControl, 250);
+  });
+
+  // ─── Expose for Next.js client-side re-init ───────────────────────────────────
+  // Call window.__initCustomJS() from a useEffect after react-parser renders HTML
+  //
+  // Example usage in your Next.js component:
+  //
+  //   useEffect(() => {
+  //     if (typeof window.__initCustomJS === "function") {
+  //       window.__initCustomJS();
+  //     }
+  //   }, [pathname, htmlContent]);
+  //
   window.__initCustomJS = initAll;
 
+  // ─── Bootstrap ───────────────────────────────────────────────────────────────
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
     document.addEventListener("DOMContentLoaded", initAll, { once: true });
@@ -704,189 +709,3 @@
     initAll();
   }
 })();
-
-// research slider wrapper
-new Swiper(".workshop_slider_wrapper", {
-  slidesPerView: 1.2,
-  spaceBetween: 21,
-  centeredSlides: false,
-  loop: true,
-  autoplay: {
-    delay: 2000,
-  },
-  navigation: {
-    nextEl: ".next_swiper_btn ",
-    prevEl: ".prev_swiper_btn ",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 2.5,
-      spaceBetween: 30,
-    },
-    1200: {
-      slidesPerView: 3.5,
-      spaceBetween: 30,
-    },
-  },
-});
-
-new Swiper(".sport_facilities", {
-  slidesPerView: 1.2,
-  spaceBetween: 20,
-  centeredSlides: false,
-  loop: false,
-  autoplay: false,
-  navigation: {
-    nextEl: ".swiper_next_custom",
-    prevEl: ".swiper_prev_custom",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    1200: {
-      slidesPerView: 1,
-      spaceBetween: 23,
-    },
-  },
-});
-
-new Swiper(".ncc_rank_ceremony", {
-  slidesPerView: 1.2,
-  spaceBetween: 20,
-  centeredSlides: false,
-  loop: false,
-  autoplay: false,
-  navigation: {
-    nextEl: ".swiper_next_custom",
-    prevEl: ".swiper_prev_custom",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    1200: {
-      slidesPerView: 1,
-      spaceBetween: 23,
-    },
-  },
-});
-
-new Swiper(".AKTU_Swiper", {
-  slidesPerView: 1.2,
-  spaceBetween: 20,
-  centeredSlides: false,
-  loop: false,
-  autoplay: false,
-  navigation: {
-    nextEl: ".swiper_next_custom",
-    prevEl: ".swiper_prev_custom",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    1200: {
-      slidesPerView: 1,
-      spaceBetween: 23,
-    },
-  },
-});
-
-// TAB CLICK (desktop)
-document.querySelectorAll(".tab-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    document
-      .querySelectorAll(".tab-btn")
-      .forEach((btn) => btn.classList.remove("active"));
-    document
-      .querySelectorAll(".tab-content")
-      .forEach((content) => content.classList.remove("active"));
-    this.classList.add("active");
-    document.getElementById(this.dataset.tab).classList.add("active");
-  });
-});
-
-// ACCORDION (mobile)
-document.querySelectorAll(".acc-header").forEach((header) => {
-  header.addEventListener("click", function () {
-    let parent = this.parentElement;
-    document.querySelectorAll(".tab-content").forEach((item) => {
-      if (item !== parent) item.classList.remove("active");
-    });
-    parent.classList.toggle("active");
-  });
-});
-
-document.querySelectorAll('.sterco_tabs_sec').forEach(section => {
-
-  const tabButtons = section.querySelectorAll('.sterco_tab_btn');
-  const tabPanels = section.querySelectorAll('.sterco_tab_panel');
-
-  const accordionButtons = section.querySelectorAll('.sterco_accordion_btn');
-  const accordionContents = section.querySelectorAll('.sterco_accordion_content');
-
-  if (tabButtons.length > 0) {
-    tabButtons[0].classList.add('active');
-  }
-
-  if (tabPanels.length > 0) {
-    tabPanels[0].classList.add('active');
-  }
-
-  if (accordionButtons.length > 0) {
-    accordionButtons[0].classList.add('active');
-  }
-
-  if (accordionContents.length > 0) {
-    accordionContents[0].classList.add('active');
-  }
-
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.getAttribute('data-tab');
-
-      tabButtons.forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      tabPanels.forEach(panel => {
-        panel.classList.remove('active');
-      });
-
-      button.classList.add('active');
-
-      const activePanel = section.querySelector('#' + target);
-
-      if (activePanel) {
-        activePanel.classList.add('active');
-      }
-    });
-  });
-
-  accordionButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const content = button.parentElement.nextElementSibling;
-      const isAlreadyActive = button.classList.contains('active');
-
-      accordionButtons.forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      accordionContents.forEach(content => {
-        content.classList.remove('active');
-      });
-
-      if (!isAlreadyActive) {
-        button.classList.add('active');
-        if (content) {
-          content.classList.add('active');
-        }
-      }
-    });
-  });
-
-});

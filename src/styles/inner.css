@@ -155,7 +155,7 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
-.inner_nav { display: flex; align-items: center; padding-block: 1.5rem; }
+.inner_nav { align-items: center; padding-block: 1.5rem;display: none; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -500,6 +500,7 @@
 .academic_tab_reverse .sterco_accordion_content { grid-template-columns: 51% auto; margin-top: -16rem; padding-block: 13rem; display: grid; gap: 15rem; }
 .academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
 .academic_tab_reverse .sterco_accordion_content:before { left: -2.5rem; }
+.campus-facilities-transport .sterco_accordion_content{margin-top: -25rem;}
 /* =========================
    NAVIGATION
 ========================= */

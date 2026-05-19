@@ -410,6 +410,8 @@
        6px 17px 36px rgba(255, 255, 255, 0.8) }
 .swiper_prev_custom { transform: rotate(180deg); }
 .leadership_section h3 { padding-bottom: 4rem; }
+.leadership_slider .swiper-wrapper{padding-bottom: 7rem;}
+.leadership_slider .navigation_btn{bottom: 0; z-index: 999;}
 .accredation_section { padding-block: 12rem; }
 .accredation_wrapper { background-color: var(--color-F4); padding-block: 7.5rem 30.6rem; position: relative; }
 .accredation_wrapper::after { background-color: var(--color-F4); position: absolute; right: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
@@ -423,6 +425,7 @@
 .acre_slider { margin-top: -24rem; }
 .acre_slider .acredation_swiper { padding-left: 0.5rem; }
 .max-content { overflow: visible; }
+.acredation_swiper .swiper-wrapper{padding-bottom: 5rem;}
 /* ==============Facilities & Policy page Start============= */
 .facilities_policy { padding-block:5rem 12rem; }
 .facilities_policy .policy_subgroup{margin-bottom: 5rem;}

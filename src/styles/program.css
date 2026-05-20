@@ -8,7 +8,7 @@
 .cus-tab .item { margin-bottom: 2px; }
 .cus-tab .item::before { cursor: pointer; font-weight: bold; background: #eee; padding: 0.5em; display: block; }
 .cus-tab .item.active::before { background: #444; color: #eee; }
-.cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
+/* .cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; } */
 
 @media all and (min-width: 800px) {
 .cus-tab .item.active .item-content { }
@@ -19,11 +19,11 @@ The project specific CSS starts here
 This is the minimum CSS that you will need in order for this to work
 */
 .cus-tab .tabbed-content .tabs { display: none; }
-.cus-tab .tabbed-content .item { min-height: 2em; display:none;}
+.cus-tab .tabbed-content .item { min-height: 2em;}
 .cus-tab .tabbed-content .item.active{display:block;}
 .cus-tab .tabbed-content .item::before { content: attr(data-title); }
-.cus-tab .tabbed-content .item .item-content { opacity: 0; visibility: hidden; height: 0; }
-.cus-tab .tabbed-content .item.active .item-content { opacity: 1; visibility: visible; height: auto; }
+/* .cus-tab .tabbed-content .item .item-content { opacity: 0; visibility: hidden; height: 0; } */
+/* .cus-tab .tabbed-content .item.active .item-content { opacity: 1; visibility: visible; height: auto; } */
 @media all and (min-width: 800px) {
 .cus-tab .tabbed-content .tabs { display: block; }
 .cus-tab .tabbed-content .tabs li { display: inline-block; }

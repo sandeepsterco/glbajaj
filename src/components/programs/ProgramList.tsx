@@ -1,6 +1,10 @@
+"use client"
 import Link from "next/link";
 import { apiFetch } from "@/src/lib/api";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
+import { BASE_URL } from "@/src/config/config";
+import { useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface Program {
   name: string;
@@ -16,28 +20,23 @@ interface ProgramGroup {
   programs: Program[];
 }
 
-interface ProgramsResponse {
-  programs: {
-    current_page: number;
-    data: ProgramGroup[];
-    last_page: number;
-    first_page_url: string;
-    last_page_url: string;
-    from: number;
-    links: unknown[];
-  };
+interface ProgramsData {
+  current_page: number;
+  data: ProgramGroup[];
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+  from: number;
+  links: unknown[];
 }
 
-interface ProgramListProps {
-  searchParams?: { page?: string };
-}
-
-async function fetchPrograms(type: "under-graduate" | "post-graduate", page = 1) {
-  const { data, error } = await apiFetch(`programs?type=${type}&page=${page}`, {
-    cache: "no-store",
-  });
+async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", page = 1) {
+  const { data, error } = await apiFetch(
+    `programs?type=${type === "all" ? "" : type}&page=${page}`,
+    { cache: "no-store" }
+  );
   if (error || !data) return null;
-  return data as ProgramsResponse;
+  return data as { programs: ProgramsData };
 }
 
 function ProgramBox({ program }: { program: Program }) {
@@ -55,10 +54,10 @@ function ProgramBox({ program }: { program: Program }) {
           <p>Duration</p>
           <span>{program.duration} years</span>
         </div>
-          <div className="affiliation">
-            <p>Affiliation</p>
-            <span>{program.affiliation || '-'}</span>
-          </div>
+        <div className="affiliation">
+          <p>Affiliation</p>
+          <span>{program.affiliation || "-"}</span>
+        </div>
         <div className="apply-btn">
           <a href="#">Apply Now</a>
         </div>
@@ -74,6 +73,13 @@ function ProgramBox({ program }: { program: Program }) {
   );
 }
 
+function buildUrl(type: string, page: number) {
+  const params = new URLSearchParams();
+  params.set("type", type);
+  params.set("page", String(page));
+  return `${BASE_URL}programs-offered?${params.toString()}`;
+}
+
 function ProgramGroupSection({ group }: { group: ProgramGroup }) {
   if (!group.programs || group.programs.length === 0) return null;
 
@@ -87,16 +93,24 @@ function ProgramGroupSection({ group }: { group: ProgramGroup }) {
   );
 }
 
-export default async function ProgramList({ searchParams }: ProgramListProps) {
-  const page = Number(searchParams?.page) || 1;
+export default function ProgramList() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const paramsType = (searchParams.get("type") as "under-graduate" | "post-graduate" | "all") || "all";
+  const page = Number(searchParams.get("page")) || 1;
 
-  const [ugData, pgData] = await Promise.all([
-    fetchPrograms("under-graduate", page),
-    fetchPrograms("post-graduate", page),
-  ]);
+  const [programsData, setProgramsData] = useState<ProgramsData | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const ugPrograms = ugData?.programs;
-  const pgPrograms = pgData?.programs;
+  useEffect(() => {
+    console.log("Fetching:", { paramsType, page }); // check these are updating
+    setLoading(true);
+    fetchPrograms(paramsType, page).then((res) => {
+      console.log("Response:", res);
+      setProgramsData(res?.programs ?? null);
+      setLoading(false);
+    });
+  }, [paramsType, page]);
 
   return (
     <section className="program-sec">
@@ -106,53 +120,40 @@ export default async function ProgramList({ searchParams }: ProgramListProps) {
             <div className="tabbed-content">
               <nav className="tabs">
                 <ul>
-                  <li>
-                    <a href="#tab1" className="active">
-                      Undergraduate Courses
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#tab2">Postgraduate Courses</a>
-                  </li>
+                  {[
+                    { label: "All Courses", type: "all" },
+                    { label: "Undergraduate Courses", type: "under-graduate" },
+                    { label: "Postgraduate Courses", type: "post-graduate" },
+                  ].map(({ label, type }) => (
+                    <li key={type}>
+                      <Link
+                        href={`${BASE_URL}programs-offered?type=${type}&page=1`}
+                        className={paramsType === type ? "active" : ""}
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </nav>
 
-              {/* Undergraduate Tab */}
-              <div id="tab1" className="item active" data-title="Tab 1">
+              <div className="item">
                 <div className="item-content">
-                  {ugPrograms?.data && ugPrograms.data.length > 0 ? (
-                    ugPrograms.data.map((group) => (
+                  {loading ? (
+                    <p>Loading programs...</p>
+                  ) : programsData && programsData.data.length > 0 ? (
+                    programsData.data.map((group) => (
                       <ProgramGroupSection key={group.slug} group={group} />
                     ))
                   ) : (
-                    <p>No undergraduate programs found.</p>
+                    <p>No programs found.</p>
                   )}
 
-                  {ugPrograms && (
+                  {programsData && (
                     <PaginationWrapper
-                      currentPage={ugPrograms.current_page || 1}
-                      totalPages={ugPrograms.last_page || 1}
-                    />
-                  )}
-                </div>
-              </div>
-
-              {/* Postgraduate Tab */}
-              <div id="tab2" className="item" data-title="Tab 2">
-                <div className="item-content">
-                  {pgPrograms?.data && pgPrograms.data.length > 0 ? (
-                    pgPrograms.data.map((group) => (
-                      <ProgramGroupSection key={group.slug} group={group} />
-                    ))
-                  ) : (
-                    <p>No postgraduate programs found.</p>
-                  )}
-
-                  {pgPrograms && (
-                    <PaginationWrapper
-                      currentPage={pgPrograms.current_page || 1}
-                      totalPages={pgPrograms.last_page || 1}
-                    />
+                    currentPage={programsData.current_page || 1}
+                    totalPages={programsData.last_page || 1}
+                  />
                   )}
                 </div>
               </div>

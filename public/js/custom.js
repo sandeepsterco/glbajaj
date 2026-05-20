@@ -498,8 +498,15 @@
           link.parentNode.replaceChild(newLink, link);
 
           newLink.addEventListener("click", function (event) {
-            event.preventDefault();
             const target = this.getAttribute("href");
+
+            // Query-string hrefs (e.g. ?tab=all) are server-side navigation —
+            // let the browser follow them normally; do NOT preventDefault.
+            if (!target || !target.startsWith("#")) return;
+
+            // Hash-based tabs (#tab1, etc.) are handled client-side.
+            event.preventDefault();
+
             const buttons = tabs.querySelectorAll("a");
             const items = container.querySelectorAll(".item");
 
@@ -523,7 +530,10 @@
             items.forEach((i) => i.classList.remove("active"));
 
             this.classList.add("active");
-            container.querySelector(`.tabs a[href$="#${currId}"]`)?.classList.add("active");
+
+            // FIX: Only look up by hash selector — guard against non-hash hrefs
+            const matchLink = container.querySelector(`.tabs a[href="#${currId}"]`);
+            if (matchLink) matchLink.classList.add("active");
           });
         });
       }
@@ -605,7 +615,6 @@
   }
 
   // ─── Sterco Tabs (tab + accordion, scoped per section) ───────────────────────
-  // FIX: moved inside initAll so it re-runs on every Next.js client-side navigation
   function initStercoTabs() {
     document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {
       const tabButtons = section.querySelectorAll(".sterco_tab_btn");
@@ -659,14 +668,14 @@
     }
   }
 
-  // ─── Main Init (called on load AND by Next.js after route change) ─────────────
+  // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
 
     initWhyGlbSection();
     initAccordion();
     initYTModal();
-    initStercoTabs(); // ← FIX: now runs on every re-init
+    initStercoTabs();
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
@@ -678,7 +687,7 @@
     toggleReadMore();
   }
 
-  // ─── Resize Handlers (attached once, not re-attached on re-init) ──────────────
+  // ─── Resize Handlers ──────────────────────────────────────────────────────────
   window.addEventListener("resize", adjustMaxContent);
 
   let resizeTimer;
@@ -688,16 +697,6 @@
   });
 
   // ─── Expose for Next.js client-side re-init ───────────────────────────────────
-  // Call window.__initCustomJS() from a useEffect after react-parser renders HTML
-  //
-  // Example usage in your Next.js component:
-  //
-  //   useEffect(() => {
-  //     if (typeof window.__initCustomJS === "function") {
-  //       window.__initCustomJS();
-  //     }
-  //   }, [pathname, htmlContent]);
-  //
   window.__initCustomJS = initAll;
 
   // ─── Bootstrap ───────────────────────────────────────────────────────────────

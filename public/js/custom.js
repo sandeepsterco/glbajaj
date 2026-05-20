@@ -174,7 +174,7 @@
     new Swiper(".award_ranking", {
       slidesPerView: 5,
       loop: true,
-      spaceBetween: 20,
+      spaceBetween:0,
       autoplay: {
         delay: 2500,
         disableOnInteraction: false,

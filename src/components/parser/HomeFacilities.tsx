@@ -60,8 +60,7 @@ export default function HomeFacilities() {
                         <div
                           key={idx}
                           className={`homeFac_btn ${activeTab === idx ? "active" : ""}`}
-                          onClick={() => handleTabChange(idx)}
-                        data-aos="fade-up" data-aos-delay="200">
+                          onClick={() => handleTabChange(idx)}>
                           <span>{item?.tab_title}</span>
                         </div>
                       ))}

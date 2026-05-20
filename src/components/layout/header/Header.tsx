@@ -147,7 +147,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                     headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => {
                       const programsItem = item?.children?.find((programs:any)=>programs.title == 'Programs');
                       const departmentItems = item?.children?.find((department:any)=>department.title == 'Departments');
-                      const allPages = item?.children.filter((page:any)=>page.type == 'page');
+                      const allPages = item?.children.filter((department:any)=>department.title !== 'Departments');
                       const isActive = activeMegaMenu === itemIdx;
                       // const isActive = true;
 

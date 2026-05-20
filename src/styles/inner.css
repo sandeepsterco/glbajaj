@@ -222,6 +222,11 @@
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 2rem 0 0 2.7rem; position: relative; }
 .media_txt::before { background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem; }
+
+.media_grid1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
+.media_grid_Bx1 { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
+.media_grid_Bx1 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
+.media_grid_Bx1 figure img { max-width: 22rem; margin: 0 auto; }
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }

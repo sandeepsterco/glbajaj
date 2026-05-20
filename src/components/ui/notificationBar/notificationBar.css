@@ -18,3 +18,43 @@
     right: -1rem;}
 .ticker-track{overflow:hidden;}
 /* .ticker-track p:first-child{color:red;} */
+
+
+
+/* notificationBar.css */
+
+.ticker-track {
+  display: flex;
+  gap: 40px;             /* space between notifications */
+  width: max-content;    /* shrink-wraps all items side by side */
+  animation: ticker 24s linear infinite;
+}
+
+/* ✅ Hover pauses the WHOLE group at once */
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;   /* prevent wrapping */
+  text-decoration: none;
+  color: inherit;
+  color:white;
+}
+
+.ticker-item  span{
+  color: #fff;
+  font:var(--font-16);
+}
+
+.ticker-item:hover {
+  text-decoration: underline;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }  /* -50% because items are doubled */
+}

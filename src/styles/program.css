@@ -116,7 +116,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .counseling-heading{}
 .counseling-heading h6{ font-weight: 600; }
 .counseling-text p{ font: var(--font-16); color: var(--color-33); }
-.border { border-top: 1px solid #CCCCCC; margin: 3rem 0; border-bottom:0;}
+/* .border { border-top: 1px solid #CCCCCC; margin: 3rem 0; border-bottom:0;} */
 .admission-text p strong{ margin-bottom: 3rem; display: block; }
 .counseling-text { padding-inline: 0 1rem; }
 .securing-box{ background-color: var(--color-92); margin-top: 3.4rem; padding: 2.2rem; margin-left: -6rem; margin-right: -2rem; }

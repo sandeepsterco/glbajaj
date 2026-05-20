@@ -8,8 +8,7 @@
     if (!container) return;
 
     const windowWidth = window.innerWidth;
-    const containerOffset =
-      container.getBoundingClientRect().left + window.scrollX;
+    const containerOffset = container.getBoundingClientRect().left + window.scrollX;
     const containerWidth = container.offsetWidth;
     const rightEdge_calc = containerOffset + containerWidth;
 
@@ -26,7 +25,7 @@
 
     document
       .querySelectorAll(
-        ".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl",
+        ".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl"
       )
       .forEach((el) => (el.style.maxWidth = rightEdge + "px"));
   }
@@ -297,8 +296,8 @@
       loop: true,
       autoplay: false,
       navigation: {
-        nextEl: ".swiper_next_custom",
-        prevEl: ".swiper_prev_custom",
+        nextEl: ".department_faculty_next",
+        prevEl: ".department_faculty_prev",
       },
       breakpoints: {
         768: {
@@ -319,8 +318,8 @@
       loop: true,
       autoplay: false,
       navigation: {
-        nextEl: ".swiper_next_custom",
-        prevEl: ".swiper_prev_custom",
+        nextEl: ".department_research_next",
+        prevEl: ".department_research_prev",
       },
       breakpoints: {
         768: {
@@ -335,7 +334,7 @@
     });
 
     new Swiper(".hod_profile_slider", {
-      slidesPerView: 1.2,
+      slidesPerView: 1,
       spaceBetween: 20,
       centeredSlides: false,
       loop: false,
@@ -663,15 +662,25 @@
   }
   // ─────────────────────────────────────────────────────────────────────────────
 
+  // ✅ Run immediately — before anything else
+  function adjustMaxContentEarly() {
+    if (document.querySelector(".container25")) {
+      adjustMaxContent();
+    }
+  }
+
   function initAll() {
+    adjustMaxContent(); // ✅ First thing, before swipers
+    window.addEventListener("resize", adjustMaxContent);
+
     initWhyGlbSection();
     initAccordion();
-    initYTModal(); // ← YouTube modal
+    initYTModal();
+
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
     }
-    window.addEventListener("resize", adjustMaxContent);
-    adjustMaxContent();
+
     tabContent();
     gridPopup();
     tabControl();
@@ -688,8 +697,10 @@
   window.__initCustomJS = initAll;
 
   if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
     document.addEventListener("DOMContentLoaded", initAll, { once: true });
   } else {
+    adjustMaxContentEarly();
     initAll();
   }
 })();

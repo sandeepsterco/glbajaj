@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 interface AlumniItem {
   name: string;
@@ -114,7 +115,7 @@ export default function DepartmentHomeAlumni() {
                 <SwiperSlide key={index}>
                   <div className="swiper_thumbox">
                     <div className="pt_thumb_img">
-                      <img src={item.image} className="img-fluid" alt={item.name} />
+                      <Image src={item.image} className="img-fluid w-100" alt={item.name} width={166} height={186} loading="lazy" />
                     </div>
                     <div className="thu_info">
                       <p className="name">{item.name}</p>

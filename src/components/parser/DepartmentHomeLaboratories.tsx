@@ -50,8 +50,8 @@ export default function DepartmentHomeLaboratories() {
                 1200: { slidesPerView: 2.25, spaceBetween: 40 },
             }}
             navigation={{
-                nextEl: ".swiper_next_custom",
-                prevEl: ".swiper_prev_custom",
+                nextEl: ".department_lab_next",
+                prevEl: ".department_lab_prev",
             }}
             className="cse_lab_slider">
             {data?.length > 0 && data?.map((item: any, idx: number) => (

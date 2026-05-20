@@ -51,8 +51,8 @@ export default function DepartmentHomeFaculties() {
                     1200: { slidesPerView: 4.5, spaceBetween:40 },
                 }}
                 navigation={{
-                    nextEl: ".swiper_next_custom",
-                    prevEl: ".swiper_prev_custom",
+                    nextEl: ".department_faculty_next",
+                    prevEl: ".department_faculty_prev",
                 }}
                 className="cse_faculties_slider"
             >
@@ -76,9 +76,9 @@ export default function DepartmentHomeFaculties() {
 
                 {showNavigation && (
                     <div className="navigation_btn">
-                        <div className="prev-btn swiper_prev_custom"><img src="/images/icons/arrow.svg" alt="arrow"
+                        <div className="prev-btn swiper_prev_custom department_faculty_prev"><img src="/images/icons/arrow.svg" alt="arrow"
                             className="img-fluid" /></div>
-                        <div className="next-btn swiper_next_custom"><img src="/images/icons/arrow.svg" alt="arrow"
+                        <div className="next-btn swiper_next_custom department_faculty_next"><img src="/images/icons/arrow.svg" alt="arrow"
                             className="img-fluid" /></div>
                     </div>
                 )}

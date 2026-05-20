@@ -10,8 +10,8 @@ export function NewsDetail({data}:{data:any}) {
 
     useEffect(() => {
         setCurrentUrl(window.location.href);
-        setPageTitle(data?.heading || document.title || "");
-    }, [data?.heading]);
+        setPageTitle(data?.data?.heading || document.title || "");
+    }, [data?.data?.heading]);
 
     const toggleMenus = () => {
         setShowSocialMenus((state) => !state);
@@ -33,9 +33,9 @@ export function NewsDetail({data}:{data:any}) {
         <section className="news_details">
             <div className="container25">
                 <div className="newst_details_header">
-                    {data?.date && (
+                    {data?.data?.date && (
                         <p className="date">
-                            {new Date(data.date).toLocaleDateString("en-US", {
+                            {new Date(data?.data?.date).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
@@ -91,10 +91,10 @@ export function NewsDetail({data}:{data:any}) {
                     </figure>
                 </div>
 
-                {data?.heading && <h1>{data.heading}</h1>}
+                {data?.data?.heading && <h1>{data.data.heading}</h1>}
 
-                {data?.news_and_events_detail && (
-                    <ReactParser html={data.news_and_events_detail} />
+                {data?.cms?.news_and_events_detail && (
+                    <ReactParser html={data?.cms?.news_and_events_detail} />
                 )}
             </div>
         </section>

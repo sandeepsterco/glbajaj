@@ -20,15 +20,23 @@ export default async function PageHeader({data, slug, showTabs}:{data:any, slug:
                                 <p className="about_glbim_p">{data?.page_title}</p>
                             </div>
                             <div className="about_breadcrumb">
-                                <p className="breadcrumb_main about_breadcrump_text">{data?.tab_title}</p>
-                                <FaChevronRight color='#fff' size={10} />
-                                <p className="breadcrumb_sub about_breadcrump_text">{currentPage?.title}</p>
+                                {data?.tabs && (
+                                    <>
+                                        <p className="breadcrumb_main about_breadcrump_text">{data?.tab_title}</p>
+                                        <FaChevronRight color='#fff' size={10} />
+                                    </>
+                                )}
+                                {data?.tabs ? (
+                                    <p className="breadcrumb_sub about_breadcrump_text">{currentPage?.title}</p>
+                                ) : (
+                                    <p className="breadcrumb_sub about_breadcrump_text">{data?.page_title}</p>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {showTabs && (
+                {data?.tabs && (
                     <div className='bottom_menus'>
                         <div className="container25">
                             <div className="inner_nav">

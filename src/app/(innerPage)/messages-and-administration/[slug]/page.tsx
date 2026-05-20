@@ -15,6 +15,6 @@ export default async function FacultyDetailPage({params}:{params:any}){
     }
 
     return(
-        <LeadershipDetail data={data?.leadership_details?.cms} />
+        <LeadershipDetail data={data?.leadership_details} />
     )
 }

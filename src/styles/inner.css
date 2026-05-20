@@ -1,10 +1,8 @@
-
-.custom_pages_lists{font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex;}
-.custom_pages_lists .tab_btn{cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
-.custom_pages_lists .active .tab_btn{color: var(--color-92); font-weight: 500;}
-.custom_pages_lists .tab_btn:before{content: ""; border-bottom: 2px dashed var(--color-31); opacity: .3; width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
-.custom_pages_lists .active .tab_btn:before{opacity: 1; border-color: var(--color-92);}
-
+.custom_pages_lists { font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex; }
+.custom_pages_lists .tab_btn { cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
+.custom_pages_lists .active .tab_btn { color: var(--color-92); font-weight: 500; }
+.custom_pages_lists .tab_btn:before { content: ""; border-bottom: 2px dashed var(--color-31); opacity: .3; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+.custom_pages_lists .active .tab_btn:before { opacity: 1; border-color: var(--color-92); }
 /* About section start */
 .about_menu_bar { border-bottom: 1px solid #d7d4d4; }
 .about_top { background-color: var(--color-64); padding: 1.5rem 0; opacity: 1; }
@@ -163,7 +161,7 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
-.inner_nav { align-items: center; padding-block: 1.5rem; display:flex;}
+.inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -227,6 +225,10 @@
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 2rem 0 0 2.7rem; position: relative; }
 .media_txt::before { background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem; }
+.media_grid1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
+.media_grid_Bx1 { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
+.media_grid_Bx1 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
+.media_grid_Bx1 figure img { max-width: 22rem; margin: 0 auto; }
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -280,6 +282,8 @@
 .hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
+.dean_staemail { font: var(--font-16); margin-bottom: 2rem; }
+.dean_staemail a{color: var(--color-AE);font-weight: 700;}
 @media (max-width: 2440px) {
  .hod_right::before { height: auto; }
  }
@@ -330,12 +334,12 @@
 .visionary_message figure { margin-top: 8rem; position: relative; }
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .message_details { padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative; }
-.message_details.bottom{padding-top:0;}
+.message_details.bottom { padding-top:0; }
 .message_details::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
 .message_details figure { text-align: center; }
 .message_details figure img { margin: 0 auto; }
 .message_details h5 { font: var(--font-16); font-weight: 700; margin-bottom: 2rem; }
-.message_cnt h3 { color: var(--color-92); font: var(--font-48); letter-spacing: -0.24rem; margin-bottom: 4rem; font-weight: 400; padding-block: 2rem 0; margin-bottom: 0;}
+.message_cnt h3 { color: var(--color-92); font: var(--font-48); letter-spacing: -0.24rem; margin-bottom: 4rem; font-weight: 400; padding-block: 2rem 0; margin-bottom: 0; }
 .message_cnt .inspiration_details::before { max-width: 33.3rem; }
 /* ==============Faculty page Start============= */
 .administration_section.messages_section { padding-block: 5rem 12rem; background-color: var(--color-white); }
@@ -520,6 +524,7 @@
 .academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
 .academic_tab_reverse .sterco_accordion_content:before { left: -2.5rem; }
 .campus-facilities-transport .sterco_accordion_content { margin-top: -25rem; }
+.csr-activities-page .sterco_accordion_content { margin-top: -25rem; }
 /* =========================
    NAVIGATION
 ========================= */
@@ -1584,12 +1589,10 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .exam_info .exam_name { padding-block: 2.5rem; }
 .exam_info .exam_name h5 { font: var(--font-18); padding-block: 3rem 2rem; font-weight: 600; }
 .exam_pdfsec ul li a { display: flex; align-items: center; gap: 2rem; }
-.exam_pdfsec ul + a {    color: var(--color-AE);
-    font-weight: 600;font: var(--font-16);text-decoration: underline;font-weight: 600;}
-.exam_pdfsec ul + a:hover{color: var(--color-64);}
+.exam_pdfsec ul + a { color: var(--color-AE); font-weight: 600; font: var(--font-16); text-decoration: underline; font-weight: 600; }
+.exam_pdfsec ul + a:hover { color: var(--color-64); }
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
 .examrules_table_wrap { padding-bottom: 5rem; }
 .examrules_table_wrap .exam_tabsec:not(:last-child) { margin-bottom: 8rem; }
 .examrules_table_wrap .exam_tabsec > h4 { margin-bottom: 4rem; }
 .examrules_table_wrap .exam_tabsec > h3 { margin-bottom: 3rem; }
-

@@ -118,7 +118,7 @@ export default function Header({ headerData }: { headerData?: any }) {
               {/* Logo */}
               <div className="site_brand">
                 <Link href={BASE_URL ?? '/'} className="navbar-brand" aria-label="GL Bajaj home">
-                  {isScrolled || !isHome ? (
+                  {isScrolled || !isHome && !megaMenuOpen ? (
                     <Image
                       src="/images/logo/colored-logo.png"
                       alt="GL Bajaj University"
@@ -149,6 +149,7 @@ export default function Header({ headerData }: { headerData?: any }) {
                       const departmentItems = item?.children?.find((department:any)=>department.title == 'Departments');
                       const allPages = item?.children.filter((page:any)=>page.type == 'page');
                       const isActive = activeMegaMenu === itemIdx;
+                      // const isActive = true;
 
                       return (
                         <li key={itemIdx} className={`${item?.children?.length > 0 ? 'drom_menu' : ''} ${isActive?'active':''}`}
@@ -177,12 +178,21 @@ export default function Header({ headerData }: { headerData?: any }) {
                                         {programsItem.entries?.length > 0 && (
                                           <ul>
                                             {programsItem.entries.map((item:any, itemIdx:number)=>(
-                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.data.name}</Link></li>
+                                              <li key={itemIdx}>
+                                                <Link
+                                                  href={item?.slug ? BASE_URL + item.slug : ''}
+                                                  onClick={()=>{
+                                                    setMegaMenuOpen(false);
+                                                    setActiveMegaMenu(null);
+                                                  }}
+                                                >
+                                                  {item.data.name}
+                                                </Link>
+                                              </li>
                                             ))}
                                           </ul>
                                         )}
-                                        
-                                    </div>
+                                      </div>
                                     )}
                                       
                                     {departmentItems && (
@@ -191,7 +201,10 @@ export default function Header({ headerData }: { headerData?: any }) {
                                         {departmentItems?.entries?.length > 0 && (
                                           <ul>
                                             {departmentItems?.entries.map((item:any, itemIdx:number)=>(
-                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''}>{item?.data?.name}</Link></li>
+                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''} onClick={()=>{
+                                                setMegaMenuOpen(false);
+                                                setActiveMegaMenu(null);
+                                              }}>{item?.data?.name}</Link></li>
                                             ))}
                                           </ul>
                                         )}
@@ -204,7 +217,10 @@ export default function Header({ headerData }: { headerData?: any }) {
                                       <ul>
                                           <ul>
                                             {allPages?.length > 0 && allPages.map((page:any, pageIdx:number)=>(
-                                              <li key={pageIdx}><Link href={BASE_URL + page?.slug}>{page?.title}</Link></li>
+                                              <li key={pageIdx}><Link href={BASE_URL + page?.slug} onClick={()=>{
+                                                setMegaMenuOpen(false);
+                                                setActiveMegaMenu(null);
+                                              }}>{page?.title}</Link></li>
                                             ))}
                                           </ul>
                                       </ul>

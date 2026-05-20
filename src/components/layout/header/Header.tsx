@@ -143,96 +143,254 @@ export default function Header({ headerData }: { headerData?: any }) {
               {/* Navigation */}
               <div className="site_nav">
                 <ul>
-                  {headerData?.headerMenu?.menuItems?.length > 0 &&
-                    headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => {
-                      const programsItem = item?.children?.find((programs:any)=>programs.title == 'Programs');
-                      const departmentItems = item?.children?.find((department:any)=>department.title == 'Departments');
-                      const allPages = item?.children.filter((department:any)=>department.title !== 'Departments');
-                      const isActive = activeMegaMenu === itemIdx;
-                      // const isActive = true;
+                    {headerData?.headerMenu?.menuItems?.length > 0 &&
+                      headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => {
+                        const isActive = activeMegaMenu === itemIdx;
+                        // const isActive = true;
+                        const hasChildren = item?.children?.length > 0;
+                        const slugKey = item?.slug; // e.g. "about-glbitm", "academics"
 
-                      return (
-                        <li key={itemIdx} className={`${item?.children?.length > 0 ? 'drom_menu' : ''} ${isActive?'active':''}`}
-                          onMouseEnter={()=>{
-                            if(item?.children?.length > 0){
-                              setActiveMegaMenu(itemIdx);
-                              setMegaMenuOpen(true);
-                            }
-                          }}
-                          onMouseLeave={()=>{
-                            setActiveMegaMenu(null);
-                            setMegaMenuOpen(false);
-                          }}
-                        >
-                          <Link href={item?.slug ? BASE_URL + item.slug : ''}>{item.title}</Link>
-                          {item?.children?.length > 0 && (
-                            <div className="dropdown_item" style={{
-                              transform:isActive ? "translateX(0%) scaleY(1)" : "translateX(0%) scaleY(0)",
-                              opacity:isActive?1 : 0,
-                            }}>
-                              <div className="mega_container">
+                        // ── ACADEMICS ──────────────────────────────────────────────
+                        if (slugKey === "academics") {
+                          const programsItem = item.children.find(
+                            (c: any) => c.title === "Programs"
+                          );
+                          const departmentItems = item.children.find(
+                            (c: any) => c.title === "Departments"
+                          );
+                          const allPages = item.children.filter(
+                            (c: any) => c.title !== "Departments" && c.title !== "Programs"
+                          );
+
+                          return (
+                            <li
+                              key={itemIdx}
+                              className={`drom_menu ${isActive ? "active" : ""}`}
+                              onMouseEnter={() => {
+                                setActiveMegaMenu(itemIdx);
+                                setMegaMenuOpen(true);
+                              }}
+                              onMouseLeave={() => {
+                                setActiveMegaMenu(null);
+                                setMegaMenuOpen(false);
+                              }}
+                            >
+                              <Link href={item?.slug ? BASE_URL + item.slug : ""}>
+                                {item.title}
+                              </Link>
+
+                              <div
+                                className="dropdown_item dropdown_academics"
+                                style={{
+                                  transform: isActive
+                                    ? "translateX(0%) scaleY(1)"
+                                    : "translateX(0%) scaleY(0)",
+                                  opacity: isActive ? 1 : 0,
+                                }}
+                              >
+                                <div className="mega_container">
                                   <div className="mega_left">
                                     {programsItem && (
                                       <div className="megg_lft_top">
                                         <h4>{programsItem.title}</h4>
                                         {programsItem.entries?.length > 0 && (
                                           <ul>
-                                            {programsItem.entries.map((item:any, itemIdx:number)=>(
-                                              <li key={itemIdx}>
-                                                <Link
-                                                  href={item?.slug ? BASE_URL + item.slug : ''}
-                                                  onClick={()=>{
-                                                    setMegaMenuOpen(false);
-                                                    setActiveMegaMenu(null);
-                                                  }}
-                                                >
-                                                  {item.data.name}
-                                                </Link>
-                                              </li>
-                                            ))}
+                                            {programsItem.entries.map(
+                                              (entry: any, eIdx: number) => (
+                                                <li key={eIdx}>
+                                                  <Link
+                                                    href={
+                                                      entry?.slug
+                                                        ? BASE_URL + entry.slug
+                                                        : ""
+                                                    }
+                                                    onClick={() => {
+                                                      setMegaMenuOpen(false);
+                                                      setActiveMegaMenu(null);
+                                                    }}
+                                                  >
+                                                    {entry.data.name}
+                                                  </Link>
+                                                </li>
+                                              )
+                                            )}
                                           </ul>
                                         )}
                                       </div>
                                     )}
-                                      
+
                                     {departmentItems && (
                                       <div className="mega_left_btm">
                                         <h4>{departmentItems.title}</h4>
-                                        {departmentItems?.entries?.length > 0 && (
+                                        {departmentItems.entries?.length > 0 && (
                                           <ul>
-                                            {departmentItems?.entries.map((item:any, itemIdx:number)=>(
-                                              <li key={itemIdx}><Link href={item?.slug ? BASE_URL + item.slug : ''} onClick={()=>{
-                                                setMegaMenuOpen(false);
-                                                setActiveMegaMenu(null);
-                                              }}>{item?.data?.name}</Link></li>
-                                            ))}
+                                            {departmentItems.entries.map(
+                                              (entry: any, eIdx: number) => (
+                                                <li key={eIdx}>
+                                                  <Link
+                                                    href={
+                                                      entry?.slug
+                                                        ? BASE_URL + entry.slug
+                                                        : ""
+                                                    }
+                                                    onClick={() => {
+                                                      setMegaMenuOpen(false);
+                                                      setActiveMegaMenu(null);
+                                                    }}
+                                                  >
+                                                    {entry.data.name}
+                                                  </Link>
+                                                </li>
+                                              )
+                                            )}
                                           </ul>
                                         )}
-                                    </div>
+                                      </div>
                                     )}
-
                                   </div>
 
                                   <div className="mega_right">
-                                      <ul>
-                                          <ul>
-                                            {allPages?.length > 0 && allPages.map((page:any, pageIdx:number)=>(
-                                              <li key={pageIdx}><Link href={BASE_URL + page?.slug} onClick={()=>{
+                                    <ul>
+                                      {allPages?.length > 0 &&
+                                        allPages.map((page: any, pageIdx: number) => (
+                                          <li key={pageIdx}>
+                                            <Link
+                                              href={BASE_URL + page?.slug}
+                                              onClick={() => {
                                                 setMegaMenuOpen(false);
                                                 setActiveMegaMenu(null);
-                                              }}>{page?.title}</Link></li>
-                                            ))}
-                                          </ul>
-                                      </ul>
+                                              }}
+                                            >
+                                              {page?.title}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                    </ul>
                                   </div>
-
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </li>
-                      )
-                    })}
-                </ul>
+                            </li>
+                          );
+                        }
+
+                        // ── ABOUT US (nested children) ──────────────────────────────
+                        // First child becomes a top-level link; the rest go inside dropdown
+                        if (hasChildren) {
+                          const [firstChild, ...restChildren] = item.children as MenuItem[];
+
+                          return (
+                            <li
+                              key={itemIdx}
+                              className={`drom_menu ${isActive ? "active" : ""}`}
+                              onMouseEnter={() => {
+                                setActiveMegaMenu(itemIdx);
+                                setMegaMenuOpen(true);
+                              }}
+                              onMouseLeave={() => {
+                                setActiveMegaMenu(null);
+                                setMegaMenuOpen(false);
+                              }}
+                            >
+                              {/* First child rendered as the visible nav link */}
+                              <Link
+                                href={firstChild?.slug ? BASE_URL + firstChild.slug : ""}
+                              >
+                                {item.title}
+                              </Link>
+
+                              {/* Dropdown contains firstChild's own children + restChildren */}
+                              <div
+                                className={`dropdown_item dropdown_${slugKey}`}
+                                style={{
+                                  transform: isActive
+                                    ? "translateX(0%) scaleY(1)"
+                                    : "translateX(0%) scaleY(0)",
+                                  opacity: isActive ? 1 : 0,
+                                }}
+                              >
+                                <div className={`mega_container inner dropdown_grid_${slugKey}`}>
+
+                                  {/* firstChild's nested children as a column */}
+                                  {firstChild?.children?.length > 0 && (
+                                    <div className="dropdown_col">
+                                      <h4 className={`menu_title ${firstChild?.children?.length>0 ? 'has-children':'no-children'}`}><Link href={firstChild.slug} className="menu_title_link">{firstChild.title}</Link></h4>
+                                      <ul>
+                                        {firstChild.children.map(
+                                          (sub: MenuItem, subIdx: number) => (
+                                            <li key={subIdx}>
+                                              <Link
+                                                href={sub?.slug ? BASE_URL + sub.slug : ""}
+                                                onClick={() => {
+                                                  setMegaMenuOpen(false);
+                                                  setActiveMegaMenu(null);
+                                                }}
+                                              >
+                                                {sub.title}
+                                              </Link>
+                                            </li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                  )}
+
+                                  {/* Remaining top-level children each as their own column */}
+                                  {restChildren.map((child: MenuItem, cIdx: number) => (
+                                    <div key={cIdx} className="dropdown_col">
+                                      {/* If the child itself is a link with no sub-children */}
+                                      {child.children?.length === 0 ? (
+                                        <Link
+                                          href={child?.slug ? BASE_URL + child.slug : ""}
+                                          onClick={() => {
+                                            setMegaMenuOpen(false);
+                                            setActiveMegaMenu(null);
+                                          }}
+                                        >
+                                          {child.title}
+                                        </Link>
+                                      ) : (
+                                        <>
+                                          <h4>{child.title}</h4>
+                                          <ul>
+                                            {child.children.map(
+                                              (sub: MenuItem, subIdx: number) => (
+                                                <li key={subIdx}>
+                                                  <Link
+                                                    href={
+                                                      sub?.slug ? BASE_URL + sub.slug : ""
+                                                    }
+                                                    onClick={() => {
+                                                      setMegaMenuOpen(false);
+                                                      setActiveMegaMenu(null);
+                                                    }}
+                                                  >
+                                                    {sub.title}
+                                                  </Link>
+                                                </li>
+                                              )
+                                            )}
+                                          </ul>
+                                        </>
+                                      )}
+                                    </div>
+                                  ))}
+
+                                </div>
+                              </div>
+                            </li>
+                          );
+                        }
+
+                        // ── PLAIN LINK (no children) ────────────────────────────────
+                        return (
+                          <li key={itemIdx}>
+                            <Link href={item?.slug ? BASE_URL + item.slug : ""}>
+                              {item.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                  </ul>
 
                 {/* Icons */}
                 <div className="menu_bars">

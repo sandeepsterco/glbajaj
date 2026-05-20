@@ -8,7 +8,7 @@
 .cus-tab .item { margin-bottom: 2px; }
 .cus-tab .item::before { cursor: pointer; font-weight: bold; background: #eee; padding: 0.5em; display: block; }
 .cus-tab .item.active::before { background: #444; color: #eee; }
-.cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
+/* .cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; } */
 
 @media all and (min-width: 800px) {
 .cus-tab .item.active .item-content { }
@@ -19,11 +19,11 @@ The project specific CSS starts here
 This is the minimum CSS that you will need in order for this to work
 */
 .cus-tab .tabbed-content .tabs { display: none; }
-.cus-tab .tabbed-content .item { min-height: 2em; display:none;}
+.cus-tab .tabbed-content .item { min-height: 2em;}
 .cus-tab .tabbed-content .item.active{display:block;}
 .cus-tab .tabbed-content .item::before { content: attr(data-title); }
-.cus-tab .tabbed-content .item .item-content { opacity: 0; visibility: hidden; height: 0; }
-.cus-tab .tabbed-content .item.active .item-content { opacity: 1; visibility: visible; height: auto; }
+/* .cus-tab .tabbed-content .item .item-content { opacity: 0; visibility: hidden; height: 0; } */
+/* .cus-tab .tabbed-content .item.active .item-content { opacity: 1; visibility: visible; height: auto; } */
 @media all and (min-width: 800px) {
 .cus-tab .tabbed-content .tabs { display: block; }
 .cus-tab .tabbed-content .tabs li { display: inline-block; }
@@ -336,7 +336,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .blanket-text h3{ color: var(--color-white); margin-bottom: 4rem; }
 .blanket-text p{ color: var(--color-white); }
 .blanket-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-right: -10rem; padding-top: 4.3rem; gap: 3.2rem; }
-.csr-sec4{padding-block: 0 10rem;}
+.csr-sec4{padding-block: 0 15rem;}
 .clothes { display: grid; grid-template-columns: repeat(2, 1fr); position: relative; }
 .clothes-text { padding: 6rem 27rem 0 0rem; }
 .clothes-design { position: absolute; bottom: -5rem; left: 0; right: 0; margin: 0 auto; width: 21%; z-index: -1; }

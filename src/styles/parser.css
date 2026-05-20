@@ -466,13 +466,7 @@
 .homeFac_pane.active .homeFac_accBody { max-height: 500px; }
  }
 /* =============Home Facilities  start============= */
-
-
-
-
 /* Institute Incubation Center start */
-
-
 .iicenter_section { padding-block: 10rem 15rem; background-color: var(--color-F4); position: relative; overflow: hidden; }
 .iicenter_heading_wrap { position: relative; }
 .iicenter_heading_wrap h4 { margin-bottom: 4rem; }
@@ -480,6 +474,25 @@
 .iicenter_image_box { margin: 0; }
 .iicenter_bottom_content { padding-top: 5rem; }
 .iicenter_section::after { content: ""; position: absolute; right: 0; bottom: 0; width: 105.8rem; height: 10.3rem; background-image: url(/images/pattern/ins_cell_pattern.webp); background-size: contain; background-repeat: no-repeat; pointer-events: none; }
+.iicenter_bottom_content p a { color: var(--color-AE); font-weight: 600; }
+.ipr-vision { margin-bottom: 10rem; }
+.ipr-sec1 .res_publi_list { margin-top: 5rem; }
+.ipr-vision .vision_mission_grid { margin-top: 0; display: grid; grid-template-columns: 40% 60%; padding-block: 10rem; }
+.ipr-patents .res_publication { padding-top: 0; }
+.ipr-patents  .table-description { padding-block: 0; }
+.ipr-patents .key_fun_sec { padding-bottom: 0; }
+/* Institute Incubation Center End */
+/* Examinations - System of Evaluation css start */
+.examrules_section { padding-block: 10rem 15rem; background-color: var(--color-F4); position: relative; overflow: hidden; }
+.examrules_heading_wrap { position: relative; }
+.examrules_heading_wrap h4 { margin-bottom: 4rem; }
+.examrules_heading_wrap h5 { margin-bottom: 3rem; font-weight: 600; }
+.examrules_heading_wrap > p { padding-bottom: 5.5rem; }
+.examrules_imgbox { margin: 0; }
+.examrules_text { padding-top: 5rem; }
+.exam-system-page { padding-block: 7rem 10rem; }
+.exam-system-page .kf_grid { grid-template-columns: repeat(2, 1fr); }
+/* Examinations - System of Evaluation css end */
 .iicenter_bottom_content p a{color: var(--color-AE);font-weight: 600;}
 
 @media (max-width:1536px){

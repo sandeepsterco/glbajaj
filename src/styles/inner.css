@@ -718,6 +718,8 @@
 .ppolicy_body ul { padding-top: 2.2rem; }
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
+.alumni_our_tem.our-team-list{padding-top: 0;}
+.our-tem-sec{padding-bottom: 0;}
 .teamX_sec { padding-block: 5rem 15rem; }
 .teamX_titlesec { margin-bottom: 15rem; ; }
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
@@ -1467,7 +1469,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .res_pub_title.innovate-cont h4 { margin-bottom:4rem; }
 .res_pub_title.innovate-cont { margin-bottom:4rem; }
 .iic-third-sec { padding-top: 10rem; }
-.iic-achivement { padding-top: 10rem; margin-top: 10rem; border-top: 1px solid #ae7f2c5c; }
+.iic-achivement { padding-top: 10rem; }
 .iic-achivement-bg { background-color: var(--color-F4); padding: 8rem 9.7rem 8rem 11.4rem; }
 .iic-achivement-grid { display: grid; grid-template-columns: 48.6% 51.4%; }
 .iic-achivement-Cnt { padding-right: 10.2rem; padding-block: 8.7rem; }
@@ -1578,3 +1580,16 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
     font-weight: 600;}
 .exam_pdfsec ul li a{display: flex;align-items: center;gap: 2rem}
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
+
+/* ============= student-Research ========= */
+.top-student-research .tp_ov_pattern{padding-top: 3rem ;}
+.projects-table{padding-bottom: 0;}
+.project-gallery .media_grid_Bx figure img{max-width: 100%;}
+.project-gallery{padding-top: 0;}
+.project-gallery .media_grid_Bx figure{margin-top: 0; height: 100%;}
+.project-details-sec{padding-bottom: 0;}
+.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr);}
+.shaping_future.facility-image-grid .container{background-color: transparent; padding-top: 0;}
+.res_publication.innovate p{ margin-top: 2rem;}
+.res_publication.innovate-student .res_publication_ttl{margin-top: 10rem;}
+.publication-top{padding-bottom: 0;}

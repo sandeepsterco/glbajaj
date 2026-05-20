@@ -23,7 +23,7 @@ export default function AddOnCourses() {
   return (
     <div className="courses_slider">
       <div className="courses_header">
-        <h4 className="title24">Mechanical Add-on Courses</h4>
+        <h4 className="title24">Beyond Curriculum</h4>
 
         <div className="slider_btns">
           <div className="swiper-button-prev prev_swiper_btn"></div>

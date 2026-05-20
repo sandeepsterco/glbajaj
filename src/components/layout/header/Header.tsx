@@ -275,8 +275,9 @@ export default function Header({ headerData }: { headerData?: any }) {
 
                         // ── ABOUT US (nested children) ──────────────────────────────
                         // First child becomes a top-level link; the rest go inside dropdown
+                        // ── ANY ITEM WITH CHILDREN (About Us, etc.) ──────────────────────────────
                         if (hasChildren) {
-                          const [firstChild, ...restChildren] = item.children as MenuItem[];
+                          const columnItems = item.children as (MenuItem & { first_child?: boolean })[];
 
                           return (
                             <li
@@ -291,14 +292,10 @@ export default function Header({ headerData }: { headerData?: any }) {
                                 setMegaMenuOpen(false);
                               }}
                             >
-                              {/* First child rendered as the visible nav link */}
-                              <Link
-                                href={firstChild?.slug ? BASE_URL + firstChild.slug : ""}
-                              >
+                              <Link href={item?.slug ? BASE_URL + item.slug : ""}>
                                 {item.title}
                               </Link>
 
-                              {/* Dropdown contains firstChild's own children + restChildren */}
                               <div
                                 className={`dropdown_item dropdown_${slugKey}`}
                                 style={{
@@ -310,70 +307,56 @@ export default function Header({ headerData }: { headerData?: any }) {
                               >
                                 <div className={`mega_container inner dropdown_grid_${slugKey}`}>
 
-                                  {/* firstChild's nested children as a column */}
-                                  {firstChild?.children?.length > 0 && (
-                                    <div className="dropdown_col">
-                                      <h4 className={`menu_title ${firstChild?.children?.length>0 ? 'has-children':'no-children'}`}><Link href={firstChild.slug} className="menu_title_link">{firstChild.title}</Link></h4>
-                                      <ul>
-                                        {firstChild.children.map(
-                                          (sub: MenuItem, subIdx: number) => (
-                                            <li key={subIdx}>
-                                              <Link
-                                                href={sub?.slug ? BASE_URL + sub.slug : ""}
-                                                onClick={() => {
-                                                  setMegaMenuOpen(false);
-                                                  setActiveMegaMenu(null);
-                                                }}
-                                              >
-                                                {sub.title}
-                                              </Link>
-                                            </li>
-                                          )
-                                        )}
-                                      </ul>
-                                    </div>
-                                  )}
+                                  {columnItems.map((child, cIdx) => {
+                                    const hasSubChildren = child.children?.length > 0;
+                                    const isFirstChild = child.first_child === true;
 
-                                  {/* Remaining top-level children each as their own column */}
-                                  {restChildren.map((child: MenuItem, cIdx: number) => (
-                                    <div key={cIdx} className="dropdown_col">
-                                      {/* If the child itself is a link with no sub-children */}
-                                      {child.children?.length === 0 ? (
-                                        <Link
-                                          href={child?.slug ? BASE_URL + child.slug : ""}
-                                          onClick={() => {
-                                            setMegaMenuOpen(false);
-                                            setActiveMegaMenu(null);
-                                          }}
+                                    // Only render as a column if marked first_child OR has sub-children
+                                    return (
+                                      <div key={cIdx} className="dropdown_col">
+
+                                        {/* Column heading */}
+                                        <h4
+                                          className={`menu_title ${hasSubChildren ? "has-children" : "no-children"}`}
                                         >
-                                          {child.title}
-                                        </Link>
-                                      ) : (
-                                        <>
-                                          <h4>{child.title}</h4>
+                                          <Link
+                                            href={child?.slug && child.slug !== "#" ? BASE_URL + child.slug : "#"}
+                                            className="menu_title_link"
+                                            onClick={() => {
+                                              if (child.slug && child.slug !== "#") {
+                                                setMegaMenuOpen(false);
+                                                setActiveMegaMenu(null);
+                                              }
+                                            }}
+                                          >
+                                            {child.title}
+                                          </Link>
+                                        </h4>
+
+                                        {/* Sub-links */}
+                                        {hasSubChildren && (
                                           <ul>
-                                            {child.children.map(
-                                              (sub: MenuItem, subIdx: number) => (
-                                                <li key={subIdx}>
-                                                  <Link
-                                                    href={
-                                                      sub?.slug ? BASE_URL + sub.slug : ""
-                                                    }
-                                                    onClick={() => {
+                                            {child.children.map((sub: MenuItem, subIdx: number) => (
+                                              <li key={subIdx}>
+                                                <Link
+                                                  href={sub?.slug && sub.slug !== "#" ? BASE_URL + sub.slug : "#"}
+                                                  onClick={() => {
+                                                    if (sub.slug && sub.slug !== "#") {
                                                       setMegaMenuOpen(false);
                                                       setActiveMegaMenu(null);
-                                                    }}
-                                                  >
-                                                    {sub.title}
-                                                  </Link>
-                                                </li>
-                                              )
-                                            )}
+                                                    }
+                                                  }}
+                                                >
+                                                  {sub.title}
+                                                </Link>
+                                              </li>
+                                            ))}
                                           </ul>
-                                        </>
-                                      )}
-                                    </div>
-                                  ))}
+                                        )}
+
+                                      </div>
+                                    );
+                                  })}
 
                                 </div>
                               </div>

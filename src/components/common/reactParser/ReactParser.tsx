@@ -27,6 +27,7 @@ import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
 import ResearchInnovation from "../../parser/ResearchInnovation";
 import HomeFacilities from "../../parser/HomeFacilities";
 import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
+import PlacementRecord from "../../parser/PlacementRecord";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -112,6 +113,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "department_home_alumni") return <DepartmentHomeAlumni />;
       if (domNode.attribs.id === "department_home_courses") return <DepartmentHomeCourses />;
       if (domNode.attribs.id === "policies_disclosures") return <PoliciesDisclosures />;
+      if (domNode.attribs.id === "placement_record") return <PlacementRecord />;
     }
   },
 };

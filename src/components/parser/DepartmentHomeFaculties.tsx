@@ -39,8 +39,7 @@ export default function DepartmentHomeFaculties() {
     }
 
     return (
-        <div className="container25 max-content-lg pe-lg-0 me-lg-0">
-            <Swiper
+        <Swiper
                 modules={[Navigation]}
                 slidesPerView={1.2}
                 spaceBetween={20}
@@ -48,7 +47,7 @@ export default function DepartmentHomeFaculties() {
                 autoplay={false}
                 breakpoints={{
                     768: { slidesPerView: 2.5, spaceBetween:15 },
-                    1200: { slidesPerView: 4.5, spaceBetween:40 },
+                    1200: { slidesPerView: 4.7, spaceBetween:40 },
                 }}
                 navigation={{
                     nextEl: ".department_faculty_next",
@@ -84,7 +83,5 @@ export default function DepartmentHomeFaculties() {
                 )}
                 
             </Swiper>
-
-        </div>
     )
 }

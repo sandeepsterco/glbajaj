@@ -19,7 +19,7 @@ export default function ProgramTabs({ undergraduate, postgraduate }: { undergrad
     ];
 
     return (
-        <section className="program-sec">
+        <section className="program-sec department_program_page">
             <div className="container25">
                 <div className="col-lg-12">
                     <div className="cus-tab">

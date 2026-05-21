@@ -159,7 +159,7 @@
       ".courses_slider_wrapper",
       ".leadership_slider",
       ".acredation_swiper",
-      ".cse_faculties_slider",
+      // ".cse_faculties_slider",
       ".cse_research_slider",
       ".hod_profile_slider",
       ".sport_facilities",

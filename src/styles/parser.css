@@ -124,8 +124,9 @@
 .home_courses_section .admission_data .left { display: flex; gap: 13.2rem; }
 .home_courses_section .admission_data .title { padding-block: 1rem; color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold; }
 .home_courses_section .admission_data .links { display: flex; align-items: center; margin: 0; padding: 0; }
-.home_courses_section .admission_data .links a { }
+/* .home_courses_section .admission_data .links a {} */
 .home_courses_section .admission_data .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
+.home_courses_section .admission_data ul li:last-child .dot{ display: none;}
 .home_courses_section .admission_data .btn { padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem; }
 /************  end of courses Section ************/
 /************  start home_research_section ************/

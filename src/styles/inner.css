@@ -625,7 +625,7 @@
 .ad_leftsec { display: flex; gap: 13.2rem; }
 .ad_tabsec .btn_styl1 { padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem; }
 .cou_off_rgt img { width: 100%; }
-.cse_aca_calender { padding-top: 10rem; margin-right: 11rem; }
+.cse_aca_calender { margin-right: 7rem; padding-top: 10rem; margin-left: 3.7rem; }
 .cse_aca_calender h4 { margin-bottom: 5.4rem; }
 .academic_list li a { font: var(--font-18); color: var(--color-89); font-weight: 600; border-bottom: 1px dashed var(--color-89); padding-bottom: 1.5rem; margin-bottom: 2rem; display: inline-block; }
 .academic_list { display: grid; grid-template-columns: 33% 38.8%; gap: 28.9rem; }
@@ -642,7 +642,7 @@
 .peo_main .tab_content .acc-body::before { background-color: transparent; }
 .peo_main { padding-top: 10rem; }
 .peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
-.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; min-height: 58.5rem; height: 58.5rem; height: 58.5rem; overflow-y: auto; }
+.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; height: 56rem; overflow-y: auto; }
 .faculties_main { padding-block: 0rem 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }

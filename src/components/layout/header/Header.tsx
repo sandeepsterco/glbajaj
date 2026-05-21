@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 type MenuItem = {
   title: string;
   slug: string;
-  url:string;
+  url: string;
   children: MenuItem[];
 };
 
@@ -53,6 +53,77 @@ const SOCIALS = [
   { icon: "linkedin.png", label: "LinkedIn" },
 ];
 
+// Resolves label for any child type:
+// - child_menu entries have `title`
+// - module entries have `data.name`
+function getChildLabel(sub: any): string {
+  if (sub?.title) return sub.title;
+  if (sub?.data?.name) return sub.data.name;
+  return "";
+}
+
+// Renders a single column (used for both mega_left and mega_right items)
+function MenuColumn({
+  child,
+  setMegaMenuOpen,
+  setActiveMegaMenu,
+}: {
+  child: any;
+  setMegaMenuOpen: (v: boolean) => void;
+  setActiveMegaMenu: (v: number | null) => void;
+}) {
+  const hasSubChildren = child.has_children === true && child.children?.length > 0;
+  const childSlug = child?.slug && child.slug !== "#" ? BASE_URL + child.slug : "#";
+  const isNavigable = child?.slug && child.slug !== "#";
+
+  return (
+    <div className={`dropdown_col ${hasSubChildren ? "has-children" : "no-children"}`}>
+      <h4 className={`menu_title ${hasSubChildren ? "has-children" : "no-children"}`}>
+        <Link
+          href={childSlug}
+          className="menu_title_link"
+          onClick={() => {
+            if (isNavigable) {
+              setMegaMenuOpen(false);
+              setActiveMegaMenu(null);
+            }
+          }}
+        >
+          {child.title}
+        </Link>
+      </h4>
+
+      {hasSubChildren && (
+        <ul>
+          {child.children.map((sub: any, subIdx: number) => {
+            const label = getChildLabel(sub);
+            const subSlug = sub?.slug && sub.slug !== "#" ? BASE_URL + sub.slug : "#";
+            const subNavigable = sub?.slug && sub.slug !== "#";
+
+            if (!label) return null;
+
+            return (
+              <li key={subIdx}>
+                <Link
+                  href={subSlug}
+                  onClick={() => {
+                    if (subNavigable) {
+                      setMegaMenuOpen(false);
+                      setActiveMegaMenu(null);
+                    }
+                  }}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export default function Header({ headerData }: { headerData?: any }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -60,8 +131,7 @@ export default function Header({ headerData }: { headerData?: any }) {
   const [activeMegaMenu, setActiveMegaMenu] = useState<number | null>(null);
 
   const pathname = usePathname();
-
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
@@ -69,10 +139,11 @@ export default function Header({ headerData }: { headerData?: any }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when sidebar is open
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [sidebarOpen]);
 
   const columns = groupMenuItemsIntoColumns(
@@ -81,8 +152,9 @@ export default function Header({ headerData }: { headerData?: any }) {
 
   return (
     <>
-      <header className={`main_header ${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? 'home_header' : 'inner_header'}`}>
-
+      <header
+        className={`main_header${megaMenuOpen ? " active" : ""} ${isScrolled ? "scrolled" : ""} ${isHome ? "home_header" : "inner_header"}`}
+      >
         {/* Top bar */}
         <div className="top_header">
           <div className="container-fluid">
@@ -99,7 +171,12 @@ export default function Header({ headerData }: { headerData?: any }) {
                 <ul className="h_social_sec">
                   {SOCIALS.map(({ icon, label }) => (
                     <li key={label}>
-                      <Link href="#" aria-label={label} target="_blank" className="social_link">
+                      <Link
+                        href="#"
+                        aria-label={label}
+                        target="_blank"
+                        className="social_link"
+                      >
                         <img src={`/images/icons/social/${icon}`} alt={label} />
                       </Link>
                     </li>
@@ -113,12 +190,16 @@ export default function Header({ headerData }: { headerData?: any }) {
         {/* Bottom nav bar */}
         <div className="bottom_header">
           <div className="container-fluid">
-
             <div className="btn_head_menu">
+
               {/* Logo */}
               <div className="site_brand">
-                <Link href={BASE_URL ?? '/'} className="navbar-brand" aria-label="GL Bajaj home">
-                  {isScrolled || !isHome && !megaMenuOpen ? (
+                <Link
+                  href={BASE_URL ?? "/"}
+                  className="navbar-brand"
+                  aria-label="GL Bajaj home"
+                >
+                  {isScrolled || (!isHome && !megaMenuOpen) ? (
                     <Image
                       src="/images/logo/colored-logo.png"
                       alt="GL Bajaj University"
@@ -143,141 +224,27 @@ export default function Header({ headerData }: { headerData?: any }) {
               {/* Navigation */}
               <div className="site_nav">
                 <ul>
-                    {headerData?.headerMenu?.menuItems?.length > 0 &&
-                      headerData.headerMenu.menuItems.map((item: any, itemIdx: number) => {
+                  {headerData?.headerMenu?.menuItems?.length > 0 &&
+                    headerData.headerMenu.menuItems.map(
+                      (item: any, itemIdx: number) => {
                         const isActive = activeMegaMenu === itemIdx;
                         // const isActive = true;
-                        const hasChildren = item?.children?.length > 0;
-                        const slugKey = item?.slug; // e.g. "about-glbitm", "academics"
+                        const hasChildren = item?.has_children === true;
+                        const slugKey = item?.slug;
 
-                        // ── ACADEMICS ──────────────────────────────────────────────
-                        if (slugKey === "academics") {
-                          const programsItem = item.children.find(
-                            (c: any) => c.title === "Programs"
-                          );
-                          const departmentItems = item.children.find(
-                            (c: any) => c.title === "Departments"
-                          );
-                          const allPages = item.children.filter(
-                            (c: any) => c.title !== "Departments" && c.title !== "Programs"
-                          );
-
-                          return (
-                            <li
-                              key={itemIdx}
-                              className={`drom_menu ${isActive ? "active" : ""}`}
-                              onMouseEnter={() => {
-                                setActiveMegaMenu(itemIdx);
-                                setMegaMenuOpen(true);
-                              }}
-                              onMouseLeave={() => {
-                                setActiveMegaMenu(null);
-                                setMegaMenuOpen(false);
-                              }}
-                            >
-                              <Link href={item?.slug ? BASE_URL + item.slug : ""}>
-                                {item.title}
-                              </Link>
-
-                              <div
-                                className="dropdown_item dropdown_academics"
-                                style={{
-                                  transform: isActive
-                                    ? "translateX(0%) scaleY(1)"
-                                    : "translateX(0%) scaleY(0)",
-                                  opacity: isActive ? 1 : 0,
-                                }}
-                              >
-                                <div className="mega_container">
-                                  <div className="mega_left">
-                                    {programsItem && (
-                                      <div className="megg_lft_top">
-                                        <h4>{programsItem.title}</h4>
-                                        {programsItem.entries?.length > 0 && (
-                                          <ul>
-                                            {programsItem.entries.map(
-                                              (entry: any, eIdx: number) => (
-                                                <li key={eIdx}>
-                                                  <Link
-                                                    href={
-                                                      entry?.slug
-                                                        ? BASE_URL + entry.slug
-                                                        : ""
-                                                    }
-                                                    onClick={() => {
-                                                      setMegaMenuOpen(false);
-                                                      setActiveMegaMenu(null);
-                                                    }}
-                                                  >
-                                                    {entry.data.name}
-                                                  </Link>
-                                                </li>
-                                              )
-                                            )}
-                                          </ul>
-                                        )}
-                                      </div>
-                                    )}
-
-                                    {departmentItems && (
-                                      <div className="mega_left_btm">
-                                        <h4>{departmentItems.title}</h4>
-                                        {departmentItems.entries?.length > 0 && (
-                                          <ul>
-                                            {departmentItems.entries.map(
-                                              (entry: any, eIdx: number) => (
-                                                <li key={eIdx}>
-                                                  <Link
-                                                    href={
-                                                      entry?.slug
-                                                        ? BASE_URL + entry.slug
-                                                        : ""
-                                                    }
-                                                    onClick={() => {
-                                                      setMegaMenuOpen(false);
-                                                      setActiveMegaMenu(null);
-                                                    }}
-                                                  >
-                                                    {entry.data.name}
-                                                  </Link>
-                                                </li>
-                                              )
-                                            )}
-                                          </ul>
-                                        )}
-                                      </div>
-                                    )}
-                                  </div>
-
-                                  <div className="mega_right">
-                                    <ul>
-                                      {allPages?.length > 0 &&
-                                        allPages.map((page: any, pageIdx: number) => (
-                                          <li key={pageIdx}>
-                                            <Link
-                                              href={BASE_URL + page?.slug}
-                                              onClick={() => {
-                                                setMegaMenuOpen(false);
-                                                setActiveMegaMenu(null);
-                                              }}
-                                            >
-                                              {page?.title}
-                                            </Link>
-                                          </li>
-                                        ))}
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          );
-                        }
-
-                        // ── ABOUT US (nested children) ──────────────────────────────
-                        // First child becomes a top-level link; the rest go inside dropdown
-                        // ── ANY ITEM WITH CHILDREN (About Us, etc.) ──────────────────────────────
                         if (hasChildren) {
-                          const columnItems = item.children as (MenuItem & { first_child?: boolean })[];
+                          const leftItems = item.children.filter(
+                            (c: any) => c.position === "left" || c.type === "module"
+                          );
+                          const rightItems = item.children.filter(
+                            (c: any) => c.position === "right" && c.type !== "module"
+                          );
+                          const noPositionItems = item.children.filter(
+                            (c: any) =>
+                              c.position !== "left" &&
+                              c.position !== "right" &&
+                              c.type !== "module"
+                          );
 
                           return (
                             <li
@@ -292,7 +259,9 @@ export default function Header({ headerData }: { headerData?: any }) {
                                 setMegaMenuOpen(false);
                               }}
                             >
-                              <Link href={item?.slug ? BASE_URL + item.slug : ""}>
+                              <Link
+                                href={item?.slug ? BASE_URL + item.slug : ""}
+                              >
                                 {item.title}
                               </Link>
 
@@ -305,75 +274,60 @@ export default function Header({ headerData }: { headerData?: any }) {
                                   opacity: isActive ? 1 : 0,
                                 }}
                               >
-                                <div className={`mega_container inner dropdown_grid_${slugKey}`}>
+                                <div
+                                  className={`mega_container dropdown_grid_${slugKey}`}
+                                >
+                                  {/* LEFT COLUMN */}
+                                  {leftItems.length > 0 && (
+                                    <div className="mega_left">
+                                      {leftItems.map(
+                                        (child: any, cIdx: number) => (
+                                          <MenuColumn
+                                            key={cIdx}
+                                            child={child}
+                                            setMegaMenuOpen={setMegaMenuOpen}
+                                            setActiveMegaMenu={setActiveMegaMenu}
+                                          />
+                                        )
+                                      )}
+                                    </div>
+                                  )}
 
-                                  {columnItems.map((child, cIdx) => {
-                                    const hasSubChildren = child.children?.length > 0;
-                                    const isFirstChild = child.first_child === true;
-
-                                    // Only render as a column if marked first_child OR has sub-children
-                                    return (
-                                      <div key={cIdx} className="dropdown_col">
-
-                                        {/* Column heading */}
-                                        <h4
-                                          className={`menu_title ${hasSubChildren ? "has-children" : "no-children"}`}
-                                        >
-                                          <Link
-                                            href={child?.slug && child.slug !== "#" ? BASE_URL + child.slug : "#"}
-                                            className="menu_title_link"
-                                            onClick={() => {
-                                              if (child.slug && child.slug !== "#") {
-                                                setMegaMenuOpen(false);
-                                                setActiveMegaMenu(null);
-                                              }
-                                            }}
-                                          >
-                                            {child.title}
-                                          </Link>
-                                        </h4>
-
-                                        {/* Sub-links */}
-                                        {hasSubChildren && (
-                                          <ul>
-                                            {child.children.map((sub: MenuItem, subIdx: number) => (
-                                              <li key={subIdx}>
-                                                <Link
-                                                  href={sub?.slug && sub.slug !== "#" ? BASE_URL + sub.slug : "#"}
-                                                  onClick={() => {
-                                                    if (sub.slug && sub.slug !== "#") {
-                                                      setMegaMenuOpen(false);
-                                                      setActiveMegaMenu(null);
-                                                    }
-                                                  }}
-                                                >
-                                                  {sub.title}
-                                                </Link>
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        )}
-
-                                      </div>
-                                    );
-                                  })}
-
+                                  {/* RIGHT COLUMN */}
+                                  {(rightItems.length > 0 ||
+                                    noPositionItems.length > 0) && (
+                                    <div className="mega_right">
+                                      {[...rightItems, ...noPositionItems].map(
+                                        (child: any, cIdx: number) => (
+                                          <MenuColumn
+                                            key={cIdx}
+                                            child={child}
+                                            setMegaMenuOpen={setMegaMenuOpen}
+                                            setActiveMegaMenu={setActiveMegaMenu}
+                                          />
+                                        )
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             </li>
                           );
                         }
 
-                        // ── PLAIN LINK (no children) ────────────────────────────────
+                        // Plain link — no children
                         return (
                           <li key={itemIdx}>
-                            <Link href={item?.slug ? BASE_URL + item.slug : ""}>
+                            <Link
+                              href={item?.slug ? BASE_URL + item.slug : ""}
+                            >
                               {item.title}
                             </Link>
                           </li>
                         );
-                      })}
-                  </ul>
+                      }
+                    )}
+                </ul>
 
                 {/* Icons */}
                 <div className="menu_bars">
@@ -398,7 +352,12 @@ export default function Header({ headerData }: { headerData?: any }) {
                     aria-label="Open menu"
                     aria-expanded={sidebarOpen}
                     onClick={() => setSidebarOpen(true)}
-                    style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
+                    }}
                   >
                     {isScrolled || !isHome ? (
                       <img
@@ -417,7 +376,6 @@ export default function Header({ headerData }: { headerData?: any }) {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </header>
@@ -440,7 +398,12 @@ export default function Header({ headerData }: { headerData?: any }) {
               type="button"
               aria-label="Close menu"
               onClick={() => setSidebarOpen(false)}
-              style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
             >
               <img src="/images/icons/header/close_icon.svg" alt="Close" />
             </button>
@@ -461,7 +424,12 @@ export default function Header({ headerData }: { headerData?: any }) {
                   <ul>
                     {menuData.children.map((item, itemIdx) => (
                       <li key={itemIdx}>
-                        <Link href={item?.slug ? BASE_URL + item.slug : ''} onClick={() => setSidebarOpen(false)}>{item.title}</Link>
+                        <Link
+                          href={item?.slug ? BASE_URL + item.slug : ""}
+                          onClick={() => setSidebarOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -472,7 +440,7 @@ export default function Header({ headerData }: { headerData?: any }) {
         </div>
 
         <Image
-          src={'/images/pattern/hamburger.png'}
+          src={"/images/pattern/hamburger.png"}
           width={1479}
           height={138}
           alt="hamburger pattern"

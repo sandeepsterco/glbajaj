@@ -29,7 +29,7 @@ export default function DepartmentHomeFaculties() {
 
     const slideCount = data?.length ?? 0;
     const maxSlidesPerView = 4.5;
-    const shouldLoop = slideCount > Math.ceil(maxSlidesPerView)
+    const shouldLoop = slideCount > Math.floor(maxSlidesPerView)
     const showNavigation = shouldLoop;
 
     if (isLoading) {

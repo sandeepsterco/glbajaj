@@ -625,7 +625,7 @@
 .ad_leftsec { display: flex; gap: 13.2rem; }
 .ad_tabsec .btn_styl1 { padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem; }
 .cou_off_rgt img { width: 100%; }
-.cse_aca_calender { padding-top: 10rem; margin-right: 11rem; }
+.cse_aca_calender { margin-right: 7rem; padding-top: 10rem; margin-left: 3.7rem; }
 .cse_aca_calender h4 { margin-bottom: 5.4rem; }
 .academic_list li a { font: var(--font-18); color: var(--color-89); font-weight: 600; border-bottom: 1px dashed var(--color-89); padding-bottom: 1.5rem; margin-bottom: 2rem; display: inline-block; }
 .academic_list { display: grid; grid-template-columns: 33% 38.8%; gap: 28.9rem; }
@@ -642,7 +642,7 @@
 .peo_main .tab_content .acc-body::before { background-color: transparent; }
 .peo_main { padding-top: 10rem; }
 .peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
-.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; min-height: 58.5rem; height: 58.5rem; height: 58.5rem; overflow-y: auto; }
+.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; height: 56rem; overflow-y: auto; }
 .faculties_main { padding-block: 0rem 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
@@ -1618,3 +1618,26 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .res_publication.innovate-student .res_publication_ttl { margin-top: 10rem; }
 .publication-top { padding-bottom: 0; }
 .anti-ragging .res_publication_ttl h4{margin-bottom: 1.5rem;}
+.exam_info .exam_name  h5{    font: var(--font-18);
+    padding-block: 3rem 2rem;
+    font-weight: 600;}
+.exam_pdfsec ul li a{display: flex;align-items: center;gap: 2rem}
+.exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
+
+/* ============= student-Research ========= */
+.top-student-research .tp_ov_pattern{padding-top: 3rem ;}
+.projects-table{padding-bottom: 0;}
+.project-gallery .media_grid_Bx figure img{max-width: 100%;}
+.project-gallery{padding-top: 0;}
+.project-gallery .media_grid_Bx figure{margin-top: 0; height: 100%;}
+.project-details-sec{padding-bottom: 0;}
+.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr);}
+.shaping_future.facility-image-grid .container{background-color: transparent; padding-top: 0;}
+.res_publication.innovate p{ margin-top: 2rem;}
+.res_publication.innovate-student .res_publication_ttl{margin-top: 10rem;}
+.publication-top{padding-bottom: 0;}
+.anti_ragging_inner { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
+.anti_ragging_inner::after { content: ""; position: absolute; background: url(../images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
+.anti_ragging_grid { display: grid; grid-template-columns: 60% 40%; }
+.anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
+.anti_ragging_grid h2 { margin-bottom: 4rem; }

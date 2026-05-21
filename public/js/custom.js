@@ -282,21 +282,21 @@
       },
     });
 
-    new Swiper(".cse_faculties_slider", {
-      slidesPerView: 1.2,
-      spaceBetween: 20,
-      centeredSlides: false,
-      loop: true,
-      autoplay: false,
-      navigation: {
-        nextEl: ".department_faculty_next",
-        prevEl: ".department_faculty_prev",
-      },
-      breakpoints: {
-        768: { slidesPerView: 2.5, spaceBetween: 15 },
-        1200: { slidesPerView: 4.5, spaceBetween: 40 },
-      },
-    });
+    // new Swiper(".cse_faculties_slider", {
+    //   slidesPerView: 1.2,
+    //   spaceBetween: 20,
+    //   centeredSlides: false,
+    //   loop: true,
+    //   autoplay: false,
+    //   navigation: {
+    //     nextEl: ".department_faculty_next",
+    //     prevEl: ".department_faculty_prev",
+    //   },
+    //   breakpoints: {
+    //     768: { slidesPerView: 2.5, spaceBetween: 15 },
+    //     1200: { slidesPerView: 4.5, spaceBetween: 40 },
+    //   },
+    // });
 
     new Swiper(".cse_research_slider", {
       slidesPerView: 1.2,

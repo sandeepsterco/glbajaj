@@ -268,26 +268,21 @@ const Footer = async () => {
             <li>
               <a href="#">Quick Links</a>
             </li>
-            <li>•</li>
-            <li>
-              <a href="testimonials">Testimonials</a>
-            </li>
-            <li>•</li>
-            <li>
-              <a href="stakeholder-feedback">Stakeholder Feedback</a>
-            </li>
-            <li>•</li>
-            <li>
-              <a href="careers">Careers</a>
-            </li>
-            <li>•</li>
-            <li>
-              <a href="login">Login</a>
-            </li>
-            <li>•</li>
-            <li>
-              <a href="pay-online">Pay Online</a>
-            </li>
+                {footerData?.menuItems?.map((item: any, idx: number) => (
+              <React.Fragment key={idx}>
+                <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
+                  •
+                </li>
+                <li>
+                  <Link
+                    href={item?.slug ? item.slug : ''}
+                    className="text-[1.4rem] leading-[2.1rem] text-white"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              </React.Fragment>
+            ))}
           </ul>
         </div>
 

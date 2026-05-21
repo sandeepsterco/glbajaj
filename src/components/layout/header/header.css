@@ -60,6 +60,7 @@
 .drom_menu.active .dropdown_item { opacity: 1; visibility: visible; }
 .mega_container { margin: auto; display: grid; grid-template-columns: auto auto; column-gap: 10%; padding-right: 12rem; overflow-y: auto; max-height: 70vh; justify-content: space-between;}
 .mega_container .dropdown_col.has-children{margin-bottom: 6rem;}
+.dropdown_about-glbitm .mega_right .dropdown_col.has-children{margin-top:6rem; margin-bottom:0;}
 .mega_container .menu_title.has-children{margin-bottom: 5rem;}
 .mega_left h4, .mega_middle h4, .mega_container a.menu_title_link { color: var(--color-D2); margin-bottom: 5rem; }
 .mega_container .menu_title.no-children .menu_title_link{width:100%; display:block; margin:0; border-bottom: .1rem solid #d2ab674d; padding-block:1rem;}

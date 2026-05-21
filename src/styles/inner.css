@@ -1646,3 +1646,14 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .anti_ragging_grid { display: grid; grid-template-columns: 60% 40%; }
 .anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
+
+/* =============== Quick Link page css  */
+.res_publication.grievance-policy { padding-bottom: 0; background: #f4f7f4; }
+.res_publication.grievance-policy .res_publi_list{margin-bottom: 2rem;}
+.res_publi_list + p { color: var(--color-64); font-weight: 600; }
+
+.grievance .iicenter_section{ padding-top: 5rem;}
+
+.privacy_policy{padding-block: 5rem 10rem;}
+.privacy-policy h3{font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem;}
+.privacy-policy ul{padding-bottom: 3rem;}

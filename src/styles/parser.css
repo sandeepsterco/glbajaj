@@ -505,3 +505,7 @@
   .single_grid .content{ left: 4rem;}
 }
 /* Institute Incubation Center End */
+.anti-ragging-page {
+  padding-top: 10rem;
+}
+.anti-ragging-page .kf_title p a{font-weight: 600;    color: var(--color-AE);}

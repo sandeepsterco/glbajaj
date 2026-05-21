@@ -1617,7 +1617,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .res_publication.innovate-student .res_publication_ttl{margin-top: 10rem;}
 .publication-top{padding-bottom: 0;}
 .anti_ragging_inner { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
-.anti_ragging_inner::after { content: ""; position: absolute; background: url(../images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
+.anti_ragging_inner::after { content: ""; position: absolute; background: url(/images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
 .anti_ragging_grid { display: grid; grid-template-columns: 60% 40%; }
 .anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
 .anti_ragging_grid h2 { margin-bottom: 4rem; }

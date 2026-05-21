@@ -283,7 +283,7 @@
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
 .dean_staemail { font: var(--font-16); margin-bottom: 2rem; }
-.dean_staemail a{color: var(--color-AE);font-weight: 700;}
+.dean_staemail a { color: var(--color-AE); font-weight: 700; }
 @media (max-width: 2440px) {
  .hod_right::before { height: auto; }
  }
@@ -720,8 +720,8 @@
 .ppolicy_body ul { padding-top: 2.2rem; }
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
-.alumni_our_tem.our-team-list{padding-top: 0;}
-.our-tem-sec{padding-bottom: 0;}
+.alumni_our_tem.our-team-list { padding-top: 0; }
+.our-tem-sec { padding-bottom: 0; }
 .teamX_sec { padding-block: 5rem 15rem; }
 .teamX_titlesec { margin-bottom: 15rem; }
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
@@ -1598,6 +1598,26 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .examrules_table_wrap .exam_tabsec:not(:last-child) { margin-bottom: 8rem; }
 .examrules_table_wrap .exam_tabsec > h4 { margin-bottom: 4rem; }
 .examrules_table_wrap .exam_tabsec > h3 { margin-bottom: 3rem; }
+.anti_ragging_grid .anti_ragging_img { margin-bottom: 5rem; }
+.anti_ragging_grid h2 { margin-bottom: 4rem; }
+.anti_ragging_section{margin-bottom: 10rem;}
+.exam_info .exam_name  h5 { font: var(--font-18); padding-block: 3rem 2rem; font-weight: 600; }
+.exam_pdfsec ul li a { display: flex; align-items: center; gap: 2rem }
+.exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
+.anti_ragging_content h5{margin-bottom: 1rem;font-weight: 600;}
+/* ============= student-Research ========= */
+.top-student-research .tp_ov_pattern { padding-top: 3rem ; }
+.projects-table { padding-bottom: 0; }
+.project-gallery .media_grid_Bx figure img { max-width: 100%; }
+.project-gallery { padding-top: 0; }
+.project-gallery .media_grid_Bx figure { margin-top: 0; height: 100%; }
+.project-details-sec { padding-bottom: 0; }
+.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr); }
+.shaping_future.facility-image-grid .container { background-color: transparent; padding-top: 0; }
+.res_publication.innovate p { margin-top: 2rem; }
+.res_publication.innovate-student .res_publication_ttl { margin-top: 10rem; }
+.publication-top { padding-bottom: 0; }
+.anti-ragging .res_publication_ttl h4{margin-bottom: 1.5rem;}
 .exam_info .exam_name  h5{    font: var(--font-18);
     padding-block: 3rem 2rem;
     font-weight: 600;}

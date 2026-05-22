@@ -68,7 +68,7 @@
 .mega_container ul>li { margin-bottom: 1.2rem; }
 .mega_container ul>li>a { color: var(--color-white); padding-bottom: 1rem; border-bottom: 0.1rem solid rgba(210, 171, 103, 0.3); display: block; }
 .megg_lft_top { padding-bottom: 10rem; }
-
+.dropdown_grid_placement .mega_left h4{margin-bottom: 0;}
 /************  Bottom header CSS End ************/
 
 /************  Hamburger CSS Start ************/

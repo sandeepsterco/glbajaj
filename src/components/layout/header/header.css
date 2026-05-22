@@ -7,7 +7,7 @@
 .inner_header .top_menu{background:var(--color-92)}
 .main_header { position: fixed; top: 0; left: 0; right: 0; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
     overflow-x: clip; z-index: 999; transition: all .5s ease; }
-.main_header.inner_header{position:relative; background:#fff;}
+.main_header.inner_header{position:relative; background:#fff; position: sticky; top:0;}
 .main_header.scrolled{background:#fff; box-shadow: 0px 2px 5rem rgba(0 0 0 / 6%); }
 .main_header a { color: var(--color-white); }
 .h_social_sec { display: flex; gap: 1.6rem; }
@@ -75,7 +75,7 @@
 
 .humburger_mainsec { position: fixed; top: 0; right: -100%; width: auto; background-color: var(--color-33); transition: 0.3s ease; 
     padding: 20px; z-index: 999; padding: 8.9rem 11rem 19.6rem 15.3rem; }
-.humburger_mainsec.active { right: 20rem; }
+.humburger_mainsec.active { right: 5%; }
 .hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 70vh; overflow: auto;}
 .hmburger_col .title24 { color: var(--color-D2); margin-bottom: 5.1rem; }
 .hmburger_col.facilities_col ul+.title24 { margin-top: 9.8rem; }

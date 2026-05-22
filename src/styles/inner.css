@@ -1705,3 +1705,30 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .privacy_policy{padding-block: 5rem 10rem;}
 .privacy-policy h3{font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem;}
 .privacy-policy ul{padding-bottom: 3rem;}
+
+
+
+/* ================  Student Chapters  =============== */
+.ieee_grid{ display: grid; grid-template-columns: 25% auto; gap: 7.5rem;}
+.view_detail_btn{ background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block;}
+.view_detail_btn:hover{ background-color: #fece49; color: var(--color-black);}
+.sports_facilities_section{ margin-top:5rem;}
+.key_features_sup .csr-text-list{ padding-top: 0;}
+.csr_para{ padding-top:5rem;}
+.yourdost_section{ margin-top: 0; border-bottom:1px solid #c085523b; border-top: 0; padding-block: 0 12rem; margin-bottom: 12rem;}
+.yourdost_section h4{ font-weight: 700; margin-bottom:3rem;}
+.text-black{ color: var(--color-33)!important;}
+.institute_cnt h5{ margin-bottom: 3rem;}
+.or_cmit_right .pattern_img{ margin-top:5rem; max-width: 70%;}
+.or_cmit_right h4{ font-weight: 700;}
+.key_feature_yourdost .csr-design{margin-top: -6rem;}
+.key_feature_yourdost .csr-text-list{ margin-top: 3rem;}
+.csr-sec1.ieee_wrapper{ padding-block: 12rem;}
+.indian_society{ align-items: center;}
+.about_bottom h4{ font: var(--font-30); font-weight: 400;}
+.institute_cnt.sports_gym_wrap figure.pattern_img{ padding-top: 4rem;}
+.manodarpan_section ul{ color: var(--color-33);}
+.key_feature_yourdost ul{ color: var(--color-33);}
+.institute_cnt h4{ padding-bottom: 3rem;}
+.key_feature_yourdost{}
+.key_feature_yourdost .csr-list2{    padding-block: 12rem 0rem;}

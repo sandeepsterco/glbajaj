@@ -481,7 +481,7 @@
 .library_img::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; bottom: 0; left: 0; right: 0; height: 25.6rem; content: ""; }
 .library_img ul li { color: var(--color-white); border-right: 1px solid rgba(255, 255, 255, 0.5); padding-inline: 1.5rem; font: var(--font-16); padding-block: 2rem; }
 .library_img ul li:first-child { border-left: 1px solid rgba(255, 255, 255, 0.5); }
-.the_collection_grid { display: grid; grid-template-columns: 40% auto; gap: 4rem; position: relative; padding-block: 5rem 15rem; }
+.the_collection_grid { display: grid; grid-template-columns: 40% auto; gap: 1rem; position: relative; padding-block: 5rem 15rem; }
 .the_collection_grid::before { background-color: var(--color-F4); position: absolute; top: 0; bottom: 0; content: ""; width: 100%; z-index: -1; right: 15rem; }
 .collection_cnt { padding-right: 12rem; }
 .collection_cnt h3 { margin-bottom: 4rem; }
@@ -1260,9 +1260,9 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .workshop { padding-block: 10rem; border-top: 1px solid #c085525c; }
 .workshop h2 { margin-bottom: 3.8rem; }
 .workshop p { margin-top: 2rem; font: var(--font-18); font-weight: 600; }
-.work-shop-slide-button { position: absolute; left: 2rem; margin-top: 5rem; }
+.work-shop-slide-button { position: absolute; left: 0rem; margin-top: 5rem; }
 .workshop .workshop_slider_wrapper { padding-bottom: 10rem; }
-.work-shop-slide-button .prev_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url(/images/home/slide_arrow_right.svg); position: absolute; height: 6rem; width: 6rem; }
+.work-shop-slide-button .prev_swiper_btn::after { content: ""; left: 4.8rem; top: 0; background-image: url(/images/home/slide_arrow_right.svg); position: absolute; height: 6rem; width: 6rem; }
 .work-shop-slide-button .next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url(/images/home/slide_arrow_left.svg); position: absolute; height: 6rem; width: 6rem; }
 .center-of-excellence { margin-top: 5rem; }
 .center-of-excellence .auditorium_conf_grid { display: grid; gap: 13.5rem; grid-template-columns: 33.25% auto; margin-bottom: 8.4rem; }
@@ -1606,6 +1606,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 
 /* ============= student-Research ========= */
 .top-student-research .tp_ov_pattern{padding-top: 3rem ;}
+section.table-description.project-gallery-top { padding-bottom: 0; }
 .projects-table{padding-bottom: 0;}
 .project-gallery .media_grid_Bx figure img{max-width: 100%;}
 .project-gallery{padding-top: 0;}
@@ -1627,3 +1628,6 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .privacy_policy{padding-block: 5rem 10rem;}
 .privacy-policy h3{font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem;}
 .privacy-policy ul{padding-bottom: 3rem;}
+.csr-sec.illuminate { padding-bottom: 0; }
+.workshop.illuminate-slider { border-top: none; padding-top: 0rem; }
+.student-research-pro { padding-bottom: 0; }

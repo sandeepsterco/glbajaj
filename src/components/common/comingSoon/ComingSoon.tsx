@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ComingSoon() {
   return (
-    <main className="flex-grow flex items-center justify-center px-6 py-24 sm:py-32 lg:px-8 bg-gray-50 h-[calc(100vh-38.3rem)]">
+    <main className="coming_soon_page flex-grow flex items-center justify-center px-6 py-24 sm:py-32 lg:px-8 bg-gray-50 h-[calc(100vh-38.3rem)]">
       <div className="text-center">
         <h1 className="mt-4 text-[5rem] md:text-[10rem] font-bold tracking-tight text-gray-900 uppercase">
           Coming Soon

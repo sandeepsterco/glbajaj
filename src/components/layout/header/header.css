@@ -7,7 +7,7 @@
 .inner_header .top_menu{background:var(--color-92)}
 .main_header { position: fixed; top: 0; left: 0; right: 0; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
     overflow-x: clip; z-index: 999; transition: all .5s ease; }
-.main_header.inner_header{position:relative; background:#fff;}
+.main_header.inner_header{position:relative; background:#fff; position: sticky; top:0;}
 .main_header.scrolled{background:#fff; box-shadow: 0px 2px 5rem rgba(0 0 0 / 6%); }
 .main_header a { color: var(--color-white); }
 .h_social_sec { display: flex; gap: 1.6rem; }

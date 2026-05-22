@@ -15,25 +15,15 @@ type MenuItem = {
 };
 
 function groupMenuItemsIntoColumns(menuItems: MenuItem[]): MenuItem[][] {
-  const GROUPED_PAIRS: Record<string, string> = {
-    "Facilities": "Quality Initiatives",
-    "Happenings": "Alumni",
-  };
-
+  // Fixed 1-2-2-1 distribution across 4 columns
+  const distributions = [1, 2, 2, 1];
   const columns: MenuItem[][] = [];
   let i = 0;
 
-  while (i < menuItems.length) {
-    const item = menuItems[i];
-    const pairedTitle = GROUPED_PAIRS[item.title];
-
-    if (pairedTitle && menuItems[i + 1]?.title === pairedTitle) {
-      columns.push([menuItems[i], menuItems[i + 1]]);
-      i += 2;
-    } else {
-      columns.push([item]);
-      i += 1;
-    }
+  for (const count of distributions) {
+    const slice = menuItems.slice(i, i + count);
+    if (slice.length > 0) columns.push(slice);
+    i += count;
   }
 
   return columns;
@@ -43,6 +33,7 @@ const COL_CLASSES: Record<number, string> = {
   0: "why_col",
   1: "facilities_col",
   2: "happenings_col",
+  3: "alumni_col",
 };
 
 const SOCIALS = [

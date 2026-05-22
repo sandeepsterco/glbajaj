@@ -1,27 +1,6 @@
 
 /* ── XTABS (unique, no conflict) ────────────────────────── */
-.xtabs_nav {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .xtab_btn {
-    padding: 12px 24px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    font-size: 15px;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .xtab_btn.active {
-    color: #111;
-    font-weight: 500;
-    border-bottom: 2px solid #111;
-  }
+
   
   .xtab_panel {
     display: none;
@@ -44,31 +23,14 @@
   
     .xtab_panel {
       display: block; /* show all panels */
-      border-bottom: 1px solid #ddd;
     }
   
     .xacc_header {
       display: block;
     }
   
-    .xacc_btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      padding: 14px 16px;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
     .xacc_btn::after {
       content: "+";
-      font-size: 20px;
-      font-weight: 300;
     }
   
     .xtab_panel.active .xacc_btn::after {
@@ -77,7 +39,6 @@
   
     .xacc_body {
       display: none;
-      padding: 0 16px 16px;
     }
   
     .xtab_panel.active .xacc_body {

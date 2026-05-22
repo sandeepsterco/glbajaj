@@ -1,90 +1,23 @@
-
 /* ── XTABS (unique, no conflict) ────────────────────────── */
-.xtabs_nav {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .xtab_btn {
-    padding: 12px 24px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    font-size: 15px;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .xtab_btn.active {
-    color: #111;
-    font-weight: 500;
-    border-bottom: 2px solid #111;
-  }
-  
-  .xtab_panel {
-    display: none;
-  }
-  
-  .xtab_panel.active {
-    display: block;
-  }
-  
-  /* accordion header hidden on desktop */
-  .xacc_header {
-    display: none;
-  }
-  
-  /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
+.xtabs_nav { display: flex; gap: 0; border-bottom: 1px solid #ddd; }
+.xtab_btn { padding: 12px 24px; background: transparent; border: none; border-bottom: 2px solid transparent; font:var(--font-16); color: #666; cursor: pointer; transition: all 0.2s; }
+.xtab_btn.active { color: var(--color-black); font-weight: 600; border-bottom: 2px solid #111; }
+.xtab_panel { display: none; }
+.xtab_panel.active { display: block; }
+/* accordion header hidden on desktop */
+  .xacc_header { display: none; }
+/* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
-    .xtabs_nav {
-      display: none; /* hide tab buttons */
-    }
-  
-    .xtab_panel {
-      display: block; /* show all panels */
-      border-bottom: 1px solid #ddd;
-    }
-  
-    .xacc_header {
-      display: block;
-    }
-  
-    .xacc_btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      padding: 14px 16px;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .xacc_btn::after {
-      content: "+";
-      font-size: 20px;
-      font-weight: 300;
-    }
-  
-    .xtab_panel.active .xacc_btn::after {
-      content: "−";
-    }
-  
-    .xacc_body {
-      display: none;
-      padding: 0 16px 16px;
-    }
-  
-    .xtab_panel.active .xacc_body {
-      display: block;
-    }
-  }
-
+ .xtabs_nav { display: none; /* hide tab buttons */ }
+.xtab_panel { display: block; /* show all panels */
+      border-bottom: 1px solid #ddd; }
+.xacc_header { display: block; }
+.xacc_btn { width: 100%; text-align: left; background: transparent; border: none; padding: 14px 16px; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.xacc_btn::after { content: "+"; font-size: 20px; font-weight: 300; }
+.xtab_panel.active .xacc_btn::after { content: "−"; }
+.xacc_body { display: none; padding: 0 16px 16px; }
+.xtab_panel.active .xacc_body { display: block; }
+ }
 .custom_pages_lists { font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex; }
 .custom_pages_lists .tab_btn { cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
 .custom_pages_lists .active .tab_btn { color: var(--color-92); font-weight: 500; }
@@ -232,10 +165,8 @@
 .management .title24 { margin-bottom: 3.8rem; }
 .management .container-md { padding: 0; margin-right: 0; }
 .management_card .title18 { margin-top: 2rem; }
-
-.department_program_page .tabbed-content .item{display:none;}
-.department_program_page .tabbed-content .item.active{display:block;}
-
+.department_program_page .tabbed-content .item { display:none; }
+.department_program_page .tabbed-content .item.active { display:block; }
 /* Responsive adjustment */
 @media (max-width: 992px) {
  .about_academic_boxes { flex-direction: column; }
@@ -1001,6 +932,7 @@
 .trans_tb_box h5 { margin-bottom: 3rem; }
 .trans_rout_sec { padding-block: 10rem 10rem; }
 .trans_rout_sec h4 { font: var(--font-21); color: var(--color-black); margin-bottom: 4rem; font-weight: bold; }
+.trans_rout_sec   .xtab_btn.active{    border-bottom: 2px solid #c085524d;}
 /* Tabs (Desktop) */
 .transport-tabs .tabs ul { margin: 0; border-bottom: 0.1rem solid var(--color-70); }
 .transport-tabs .tabs ul li { display: inline-block; margin-right: 8rem; }
@@ -1014,6 +946,7 @@
 .tran_root_grid .tran_root_rgt .custom_bullet li::before { display: none; }
 .tran_root_grid .tran_root_rgt .custom_bullet li { display: flex; align-items: start; gap: 2rem; padding: 0; margin-block: 0 3rem; }
 .tran_root_grid .tran_root_rgt .custom_bullet li a { color: var(--color-92); font-weight: 700; }
+.tran_root_rgt{margin-top: 6rem;}
 .tran_root_rgt h4 { margin-top: 19rem; }
 .tran_root_rgt .bs_rou_pattern { padding-top: 10.2rem; margin-right: -5rem; }
 .tran_root_rgt .bs_rou_pattern img { transform: scale(1.2); }
@@ -1076,6 +1009,8 @@
 .oth_ac_rgt .custom_bullet li { margin-block: 0 2rem; }
 .oth_ac_rgt .custom_bullet li p { line-height: 2.4rem; }
 .other_activi_sec2 { padding-bottom: 10rem; }
+.other_activi_sec2  .trans_tb_box{padding-top: 4rem;}
+.other_activi_sec2  .xtab_btn{color: var(--color-black);}
 .pyscho_grid { display: grid; gap: 15.1rem; grid-template-columns: 47.6% auto; }
 .pyscho_grid .pyscho_infosec h4 { margin-bottom: 4rem; }
 .pyscho_grid .pyscho_infosec>p { margin-bottom: 4rem; }
@@ -1692,11 +1627,11 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .examrules_table_wrap .exam_tabsec > h3 { margin-bottom: 3rem; }
 .anti_ragging_grid .anti_ragging_img { margin-bottom: 5rem; }
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
-.anti_ragging_section{margin-bottom: 10rem;}
+.anti_ragging_section { margin-bottom: 10rem; }
 .exam_info .exam_name  h5 { font: var(--font-18); padding-block: 3rem 2rem; font-weight: 600; }
 .exam_pdfsec ul li a { display: flex; align-items: center; gap: 2rem }
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
-.anti_ragging_content h5{margin-bottom: 1rem;font-weight: 600;}
+.anti_ragging_content h5 { margin-bottom: 1rem; font-weight: 600; }
 /* ============= student-Research ========= */
 .top-student-research .tp_ov_pattern { padding-top: 3rem ; }
 .projects-table { padding-bottom: 0; }
@@ -1709,65 +1644,62 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .res_publication.innovate p { margin-top: 2rem; }
 .res_publication.innovate-student .res_publication_ttl { margin-top: 10rem; }
 .publication-top { padding-bottom: 0; }
-.anti-ragging .res_publication_ttl h4{margin-bottom: 1.5rem;}
-.exam_info .exam_name  h5{    font: var(--font-18);
-    padding-block: 3rem 2rem;
-    font-weight: 600;}
-.exam_pdfsec ul li a{display: flex;align-items: center;gap: 2rem}
+.anti-ragging .res_publication_ttl h4 { margin-bottom: 1.5rem; }
+.exam_info .exam_name  h5 { font: var(--font-18); padding-block: 3rem 2rem; font-weight: 600; }
+.exam_pdfsec ul li a { display: flex; align-items: center; gap: 2rem }
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
-
 /* ============= student-Research ========= */
-.top-student-research .tp_ov_pattern{padding-top: 3rem ;}
-.projects-table{padding-bottom: 0;}
-.project-gallery .media_grid_Bx figure img{max-width: 100%;}
-.project-gallery{padding-top: 0;}
-.project-gallery .media_grid_Bx figure{margin-top: 0; height: 100%;}
-.project-details-sec{padding-bottom: 0;}
-.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr);}
-.shaping_future.facility-image-grid .container{background-color: transparent; padding-top: 0;}
-.res_publication.innovate p{ margin-top: 2rem;}
-.res_publication.innovate-student .res_publication_ttl{margin-top: 10rem;}
-.publication-top{padding-bottom: 0;}
+.top-student-research .tp_ov_pattern { padding-top: 3rem ; }
+.projects-table { padding-bottom: 0; }
+.project-gallery .media_grid_Bx figure img { max-width: 100%; }
+.project-gallery { padding-top: 0; }
+.project-gallery .media_grid_Bx figure { margin-top: 0; height: 100%; }
+.project-details-sec { padding-bottom: 0; }
+.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr); }
+.shaping_future.facility-image-grid .container { background-color: transparent; padding-top: 0; }
+.res_publication.innovate p { margin-top: 2rem; }
+.res_publication.innovate-student .res_publication_ttl { margin-top: 10rem; }
+.publication-top { padding-bottom: 0; }
 .anti_ragging_inner { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
 .anti_ragging_inner::after { content: ""; position: absolute; background: url(/images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
 .anti_ragging_grid { display: grid; grid-template-columns: 60% 40%; }
 .anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
-
 /* =============== Quick Link page css  */
 .res_publication.grievance-policy { padding-bottom: 0; background: #f4f7f4; }
-.res_publication.grievance-policy .res_publi_list{margin-bottom: 2rem;}
+.res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
-
-.grievance .iicenter_section{ padding-top: 5rem;}
-
-.privacy_policy{padding-block: 5rem 10rem;}
-.privacy-policy h3{font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem;}
-.privacy-policy ul{padding-bottom: 3rem;}
-
-
-
+.grievance .iicenter_section { padding-top: 5rem; }
+.privacy_policy { padding-block: 5rem 10rem; }
+.privacy-policy h3 { font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem; }
+.privacy-policy ul { padding-bottom: 3rem; }
 /* ================  Student Chapters  =============== */
-.ieee_grid{ display: grid; grid-template-columns: 25% auto; gap: 7.5rem;}
-.view_detail_btn{ background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block;}
-.view_detail_btn:hover{ background-color: #fece49; color: var(--color-black);}
-.sports_facilities_section{ margin-top:5rem;}
-.key_features_sup .csr-text-list{ padding-top: 0;}
-.csr_para{ padding-top:5rem;}
-.yourdost_section{ margin-top: 0; border-bottom:1px solid #c085523b; border-top: 0; padding-block: 0 12rem; margin-bottom: 12rem;}
-.yourdost_section h4{ font-weight: 700; margin-bottom:3rem;}
-.text-black{ color: var(--color-33)!important;}
-.institute_cnt h5{ margin-bottom: 3rem;}
-.or_cmit_right .pattern_img{ margin-top:5rem; max-width: 70%;}
-.or_cmit_right h4{ font-weight: 700;}
-.key_feature_yourdost .csr-design{margin-top: -6rem;}
-.key_feature_yourdost .csr-text-list{ margin-top: 3rem;}
-.csr-sec1.ieee_wrapper{ padding-block: 12rem;}
-.indian_society{ align-items: center;}
-.about_bottom h4{ font: var(--font-30); font-weight: 400;}
-.institute_cnt.sports_gym_wrap figure.pattern_img{ padding-top: 4rem;}
-.manodarpan_section ul{ color: var(--color-33);}
-.key_feature_yourdost ul{ color: var(--color-33);}
-.institute_cnt h4{ padding-bottom: 3rem;}
-.key_feature_yourdost{}
-.key_feature_yourdost .csr-list2{    padding-block: 12rem 0rem;}
+.ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
+.view_detail_btn { background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; }
+.view_detail_btn:hover { background-color: #fece49; color: var(--color-black); }
+.sports_facilities_section { margin-top:5rem; }
+.key_features_sup .csr-text-list { padding-top: 0; }
+.csr_para { padding-top:5rem; }
+.yourdost_section { margin-top: 0; border-bottom:1px solid #c085523b; border-top: 0; padding-block: 0 12rem; margin-bottom: 12rem; }
+.yourdost_section h4 { font-weight: 700; margin-bottom:3rem; }
+.text-black { color: var(--color-33)!important; }
+.institute_cnt h5 { margin-bottom: 3rem; }
+.or_cmit_right .pattern_img { margin-top:5rem; max-width: 70%; }
+.or_cmit_right h4 { font-weight: 700; }
+.key_feature_yourdost .csr-design { margin-top: -6rem; }
+.key_feature_yourdost .csr-text-list { margin-top: 3rem; }
+.csr-sec1.ieee_wrapper { padding-block: 12rem; }
+.indian_society { align-items: center; }
+.about_bottom h4 { font: var(--font-30); font-weight: 400; }
+.institute_cnt.sports_gym_wrap figure.pattern_img { padding-top: 4rem; }
+.manodarpan_section ul { color: var(--color-33); }
+.key_feature_yourdost ul { color: var(--color-33); }
+.institute_cnt h4 { padding-bottom: 3rem; }
+.key_feature_yourdost { }
+.key_feature_yourdost .csr-list2 { padding-block: 12rem 0rem; }
+.transpo_facili_main .xtabs_nav .xtab_btn { padding-bottom: 4.8rem; padding-block: 3.5rem; color: var(--color-black);}
+.transpo_facili_main .xtabs_nav .xtab_btn:nth-child(1) { padding-left: 0; }
+.transpo_facili_main .trans_tb_box{padding-top: 4rem;}
+.tras_drive_con .team-members:not(:nth-child(5)):not(:nth-child(6)) span {
+    display: none;
+}

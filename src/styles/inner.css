@@ -1681,3 +1681,6 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .institute_cnt.sports_gym_wrap figure.pattern_img{ padding-top: 4rem;}
 .manodarpan_section ul{ color: var(--color-33);}
 .key_feature_yourdost ul{ color: var(--color-33);}
+.institute_cnt h4{ padding-bottom: 3rem;}
+.key_feature_yourdost{}
+.key_feature_yourdost .csr-list2{    padding-block: 12rem 0rem;}

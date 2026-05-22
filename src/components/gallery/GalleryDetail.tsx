@@ -11,7 +11,8 @@ interface GalleryItem {
     description: string
 }
 
-export default function GalleryDetailPage({ data, slug }: { data: any, slug: string }) {
+export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data: any, slug: string }) {
+    const data = gallery_data?.data;
     const galleryRef = useRef<HTMLDivElement>(null);
 
     const [galleryUrls, setGalleryUrls] = useState<GalleryItem[]>(data?.mapping_items?.items ?? []);

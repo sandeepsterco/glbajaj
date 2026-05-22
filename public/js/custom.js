@@ -174,7 +174,7 @@
     new Swiper(".award_ranking", {
       slidesPerView: 5,
       loop: true,
-      spaceBetween:0,
+      spaceBetween: 0,
       autoplay: {
         delay: 2500,
         disableOnInteraction: false,
@@ -563,7 +563,6 @@
     });
   }
 
-  // ─── YouTube Modal ────────────────────────────────────────────────────────────
   function initYTModal() {
     const overlay = document.getElementById("ytModalOverlay");
     const iframe = document.getElementById("ytModalIframe");
@@ -614,7 +613,6 @@
     });
   }
 
-  // ─── Sterco Tabs (tab + accordion, scoped per section) ───────────────────────
   function initStercoTabs() {
     document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {
       const tabButtons = section.querySelectorAll(".sterco_tab_btn");
@@ -668,6 +666,39 @@
     }
   }
 
+  function initXTabs() {
+    document.querySelectorAll(".xtabs_sec").forEach((section) => {
+      const tabBtns = section.querySelectorAll(".xtab_btn");
+      const panels  = section.querySelectorAll(".xtab_panel");
+      const accBtns = section.querySelectorAll(".xacc_btn");
+  
+      // set first active
+      if (tabBtns.length) tabBtns[0].classList.add("active");
+      if (panels.length)  panels[0].classList.add("active");
+  
+      // desktop tabs
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-xtab");
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          panels.forEach((p)  => p.classList.remove("active"));
+          btn.classList.add("active");
+          section.querySelector("#" + target)?.classList.add("active");
+        });
+      });
+  
+      // mobile accordion
+      accBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const panel = btn.closest(".xtab_panel");
+          const isActive = panel.classList.contains("active");
+          panels.forEach((p) => p.classList.remove("active"));
+          if (!isActive) panel.classList.add("active");
+        });
+      });
+    });
+  }
+
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -685,9 +716,9 @@
     gridPopup();
     tabControl();
     toggleReadMore();
+    initXTabs();
   }
 
-  // ─── Resize Handlers ──────────────────────────────────────────────────────────
   window.addEventListener("resize", adjustMaxContent);
 
   let resizeTimer;
@@ -696,10 +727,8 @@
     resizeTimer = setTimeout(tabControl, 250);
   });
 
-  // ─── Expose for Next.js client-side re-init ───────────────────────────────────
   window.__initCustomJS = initAll;
 
-  // ─── Bootstrap ───────────────────────────────────────────────────────────────
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
     document.addEventListener("DOMContentLoaded", initAll, { once: true });

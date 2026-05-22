@@ -14,6 +14,6 @@ export default async function GalleryDetail({params}:{params:any}){
     }
 
     return(
-        <GalleryDetailPage data={data.gallery_details} slug={slug} />
+        <GalleryDetailPage gallery_data={data.gallery_details} slug={slug} />
     )
 }

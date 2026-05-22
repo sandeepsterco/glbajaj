@@ -1,3 +1,90 @@
+
+/* ── XTABS (unique, no conflict) ────────────────────────── */
+.xtabs_nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .xtab_btn {
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 15px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .xtab_btn.active {
+    color: #111;
+    font-weight: 500;
+    border-bottom: 2px solid #111;
+  }
+  
+  .xtab_panel {
+    display: none;
+  }
+  
+  .xtab_panel.active {
+    display: block;
+  }
+  
+  /* accordion header hidden on desktop */
+  .xacc_header {
+    display: none;
+  }
+  
+  /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
+  @media (max-width: 768px) {
+    .xtabs_nav {
+      display: none; /* hide tab buttons */
+    }
+  
+    .xtab_panel {
+      display: block; /* show all panels */
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .xacc_header {
+      display: block;
+    }
+  
+    .xacc_btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .xacc_btn::after {
+      content: "+";
+      font-size: 20px;
+      font-weight: 300;
+    }
+  
+    .xtab_panel.active .xacc_btn::after {
+      content: "−";
+    }
+  
+    .xacc_body {
+      display: none;
+      padding: 0 16px 16px;
+    }
+  
+    .xtab_panel.active .xacc_body {
+      display: block;
+    }
+  }
+
 .custom_pages_lists { font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex; }
 .custom_pages_lists .tab_btn { cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
 .custom_pages_lists .active .tab_btn { color: var(--color-92); font-weight: 500; }

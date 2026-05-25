@@ -185,6 +185,7 @@
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
 .front_news { display: grid; grid-template-columns: 57% auto; gap: 15rem; }
+.award_ranking_why .front_news{gap: 15rem;}
 .news_head { display: flex; justify-content: flex-end; }
 .news_head .form-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url("/images/icons/arrow-down.webp"); /* your custom icon */
     background-repeat: no-repeat; background-position: right 1.5rem center; background-size: 1.3rem; padding-right: 4rem; height: 4.6rem; padding-inline: 1.5rem; font: var(--font-16); color: var(--color-black); border: 1px solid #e1e1e1; min-width: 35rem; box-shadow: none; outline: none; }
@@ -1759,3 +1760,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .vvdn_grid_01{display: grid; grid-template-columns: 35% auto; margin-left: -1rem;}
 .vvdn_grid_01 .institutional-img { padding-left: 11rem; }
 .vvdn_grid{ display: grid; grid-template-columns: 65% 39%; margin-top: 8rem;}
+.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; }
+.horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);}
+.horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);}

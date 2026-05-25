@@ -465,6 +465,7 @@
 .iicenter_heading_wrap { position: relative; }
 .iicenter_heading_wrap h4 { margin-bottom: 4rem; }
 .iicenter_heading_wrap > p { padding-bottom: 5.5rem; }
+.international_relations_detail .iicenter_heading_wrap > p { padding-bottom: 0rem; }
 .iicenter_image_box { margin: 0; }
 .iicenter_bottom_content { padding-top: 5rem; }
 .iicenter_section::after { content: ""; position: absolute; right: 0; bottom: 0; width: 105.8rem; height: 10.3rem; background-image: url(/images/pattern/ins_cell_pattern.webp); background-size: contain; background-repeat: no-repeat; pointer-events: none; }

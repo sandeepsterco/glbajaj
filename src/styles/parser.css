@@ -240,6 +240,7 @@
 /************  end of home_sessions_section ************/
 /************  start of home_happenings_section ************/
 .home_happenings_section { padding-top:12rem; }
+.department_related_story_section{background:#F4F7F4; padding-block: 6.6rem 0;}
 .home_happenings_section .sec_title { margin-bottom:8.9rem; }
 .home_happenings_section .sec_title .title { margin-top:2rem; }
 /* .home_happenings_section .grid_data { grid-template-columns: repeat(4, 1fr); gap: 0; display: grid; grid-auto-rows: 44.2rem; }

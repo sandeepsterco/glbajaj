@@ -1724,7 +1724,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .life_bajaj_section{ padding-block:10rem 25rem;}
 .gl_bajaj_grid{ position: relative;}
 .gl_bajaj_grid:before { background-color: var(--color-F4); content: ""; width: 84%; margin: 0 auto; position: absolute; inset: 0; top:-10rem; bottom:-20rem; z-index: -1; }
-.gl_bajaj_grid::after{ background-image: url(../images/pattern_img.webp); position: absolute; height: 13.7rem; right: 14.2rem; top: 0; bottom: 0; content: ""; width: 93.6rem; margin: auto; z-index: -1;}
+.gl_bajaj_grid::after{ background-image: url(/images/pattern_img.webp); position: absolute; height: 13.7rem; right: 14.2rem; top: 0; bottom: 0; content: ""; width: 93.6rem; margin: auto; z-index: -1;}
 .bottom_pattern{ position: absolute; bottom: -17rem; left: 14.2rem;}
 .ats_slid_Sec{ position: relative;}
 .ats_slid_Sec .pt_img{ position: absolute; left: -54rem; top: 17.7rem;}
@@ -1755,4 +1755,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .vvdn_technologies{ padding-block: 10rem;}
 .vvdn-Cnt blockquote{ font: var(--font-30); padding-block: 4rem; max-width: 90%;}
 .vvdn-Cnt p{ max-width: 90%;}
-.institutional-grid-2 .vvdn-Cnt{ padding-left: 7rem;}
+.vvdn_grid .vvdn-Cnt{ padding-left: 5rem;}
+.vvdn_grid_01{display: grid; grid-template-columns: 35% auto; margin-left: -1rem;}
+.vvdn_grid_01 .institutional-img { padding-left: 11rem; }
+.vvdn_grid{ display: grid; grid-template-columns: 65% 39%; margin-top: 8rem;}

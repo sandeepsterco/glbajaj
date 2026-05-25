@@ -35,10 +35,10 @@ export default function PlacementRecord() {
     return (
         <div className="placement_grid">
             {placement_data && placement_data?.map((item:any, idx:number)=>(
-                <div key={idx} className="place_box relative">
+                <div key={idx} className="place_box relative" data-aos="fade-up" data-aos-delay="600" >
                     <div className="place_imgbox">
                         <figure>
-                            <img src={item.image ?? ''} alt={item?.name} />
+                            <img src={item.image ?? ''} alt={item?.name} data-aos="fade-up" data-aos-delay="200"/>
                         </figure>
                         {item?.logo_image && (
                             <div className="place_complog">
@@ -50,12 +50,12 @@ export default function PlacementRecord() {
                         
                     </div>
                     <div className="place_infobox">
-                        <h3 >{item.name}</h3>
-                        <p >{item?.course && <><strong>{item?.course}</strong> |</>} {item?.batch && <>Batch <strong>{item.batch}</strong></>} </p>
+                        <h3 data-aos="fade-up" data-aos-delay="400">{item.name}</h3>
+                        <p data-aos="fade-up" data-aos-delay="600">{item?.course && <><strong>{item?.course}</strong> |</>} {item?.batch && <>Batch <strong>{item.batch}</strong></>} </p>
 
                         {item?.package && (
                             <div className="place_pkg">
-                                <h3 className="font36">Package ₹<strong>{item.package}</strong></h3>
+                                <h3 className="font36" data-aos="fade-up" data-aos-delay="800">Package ₹<strong>{item.package}</strong></h3>
                             </div> 
                         )}
                         

@@ -37,10 +37,10 @@ export default function AchievementList() {
             {achievementData?.data && achievementData.data?.map((item: any, idx: number) => (
                 <div key={idx} className="award-box relative">
                     <figure>
-                        <Image src={item.image || ''} width={600} height={443} className="w-100" alt="award" />
+                        <Image src={item.image || ''} width={600} height={443} className="w-100" alt="award"  data-aos="fade-up" data-aos-delay="200"/>
                     </figure>
                     {item?.title && (
-                        <p>{item.title}</p>
+                        <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
                     )}
                     {item?.slug && (
                         <Link href={`${BASE_URL}${slug}/${item.slug}`} className="strech_link" />

@@ -185,6 +185,7 @@
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
 .front_news { display: grid; grid-template-columns: 57% auto; gap: 15rem; }
+.award_ranking_why .front_news{gap: 15rem;}
 .news_head { display: flex; justify-content: flex-end; }
 .news_head .form-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url("/images/icons/arrow-down.webp"); /* your custom icon */
     background-repeat: no-repeat; background-position: right 1.5rem center; background-size: 1.3rem; padding-right: 4rem; height: 4.6rem; padding-inline: 1.5rem; font: var(--font-16); color: var(--color-black); border: 1px solid #e1e1e1; min-width: 35rem; box-shadow: none; outline: none; }
@@ -1759,3 +1760,93 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .vvdn_grid_01{display: grid; grid-template-columns: 35% auto; margin-left: -1rem;}
 .vvdn_grid_01 .institutional-img { padding-left: 11rem; }
 .vvdn_grid{ display: grid; grid-template-columns: 65% 39%; margin-top: 8rem;}
+
+
+.in_essence_section{padding-block: 10rem 5rem; border-bottom: 1px solid rgba(174, 127, 44, 0.5);}
+.in_essence_section blockquote{ padding-bottom: 3rem;}
+.in_essence_section figure{ margin-block: 8rem;}
+.clubs_table .table-wrapper{ box-shadow: none;}
+.objective_clubs{ padding-right: 7.8rem;}
+.clubs_table{ padding-left: 3rem;}
+.objective_clubs h4{ margin-bottom: 4rem;}
+
+.navrang_club_section{ padding:5rem 11.6rem ;}
+.navrang_list{ padding-top: 5rem;}
+.navrang_club{ padding-bottom: 4rem;}
+.navrang_list li:nth-child(even) { padding-left: 8rem; }
+.navrang_list ul{ display: grid; grid-template-columns: repeat(2, 1fr); row-gap:3.5rem;}
+.navrang_list ul li a{ color: var(--color-89); border-bottom: 1px dashed var(--color-89); padding-bottom: 2rem; font: var(--font-18); font-weight: 600; }
+.navrang_list ul li a:hover{ color: var(--color-black);}
+
+
+.apply_now{ background-color: var(--color-AE); font: var(--font-16); font-weight: 600; color: var(--color-white); padding: 1.2rem 2.5rem; display: inline-block;}
+.admission_process .apply_now{ margin-top: 3rem;}
+.apply_now:hover{background-color:var(--color-64);}
+.admission_process .tp_ov_pattern{ padding-block:4rem 0;}
+.admission_process h4{ margin-bottom: 4rem; }
+.admission_process p{ padding-right:8rem;}
+.course_grid{ display: grid; grid-template-columns:55.2% auto; gap: 7.4rem;}
+
+.courses_admission_section{ padding-block:0rem 10rem; border-bottom: 1px solid rgba(174, 127, 44, 0.5);}
+.courses_admission_section h4{ margin-bottom: 4rem;}
+.course_grid_Bx .item-content { padding-top: 3rem; }
+.course_grid_Bx .table-wrapper thead tr th{ padding-block: 1rem;}
+.course_grid_Bx .table-wrapper{ box-shadow: none;}
+.transport-tabs .tabs ul li a{border-bottom: .2rem solid transparent;}
+
+.course_grid_Bx h5{ margin-block: 3rem 3.2rem;}
+.upcet_counselling{ background-color: var(--color-F4); padding:3rem;}
+.direct_admission{ border-top:1px solid #CCCCCC; padding-top: 3rem; margin-top: 3rem;}
+.upcet_counselling h6{ font-weight: 600; color: var(--color-black); padding-bottom: 2rem;}
+.upcet_counselling>p{ max-width: 70%;}
+.direct_admission p{max-width: 86%;}
+.securing_min{ padding: 2rem; background-color: var(--color-92); margin-top: 2rem;}
+.securing_min *{ color: var(--color-white);}
+.securing_min blockquote{ margin:0.5rem 0; font-weight: 700;}
+.securing_min p{ margin-bottom: 0;}
+
+.admission_fee_structure{ padding-block: 10rem; border-bottom: 1px solid rgba(174, 127, 44, 0.5);}
+.admission_fee_structure .table-wrapper th, .admission_fee_structure .table-wrapper td{padding: 18px 15px;}
+.admission_fee_structure .table-wrapper { box-shadow: none;}
+.admission_fee_structure .table-wrapper{ padding-block: 5rem;}
+.iqac-mission-vission{ padding-block: 10rem;}
+.bhashini_cont ul{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem;}
+.bhashini_cont li{ color: var(--color-black); font: var(--font-18); font-weight: 600; border-bottom: 1px solid rgba(192, 133, 82, 0.5); padding-bottom: 2.5rem;}
+
+.regular_process_section{padding-block: 10rem 5rem;}
+.regular_admission_process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5.6rem; background-color: var(--color-F4); padding: 9rem 13rem 2rem 12.5rem; }
+.regular_admission_process .pattern_img{ padding-top: 5rem;}
+.regular_admission_process .iqac-mission-vission h2 { margin-bottom: 3rem; }
+.regular_admission_process .iqac-goal figure{ padding-top: 1rem;}
+.regular_admission_process h2 { margin-bottom: 3rem; }
+.regular_admission_process .iqac-goal p{ padding-right: 1rem;}
+.regular_admission_process .iqac-goal{ height: 60%;}
+.leteral_entry_grid{ display: grid; grid-template-columns: 55% auto; gap: 10rem;}
+.fee_payment_section_Cnt{ padding-inline: 5.3rem;}
+.fee_payment_section_adres{ padding-inline: 5.3rem;}
+.leteral_entry_Bx h4{ color: var(--color-64); margin-bottom: 3.7rem; font-weight: 700;}
+.leteral_entry_Bx h5{ font-weight: 700; color: var(--color-33);}
+.leteral_entry_Bx ul{ padding-block: 2rem 5rem; border-bottom: 1px solid #CCCCCC; color: var(--color-33);}
+.lateral_note{ padding-top: 3rem;}
+.lateral_note h5{ padding-bottom: 2rem;}
+.leteral_entry_section{ padding-block: 0 10rem;}
+.fee_payment_section{ background-color: var(--color-89);}
+.fee_payment_section *{ color: var(--color-white);}
+.fee_payment_section{ padding-top: 8rem;}
+.fee_payment_section h5{ font-weight: 700; margin-bottom: 3rem;}
+.fee_payment_section_adres{ margin-top:5rem; padding-block: 2rem 5rem; position: relative;}
+.fee_payment_section_adres::before{background-color: #ccc; content: ""; position: absolute; top: 0; left: 5.3rem; right: 5.3rem; height: 0.1rem;}
+.fee_payment_section_adres h4{ color: var(--color-white); padding-bottom: 4rem;}
+.bhashini_cont .parakram_main{ padding-right: 0rem; max-width: 82%;}
+.blood_donation_Bx{padding:0rem 24rem 0 10rem;}
+.blood_donation_Bx1 { padding: 0rem 12rem 0 26rem; }
+.blood_donation_Bx1 blockquote{ color: var(--color-92); margin-bottom: 3rem;}
+.blood_donation_Bx blockquote{ color: var(--color-92); margin-bottom: 3rem;}
+.blood_donation_Bx p{ padding-right:7rem;}
+.glbcri_section p:last-of-type { margin-block: 4rem 4rem; }
+.glbcri_section .tp_ov_pattern { padding-block: 4rem 0; }
+.glbcri_section ul{ color: var(--color-33); padding-right: 3rem;}
+
+.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; }
+.horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);}
+.horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);}

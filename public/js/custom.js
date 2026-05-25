@@ -395,6 +395,32 @@
       },
     });
 
+    // cse_lab_slider
+   new Swiper(".cse_lab_slider", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 20,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: true,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        // Jab screen 768px se badi ho (Tablets)
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        // Jab screen 1200px se badi ho (Desktop - XD Match)
+        1200: {
+          slidesPerView: 2.25, // 3 full + 0.5 next slide
+          spaceBetween: 40,
+        },
+      },
+    });
+
     return true;
   }
 

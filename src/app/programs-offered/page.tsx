@@ -2,6 +2,7 @@ import PageHeader from "@/src/components/layout/header/PageHeader";
 import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";
 import { getSlug } from "@/src/lib/getSlug";
+import { Suspense } from "react";
 
 export default async function ProgramsOffered(){
     const slug = await getSlug();
@@ -10,7 +11,9 @@ export default async function ProgramsOffered(){
     return(
         <main>
             <PageHeader data={data.data} slug={slug} showTabs={false} />
-            <ProgramList />
+            <Suspense fallback={<p>Loading...</p>}>
+                <ProgramList />
+            </Suspense>
         </main>
     )
 } 

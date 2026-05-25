@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/src/config/config";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function GalleryList({data}:{data:any}){
@@ -9,7 +10,7 @@ export default function GalleryList({data}:{data:any}){
                     {data?.data.map((item:any, idx:number)=>(
                         <div key={idx} className="gallery_list_bx">
                             <figure>
-                                <img src={item.banner_image || '/images/default/gallery-list.webp'} className="img-fluid" alt="alt" />
+                                <Image src={item.banner_image || '/images/default/gallery-list.webp'} width={392} height={261} loading="lazy" className="img-fluid" alt="alt" />
                                 {(item.images > 0 || item.videos > 0) && (
                                     <span>
                                         {item.images > 0 && (

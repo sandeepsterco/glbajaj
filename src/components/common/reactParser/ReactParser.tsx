@@ -29,6 +29,7 @@ import HomeFacilities from "../../parser/HomeFacilities";
 import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
 import PlacementRecord from "../../parser/PlacementRecord";
 import IntershipRecord from "../../parser/IntershipRecord";
+import AchievementList from "../../parser/AchievementList";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -108,6 +109,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "contact_form") return <ContactForm />;
       if (domNode.attribs.id === "about_leadership") return <AboutLeadership />;
       if (domNode.attribs.id === "awards_list") return <AwardsList />;
+      if (domNode.attribs.id === "achievement_list") return <AchievementList />;
       if (domNode.attribs.id === "conference_lists") return <ConferenceLists />;
       if (domNode.attribs.id === "department_home_faculties") return <DepartmentHomeFaculties />;
       if (domNode.attribs.id === "department_home_laboratories") return <DepartmentHomeLaboratories />;

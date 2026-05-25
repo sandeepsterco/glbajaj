@@ -1847,6 +1847,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .glbcri_section .tp_ov_pattern { padding-block: 4rem 0; }
 .glbcri_section ul{ color: var(--color-33); padding-right: 3rem;}
 
-.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; }
-.horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);}
+.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; cursor: pointer;font-weight: 500;}
+.horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);font-weight: 600;}
 .horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);}

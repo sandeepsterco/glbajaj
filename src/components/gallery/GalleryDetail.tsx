@@ -6,8 +6,10 @@ import Image from 'next/image';
 
 declare const Fancybox: any
 
-function getYoutubeThumbnail(embedUrl: string): string {
-    const match = embedUrl.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
+function getYoutubeThumbnail(url: string): string {
+    const match = url.match(
+        /(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([^&?/]+)/
+    );
     if (match?.[1]) {
         return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
     }
@@ -20,12 +22,27 @@ interface GalleryItem {
     embed_url: string | null;
 }
 
+function isVideoItem(item: GalleryItem): boolean {
+    if (item.embed_url) return true; // YouTube = video
+    const url = item.gallery_urls ?? '';
+    return /\.(mp4|webm|ogg)$/i.test(url);
+}
+
+function isImageItem(item: GalleryItem): boolean {
+    return !isVideoItem(item);
+}
+
 export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data: any, slug: string }) {
     const data = gallery_data?.data;
+    const allItems: GalleryItem[] = data?.mapping_items?.items ?? [];
 
-    const [galleryUrls, setGalleryUrls] = useState<GalleryItem[]>(data?.mapping_items?.items ?? []);
+    const [galleryUrls, setGalleryUrls] = useState<GalleryItem[]>(allItems);
     const [activeFilter, setActiveFilter] = useState<'all' | 'images' | 'videos'>('all');
     const [isLoading, setIsLoading] = useState(false);
+
+    // Check what types are available to conditionally show filter buttons
+    const hasImages = allItems.some(isImageItem);
+    const hasVideos = allItems.some(isVideoItem);
 
     const galleryItems = useMemo(() => {
         return galleryUrls.map((item: GalleryItem) => {
@@ -33,16 +50,19 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                 return {
                     src: getYoutubeThumbnail(item.embed_url),
                     embedUrl: item.embed_url,
-                    type: 'youtube' as const,
+                    type: 'iframe' as const,
                     caption: item.description ?? '',
                 };
             }
-            const isVideo = /\.(mp4|webm|ogg)$/i.test(item.gallery_urls ?? '');
+
+            const url = item.gallery_urls ?? '';
+            const isVideo = /\.(mp4|webm|ogg)$/i.test(url);
+
             return {
-                src: item.gallery_urls ?? '',
-                embedUrl: '',
+                src: url,
                 type: isVideo ? 'video' as const : 'image' as const,
                 caption: item.description ?? '',
+                embedUrl: undefined,
             };
         });
     }, [galleryUrls]);
@@ -50,78 +70,72 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
     const openGallery = (index: number) => {
         if (typeof Fancybox === 'undefined') return;
 
-        const clickedItem = galleryItems[index];
+        const items = galleryItems.map((item) => {
+            if (item.type === 'iframe') {
+                return {
+                    src: item.embedUrl,
+                    type: 'iframe',
+                    caption: item.caption,
+                };
+            }
 
-        if (clickedItem.type === 'youtube') {
-            // Open YouTube solo — never mix html-type with image-type in one show() call
-            const autoplaySrc = clickedItem.embedUrl.includes('?')
-                ? `${clickedItem.embedUrl}&autoplay=1`
-                : `${clickedItem.embedUrl}?autoplay=1`;
-            Fancybox.show([
-                {
-                    src: `<iframe src="${autoplaySrc}" style="width:100%;height:90vh;border:none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
-                    type: 'html',
-                    caption: clickedItem.caption,
-                },
-            ], { Thumbs: false });
-            return;
-        }
+            if (item.type === 'video') {
+                return {
+                    src: item.src,
+                    type: 'html5video', // ✅ Fix: use html5video not video
+                    caption: item.caption,
+                    html5video: {
+                        tpl: `<video class="fancybox__html5video" playsinline controls controlsList="nodownload" src="%s"></video>`,
+                    },
+                };
+            }
 
-        if (clickedItem.type === 'video') {
-            // Open mp4/webm video solo
-            Fancybox.show([
-                {
-                    src: `<video controls autoplay playsinline style="max-width:100%;max-height:90vh;"><source src="${clickedItem.src}" />Your browser does not support the video tag.</video>`,
-                    type: 'html',
-                    caption: clickedItem.caption,
-                },
-            ], { Thumbs: false });
-            return;
-        }
-
-        // For images: build a gallery of ONLY image items so Fancybox never
-        // sees an html-type src and tries to construct a URL from it.
-        const imageOnlyItems = galleryItems
-            .filter((item) => item.type === 'image')
-            .map((item) => ({
+            return {
                 src: item.src,
                 type: 'image',
                 caption: item.caption,
-            }));
+            };
+        });
 
-        // Find the correct startIndex within the image-only subset
-        const imageStartIndex = galleryItems
-            .slice(0, index)
-            .filter((item) => item.type === 'image').length;
-
-        Fancybox.show(imageOnlyItems, {
-            startIndex: imageStartIndex,
+        Fancybox.show(items, {
+            startIndex: index,
             Thumbs: false,
         });
     };
 
     const applyFilter = async (type: 'all' | 'images' | 'videos') => {
         if (activeFilter === type || isLoading) return;
-        setActiveFilter(type);
 
+        // ✅ For 'all', just reset from original data — no API call needed
         if (type === 'all') {
-            setGalleryUrls(data?.mapping_items?.items ?? []);
+            setGalleryUrls(allItems);
+            setActiveFilter('all');
             return;
         }
 
-        try {
-            setIsLoading(true);
-            const { data: filteredData, error } = await apiFetch(`gallery/${slug}?filter=${type}`);
-            if (error || !filteredData) throw new Error('Failed to fetch gallery data');
+        // ✅ Client-side filtering first (instant, no API needed)
+        // Remove this block and keep only API call if server-side filtering is required
+        const filtered = allItems.filter((item) =>
+            type === 'images' ? isImageItem(item) : isVideoItem(item)
+        );
 
-            const items: GalleryItem[] = filteredData?.gallery_details?.mapping_items?.items ?? [];
-            setGalleryUrls(items);
-        } catch (error) {
-            console.error((error as Error).message);
-            alert('Failed to fetch gallery data');
-        } finally {
-            setIsLoading(false);
-        }
+        setGalleryUrls(filtered);
+        setActiveFilter(type); // ✅ Set active only after we have data
+
+        // ✅ Uncomment below if you need server-side filtering instead:
+        // try {
+        //     setIsLoading(true);
+        //     const { data: filteredData, error } = await apiFetch(`gallery/${slug}?filter=${type}`);
+        //     if (error || !filteredData) throw new Error('Failed to fetch gallery data');
+        //     const items: GalleryItem[] = filteredData?.gallery_details?.mapping_items?.items ?? [];
+        //     setGalleryUrls(items);
+        //     setActiveFilter(type);
+        // } catch (error) {
+        //     console.error((error as Error).message);
+        //     alert('Failed to fetch gallery data');
+        // } finally {
+        //     setIsLoading(false);
+        // }
     };
 
     return (
@@ -131,6 +145,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                     <div className="gallery_list_header">
                         {data?.title && <h1>{data.title}</h1>}
                         <div className="gallery_tab">
+                            {/* ✅ Reset button only when filter is active */}
                             {activeFilter !== 'all' && (
                                 <button
                                     type="button"
@@ -141,26 +156,41 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                     Reset
                                 </button>
                             )}
-                            <span
-                                className={`${activeFilter === 'images' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
-                                onClick={() => applyFilter('images')}
-                            >
-                                Photos
-                                <figure><img src="/images/icons/yellow-gallery.svg" alt="icon" className="img-fluid" /></figure>
-                            </span>
-                            <span
-                                className={`${activeFilter === 'videos' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
-                                onClick={() => applyFilter('videos')}
-                            >
-                                Video
-                                <figure><img src="/images/icons/yellow-video.svg" alt="icon" className="img-fluid" /></figure>
-                            </span>
+
+                            {/* ✅ Only show Photos tab if images exist */}
+                            {hasImages && (
+                                <span
+                                    className={`${activeFilter === 'images' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                    onClick={() => applyFilter('images')}
+                                >
+                                    Photos
+                                    <figure>
+                                        <img src="/images/icons/yellow-gallery.svg" alt="icon" className="img-fluid" loading='lazy' />
+                                    </figure>
+                                </span>
+                            )}
+
+                            {/* ✅ Only show Videos tab if videos exist */}
+                            {hasVideos && (
+                                <span
+                                    className={`${activeFilter === 'videos' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                    onClick={() => applyFilter('videos')}
+                                >
+                                    Video
+                                    <figure>
+                                        <img src="/images/icons/yellow-video.svg" alt="icon" className="img-fluid" loading='lazy' />
+                                    </figure>
+                                </span>
+                            )}
                         </div>
                     </div>
 
                     <div className="gallery_list">
                         {isLoading ? (
                             <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />
+                        ) : galleryItems.length === 0 ? (
+                            // ✅ Empty state when filter returns nothing
+                            <p className="text-center py-10 text-gray-500">No items found.</p>
                         ) : (
                             galleryItems.map((item, idx) => (
                                 <div
@@ -183,10 +213,10 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                                     }}
                                                 />
                                                 <span>
-                                                    <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" />
+                                                    <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" loading='lazy' />
                                                 </span>
                                             </>
-                                        ) : item.type === 'youtube' ? (
+                                        ) : item.type === 'iframe' ? (
                                             <>
                                                 <img
                                                     src={item.src}
@@ -194,7 +224,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                                     alt={item.caption || `YouTube video ${idx + 1}`}
                                                 />
                                                 <span>
-                                                    <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" />
+                                                    <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" loading='lazy' />
                                                 </span>
                                             </>
                                         ) : (

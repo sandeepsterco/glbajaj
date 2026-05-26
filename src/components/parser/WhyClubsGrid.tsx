@@ -24,13 +24,9 @@ export default function WhyClubsGrid() {
   const slug = pathname.split('/').filter(Boolean).pop();
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["glb_pathshala"],
+    queryKey: ["glb_pathshala", page],
     queryFn: () => fetchDigitalPathshalaData(page),
   });
-
-  useEffect(()=>{
-    fetchDigitalPathshalaData(page)
-  }, [page])
 
   if (isLoading) return <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />;
 
@@ -47,7 +43,7 @@ export default function WhyClubsGrid() {
                 <p>{item.title}</p>
               )}
               {item?.slug && (
-                <Link className="cus-btn btn" href={BASE_URL + '' +slug + '/' + item.slug}>View Club Detail</Link>
+                <Link className="cus-btn btn" href={`${BASE_URL}${slug}/${item.slug}`}>View Club Detail</Link>
               )}
             </div>
           </div>

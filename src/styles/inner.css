@@ -1847,6 +1847,64 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .glbcri_section p:last-of-type { margin-block: 4rem 4rem; }
 .glbcri_section .tp_ov_pattern { padding-block: 4rem 0; }
 .glbcri_section ul{ color: var(--color-33); padding-right: 3rem;}
+.clbcri_grid_bx{ display: grid; grid-template-columns:43% auto; background-color: var(--color-F4); padding-block: 9rem 8rem; position: relative; gap: 11.6rem;}
+.clbcri_grid_bx h4{ margin-block: 4rem;}
+.clbcri_bx ul{ color: var(--color-33); padding-right:2rem;}
+.clbcri_grid_bx::after{ background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute;}
+.clbcri_grid_bx::before{ background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute;}
+.entrepreneurship_section_grid{ display: grid; grid-template-columns:50% 35%; gap: 5rem; align-items: flex-end;}
+.entrepreneurship_section_grid h4{ margin-bottom: 4rem;}
+.entrepreneurship_section{ padding-block: 8rem 3rem;}
+
+.innovation_tabs{ padding-block: 7rem 10rem; border-bottom: 0.1rem solid #C0855280;}
+.innovation_tabs_bx { background-color: var(--color-white); padding: 7rem 10rem 8rem 10rem; z-index: 99; position: relative; margin-top: -2rem; min-height: 46rem;}
+.innovation_tabs_bx blockquote{ font: var(--font-30); color: var(--color-33); margin-bottom: 3rem;}
+.innovation_tabs_bx ul li{ font: var(--font-18); color: var(--color-black); padding: 1.4rem 0; font-weight: 600;}
+
+
+.innovation_tabs .tabs_section { display: grid; gap: 6.2rem; grid-template-columns: 48% auto; justify-content: center; padding-inline: 18rem 18rem; padding-block: 8rem 0rem; position: relative; }
+.innovation_tabs .tab_content .acc-body { display: inherit; margin: 0; padding: 0; }
+.innovation_tabs .tabs_section .tab-buttons { padding-left: 0; }
+.innovation_tabs .tabs_section::before { background-color: var(--color-AE); max-height: 42.1rem; bottom: 0; right: 0; }
+.innovation_tabs .tabs_section .tab-btn.active { color: var(--color-white) }
+.innovation_tabs .tabs_section .tab-btn { padding-left: 0; }
+.innovation_tabs .tabs_section .tab-btn { color:#FFFFFF80; }
+.peo_rgt_box .poe_title { font: var(--font-18); font-weight: 700; margin-bottom: 1rem; }
+.peo_rgt_box .peo_box:not(:last-child) { margin-bottom: 3rem; }
+.innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
+.innovation_tabs .tab_content .acc-body::before { background-color: transparent; }
+.innovation_tabs .tabs_section::after { background-image: url(/images/state-of-art.webp); position: absolute; bottom: 1.4rem; content: ""; background-repeat: no-repeat; height: 8.5rem; z-index: 9; right: 0; left: 18rem; background-color:#fafafa;}
+.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; }
+
+.innovation_event{ padding-block: 10rem 5rem;}
+.innovation_event_grid{ display: grid; grid-template-columns: 38.5% auto; gap: 15rem; padding: 10rem 0rem; background-color: var(--color-F4); position: relative; justify-content: space-between;}
+.innovation_event_grid::after{ background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute;}
+.innovation_event_grid::before{ background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute;}
+.evnt_enno_Bx h4{ margin-bottom: 5rem;  padding-top: 2rem;}
+.evnt_enno_Bx h5{ font-weight: 700; margin-bottom: 3rem;}
+.evnt_innovation_Bx { background: linear-gradient(to bottom, #643C24 60%, #F4F7F4 0%); padding: 2.7rem 2.5rem 0; position: relative; z-index: 9; }
+.evnt_innovation_Bx h5{ color: var(--color-white); font: var(--font-24); margin-block: 2rem 3rem; padding-right: 5rem;}
+.evnt_enno_Bx{ display: flex; flex-direction: column; justify-content: space-between;}
+.regional_meets{ padding-block: 0 11rem;}
+.regional_meets_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; padding-bottom: 4rem;}
+.regional_meets h5{ font: var(--font-21); font-weight: 700; margin-bottom: 4rem;}
+.regional_meets blockquote{ font: var(--font-30); margin-bottom: 4rem;}
+
+.innovation_leap_wrapper{ padding-block: 0rem 10rem; border-bottom: 0.1rem solid #C0855280;}
+.innvation_lap_grid {display: grid;grid-template-columns: 40.98% auto;gap: 12.4rem; position: relative;left: -14rem; align-items: center;}
+.smart_india{ max-width: 70%;}
+.innvation_lap_grid blockquote{ max-width: 60.9%; font: var(--font-30);}
+.innvation_lap_grid h4{ font: var(--font-21); font-weight: 700; margin-bottom: 4rem; color: var(--color-33);}
+.smart_india{ padding-top: 5rem; margin-top: 5rem; border-top: 0.1rem solid #C0855280; padding-right: 7rem;}
+.innvation_lap_grid .robotics-lab-grid-Cnt p:first-child { margin-bottom:0rem; }
+.institute_faq_section{ padding: 10rem;}
+
+.institute_faq_section .tp_accbox { background-color: #F9F9F9; padding: 4.4rem 5.5rem 2rem 6.4rem; }
+.institute_faq_section .tp_accbox .accordion-item,
+.institute_faq_section .tp_accbox .accordion-body { background: transparent; }
+.institute_faq_section .tp_accbox  .accordion-item.active .accordion-body { padding:0 0 3.8rem 0; }
+.institute_faq_section .tp_accbox .accordion-header { padding:1.5rem 0; border-top: 0.1rem solid #E1E1E1; }
+.institute_faq_section .tp_accbox .accordion-header h3 { font-weight: 500; }
 
 .horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; cursor: pointer;font-weight: 500;}
 .horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);font-weight: 600;}

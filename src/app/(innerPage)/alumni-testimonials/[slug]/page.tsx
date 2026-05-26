@@ -1,8 +1,8 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
-import FacultyDetail from "@/src/components/faculty/FacultyDetail";
+import TestimonialDetail from "@/src/components/testimonial/TestimonialDetail";
 import { apiFetch } from "@/src/lib/api";
 
-export default async function FacultyDetailPage({params}:{params:any}){
+export default async function TestimonialDetailPage({params}:{params:any}){
     const {slug} = await params;
 
     const {data, error} = await apiFetch(`alumni-testimonial/${slug}`);
@@ -14,6 +14,6 @@ export default async function FacultyDetailPage({params}:{params:any}){
     }
 
     return(
-        <FacultyDetail data={data?.faculty_details} />
+        <TestimonialDetail data={data?.alumni_testimonial_details} />
     )
 }

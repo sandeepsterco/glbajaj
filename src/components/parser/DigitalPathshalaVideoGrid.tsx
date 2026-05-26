@@ -5,17 +5,30 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { SkeletonGroup } from "../ui/Skeleton";
 
-// Declare Fancybox on window for TypeScript
 declare global {
   interface Window {
     Fancybox: any;
   }
 }
 
-const fetchDigitalPathshalaData = async (page:number) => {
+const fetchDigitalPathshalaData = async (page: number) => {
   const { data, error } = await apiFetch(`glb-pathshala?page=${page}`);
   if (error) throw new Error(error);
   return data?.GLBPathshala;
+};
+
+// Converts any YouTube URL format to an embeddable URL
+const getYouTubeEmbedUrl = (url: string): string => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.pathname.startsWith("/embed/")) return url;
+    if (parsed.hostname === "youtu.be") return `https://www.youtube.com/embed${parsed.pathname}`;
+    const videoId = parsed.searchParams.get("v");
+    if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+    return url;
+  } catch {
+    return url;
+  }
 };
 
 export default function DigitalPathshalaVideoGrid() {
@@ -30,46 +43,43 @@ export default function DigitalPathshalaVideoGrid() {
 
   const isLastPage = data?.current_page >= data?.last_page;
 
-  useEffect(()=>{
-    if(data?.data && data.data.length > 0){
-      setAllItems((prev)=>page === 1 ? data.data : [...prev, ...data.data]);
+  // Accumulate items across pages
+  useEffect(() => {
+    if (data?.data && data.data.length > 0) {
+      setAllItems((prev) =>
+        page === 1 ? data.data : [...prev, ...data.data]
+      );
     }
-  }, [data])
+  }, [data]);
 
   // Load Fancybox CSS + JS dynamically (once)
   useEffect(() => {
-    // Inject Fancybox CSS if not already present
     if (!document.getElementById("fancybox-css")) {
       const link = document.createElement("link");
       link.id = "fancybox-css";
       link.rel = "stylesheet";
-      link.href =
-        "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css";
+      link.href = "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css";
       document.head.appendChild(link);
     }
 
-    // Inject Fancybox JS if not already present
     if (!document.getElementById("fancybox-js")) {
       const script = document.createElement("script");
       script.id = "fancybox-js";
-      script.src =
-        "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js";
+      script.src = "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js";
       script.async = true;
       document.body.appendChild(script);
     }
   }, []);
 
-  // Attach click handlers whenever data changes
+  // Attach click handlers whenever accumulated items change
   useEffect(() => {
     if (!allItems || allItems.length === 0) return;
 
-    // Poll until Fancybox is available on window (script may still be loading)
     const init = () => {
       const container = containerRef.current;
       if (!container || !window.Fancybox) return;
 
       const items = container.querySelectorAll<HTMLElement>(".digital-patsala");
-
       const handlers: { el: HTMLElement; fn: () => void }[] = [];
 
       items.forEach((item, index) => {
@@ -77,9 +87,10 @@ export default function DigitalPathshalaVideoGrid() {
           const gallery: { src: string; type: string; caption: string }[] = [];
 
           items.forEach((el) => {
+            const videoUrl = el.getAttribute("data-video-url") ?? "";
             gallery.push({
-              src: el.getAttribute("data-src") ?? "",
-              type: "image",
+              src: getYouTubeEmbedUrl(videoUrl),
+              type: "iframe",
               caption: el.getAttribute("data-caption") ?? "",
             });
           });
@@ -94,13 +105,11 @@ export default function DigitalPathshalaVideoGrid() {
         handlers.push({ el: item, fn });
       });
 
-      // Return cleanup
       return () => {
         handlers.forEach(({ el, fn }) => el.removeEventListener("click", fn));
       };
     };
 
-    // If Fancybox already loaded, init immediately; otherwise wait for script
     if (window.Fancybox) {
       return init();
     }
@@ -118,62 +127,68 @@ export default function DigitalPathshalaVideoGrid() {
     };
   }, [allItems]);
 
-  const handleLoadMore = ()=>{
-    if(!isFetching && !isLastPage){
-      setPage((prev)=>prev+1);
+  const handleLoadMore = () => {
+    if (!isFetching && !isLastPage) {
+      setPage((prev) => prev + 1);
     }
-  }
-
-  if (isLoading && page == 1) return <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />;
+  };
 
   return (
     <>
       <div className="digital-pathshala-grid" ref={containerRef}>
         {allItems.map((item: any, idx: number) => (
-            <div
-              key={idx}
-              className="digital-patsala"
-              data-src={item?.thumbnail}
-              data-caption={item?.title ?? ""}
-              style={{ cursor: "pointer" }}
-            >
-              <figure>
-                <Image
-                  src={item?.thumbnail}
-                  className="img-fluid w-100"
-                  width={603}
-                  height={506}
-                  alt={item?.title ?? "digital pathshala"}
-                  loading="lazy"
+          <div
+            key={idx}
+            className="digital-patsala"
+            data-src={item?.thumbnail}
+            data-video-url={item?.video_url ?? ""}
+            data-caption={item?.title ?? ""}
+            style={{ cursor: "pointer" }}
+          >
+            <figure>
+              <Image
+                src={item?.thumbnail}
+                className="img-fluid w-100"
+                width={603}
+                height={506}
+                alt={item?.title ?? "digital pathshala"}
+                loading="lazy"
+              />
+              <span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/plybtn.svg"
+                  className="img-fluid"
+                  alt="video play"
                 />
-                <span>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/plybtn.svg"
-                    className="img-fluid"
-                    alt="video play"
-                  />
-                </span>
-                <figcaption>
-                  <h3>{item?.title ?? "Principle of Programming Language by Dr. Saurabh Goel"}</h3>
-                </figcaption>
-              </figure>
-            </div>
-          ))}
+              </span>
+              <figcaption>
+                <h3>{item?.title ?? "Principle of Programming Language by Dr. Saurabh Goel"}</h3>
+              </figcaption>
+            </figure>
+          </div>
+        ))}
+        
       </div>
 
-      {isFetching && <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem] mt-[2rem]" className="w-full h-[50rem]" />}
+      {isFetching && (
+          <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />
+        )}
 
       {!isLastPage && (
         <div className="dg-pathshala-btn">
-          <a href="#0" className="supporting-btn" onClick={(e)=>{
-            e.preventDefault();
-            handleLoadMore()
-          }}>{isFetching ? 'Loading...' : 'Load More'}</a>
+          <a
+            href="#0"
+            className="supporting-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLoadMore();
+            }}
+          >
+            {isFetching ? "Loading..." : "Load More"}
+          </a>
         </div>
       )}
-
-      
     </>
   );
 }

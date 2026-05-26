@@ -29,7 +29,7 @@ export default function WhyClubsGrid() {
   });
 
   useEffect(()=>{
-    
+    fetchDigitalPathshalaData(page)
   }, [page])
 
   if (isLoading) return <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />;

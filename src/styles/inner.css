@@ -1869,11 +1869,15 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .tabs_section .tab-btn.active { color: var(--color-white) }
 .innovation_tabs .tabs_section .tab-btn { padding-left: 0; }
 .innovation_tabs .tabs_section .tab-btn { color:#FFFFFF80; }
+.innovation_tabs .sterco_tab_main:before{background-color: var(--color-AE); max-height: 42.1rem; bottom: 0; right: 0;}
+.innovation_tabs .sterco_accordion_content:before{background-color: transparent;}
+.innovation_tabs .sterco_accordion_content { grid-template-columns: 1fr; max-width: 67.6rem; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-top: -38rem; padding-block: 13rem 0rem; display: grid; position: relative; margin-right: 10rem; margin-left: auto; }
+.innovation_tabs .sterco_tab_main{padding-bottom: 0;}
 .peo_rgt_box .poe_title { font: var(--font-18); font-weight: 700; margin-bottom: 1rem; }
 .peo_rgt_box .peo_box:not(:last-child) { margin-bottom: 3rem; }
 .innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .innovation_tabs .tab_content .acc-body::before { background-color: transparent; }
-.innovation_tabs .tabs_section::after { background-image: url(/images/state-of-art.webp); position: absolute; bottom: 1.4rem; content: ""; background-repeat: no-repeat; height: 8.5rem; z-index: 9; right: 0; left: 18rem; background-color:#fafafa;}
+.innovation_tabs .sterco_tab_main::after { background-image: url(/images/state-of-art.webp); position: absolute; top: 42.1rem; content: ""; background-repeat: no-repeat; height: 8.5rem; z-index: 9; right: 0; left: 18rem; background-color:#fafafa;}
 .peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; }
 
 .innovation_event{ padding-block: 10rem 5rem;}
@@ -1906,6 +1910,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .institute_faq_section .tp_accbox .accordion-header { padding:1.5rem 0; border-top: 0.1rem solid #E1E1E1; }
 .institute_faq_section .tp_accbox .accordion-header h3 { font-weight: 500; }
 
+ 
+
+ 
 .horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; cursor: pointer;font-weight: 500;}
 .horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);font-weight: 600;}
 .horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);}

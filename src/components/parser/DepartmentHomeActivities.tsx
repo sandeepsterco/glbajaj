@@ -23,17 +23,29 @@ export default function DepartmentHomeActivities() {
   })
 
   const activitiesData = data?.modular?.["department-activities"];
+  const clubsData = data?.modular?.["clubs-and-society"];
 
   return (
     <div className="activies_grid">
       {activitiesData && activitiesData.length > 0 && activitiesData.map((item:any, singleIdx:number)=>(
-        <div className="activies_col">
+        <div key={singleIdx} className="activies_col">
+          <figure><Image src={item.image} width="380" height="275"  alt={item.title} /></figure>
+          <div className="activities_caption">
+              <p>{item.title}</p>
+          </div>
+          {/* {item?.slug && (
+            <Link className="strech_link" href={BASE_URL + "department/" + slug +"/" +item.slug} />
+          )} */}
+      </div>
+      ))}
+      {clubsData && clubsData.length > 0 && clubsData.map((item:any, singleIdx:number)=>(
+        <div key={singleIdx} className="activies_col">
           <figure><Image src={item.image} width="380" height="275"  alt={item.title} /></figure>
           <div className="activities_caption">
               <p>{item.title}</p>
           </div>
           {item?.slug && (
-            <Link className="strech_link" href={BASE_URL + "department/" + slug +"/" +item.slug} />
+            <Link className="strech_link" href={BASE_URL + "why-clubs-societies/" +item.slug} />
           )}
       </div>
       ))}

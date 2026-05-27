@@ -1496,6 +1496,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alu_spe_img figure::before { /* background-image: url(/images/pattern/alumni_spea_pattern.png); */
     background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 0.3rem; margin: auto 0; left: -12rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
 .alum_spa_info h3 { font: var(--font-30); margin-bottom: 4rem; font-weight: normal; }
+.alumn_calcu.paddingTop{padding-top:10rem;}
 .alum_calcu_grids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4.2rem; }
 .alc_contextsec h5 { margin-bottom: 4rem; font-weight: bold; }
 .alc_contextsec { margin-bottom: 13rem; }

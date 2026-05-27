@@ -28,6 +28,9 @@ export default function TestimonialDetail({ data }: { data: any }) {
                                     <div className="des">
                                         {data?.data?.message}
                                     </div>
+                                    <p className="short_des">
+                                        {data?.data?.short_desc}
+                                    </p>
                                     <div className="extra_info">
                                         {data?.data?.name && <h5 className="name">{data.data.name}</h5>}
                                         {data?.data?.type && <p>{data.data.type}</p>}

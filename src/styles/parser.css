@@ -298,6 +298,7 @@
 .home_testimonials .quote-icon { font-size:70px; color:#f3c26b; line-height:0; margin-bottom:10px; }
 .home_testimonials .desc { margin-top: 2.4rem; font:var(--font-21); line-height:3rem; color:#333; flex: 1; display:none; }
 .home_testimonials .desc.active { display:block; }
+.home_testimonials .desc .short_des{margin-top:4.6rem; margin-bottom: 0;}
 /* zigzag decoration */
 .home_testimonials .zigzag { position:absolute; left:-40px; top:120px; opacity:0.3; }
 /* thumbnails */

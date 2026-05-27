@@ -35,6 +35,8 @@ import DepartmentHomeActivities from "../../parser/DepartmentHomeActivities";
 import DigitalPathshalaVideoGrid from "../../parser/DigitalPathshalaVideoGrid";
 import WhyClubsGrid from "../../parser/WhyClubsGrid";
 import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
+import AdmissionPrograms from "../../parser/AdmissionPrograms";
+import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -128,7 +130,8 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "digital_pathshala_videos") return <DigitalPathshalaVideoGrid />;
       if (domNode.attribs.id === "why_clubs_grid") return <WhyClubsGrid />;
       if (domNode.attribs.id === "alumni_events_meet") return <AlumniEventsMeetGrid />;
-      
+      if (domNode.attribs.id === "admission_programs") return <AdmissionPrograms />;
+      if (domNode.attribs.id === "department_notifications") return <DepartmentNotificationBar />;
     }
   },
 };

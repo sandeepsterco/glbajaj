@@ -48,7 +48,7 @@ export default function AlumniEventsMeetGrid() {
         {allItems.map((item: any, idx: number) => (
           <div className="award-box" key={idx}>
             <figure>
-              <Image src={item?.item ?? '/images/default/gallery-main.webp'} className="img-fluid w-100" width={600} height={443} loading="lazy" alt={item?.title ?? 'alumni events'} />
+              <Image src={item?.image ?? '/images/default/gallery-main.webp'} className="img-fluid w-100" width={600} height={443} loading="lazy" alt={item?.title ?? 'alumni events'} />
             </figure>
             {item?.title && (
               <p>{item.title}</p>

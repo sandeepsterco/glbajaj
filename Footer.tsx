@@ -123,7 +123,7 @@ const Footer = async () => {
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                Sterco
+                Sterco Digitex
               </a>
             </p>
           </div>

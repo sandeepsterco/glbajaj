@@ -38,6 +38,7 @@ import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
 import AdmissionPrograms from "../../parser/AdmissionPrograms";
 import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
 import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
+import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -134,6 +135,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "admission_programs") return <AdmissionPrograms />;
       if (domNode.attribs.id === "department_notifications") return <DepartmentNotificationBar />;
       if (domNode.attribs.id === "department_home_clubs") return <DepartmentHomeClubs />;
+      if (domNode.attribs.id === "department_home_collaborations") return <DepartmentHomeMou />;
     }
   },
 };

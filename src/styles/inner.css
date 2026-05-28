@@ -714,8 +714,10 @@
 .activies_col p { padding-top: 1.3rem; }
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
 .dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; align-items: center; }
+.dep_projects .dep_project_grid.reverse{grid-template-columns: 32.9% 57% ;}
 .dep_projects { position: relative; }
 .dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; height: 100%; }
+.dep_projects.reverse::after{right:0; left:unset; background-image: url(/images/research_shap_02.png);}
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
 .project_contentsec .cus-btn { margin-top: 2rem; }
@@ -726,7 +728,7 @@
 
 /* ================= Department Clubs Section ================*/
 
-.department_clubs_section{border-bottom: .1rem solid #c0855280;}
+/* .department_clubs_section{border-bottom: .1rem solid #c0855280;} */
 
 /* ================= Department Clubs Section ================*/
 

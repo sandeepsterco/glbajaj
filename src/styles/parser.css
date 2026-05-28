@@ -333,11 +333,16 @@
    RIGHT SECTION
 ========================= */
 .home_testimonials .right { flex:0.9; display:flex; flex-direction:column; }
-.home_testimonials .tabs { display:flex; gap:3rem; font:var(--font-18); font-weight: 600; margin-bottom: 5.5rem; justify-content: flex-end; }
-.home_testimonials .tab { cursor:pointer; color:#000; padding-bottom:1.5rem; position:relative; }
-.home_testimonials .tab:before { position:absolute; content:''; height:100%; width:100%; top:0; left:0; border-bottom: 2px dashed var(--color-92); ; opacity: 0.3; }
-.home_testimonials .tab.active { color:var(--color-92); font-weight:500; }
-.home_testimonials .tab.active:before { border-color:#895737; opacity:0.5; }
+.home_testimonials .tabs,
+.tabs_design1 { display:flex; gap:3rem; font:var(--font-18); font-weight: 600; margin-bottom: 5.5rem; justify-content: flex-end; }
+.home_testimonials .tab,
+.tabs_design1 .tab { cursor:pointer; color:#000; padding-bottom:1.5rem; position:relative; }
+.home_testimonials .tab:before,
+.tabs_design1 .tab:before { position:absolute; content:''; height:100%; width:100%; top:0; left:0; border-bottom: 2px dashed var(--color-92); ; opacity: 0.3; }
+.home_testimonials .tab.active,
+.tabs_design1 .tab.active { color:var(--color-92); font-weight:500; }
+.home_testimonials .tab.active:before,
+.tabs_design1 .tab.active:before { border-color:#895737; opacity:0.5; }
 /* .home_testimonials .main-images .main-img { opacity: 0; transition: 0.5s; }
 .home_testimonials .main-images .main-img.active { opacity:1; }
 */

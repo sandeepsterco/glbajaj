@@ -47,8 +47,8 @@ export default function DepartmentHomeClubs() {
         1200: { slidesPerView: 3, spaceBetween: 30 },
       }}
       navigation={{
-        nextEl: ".department_activities_next",
-        prevEl: ".department_activities_prev",
+        nextEl: ".department_home_clubs_next",
+        prevEl: ".department_home_clubs_prev",
       }}
       className="activities_swiper"
     >
@@ -66,7 +66,7 @@ export default function DepartmentHomeClubs() {
             <div className="activities_caption">
               <p>{item.title}</p>
             </div>
-            {item.type === "club" && item?.slug && (
+            {item?.slug && (
               <Link
                 className="strech_link"
                 href={BASE_URL + "why-clubs-societies/" + item.slug}
@@ -78,10 +78,10 @@ export default function DepartmentHomeClubs() {
 
       {showNavigation && (
         <div className="navigation_btn">
-          <div className="prev-btn swiper_prev_custom department_activities_prev">
+          <div className="prev-btn swiper_prev_custom department_home_clubs_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>
-          <div className="next-btn swiper_next_custom department_activities_next">
+          <div className="next-btn swiper_next_custom department_home_clubs_next">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>
         </div>

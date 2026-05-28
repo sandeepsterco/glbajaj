@@ -26,19 +26,13 @@ export default function DepartmentHomeActivities() {
   });
 
   const activitiesData = data?.modular?.["department-activities"] ?? [];
-  const clubsData = data?.modular?.["clubs-and-society"] ?? [];
 
-  const allItems = [
-    ...activitiesData.map((item: any) => ({ ...item, type: "activity" })),
-    ...clubsData.map((item: any) => ({ ...item, type: "club" })),
-  ];
-
-  const slideCount = allItems.length;
+  const slideCount = activitiesData.length;
   const maxSlidesPerView = 3;
   const shouldLoop = slideCount > maxSlidesPerView;
   const showNavigation = shouldLoop;
 
-  if (isLoading || allItems.length === 0) return null;
+  if (isLoading || activitiesData.length === 0) return null;
 
   return (
     <Swiper
@@ -57,7 +51,7 @@ export default function DepartmentHomeActivities() {
       }}
       className="activities_swiper"
     >
-      {allItems.map((item: any, idx: number) => (
+      {activitiesData.map((item: any, idx: number) => (
         <SwiperSlide key={item?.id || idx}>
           <div className="activies_col">
             <figure>

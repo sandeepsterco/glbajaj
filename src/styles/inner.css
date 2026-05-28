@@ -480,7 +480,7 @@
 .confrence_section h2 { color: var(--color-92); padding-right: 5rem; }
 .confrence_grid { margin-top: 7.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; row-gap: 3.8rem; }
 .confrence_grid_Bx { position: relative; }
-.confrence_grid_Bx p { font: var(--font-18); font-weight: 500; color: var(--color-black); padding: 2rem 3rem 0 0; margin-bottom: 0; }
+.confrence_grid_Bx p { font: var(--font-18); font-weight: 500; color: var(--color-black); padding: 2rem 3rem 0 0; margin-bottom: 0;min-height: 12rem; }
 .confrence_grid_Bx .icon { margin-left: -1.2rem; margin-top: 1rem; }
 /* ==============Academic Facilities page Start============= */
 .academic_facility_section { padding-block: 5rem 7rem; }
@@ -730,6 +730,7 @@
 .res_publica_tblsec:last-of-type { padding-bottom: 0; }
 .table-description { padding-block: 10rem 5rem; }
 .table-description h2 { margin-bottom: 2.5rem; }
+.res_publication .res_publication_ttl h4{margin-bottom: 1.5rem;}
 .res_publication .res_publication_ttl { margin-bottom: 3.5rem; }
 /* ============== Research Publication End============= */
 /* ============== Placement Policy start============= */
@@ -866,6 +867,7 @@
 .kf_card h5 { font: var(--font-21); margin-bottom: 2.4rem; color: var(--color-AE); font-weight: 500; }
 .our_cmit_grid { display: grid; grid-template-columns: 56.4% auto; gap: 7.3rem; align-items: center; }
 .or_cmit_right h4 { margin-bottom: 4rem; }
+.or_cmit_right h3 { margin-bottom: 2rem; }
 .our_enqsec { padding-top: 10rem; }
 .our_enqsec h5 { font: var(--font-18); font-weight: 600; margin-bottom: 2.4rem; }
 .our_enqsec a { color: var(--color-92); }
@@ -1003,7 +1005,7 @@
 .oth_topimg { padding-right: 11.48rem; margin-bottom: 2.8rem; }
 .oth_bottm_img { padding-left: 11.48rem; }
 .oth_ac_rgt h5 { margin-bottom: 4rem; font-weight: bold; }
-.oth_ac_rgt .custom_bullet li h6 { font-weight: 600; margin-bottom: 2.8rem; }
+.oth_ac_rgt .custom_bullet li h6 { font-weight: 600; margin-bottom:0.5rem; }
 .oth_ac_rgt .custom_bullet li { margin-block: 0 2rem; }
 .oth_ac_rgt .custom_bullet li p { line-height: 2.4rem; }
 .other_activi_sec2 { padding-bottom: 10rem; }
@@ -1034,7 +1036,7 @@
 .acx_list li a { font: var(--font-18); font-weight: 600; color: var(--color-black); }
 .acx_grid2 { display: grid; gap: 15rem; grid-template-columns: auto 32.5%; }
 .acx_grid2 span { font: var(--font-16); font-weight: 600; color: var(--color-92); margin-bottom: 6.9rem; display: inline-block; margin-top: 2rem; }
-.acx_counter sup { font: var(--font-16); top: -1.5em; left: 0.3rem; }
+.acx_counter sup { font: var(--font-16); top: 0em; left: 0.3rem; }
 .acx_counter>li { padding: 2.8rem; }
 .acx_rgt2>.acx_list { margin-top: 7.2rem; }
 .spfx_sec { position: relative; }
@@ -1239,7 +1241,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .speakers-wrapper { padding-block: 10rem 6.6rem; }
 .speakers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4rem; }
 .speakers-card { background: var(--color-F5); padding: 3.3rem 5.3rem; }
-.speakers-card h3 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
+.speakers-card h3 { font: var(--font-18); font-weight: 600; color: var(--color-black);margin-bottom: 1rem; }
 .speakers-card p { color: var(--color-33); line-height: 1.5; }
 .speakers-grid-2 { display: grid; grid-template-columns: 31.1% auto; margin-top: 3.4rem; gap: 3.4rem; }
 .speakers-grid-2 .speakers-card.wide { background-color: transparent; padding-inline: 6.6rem 10.6rem; }
@@ -1634,7 +1636,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .anti_ragging_content h5 { margin-bottom: 1rem; font-weight: 600; }
 /* ============= student-Research ========= */
 .top-student-research .tp_ov_pattern { padding-top: 3rem ; }
-.projects-table { padding-bottom: 0; }
+.projects-table { padding-bottom:10rem;padding-top: 0; }
 .project-gallery .media_grid_Bx figure img { max-width: 100%; }
 .project-gallery { padding-top: 0; }
 .project-gallery .media_grid_Bx figure { margin-top: 0; height: 100%; }
@@ -1650,7 +1652,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
 /* ============= student-Research ========= */
 .top-student-research .tp_ov_pattern { padding-top: 3rem ; }
-.projects-table { padding-bottom: 0; }
+/* .projects-table { padding-bottom: 0; } */
 section.table-description.project-gallery-top { padding-bottom: 0; }
 .project-gallery .media_grid_Bx figure img { max-width: 100%; }
 .project-gallery { padding-top: 0; }
@@ -1668,7 +1670,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 */
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
 /* =============== Quick Link page css  */
-.res_publication.grievance-policy { padding-bottom: 0; background: #f4f7f4; }
+.res_publication.grievance-policy { padding-bottom: 0; }
 .res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
@@ -1913,11 +1915,10 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 
  
 
- 
-.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; cursor: pointer;font-weight: 500;}
+.horizontal_tab .xtabs_nav .xtab_btn{margin-right: 3rem; cursor: pointer;font-weight: 500;padding-bottom: 4.3rem;}
 .horizontal_tab .xtabs_nav .xtab_btn.active{border-bottom: 0.3rem solid var(--color-92);font-weight: 600;}
-.horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);}
-
+.horizontal_tab .xtabs_nav{border-bottom: 0.1rem solid var(--color-70);margin-bottom: 3rem;}
+.course_grid_Bx .horizontal_tab .xtabs_nav .xtab_btn{margin-right: 8rem; }
 
 
 .cr-sec { padding-block: 10rem 10rem; margin-top: 10rem; border-top: .1rem solid #c0855280; }
@@ -1958,8 +1959,8 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .career_2 { padding-top: 10rem; }
 .anti_ragging_inner { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
 .anti_ragging_inner::after { content: ""; position: absolute; background: url(/images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
-.anti_ragging_grid { display: grid; grid-template-columns: 60% 40%; }
-.anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
+.anti_ragging_grid { display: grid; grid-template-columns: 1fr; }
+/* .anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; } */
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
 /* clubs-and-soci page css start */
 .clubs-and-sociTop { padding-bottom: 0; }

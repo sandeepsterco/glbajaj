@@ -626,7 +626,7 @@
 */
 /* ============== CSE Department Code of Conduct page Start============= */
 .cou_off_lft .cou_main_title { margin-bottom: 5.9rem; padding-left: 3.7rem; }
-.cse_course_offered { padding-block: 10rem 10rem; border-bottom: 0.1rem solid #c0855280; border-top: 0.1rem solid #c0855280; }
+.cse_course_offered { padding-block: 10rem 10rem; border-bottom: 0.1rem solid #c0855280;}
 .cou_off_grid { display: grid; grid-template-columns: auto 51.5%; align-items: end; }
 .cou_main_title .title48 { color: var(--color-92); }
 .cou_off_box { background-color: var(--color-f3); padding: 4.1rem 5.2rem 7.6rem 3.8rem; }
@@ -709,6 +709,7 @@
 .activites_sec { padding-block: 10rem 11rem; }
 .activites_sec .font24 { margin-bottom: 2rem; }
 .activites_sec .title48 { color: var(--color-92); margin-bottom: 10rem; }
+.activites_sec .navigation_btn{bottom: unset; position: relative; right: unset; left: 1rem;}
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }

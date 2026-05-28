@@ -14,11 +14,13 @@
 .news_right a{ margin-left: -1.5rem; display: inline-block; margin-top: 2rem;}
 .news_listing{ padding-block:2rem 12rem;}
 .news_list{ display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0;}
+.news_list figure {height: 100%;width: 100%;}
+.news_list figure img{height: 100%;width: 100%;}
 .news_list_right span{ display: inline-block; margin-left: -1.5rem; margin-top:3rem;}
 .news_list_right .date{ font: var(--font-16); color: var(--color-33);}
 .news_list_right h4{ color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block:2rem;}
 .news_list_right p{ font: var(--font-16); color: var(--color-33);}
-.news_list_right{ padding-right:10rem;}
+.news_list_right{ padding-right:10rem;padding-block: 2rem;}
 
 @media (max-width:2400px){
     .news_right{ padding-inline: 13rem 6rem;}
@@ -64,6 +66,7 @@
 .news_details_img::after{ background-image: url(/images/pattern/patch-2.png); height: 30.9rem; width: 100%; content: ""; position: absolute; top: 0; bottom: 0; margin: auto 0; right: -10rem; z-index: 0; background-size: contain; background-repeat: no-repeat;}
 .news_details_gallery{margin-top: 7rem;}
 .news_details_gallery .gallery_grid{margin-top: 6rem; display: grid; grid-template-columns: repeat(3, 1fr);}
+
 .related_stories{ background-color: var(--color-F4);  padding-block: 7rem 14.6rem;}
 .related_stories h2{ font: var(--font-24); color: var(--color-64); margin-bottom: 3rem; font-weight: 700;}
 .related_story_grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; position: relative;}

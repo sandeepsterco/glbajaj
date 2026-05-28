@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-const getDepartmentFaculty = async (slug:string) => {
+const getDepartmentFaculty = async (slug: string) => {
 
     const { data, error } = await apiFetch(`department/${slug}/home`);
 
@@ -24,7 +24,7 @@ export default function DepartmentHomeFaculties() {
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ["department-home-faculties", slug],
-        queryFn: ()=>getDepartmentFaculty(slug)
+        queryFn: () => getDepartmentFaculty(slug)
     })
 
     const slideCount = data?.length ?? 0;
@@ -34,54 +34,54 @@ export default function DepartmentHomeFaculties() {
 
     if (isLoading) {
         return (
-            <SkeletonGroup wrapperClassName="mt-[7.7rem] grid-cols-3 gap-[4rem]" count={6} className="bg-gray-300 h-[40rem] w-[100%]" />
+            <SkeletonGroup wrapperClassName="mt-[7.7rem] grid-cols-3 gap-[4rem] !grid-cols-4" count={4} className="bg-gray-300 h-[40rem] w-[100%]" />
         );
     }
 
     return (
         <Swiper
-                modules={[Navigation]}
-                slidesPerView={1.2}
-                spaceBetween={20}
-                loop={shouldLoop}
-                autoplay={false}
-                breakpoints={{
-                    768: { slidesPerView: 2.5, spaceBetween:15 },
-                    1200: { slidesPerView: 4.7, spaceBetween:40 },
-                }}
-                navigation={{
-                    nextEl: ".department_faculty_next",
-                    prevEl: ".department_faculty_prev",
-                }}
-                className="cse_faculties_slider"
-            >
-                {data?.map((item: any, index: number) => (
-                    <SwiperSlide key={item?.id || index}>
-                        <div className="leader_card">
-                            <figure>
-                                <Image src={item.image} alt="leader" className="img-fluid w-100" height={417} width={383} />
-                            </figure>
-                            {item?.name && (
-                                <h4>{item.name}</h4>
-                            )}
-                            {item?.type && (
-                                <p>{item.type}</p>
-                            )}
-                            <a className="strech_link" href="#"></a>
-                            
-                        </div>
-                    </SwiperSlide>
-                ))}
+            modules={[Navigation]}
+            slidesPerView={1.2}
+            spaceBetween={20}
+            loop={shouldLoop}
+            autoplay={false}
+            breakpoints={{
+                768: { slidesPerView: 2.5, spaceBetween: 15 },
+                1200: { slidesPerView: 4.7, spaceBetween: 40 },
+            }}
+            navigation={{
+                nextEl: ".department_faculty_next",
+                prevEl: ".department_faculty_prev",
+            }}
+            className="cse_faculties_slider"
+        >
+            {data?.map((item: any, index: number) => (
+                <SwiperSlide key={item?.id || index}>
+                    <div className="leader_card">
+                        <figure>
+                            <Image src={item.image} alt="leader" className="img-fluid w-100" height={417} width={383} loading="lazy" />
+                        </figure>
+                        {item?.name && (
+                            <h4>{item.name}</h4>
+                        )}
+                        {item?.type && (
+                            <p>{item.type}</p>
+                        )}
+                        <Link className="strech_link" href={`${BASE_URL}faculty/${item.slug}`}></Link>
 
-                {showNavigation && (
-                    <div className="navigation_btn">
-                        <div className="prev-btn swiper_prev_custom department_faculty_prev"><img src="/images/icons/arrow.svg" alt="arrow"
-                            className="img-fluid" /></div>
-                        <div className="next-btn swiper_next_custom department_faculty_next"><img src="/images/icons/arrow.svg" alt="arrow"
-                            className="img-fluid" /></div>
                     </div>
-                )}
-                
-            </Swiper>
+                </SwiperSlide>
+            ))}
+
+            {showNavigation && (
+                <div className="navigation_btn">
+                    <div className="prev-btn swiper_prev_custom department_faculty_prev"><img src="/images/icons/arrow.svg" alt="arrow"
+                        className="img-fluid" /></div>
+                    <div className="next-btn swiper_next_custom department_faculty_next"><img src="/images/icons/arrow.svg" alt="arrow"
+                        className="img-fluid" /></div>
+                </div>
+            )}
+
+        </Swiper>
     )
 }

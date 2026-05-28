@@ -723,6 +723,13 @@
 .short_des{margin-top: 4.6rem;}
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
 /* ============== CSE Department Code of Conduct page End============= */
+
+/* ================= Department Clubs Section ================*/
+
+.department_clubs_section{border-bottom: .1rem solid #c0855280;}
+
+/* ================= Department Clubs Section ================*/
+
 /* ============== Research Publication start============= */
 .res_publication { padding-block: 5rem 12rem; }
 .res_pub_title h4 { margin-bottom: 5rem; }

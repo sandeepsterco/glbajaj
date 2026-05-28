@@ -314,22 +314,37 @@
       },
     });
 
-    new Swiper(".hod_profile_slider", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      centeredSlides: false,
-      loop: false,
-      autoplay: false,
-      navigation: {
-        nextEl: ".vision_hod_next",
-        prevEl: ".vision_hod_prev",
-      },
-      watchOverflow: true,
-      breakpoints: {
-        768: { slidesPerView: 1, spaceBetween: 15 },
-        1200: { slidesPerView: 1, spaceBetween: 23 },
-      },
-    });
+    const hodSwiperEl = document.querySelector(".hod_profile_slider");
+
+    if(hodSwiperEl){
+      new Swiper(".hod_profile_slider", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false,
+        loop: false,
+        autoplay: false,
+        navigation: {
+          nextEl: ".vision_hod_next",
+          prevEl: ".vision_hod_prev",
+        },
+        watchOverflow: true,
+        breakpoints: {
+          768: { slidesPerView: 1, spaceBetween: 15 },
+          1200: { slidesPerView: 1, spaceBetween: 23 },
+        },
+        on:{
+          init(swiper){
+            const navBtn = hodSwiperEl.closest(".hod_profile_bx")?.querySelector(".navigation_btn");
+            if(navBtn){
+              navBtn.style.visibility = swiper.isLocked ? "hidden" : "";
+              navBtn.style.pointerEvents = swiper.isLocked ? "none" : "";
+            }
+          }
+        }
+      });
+    }
+
+    
 
     new Swiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,

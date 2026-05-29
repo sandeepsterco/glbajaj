@@ -4,8 +4,8 @@
       width: 42.5rem;
     }
 
-    .home_research_section .research_group::before{padding-bottom: 95.6rem;}
-    .home_research_section .research_group::after{height: 95.6rem;}
+    .home_research_section .research_group::before{padding-bottom: 100rem;}
+    .home_research_section .research_group::after{height: 100rem;}
     
   }
 

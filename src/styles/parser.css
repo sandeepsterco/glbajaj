@@ -296,8 +296,9 @@
 .single_grid .content .bottom_data .date { color: var(--color-white); font-weight: 600; }
 .single_grid .content .bottom_data .desc { color: var(--color-white); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
 .single_grid.no_image:nth-child(1) { background-color:#AE7F2C; }
-.single_grid.no_image:nth-child(3) { background-color:var(--color-FE); }
+.single_grid.no_image:nth-child(3) { background-color:var(--color-92); }
 .single_grid.no_image:nth-child(5) { background-color: var(--color-FE); }
+.single_grid.no_image:nth-child(5)  .content .bottom_data .date,.single_grid.no_image:nth-child(5)  .content .bottom_data .sub_title {color: var(--color-black);}
 .single_grid.no_image .content { height: 100%; position: relative; left: 0; bottom: 0; right: 0; padding: 5.9rem 7.8rem 5.4rem 5rem; }
 .single_grid.no_image .content .bottom_data { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
 .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-30); color: var(--color-white); }
@@ -306,7 +307,7 @@
 .single_grid:nth-child(2) { background: #AE7F2C; }
 .single_grid:nth-child(3) { background: var(--color-FE); }
 .single_grid:nth-child(8) { background: #fece49; }
-.single_grid:nth-child(8) .bottom_data .date { color: var(--color-black); }
+/* .single_grid:nth-child(8) .bottom_data .date { color: var(--color-black); } */
 .single_grid.no_image:nth-child(8) .content .bottom_data .sub_title { color: var(--color-black); max-width: 80%; }
 .single_grid figure { height: 100%; }
 .single_grid figure img { height: 100%; object-fit: cover; object-position: top; }
@@ -320,7 +321,6 @@
 .home_testimonials .grid .sec_title { margin-left: 19.5rem; margin-right: 1.8rem; }
 .home_testimonials .heading { margin-top:3rem; }
 .home_testimonials .desc_content { display:flex; margin:8.6rem 0 11.1rem; gap: 8.2rem; margin-left: 19.5rem; }
-.home_testimonials .desc_content .desc { min-height: 25rem; max-height: 25rem; overflow-y: auto; }
 .home_testimonials .quote-icon { font-size:70px; color:#f3c26b; line-height:0; margin-bottom:10px; }
 .home_testimonials .desc { margin-top: 2.4rem; font:var(--font-21); line-height:3rem; color:#333; flex: 1; display:none; }
 .home_testimonials .desc.active { display:block; }

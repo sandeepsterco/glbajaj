@@ -485,6 +485,7 @@
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right img { order: 1; text-align: left; }
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right figure img { margin-left: 0; height: 4rem; margin-bottom: 2rem; }
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right p { display: none; }
+.committees_pdf{padding-top: 0;}
 /* ==============Conferences & Symposium page Start============= */
 .confrence_section { padding-block: 5rem 12rem; }
 .confrence_section h2 { color: var(--color-92); padding-right: 5rem; }
@@ -2011,9 +2012,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .testimonial_inner .desc_content .des { font: var(--font-21); }
 .lounch-event.agaj-disable { display: none; }
 .head_commttesec { padding-block: 10rem 10rem; }
-.head_commi_grid { grid-template-columns: repeat(3, 1fr); gap: 3.4rem; display: grid; }
-.head_commi_grid .head_commit_box { background-color: var(--color-F5); padding: 3.1rem 8.5rem 3.1rem 2.2rem; position: relative; }
-.head_commi_grid .head_commit_box h3 { font: var(--font-24); color: var(--color-64); margin-bottom: 2.4rem; font-family: var(--font-tasa); font-weight: bold; margin-bottom: 0; }
+.head_commi_grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; display: grid; }
+.head_commi_grid .head_commit_box { background-color: var(--color-F5); padding: 3rem; position: relative; }
+.head_commi_grid .head_commit_box h3 { font: var(--font-21); color: var(--color-64); margin-bottom: 2.4rem; font-family: var(--font-tasa); font-weight: bold; margin-bottom: 0; }
 .fee-refund-policy .res_publication { padding-top: 0; }
 .fee-refund-policy .res_publication_ttl { display: none; }
 .fee-refund-policy .res_publication + .table-description { padding-block: 0 10rem; }

@@ -212,10 +212,14 @@ export default function HeroBanner({ data }: { data: any }) {
           loop
           playsInline
           style={{ width: '100%', objectFit: 'cover', display: 'block' }}
+          preload="auto"
+          
         >
           <source
             src="https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due"
             type="video/mp4"
+            //@ts-ignore
+            fetchPriority="high"
           />
         </video>
         {/* <video src="" /> */}

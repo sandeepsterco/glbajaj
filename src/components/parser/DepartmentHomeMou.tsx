@@ -7,141 +7,167 @@ import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { apiFetch } from "@/src/lib/api";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
-// ── Dummy Data ───────────────────────────────────────────────────────────────
-const DUMMY_DATA = [
-  {
-    type: "Student",
-    heading: "Projects",
-    title: "Innovative project solutions driving technical excellence, fostering creativity, and building impactful real-world applications.",
-    description: "Students at GL Bajaj have developed cutting-edge projects spanning AI, IoT, and web technologies. Their work bridges academic learning with industry demands, producing solutions that solve real-world problems and earn recognition at national hackathons and exhibitions.",
-    button_url: "/students/projects",
-    images: [
-      "/images/default/department-project.webp",
-      "/images/default/department-project.webp",
-      "/images/default/department-project.webp",
-    ],
-  },
-  {
-    type: "Recruiter",
-    heading: "Top Recruiters",
-    title: "Leading companies trust GL Bajaj to deliver industry-ready graduates equipped with the latest technical skills.",
-    description: "GL Bajaj has built strong relationships with 500+ recruiters including Google, Microsoft, Amazon, TCS, Infosys, and Wipro. Our placement cell works year-round to connect students with opportunities that match their skills and aspirations.",
-    button_url: "/recruiters",
-    images: [
-      "/images/default/department-project.webp",
-      "/images/default/department-project.webp",
-      "/images/default/department-project.webp",
-    ],
-  },
-  {
-    type: "Faculties",
-    heading: "Expert Faculty",
-    title: "Experienced educators and researchers shaping the next generation of engineers and innovators.",
-    description: "Our faculty comprises PhDs from premier institutes like IITs and NITs, industry veterans with decades of experience, and active researchers publishing in top-tier journals. Their mentorship goes beyond classrooms, guiding students in research, startups, and personal growth.",
-    button_url: "/faculty",
-    images: [
-      "/images/default/department-project.webp",
-      "/images/default/department-project.webp",
-    ],
-  },
-];
-
-// ── Types ────────────────────────────────────────────────────────────────────
-interface TabItem {
-  type: string;
-  heading: string;
-  title: string;
-  description: string;
-  button_url: string;
-  images: string[];
+interface MouImage {
+  images: string;
 }
 
-// ── Component ────────────────────────────────────────────────────────────────
+interface MouItem {
+  type: string;
+  title: string;
+  description: string;
+  pdf: string;
+  mapping_items: {
+    images: MouImage[];
+  };
+  slug: string;
+}
+
+const fetchDepartmentMouData = async (slug: string) => {
+  const { data, error } = await apiFetch(`department/${slug}/home`);
+  if (error) throw new Error(error);
+  return data?.data;
+};
+
 export default function DepartmentHomeMou() {
-  const rawData: TabItem[] = DUMMY_DATA;
+  const pathname = usePathname();
+  const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
-  const tabs = [
-    { key: "Student", label: "Students" },
-    { key: "Recruiter", label: "Recruiters" },
-    { key: "Faculties", label: "Faculties" },
-  ];
+  const { data, isLoading } = useQuery({
+    queryKey: ["department_home_collaboration_mou", slug],
+    queryFn: () => fetchDepartmentMouData(slug),
+  });
 
-  const [activeTab, setActiveTab] = useState("Student");
+  const mouData: MouItem[] = data?.modular?.["collaboration-mou"] ?? [];
+
+  // Derive unique ordered tabs from the data
+  const tabs = useMemo(() => {
+    const seen = new Set<string>();
+    return mouData
+      .map((item) => item.type)
+      .filter((type) => {
+        if (seen.has(type)) return false;
+        seen.add(type);
+        return true;
+      });
+  }, [mouData]);
+
+  const [activeTab, setActiveTab] = useState<string>("");
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const activeItem = useMemo(
-    () => rawData.find((i) => i.type === activeTab) ?? rawData[0],
-    [activeTab]
+  // Set first tab once data loads
+  const resolvedTab = activeTab || tabs[0] || "";
+
+  // All items for the active tab
+  const tabItems = useMemo(
+    () => mouData.filter((item) => item.type === resolvedTab),
+    [mouData, resolvedTab]
   );
 
-  const handleTabClick = (tabKey: string) => {
-    setActiveTab(tabKey);
-    // Reset to first slide on tab change
+  // Active item index within the tab
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
+  const activeItem: MouItem | undefined = tabItems[activeItemIndex];
+
+  const images = activeItem?.mapping_items?.images ?? [];
+  const hasMultiple = images.length > 1;
+
+  const handleTabClick = (type: string) => {
+    setActiveTab(type);
+    setActiveItemIndex(0);
     setTimeout(() => swiperRef.current?.slideTo(0), 0);
   };
 
-  const hasMultiple = activeItem.images.length > 1;
+  const handleItemClick = (idx: number) => {
+    setActiveItemIndex(idx);
+    setTimeout(() => swiperRef.current?.slideTo(0), 0);
+  };
+
+  if (isLoading || !activeItem) return null;
 
   return (
     <>
-      {/* Tabs */}
+      {/* Dynamic Tabs */}
       <div className="tabs tabs_design1">
-        {tabs.map((tab) => (
+        {tabs.map((type) => (
           <div
-            key={tab.key}
-            className={`tab ${activeTab === tab.key ? "active" : ""}`}
-            onClick={() => handleTabClick(tab.key)}
+            key={type}
+            className={`tab ${resolvedTab === type ? "active" : ""}`}
+            onClick={() => handleTabClick(type)}
           >
-            {tab.label}
+            {type}
           </div>
         ))}
       </div>
+
+      {tabItems.length > 1 && (
+        <div className="tab_subnav">
+          {tabItems.map((item, idx) => (
+            <button
+              key={item.slug}
+              className={`subnav_btn ${activeItemIndex === idx ? "active" : ""}`}
+              onClick={() => handleItemClick(idx)}
+            >
+              {item.title}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Main Grid */}
       <div className="dep_project_grid reverse">
 
         {/* Content Section */}
         <div className="project_contentsec">
-          <h4 className="font24">{activeItem.heading}</h4>
+          <h4 className="font24">Collaborations & MOUs</h4>
           <h3 className="font36">{activeItem.title}</h3>
           <p>{activeItem.description}</p>
-          <a href={activeItem.button_url} className="cus-btn">View More</a>
+          <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">
+            PDF
+          </a>
         </div>
 
         {/* Image Slider Section */}
         <div className="proj_imgsec">
           <Swiper
-            key={activeTab}
+            key={`${resolvedTab}-${activeItemIndex}`}
             modules={[Navigation]}
             slidesPerView={1}
             navigation={hasMultiple ? {
-              prevEl: `.collaboration_mou_prev`,
-              nextEl: `.collaboration_mou_next`,
+              prevEl: ".collaboration_mou_prev",
+              nextEl: ".collaboration_mou_next",
             } : false}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
           >
-            {activeItem.images.map((src, i) => (
+            {images.map((imgObj, i) => (
               <SwiperSlide key={i}>
                 <figure>
-                  <img
-                    src={src}
-                    alt={`${activeItem.heading} image ${i + 1}`}
+                  <Image
+                    src={imgObj.images}
+                    alt={`${activeItem.title} image ${i + 1}`}
+                    className="w-100 img-fluid"
+                    width={850}
+                    height={600}
                   />
                 </figure>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Custom nav — only when more than 1 image */}
+          {/* Nav buttons — only when more than 1 image */}
           {hasMultiple && (
             <div className="navigation_btn relative b-0 r-0">
-              <div className="swiper_prev_custom collaboration_mou_prev" role="button" ><img alt="arrow" className="img-fluid" src="/images/icons/arrow.svg" /></div>
-              <div className="swiper_next_custom collaboration_mou_next" role="button" ><img alt="arrow" className="img-fluid" src="/images/icons/arrow.svg" /></div>
+              <div className="swiper_prev_custom collaboration_mou_prev" role="button">
+                <img alt="prev" className="img-fluid" src="/images/icons/arrow.svg" />
+              </div>
+              <div className="swiper_next_custom collaboration_mou_next" role="button">
+                <img alt="next" className="img-fluid" src="/images/icons/arrow.svg" />
+              </div>
             </div>
           )}
-        
-          
         </div>
 
       </div>

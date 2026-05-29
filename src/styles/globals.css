@@ -89,6 +89,7 @@ figure { margin-bottom: 0; }
 blockquote { font: var(--font-24); color: var(--color-b2); margin: 0; }
 p { font: var(--font-16); margin-bottom: 2rem; }
 p:last-child { margin-bottom: 0; }
+span{font: var(--font-16);}
 h1 { font: var(--font-36); }
 h2 { font: var(--font-60); color: var(--color-77); }
 h3 { font: var(--font-36); color: var(--color-black); }
@@ -222,7 +223,10 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
   cursor: pointer;
 }
 
-.coming_soon_page h1{  color: var(--color-92);}
+.coming_soon_page h1,
+.not_found_page h1{  color: var(--color-92);}
 .go_back__btn{background-color: var(--color-92); color: var(--color-white); padding: 1rem 3.5rem; border-radius: 0.5rem; margin-top: 3rem;}
 .go_back__btn:hover{ background-color: var(--color-FE); color: var(--color-black);}
-.coming_soon_page p{ font: var(--font-21); padding-top: 1rem;}
+.coming_soon_page p,
+.not_found_page p{ font: var(--font-21); padding-top: 1rem;}
+.not_found_page .content{margin-top:-10rem}

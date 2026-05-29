@@ -14,7 +14,7 @@ export default async function DepartmentsPage() {
 
     return (
         <main>
-            {data?.data && <PageHeader data={data.data} slug={slug} showTabs={false} />}
+            {data?.data && <PageHeader data={data.data} slug={slug}  />}
             
             {departmentError && <ApiErrorFallback heading="Couldn't load Departments Page" message={departmentError} />}
 

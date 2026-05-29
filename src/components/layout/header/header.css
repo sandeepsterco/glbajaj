@@ -6,7 +6,7 @@
 .scrolled .top_menu,
 .inner_header .top_menu{background:var(--color-92)}
 .main_header { position: fixed; top: 0; left: 0; right: 0; background-color: transparent; background: transparent linear-gradient(0deg, #00000000 0%, rgb(0 0 0 / 37%) 100%) 0% 0% no-repeat padding-box; 
-    overflow-x: clip; z-index: 999; transition: all .5s ease; }
+    overflow-x: clip; z-index: 98; transition: all .5s ease; }
 .main_header.inner_header{position:relative; background:#fff; position: sticky; top:0;}
 .main_header.scrolled{background:#fff; box-shadow: 0px 2px 5rem rgba(0 0 0 / 6%); }
 .main_header a { color: var(--color-white); }
@@ -37,6 +37,10 @@
 .menu_bars .hamb_open img { width: 2.2rem; }
 .inner_header.active .menu_bars .search_open img,
 .inner_header.active .menu_bars .hamb_open img{filter:invert(1)}
+
+.main_header.active .menu_bars .search_open img,
+.main_header.active .menu_bars .hamb_open img{filter:invert(1)}
+
 .site_nav>ul>li>a { display: inline-block; position: relative; font: var(--font-21); color: var(--color-white); letter-spacing: -0.19px; 
     font-weight: var(--font-medium); z-index: 1; text-decoration: none; transition: all .5s ease; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; 
     -ms-transition: all .5s ease; -o-transition: all .5s ease; }
@@ -74,9 +78,9 @@
 /************  Hamburger CSS Start ************/
 
 .humburger_mainsec { position: fixed; top: 0; right: -100%; width: auto; background-color: var(--color-33); transition: 0.3s ease; 
-    padding: 20px; z-index: 999; padding: 8.9rem 11rem 19.6rem 15.3rem; }
-.humburger_mainsec.active { right: 5%; }
-.hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 70vh; overflow: auto;}
+    padding: 20px; z-index: 999; padding: 8.9rem 11rem 19.6rem 15.3rem; max-width: 148.3rem; }
+.humburger_mainsec.active { right: 0; left: 0; margin: 0 auto; }
+.hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 58vh; overflow: auto; padding-right: 3rem;}
 .hmburger_col .title24 { color: var(--color-D2); margin-bottom: 5.1rem; }
 .hmburger_col.happenings_col ul+.title24,
 .hmburger_col.facilities_col ul+.title24 { margin-top: 5.9rem; }
@@ -87,7 +91,7 @@
     background-color: rgba(0 0 0 / 64%); backdrop-filter: blur(4px); z-index: 999; }
 #humburgeroverlay.active { opacity: 1; visibility: visible; }
 
-.humburger_mainsec .hamburger_pattern{position:absolute; left:0; bottom:0;}
+.humburger_mainsec .hamburger_pattern{position:absolute; left:0; bottom:0; width: 100%;}
 /************  Hamburger CSS End ************/
 
 .dropdown_grid_research-overview .dropdown_col.no-children .menu_title.no-children{
@@ -104,13 +108,13 @@
     font:var(--font-16)
 }
 
-
+.hmburger_grid ul{ padding-bottom: 5rem;}
 /* responsive */
 
 @media (min-width:1921px) {
     .site_brand{
         padding-bottom: 2rem;
     }
-    .humburger_mainsec.active { right: 34.5rem; }
-    .hmburger_grid {height: auto; overflow: auto;}
+    /* .humburger_mainsec.active { right: 34.5rem; } */
+    .hmburger_grid {overflow: auto;}
   }

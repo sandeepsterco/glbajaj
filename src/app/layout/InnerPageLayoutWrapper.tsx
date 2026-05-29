@@ -18,7 +18,7 @@ export default async function InnerPageLayoutWrapper({ slug, tabs, children, mai
     return (
         <div className={mainClass || ''}>
             {updatedTabs && (
-            <PageHeader data={updatedTabs} slug={slug} showTabs={showTabs} />
+            <PageHeader data={updatedTabs} slug={slug}  />
             )}
             {children}
         </div>

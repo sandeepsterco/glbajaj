@@ -29,7 +29,7 @@ export default async function ProgramDetailLayout({children, params}:Readonly<{c
 
     return(
         <>
-            <PageHeader data={programDetailTab} slug={slug} showTabs={false} />
+            <PageHeader data={programDetailTab} slug={slug}/>
             {children}
         </>
     )

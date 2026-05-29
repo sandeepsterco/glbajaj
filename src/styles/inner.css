@@ -182,7 +182,7 @@
 .about_breadcrumb p { margin-bottom: 0; }
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
-.happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
+/* .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; } */
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
 .front_news { display: grid; grid-template-columns: 57% auto; gap: 15rem; }
 .award_ranking_why .front_news { gap: 15rem; }
@@ -735,11 +735,13 @@
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
+
 /* ============== CSE Department Code of Conduct page End============= */
-/* ================= Department Clubs Section ================*/
-/* .department_clubs_section { border-bottom: .1rem solid #c0855280; }
-*/
-/* ================= Department Clubs Section ================*/
+/* ================= Department achievement page ================*/
+
+.achivment_innerpage{padding-block: 8rem;}
+
+/* ================= Department achievement page ================*/
 /* ============== Research Publication start============= */
 .res_publication { padding-block: 5rem 12rem; }
 .res_pub_title h4 { margin-bottom: 5rem; }

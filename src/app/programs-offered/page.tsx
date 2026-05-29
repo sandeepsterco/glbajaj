@@ -10,7 +10,7 @@ export default async function ProgramsOffered(){
 
     return(
         <main>
-            <PageHeader data={data.data} slug={slug} showTabs={false} />
+            <PageHeader data={data.data} slug={slug} />
             <Suspense fallback={<p>Loading...</p>}>
                 <ProgramList />
             </Suspense>

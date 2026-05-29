@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { getPathname, getSlug } from '@/src/lib/getSlug';
 
 
-export default async function PageHeader({data, slug, showTabs}:{data:any, slug:string, showTabs:boolean}){
+export default async function PageHeader({data, slug}:{data:any, slug:string}){
     const currentPageSlug = await getSlug(-2);
     const currentPage = data?.tabs?.find((tab:any)=>tab.slug === data?.active_tab_slug);
     const activeSlug = data?.active_tab_slug;

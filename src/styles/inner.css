@@ -195,9 +195,12 @@
 .news_right p { font: var(--font-16); color: var(--color-33); }
 .news_right a { margin-left: -1.5rem; display: inline-block; margin-top: 2rem; }
 .news_listing { padding-block: 2rem 12rem; }
+.front_news .news_cnt a { background-color: var(--color-white); justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 3rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
+.front_news .news_cnt a:hover { background-color: var(--color-92); }
+.front_news .news_cnt a:hover img { filter: brightness(0) invert(); }
 .news_list { display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0; }
 .news_list_right span { display: inline-block; margin-left: -1.5rem; margin-top: 3rem; }
-.news_list_right date { font: var(--font-16); color: var(--color-33); }
+.news_list_right .date { font: var(--font-16); color: var(--color-33); }
 .news_list_right h4 { color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block: 2rem; }
 .news_list_right p { font: var(--font-16); color: var(--color-33); }
 .news_list_right { padding-right: 10rem; }
@@ -240,7 +243,8 @@
 .media_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
 .media_grid_Bx { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
 .media_grid_Bx figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
-.media_grid_Bx figure img { max-width: 22rem; margin: 0 auto; }
+/* .media_grid_Bx figure img { max-width: 22rem; margin: 0 auto; }
+*/
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 2rem 0 0 2.7rem; position: relative; }
@@ -275,8 +279,8 @@
 .gallery_list_bx p { font: var(--font-16); color: var(--color-33); font-weight: 400; padding-inline: 2.5rem; margin-block: 2rem; }
 .fancybox__caption { font: var(--font-18); padding-top: 5rem !important; }
 .fancybox__counter span { color: var(--color-white); }
-.fancybox__nav .carousel__button.is-next { right: 30%; background-color: var(--color-white); border-radius: 0; color: #ff0000; }
-.fancybox__nav .carousel__button.is-prev { left: 30%; background-color: var(--color-white); border-radius: 0; color: #ff0000; }
+.fancybox__nav .carousel__button.is-next { right: 22%; background-color: var(--color-white); border-radius: 0; color: #ff0000; }
+.fancybox__nav .carousel__button.is-prev { left: 22%; background-color: var(--color-white); border-radius: 0; color: #ff0000; }
 .fancybox__nav .carousel__button.is-prev svg,
 .fancybox__nav .carousel__button.is-next svg { width: 1.3rem; }
 .gallery_list_header { padding-block: 6rem 5rem; display: flex; justify-content: space-between; }
@@ -721,10 +725,10 @@
 .activies_col p { padding-top: 1.3rem; }
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
 .dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; align-items: center; }
-.dep_projects .dep_project_grid.reverse{grid-template-columns: 32.9% 57% ;}
+.dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
 .dep_projects { position: relative; }
 .dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; height: 100%; }
-.dep_projects.reverse::after{right:0; left:unset; background-image: url(/images/research_shap_02.png);}
+.dep_projects.reverse::after { right:0; left:unset; background-image: url(/images/research_shap_02.png); }
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
 .project_contentsec .cus-btn { margin-top: 2rem; }
@@ -733,9 +737,8 @@
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
 /* ============== CSE Department Code of Conduct page End============= */
 /* ================= Department Clubs Section ================*/
-
-/* .department_clubs_section{border-bottom: .1rem solid #c0855280;} */
-
+/* .department_clubs_section { border-bottom: .1rem solid #c0855280; }
+*/
 /* ================= Department Clubs Section ================*/
 /* ============== Research Publication start============= */
 .res_publication { padding-block: 5rem 12rem; }
@@ -821,6 +824,14 @@
 .tocr_grid { display: grid; grid-template-columns: 39.3% 56.4%; gap: 6.5rem; align-items: end; }
 .tocr_left h5 { font: var(--font-18); font-weight: bold; margin-top: 4rem; margin-bottom: 1.5rem; }
 .tocr_left h3 { color: var(--color-92); margin-bottom: 4rem; }
+.career_sec_tabmain .xtabs_sec { grid-template-columns: 71.2% 24.6%; align-items: center; gap: 5rem; display: grid; }
+.career_sec_tabmain { background-color: var(--color-F4); padding-block: 10rem; position: relative; }
+.career_sec_tabmain:before { content: ""; background-image: url(/images/pattern/career_linehshape.webp); background-repeat: no-repeat; background-size: contain; width: 20.7rem; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; }
+.career_sec_tabmain .xtab_btn { font: var(--font-21); border-bottom: .1rem dashed var(--color-92); cursor: pointer; margin-bottom: 4rem; padding-bottom: 1.6rem; display: table; }
+.career_sec_tabmain .xtab_btn.active { color: var(--color-92); font-weight: 600; }
+.campus_sport_factab.career_sec_tabmain:before { display: none; }
+.campus_sport_factab .career_emptitle:before { display: none; }
+.campus_sport_factab .career_emptitle p { font: var(--font-16); }
 /* ==============Career Guidance  End============= */
 /* =============Career Development Centre  start============= */
 .tcdcX_secmain { padding-block: 9rem 12.2rem; background-color: var(--color-F4); }
@@ -1882,8 +1893,8 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .sterco_accordion_content:before { background-color: transparent; }
 .innovation_tabs .sterco_accordion_content { grid-template-columns: 1fr; max-width: 67.6rem; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-top: -38rem; padding-block: 13rem 0rem; display: grid; position: relative; margin-right: 10rem; margin-left: auto; }
 .innovation_tabs .sterco_tab_main { padding-bottom: 0; }
-.innovation_tabs .sterco_tab_main .sterco_tab_btn{color: #ffffff80;}
-.innovation_tabs .sterco_tab_main .sterco_tab_btn.active{color: var(--color-white);}
+.innovation_tabs .sterco_tab_main .sterco_tab_btn { color: #ffffff80; }
+.innovation_tabs .sterco_tab_main .sterco_tab_btn.active { color: var(--color-white); }
 .peo_rgt_box .poe_title { font: var(--font-18); font-weight: 700; margin-bottom: 1rem; }
 .peo_rgt_box .peo_box:not(:last-child) { margin-bottom: 3rem; }
 .innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
@@ -1994,4 +2005,12 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .testimonial_inner .extra_info:after { content: ""; background-color: var(--color-FE); width: 14.9rem; height: 1rem; position: absolute; bottom: -4.8rem; left: 0; }
 .testimonial_inner .extra_info .name { font:var(--font-18); font-weight: 600; margin-bottom: 2rem; }
 .testimonial_inner .extra_info p { margin:0; }
+.testimonial_inner .desc_content .des { font: var(--font-21); }
 .lounch-event.agaj-disable { display: none; }
+.head_commttesec { padding-block: 10rem 10rem; }
+.head_commi_grid { grid-template-columns: repeat(3, 1fr); gap: 3.4rem; display: grid; }
+.head_commi_grid .head_commit_box { background-color: var(--color-F5); padding: 3.1rem 8.5rem 3.1rem 2.2rem; position: relative; }
+.head_commi_grid .head_commit_box h3 { font: var(--font-24); color: var(--color-64); margin-bottom: 2.4rem; font-family: var(--font-tasa); font-weight: bold; margin-bottom: 0; }
+.fee-refund-policy .res_publication { padding-top: 0; }
+.fee-refund-policy .res_publication_ttl { display: none; }
+.fee-refund-policy .res_publication + .table-description { padding-block: 0 10rem; }

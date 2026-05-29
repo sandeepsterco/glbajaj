@@ -6,19 +6,20 @@ import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug, page} = await params;
 
-    const {data, error} = await apiFetch(`department/${slug}/about`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`department/${slug}/achievements`);
 
-    // if(error){
-    //     return <NotFound />;
-    // }
+    if(error){
+        return <NotFound />;
+    }
+
+    const pageData = data?.data?.modular?.achivements;
 
     return(
         <div className="happenings_page">
             {data?.data?.tabs && (
-                <PageHeader data={data.data} slug={slug} />
+                <PageHeader data={data.data} slug={slug}  />
             )}
-            {/* {data.data.cms.length == 0 ? <ComingSoon /> : children} */}
-            {children}
+            {pageData.length == 0 ? <ComingSoon /> : children}
         </div>
     )
 }

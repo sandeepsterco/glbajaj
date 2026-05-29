@@ -132,7 +132,10 @@
 .research_slider_wrapper .navigation_btn .swiper_next_custom,
 .research_slider_wrapper .navigation_btn .swiper_prev_custom { box-shadow: none; }
 .swiper_prev_custom, .swiper_next_custom { background-color: var(--color-white); height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1), 6px 17px 36px rgba(255, 255, 255, 0.8); }
-.navigation_btn { display: flex; align-items: center; gap: 0.5rem; margin-top: 3rem; padding-bottom: 1rem; }
+.navigation_btn { display: flex; align-items: center; gap: 0.3rem; margin-top: 3rem; padding-bottom: 1rem; }
+.navigation_btn.relative{position:relative;}
+.swiper-button-disabled{cursor: unset; opacity: 0.5;}
+/* .navigation_btn */
 .swiper_prev_custom:hover, .swiper_next_custom:hover { background-color: var(--color-92); }
 .swiper_prev_custom:hover img, .swiper_next_custom:hover img { filter: brightness(0) invert(1); }
 .home_courses_section .admission_data .left { display: flex; gap: 13.2rem; }

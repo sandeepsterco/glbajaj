@@ -7,6 +7,14 @@
   width: 100% !important;
 }
 
+.r-0{
+  right:0!important;
+}
+
+.b-0{
+  bottom:0!important;
+}
+
 .m-auto {
   margin: 0 auto;
 }

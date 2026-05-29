@@ -529,3 +529,35 @@
 .res_publication .table-wrapper tbody tr td:last-child { word-break: break-all; overflow-wrap: break-word; white-space: normal; }
 .res_publication .table-wrapper tbody tr td { font: var(--font-14); padding: 1.8rem 1.5rem ; }
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }
+
+@media (max-width:992px){
+  .sec_title .title48{ letter-spacing: 0;}
+  .home_research_section .research_group:before{padding-bottom: 111rem;}
+  .home_research_section .research_group:after{height: 111rem;}
+  .top_header{ display: none;}
+  .home_banner:before{ display: none;}
+  .home_rank_award { padding-block: 5rem; }
+  .home_placement_top{margin: 0;}
+  .home_placement_top { margin: 0; display: block; }
+  .home_placement_stats .single_placement h3{ letter-spacing: 0;}
+  .home_placement_stats .single_placement { padding: 1rem 2rem 0 6rem; margin-top: 4rem; height: auto; }
+  .home_placement_static_card{ width: 100%;}
+  .home_placement_static_card .top_placed{ text-align: left;}
+  .home_research_section .research_top{ display: block;}
+  .home_placement_students{ display: block;}
+  .home_placement_section{ padding-bottom: 7rem;}
+  .home_courses_section { padding: 7rem 0; }
+  .home_courses_section .left_content { margin-left: 0; padding-top: 0; }
+  .home_courses_section .grid{display: block;}
+  .home_courses_section .left_content .courses_links{ display: block; max-width: 100%;}
+  .home_courses_section .courses_links .course_link{ display: block; padding-block: 2.6rem;}
+  .home_courses_section .grid .right_imgage_col{ display: none;}
+  .home_courses_section .admission_data .links{ display: none;}
+  .home_courses_section .bottom_slider { margin-top: 7rem; position: relative; }
+  .home_courses_section .slider_btns { padding-right: 0; }
+  .home_research_section .research_top{ margin-inline: 0;}
+  .home_courses_section .slider_btns{ top: auto; left: 3.25rem; bottom: 10rem; position: absolute; }
+  .home_courses_section .courses_slider_wrapper .swiper-slide{ min-height: auto; margin-bottom: 2rem;}
+
+
+}

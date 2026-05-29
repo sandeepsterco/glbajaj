@@ -544,11 +544,11 @@
 .tabs_section .tab-content.active .acc-body { display: block; }
  }
 .sterco_tabs_sec .sterco_tab_main { position: relative; padding-block: 8rem; }
-.sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 50%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }
+.sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 58%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }
 .sterco_accordion_content:before { background-color: var(--color-F4); content: ""; z-index: -1; position: absolute; inset: 10rem -2.5rem 0 -15.5rem; }
 .sterco_accordion_content { grid-template-columns: 40% auto; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-top: -38rem; padding-block: 13rem 10rem; display: grid; position: relative; }
 .academic_tab_reverse { padding-top: 12rem; }
-.academic_tab_reverse .sterco_tab_main .sterco_tabs_nav { position: absolute; right: 23rem; max-width: 57rem; }
+.academic_tab_reverse .sterco_tab_main .sterco_tabs_nav { position: absolute; right: 20.5rem; max-width: 57rem; }
 .academic_tab_reverse .sterco_tab_panel { margin-left: -13rem; }
 .academic_tab_reverse .sterco_accordion_content { grid-template-columns: 51% auto; margin-top: -16rem; padding-block: 13rem; display: grid; gap: 15rem; }
 .academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
@@ -570,7 +570,7 @@
 .sterco_accordion_content { position: relative; display: grid; grid-template-columns: 40% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 13rem 10rem; margin-top: -38rem; }
 /* .sterco_accordion_content::before { content: ""; position: absolute; top: 10rem; bottom: 0; left: -15.5rem; right: -2.5rem; background-color: var(--color-F4); z-index: -1; }
 */
-.sterco_content_box { padding-right: 11rem; }
+.sterco_content_box { padding-right: 11rem; padding-bottom: 2rem; }
 .sterco_content_box p { margin-bottom: 0; }
 .sterco_accordion_content figure { margin: 0; }
 .sterco_accordion_content img { width: 100%; display: block; }

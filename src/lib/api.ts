@@ -10,7 +10,8 @@ const DEFAULT_REVALIDATE = Number(REVALIDATE ?? 120);
 export async function apiFetch(endpoint: string, options?: ApiFetchOptions) {
     try {
       const { revalidate = DEFAULT_REVALIDATE, cache, ...restOptions } = options ?? {};
-  
+      const isServer = typeof window === "undefined";
+
       const response = await fetch(`${API_URL}${endpoint}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -19,7 +20,9 @@ export async function apiFetch(endpoint: string, options?: ApiFetchOptions) {
         ...restOptions,
         ...(cache === 'no-store'
           ? { cache: 'no-store' as const }
-          : { next: { revalidate } }),
+          : isServer
+            ? { next: { revalidate } }
+            : {}),
       });
   
       if (!response.ok) {

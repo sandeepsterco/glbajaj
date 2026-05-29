@@ -754,6 +754,16 @@
 
 /* ================= Department labs section ================*/
 
+
+
+/* ================= Department faculty page ================*/
+
+.department_faculty{padding-block: 8.2rem 11.6rem}
+.department_faculty .faculty_grid{padding-top:4rem;}
+
+/* ================= Department faculty page ================*/
+
+
 /* ============== Research Publication start============= */
 .res_publication { padding-block: 5rem 12rem; }
 .res_pub_title h4 { margin-bottom: 5rem; }
@@ -1914,7 +1924,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .innovation_tabs .tab_content .acc-body::before { background-color: transparent; }
 .innovation_tabs .sterco_tab_main::after { background-image: url(/images/state-of-art.webp); position: absolute; top: 42.1rem; content: ""; background-repeat: no-repeat; height: 8.5rem; z-index: 9; right: 0; left: 18rem; background-color:#fafafa; }
-.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; }
+.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 10; position: relative; margin-top: -4rem; }
 .innovation_event { padding-block: 10rem 5rem; }
 .innovation_event_grid { display: grid; grid-template-columns: 38.5% auto; gap: 15rem; padding: 10rem 0rem; background-color: var(--color-F4); position: relative; justify-content: space-between; }
 .innovation_event_grid::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }

@@ -6,7 +6,7 @@ import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug} = await params;
 
-    const {data, error} = await apiFetch(`cms/${slug}`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`cms/${slug}`);
 
     if(error){
         return <NotFound />;

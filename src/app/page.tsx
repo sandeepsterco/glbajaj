@@ -6,10 +6,6 @@ import { apiFetch } from "../lib/api";
 import ReactParser from "../components/common/reactParser/ReactParser";
 import NotificationBar from "../components/ui/notificationBar/NotificationBar";
 
-export const dynamic = "force-dynamic";
-
-
-
 export async function generateMetadata() {
   return await getPageSEO();
 }
@@ -17,7 +13,7 @@ export async function generateMetadata() {
 export default async function Home() {
   const seoData = await getPageSEO();
 
-  const { data: homeData, error: homeError } = await apiFetch("modular/home");
+  const { data: homeData } = await apiFetch("modular/home");
 
   if(!homeData?.modular && !homeData?.cms){
     return <div className="min-h-[100vh] flex items-center justify-center">

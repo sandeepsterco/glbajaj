@@ -32,8 +32,7 @@ interface ProgramsData {
 
 async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", page = 1) {
   const { data, error } = await apiFetch(
-    `programs?type=${type === "all" ? "" : type}&page=${page}`,
-    { cache: "no-store" }
+    `programs?type=${type === "all" ? "" : type}&page=${page}`
   );
   if (error || !data) return null;
   return data as { programs: ProgramsData };

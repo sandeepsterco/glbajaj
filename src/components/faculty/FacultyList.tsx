@@ -26,7 +26,7 @@ export default function FacultyList({data}:{data:any}){
                     {data?.data.map((item:any, idx:number)=>(
                         <div key={idx} className="faculty_Bx">
                             <figure>
-                                <Image src={item.image || ''} width={255} height={287} className="img-fluid" alt={item.name || 'faculty image'} />
+                                <Image src={item.image || ''} width={255} height={287} className="img-fluid w-100" loading="lazy" alt={item.name || 'faculty image'} />
                             </figure>
                             {item?.name && (
                                 <h5>{item.name}</h5>

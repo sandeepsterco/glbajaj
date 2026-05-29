@@ -22,8 +22,9 @@ import "../styles/responsive1.css";
 
 import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";
-import Wowjs from "../lib/wow";
 import AOSProvider from "../lib/AOSProvider";
+import NavigationProgress from "../components/ui/pageLoader/NavigationProgress";
+import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -39,14 +40,8 @@ const fontLexend = Lexend({
 
 async function getHeaderData(){
   const [headerRes, sidebarRes] = await Promise.all([
-    apiFetch(
-      "menu?location=header",
-      { cache:'no-store'},
-    ),
-    apiFetch(
-      "menu?location=sidebar",
-      { cache:'no-store' },
-    )
+    apiFetch("menu?location=header", { revalidate: 300 }),
+    apiFetch("menu?location=sidebar", { revalidate: 300 }),
   ])
 
   return {
@@ -69,6 +64,8 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>
           <AOSProvider>
+            <InitialLoadOverlay />
+            <NavigationProgress />
             <Header headerData={headerData} />
             <MainWrapper>{children}</MainWrapper>
             <Footer />

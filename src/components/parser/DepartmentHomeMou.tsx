@@ -1,80 +1,147 @@
 "use client";
 
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
-const fetchAlumniData = async () => {
-  const { data, error } = await apiFetch(`modular/home`);
-  if (error) throw new Error(error);
-  return data;
-};
+import "swiper/css";
+import "swiper/css/navigation";
 
+// ── Dummy Data ───────────────────────────────────────────────────────────────
+const DUMMY_DATA = [
+  {
+    type: "Student",
+    heading: "Projects",
+    title: "Innovative project solutions driving technical excellence, fostering creativity, and building impactful real-world applications.",
+    description: "Students at GL Bajaj have developed cutting-edge projects spanning AI, IoT, and web technologies. Their work bridges academic learning with industry demands, producing solutions that solve real-world problems and earn recognition at national hackathons and exhibitions.",
+    button_url: "/students/projects",
+    images: [
+      "/images/default/department-project.webp",
+      "/images/default/department-project.webp",
+      "/images/default/department-project.webp",
+    ],
+  },
+  {
+    type: "Recruiter",
+    heading: "Top Recruiters",
+    title: "Leading companies trust GL Bajaj to deliver industry-ready graduates equipped with the latest technical skills.",
+    description: "GL Bajaj has built strong relationships with 500+ recruiters including Google, Microsoft, Amazon, TCS, Infosys, and Wipro. Our placement cell works year-round to connect students with opportunities that match their skills and aspirations.",
+    button_url: "/recruiters",
+    images: [
+      "/images/default/department-project.webp",
+      "/images/default/department-project.webp",
+      "/images/default/department-project.webp",
+    ],
+  },
+  {
+    type: "Faculties",
+    heading: "Expert Faculty",
+    title: "Experienced educators and researchers shaping the next generation of engineers and innovators.",
+    description: "Our faculty comprises PhDs from premier institutes like IITs and NITs, industry veterans with decades of experience, and active researchers publishing in top-tier journals. Their mentorship goes beyond classrooms, guiding students in research, startups, and personal growth.",
+    button_url: "/faculty",
+    images: [
+      "/images/default/department-project.webp",
+      "/images/default/department-project.webp",
+    ],
+  },
+];
+
+// ── Types ────────────────────────────────────────────────────────────────────
+interface TabItem {
+  type: string;
+  heading: string;
+  title: string;
+  description: string;
+  button_url: string;
+  images: string[];
+}
+
+// ── Component ────────────────────────────────────────────────────────────────
 export default function DepartmentHomeMou() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["home_alumni"],
-    queryFn: fetchAlumniData,
-  });
-
-  const rawData = data?.modular?.["alumuni"] ?? [];
-
-  // Group by type
-  const grouped: any = useMemo(() => {
-    return {
-      students: rawData.filter((i: any) => i.type === "Student"),
-      recruiters: rawData.filter((i: any) => i.type === "Recruiter"),
-      faculties: rawData.filter((i: any) => i.type === "Faculties"),
-    };
-  }, [rawData]);
+  const rawData: TabItem[] = DUMMY_DATA;
 
   const tabs = [
-    { key: "students", label: "Students" },
-    { key: "recruiters", label: "Recruiters" },
-    { key: "faculties", label: "Faculties" },
+    { key: "Student", label: "Students" },
+    { key: "Recruiter", label: "Recruiters" },
+    { key: "Faculties", label: "Faculties" },
   ];
 
-  const [activeTab, setActiveTab] = useState("students");
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("Student");
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  // Reset slide index when tab changes
-  const handleTabClick = (tabKey: any) => {
+  const activeItem = useMemo(
+    () => rawData.find((i) => i.type === activeTab) ?? rawData[0],
+    [activeTab]
+  );
+
+  const handleTabClick = (tabKey: string) => {
     setActiveTab(tabKey);
-    setActiveIndex(0);
+    // Reset to first slide on tab change
+    setTimeout(() => swiperRef.current?.slideTo(0), 0);
   };
 
-  const currentItems = grouped[activeTab] ?? [];
-  const activeItem = currentItems[activeIndex];
-
-  if (isLoading) return null; // or a skeleton
+  const hasMultiple = activeItem.images.length > 1;
 
   return (
     <>
+      {/* Tabs */}
+      <div className="tabs tabs_design1">
+        {tabs.map((tab) => (
+          <div
+            key={tab.key}
+            className={`tab ${activeTab === tab.key ? "active" : ""}`}
+            onClick={() => handleTabClick(tab.key)}
+          >
+            {tab.label}
+          </div>
+        ))}
+      </div>
 
+      {/* Main Grid */}
       <div className="dep_project_grid reverse">
 
+        {/* Content Section */}
         <div className="project_contentsec">
-          <h4 className="font24">Projects</h4>
-          <h3 className="font36">Innovative project solutions driving technical excellence, fostering creativity, and building impactful real-world applications.</h3>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
-          <a href="{button_url}" className="cus-btn">View More</a>
+          <h4 className="font24">{activeItem.heading}</h4>
+          <h3 className="font36">{activeItem.title}</h3>
+          <p>{activeItem.description}</p>
+          <a href={activeItem.button_url} className="cus-btn">View More</a>
         </div>
 
-
+        {/* Image Slider Section */}
         <div className="proj_imgsec">
-          <div className="tabs tabs_design1">
-            {tabs.map((tab) => (
-              <div
-                key={tab.key}
-                className={`tab ${activeTab === tab.key ? "active" : ""}`}
-                onClick={() => handleTabClick(tab.key)}
-              >
-                {tab.label}
-              </div>
+          <Swiper
+            key={activeTab}
+            modules={[Navigation]}
+            slidesPerView={1}
+            navigation={hasMultiple ? {
+              prevEl: `.collaboration_mou_prev`,
+              nextEl: `.collaboration_mou_next`,
+            } : false}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+          >
+            {activeItem.images.map((src, i) => (
+              <SwiperSlide key={i}>
+                <figure>
+                  <img
+                    src={src}
+                    alt={`${activeItem.heading} image ${i + 1}`}
+                  />
+                </figure>
+              </SwiperSlide>
             ))}
-          </div>
-          <figure>
-            <figure><img src="/images/default/department-project.webp" alt="GL Bajaj" /></figure>
-          </figure>
+          </Swiper>
+
+          {/* Custom nav — only when more than 1 image */}
+          {hasMultiple && (
+            <div className="navigation_btn relative b-0 r-0">
+              <div className="swiper_prev_custom collaboration_mou_prev" role="button" ><img alt="arrow" className="img-fluid" src="/images/icons/arrow.svg" /></div>
+              <div className="swiper_next_custom collaboration_mou_next" role="button" ><img alt="arrow" className="img-fluid" src="/images/icons/arrow.svg" /></div>
+            </div>
+          )}
+        
+          
         </div>
 
       </div>

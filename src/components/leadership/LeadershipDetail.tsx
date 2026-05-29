@@ -12,10 +12,10 @@ export default function LeadershipDetail({ data }: { data: any }) {
                         <div className="message_cnt">
                             <div className="inspiration_details">
                                 {data?.data?.name && (
-                                    <h4>{data.data.name}</h4>
+                                    <h4 data-aos="fade-up" data-aos-delay="200"> {data.data.name}</h4>
                                 )}
                                 {data?.data?.designation && (
-                                    <p>{data.data.designation}</p>
+                                    <p data-aos="fade-up" data-aos-delay="400">{data.data.designation}</p>
                                 )}
                             </div>
                         </div>

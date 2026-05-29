@@ -35,7 +35,7 @@ function CourseCard({ program }: any) {
                 <div><strong>Affiliation</strong><br />{program.affiliation ?? "—"}</div>
                 <div><strong>Approvals</strong><br />{program.approvals ?? "—"}</div>
             </div>
-            <Link className="strech_link" href={BASE_URL + 'courses/' + program.slug} />
+            <Link className="strech_link" href={BASE_URL + 'program/' + program.slug} />
         </div>
     );
 }

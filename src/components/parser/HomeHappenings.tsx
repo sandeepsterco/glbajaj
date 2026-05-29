@@ -1,6 +1,8 @@
 "use client"
+import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 const fetchHappeningsData=async()=>{
   const {data, error} = await apiFetch(`modular/home`);
@@ -40,6 +42,7 @@ export default function HomeHappenings() {
                 )}
               </div>
           </div>
+          <Link href={`${BASE_URL}news-events/${item.slug}`} className="strech_link" />
       </div>
       ))}
   </div>

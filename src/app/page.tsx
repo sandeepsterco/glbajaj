@@ -19,8 +19,6 @@ export default async function Home() {
 
   const { data: homeData, error: homeError } = await apiFetch("modular/home");
 
-  console.log('homeData',homeData);
-
   if(!homeData?.modular && !homeData?.cms){
     return <div className="min-h-[100vh] flex items-center justify-center">
       <h1 className="text-[5rem] font-bold">Something wrong...</h1>

@@ -1,4 +1,5 @@
 "use client"
+import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -49,7 +50,7 @@ export default function ProgramTabs({ undergraduate, postgraduate }: { undergrad
                                             {tab?.programs?.map((singleTab:any, idx:number)=>(
                                                 <div key={idx} className="program-box">
                                                     <div className="program-text">
-                                                        <h6><Link href="#">{singleTab.name}</Link></h6>
+                                                        <h6><Link href={`${BASE_URL}program/${singleTab.slug}`}>{singleTab.name}</Link></h6>
                                                     </div>
                                                     <div className="program-right">
                                                         <div className="duration">
@@ -62,10 +63,10 @@ export default function ProgramTabs({ undergraduate, postgraduate }: { undergrad
                                                             <span>{singleTab?.affiliation || '--'}</span>
                                                         </div>
                                                         <div className="apply-btn">
-                                                            <a href="#">Apply Now</a>
+                                                            <a href={APPLY_NOW}>Apply Now</a>
                                                         </div>
                                                         <div className="program-btn">
-                                                            <Link href="#">
+                                                            <Link href={`${BASE_URL}program/${singleTab.slug}`}>
                                                                 <span>
                                                                     <img src="/images/icons/right-arrow.svg" alt="arrow icon" />
                                                                 </span>

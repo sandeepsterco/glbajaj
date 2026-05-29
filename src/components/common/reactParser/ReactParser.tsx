@@ -29,6 +29,16 @@ import HomeFacilities from "../../parser/HomeFacilities";
 import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
 import PlacementRecord from "../../parser/PlacementRecord";
 import IntershipRecord from "../../parser/IntershipRecord";
+import AchievementList from "../../parser/AchievementList";
+import DepartmentHomeHappenings from "../../parser/DepartmentHomeHappenings";
+import DepartmentHomeActivities from "../../parser/DepartmentHomeActivities";
+import DigitalPathshalaVideoGrid from "../../parser/DigitalPathshalaVideoGrid";
+import WhyClubsGrid from "../../parser/WhyClubsGrid";
+import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
+import AdmissionPrograms from "../../parser/AdmissionPrograms";
+import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
+import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
+import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -108,14 +118,24 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "contact_form") return <ContactForm />;
       if (domNode.attribs.id === "about_leadership") return <AboutLeadership />;
       if (domNode.attribs.id === "awards_list") return <AwardsList />;
+      if (domNode.attribs.id === "achievement_list") return <AchievementList />;
       if (domNode.attribs.id === "conference_lists") return <ConferenceLists />;
       if (domNode.attribs.id === "department_home_faculties") return <DepartmentHomeFaculties />;
       if (domNode.attribs.id === "department_home_laboratories") return <DepartmentHomeLaboratories />;
       if (domNode.attribs.id === "department_home_alumni") return <DepartmentHomeAlumni />;
       if (domNode.attribs.id === "department_home_courses") return <DepartmentHomeCourses />;
+      if (domNode.attribs.id === "department_home_happenings") return <DepartmentHomeHappenings />;
       if (domNode.attribs.id === "policies_disclosures") return <PoliciesDisclosures />;
       if (domNode.attribs.id === "placement_record") return <PlacementRecord />;
       if (domNode.attribs.id === "intership_record") return <IntershipRecord />;
+      if (domNode.attribs.id === "department_home_activities") return <DepartmentHomeActivities />;
+      if (domNode.attribs.id === "digital_pathshala_videos") return <DigitalPathshalaVideoGrid />;
+      if (domNode.attribs.id === "why_clubs_grid") return <WhyClubsGrid />;
+      if (domNode.attribs.id === "alumni_events_meet") return <AlumniEventsMeetGrid />;
+      if (domNode.attribs.id === "admission_programs") return <AdmissionPrograms />;
+      if (domNode.attribs.id === "department_notifications") return <DepartmentNotificationBar />;
+      if (domNode.attribs.id === "department_home_clubs") return <DepartmentHomeClubs />;
+      if (domNode.attribs.id === "department_home_collaborations") return <DepartmentHomeMou />;
     }
   },
 };

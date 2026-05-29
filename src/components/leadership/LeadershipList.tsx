@@ -8,10 +8,10 @@ const MessageComponent = async ({ data }: { data: any }) => {
     return (
         <section className="administration_section messages_section">
             <div className="container25">
-                <h4 className="innerPage_title">Messages</h4>
+                <h4 className="innerPage_title" data-aos="fade-up" data-aos-delay="200">Messages</h4>
                 <div className="administration_grid messages_grid">
                     {data?.map((item: any, idx: number) => (   
-                        <div key={idx} className="administration_Bx">
+                        <div key={idx} className="administration_Bx" data-aos="fade-up" data-aos-delay="400">
                             <figure>
                                 <Image src={item.image || '/images/default/leadership.webp'} width={567} height={387} className="img-fluid" alt={item.name ?? 'leadership image'} />
                             </figure>
@@ -44,10 +44,10 @@ const AdministrationComponent = ({ data }: { data: any }) => {
     return (
         <section className="administration_section">
             <div className="container25">
-                <h4 className="innerPage_title">Administration</h4>
+                <h4 className="innerPage_title" data-aos="fade-up" data-aos-delay="200">Administration</h4>
                 <div className="administration_grid">
                     {data?.data?.map((item: any, idx: number) => (
-                        <div key={idx} className="administration_Bx">
+                        <div key={idx} className="administration_Bx" data-aos="fade-up" data-aos-delay="400">
                             <figure>
                                 <Image src={item.image || ''} className="img-fluid" alt={item.name} width={255} height={287} />
                             </figure>

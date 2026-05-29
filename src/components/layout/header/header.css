@@ -72,7 +72,7 @@
 .mega_container ul>li { margin-bottom: 1.2rem; }
 .mega_container ul>li>a { color: var(--color-white); padding-bottom: 1rem; border-bottom: 0.1rem solid rgba(210, 171, 103, 0.3); display: block; }
 .megg_lft_top { padding-bottom: 10rem; }
-
+.dropdown_grid_placement .mega_left h4{margin-bottom: 0;}
 /************  Bottom header CSS End ************/
 
 /************  Hamburger CSS Start ************/
@@ -82,8 +82,8 @@
 .humburger_mainsec.active { right: 0; left: 0; margin: 0 auto; }
 .hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 58vh; overflow: auto; padding-right: 3rem;}
 .hmburger_col .title24 { color: var(--color-D2); margin-bottom: 5.1rem; }
-.hmburger_col.facilities_col ul+.title24 { margin-top: 9.8rem; }
-.hmburger_col.happenings_col ul+.title24 { margin-top: 5.9rem; }
+.hmburger_col.happenings_col ul+.title24,
+.hmburger_col.facilities_col ul+.title24 { margin-top: 5.9rem; }
 .hmburger_col ul li { margin-bottom: 1.2rem; }
 .hmburger_col ul li>a { color: var(--color-white); padding-bottom: 1rem; border-bottom: 0.1rem solid rgba(210, 171, 103, 0.3); display: block; }
 .humburger_mainsec .close_icon img { width: 1.6rem; height: 1.6rem; position: absolute; right: 6.8rem; top: 8.5rem; cursor: pointer; }

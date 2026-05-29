@@ -174,7 +174,7 @@
     new Swiper(".award_ranking", {
       slidesPerView: 5,
       loop: true,
-      spaceBetween:0,
+      spaceBetween: 0,
       autoplay: {
         delay: 2500,
         disableOnInteraction: false,
@@ -314,22 +314,37 @@
       },
     });
 
-    new Swiper(".hod_profile_slider", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      centeredSlides: false,
-      loop: false,
-      autoplay: false,
-      navigation: {
-        nextEl: ".vision_hod_next",
-        prevEl: ".vision_hod_prev",
-      },
-      watchOverflow: true,
-      breakpoints: {
-        768: { slidesPerView: 1, spaceBetween: 15 },
-        1200: { slidesPerView: 1, spaceBetween: 23 },
-      },
-    });
+    const hodSwiperEl = document.querySelector(".hod_profile_slider");
+
+    if(hodSwiperEl){
+      new Swiper(".hod_profile_slider", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false,
+        loop: false,
+        autoplay: false,
+        navigation: {
+          nextEl: ".vision_hod_next",
+          prevEl: ".vision_hod_prev",
+        },
+        watchOverflow: true,
+        breakpoints: {
+          768: { slidesPerView: 1, spaceBetween: 15 },
+          1200: { slidesPerView: 1, spaceBetween: 23 },
+        },
+        on:{
+          init(swiper){
+            const navBtn = hodSwiperEl.closest(".hod_profile_bx")?.querySelector(".navigation_btn");
+            if(navBtn){
+              navBtn.style.visibility = swiper.isLocked ? "hidden" : "";
+              navBtn.style.pointerEvents = swiper.isLocked ? "none" : "";
+            }
+          }
+        }
+      });
+    }
+
+    
 
     new Swiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,
@@ -392,6 +407,32 @@
       breakpoints: {
         768: { slidesPerView: 1, spaceBetween: 15 },
         1200: { slidesPerView: 1, spaceBetween: 23 },
+      },
+    });
+
+    // cse_lab_slider
+   new Swiper(".cse_lab_slider", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1.2, // Mobile ke liye
+      spaceBetween: 20,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: true,
+      autoplay: false,
+      navigation: {
+        nextEl: ".swiper_next_custom",
+        prevEl: ".swiper_prev_custom",
+      },
+      breakpoints: {
+        // Jab screen 768px se badi ho (Tablets)
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 15,
+        },
+        // Jab screen 1200px se badi ho (Desktop - XD Match)
+        1200: {
+          slidesPerView: 2.25, // 3 full + 0.5 next slide
+          spaceBetween: 40,
+        },
       },
     });
 
@@ -563,7 +604,6 @@
     });
   }
 
-  // ─── YouTube Modal ────────────────────────────────────────────────────────────
   function initYTModal() {
     const overlay = document.getElementById("ytModalOverlay");
     const iframe = document.getElementById("ytModalIframe");
@@ -614,7 +654,6 @@
     });
   }
 
-  // ─── Sterco Tabs (tab + accordion, scoped per section) ───────────────────────
   function initStercoTabs() {
     document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {
       const tabButtons = section.querySelectorAll(".sterco_tab_btn");
@@ -668,6 +707,39 @@
     }
   }
 
+  function initXTabs() {
+    document.querySelectorAll(".xtabs_sec").forEach((section) => {
+      const tabBtns = section.querySelectorAll(".xtab_btn");
+      const panels  = section.querySelectorAll(".xtab_panel");
+      const accBtns = section.querySelectorAll(".xacc_btn");
+  
+      // set first active
+      if (tabBtns.length) tabBtns[0].classList.add("active");
+      if (panels.length)  panels[0].classList.add("active");
+  
+      // desktop tabs
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-xtab");
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          panels.forEach((p)  => p.classList.remove("active"));
+          btn.classList.add("active");
+          section.querySelector("#" + target)?.classList.add("active");
+        });
+      });
+  
+      // mobile accordion
+      accBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const panel = btn.closest(".xtab_panel");
+          const isActive = panel.classList.contains("active");
+          panels.forEach((p) => p.classList.remove("active"));
+          if (!isActive) panel.classList.add("active");
+        });
+      });
+    });
+  }
+
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -685,9 +757,9 @@
     gridPopup();
     tabControl();
     toggleReadMore();
+    initXTabs();
   }
 
-  // ─── Resize Handlers ──────────────────────────────────────────────────────────
   window.addEventListener("resize", adjustMaxContent);
 
   let resizeTimer;
@@ -696,10 +768,8 @@
     resizeTimer = setTimeout(tabControl, 250);
   });
 
-  // ─── Expose for Next.js client-side re-init ───────────────────────────────────
   window.__initCustomJS = initAll;
 
-  // ─── Bootstrap ───────────────────────────────────────────────────────────────
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
     document.addEventListener("DOMContentLoaded", initAll, { once: true });

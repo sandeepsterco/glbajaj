@@ -39,6 +39,7 @@ export default function AboutLeadership() {
                       src={item.image}
                       alt={item.name}
                       className="img-fluid w-100"
+                      
                     />
                   </figure>
                   {item?.name && <h4>{item.name}</h4>}

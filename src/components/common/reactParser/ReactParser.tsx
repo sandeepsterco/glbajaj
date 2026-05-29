@@ -40,6 +40,8 @@ import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
 import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
 import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
 import DepartmentHomeCEO from "../../parser/DepartmentHomeCEO";
+import DepartmentHomeAchievement from "../../parser/DepartmentHomeAchievement";
+import DepartmentLabsGrids from "../../parser/DepartmentLabsGrids";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -138,6 +140,8 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "department_home_clubs") return <DepartmentHomeClubs />;
       if (domNode.attribs.id === "department_home_ceo") return <DepartmentHomeCEO />;
       if (domNode.attribs.id === "department_home_collaborations") return <DepartmentHomeMou />;
+      if (domNode.attribs.id === "department_home_achievement") return <DepartmentHomeAchievement />;
+      if (domNode.attribs.id === "coe_labs_grid_section") return <DepartmentLabsGrids />;
     }
   },
 };

@@ -748,6 +748,7 @@
 
 /* ================= Department labs section ================*/
 
+.department_labs_section{border-bottom: .1rem solid #c0855280;}
 .department_labs_section .title48{margin-bottom:3rem;}
 /* .department_labs_section .desc span{font:var(--font-16)!important;} */
 

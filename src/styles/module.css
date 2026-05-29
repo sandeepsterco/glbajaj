@@ -1,6 +1,6 @@
 /* =========== news list page css ============ */
 
-.happenings_page::before{ background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; z-index: 999;}
+.happenings_page::before{ background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; z-index: 99;}
 .news_section{ padding-block: 10rem 4rem; background-color: var(--color-F4);}
 .front_news{ display: grid; grid-template-columns:58% auto; gap: 0rem;}
 .news_head{ display: flex; justify-content: flex-end;}

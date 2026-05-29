@@ -707,3 +707,8 @@ blockquote.title24 {
   border: none;
   cursor: pointer;
 }
+
+.coming_soon_page h1{  color: var(--color-92);}
+.go_back__btn{background-color: var(--color-92); color: var(--color-white); padding: 1rem 3.5rem; border-radius: 0.5rem; margin-top: 3rem;}
+.go_back__btn:hover{ background-color: var(--color-FE); color: var(--color-black);}
+.coming_soon_page p{ font: var(--font-21); padding-top: 1rem;}

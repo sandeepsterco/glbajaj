@@ -167,7 +167,7 @@
 .about_breadcrumb p { margin-bottom: 0; }
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
-.happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
+/* .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; } */
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
 .front_news { display: grid; grid-template-columns: 57% auto; gap: 15rem; }
 .news_head { display: flex; justify-content: flex-end; }

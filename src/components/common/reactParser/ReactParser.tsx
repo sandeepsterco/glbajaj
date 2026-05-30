@@ -319,6 +319,7 @@ export default function ReactParser({ html }: { html: any }) {
       "sup",
       "button",
       "iframe",
+      "nav"
     ],
     ALLOWED_ATTR: [
       "class",

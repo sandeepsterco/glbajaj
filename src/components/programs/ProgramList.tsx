@@ -80,14 +80,17 @@ function buildUrl(type: string, page: number) {
 }
 
 function ProgramGroupSection({ group }: { group: ProgramGroup }) {
-  if (!group.programs || group.programs.length === 0) return null;
-
+  // Remove the early return — always render the group title
   return (
     <div className="program-list">
       <h5>{group.name}</h5>
-      {group.programs.map((program) => (
-        <ProgramBox key={program.slug} program={program} />
-      ))}
+      {group.programs && group.programs.length > 0 ? (
+        group.programs.map((program) => (
+          <ProgramBox key={program.slug} program={program} />
+        ))
+      ) : (
+        <p className="no-programs">No programs available.</p>
+      )}
     </div>
   );
 }

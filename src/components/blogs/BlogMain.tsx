@@ -1,55 +1,46 @@
 import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
-import DepartmentFilter from "./DepartmentFilter";
 
-interface Props {
-  data: any;
-  slug: string;
-  departments: { name: string; slug: string }[];
-  currentDepartment: string;
-}
+export default function BlogMain({ data, slug }: { data: any; slug: string }) {
+  if (!data) return null;
 
-export default function MainNews({ data, slug, departments, currentDepartment }: Props) {
   return (
-    <section className="news_section">
+    <section className="blog_section">
       <div className="container">
-        <div className="col-xl-11">
+        <div className="col-xl-10">
           <div className="front_news">
             <div className="news_left">
               <figure>
                 <Image
-                  src={data?.image || "/images/default/main-news.webp"}
-                  alt="GL Bajaj"
-                  className="img-fluid"
+                  src={data?.image || "/images/blog-list-banner.webp"}
+                  alt={data?.title || "GL Bajaj"}
+                  className="img-fluid w-100"
                   width={850}
                   height={519}
                 />
               </figure>
             </div>
-            <div className="news_right">
-              <div className="news_head">
-                <DepartmentFilter
-                  departments={departments}
-                  currentDepartment={currentDepartment}
-                />
-              </div>
-              <div className="news_cnt">
+            <div className="blog_right">
+              <div className="blog_cnt">
                 {data?.date && (
-                  <p className="date">
+                  <div className="date">
                     {new Date(data.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
-                  </p>
+                  </div>
                 )}
-                {data?.heading && <h3>{data.heading}</h3>}
+                {data?.tags && <h3 className="">{data.tags}</h3>}
+                {data?.title && (
+                  <blockquote className="title36">{data.title}</blockquote>
+                )}
                 {data?.description && <p>{data.description}</p>}
                 {data?.slug && (
-                  <Link href={BASE_URL + slug + "/" + data.slug}>
+                  <Link href={`${BASE_URL}${slug}/${data.slug}`}>
                     <img
-                      src="/images/home/slide_arrow_right.svg"
+                      src="/images/icons/arrow-right.svg"
                       alt="arrow"
                       className="img-fluid"
                     />

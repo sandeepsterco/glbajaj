@@ -187,7 +187,7 @@
       breakpoints: {
         0: { slidesPerView: 1 },
         480: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
+        992: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
         1200: { slidesPerView: 5 },
       },
@@ -241,14 +241,52 @@
     });
 
     new Swiper(".courses_slider_wrapper", {
+  slidesPerView: 8,
+  spaceBetween: 20,
+  loop: true,
+
+  autoplay: {
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+
+  navigation: {
+    nextEl: ".courses_header .next_swiper_btn",
+    prevEl: ".courses_header .prev_swiper_btn",
+  },
+
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 12,
+    },
+
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 15,
+    },
+
+    992: {
+      slidesPerView: 5,
+      spaceBetween: 18,
+    },
+
+    1200: {
+      slidesPerView: 6,
+      spaceBetween: 20,
+    },
+
+    1400: {
       slidesPerView: 8,
-      loop: true,
-      autoplay: { delay: 2000 },
-      navigation: {
-        nextEl: ".courses_header .next_swiper_btn",
-        prevEl: ".courses_header .prev_swiper_btn",
-      },
-    });
+      spaceBetween: 20,
+    },
+  },
+});
 
     new Swiper(".leadership_slider", {
       slidesPerView: 1.2,

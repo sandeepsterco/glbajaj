@@ -58,3 +58,7 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }  /* -50% because items are doubled */
 }
+
+@media (max-width:992px){
+  .hero_nofi_card{ display: none;}
+}

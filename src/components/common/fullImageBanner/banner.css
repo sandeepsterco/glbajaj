@@ -80,3 +80,9 @@
     .home_about_glb_section .about_top { gap: 11.6rem; } .caption_wrap .title48 { letter-spacing: -0.5px; }
     .home_sessions_section .right_col a { padding: 2.2rem 2.5rem 2.2rem 3.4rem; }
 }
+
+
+@media (max-width:991px){
+    .home_banner .slider_caption{ padding-bottom: 3rem;}
+    .courses_slider .prev_swiper_btn:after, .courses_slider .next_swiper_btn:after { width: 100%; height: 100%; }
+}

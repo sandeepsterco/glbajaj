@@ -12,6 +12,7 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import ProgramDetailForm from "../../parser/ProgramDetailForm";
 
 function ParserWidgetFallback() {
   return (
@@ -256,6 +257,8 @@ const options: HTMLReactParserOptions = {
         return <DepartmentLabsGrids />;
       if (domNode.attribs.id === "department_faculty_grid")
         return <DepartmentFacultyGrid />;
+      if (domNode.attribs.id === "program_detail_form")
+        return <ProgramDetailForm />;
     }
   },
 };

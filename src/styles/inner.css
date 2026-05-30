@@ -485,6 +485,7 @@
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right img { order: 1; text-align: left; }
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right figure img { margin-left: 0; height: 4rem; margin-bottom: 2rem; }
 .pdf_box .fac_mainpdf .fac_policy_list .fac_policy_right p { display: none; }
+.committees_pdf{padding-top: 0;}
 /* ==============Conferences & Symposium page Start============= */
 .confrence_section { padding-block: 5rem 12rem; }
 .confrence_section h2 { color: var(--color-92); padding-right: 5rem; }
@@ -1598,7 +1599,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .pledge-lab-grid-Cnt ol { padding-right: 2rem; }
 .pledge-lab-grid-img { position: relative; }
 .pledge-lab-grid-img::before { position: absolute; content: ""; width: 100%; height: 80%; background-color: var(--color-F5); z-index: -1; top: 47%; transform: translateY(-50%); }
-.pledge-lab-grid-Cnt h3 { color: var(--color-92); padding-right: 9.55rem; font-weight: normal; }
+.pledge-lab-grid-Cnt h3 { color: var(--color-92); padding-right: 22rem; font-weight: normal; }
 .ncc-flag .csr-design { margin-top: -1rem; }
 .ncc-flag .csr-text-list { padding: 9rem 31rem 0 12rem; }
 .ncc-flag .csr-text h3 { color: var(--color-33); font: var(--font-30); line-height: 1.4; }
@@ -1706,9 +1707,10 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
-.privacy_policy { padding-block: 5rem 10rem; }
-.privacy-policy h3 { font:var(--font-36); color: var(--color-64); font-weight: 500; padding-bottom: 1rem; }
+.privacy_policy { padding-block: 8rem 10rem; }
+.privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul { padding-bottom: 3rem; }
+.privacy_box { margin-bottom: 2.5rem; }
 /* ================  Student Chapters  =============== */
 .ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
 .view_detail_btn { background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; }
@@ -2010,9 +2012,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .testimonial_inner .desc_content .des { font: var(--font-21); }
 .lounch-event.agaj-disable { display: none; }
 .head_commttesec { padding-block: 10rem 10rem; }
-.head_commi_grid { grid-template-columns: repeat(3, 1fr); gap: 3.4rem; display: grid; }
-.head_commi_grid .head_commit_box { background-color: var(--color-F5); padding: 3.1rem 8.5rem 3.1rem 2.2rem; position: relative; }
-.head_commi_grid .head_commit_box h3 { font: var(--font-24); color: var(--color-64); margin-bottom: 2.4rem; font-family: var(--font-tasa); font-weight: bold; margin-bottom: 0; }
+.head_commi_grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; display: grid; }
+.head_commi_grid .head_commit_box { background-color: var(--color-F5); padding: 3rem; position: relative; }
+.head_commi_grid .head_commit_box h3 { font: var(--font-21); color: var(--color-64); margin-bottom: 2.4rem; font-family: var(--font-tasa); font-weight: bold; margin-bottom: 0; }
 .fee-refund-policy .res_publication { padding-top: 0; }
 .fee-refund-policy .res_publication_ttl { display: none; }
 .fee-refund-policy .res_publication + .table-description { padding-block: 0 10rem; }

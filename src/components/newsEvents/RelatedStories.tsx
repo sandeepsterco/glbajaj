@@ -5,7 +5,7 @@ export default function RelatedStories({data}:{data:any}){
     return(
         <section className="related_stories">
             <div className="container25">
-                <h2>Related Stories</h2>
+                <h2>News & Events</h2>
                 <div className="related_story_grid">
                     {data.map((item:any, idx:number)=>(
                         <div key={idx} className="related_stroty_Bx">

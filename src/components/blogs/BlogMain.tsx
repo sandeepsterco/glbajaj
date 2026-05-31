@@ -17,7 +17,8 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
                   alt={data?.title || "GL Bajaj"}
                   className="img-fluid w-100"
                   width={850}
-                  height={519}
+                  height={520}
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -32,7 +33,7 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
                     })}
                   </div>
                 )}
-                {data?.tags && <h3 className="">{data.tags}</h3>}
+                {data?.category && <h3 className="font24">{data.category}</h3>}
                 {data?.title && (
                   <blockquote className="title36">{data.title}</blockquote>
                 )}

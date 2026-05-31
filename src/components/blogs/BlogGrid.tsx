@@ -24,7 +24,7 @@ export default function BlogGrid({ data, slug }: { data: any; slug: string }) {
             })}
           </div>
         )}
-        {data?.tags && <h4>{data.tags}</h4>}
+        {data?.category && <h4>{data.category}</h4>}
         {data?.title && <h5>{data.title}</h5>}
         {data?.description && (
           <figcaption>

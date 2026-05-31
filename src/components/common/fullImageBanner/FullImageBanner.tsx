@@ -205,34 +205,48 @@ export default function HeroBanner({ data }: { data: any }) {
 
 
 
-      <div className="home_banner_media">
+      <div>
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="home_banner_video"
-          poster="https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg"
-          preload="metadata"
+          style={{ width: '100%', objectFit: 'cover', display: 'block' }}
+          preload="auto"
+          
         >
           <source
             src="https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due"
             type="video/mp4"
+            //@ts-ignore
+            fetchPriority="high"
           />
         </video>
         {/* <video src="" /> */}
 
         <div className="slider_caption">
           <div className="container-fluid">
-            <div className="caption_wrap">
-              <blockquote className="title48">
+            <div
+              className="caption_wrap"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <blockquote
+                className="title48"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 Recognized. Ranked. Respected.
               </blockquote>
               <div className="cap_desc">
-                <p>
+                <p data-aos="fade-up" data-aos-delay="600">
                   Lorem ipsum dolor sit amet, consectet adipiscing elit.
                 </p>
-                <Link href={"/about-glbitm"}>
+                <Link
+                  href={"/about-glbitm"}
+                  data-aos="fade-up"
+                  data-aos-delay="800"
+                >
                   <figure>
                     <Image
                       src="/images/home/hero/arrow_right.svg"

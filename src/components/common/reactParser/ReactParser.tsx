@@ -14,6 +14,12 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ProgramDetailForm from "../../parser/ProgramDetailForm";
 
+import '@/src/styles/fancybox.css'
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/parser.css";
+
 function ParserWidgetFallback() {
   return (
     <div

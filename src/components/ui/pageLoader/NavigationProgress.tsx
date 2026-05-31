@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import PageLoader from "./PageLoader";
 
+const NAVIGATION_TIMEOUT_MS = 8000;
+
 function isInternalNavigation(href: string, pathname: string) {
   try {
     const url = new URL(href, window.location.origin);
@@ -24,6 +26,16 @@ export default function NavigationProgress() {
   useEffect(() => {
     setIsNavigating(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!isNavigating) return;
+
+    const timeout = window.setTimeout(
+      () => setIsNavigating(false),
+      NAVIGATION_TIMEOUT_MS
+    );
+    return () => window.clearTimeout(timeout);
+  }, [isNavigating]);
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {

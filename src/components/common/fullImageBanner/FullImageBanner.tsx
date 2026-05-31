@@ -222,7 +222,7 @@ export default function HeroBanner({ data }: { data: any }) {
         </video>
         {/* <video src="" /> */}
 
-        <div className="slider_caption">
+        {/* <div className="slider_caption">
           <div className="container-fluid">
             <div className="caption_wrap">
               <blockquote className="title48">
@@ -245,7 +245,7 @@ export default function HeroBanner({ data }: { data: any }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <NotificationBar />

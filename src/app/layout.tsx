@@ -63,8 +63,8 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>
           <AOSProvider>
-            <InitialLoadOverlay />
-            <NavigationProgress />
+            {/* <InitialLoadOverlay /> */}
+            {/* <NavigationProgress /> */}
             <Header headerData={headerData} />
             <MainWrapper>{children}</MainWrapper>
             <Footer />

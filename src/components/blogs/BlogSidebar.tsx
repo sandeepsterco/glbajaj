@@ -28,6 +28,14 @@ interface Props {
   currentMonth: string;
   currentSearch: string;
   slug: string;
+  /** When set, archive/search/category filters link here (e.g. blog listing on detail pages). */
+  listingPath?: string;
+  showSearch?: boolean;
+}
+
+function normalizeComment(comment: unknown) {
+  if (typeof comment === "string") return { comment };
+  return comment as Record<string, unknown>;
 }
 
 function FilterChip({ label, href }: { label: string; href: string }) {
@@ -50,11 +58,14 @@ export default function BlogSidebar({
   currentMonth,
   currentSearch,
   slug,
+  listingPath,
+  showSearch = true,
 }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [searchInput, setSearchInput] = useState(currentSearch);
+  const filterBase = listingPath ?? pathname;
 
   useEffect(() => {
     setSearchInput(currentSearch);
@@ -68,7 +79,7 @@ export default function BlogSidebar({
     });
     params.delete("page");
     const query = params.toString();
-    return query ? `${pathname}?${query}` : pathname;
+    return query ? `${filterBase}?${query}` : filterBase;
   };
 
   const handleSearch = () => {
@@ -87,27 +98,29 @@ export default function BlogSidebar({
 
   return (
     <div className="blog_listing_right">
-      <div className="input-group mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-        />
-        <button
-          className="btn btn-outline-secondary"
-          type="button"
-          onClick={handleSearch}
-        >
-          <img
-            src="/images/icons/search-icon.svg"
-            className="img-fluid"
-            alt="search"
+      {showSearch && (
+        <div className="input-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
-        </button>
-      </div>
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={handleSearch}
+          >
+            <img
+              src="/images/icons/search-icon.svg"
+              className="img-fluid"
+              alt="search"
+            />
+          </button>
+        </div>
+      )}
 
       {featuredBlogs.length > 0 && (
         <div className="recent_post">
@@ -138,7 +151,14 @@ export default function BlogSidebar({
       {comments.length > 0 && (
         <div className="recent_comments">
           <h5 className="font21">Recent Comments</h5>
-          {comments.map((comment: any, idx: number) => (
+          {comments.map((raw: unknown, idx: number) => {
+            const comment = normalizeComment(raw) as {
+              author?: string;
+              comment?: string;
+              avatar?: string;
+              blog?: { slug?: string };
+            };
+            return (
             <div key={idx} className="recent_comt">
               <figure>
                 <img
@@ -159,7 +179,8 @@ export default function BlogSidebar({
                 />
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
       )}
 

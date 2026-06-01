@@ -1,7 +1,8 @@
 import { SEO_URL } from "@/src/config/config";
 import { headers } from "next/headers";
+import { cache } from "react";
 
-export async function getPageSEO(slug) {
+async function fetchPageSEO(slug) {
   try {
     // If no slug passed, auto-detect full URL from request headers
     if (!slug) {
@@ -61,3 +62,5 @@ export async function getPageSEO(slug) {
     };
   }
 }
+
+export const getPageSEO = cache(fetchPageSEO);

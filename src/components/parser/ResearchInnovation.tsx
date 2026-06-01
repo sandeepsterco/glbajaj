@@ -63,6 +63,9 @@ export default function ResearchInnovation() {
                 <img
                   src={slide?.image || ""}
                   alt="leader"
+                  width={575}
+                  height={429}
+                  loading="lazy"
                   className="img-fluid w-100"
                   data-aos="fade-up" data-aos-delay="200"
                 />

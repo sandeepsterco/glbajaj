@@ -2,6 +2,7 @@
 
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { useState, useMemo } from "react";
 
 const fetchAlumniData = async () => {
@@ -84,7 +85,7 @@ export default function HomeAlumni() {
                     className={`thumb ${index === activeIndex ? "active" : ""}`}
                     onClick={() => setActiveIndex(index)}
                   >
-                    <img src={item.image} alt={item.name} />
+                    <Image src={item.image} alt={item.name} width={155} height={188} loading="lazy" />
                     <div className="thumb_info">
                       <p className="name" >{item.name}</p>
                       <span className="designation">{item.branch}</span>
@@ -113,9 +114,12 @@ export default function HomeAlumni() {
             {/* Main Image */}
             <div className="main-images" data-aos="fade-up" data-aos-delay="200">
               {activeItem && (
-                <img
+                <Image
                   className="main-img active w-100"
                   src={activeItem.image}
+                  width={600}
+                  height={732}
+                  loading="lazy"
                   alt={activeItem.name}
                 />
               )}

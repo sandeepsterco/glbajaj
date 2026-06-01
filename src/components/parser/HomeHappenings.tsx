@@ -2,6 +2,7 @@
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import Link from "next/link";
 
 const fetchHappeningsData=async()=>{
@@ -25,7 +26,7 @@ export default function HomeHappenings() {
         <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`} data-aos="fade-up" data-aos-delay="200">
           {item?.image && (
             <figure>
-              <img src={item.image} alt="happening image" className="img-fluid w-100 " data-aos="fade-up" data-aos-delay="200"/>
+              <Image src={item.image} alt="happening image" className="img-fluid w-100 " width={636} height={443} loading="lazy" data-aos="fade-up" data-aos-delay="200"/>
             </figure>
           )}
           {/* <div className="content" style={{backgroundColor:item?.bg_color}}> */}

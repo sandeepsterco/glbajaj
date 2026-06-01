@@ -450,7 +450,7 @@
 .shaping_future_Bx { position: relative; }
 .shaping_future_Bx figcaption { padding: 3rem 3rem 0; }
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
-.shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
+/* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; } */
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============The Group page End============= */
 /* =============Home Facilities  start============= */

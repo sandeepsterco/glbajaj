@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import parse, {
   attributesToProps,
   Element,
@@ -8,43 +9,135 @@ import parse, {
 } from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import CompanySlider from "../../parser/CompanySlider";
-import CourseSearch from "../../parser/CourseSearch";
-import AddOnCourses from "../../parser/AddOnCourses";
-import HomeHappenings from "../../parser/HomeHappenings";
-import HomeAlumni from "../../parser/HomeAlumni";
-import ContactForm from "../../parser/ContactForm";
-import AboutLeadership from "../../parser/AboutLeadership";
-import AwardsList from "../../parser/AwardsList";
-import ConferenceLists from "../../parser/ConferenceLists";
-import DepartmentHomeFaculties from "../../parser/DepartmentHomeFaculties";
-import DepartmentHomeLaboratories from "../../parser/DepartmentHomeLaboratories";
-import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
-import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
-import ResearchInnovation from "../../parser/ResearchInnovation";
-import HomeFacilities from "../../parser/HomeFacilities";
-import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
-import PlacementRecord from "../../parser/PlacementRecord";
-import IntershipRecord from "../../parser/IntershipRecord";
-import AchievementList from "../../parser/AchievementList";
-import DepartmentHomeHappenings from "../../parser/DepartmentHomeHappenings";
-import DepartmentHomeActivities from "../../parser/DepartmentHomeActivities";
-import DigitalPathshalaVideoGrid from "../../parser/DigitalPathshalaVideoGrid";
-import WhyClubsGrid from "../../parser/WhyClubsGrid";
-import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
-import AdmissionPrograms from "../../parser/AdmissionPrograms";
-import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
-import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
-import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
-import DepartmentHomeCEO from "../../parser/DepartmentHomeCEO";
+import ProgramDetailForm from "../../parser/ProgramDetailForm";
+
+function ParserWidgetFallback() {
+  return (
+    <div
+      className="my-[2rem] h-[20rem] w-full animate-pulse rounded bg-[#ede9e7]"
+      aria-hidden="true"
+    />
+  );
+}
+
+const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
+  loading: ParserWidgetFallback,
+});
+const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
+  loading: ParserWidgetFallback,
+});
+const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"), {
+  loading: ParserWidgetFallback,
+});
+const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"), {
+  loading: ParserWidgetFallback,
+});
+const ContactForm = dynamic(() => import("../../parser/ContactForm"), {
+  loading: ParserWidgetFallback,
+});
+const AboutLeadership = dynamic(() => import("../../parser/AboutLeadership"), {
+  loading: ParserWidgetFallback,
+});
+const AwardsList = dynamic(() => import("../../parser/AwardsList"), {
+  loading: ParserWidgetFallback,
+});
+const ConferenceLists = dynamic(() => import("../../parser/ConferenceLists"), {
+  loading: ParserWidgetFallback,
+});
+const DepartmentHomeFaculties = dynamic(
+  () => import("../../parser/DepartmentHomeFaculties"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeLaboratories = dynamic(
+  () => import("../../parser/DepartmentHomeLaboratories"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeAlumni = dynamic(
+  () => import("../../parser/DepartmentHomeAlumni"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeCourses = dynamic(
+  () => import("../../parser/DepartmentHomeCourses"),
+  { loading: ParserWidgetFallback }
+);
+const ResearchInnovation = dynamic(
+  () => import("../../parser/ResearchInnovation"),
+  { loading: ParserWidgetFallback }
+);
+const HomeFacilities = dynamic(() => import("../../parser/HomeFacilities"), {
+  loading: ParserWidgetFallback,
+});
+const PoliciesDisclosures = dynamic(
+  () => import("../../parser/PoliciesDisclosures"),
+  { loading: ParserWidgetFallback }
+);
+const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"), {
+  loading: ParserWidgetFallback,
+});
+const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"), {
+  loading: ParserWidgetFallback,
+});
+const AchievementList = dynamic(() => import("../../parser/AchievementList"), {
+  loading: ParserWidgetFallback,
+});
+const DepartmentHomeHappenings = dynamic(
+  () => import("../../parser/DepartmentHomeHappenings"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeActivities = dynamic(
+  () => import("../../parser/DepartmentHomeActivities"),
+  { loading: ParserWidgetFallback }
+);
+const DigitalPathshalaVideoGrid = dynamic(
+  () => import("../../parser/DigitalPathshalaVideoGrid"),
+  { loading: ParserWidgetFallback }
+);
+const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"), {
+  loading: ParserWidgetFallback,
+});
+const AlumniEventsMeetGrid = dynamic(
+  () => import("../../parser/AlumniEventsMeetGrid"),
+  { loading: ParserWidgetFallback }
+);
+const AdmissionPrograms = dynamic(
+  () => import("../../parser/AdmissionPrograms"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentNotificationBar = dynamic(
+  () => import("../../parser/DepartmentNotificationBar"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeClubs = dynamic(
+  () => import("../../parser/DepartmentHomeClubs"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeMou = dynamic(
+  () => import("../../parser/DepartmentHomeMou"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeCEO = dynamic(
+  () => import("../../parser/DepartmentHomeCEO"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentHomeAchievement = dynamic(
+  () => import("../../parser/DepartmentHomeAchievement"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentLabsGrids = dynamic(
+  () => import("../../parser/DepartmentLabsGrids"),
+  { loading: ParserWidgetFallback }
+);
+const DepartmentFacultyGrid = dynamic(
+  () => import("../../parser/DepartmentFacultyGrid"),
+  { loading: ParserWidgetFallback }
+);
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
     if (domNode instanceof Element && domNode.attribs) {
-      // ── img ──────────────────────────────────────────────────────────────────
       if (domNode.name === "img") {
         const props = attributesToProps(domNode.attribs) as any;
         const resolvedSrc = (() => {
@@ -76,6 +169,8 @@ const options: HTMLReactParserOptions = {
               {...rest}
               src={resolvedSrc}
               alt={props.alt || ""}
+              loading="lazy"
+              decoding="async"
               style={{ ...(props.style || {}) }}
             />
           );
@@ -87,12 +182,12 @@ const options: HTMLReactParserOptions = {
             alt={props.alt || ""}
             width={parsedWidth}
             height={parsedHeight}
+            loading="lazy"
             style={{ ...(props.style || {}) }}
           />
         );
       }
 
-      // ── a ────────────────────────────────────────────────────────────────────
       if (domNode.name === "a") {
         const props = attributesToProps(domNode.attribs) as any;
         const href = props.href || "#";
@@ -104,40 +199,66 @@ const options: HTMLReactParserOptions = {
         );
       }
 
-      // ── class → className passthrough ─────────────────────────────────────
       if (domNode.attribs && domNode.attribs.class) {
         domNode.attribs.className = domNode.attribs.class;
       }
 
-      // ── CMS component replacements ────────────────────────────────────────
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
       if (domNode.attribs.id === "add-on-courses") return <AddOnCourses />;
-      if (domNode.attribs.id === "research_innovation") return <ResearchInnovation />;
+      if (domNode.attribs.id === "research_innovation")
+        return <ResearchInnovation />;
       if (domNode.attribs.id === "home_facilities") return <HomeFacilities />;
       if (domNode.attribs.id === "home_happenings") return <HomeHappenings />;
       if (domNode.attribs.id === "home_alumni") return <HomeAlumni />;
       if (domNode.attribs.id === "contact_form") return <ContactForm />;
-      if (domNode.attribs.id === "about_leadership") return <AboutLeadership />;
+      if (domNode.attribs.id === "about_leadership")
+        return <AboutLeadership />;
       if (domNode.attribs.id === "awards_list") return <AwardsList />;
-      if (domNode.attribs.id === "achievement_list") return <AchievementList />;
-      if (domNode.attribs.id === "conference_lists") return <ConferenceLists />;
-      if (domNode.attribs.id === "department_home_faculties") return <DepartmentHomeFaculties />;
-      if (domNode.attribs.id === "department_home_laboratories") return <DepartmentHomeLaboratories />;
-      if (domNode.attribs.id === "department_home_alumni") return <DepartmentHomeAlumni />;
-      if (domNode.attribs.id === "department_home_courses") return <DepartmentHomeCourses />;
-      if (domNode.attribs.id === "department_home_happenings") return <DepartmentHomeHappenings />;
-      if (domNode.attribs.id === "policies_disclosures") return <PoliciesDisclosures />;
-      if (domNode.attribs.id === "placement_record") return <PlacementRecord />;
-      if (domNode.attribs.id === "intership_record") return <IntershipRecord />;
-      if (domNode.attribs.id === "department_home_activities") return <DepartmentHomeActivities />;
-      if (domNode.attribs.id === "digital_pathshala_videos") return <DigitalPathshalaVideoGrid />;
+      if (domNode.attribs.id === "achievement_list")
+        return <AchievementList />;
+      if (domNode.attribs.id === "conference_lists")
+        return <ConferenceLists />;
+      if (domNode.attribs.id === "department_home_faculties")
+        return <DepartmentHomeFaculties />;
+      if (domNode.attribs.id === "department_home_laboratories")
+        return <DepartmentHomeLaboratories />;
+      if (domNode.attribs.id === "department_home_alumni")
+        return <DepartmentHomeAlumni />;
+      if (domNode.attribs.id === "department_home_courses")
+        return <DepartmentHomeCourses />;
+      if (domNode.attribs.id === "department_home_happenings")
+        return <DepartmentHomeHappenings />;
+      if (domNode.attribs.id === "policies_disclosures")
+        return <PoliciesDisclosures />;
+      if (domNode.attribs.id === "placement_record")
+        return <PlacementRecord />;
+      if (domNode.attribs.id === "intership_record")
+        return <IntershipRecord />;
+      if (domNode.attribs.id === "department_home_activities")
+        return <DepartmentHomeActivities />;
+      if (domNode.attribs.id === "digital_pathshala_videos")
+        return <DigitalPathshalaVideoGrid />;
       if (domNode.attribs.id === "why_clubs_grid") return <WhyClubsGrid />;
-      if (domNode.attribs.id === "alumni_events_meet") return <AlumniEventsMeetGrid />;
-      if (domNode.attribs.id === "admission_programs") return <AdmissionPrograms />;
-      if (domNode.attribs.id === "department_notifications") return <DepartmentNotificationBar />;
-      if (domNode.attribs.id === "department_home_clubs") return <DepartmentHomeClubs />;
-      if (domNode.attribs.id === "department_home_ceo") return <DepartmentHomeCEO />;
-      if (domNode.attribs.id === "department_home_collaborations") return <DepartmentHomeMou />;
+      if (domNode.attribs.id === "alumni_events_meet")
+        return <AlumniEventsMeetGrid />;
+      if (domNode.attribs.id === "admission_programs")
+        return <AdmissionPrograms />;
+      if (domNode.attribs.id === "department_notifications")
+        return <DepartmentNotificationBar />;
+      if (domNode.attribs.id === "department_home_clubs")
+        return <DepartmentHomeClubs />;
+      if (domNode.attribs.id === "department_home_ceo")
+        return <DepartmentHomeCEO />;
+      if (domNode.attribs.id === "department_home_collaborations")
+        return <DepartmentHomeMou />;
+      if (domNode.attribs.id === "department_home_achievement")
+        return <DepartmentHomeAchievement />;
+      if (domNode.attribs.id === "coe_labs_grid_section")
+        return <DepartmentLabsGrids />;
+      if (domNode.attribs.id === "department_faculty_grid")
+        return <DepartmentFacultyGrid />;
+      if (domNode.attribs.id === "program_detail_form")
+        return <ProgramDetailForm />;
     }
   },
 };
@@ -145,10 +266,11 @@ const options: HTMLReactParserOptions = {
 export default function ReactParser({ html }: { html: any }) {
   const pathname = usePathname();
 
-  // ── Re-run custom.js init on every route change and every html content swap ──
-  // This fixes tabs/accordions/swipers not working after Next.js client-side nav.
   useEffect(() => {
-    if (typeof window !== "undefined" && typeof (window as any).__initCustomJS === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof (window as any).__initCustomJS === "function"
+    ) {
       (window as any).__initCustomJS();
     }
   }, [pathname, html]);
@@ -158,26 +280,68 @@ export default function ReactParser({ html }: { html: any }) {
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR: ["target"],
     ALLOWED_TAGS: [
-      "a", "b", "i", "em", "strong", "span", "div", "p",
-      "h1", "h2", "h3", "h4", "h5", "h6",
-      "ul", "ol", "li", "br", "hr", "img",
-      "table", "thead", "tbody", "tr", "th", "td",
-      "section", "article", "aside", "header", "footer",
-      "figure", "figcaption", "blockquote", "pre", "code",
-      "sup", "button", "iframe",
+      "a",
+      "b",
+      "i",
+      "em",
+      "strong",
+      "span",
+      "div",
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "ul",
+      "ol",
+      "li",
+      "br",
+      "hr",
+      "img",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "th",
+      "td",
+      "section",
+      "article",
+      "aside",
+      "header",
+      "footer",
+      "figure",
+      "figcaption",
+      "blockquote",
+      "pre",
+      "code",
+      "sup",
+      "button",
+      "iframe",
+      "nav"
     ],
     ALLOWED_ATTR: [
-      "class", "id", "src", "alt", "href", "target",
-      "width", "height", "style", "rel", "type",
-      // Swiper / animation data attributes
+      "class",
+      "id",
+      "src",
+      "alt",
+      "href",
+      "target",
+      "width",
+      "height",
+      "style",
+      "rel",
+      "type",
       "data-src",
       "data-tab",
-      "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
-      // allow any data-* attribute automatically
+      "data-wow-delay",
+      "data-wow-duration",
+      "data-wow-offset",
+      "data-wow-iteration",
     ],
-    // Allows all data-* attributes without listing them one by one
     ADD_DATA_URI_TAGS: ["img"],
-    ALLOW_DATA_ATTR: true,   // ← key: lets all data-* through without listing each one
+    ALLOW_DATA_ATTR: true,
     FORCE_BODY: true,
   });
 

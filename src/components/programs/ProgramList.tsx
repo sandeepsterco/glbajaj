@@ -32,8 +32,7 @@ interface ProgramsData {
 
 async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", page = 1) {
   const { data, error } = await apiFetch(
-    `programs?type=${type === "all" ? "" : type}&page=${page}`,
-    { cache: "no-store" }
+    `programs?type=${type === "all" ? "" : type}&page=${page}`
   );
   if (error || !data) return null;
   return data as { programs: ProgramsData };
@@ -81,14 +80,17 @@ function buildUrl(type: string, page: number) {
 }
 
 function ProgramGroupSection({ group }: { group: ProgramGroup }) {
-  if (!group.programs || group.programs.length === 0) return null;
-
+  // Remove the early return — always render the group title
   return (
     <div className="program-list">
       <h5>{group.name}</h5>
-      {group.programs.map((program) => (
-        <ProgramBox key={program.slug} program={program} />
-      ))}
+      {group.programs && group.programs.length > 0 ? (
+        group.programs.map((program) => (
+          <ProgramBox key={program.slug} program={program} />
+        ))
+      ) : (
+        <p className="no-programs">No programs available.</p>
+      )}
     </div>
   );
 }

@@ -2,16 +2,17 @@ import PageHeader from "@/src/components/layout/header/PageHeader";
 import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";
 import { getSlug } from "@/src/lib/getSlug";
+import PageLoader from "@/src/components/ui/pageLoader/PageLoader";
 import { Suspense } from "react";
 
 export default async function ProgramsOffered(){
     const slug = await getSlug();
-    const {data, error} = await apiFetch(`cms/${slug}`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`cms/${slug}`);
 
     return(
         <main>
             <PageHeader data={data.data} slug={slug} />
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<PageLoader variant="inner" />}>
                 <ProgramList />
             </Suspense>
         </main>

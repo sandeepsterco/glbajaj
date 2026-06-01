@@ -91,10 +91,10 @@ export default function PlacementRecord() {
                 </div>
               )}
             </div>
-            <Link
+            {/* <Link
               className="strech_link"
               href={`${BASE_URL}placement-record/${item?.slug ?? "#"}`}
-            />
+            /> */}
           </div>
         ))}
     </div>

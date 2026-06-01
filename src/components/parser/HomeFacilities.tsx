@@ -54,7 +54,6 @@ export default function HomeFacilities() {
                   <div className="homeFac_nav_side">
                     <h4 className="font24" data-aos="fade-up" data-aos-delay="200">Facilities</h4>
                     <h3 className="title48" data-aos="fade-up" data-aos-delay="400">The Best Environment for the Best Minds</h3>
-
                     <div className="homeFac_btns">
                       {tabsData?.map((item: any, idx: number) => (
                         <div

@@ -21,14 +21,16 @@
 html { font-size: min(0.52083333vw, 10px); } */
 
 
-
+.anchor_section {
+  scroll-margin-top: 20rem; 
+}
 .container25 { max-width: min(1225px, 55.6818182vw); padding-inline: 1.5rem; margin: 0 auto; }
 .container-fluid { max-width: min(1755px, 79.7727273vw); padding-left: 1.5rem; padding-right: 1.5rem; margin-left: auto; margin-right: auto; }
 .container { width: min(1800px, 81.8181818vw); container-type: inline-size; margin-left: auto; margin-right: auto; padding-inline: 1rem; }
 .container-md { max-width: min(1885px, 85.6818182vw); padding-left: 1.5rem; padding-right: 1.5rem; margin-left: auto; margin-right: auto; }
 .container-lg { width: min(100%, 2005px); padding-left: 1.5rem; padding-right: 1.5rem; margin: 0 auto; }
 .inner-container { width: clamp(900px, 67.0454545vw, 1475px); padding-inline: 1.5rem; }
-html { font-size: min(0.45454545vw, 10px); }
+html { font-size: min(0.45454545vw, 10px); scroll-behavior: smooth;}
 
 
 
@@ -48,9 +50,13 @@ a { text-decoration: none; }
 .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .table-responsive table { width: 100%; border-collapse: collapse; min-width: 600px; /* optional */ }
 @media (max-width: 991px) {
- .container-fluid { max-width: 100%; }
-.container { max-width: 670px; }
-html { font-size: clamp(6px, 0.520833333vw, 10px); }
+ .container-fluid { max-width: 100%; width: 100%; }
+.container { max-width: 100%;  width: 100%; }
+.container25{max-width: 100%;  width: 100%; }
+
+/* html { font-size: clamp(6px, 0.520833333vw, 10px); } */
+html { font-size: 62.5%; }
+
  }
 @media (max-width: 767px) {
  :root { --font-60: normal normal 500 2.6rem/1.15 var(--font-tasa); --font-48: normal normal 500 2.6rem/1.25 var(--font-tasa); --font-42: normal normal 500 2.8rem/1.25 var(--font-tasa); --font-36: normal normal bold 2.6rem/1.15 var(--font-tasa); --font-33: normal normal 500 2.4rem/1.33 var(--font-tasa); --font-32: normal normal 300 2.2rem/1.35 var(--font-tasa); --font-30: normal normal 400 2rem/1.2 var(--font-tasa); --font-28: normal normal 500 1.9rem/1.07 var(--font-tasa); --font-24: normal normal 300 1.8rem/1.33 var(--font-tasa); --font-21: normal normal 300 1.6rem/1.62 var(--font-tasa); --font-20: normal normal 300 1.4rem/1.4 var(--font-tasa); --font-18: normal normal 300 1.2rem/0.88 var(--font-tasa); --font-16: normal normal 400 1.2rem/1.62 var(--font-segoe); --font-14: normal normal 400 1rem/1.4 var(--font-segoe); --font-12: normal normal 400 1rem/1.16 var(--font-tasa); --font-10: normal normal 300 1rem/1.8 var(--font-segoe); --font-8: normal normal 300 0.8/1 var(--font-tasa); }
@@ -109,9 +115,9 @@ h6 { font: var(--font-18); color: var(--color-black); }
 .font36 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; font-weight: 400; }
 blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048rem; }
 .paragraph { font: var(--font-16); line-height: 2.4rem; color: var(--color-33); font-weight: normal; font-family: var(--font-tasa); }
-::-webkit-scrollbar { width: 0.5rem; }
-::-webkit-scrollbar-thumb { background-color: var(--color-0b); border-radius: 0.2rem; }
-::-webkit-scrollbar-track { background-color: var(--color-white); border-radius: 0.2rem; }
+/* ::-webkit-scrollbar { width: 2.1rem; }
+::-webkit-scrollbar-thumb { background-color: #000; border-radius: 2rem; }
+::-webkit-scrollbar-track { background-color: var(--color-white); border-radius: 2rem; } */
 .w-100 { width: 100%; }
 .strech_link { position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9; }
 .strech_link.No-link { display:none; }
@@ -132,9 +138,6 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .font36 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; font-weight: 400; }
 blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048rem; }
 .paragraph { font: var(--font-16); line-height: 2.4rem; color: var(--color-33); font-weight: normal; font-family: var(--font-tasa); }
-::-webkit-scrollbar { width: 0.5rem; }
-::-webkit-scrollbar-thumb { background-color: var(--color-0b); border-radius: 0.2rem; }
-::-webkit-scrollbar-track { background-color: var(--color-white); border-radius: 0.2rem; }
 .w-100 { width: 100%; }
 .strech_link { position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9; }
 .custom_bullet li { position: relative; padding-left: 2rem; margin-block: 1.5rem; }
@@ -165,6 +168,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_contact { display: flex; gap: 4.5rem; flex-wrap: wrap; }
 .home_footer .footer_contact h4 { font-size: 1.6rem; font-weight: 600; color: var(--color-white); }
 .home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font-size: 1.6rem; color: var(--color-white); text-decoration: none; }
+.home_footer .footer_contact p{ color: var(--color-white);}
 @media (max-width: 1920px) {
  .home_footer .footer_contact { gap: 2.5rem; }
  }

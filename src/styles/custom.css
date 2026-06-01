@@ -1579,6 +1579,7 @@ a:not([href]):not([class]):hover {
     --bs-gutter-y: 3rem;
   }
 }
+.col-lg-12{ width: 100%;}
 
 .streched_link {
   position: absolute;

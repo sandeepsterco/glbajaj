@@ -222,7 +222,7 @@ const Footer = async () => {
         <div className="footer_top">
           {/* <!-- Logo --> */}
           <div className="footer_logo">
-             <Image
+            <Image
               src="/images/logo/footer-logo.png"
               alt="GL Bajaj Logo"
               width={260}
@@ -266,16 +266,16 @@ const Footer = async () => {
         <div className="footer_links">
           <ul>
             <li>
-              <a href="#">Quick Links</a>
+              <Link href="#!">Quick Links</Link>
             </li>
-                {footerData?.menuItems?.map((item: any, idx: number) => (
+            {footerData?.menuItems?.map((item: any, idx: number) => (
               <React.Fragment key={idx}>
                 <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
                   •
                 </li>
                 <li>
                   <Link
-                    href={item?.slug ? item.slug : ''}
+                    href={item?.slug ? BASE_URL + item.slug : ''}
                     className="text-[1.4rem] leading-[2.1rem] text-white"
                   >
                     {item.title}
@@ -295,7 +295,7 @@ const Footer = async () => {
             <p>
               Website Design and Development by {" "}
               <a href="https://www.stercodigitex.com/" target="_blank">
-                 Sterco Digitex
+                Sterco Digitex
               </a>
             </p>
           </div>

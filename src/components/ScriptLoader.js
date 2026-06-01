@@ -14,7 +14,7 @@ export default function ScriptLoader() {
         strategy="afterInteractive"
         onLoad={() => setSwiperReady(true)}
       />
-      <Script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js" strategy="afterInteractive" />
+      <Script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js" strategy="lazyOnload" />
       {swiperReady && <Script src="/js/custom.js" strategy="afterInteractive" />}
       {swiperReady && <RouteChangeHandler />}
     </>

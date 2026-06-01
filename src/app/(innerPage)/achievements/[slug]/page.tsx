@@ -1,5 +1,4 @@
 import AchievementDetail from "@/src/components/achievement/detail";
-import AwardDetail from "@/src/components/awards/detail";
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api";
 

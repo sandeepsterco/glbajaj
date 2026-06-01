@@ -5,6 +5,7 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
+import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 
 interface SearchParams {
   search?: string;
@@ -127,7 +128,9 @@ export default async function BlogDetailPage({
 
               <BlogFeaturedSlider blogs={featuredBlogs} listSlug={listSlug} />
 
-              <div className="admin_form">
+              <BlogCommentForm blogSlug={blogSlug} />
+
+              {/* <div className="admin_form">
                 <div className="admin_header">
                   <figure>
                     <img
@@ -196,7 +199,7 @@ export default async function BlogDetailPage({
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> */}
             </div>
 
             <BlogSidebar

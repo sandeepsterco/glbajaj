@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import "./header.css";
 import { BASE_URL } from "@/src/config/config";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type MenuItem = {
   title: string;
@@ -120,6 +120,11 @@ export default function Header({ headerData }: { headerData?: any }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<number | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchError, setSearchError] = useState("");
+
+  const router = useRouter();
 
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -140,6 +145,19 @@ export default function Header({ headerData }: { headerData?: any }) {
   const columns = groupMenuItemsIntoColumns(
     headerData?.sidebarMenu?.menuItems ?? []
   );
+
+  const handleSearch = () => {
+    const trimmed = searchQuery.trim();
+    if (!trimmed) return;
+    if (trimmed.length < 3) {
+      setSearchError("Please enter at least 3 characters");
+      return;
+    }
+    setSearchError("");
+    setSearchOpen(false);
+    setSearchQuery("");
+    router.push(`${BASE_URL}search?q=${encodeURIComponent(trimmed)}`);
+  };
 
   return (
     <>
@@ -287,19 +305,19 @@ export default function Header({ headerData }: { headerData?: any }) {
                                   {/* RIGHT COLUMN */}
                                   {(rightItems.length > 0 ||
                                     noPositionItems.length > 0) && (
-                                    <div className="mega_right">
-                                      {[...rightItems, ...noPositionItems].map(
-                                        (child: any, cIdx: number) => (
-                                          <MenuColumn
-                                            key={cIdx}
-                                            child={child}
-                                            setMegaMenuOpen={setMegaMenuOpen}
-                                            setActiveMegaMenu={setActiveMegaMenu}
-                                          />
-                                        )
-                                      )}
-                                    </div>
-                                  )}
+                                      <div className="mega_right">
+                                        {[...rightItems, ...noPositionItems].map(
+                                          (child: any, cIdx: number) => (
+                                            <MenuColumn
+                                              key={cIdx}
+                                              child={child}
+                                              setMegaMenuOpen={setMegaMenuOpen}
+                                              setActiveMegaMenu={setActiveMegaMenu}
+                                            />
+                                          )
+                                        )}
+                                      </div>
+                                    )}
                                 </div>
                               </div>
                             </li>
@@ -322,7 +340,7 @@ export default function Header({ headerData }: { headerData?: any }) {
 
                 {/* Icons */}
                 <div className="menu_bars">
-                  <Link href="#" className="search_open" aria-label="Search">
+                  <Link href="#" className="search_open" aria-label="Search" onClick={(e) => { e.preventDefault(); setSearchOpen(true); }}>
                     {isScrolled || !isHome ? (
                       <img
                         src="/images/icons/header/search-icon-black.svg"
@@ -370,6 +388,51 @@ export default function Header({ headerData }: { headerData?: any }) {
           </div>
         </div>
       </header>
+
+      {searchOpen && (
+        <div className="global_search_dialog active">
+          <div className="g_sc_box">
+            <div className="sec_inpu_box">
+              <div>
+                <input
+                  type="text"
+                  className="form-control global_search_in"
+                  placeholder="Search courses, departments, faculty…"
+                  value={searchQuery}
+                  autoFocus
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    if (e.target.value.trim().length >= 3) setSearchError("");
+                  }}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                />
+                <button type="button" className="btn global_search_btn" onClick={handleSearch}>
+                  <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24"
+                    strokeLinecap="round" strokeLinejoin="round" height="16" width="16"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </button>
+              </div>
+              {searchError && (
+                <p className="search_error" style={{ color: "#b7b7b7", font: "var(--font-12)", position: "absolute", marginTop: "0.5rem" }}>
+                  {searchError}
+                </p>
+              )}
+            </div>
+            <button
+              className="secbtn_close cursor-pointer"
+              onClick={() => { setSearchOpen(false); setSearchQuery(""); setSearchError(""); }}
+            >
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24"
+                height="30" width="30" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Overlay */}
       <div

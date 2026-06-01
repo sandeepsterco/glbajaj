@@ -5,19 +5,17 @@ import { getSlug } from "@/src/lib/getSlug";
 import PageLoader from "@/src/components/ui/pageLoader/PageLoader";
 import { Suspense } from "react";
 import "@/src/styles/inner.css";
-import "@/src/styles/program.css";
-import "@/src/styles/parser.css";
+import SearchPageListing from "./SearchPageListing";
 
-export default async function ProgramsOffered(){
+export default async function SearchPage({searchParams}: { searchParams: Promise<{ q?: string }> }){
+    const { q } = await searchParams;
     const slug = await getSlug();
     const {data, error} = await apiFetch(`cms/${slug}`);
 
     return(
         <main>
             <PageHeader data={data.data} slug={slug} />
-            <Suspense fallback={<PageLoader variant="inner" />}>
-                <ProgramList />
-            </Suspense>
+            <SearchPageListing searchQuery={q} />
         </main>
     )
 } 

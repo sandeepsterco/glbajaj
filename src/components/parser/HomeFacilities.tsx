@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/src/lib/api";
 import type { Swiper as SwiperType } from "swiper";
+import { useContainer25MaxWidth } from "@/src/hooks/useContainer25MaxWidth";
 
 import "swiper/css";
 import Image from "next/image";
@@ -17,11 +18,13 @@ const fetchFacilities = async () => {
 };
 
 export default function HomeFacilities() {
+  useContainer25MaxWidth();
+  
   const [activeTab, setActiveTab] = useState(0);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRefs = useRef<Record<number, SwiperType>>({});
-
+  const containerRef = useContainer25MaxWidth();
   const { data } = useQuery({
     queryKey: ["home_facilities"],
     queryFn: fetchFacilities,
@@ -49,6 +52,7 @@ export default function HomeFacilities() {
     <section className="homeFac_sec">
       <div className="full-width">
         <div className="container25 max-content-lg pe-lg-0 me-lg-0">
+          <div className="col-lg-11 ms-end">
           <div className="homeFac_main">
             <div className="homeFac_tabs_wrapper">
               <div className="homeFac_tabs">
@@ -150,6 +154,7 @@ export default function HomeFacilities() {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

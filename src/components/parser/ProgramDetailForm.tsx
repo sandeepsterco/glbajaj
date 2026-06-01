@@ -65,9 +65,19 @@ function validate(fd: FormData): FormErrors {
 }
 
 
-export default function ProgramDetailForm() {
+export interface ProgramDetailFormProps {
+  /** Pre-select department when opened from program list modal */
+  defaultDepartmentSlug?: string;
+}
+
+export default function ProgramDetailForm({
+  defaultDepartmentSlug: defaultDepartmentSlugProp,
+}: ProgramDetailFormProps = {}) {
   const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";
+  const pathDepartmentSlug =
+    pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";
+  const defaultDepartmentSlug =
+    defaultDepartmentSlugProp ?? pathDepartmentSlug;
 
   // Fetch departments from API
   const { data: departments = [], isLoading: deptLoading } = useQuery<Department[]>({
@@ -86,6 +96,15 @@ export default function ProgramDetailForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
   const [submitState, setSubmitState] = useState<SubmitState>({ status: "idle", message: "" });
+
+  // Pre-select department when slug is available (detail page or list modal)
+  useEffect(() => {
+    if (!defaultDepartmentSlug || departments.length === 0) return;
+    const match = departments.some((d) => d.slug === defaultDepartmentSlug);
+    if (match) {
+      setFormData((prev) => ({ ...prev, department: defaultDepartmentSlug }));
+    }
+  }, [defaultDepartmentSlug, departments]);
 
   // Update cities when state changes
   useEffect(() => {

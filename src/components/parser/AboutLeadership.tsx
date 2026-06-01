@@ -37,7 +37,7 @@ export default function AboutLeadership() {
 
   return (
     <div className="about_leadership">
-      <div className="leadership_slider">
+      <div className="leadership_slider" data-swiper-react>
         <Swiper
           modules={[Navigation]}
           slidesPerView={1.2}
@@ -49,11 +49,18 @@ export default function AboutLeadership() {
             nextEl: nextRef.current,
           }}
           onBeforeInit={(swiper: SwiperType) => {
-            // Assign refs before Swiper initializes so it can find them
             if (typeof swiper.params.navigation === "object") {
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
             }
+          }}
+          onSwiper={(swiper: SwiperType) => {
+            if (typeof swiper.params.navigation === "object") {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+            swiper.navigation?.init();
+            swiper.navigation?.update();
           }}
           breakpoints={{
             768: { slidesPerView: 2.5, spaceBetween: 15 },

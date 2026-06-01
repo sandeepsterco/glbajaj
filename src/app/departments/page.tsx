@@ -5,6 +5,7 @@ import { apiFetch } from "@/src/lib/api";
 import { getSlug } from "@/src/lib/getSlug";
 import Image from "next/image";
 import Link from "next/link";
+import "@/src/styles/inner.css";
 
 export default async function DepartmentsPage() {
     const slug = await getSlug();

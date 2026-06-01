@@ -109,7 +109,7 @@ export default function BlogSidebar({
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
           <button
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-secondary cursor-pointer"
             type="button"
             onClick={handleSearch}
           >
@@ -124,7 +124,7 @@ export default function BlogSidebar({
 
       {featuredBlogs.length > 0 && (
         <div className="recent_post">
-          <h5>Recent Posts</h5>
+          <h5>Featured Posts</h5>
           <ul>
             {featuredBlogs.map((blog: any, idx: number) => (
               <li key={blog.slug ?? idx}>

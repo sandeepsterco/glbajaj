@@ -109,6 +109,76 @@
 }
 
 .hmburger_grid ul{ padding-bottom: 5rem;}
+
+/* ==========global_search_dialog =============== */
+
+.global_search_dialog{
+    background: var(--color-64);
+    z-index: 1090;
+    width: 100%;
+    padding: 8rem 0;
+    transition: transform .4s;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.global_search_dialog .sec_inpu_box{
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.global_search_dialog .sec_inpu_box input{
+    background-color: var(--color-white);
+    font: var(--font-24);
+    height: auto;
+    color: var(--color-black);
+    border-bottom: .1rem solid var(--color-white);
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 1.5rem 5.5rem 1.5rem 2rem;
+    font-weight: 400;
+    width: 100%;
+}
+
+.global_search_dialog .sec_inpu_box input:active,
+.global_search_dialog .sec_inpu_box input:focus{
+    outline:none;
+}
+
+.global_search_dialog .sec_inpu_box .global_search_btn{
+    cursor: pointer;
+    width: 6rem;
+    height: 100%;
+    color: var(--color-white);
+    background-color: var(--color-92);
+    border: none;
+    border-radius: 0;
+    transition: all .5s;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global_search_dialog .secbtn_close{
+    color: var(--color-white);
+    background: 0 0;
+    border: none;
+    position: absolute;
+    top: 6rem;
+    right: 9rem;
+}
+
+/* ==========global_search_dialog =============== */
+
 /* responsive */
 
 @media (min-width:1921px) {

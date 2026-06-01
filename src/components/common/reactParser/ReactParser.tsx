@@ -12,6 +12,12 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+
+declare global {
+  interface Window {
+    __initCustomJS?: () => void;
+  }
+}
 import ProgramDetailForm from "../../parser/ProgramDetailForm";
 
 import '@/src/styles/fancybox.css'
@@ -19,6 +25,8 @@ import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
+import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
+import HomePlacements from "../../parser/HomePlacements";
 
 function ParserWidgetFallback() {
   return (
@@ -206,7 +214,11 @@ const options: HTMLReactParserOptions = {
       }
 
       if (domNode.attribs && domNode.attribs.class) {
-        domNode.attribs.className = domNode.attribs.class;
+        domNode.attribs.className = domNode.attribs.class
+          .replace(/\baos-init\b/g, "")
+          .replace(/\baos-animate\b/g, "")
+          .replace(/\s+/g, " ")
+          .trim();
       }
 
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
@@ -265,6 +277,11 @@ const options: HTMLReactParserOptions = {
         return <DepartmentFacultyGrid />;
       if (domNode.attribs.id === "program_detail_form")
         return <ProgramDetailForm />;
+
+      if (domNode.attribs.id === "department_home_placements")
+        return <DepartmentHomePlacements />;
+      if (domNode.attribs.id === "home_placements")
+        return <HomePlacements />;
     }
   },
 };
@@ -273,12 +290,16 @@ export default function ReactParser({ html }: { html: any }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      typeof (window as any).__initCustomJS === "function"
-    ) {
-      (window as any).__initCustomJS();
-    }
+    const timer = setTimeout(() => {
+      if (typeof window.__initCustomJS !== "function") return;
+      try {
+        window.__initCustomJS();
+      } catch (err) {
+        console.error("[ReactParser] __initCustomJS failed:", err);
+      }
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, [pathname, html]);
 
   if (!html) return null;
@@ -323,9 +344,37 @@ export default function ReactParser({ html }: { html: any }) {
       "pre",
       "code",
       "sup",
+      "sub",
       "button",
       "iframe",
-      "nav"
+      "nav",
+      "main",
+      "picture",
+      "source",
+      "video",
+      "audio",
+      "svg",
+      "path",
+      "circle",
+      "rect",
+      "line",
+      "polyline",
+      "polygon",
+      "g",
+      "use",
+      "label",
+      "form",
+      "input",
+      "textarea",
+      "select",
+      "option",
+      "dl",
+      "dt",
+      "dd",
+      "small",
+      "mark",
+      "details",
+      "summary",
     ],
     ALLOWED_ATTR: [
       "class",
@@ -348,7 +397,6 @@ export default function ReactParser({ html }: { html: any }) {
     ],
     ADD_DATA_URI_TAGS: ["img"],
     ALLOW_DATA_ATTR: true,
-    FORCE_BODY: true,
   });
 
   return <>{parse(sanitizedHtml, options)}</>;

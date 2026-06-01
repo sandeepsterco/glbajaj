@@ -1,6 +1,8 @@
 import { apiFetch } from "@/src/lib/api"
 import NotFound from "../../not-found";
 import PageHeader from "@/src/components/layout/header/PageHeader";
+import "@/src/styles/inner.css";
+import "@/src/styles/program.css";
 
 
 

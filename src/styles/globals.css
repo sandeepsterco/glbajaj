@@ -156,6 +156,8 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 @media (min-width: 96rem) {
  .container { max-width: unset; }
  }
+
+.home_sessions_section .right_col li:not(:last-child) { margin-bottom: 2rem; }
 /* start of footer */
 .home_footer { background: #3e3e3e; padding: 8rem 0 6rem; color: var(--color-white); }
 .home_footer .container { padding: 0; }

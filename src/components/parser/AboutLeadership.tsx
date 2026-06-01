@@ -4,6 +4,7 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { getSlug } from "@/src/lib/getSlug";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -35,11 +36,13 @@ export default function AboutLeadership() {
               <div key={idx} className="swiper-slide">
                 <div className="leader_card">
                   <figure>
-                    <img
-                      src={item.image}
+                    <Image
+                      src={item.about_image}
                       alt={item.name}
                       className="img-fluid w-100"
-                      
+                      width={475}
+                      height={512}
+                      loading="lazy"
                     />
                   </figure>
                   {item?.name && <h4>{item.name}</h4>}

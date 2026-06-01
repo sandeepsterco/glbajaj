@@ -14,9 +14,7 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     return(
         <div className="happenings_page">
-            {data?.data?.tabs && (
                 <PageHeader data={data.data} slug={slug} />
-            )}
             {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children}
             {/* {children} */}
         </div>

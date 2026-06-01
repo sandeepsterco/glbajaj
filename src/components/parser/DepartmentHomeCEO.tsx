@@ -10,26 +10,26 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const fetchDepartmentActivitiesData = async (slug: string) => {
+const fetchDepartmentCEO = async (slug: string) => {
   const { data, error } = await apiFetch(`department/${slug}/home`);
   if (error) throw new Error(error);
   return data?.data;
 };
 
-export default function DepartmentHomeClubs() {
+export default function DepartmentHomeCEO() {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
   const { data, isLoading } = useQuery({
-    queryKey: ["department_home_activities", slug],
-    queryFn: () => fetchDepartmentActivitiesData(slug),
+    queryKey: ["department_home_ceo", slug],
+    queryFn: () => fetchDepartmentCEO(slug),
   });
 
-  const clubsData = data?.modular?.["clubs-and-society"] ?? [];
+  const clubsData = data?.modular?.["ceo-advance-level"] ?? [];
 
 
   const slideCount = clubsData.length;
-  const maxSlidesPerView = 4;
+  const maxSlidesPerView = 3;
   const shouldLoop = slideCount > maxSlidesPerView;
   const showNavigation = shouldLoop;
 
@@ -44,34 +44,33 @@ export default function DepartmentHomeClubs() {
       autoplay={false}
       breakpoints={{
         768: { slidesPerView: 2, spaceBetween: 15 },
-        1200: { slidesPerView: 4, spaceBetween: 30 },
+        1200: { slidesPerView: 3, spaceBetween: 30 },
       }}
       navigation={{
-        nextEl: ".department_home_clubs_next",
-        prevEl: ".department_home_clubs_prev",
+        nextEl: ".department_home_ceo_next",
+        prevEl: ".department_home_ceo_prev",
       }}
       className="activities_swiper"
     >
       {clubsData.map((item: any, idx: number) => (
         <SwiperSlide key={item?.id || idx}>
-          <div className="media_grid_Bx1">
+          <div className="activies_col">
             <figure>
               <Image
                 src={item.image}
                 width={380}
                 height={275}
                 alt={item.title}
+                loading="lazy"
               />
             </figure>
-            {item?.title && (
-              <div className="media_txt">
-                <p>{item.title}</p>
-              </div>
-            )}
+            <div className="activities_caption">
+              <p>{item.title}</p>
+            </div>
             {item?.slug && (
               <Link
                 className="strech_link"
-                href={BASE_URL + "why-clubs-societies/" + item.slug}
+                href={`${BASE_URL}department/${slug}/labs/${item.slug}`}
               />
             )}
           </div>
@@ -80,10 +79,10 @@ export default function DepartmentHomeClubs() {
 
       {showNavigation && (
         <div className="navigation_btn">
-          <div className="prev-btn swiper_prev_custom department_home_clubs_prev">
+          <div className="prev-btn swiper_prev_custom department_home_ceo_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>
-          <div className="next-btn swiper_next_custom department_home_clubs_next">
+          <div className="next-btn swiper_next_custom department_home_ceo_next">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>
         </div>

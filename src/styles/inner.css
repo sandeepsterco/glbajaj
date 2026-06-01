@@ -781,9 +781,13 @@
 /* ============== Placement Policy start============= */
 .ppolicy_sec { padding-block: 5rem 12rem; }
 .ppolicy_accordion .ppolicy_header h3 { display: flex; align-items: start; gap: 5rem; font: var(--font-21); font-weight: 600; cursor: pointer; }
+.ppolicy_accordion .ppolicy_header h3 span {    font: var(--font-21);
+    font-weight: 600;
+    display: flex;}
+
 .ppolicy_accordion .ppolicy_item { border-bottom: 0.1rem solid #ae7f2c80; padding-block: 4rem 4rem; }
 .ppolicy_accordion .ppolicy_item:last-child { border-bottom: none; }
-.ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease;     padding-left: 7rem;}
 .ppolicy_body ul { padding-top: 2.2rem; }
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */

@@ -777,7 +777,43 @@
       });
     });
   }
+// plament policy ACCORDION
 
+const policyheaders = document.querySelectorAll(".ppolicy_header");
+
+policyheaders.forEach((header) => {
+    header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".ppolicy_body");
+
+        document.querySelectorAll(".ppolicy_item").forEach((item) => {
+            if (item !== currentItem) {
+                item.classList.remove("active");
+                const body = item.querySelector(".ppolicy_body");
+                if (body) body.style.maxHeight = null;
+            }
+        });
+
+        currentItem.classList.toggle("active");
+
+        if (currentBody) {
+            if (currentItem.classList.contains("active")) {
+                currentBody.style.maxHeight =
+                    currentBody.scrollHeight + "px";
+            } else {
+                currentBody.style.maxHeight = null;
+            }
+        }
+    });
+});
+
+// ✅ Fix default open (first item)
+window.addEventListener("load", () => {
+  document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
+    const body = item.querySelector(".ppolicy_body");
+    body.style.maxHeight = body.scrollHeight + "px";
+  });
+});
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();

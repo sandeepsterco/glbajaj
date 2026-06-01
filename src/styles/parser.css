@@ -536,7 +536,8 @@
  }
 /* Institute Incubation Center End */
 .anti-ragging-page { padding-top: 10rem; }
-.anti-ragging-page .kf_title p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page  p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page .teamX_info .teamX_coninfo{display: none;}
 .res_publication .table-wrapper tbody tr td:last-child { word-break: break-all; overflow-wrap: break-word; white-space: normal; }
 .res_publication .table-wrapper tbody tr td { font: var(--font-14); padding: 1.8rem 1.5rem ; }
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }

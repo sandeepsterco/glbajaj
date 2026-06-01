@@ -781,25 +781,27 @@
 
 const policyheaders = document.querySelectorAll(".ppolicy_header");
 
+// Auto-open first item on load
+const firstItem = document.querySelector(".ppolicy_item");
+if (firstItem) {
+    firstItem.classList.add("active");
+    const firstBody = firstItem.querySelector(".ppolicy_body");
+    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+}
+
 policyheaders.forEach((header) => {
     header.addEventListener("click", () => {
         const currentItem = header.parentElement;
         const currentBody = currentItem.querySelector(".ppolicy_body");
 
-        document.querySelectorAll(".ppolicy_item").forEach((item) => {
-            if (item !== currentItem) {
-                item.classList.remove("active");
-                const body = item.querySelector(".ppolicy_body");
-                if (body) body.style.maxHeight = null;
-            }
-        });
+        // ❌ Removed: close other items logic
 
+        // Toggle clicked item
         currentItem.classList.toggle("active");
 
         if (currentBody) {
             if (currentItem.classList.contains("active")) {
-                currentBody.style.maxHeight =
-                    currentBody.scrollHeight + "px";
+                currentBody.style.maxHeight = currentBody.scrollHeight + "px";
             } else {
                 currentBody.style.maxHeight = null;
             }

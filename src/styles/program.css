@@ -152,7 +152,8 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .pso-text ul li::marker { color: var(--color-92); }
 .program-detailsec4 { padding-block: 10rem; }
 .structure h5 { font-weight: 600; color: var(--color-33); margin-bottom: 5rem; }
-.table-wrapper { background-color: var(--color-white); border-radius: 0; width: 100%; overflow-x: auto; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); -webkit-overflow-scrolling: touch; }
+.table-wrapper { background-color: var(--color-white); border-radius: 0; width: 100%; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+     -webkit-overflow-scrolling: touch; }
 .table-wrapper table { width: 100%; border-collapse: collapse; text-align: left; }
 /* Header Styling */
 .table-wrapper thead tr { background-color: var(--color-64); color: var(--color-white); }

@@ -82,7 +82,7 @@ export default function AboutLeadership() {
                     />
                   </figure>
                   {item?.name && <h4>{item.name}</h4>}
-                  {item?.type && <p>{item.type}</p>}
+                  {item?.designation && <p>{item.designation}</p>}
                   {item?.slug && (
                     <Link
                       className="strech_link"

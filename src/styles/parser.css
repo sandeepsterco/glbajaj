@@ -449,7 +449,7 @@
 .shaping_future_Bx { position: relative; }
 .shaping_future_Bx figcaption { padding: 3rem 3rem 0; }
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
-.shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
+/* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; } */
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============The Group page End============= */
 /* =============Home Facilities  start============= */
@@ -535,7 +535,8 @@
  }
 /* Institute Incubation Center End */
 .anti-ragging-page { padding-top: 10rem; }
-.anti-ragging-page .kf_title p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page  p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page .teamX_info .teamX_coninfo{display: none;}
 .res_publication .table-wrapper tbody tr td:last-child { word-break: break-all; overflow-wrap: break-word; white-space: normal; }
 .res_publication .table-wrapper tbody tr td { font: var(--font-14); padding: 1.8rem 1.5rem ; }
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }

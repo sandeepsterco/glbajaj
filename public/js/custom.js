@@ -826,7 +826,45 @@
       });
     });
   }
+// plament policy ACCORDION
 
+const policyheaders = document.querySelectorAll(".ppolicy_header");
+
+// Auto-open first item on load
+const firstItem = document.querySelector(".ppolicy_item");
+if (firstItem) {
+    firstItem.classList.add("active");
+    const firstBody = firstItem.querySelector(".ppolicy_body");
+    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+}
+
+policyheaders.forEach((header) => {
+    header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".ppolicy_body");
+
+        // ❌ Removed: close other items logic
+
+        // Toggle clicked item
+        currentItem.classList.toggle("active");
+
+        if (currentBody) {
+            if (currentItem.classList.contains("active")) {
+                currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+            } else {
+                currentBody.style.maxHeight = null;
+            }
+        }
+    });
+});
+
+// ✅ Fix default open (first item)
+window.addEventListener("load", () => {
+  document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
+    const body = item.querySelector(".ppolicy_body");
+    body.style.maxHeight = body.scrollHeight + "px";
+  });
+});
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();

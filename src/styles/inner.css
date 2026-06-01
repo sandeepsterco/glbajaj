@@ -424,7 +424,9 @@
 .shaping_future_Bx { position: relative; }
 .shaping_future_Bx figcaption { padding: 3rem 3rem 0; }
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
-.shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
+.shaping_future_Bx figcaption span { justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
+.shaping_future_Bx:hover figcaption span { background-color: var(--color-92); }
+.shaping_future_Bx:hover figcaption span img { filter: brightness(0) invert(); }
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============About GLBITM page Start============= */
 .the_institute_grid { display: grid; grid-template-columns: 36% auto; gap: 11rem; padding-top: 7.2rem; }
@@ -781,9 +783,10 @@
 /* ============== Placement Policy start============= */
 .ppolicy_sec { padding-block: 5rem 12rem; }
 .ppolicy_accordion .ppolicy_header h3 { display: flex; align-items: start; gap: 5rem; font: var(--font-21); font-weight: 600; cursor: pointer; }
+.ppolicy_accordion .ppolicy_header h3 span { font: var(--font-21); font-weight: 600; display: flex; }
 .ppolicy_accordion .ppolicy_item { border-bottom: 0.1rem solid #ae7f2c80; padding-block: 4rem 4rem; }
 .ppolicy_accordion .ppolicy_item:last-child { border-bottom: none; }
-.ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding-left: 7rem; }
 .ppolicy_body ul { padding-top: 2.2rem; }
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
@@ -911,10 +914,14 @@
 .tp_overview { padding-block: 5rem 10rem; }
 .tp_ov_title { margin-bottom: 7rem; }
 .tp_ov_grid { display: grid; gap: 7.3rem; grid-template-columns: 37% auto; }
+.tp_ov_grid .tp_ov_left > .custom_bullet { margin-bottom: 3rem; }
+.admis_pro_pdfsec a { font: var(--font-16); border-bottom: 1px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom: 4rem; padding-bottom: 1rem; font-weight: 700; margin-top: 2rem; display: inline-flex; color: var(--color-33); }
+.admis_pro_pdfsec a:hover { color: var(--color-92); }
 .tp_ov_left>h4 { margin-bottom: 4rem; }
 .tp_ov_pattern { padding-block: 9.3rem 0; }
 .key_fun_sec { padding-block: 0 10rem; }
 .kf_title h4 { margin-bottom: 4rem; }
+.anti-ragging-table p { padding-top: 5.5rem; }
 .kf_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .kf_card { background-color: var(--color-F5); padding: 2.2rem; }
 .kf_card h5 { font: var(--font-21); margin-bottom: 2.4rem; color: var(--color-AE); font-weight: 500; }
@@ -1051,6 +1058,7 @@
 .committee_members { padding-block: 10rem 10rem; border-bottom: 0.1rem solid var(--color-C0); }
 .committee_members h5 { margin-bottom: 5rem; font-weight: bold; }
 .committee_members .team-members>p { margin-bottom: 0; }
+.academic_advisory_board h5 { font-weight: 400; }
 .other_activi_sec { padding-block: 10rem 10rem; }
 .other_acti_grid { display: grid; gap: 7.8rem; grid-template-columns: 41.8% auto; }
 .oth_ac_lft { padding-inline: 2rem; position: relative; }

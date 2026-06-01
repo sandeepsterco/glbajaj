@@ -181,7 +181,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* BOTTOM */
 .home_footer .footer_bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; font-size: 1.4rem; margin-left: 29.7rem; }
 .home_footer .footer_bottom_left { display: flex; gap: 5rem; flex-wrap: wrap; }
-.home_footer .footer_bottom p { color: var(--color-white); }
+.home_footer .footer_bottom p { color: var(--color-white);margin-bottom: 0; }
 .home_footer .footer_bottom_left a { color: var(--color-white); text-decoration: none; }
 .home_footer .footer_bottom_right { display: flex; align-items: center; gap: 4.7rem; flex-wrap: wrap; }
 /* SOCIAL */

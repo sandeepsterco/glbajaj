@@ -68,9 +68,8 @@ export default async function BlogDetailPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
   const listSlug = "blogs";
 
-  const [{ data, error }, { data: categoriesData }] = await Promise.all([
+  const [{ data, error }] = await Promise.all([
     apiFetch(`blogs/${blogSlug}${filterQuery}`, fetchOptions),
-    apiFetch("blog-categories", fetchOptions),
   ]);
 
   if (error) {
@@ -89,7 +88,6 @@ export default async function BlogDetailPage({
 
   const featuredBlogs: any[] = data?.featuredBlogs ?? [];
   const comments: any[] = data?.comments ?? [];
-  const categories: any[] = categoriesData?.categories ?? [];
   const listingPath = `${BASE_URL}${listSlug}`;
 
   return (
@@ -205,7 +203,6 @@ export default async function BlogDetailPage({
             <BlogSidebar
               featuredBlogs={featuredBlogs}
               comments={comments}
-              categories={categories}
               currentCategory={category}
               currentYear={year}
               currentMonth={month}

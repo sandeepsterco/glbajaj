@@ -111,11 +111,9 @@ export default async function BlogsPage({
 
 
 
-  const [{ data: blogsData, error }, { data: categoriesData }] = await Promise.all([
+  const [{ data: blogsData, error }] = await Promise.all([
 
     apiFetch(`blogs?${query}`, fetchOptions),
-
-    apiFetch("blog-categories", fetchOptions),
 
   ]);
 
@@ -136,10 +134,6 @@ export default async function BlogsPage({
   const featuredBlogs: any[] = blogsData?.featuredBlogs ?? [];
 
   const comments: any[] = blogsData?.comments ?? [];
-
-  const categories: any[] = categoriesData?.categories ?? [];
-
-
 
   const mainBlog = allItems[0] ?? null;
 
@@ -198,8 +192,6 @@ export default async function BlogsPage({
               featuredBlogs={featuredBlogs}
 
               comments={comments}
-
-              categories={categories}
 
               currentCategory={category}
 

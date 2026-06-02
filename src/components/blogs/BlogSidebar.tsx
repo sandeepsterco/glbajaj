@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
+import { apiFetch } from "@/src/lib/api";
 
 function getLast12Months(): { label: string; year: string; month: string }[] {
   const months = [];
@@ -22,7 +23,6 @@ function getLast12Months(): { label: string; year: string; month: string }[] {
 interface Props {
   featuredBlogs: any[];
   comments: any[];
-  categories: any[];
   currentCategory: string;
   currentYear: string;
   currentMonth: string;
@@ -52,7 +52,6 @@ function FilterChip({ label, href }: { label: string; href: string }) {
 export default function BlogSidebar({
   featuredBlogs,
   comments,
-  categories,
   currentCategory,
   currentYear,
   currentMonth,
@@ -65,11 +64,26 @@ export default function BlogSidebar({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [searchInput, setSearchInput] = useState(currentSearch);
+  const [categories, setCategories] = useState<any[]>([]);
   const filterBase = listingPath ?? pathname;
+  const selectedCategoryParam = searchParams.get("category") ?? currentCategory;
 
   useEffect(() => {
     setSearchInput(currentSearch);
   }, [currentSearch]);
+
+  useEffect(() => {
+    let mounted = true;
+    async function loadCategories() {
+      const { data } = await apiFetch("blog-categories");
+      if (!mounted) return;
+      setCategories(Array.isArray(data?.categories) ? data.categories : []);
+    }
+    loadCategories();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const buildHref = (updates: Record<string, string | null | undefined>) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -92,9 +106,12 @@ export default function BlogSidebar({
   );
   const archiveFilterLabel = selectedArchive?.label ?? (currentYear || null);
   const hasArchiveFilter = Boolean(currentYear);
-  const selectedCategory = categories.find(
-    (cat) => String(cat.id) === currentCategory
-  );
+  const selectedCategory = categories.find((cat) => {
+    const catId = String(cat.id);
+    const catName = String(cat.name ?? "").trim().toLowerCase();
+    const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
+    return selectedValue === catId || (catName && selectedValue === catName);
+  });
 
   return (
     <div className="blog_listing_right">
@@ -155,14 +172,14 @@ export default function BlogSidebar({
             const comment = normalizeComment(raw) as {
               author?: string;
               comment?: string;
-              avatar?: string;
-              blog?: { slug?: string };
+              image?: string;
+              blog?: any;
             };
             return (
             <div key={idx} className="recent_comt">
               <figure>
                 <img
-                  src={comment?.avatar || "/images/recent-comments.webp"}
+                  src={comment?.blog?.image || "/images/recent-comments.webp"}
                   className="img-fluid"
                   alt={comment?.author || "commenter"}
                 />
@@ -224,7 +241,10 @@ export default function BlogSidebar({
           <ul>
             {categories.map((cat: any) => {
               const catId = String(cat.id);
-              const isActive = currentCategory === catId;
+              const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
+              const isActive =
+                selectedValue === catId ||
+                selectedValue === String(cat.name ?? "").trim().toLowerCase();
               const href = buildHref({ category: catId });
               return (
                 <li key={catId}>

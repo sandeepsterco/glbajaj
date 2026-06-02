@@ -103,6 +103,51 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .curriculum-text { margin-bottom: 6rem; }
 .curriculum-text h5 { font-weight: 700; color: var(--color-33); }
 .curriculum-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4.5rem; }
+.curriculum-semt p { border-bottom: 1px solid #66666663; padding-bottom: 2.5rem; }
+.curriculum-semt p a { display: flex; align-items: center; gap: 2.6rem; font: var(--color-black); font: var(--font-16); font-weight: 600; }
+.eligibility { grid-template-columns: 50% auto; gap: 0 10rem; margin-right: -11rem; padding-top: 12.9rem; display: grid;}
+.eligibility-text{ padding-bottom: 4rem; }
+.eligibility-text h5{ font-weight: 700; }
+.eligibility-box{ background-color: var(--color-F4); padding: 3rem; }
+.eligibility-boxs{ display: grid; grid-template-columns:40% auto;}
+.eligibility-box .border{ background-color: #ddd; height: 1px; border-width: 0; margin-block: 2rem;}
+.counseling-heading h6{ font-weight: 600; }
+.counseling-text p{ font: var(--font-16); color: var(--color-33); }
+/* .border { border-top: 1px solid #CCCCCC; margin: 3rem 0; border-bottom:0;} */
+.admission-text p strong{ margin-bottom: 3rem; display: block; }
+.counseling-text { padding-inline: 0 1rem; }
+.securing-box{ background-color: var(--color-92); margin-top: 3.4rem; padding: 2.2rem; margin-left: -2rem; margin-right: -2rem; }
+.securing-box p{ color: var(--color-white);    margin-bottom: 0; }
+.securing-box h4{ font-weight: 600; color: var(--color-white); margin: 1rem 0 1.5rem; }
+.application-text{padding-bottom: 4rem;}
+.application-text h5{ font-weight: 700; color: var(--color-33); }
+.process-text ol {
+    counter-reset: step;
+    list-style: none;
+    padding: 0; 
+}
+.process-text ol li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+}
+
+.process-text ol li::before {
+    content: counter(step) ".";
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+}
+
+
+.process-text ol li{ font: var(--font-16); color: var(--color-33); font-weight: 500; margin-bottom: 3.5rem; padding: 0 0 0 3rem; }
+.cus-btn{ background-color: var(--color-AE); padding: 1.6rem 3rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 5rem; }
+.cus-btn:hover{background-color: var(--color-89);}
+/* Career Paths */
+.program-detailsec2 { border-top: 1px solid #c0855257; padding-block: 10rem; }
+.paths-text h5{font-weight: 700; color: var(--color-33); margin-bottom: 4rem;}
+.paths-text .cus-tab .tabs ul li a{ font: var(--font-16); color: var(--color-black); letter-spacing: 0; font-weight: 500; }
 .curriculum-semt { }
 .curriculum-semt p { border-bottom: 1px solid #66666663; padding-bottom: 2.5rem; }
 .curriculum-semt p a { display: flex; align-items: center; gap: 2.6rem; font: var(--color-black); font: var(--font-16); font-weight: 600; }
@@ -223,6 +268,8 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .pub-item p { margin: 0; }
 .accordion-body h4 { font: var(--font-18); color: var(--color-black); font-weight: 600; margin-bottom: 5rem; }
 /* Contact */
+.contact-sec{padding-block: 8.2rem;}
+.contact-heading h3{ letter-spacing: -1.8px; color: var(--color-64); margin-bottom: 1rem; }
 .contact-sec { padding-block: 8.2rem; }
 .contact-heading { }
 .contact-heading h3 { letter-spacing: -1.8px; color: var(--color-64); margin-bottom: 1rem; }
@@ -272,6 +319,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
 .award-detail-text h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
 .award-detail-img { padding-inline: 5rem 0; }
+.award-detail-list1{display: grid; grid-template-columns: repeat(2, 1fr);margin-top: 7rem; }
+.award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
+.award-detail-text1 figure{max-width: 60rem;}
+
 .award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-text1 ul.insta_icons li a { margin-top: 2.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; 
     gap: 1.5rem; padding-inline: 1.5rem;  color: var(--color-92); font: var(--font-21);font-weight: 700; }
@@ -307,6 +358,11 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .csr-list2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; padding-block: 10rem; }
 .csr-list2 .csr-text-list { padding: 3rem 23rem 0 12rem; }
 .road-list { display: grid; grid-template-columns: 25% 38% auto; gap: 7.5rem; }
+.road-text{ padding-top: 1rem; }
+.road-text h4{color: var(--color-64); margin-bottom: 3rem; font-weight: 600;}
+.road-text h3{ letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; }
+.road-text p{color: var(--color-33); font: var(--font-16);}
+.road-logo ul{display: grid; grid-template-columns: repeat(2, 1fr);}
 .road-text { padding-top: 1rem; }
 .road-text h4 { color: var(--color-64); margin-bottom: 3rem; font-weight: 600; }
 .road-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; }
@@ -363,6 +419,31 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .hierarchy-box { display: grid; grid-template-columns: 43% auto; align-items: center; }
 .hierarchy-text { background-color: var(--color-F5); height: 100%; display: flex; flex-direction: column; justify-content: center; padding-inline: 10rem; }
 .dean { border-bottom: 1px solid #AE7F2C; padding-bottom: 3rem; margin-bottom: 3rem; }
+.dean blockquote{font: var(--font-18); font-weight: 600; margin: 0;}
+.area p{
+    margin-bottom: 0;
+}
+.research-sec1{
+    background-color: var(--color-F4);
+    padding-block: 10rem;
+}
+.member-heading h4{
+        color: var(--color-64);
+    font-weight: 700;
+}
+.member-grid .faculty_Bx{
+    background-color: var(--color-white);
+        padding-bottom: 5rem;
+
+}
+.member-text {
+    border-top: 1px solid #AE7F2C;
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+.member-grid:before{
+    z-index: 0;
+}
 .dean blockquote { font: var(--font-18); font-weight: 600; margin: 0; }
 .area p { margin-bottom: 0; }
 .research-sec1 { background-color: var(--color-F4); padding-block: 10rem; }

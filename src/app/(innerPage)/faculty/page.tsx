@@ -5,6 +5,11 @@ import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 import { getSlug } from "@/src/lib/getSlug";
 import FacultyTabular from "@/src/components/faculty/FacultyTabular";
 import FacultyFilters from "@/src/components/faculty/FacultyFilters";
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/program.css";
+import "@/src/styles/parser.css";
 
 interface SearchParams {
   page?: string;

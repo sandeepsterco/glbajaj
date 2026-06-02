@@ -48,7 +48,11 @@ export default function ResearchInnovation() {
         }}
         breakpoints={{
           768: {
-            slidesPerView: 2.5,
+            slidesPerView: 1.3,
+            spaceBetween: 15,
+          },
+          991: {
+            slidesPerView: 2.3,
             spaceBetween: 15,
           },
           1200: {

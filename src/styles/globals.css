@@ -50,9 +50,9 @@ a { text-decoration: none; }
 .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .table-responsive table { width: 100%; border-collapse: collapse; min-width: 600px; /* optional */ }
 @media (max-width: 991px) {
- .container-fluid { max-width: 100%; width: 100%; }
-.container { max-width: 100%;  width: 100%; }
-.container25{max-width: 100%;  width: 100%; }
+ .container-fluid { max-width: 100%; width: 100%; padding-inline: 1.5rem; }
+.container { max-width: 100%;  width: 100%; padding-inline: 1.5rem;  }
+.container25{max-width: 100%;  width: 100%; padding-inline: 1.5rem;  }
 
 /* html { font-size: clamp(6px, 0.520833333vw, 10px); } */
 html { font-size: 62.5%; }

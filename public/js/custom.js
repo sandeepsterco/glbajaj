@@ -287,6 +287,37 @@
         nextEl: ".home_placement_companies .next_swiper_btn",
         prevEl: ".home_placement_companies .prev_swiper_btn",
       },
+       breakpoints: {
+          0: {
+            slidesPerView: 2.3,
+            spaceBetween: 5,
+          },
+
+          480: {
+            slidesPerView: 2.3,
+            spaceBetween: 5,
+          },
+
+          768: {
+            slidesPerView: 3.4,
+            spaceBetween: 5,
+          },
+
+          992: {
+            slidesPerView: 3.4,
+            spaceBetween: 5,
+          },
+
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+          },
+
+          1400: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+          },
+        },
     });
 
     createSwiper(".courses_slider_wrapper", {
@@ -369,6 +400,8 @@
       },
     });
 
+
+    
     // new Swiper(".cse_faculties_slider", {
     //   slidesPerView: 1.2,
     //   spaceBetween: 20,

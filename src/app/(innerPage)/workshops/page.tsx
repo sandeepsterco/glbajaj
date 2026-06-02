@@ -6,6 +6,11 @@ import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 import MainWorkshop from "@/src/components/workshop/MainWorkshop";
 import WorkshopListing from "@/src/components/workshop/WorkshopListing";
 import { getSlug } from "@/src/lib/getSlug";
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/program.css";
+import "@/src/styles/parser.css";
 
 export default async function NewsEvent({ searchParams, params }: { searchParams: Promise<{ page?: string }>, params: string }) {
     const slug = await getSlug();

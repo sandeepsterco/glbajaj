@@ -4,6 +4,11 @@ import MainNews from "@/src/components/newsEvents/MainNews";
 import NewsListing from "@/src/components/newsEvents/NewsListing";
 import { apiFetch } from "@/src/lib/api";
 import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/program.css";
+import "@/src/styles/parser.css";
 
 interface SearchParams {
   page?: string;

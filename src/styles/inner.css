@@ -238,6 +238,7 @@
 .newst_details_header { display: flex; align-items: center; }
 .newst_details_header date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; }
 .news_details h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
+.department-page .news_details_grid{margin-bottom: 2.5rem;}
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
 .news_details_cnt p { font: var(--font-16); color: var(--color-33); margin-bottom: 2rem; }
 .news_details_img { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative; }

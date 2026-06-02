@@ -1752,6 +1752,10 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
+.research_and_incubation .center_icu_logosec{display: flex;}
+.center_icu_logosec{display: flex;gap: 3rem;display: none;}
+.center_icu_logosec .icu_imgsec{padding: 2rem;background-color: var(--color-white);width: 20rem;}
+.center_icu_logosec .icu_imgsec figure img{margin: auto;}
 /* ================  Student Chapters  =============== */
 .ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
 .view_detail_btn { background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; }

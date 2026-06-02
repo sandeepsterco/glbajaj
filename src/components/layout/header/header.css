@@ -100,6 +100,7 @@
 
 .dropdown_grid_research-overview .dropdown_col.no-children .menu_title_link,
 .dropdown_placement .dropdown_col.no-children .menu_title_link,
+.dropdown_admission-overview .dropdown_col.no-children .menu_title_link,
 .dropdown_grid_academics .mega_right .menu_title_link{
     color: var(--color-white);
     border-bottom: .1rem solid #d2ab674d;
@@ -107,7 +108,7 @@
     display: block;
     font:var(--font-16)
 }
-
+.dropdown_grid_admission-overview .mega_left h4{margin-bottom: 0;}
 .hmburger_grid ul{ padding-bottom: 5rem;}
 
 /* ==========global_search_dialog =============== */

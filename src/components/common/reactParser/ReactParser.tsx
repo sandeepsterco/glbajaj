@@ -28,6 +28,7 @@ import "@/src/styles/parser.css";
 import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
 import HomePlacements from "../../parser/HomePlacements";
 import CareerJobListing from "../../parser/CareerJobListing";
+import HomeUpcomingEvents from "../../parser/HomeUpcomingEvents";
 
 function ParserWidgetFallback() {
   return (
@@ -285,6 +286,8 @@ const options: HTMLReactParserOptions = {
         return <HomePlacements />;
       if (domNode.attribs.id === "career_job_listing")
         return <CareerJobListing />;
+      if (domNode.attribs.id === "home_upcoming_events")
+        return <HomeUpcomingEvents />;
     }
   },
 };

@@ -210,6 +210,7 @@
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
+.department-page .inner_nav .about_menu_label{display:none;}
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -719,6 +720,8 @@
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title,
 .custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
+.custom_heading_grid .left{flex:1;}
+.department-page .custom_heading_grid .right{flex:unset;}
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }
 .faculties_main .faculties_title .title48 { color: var(--color-92); }
 .laboraties_mainsec { background-color: var(--color-F4); padding-block: 1.2rem 10rem; }

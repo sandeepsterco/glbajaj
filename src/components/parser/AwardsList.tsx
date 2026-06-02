@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 
 const getAwards = async () => {
     const { data, error } = await apiFetch(`award-recognitions`);
-
     if (error) throw new Error(error);
     return data;
 }

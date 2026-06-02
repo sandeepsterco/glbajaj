@@ -1,29 +1,37 @@
 "use client"
-import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import FacultyList from "../faculty/FacultyList";
+import FacultyTabular from "../faculty/FacultyTabular";
 import { SkeletonGroup } from "../ui/Skeleton";
 
 
-const fetchDepartmentFacultyGrid = async (slug: string) => {
-  const { data, error } = await apiFetch(`department/faculty/${slug}`);
+const fetchDepartmentFaculty = async (slug: string, page: number) => {
+  const query = new URLSearchParams({
+    department: slug,
+    page: String(page),
+  }).toString();
+
+  const { data, error } = await apiFetch(`faculty?${query}`);
   if (error) throw new Error(error);
-  return data?.data;
+  return data;
 };
 
 export default function DepartmentFacultyGrid() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const slug = pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["department_faculty_grid", slug],
-    queryFn: () => fetchDepartmentFacultyGrid(slug),
+    queryKey: ["department_faculty", slug, currentPage],
+    queryFn: () => fetchDepartmentFaculty(slug, currentPage),
   });
 
-  const facultyData = data?.grid ?? [];
+  const facultyType = data?.type;
+  const facultyData = data?.data?.data ?? [];
+  const paginationData = data?.data;
 
   if (isLoading) {
     return (
@@ -38,25 +46,20 @@ export default function DepartmentFacultyGrid() {
   if (isError || !facultyData?.length) return null;
 
   return (
-    <div className="faculty_grid">
-      {facultyData?.length > 0 && facultyData.map((item: any, idx: number) => (
-        <div key={idx} className="faculty_Bx">
-          <figure>
-            <Image src={item.image} className="img-fluid w-100" width="255" height="287" loading="lazy" alt={item.title} />
-          </figure>
-          {item?.name && (
-            <h5>{item.name}</h5>
-          )}
-          {item?.type && (
-            <p>{item.type}</p>
-          )}
-          {item.slug && (
-            <Link className="strech_link" href={`${BASE_URL}faculty/${item.slug}`} />
-          )}
-        </div>
-      ))}
-
-
-    </div>
+    <>
+      {facultyType === "Grid" ? (
+        <FacultyList
+          data={paginationData}
+          currentPage={currentPage}
+          pageKey="page"
+        />
+      ) : (
+        <FacultyTabular
+          data={paginationData}
+          currentPage={currentPage}
+          pageKey="page"
+        />
+      )}
+    </>
   );
 }

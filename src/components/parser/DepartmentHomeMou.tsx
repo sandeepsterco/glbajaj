@@ -91,16 +91,19 @@ export default function DepartmentHomeMou() {
   return (
     <>
       {/* Dynamic Tabs */}
-      <div className="tabs tabs_design1">
-        {tabs.map((type) => (
-          <div
-            key={type}
-            className={`tab ${resolvedTab === type ? "active" : ""}`}
-            onClick={() => handleTabClick(type)}
-          >
-            {type}
-          </div>
-        ))}
+      <div className="mou_heading">
+        <h4 className="font24">Collaborations & MOUs</h4>
+        <div className="tabs tabs_design1">
+          {tabs.map((type) => (
+            <div
+              key={type}
+              className={`tab ${resolvedTab === type ? "active" : ""}`}
+              onClick={() => handleTabClick(type)}
+            >
+              {type}
+            </div>
+          ))}
+        </div>
       </div>
 
       {tabItems.length > 1 && (
@@ -122,7 +125,7 @@ export default function DepartmentHomeMou() {
 
         {/* Content Section */}
         <div className="project_contentsec">
-          <h4 className="font24">Collaborations & MOUs</h4>
+          {/* <h4 className="font24">Collaborations & MOUs</h4> */}
           <h3 className="font36">{activeItem.title}</h3>
           <p>{activeItem.description}</p>
           <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">

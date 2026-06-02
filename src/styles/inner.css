@@ -14,7 +14,26 @@
 .results-list .result_link { align-items: center; width: 100%; padding: 2.5rem 2rem; display: flex; }
 .results-list .result_link .result-content { flex: 1; }
 .results-list .result-title { font: var(--font-20); color: #1a1a1a; letter-spacing: 0; flex: 1; font-weight: 400; }
+
 /* ========= search page ================= */
+
+/* ==== career page========== */
+
+.career_headings{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+.career_headings h4{margin-bottom: 0;}
+
+/* ==== career page========== */
+
+/* =========department home mou ===============*/
+
+.department_home_mou .mou_heading{display: flex; justify-content: space-between;}
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }

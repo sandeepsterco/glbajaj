@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "swiper/css";
 import "swiper/css/navigation";
+import { SkeletonGroup } from "../ui/Skeleton";
 
 const fetchDepartmentLabsData = async (slug: string) => {
   const { data, error } = await apiFetch(`department/ceo-and-activity-level/${slug}`);
@@ -25,7 +26,20 @@ export default function DepartmentLabsGrids() {
 
   const labsData = data?.ceoAndAdvanceLevel ?? {};
 
-  if (isLoading || labsData?.data?.length === 0) return null;
+  if (isLoading) {
+    return (
+      <div className="container25">
+        <SkeletonGroup
+        wrapperClassName="!mt-[3rem] !block"
+        count={1}
+        className="bg-gray-300 h-[30rem] w-full"
+      />
+      </div>
+      
+    );
+  }
+
+  if (labsData?.data?.length === 0) return null;
 
   return (
     <section className="media_coverage affiliations-sec">

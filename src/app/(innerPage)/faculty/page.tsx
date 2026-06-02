@@ -54,6 +54,8 @@ export default async function FacultyPage({
   const departments: { name: string; slug: string; image: string }[] =
     deptData?.data || [];
 
+  const facultyType = data?.type;
+
   return (
     <InnerPageLayoutWrapper
       slug={slug}
@@ -76,24 +78,30 @@ export default async function FacultyPage({
             </div>
           )}
 
-          {/* Grid section with its own pagination */}
-          {data?.grid?.data.length > 0 && (
-            <FacultyList
-                data={data?.grid}
-                currentPage={gridPage}
-                pageKey="grid_page"
-            />
+          {facultyType == 'Grid' ? (
+            data?.data?.data.length > 0 && (
+              <FacultyList
+                  data={data?.data}
+                  currentPage={gridPage}
+                  pageKey="grid_page"
+              />
+            )
+          ) : (
+            data?.data?.data.length > 0 && (
+              <FacultyTabular
+                  data={data?.data}
+                  currentPage={tablePage}
+                  pageKey="table_page"
+              />
+            )
           )}
+
+          {/* Grid section with its own pagination */}
+          
           
 
           {/* Table section with its own pagination */}
-          {data?.table?.data.length > 0 && (
-            <FacultyTabular
-                data={data?.table}
-                currentPage={tablePage}
-                pageKey="table_page"
-            />
-          )}
+          
           
         </div>
       </section>

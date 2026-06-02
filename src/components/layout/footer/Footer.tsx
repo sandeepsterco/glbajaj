@@ -222,7 +222,7 @@ const Footer = async () => {
         <div className="footer_top">
           {/* <!-- Logo --> */}
           <div className="footer_logo">
-             <Image
+            <Image
               src="/images/logo/footer-logo.png"
               alt="GL Bajaj Logo"
               width={260}
@@ -266,16 +266,16 @@ const Footer = async () => {
         <div className="footer_links">
           <ul>
             <li>
-              <a href="#">Quick Links</a>
+              <Link href="#!">Quick Links</Link>
             </li>
-                {footerData?.menuItems?.map((item: any, idx: number) => (
+            {footerData?.menuItems?.map((item: any, idx: number) => (
               <React.Fragment key={idx}>
                 <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
                   •
                 </li>
                 <li>
                   <Link
-                    href={item?.slug ? item.slug : ''}
+                    href={item?.slug ? BASE_URL + item.slug : ''}
                     className="text-[1.4rem] leading-[2.1rem] text-white"
                   >
                     {item.title}
@@ -295,7 +295,7 @@ const Footer = async () => {
             <p>
               Website Design and Development by {" "}
               <a href="https://www.stercodigitex.com/" target="_blank">
-                 Sterco Digitex
+                Sterco Digitex
               </a>
             </p>
           </div>
@@ -303,28 +303,28 @@ const Footer = async () => {
           <div className="footer_bottom_right">
             {/* <!-- Social Icons --> */}
             <div className="social_icons">
-              <a href="#">
+              <a href="https://www.facebook.com/glbitm" target="_blank">
                 <img
                   src="/images/icons/social/facebook-color.svg"
                   alt="facebook icon"
                 />
               </a>
-              <a href="#">
+              <a href="https://x.com/glbajaj" target="_blank">
                 <img src="/images/icons/social/x-color.svg" alt="" />
               </a>
-              <a href="#">
+              <a href="https://www.youtube.com/user/glbitm07" target="_blank">
                 <img
                   src="/images/icons/social/youtube-color.svg"
                   alt=""
                 />
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/glbajajitm/" target="_blank">
                 <img
                   src="/images/icons/social/insta-color.svg"
                   alt=""
                 />
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/school/g-l-bajaj-institute-of-technology-and-management/" target="_blank">
                 <img
                   src="/images/icons/social/linkedin-color.svg"
                   alt=""

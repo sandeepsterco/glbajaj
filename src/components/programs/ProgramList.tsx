@@ -3,8 +3,9 @@ import Link from "next/link";
 import { apiFetch } from "@/src/lib/api";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 import { BASE_URL } from "@/src/config/config";
-import { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import ProgramApplyModal from "./ProgramApplyModal";
 
 interface Program {
   name: string;
@@ -32,14 +33,21 @@ interface ProgramsData {
 
 async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", page = 1) {
   const { data, error } = await apiFetch(
-    `programs?type=${type === "all" ? "" : type}&page=${page}`,
-    { cache: "no-store" }
+    `programs?type=${type === "all" ? "" : type}&page=${page}`
   );
   if (error || !data) return null;
   return data as { programs: ProgramsData };
 }
 
-function ProgramBox({ program }: { program: Program }) {
+function ProgramBox({
+  program,
+  departmentSlug,
+  onApply,
+}: {
+  program: Program;
+  departmentSlug: string;
+  onApply: (departmentSlug: string) => void;
+}) {
   const cleanName = program.name.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
   return (
@@ -59,7 +67,12 @@ function ProgramBox({ program }: { program: Program }) {
           <span>{program.affiliation || "-"}</span>
         </div>
         <div className="apply-btn">
-          <a href="#">Apply Now</a>
+          <button
+            type="button"
+            onClick={() => onApply(departmentSlug)}
+          >
+            Apply Now
+          </button>
         </div>
         <div className="program-btn">
           <Link href={`/program/${program.slug}`}>
@@ -80,27 +93,51 @@ function buildUrl(type: string, page: number) {
   return `${BASE_URL}programs-offered?${params.toString()}`;
 }
 
-function ProgramGroupSection({ group }: { group: ProgramGroup }) {
-  if (!group.programs || group.programs.length === 0) return null;
-
+function ProgramGroupSection({
+  group,
+  onApply,
+}: {
+  group: ProgramGroup;
+  onApply: (departmentSlug: string) => void;
+}) {
   return (
     <div className="program-list">
       <h5>{group.name}</h5>
-      {group.programs.map((program) => (
-        <ProgramBox key={program.slug} program={program} />
-      ))}
+      {group.programs && group.programs.length > 0 ? (
+        group.programs.map((program) => (
+          <ProgramBox
+            key={program.slug}
+            program={program}
+            departmentSlug={group.slug}
+            onApply={onApply}
+          />
+        ))
+      ) : (
+        <p className="no-programs">No programs available.</p>
+      )}
     </div>
   );
 }
 
 export default function ProgramList() {
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const paramsType = (searchParams.get("type") as "under-graduate" | "post-graduate" | "all") || "all";
   const page = Number(searchParams.get("page")) || 1;
 
   const [programsData, setProgramsData] = useState<ProgramsData | null>(null);
   const [loading, setLoading] = useState(false);
+  const [applyModal, setApplyModal] = useState<{
+    open: boolean;
+    departmentSlug?: string;
+  }>({ open: false });
+
+  const openApplyModal = useCallback((departmentSlug: string) => {
+    setApplyModal({ open: true, departmentSlug });
+  }, []);
+
+  const closeApplyModal = useCallback(() => {
+    setApplyModal({ open: false });
+  }, []);
 
   useEffect(() => {
     console.log("Fetching:", { paramsType, page }); // check these are updating
@@ -143,7 +180,11 @@ export default function ProgramList() {
                     <p>Loading programs...</p>
                   ) : programsData && programsData.data.length > 0 ? (
                     programsData.data.map((group) => (
-                      <ProgramGroupSection key={group.slug} group={group} />
+                      <ProgramGroupSection
+                        key={group.slug}
+                        group={group}
+                        onApply={openApplyModal}
+                      />
                     ))
                   ) : (
                     <p>No programs found.</p>
@@ -161,6 +202,12 @@ export default function ProgramList() {
           </div>
         </div>
       </div>
+
+      <ProgramApplyModal
+        open={applyModal.open}
+        departmentSlug={applyModal.departmentSlug}
+        onClose={closeApplyModal}
+      />
     </section>
   );
 }

@@ -4,6 +4,7 @@ import DepartmentTraining from "@/src/components/programs/DepartmentTraining";
 import DepartmentFeeStructure from "@/src/components/programs/FeeStructure";
 import Objectives from "@/src/components/programs/Objectives";
 import ProgramOverview from "@/src/components/programs/Overview";
+import "@/src/styles/inner.css";
 
 export default function ProgramDetail() {
     return (

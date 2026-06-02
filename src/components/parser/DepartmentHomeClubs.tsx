@@ -29,7 +29,7 @@ export default function DepartmentHomeClubs() {
 
 
   const slideCount = clubsData.length;
-  const maxSlidesPerView = 3;
+  const maxSlidesPerView = 4;
   const shouldLoop = slideCount > maxSlidesPerView;
   const showNavigation = shouldLoop;
 
@@ -44,7 +44,7 @@ export default function DepartmentHomeClubs() {
       autoplay={false}
       breakpoints={{
         768: { slidesPerView: 2, spaceBetween: 15 },
-        1200: { slidesPerView: 3, spaceBetween: 30 },
+        1200: { slidesPerView: 4, spaceBetween: 30 },
       }}
       navigation={{
         nextEl: ".department_home_clubs_next",
@@ -54,7 +54,7 @@ export default function DepartmentHomeClubs() {
     >
       {clubsData.map((item: any, idx: number) => (
         <SwiperSlide key={item?.id || idx}>
-          <div className="activies_col">
+          <div className="media_grid_Bx1">
             <figure>
               <Image
                 src={item.image}
@@ -63,9 +63,11 @@ export default function DepartmentHomeClubs() {
                 alt={item.title}
               />
             </figure>
-            <div className="activities_caption">
-              <p>{item.title}</p>
-            </div>
+            {item?.title && (
+              <div className="media_txt">
+                <p>{item.title}</p>
+              </div>
+            )}
             {item?.slug && (
               <Link
                 className="strech_link"

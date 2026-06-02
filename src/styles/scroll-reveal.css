@@ -1,0 +1,62 @@
+/* Lightweight scroll-reveal (replaces AOS — no DOM class mutation during hydration) */
+[data-aos] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+  transition-delay: calc(var(--aos-delay, 0) * 1ms);
+  will-change: opacity, transform;
+}
+
+[data-aos].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Hero is above the fold — show immediately, animate in with CSS only */
+.home_banner [data-aos] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.home_banner .caption_wrap {
+  animation: hero-caption-in 0.7s ease 0.15s both;
+}
+
+.home_banner .caption_wrap .title48 {
+  animation: hero-caption-in 0.7s ease 0.3s both;
+}
+
+.home_banner .cap_desc p {
+  animation: hero-caption-in 0.7s ease 0.45s both;
+}
+
+.home_banner .cap_desc a {
+  animation: hero-caption-in 0.7s ease 0.55s both;
+}
+
+@keyframes hero-caption-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos],
+  .home_banner .caption_wrap,
+  .home_banner .caption_wrap .title48,
+  .home_banner .cap_desc p,
+  .home_banner .cap_desc a {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

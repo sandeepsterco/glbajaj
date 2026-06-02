@@ -3,12 +3,11 @@
 .yt-modal-overlay.active { display: flex; }
 .yt-modal-box { position: relative; width: 90%; max-width: 860px; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #000; }
 .yt-modal-box iframe { width: 100%; height: 100%; border: none; display: block; }
+.yt-modal-box--form { aspect-ratio: auto; max-height: 90vh; overflow-y: auto; background: var(--color-white, #fff); padding: 0; max-width: 60rem;}
+.yt-modal-box--form .program-form { margin: 0; }
+.yt-modal-box--form .note{text-align: left;}
 .yt-modal-close { color: var(--color-white); cursor: pointer; opacity: .8; background: none; border: none; line-height: 1; transition: opacity .2s; position: absolute; top: 2rem; right: 3rem; z-index: 9999; font-size: 4rem; font-weight: 100; }
 .yt-modal-close:hover { opacity: 1; }
-.yt-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.82); z-index: 9999; align-items: center; justify-content: center; }
-.yt-modal-overlay.active { display: flex; }
-.yt-modal-box { position: relative; width: 90%; max-width: 860px; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #000; }
-.yt-modal-box iframe { width: 100%; height: 100%; border: none; display: block; }
 .title36 { font: var(--font-36); }
 /************  Award and Ranking  CSS Start ************/
 /* .swiper-button-prev,
@@ -450,7 +449,7 @@
 .shaping_future_Bx { position: relative; }
 .shaping_future_Bx figcaption { padding: 3rem 3rem 0; }
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
-.shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
+/* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; } */
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============The Group page End============= */
 /* =============Home Facilities  start============= */
@@ -536,7 +535,8 @@
  }
 /* Institute Incubation Center End */
 .anti-ragging-page { padding-top: 10rem; }
-.anti-ragging-page .kf_title p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page  p a { font-weight: 600; color: var(--color-AE); }
+.anti-ragging-page .teamX_info .teamX_coninfo{display: none;}
 .res_publication .table-wrapper tbody tr td:last-child { word-break: break-all; overflow-wrap: break-word; white-space: normal; }
 .res_publication .table-wrapper tbody tr td { font: var(--font-14); padding: 1.8rem 1.5rem ; }
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }

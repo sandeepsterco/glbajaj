@@ -1,33 +1,97 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
-import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import FacultyList from "@/src/components/faculty/FacultyList";
-import { apiFetch } from "@/src/lib/api"
+import { apiFetch } from "@/src/lib/api";
 import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 import { getSlug } from "@/src/lib/getSlug";
+import FacultyTabular from "@/src/components/faculty/FacultyTabular";
+import FacultyFilters from "@/src/components/faculty/FacultyFilters";
 
-export default async function GalleryPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
-    const { page } = await searchParams;
-    const currentPage = Number(page) || 1;
-    const { data, error } = await apiFetch(`faculty?page=${currentPage}`);
-    const slug = await getSlug();
+interface SearchParams {
+  page?: string;
+  grid_page?: string;
+  table_page?: string;
+  department?: string;
+  filter?: string;
+}
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
-        )
-    }
+export default async function FacultyPage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const params = await searchParams;
+  const gridPage = Number(params.grid_page) || 1;
+  const tablePage = Number(params.table_page) || 1;
+  const department = params.department || "";
+  const filter = params.filter || "a-z";
 
-    const pagination = data?.faculty;
+  const slug = await getSlug();
 
+  // Build query string for faculty API
+  const facultyQuery = new URLSearchParams({
+    grid_page: String(gridPage),
+    table_page: String(tablePage),
+    ...(department && { department }),
+    filter,
+  }).toString();
+
+  const [{ data, error }, { data: deptData }] = await Promise.all([
+    apiFetch(`faculty?${facultyQuery}`),
+    apiFetch("departments"),
+  ]);
+
+  if (error) {
     return (
-        <>
-            <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
-                <FacultyList data={data?.faculty} />
-                <PaginationWrapper
-                    currentPage={pagination?.current_page || 1}
-                    totalPages={pagination?.last_page || 1}
-                />
-            </InnerPageLayoutWrapper>
-        </>
-    )
+      <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
+    );
+  }
+
+  const departments: { name: string; slug: string; image: string }[] =
+    deptData?.data || [];
+
+  return (
+    <InnerPageLayoutWrapper
+      slug={slug}
+      tabs={null}
+      mainClass="happenings_page"
+      showTabs={false}
+    >
+      <section className="faculty_section">
+        <div className="container25">
+          {/* Filters — client component handles URL updates */}
+          <FacultyFilters
+            departments={departments}
+            currentDepartment={department}
+            currentFilter={filter}
+          />
+
+          {data?.grid?.data.length <= 0 && data?.table?.data.length <= 0 && (
+            <div className="faculty_grid">
+                <h4>No Faculty Found!</h4>
+            </div>
+          )}
+
+          {/* Grid section with its own pagination */}
+          {data?.grid?.data.length > 0 && (
+            <FacultyList
+                data={data?.grid}
+                currentPage={gridPage}
+                pageKey="grid_page"
+            />
+          )}
+          
+
+          {/* Table section with its own pagination */}
+          {data?.table?.data.length > 0 && (
+            <FacultyTabular
+                data={data?.table}
+                currentPage={tablePage}
+                pageKey="table_page"
+            />
+          )}
+          
+        </div>
+      </section>
+    </InnerPageLayoutWrapper>
+  );
 }

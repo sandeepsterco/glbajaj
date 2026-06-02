@@ -1,23 +1,27 @@
 import FullImageBanner from "../components/common/fullImageBanner/FullImageBanner";
-import RankingAward from "../components/RankingAward";
-import Placements from "../components/Placements";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
 import ReactParser from "../components/common/reactParser/ReactParser";
-import NotificationBar from "../components/ui/notificationBar/NotificationBar";
+import { cache } from "react";
 
-export const dynamic = "force-dynamic";
+const HERO_POSTER =
+  "https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg";
 
-
-
+const getHomeData = cache(async () => {
+  const [seoData, homeRes] = await Promise.all([
+    getPageSEO(),
+    apiFetch("modular/home", { revalidate: 300 }),
+  ]);
+  return { seoData, homeData: homeRes.data };  
+});
+ 
 export async function generateMetadata() {
-  return await getPageSEO();
+  const { seoData } = await getHomeData();
+  return seoData;
 }
 
 export default async function Home() {
-  const seoData = await getPageSEO();
-
-  const { data: homeData, error: homeError } = await apiFetch("modular/home");
+  const { seoData, homeData } = await getHomeData();
 
   if(!homeData?.modular && !homeData?.cms){
     return <div className="min-h-[100vh] flex items-center justify-center">
@@ -27,6 +31,7 @@ export default async function Home() {
 
   return (
     <>
+      <link rel="preload" as="image" href={HERO_POSTER} fetchPriority="high" />
       {seoData.schema && (
         <script
           type="application/ld+json"

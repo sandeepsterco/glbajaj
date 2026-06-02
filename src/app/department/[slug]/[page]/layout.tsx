@@ -8,7 +8,7 @@ import { BASE_URL } from "@/src/config/config";
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug, page} = await params;
 
-    const {data, error} = await apiFetch(`department/${slug}/${page}`, { cache:'no-store'});
+    const {data, error} = await apiFetch(`department/${slug}/${page}`);
 
     if(error){
         return <NotFound />;
@@ -16,9 +16,7 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     return(
         <div className="happenings_page">
-            {data?.data?.tabs && (
                 <PageHeader data={data.data} slug={slug}  />
-            )}
             {data.data.cms.length == 0 ? <ComingSoon /> : children}
         </div>
     )

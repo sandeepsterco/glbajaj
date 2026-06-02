@@ -146,6 +146,55 @@
   }
 
   // ─── Swipers ──────────────────────────────────────────────────────────────────
+  function resolveNavEl(root, selector) {
+    if (!selector || typeof selector !== "string") return selector;
+    const scopes = [root, root.parentElement, root.closest("section"), document];
+    for (let i = 0; i < scopes.length; i++) {
+      const scope = scopes[i];
+      if (!scope || !scope.querySelector) continue;
+      const node = scope.querySelector(selector);
+      if (node && node.nodeType === 1) return node;
+    }
+    return null;
+  }
+
+  function createSwiper(selector, options) {
+    const el = document.querySelector(selector);
+    if (!el || el.nodeType !== 1) return null;
+
+    // Skip React-managed Swipers (e.g. AboutLeadership on /about)
+    if (
+      el.hasAttribute("data-swiper-react") ||
+      el.closest("[data-swiper-react]") ||
+      (el.classList.contains("leadership_slider") &&
+        !el.classList.contains("swiper") &&
+        el.querySelector(".swiper"))
+    ) {
+      return null;
+    }
+
+    const opts = Object.assign({}, options);
+    if (opts.navigation && typeof opts.navigation === "object") {
+      const nextEl = resolveNavEl(el, opts.navigation.nextEl);
+      const prevEl = resolveNavEl(el, opts.navigation.prevEl);
+      if (nextEl || prevEl) {
+        opts.navigation = Object.assign({}, opts.navigation, {
+          ...(nextEl && { nextEl }),
+          ...(prevEl && { prevEl }),
+        });
+      } else {
+        delete opts.navigation;
+      }
+    }
+
+    try {
+      return new Swiper(el, opts);
+    } catch (err) {
+      console.warn("[custom.js] Swiper init skipped for", selector, err);
+      return null;
+    }
+  }
+
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
 
@@ -171,7 +220,7 @@
       if (el?.swiper) el.swiper.destroy(true, true);
     });
 
-    new Swiper(".award_ranking", {
+    createSwiper(".award_ranking", {
       slidesPerView: 5,
       loop: true,
       spaceBetween: 0,
@@ -193,7 +242,7 @@
       },
     });
 
-    new Swiper(".studentsSwiper", {
+    createSwiper(".studentsSwiper", {
       slidesPerView: 3,
       spaceBetween: 20,
       navigation: {
@@ -202,7 +251,7 @@
       },
     });
 
-    new Swiper(".companySwiper", {
+    createSwiper(".companySwiper", {
       slidesPerView: 4,
       spaceBetween: 30,
       loop: true,
@@ -217,7 +266,7 @@
       },
     });
 
-    new Swiper(".home_placement_student_slider", {
+    createSwiper(".home_placement_student_slider", {
       slidesPerView: 3,
       spaceBetween: 27,
       loop: true,
@@ -227,7 +276,7 @@
       },
     });
 
-    new Swiper(".home_placement_company_slider", {
+    createSwiper(".home_placement_company_slider", {
       slidesPerView: 5,
       spaceBetween: 28,
       loop: true,
@@ -271,55 +320,55 @@
         },
     });
 
-    new Swiper(".courses_slider_wrapper", {
-  slidesPerView: 8,
-  spaceBetween: 0,
-  loop: true,
-
-  autoplay: {
-    delay: 2000,
-    disableOnInteraction: false,
-  },
-
-  navigation: {
-    nextEl: ".courses_header .next_swiper_btn",
-    prevEl: ".courses_header .prev_swiper_btn",
-  },
-
-  breakpoints: {
-    0: {
-      slidesPerView: 2,
-      spaceBetween: 0,
-    },
-
-    480: {
-      slidesPerView: 3,
-      spaceBetween: 0,
-    },
-
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 0,
-    },
-
-    992: {
-      slidesPerView: 5,
-      spaceBetween: 8,
-    },
-
-    1200: {
-      slidesPerView: 6,
-      spaceBetween: 0,
-    },
-
-    1400: {
+    createSwiper(".courses_slider_wrapper", {
       slidesPerView: 8,
-      spaceBetween: 0,
-    },
-  },
-});
+      spaceBetween: 20,
+      loop: true,
 
-    new Swiper(".leadership_slider", {
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+
+      navigation: {
+        nextEl: ".courses_header .next_swiper_btn",
+        prevEl: ".courses_header .prev_swiper_btn",
+      },
+
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+        },
+
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 15,
+        },
+
+        992: {
+          slidesPerView: 5,
+          spaceBetween: 18,
+        },
+
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
+
+        1400: {
+          slidesPerView: 8,
+          spaceBetween: 20,
+        },
+      },
+    });
+
+    createSwiper(".leadership_slider", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -335,10 +384,7 @@
       },
     });
 
-
-    
-
-    new Swiper(".acredation_swiper", {
+    createSwiper(".acredation_swiper", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -372,7 +418,7 @@
     //   },
     // });
 
-    new Swiper(".cse_research_slider", {
+    createSwiper(".cse_research_slider", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -391,7 +437,7 @@
     const hodSwiperEl = document.querySelector(".hod_profile_slider");
 
     if(hodSwiperEl){
-      new Swiper(".hod_profile_slider", {
+      createSwiper(".hod_profile_slider", {
         slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: false,
@@ -420,7 +466,7 @@
 
     
 
-    new Swiper(".workshop_slider_wrapper", {
+    createSwiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,
       spaceBetween: 21,
       centeredSlides: false,
@@ -436,7 +482,7 @@
       },
     });
 
-    new Swiper(".sport_facilities", {
+    createSwiper(".sport_facilities", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -452,7 +498,7 @@
       },
     });
 
-    new Swiper(".ncc_rank_ceremony", {
+    createSwiper(".ncc_rank_ceremony", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -468,7 +514,7 @@
       },
     });
 
-    new Swiper(".AKTU_Swiper", {
+    createSwiper(".AKTU_Swiper", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
@@ -485,7 +531,7 @@
     });
 
     // cse_lab_slider
-   new Swiper(".cse_lab_slider", {
+    createSwiper(".cse_lab_slider", {
       // 3 slides poori aur 4th slide thodi si dikhegi
       slidesPerView: 1.2, // Mobile ke liye
       spaceBetween: 20,
@@ -813,7 +859,45 @@
       });
     });
   }
+// plament policy ACCORDION
 
+const policyheaders = document.querySelectorAll(".ppolicy_header");
+
+// Auto-open first item on load
+const firstItem = document.querySelector(".ppolicy_item");
+if (firstItem) {
+    firstItem.classList.add("active");
+    const firstBody = firstItem.querySelector(".ppolicy_body");
+    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+}
+
+policyheaders.forEach((header) => {
+    header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".ppolicy_body");
+
+        // ❌ Removed: close other items logic
+
+        // Toggle clicked item
+        currentItem.classList.toggle("active");
+
+        if (currentBody) {
+            if (currentItem.classList.contains("active")) {
+                currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+            } else {
+                currentBody.style.maxHeight = null;
+            }
+        }
+    });
+});
+
+// ✅ Fix default open (first item)
+window.addEventListener("load", () => {
+  document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
+    const body = item.querySelector(".ppolicy_body");
+    body.style.maxHeight = body.scrollHeight + "px";
+  });
+});
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();

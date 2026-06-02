@@ -9,7 +9,7 @@ export default async function InnerPageLayoutWrapper({ slug, tabs, children, mai
     if(tabs && tabs?.tabs?.length > 0){
         updatedTabs = tabs;
     }else{
-        const { data, error } = await apiFetch(`cms/${slug}`, { cache: 'no-store' });
+        const { data, error } = await apiFetch(`cms/${slug}`);
         if (error) return <NotFound />;
 
         updatedTabs = data?.data;

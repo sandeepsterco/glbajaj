@@ -8,7 +8,7 @@ export default function NewsListing({data, slug}:{data:any, slug:string}) {
                 {data.map((item:any, idx:number)=>(
                     <div key={idx} className="news_list">
                         <figure>
-                            <img src={item.image || 'images/default/news-list.webp'} alt={item.heading || 'news'} className="img-fluid" />
+                            <img src={item?.image || 'images/default/news-list.webp'} alt={item.heading || 'news'} className="img-fluid" />
                         </figure>
                         <div className="news_list_right">
                             {item?.date && <p className="date">{new Date(item.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</p>}

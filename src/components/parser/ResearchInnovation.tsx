@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/src/lib/api";
 
 import "swiper/css";
+import Image from "next/image";
 
 const fetchCourses = async () => {
   const { data, error } = await apiFetch("modular/home");
@@ -64,9 +65,12 @@ export default function ResearchInnovation() {
           <SwiperSlide key={index}>
             <div className="research_card">
               <figure>
-                <img
+                <Image
                   src={slide?.image || ""}
                   alt="leader"
+                  width={575}
+                  height={429}
+                  loading="lazy"
                   className="img-fluid w-100"
                   data-aos="fade-up" data-aos-delay="200"
                 />

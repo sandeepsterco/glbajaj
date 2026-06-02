@@ -205,13 +205,15 @@ export default function HeroBanner({ data }: { data: any }) {
 
 
 
-      <div>
+      <div className="home_banner_media">
         <video
           autoPlay
           muted
           loop
           playsInline
-          style={{ width: '100%', objectFit: 'cover', display: 'block' }}
+          className="home_banner_video"
+          poster="https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg"
+          preload="metadata"
         >
           <source
             src="https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due"
@@ -220,29 +222,17 @@ export default function HeroBanner({ data }: { data: any }) {
         </video>
         {/* <video src="" /> */}
 
-        <div className="slider_caption">
+        {/* <div className="slider_caption">
           <div className="container-fluid">
-            <div
-              className="caption_wrap"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <blockquote
-                className="title48"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
+            <div className="caption_wrap">
+              <blockquote className="title48">
                 Recognized. Ranked. Respected.
               </blockquote>
               <div className="cap_desc">
-                <p data-aos="fade-up" data-aos-delay="600">
+                <p>
                   Lorem ipsum dolor sit amet, consectet adipiscing elit.
                 </p>
-                <Link
-                  href={"/about-glbitm"}
-                  data-aos="fade-up"
-                  data-aos-delay="800"
-                >
+                <Link href={"/about-glbitm"}>
                   <figure>
                     <Image
                       src="/images/home/hero/arrow_right.svg"
@@ -255,7 +245,7 @@ export default function HeroBanner({ data }: { data: any }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <NotificationBar />

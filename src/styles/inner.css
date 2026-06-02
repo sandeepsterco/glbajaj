@@ -1695,9 +1695,11 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .place_complog { text-align: center; position: absolute; right: 0; top: 0; }
 .place_complog img { margin: auto; height: 7rem; }
 .place_pkg h3 { font-weight: 600; letter-spacing: 0; color: var(--color-33); }
-.place_imgbox { background-color: var(--color-F4); border-radius: 1.5rem; position: relative; }
+.place_imgbox { background-color: #e0e3e9; border-radius: 1.5rem; position: relative; }
 .place_imgbox::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
+.place_imgbox > figure {height: 37rem;}
+.place_imgbox > figure img{height: 100%;width: 100%;object-fit: cover;    object-position: top;}
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
@@ -1769,6 +1771,10 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
+.research_and_incubation .center_icu_logosec{display: flex;}
+.center_icu_logosec{display: flex;gap: 3rem;display: none;}
+.center_icu_logosec .icu_imgsec{padding: 2rem;background-color: var(--color-white);width: 20rem;}
+.center_icu_logosec .icu_imgsec figure img{margin: auto;}
 /* ================  Student Chapters  =============== */
 .ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
 .view_detail_btn { background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; }

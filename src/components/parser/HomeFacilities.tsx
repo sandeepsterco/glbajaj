@@ -80,8 +80,7 @@ export default function HomeFacilities() {
                         className="swiper_next_custom"
                         tabIndex={0}
                         role="button"
-                        aria-label="Next slide"
-                      >
+                        aria-label="Next slide">
                         <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
                       </div>
                     </div>
@@ -110,7 +109,7 @@ export default function HomeFacilities() {
                                   prevEl: prevRef.current,
                                   nextEl: nextRef.current,
                                 }}
-                                // Inject refs before init so Swiper knows about them from the start
+                                 // Inject refs before init so Swiper knows about them from the start
                                 onBeforeInit={(swiper) => {
                                   swiperRefs.current[idx] = swiper;
                                   (swiper.params.navigation as any).prevEl = prevRef.current;
@@ -128,8 +127,7 @@ export default function HomeFacilities() {
                                   768: { slidesPerView: 2, spaceBetween: 15 },
                                   1200: { slidesPerView: 2.25, spaceBetween: 23 },
                                 }}
-                                className="homeFac_swiper"
-                              >
+                                className="homeFac_swiper"                              >
                                 {item.mapping_items.slides?.map((slide: any, slideIdx: number) => (
                                   <SwiperSlide key={slideIdx}>
                                     <figure>

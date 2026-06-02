@@ -238,11 +238,42 @@
         nextEl: ".home_placement_companies .next_swiper_btn",
         prevEl: ".home_placement_companies .prev_swiper_btn",
       },
+       breakpoints: {
+          0: {
+            slidesPerView: 2.3,
+            spaceBetween: 5,
+          },
+
+          480: {
+            slidesPerView: 2.3,
+            spaceBetween: 5,
+          },
+
+          768: {
+            slidesPerView: 3.4,
+            spaceBetween: 5,
+          },
+
+          992: {
+            slidesPerView: 3.4,
+            spaceBetween: 5,
+          },
+
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+          },
+
+          1400: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+          },
+        },
     });
 
     new Swiper(".courses_slider_wrapper", {
   slidesPerView: 8,
-  spaceBetween: 20,
+  spaceBetween: 0,
   loop: true,
 
   autoplay: {
@@ -258,32 +289,32 @@
   breakpoints: {
     0: {
       slidesPerView: 2,
-      spaceBetween: 10,
+      spaceBetween: 0,
     },
 
     480: {
       slidesPerView: 3,
-      spaceBetween: 12,
+      spaceBetween: 0,
     },
 
     768: {
       slidesPerView: 4,
-      spaceBetween: 15,
+      spaceBetween: 0,
     },
 
     992: {
       slidesPerView: 5,
-      spaceBetween: 18,
+      spaceBetween: 8,
     },
 
     1200: {
       slidesPerView: 6,
-      spaceBetween: 20,
+      spaceBetween: 0,
     },
 
     1400: {
       slidesPerView: 8,
-      spaceBetween: 20,
+      spaceBetween: 0,
     },
   },
 });
@@ -304,6 +335,9 @@
       },
     });
 
+
+    
+
     new Swiper(".acredation_swiper", {
       slidesPerView: 1.2,
       spaceBetween: 20,
@@ -320,6 +354,8 @@
       },
     });
 
+
+    
     // new Swiper(".cse_faculties_slider", {
     //   slidesPerView: 1.2,
     //   spaceBetween: 20,

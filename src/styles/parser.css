@@ -543,8 +543,8 @@
 
 @media (max-width:992px){
   .sec_title .title48{ letter-spacing: 0;}
-  .home_research_section .research_group:before{padding-bottom: 111rem;}
-  .home_research_section .research_group:after{height: 111rem;}
+  .home_research_section .research_group:before{padding-bottom: 111rem; display: none;}
+.home_research_section .research_group:after{z-index: 0; height: 49.2%; top: auto; bottom: 0; background-size: cover; width: 20.6rem;}
   .top_header{ display: none;}
   .home_banner:before{ display: none;}
   .home_rank_award { padding-block: 5rem; }
@@ -557,7 +557,7 @@
   .home_research_section .research_top{ display: block;}
   .home_placement_students{ display: block;}
   .home_placement_section{ padding-bottom: 7rem;}
-  .home_courses_section { padding: 7rem 0; }
+  .home_courses_section { padding: 7rem 0 0; }
   .home_courses_section .left_content { margin-left: 0; padding-top: 0; }
   .home_courses_section .grid{display: block;}
   .home_courses_section .left_content .courses_links{ display: block; max-width: 100%;}
@@ -569,4 +569,15 @@
   .home_research_section .research_top{ margin-inline: 0;}
   .home_courses_section .slider_btns{ top: auto; left: 3.25rem; bottom: 10rem; position: absolute; }
   .home_courses_section .courses_slider_wrapper .swiper-slide{ min-height: auto; margin-bottom: 2rem;}
+  .courses_slider .overflow-hidden{margin-bottom: 3rem;}
+  .caption_wrap .cap_desc{ display: none;}
+  .home_placement_companies{ background-color: transparent;}
+  .home_placement_companies img{ background-color: var(--color-F5); padding: 3rem;}
+  .home_research_section .research_slider_wrapper{ margin-left: 1rem; margin-bottom: 0;}
+  .research_stats{ margin-top: 5rem;}
+  .home_research_section{background-color: #1d1d1de8; position: relative; padding-bottom: 6rem;}
+  .home_research_section .research_group{ position: static;}
+  .home_research_section .research_stats { position: relative; z-index: 9; }
+  .research_slider_wrapper{ position: relative; margin-left: 0;}
+  .research_slider_wrapper .navigation_btn { position: absolute; bottom: 41%; top: auto; height: 8rem; margin: auto; z-index: 9; left: 0; right: 0; display: flex; justify-content: space-between; }
 }

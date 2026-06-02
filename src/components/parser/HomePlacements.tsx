@@ -46,7 +46,7 @@ export default function HomePlacements() {
 
       <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian 2025</h4>
+        <h4 className="top_placed">Top Placed GLBian</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -66,20 +66,44 @@ export default function HomePlacements() {
           nextEl: ".home_placement_static_card .next_swiper_btn",
           prevEl: ".home_placement_static_card .prev_swiper_btn",
         } : false}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 15,
+          },
+          576: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          992: {
+            slidesPerView: 2.5,
+            spaceBetween: 25,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 27,
+          },
+        }}
       >
         {placementData.map((item: any, index: number) => (
           <SwiperSlide key={index}>
             <Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" />
-            <img
-              src={item?.logo_image}
-              className="placement_img"
-              alt="placement company"
-            />
-            <div className="home_placement_info">
-              <h3 className="placement">
-                {item?.package}<sup>LPA</sup>
-              </h3>
-              <p>{item.name}</p>
+            <div className="placem_cnt">
+              <img
+                src={item?.logo_image}
+                className="placement_img"
+                alt="placement company"
+              />
+              <div className="home_placement_info">
+                <h3 className="placement">
+                  {item?.package}<sup>LPA</sup>
+                </h3>
+                <p>{item.name}</p>
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -1588,3 +1588,7 @@ a:not([href]):not([class]):hover {
   left: 0;
   bottom: 0;
 }
+
+/* @media (max-width:991px){
+  .row { display: block; flex-wrap: wrap; margin-right: 0rem; margin-left: 0rem; }
+} */

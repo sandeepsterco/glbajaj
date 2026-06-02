@@ -220,9 +220,8 @@
       if (el?.swiper) el.swiper.destroy(true, true);
     });
 
-    createSwiper(".award_ranking", {
-      slidesPerView: 5,
-      loop: true,
+   createSwiper(".award_ranking", {
+      loop: false, // recommended with grid
       spaceBetween: 0,
       autoplay: {
         delay: 2500,
@@ -234,11 +233,25 @@
         prevEl: ".award_swipr_main .swiper-button-prev",
       },
       breakpoints: {
-        0: { slidesPerView: 1 },
-        480: { slidesPerView: 2 },
-        992: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-        1200: { slidesPerView: 5 },
+        0: {
+          slidesPerView: 2,
+          grid: {
+            rows: 3,
+            fill: "row",
+          },
+        },
+        768: {
+          slidesPerView: 3,
+          grid: {
+            rows: 1,
+          },
+        },
+        1200: {
+          slidesPerView: 5,
+          grid: {
+            rows: 1,
+          },
+        },
       },
     });
 
@@ -266,13 +279,27 @@
       },
     });
 
-    createSwiper(".home_placement_student_slider", {
+    new Swiper(".home_placement_student_slider", {
       slidesPerView: 3,
       spaceBetween: 27,
       loop: true,
       navigation: {
         nextEl: ".home_placement_static_card .next_swiper_btn",
         prevEl: ".home_placement_static_card .prev_swiper_btn",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 27,
+        },
       },
     });
 
@@ -337,17 +364,17 @@
 
       breakpoints: {
         0: {
-          slidesPerView: 2,
+          slidesPerView: 2.5,
           spaceBetween: 10,
         },
 
         480: {
-          slidesPerView: 3,
+          slidesPerView: 3.5,
           spaceBetween: 12,
         },
 
         768: {
-          slidesPerView: 4,
+          slidesPerView: 4.3,
           spaceBetween: 15,
         },
 

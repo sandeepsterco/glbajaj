@@ -10,8 +10,10 @@ import parse, {
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
+import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 declare global {
@@ -19,7 +21,9 @@ declare global {
     __initCustomJS?: () => void;
   }
 }
+
 import ProgramDetailForm from "../../parser/ProgramDetailForm";
+import RouteChangeHandler from "../../parser/RouteChangeHandler";
 
 import '@/src/styles/fancybox.css'
 import "@/src/styles/inner.css";
@@ -152,6 +156,52 @@ const DepartmentFacultyGrid = dynamic(
   { loading: ParserWidgetFallback }
 );
 
+// ---------------------------------------------------------------------------
+// ScriptLoader — inlined here so it only loads when ReactParser is mounted.
+// A module-level flag ensures the scripts are injected only once even when
+// multiple <ReactParser> instances are rendered on the same page.
+// ---------------------------------------------------------------------------
+
+// Tracks whether the first ReactParser instance has already claimed the scripts
+let scriptLoaderMounted = false;
+
+function ParserScriptLoader() {
+  const [swiperReady, setSwiperReady] = useState(false);
+
+  // Claim ownership on first mount; release on unmount so a future
+  // navigation that re-mounts ReactParser can reclaim if needed.
+  const isOwner = useRef(false);
+  if (!scriptLoaderMounted) {
+    scriptLoaderMounted = true;
+    isOwner.current = true;
+  }
+
+  // Only the first instance renders the actual <Script> tags
+  if (!isOwner.current) return null;
+
+  return (
+    <>
+      <Script
+        src="/js/swiper-bundle.min.js"
+        strategy="afterInteractive"
+        onLoad={() => setSwiperReady(true)}
+      />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
+        strategy="lazyOnload"
+      />
+      {swiperReady && (
+        <Script src="/js/custom.js" strategy="afterInteractive" />
+      )}
+      {swiperReady && <RouteChangeHandler />}
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// HTML parser options
+// ---------------------------------------------------------------------------
+
 const options: HTMLReactParserOptions = {
   replace(domNode) {
     if (domNode instanceof Element && domNode.attribs) {
@@ -280,7 +330,6 @@ const options: HTMLReactParserOptions = {
         return <DepartmentFacultyGrid />;
       if (domNode.attribs.id === "program_detail_form")
         return <ProgramDetailForm />;
-
       if (domNode.attribs.id === "department_home_placements")
         return <DepartmentHomePlacements />;
       if (domNode.attribs.id === "home_placements")
@@ -292,6 +341,10 @@ const options: HTMLReactParserOptions = {
     }
   },
 };
+
+// ---------------------------------------------------------------------------
+// ReactParser
+// ---------------------------------------------------------------------------
 
 export default function ReactParser({ html }: { html: any }) {
   const pathname = usePathname();
@@ -314,97 +367,35 @@ export default function ReactParser({ html }: { html: any }) {
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR: ["target"],
     ALLOWED_TAGS: [
-      "a",
-      "b",
-      "i",
-      "em",
-      "strong",
-      "span",
-      "div",
-      "p",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6",
-      "ul",
-      "ol",
-      "li",
-      "br",
-      "hr",
-      "img",
-      "table",
-      "thead",
-      "tbody",
-      "tr",
-      "th",
-      "td",
-      "section",
-      "article",
-      "aside",
-      "header",
-      "footer",
-      "figure",
-      "figcaption",
-      "blockquote",
-      "pre",
-      "code",
-      "sup",
-      "sub",
-      "button",
-      "iframe",
-      "nav",
-      "main",
-      "picture",
-      "source",
-      "video",
-      "audio",
-      "svg",
-      "path",
-      "circle",
-      "rect",
-      "line",
-      "polyline",
-      "polygon",
-      "g",
-      "use",
-      "label",
-      "form",
-      "input",
-      "textarea",
-      "select",
-      "option",
-      "dl",
-      "dt",
-      "dd",
-      "small",
-      "mark",
-      "details",
-      "summary",
+      "a", "b", "i", "em", "strong", "span", "div", "p",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "ul", "ol", "li", "br", "hr",
+      "img", "table", "thead", "tbody", "tr", "th", "td",
+      "section", "article", "aside", "header", "footer",
+      "figure", "figcaption", "blockquote", "pre", "code",
+      "sup", "sub", "button", "iframe", "nav", "main",
+      "picture", "source", "video", "audio",
+      "svg", "path", "circle", "rect", "line", "polyline", "polygon", "g", "use",
+      "label", "form", "input", "textarea", "select", "option",
+      "dl", "dt", "dd", "small", "mark", "details", "summary",
     ],
     ALLOWED_ATTR: [
-      "class",
-      "id",
-      "src",
-      "alt",
-      "href",
-      "target",
-      "width",
-      "height",
-      "style",
-      "rel",
-      "type",
-      "data-src",
-      "data-tab",
-      "data-wow-delay",
-      "data-wow-duration",
-      "data-wow-offset",
-      "data-wow-iteration",
+      "class", "id", "src", "alt", "href", "target",
+      "width", "height", "style", "rel", "type",
+      "data-src", "data-tab",
+      "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
     ],
     ADD_DATA_URI_TAGS: ["img"],
     ALLOW_DATA_ATTR: true,
   });
 
-  return <>{parse(sanitizedHtml, options)}</>;
+  return (
+    <>
+      {/* Scripts injected here — only loads when a page actually uses ReactParser,
+          not on every route via layout. The module-level flag ensures only the
+          first instance on any given page renders the <Script> tags. */}
+      <ParserScriptLoader />
+      {parse(sanitizedHtml, options)}
+    </>
+  );
 }

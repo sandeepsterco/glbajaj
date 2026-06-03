@@ -124,7 +124,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .application-text h5 { font-weight: 700; color: var(--color-33); }
 .process-text ol { counter-reset: step; list-style: none; padding: 0; }
 .process-text ol li { counter-increment: step; position: relative; padding-left: 35px; margin-bottom: 10px; }
-.process-text ol li::before { content: counter(step) "."; position: absolute; left: 0; font-weight: 600; }
+/* .process-text ol li::before { content: counter(step) "."; position: absolute; left: 0; font-weight: 600; } */
 .process-text ol li { font: var(--font-16); color: var(--color-33); font-weight: 500; margin-bottom: 3.5rem; padding: 0 0 0 3rem; }
 .cus-btn { background-color: var(--color-AE); padding: 1.6rem 3rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 5rem; }
 .cus-btn:hover { background-color: var(--color-89); }
@@ -132,7 +132,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .program-detailsec2 { border-top: 1px solid #c0855257; padding-block: 10rem; }
 .paths-text h5 { font-weight: 700; color: var(--color-33); margin-bottom: 4rem; }
 .paths-text .cus-tab .tabs ul li a { font: var(--font-16); color: var(--color-black); letter-spacing: 0; font-weight: 500; }
-.curriculum-semt { }
+
 .curriculum-semt p { border-bottom: 1px solid #66666663; padding-bottom: 2.5rem; }
 .curriculum-semt p a { display: flex; align-items: center; gap: 2.6rem; font: var(--color-black); font: var(--font-16); font-weight: 600; }
 .eligibility { padding-top: 12.9rem; display: grid; grid-template-columns: repeat(2, 1fr); gap:0 12.1rem; margin-right: -17rem; }
@@ -141,7 +141,6 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .eligibility-box { background-color: var(--color-F4); padding: 3rem; }
 .eligibility-box .border { border-top: 1px solid rgb(204, 204, 204); margin: 3rem 0px; border-bottom:none; }
 .eligibility-boxs { display: grid; grid-template-columns: repeat(2, 1fr); }
-.counseling-heading { }
 .counseling-heading h6 { font-weight: 600; }
 .counseling-text p { font: var(--font-16); color: var(--color-33); }
 /* .border { border-top: 1px solid #CCCCCC; margin: 3rem 0; border-bottom:0; }

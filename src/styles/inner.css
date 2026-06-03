@@ -14,26 +14,13 @@
 .results-list .result_link { align-items: center; width: 100%; padding: 2.5rem 2rem; display: flex; }
 .results-list .result_link .result-content { flex: 1; }
 .results-list .result-title { font: var(--font-20); color: #1a1a1a; letter-spacing: 0; flex: 1; font-weight: 400; }
-
 /* ========= search page ================= */
-
 /* ==== career page========== */
-
-.career_headings{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
-}
-
-.career_headings h4{margin-bottom: 0;}
-
+.career_headings { display:flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
+.career_headings h4 { margin-bottom: 0; }
 /* ==== career page========== */
-
 /* =========department home mou ===============*/
-
-.department_home_mou .mou_heading{display: flex; justify-content: space-between;}
-
+.department_home_mou .mou_heading { display: flex; justify-content: space-between; }
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -461,10 +448,8 @@
 .institute_cnt ul li p { font: var(--font-16); font-weight: 600; color: var(--color-black); text-align: center; }
 .institute_cnt ul li:last-child { border-right: 0; }
 .institute_cnt figure.pattern_img { padding-top: 10rem; }
-
-.institute_cnt .inst_pdf_btn ul::before { display: none;}
-.institute_cnt .inst_pdf_btn ul{ margin-bottom: 0;}
-
+.institute_cnt .inst_pdf_btn ul::before { display: none; }
+.institute_cnt .inst_pdf_btn ul { margin-bottom: 0; }
 .about_right p { margin-top: 5rem; max-width: 70%; }
 .about_bottom { padding-top: 5rem; }
 .logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
@@ -811,9 +796,7 @@
 .ppolicy_accordion .ppolicy_header h3 { display: flex; align-items: start; gap: 5rem; font: var(--font-21); font-weight: 600; cursor: pointer; }
 .ppolicy_accordion .ppolicy_header h3 span { font: var(--font-21); font-weight: 600; display: flex; }
 .ppolicy_accordion .ppolicy_item { border-bottom: 0.1rem solid #ae7f2c80; padding-block: 4rem 4rem; }
-
-.policy_content{padding: 2rem 7.7rem;}
-
+.policy_content { padding: 2rem 7.7rem; }
 .ppolicy_accordion .ppolicy_item:last-child { border-bottom: none; }
 .ppolicy_body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding-left: 7rem; }
 .ppolicy_body ul { padding-top: 2.2rem; }
@@ -1291,8 +1274,8 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .team-members-sec { margin-top: 10rem; }
 .team-members-sec h2 { font: var(--font-30); margin-bottom: 4rem; }
 .team-members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4rem; }
-.team-members { background-color: var(--color-F5); display: flex; padding: 3.1rem 8.5rem 3.1rem 2.2rem; flex-direction: column;}
-.team-members div{ margin-top: auto; min-height: 10rem;}
+.team-members { background-color: var(--color-F5); display: flex; padding: 3.1rem 8.5rem 3.1rem 2.2rem; flex-direction: column; }
+.team-members div { margin-top: auto; min-height: 10rem; }
 .team-members h3 { font: var(--font-21); color: var(--color-AE); margin-bottom: 2.4rem; }
 .team-members div>p { font: var(--font-18); color: var(--color-black); font-weight: 700; margin-bottom: 0; }
 .team-members span { font: var(--font-16); color: var(--color-33); font-weight: 400; }
@@ -1701,8 +1684,8 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .place_imgbox { background-color: #e0e3e9; border-radius: 1.5rem; position: relative; }
 .place_imgbox::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
-.place_imgbox > figure {height: 37rem;}
-.place_imgbox > figure img{height: 100%;width: 100%;object-fit: cover;    object-position: top;}
+.place_imgbox > figure { height: 37rem; }
+.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top; }
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
@@ -1774,10 +1757,10 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
-.research_and_incubation .center_icu_logosec{display: flex;}
-.center_icu_logosec{display: flex;gap: 3rem;display: none;}
-.center_icu_logosec .icu_imgsec{padding: 2rem;background-color: var(--color-white);width: 20rem;}
-.center_icu_logosec .icu_imgsec figure img{margin: auto;}
+.research_and_incubation .center_icu_logosec { display: flex; }
+.center_icu_logosec { display: flex; gap: 3rem; display: none; }
+.center_icu_logosec .icu_imgsec { padding: 2rem; background-color: var(--color-white); width: 20rem; }
+.center_icu_logosec .icu_imgsec figure img { margin: auto; }
 /* ================  Student Chapters  =============== */
 .ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
 .view_detail_btn { background-color: var(--color-AE); padding: 1rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; }
@@ -1999,6 +1982,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .institute_faq_section .tp_accbox  .accordion-item.active .accordion-body { padding:0 0 3.8rem 0; }
 .institute_faq_section .tp_accbox .accordion-header { padding:1.5rem 0; border-top: 0.1rem solid #E1E1E1; }
 .institute_faq_section .tp_accbox .accordion-header h3 { font-weight: 500; }
+.institute_faq_section .tp_accbox .accordion-header .icon { color: #c49a4a; border: 1px solid #c49a4a26; padding: .8rem 1.4rem; font-size: 2.3rem; width: 5.2rem; display: grid; align-items: center; justify-content: center; }
 .horizontal_tab .xtabs_nav .xtab_btn { margin-right: 3rem; cursor: pointer; font-weight: 500; padding-bottom: 4.3rem; }
 .horizontal_tab .xtabs_nav .xtab_btn.active { border-bottom: 0.3rem solid var(--color-92); font-weight: 600; }
 .horizontal_tab .xtabs_nav { border-bottom: 0.1rem solid var(--color-70); margin-bottom: 3rem; }

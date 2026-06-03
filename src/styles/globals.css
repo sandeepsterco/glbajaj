@@ -40,7 +40,6 @@ html { font-size: min(0.45454545vw, 10px); scroll-behavior: smooth;}
 /* 1885px */
 .full-width { max-width: 2545px; margin-inline: auto; }
 /* Use 2545 full container size */
-
 ul li { list-style: none; }
 a { text-decoration: none; }
 .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -114,7 +113,7 @@ figure { margin-bottom: 0; }
 blockquote { font: var(--font-24); color: var(--color-b2); margin: 0; }
 p { font: var(--font-16); margin-bottom: 2rem; }
 p:last-child { margin-bottom: 0; }
-span{font: var(--font-16);}
+/* span{font: var(--font-16);} */
 h1 { font: var(--font-36); }
 h2 { font: var(--font-60); color: var(--color-77); }
 h3 { font: var(--font-36); color: var(--color-black); }

@@ -287,11 +287,10 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
   .home_footer .footer_address h3{ font: var(--font-14); font-weight: 500;}
   .home_footer .footer_address p{ font: var(--font-12); padding-inline: 3rem; margin-top: 1.5rem;}
   .footer_contact{ display: block;}
-  .home_footer .footer_content{ gap: 2.5rem;}
+  .home_footer .footer_content{ gap: 2.5rem;  justify-content: center;}
   .home_footer .footer_contact { display: block; margin: 0 auto; }
   .footer_contact div{ display: flex; justify-content: center; gap: 1rem; align-items: center;}
-  .home_footer .footer_contact a{ margin-top: 0;}
-  
+  .home_footer .footer_contact a{ margin-top: 0;}  
   .home_footer .footer_links ul{ display: block;}
   .home_footer .footer_links ul li.text-white{ display: none;}
   .home_footer .footer_links ul li{ padding-block: 0.5rem;}

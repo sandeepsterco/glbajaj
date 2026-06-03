@@ -2,6 +2,8 @@
 
 import { ChangeEvent, FormEvent, useMemo, useState } from "react";
 import { City, Country, ICity, ICountry, IState, State } from "country-state-city";
+import { RECAPTCHA_SITE_KEY } from "@/src/config/config";
+import RecaptchaField from "./RecaptchaField";
 
 type FieldErrors = Record<string, string[]>;
 
@@ -74,6 +76,13 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("");
   const [selectedStateCode, setSelectedStateCode] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
+
+  const resetRecaptcha = () => {
+    setRecaptchaToken(null);
+    setRecaptchaKey((key) => key + 1);
+  };
 
   const countries = useMemo<ICountry[]>(() => Country.getAllCountries(), []);
   const states = useMemo<IState[]>(
@@ -88,7 +97,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
     [selectedCountryCode, selectedStateCode]
   );
 
-  const clearFieldError = (field: keyof FormState | "file") => {
+  const clearFieldError = (field: keyof FormState | "file" | "recaptcha") => {
     if (!errors[field]) return;
     setErrors((prev) => {
       const next = { ...prev };
@@ -160,10 +169,22 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitting(true);
     setSuccessMessage("");
     setErrorMessage("");
     setErrors({});
+
+    if (!RECAPTCHA_SITE_KEY) {
+      setErrorMessage("reCAPTCHA is not configured. Please contact support.");
+      return;
+    }
+
+    if (!recaptchaToken) {
+      setErrors({ recaptcha: ["Please complete the reCAPTCHA verification."] });
+      setErrorMessage("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const payload = new FormData();
@@ -175,6 +196,8 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
       if (selectedFile) {
         payload.append("file", selectedFile);
       }
+
+      payload.append("g-recaptcha-response", recaptchaToken);
 
       const response = await fetch("https://project-demo.in/gl-bajaj/api/job-apply", {
         method: "POST",
@@ -188,6 +211,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
           setErrors(result.errors);
         }
         setErrorMessage(result.message || "Something went wrong while submitting form.");
+        resetRecaptcha();
         return;
       }
 
@@ -196,14 +220,16 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
       setSelectedCountryCode("");
       setSelectedStateCode("");
       setSelectedFile(null);
+      resetRecaptcha();
     } catch {
       setErrorMessage("Unable to submit the form right now. Please try again.");
+      resetRecaptcha();
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const getError = (field: keyof FormState | "file") => errors[field]?.[0];
+  const getError = (field: keyof FormState | "file" | "recaptcha") => errors[field]?.[0];
 
   return (
     <form onSubmit={handleSubmit}>
@@ -378,6 +404,26 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             </button>
           </div>
         </div>
+
+        {RECAPTCHA_SITE_KEY ? (
+          <div className="form-group" style={{ marginTop: "1rem" }}>
+            <RecaptchaField
+              key={recaptchaKey}
+              siteKey={RECAPTCHA_SITE_KEY}
+              onChange={(token) => {
+                setRecaptchaToken(token);
+                clearFieldError("recaptcha");
+                setSuccessMessage("");
+                setErrorMessage("");
+              }}
+              onExpired={() => setRecaptchaToken(null)}
+            />
+            {getError("recaptcha") ? (
+              <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("recaptcha")}</p>
+            ) : null}
+          </div>
+        ) : null}
+
         {successMessage ? (
         <div className="success_message">
           <p>{successMessage}</p>

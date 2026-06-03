@@ -204,6 +204,7 @@
       ".studentsSwiper",
       ".companySwiper",
       ".home_placement_student_slider",
+      ".home_recruiters_slider",
       ".home_placement_company_slider",
       ".courses_slider_wrapper",
       ".leadership_slider",
@@ -220,7 +221,7 @@
       if (el?.swiper) el.swiper.destroy(true, true);
     });
 
-   createSwiper(".award_ranking", {
+    createSwiper(".award_ranking", {
       loop: false, // recommended with grid
       spaceBetween: 0,
       autoplay: {
@@ -284,8 +285,8 @@
       spaceBetween: 27,
       loop: true,
       navigation: {
-        nextEl: ".home_placement_static_card .next_swiper_btn",
-        prevEl: ".home_placement_static_card .prev_swiper_btn",
+        nextEl: ".right_slider .next_swiper_btn",
+        prevEl: ".right_slider .prev_swiper_btn",
       },
       breakpoints: {
         320: {
@@ -303,6 +304,27 @@
       },
     });
 
+    new Swiper(".home_recruiters_slider", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      loop: true,
+      autoplay: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        992: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+      },
+    });
+
     createSwiper(".home_placement_company_slider", {
       slidesPerView: 5,
       spaceBetween: 28,
@@ -314,37 +336,37 @@
         nextEl: ".home_placement_companies .next_swiper_btn",
         prevEl: ".home_placement_companies .prev_swiper_btn",
       },
-       breakpoints: {
-          0: {
-            slidesPerView: 2.3,
-            spaceBetween: 5,
-          },
-
-          480: {
-            slidesPerView: 2.3,
-            spaceBetween: 5,
-          },
-
-          768: {
-            slidesPerView: 3.4,
-            spaceBetween: 5,
-          },
-
-          992: {
-            slidesPerView: 3.4,
-            spaceBetween: 5,
-          },
-
-          1200: {
-            slidesPerView: 5,
-            spaceBetween: 0,
-          },
-
-          1400: {
-            slidesPerView: 5,
-            spaceBetween: 0,
-          },
+      breakpoints: {
+        0: {
+          slidesPerView: 2.3,
+          spaceBetween: 5,
         },
+
+        480: {
+          slidesPerView: 2.3,
+          spaceBetween: 5,
+        },
+
+        768: {
+          slidesPerView: 3.4,
+          spaceBetween: 5,
+        },
+
+        992: {
+          slidesPerView: 3.4,
+          spaceBetween: 5,
+        },
+
+        1200: {
+          slidesPerView: 5,
+          spaceBetween: 0,
+        },
+
+        1400: {
+          slidesPerView: 5,
+          spaceBetween: 0,
+        },
+      },
     });
 
     createSwiper(".courses_slider_wrapper", {
@@ -428,7 +450,7 @@
     });
 
 
-    
+
     // new Swiper(".cse_faculties_slider", {
     //   slidesPerView: 1.2,
     //   spaceBetween: 20,
@@ -463,7 +485,7 @@
 
     const hodSwiperEl = document.querySelector(".hod_profile_slider");
 
-    if(hodSwiperEl){
+    if (hodSwiperEl) {
       createSwiper(".hod_profile_slider", {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -479,10 +501,10 @@
           768: { slidesPerView: 1, spaceBetween: 15 },
           1200: { slidesPerView: 1, spaceBetween: 23 },
         },
-        on:{
-          init(swiper){
+        on: {
+          init(swiper) {
             const navBtn = hodSwiperEl.closest(".hod_profile_bx")?.querySelector(".navigation_btn");
-            if(navBtn){
+            if (navBtn) {
               navBtn.style.visibility = swiper.isLocked ? "hidden" : "";
               navBtn.style.pointerEvents = swiper.isLocked ? "none" : "";
             }
@@ -491,7 +513,7 @@
       });
     }
 
-    
+
 
     createSwiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,
@@ -857,24 +879,24 @@
   function initXTabs() {
     document.querySelectorAll(".xtabs_sec").forEach((section) => {
       const tabBtns = section.querySelectorAll(".xtab_btn");
-      const panels  = section.querySelectorAll(".xtab_panel");
+      const panels = section.querySelectorAll(".xtab_panel");
       const accBtns = section.querySelectorAll(".xacc_btn");
-  
+
       // set first active
       if (tabBtns.length) tabBtns[0].classList.add("active");
-      if (panels.length)  panels[0].classList.add("active");
-  
+      if (panels.length) panels[0].classList.add("active");
+
       // desktop tabs
       tabBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
           const target = btn.getAttribute("data-xtab");
           tabBtns.forEach((b) => b.classList.remove("active"));
-          panels.forEach((p)  => p.classList.remove("active"));
+          panels.forEach((p) => p.classList.remove("active"));
           btn.classList.add("active");
           section.querySelector("#" + target)?.classList.add("active");
         });
       });
-  
+
       // mobile accordion
       accBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -886,45 +908,45 @@
       });
     });
   }
-// plament policy ACCORDION
+  // plament policy ACCORDION
 
-const policyheaders = document.querySelectorAll(".ppolicy_header");
+  const policyheaders = document.querySelectorAll(".ppolicy_header");
 
-// Auto-open first item on load
-const firstItem = document.querySelector(".ppolicy_item");
-if (firstItem) {
+  // Auto-open first item on load
+  const firstItem = document.querySelector(".ppolicy_item");
+  if (firstItem) {
     firstItem.classList.add("active");
     const firstBody = firstItem.querySelector(".ppolicy_body");
     if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
-}
+  }
 
-policyheaders.forEach((header) => {
+  policyheaders.forEach((header) => {
     header.addEventListener("click", () => {
-        const currentItem = header.parentElement;
-        const currentBody = currentItem.querySelector(".ppolicy_body");
+      const currentItem = header.parentElement;
+      const currentBody = currentItem.querySelector(".ppolicy_body");
 
-        // ❌ Removed: close other items logic
+      // ❌ Removed: close other items logic
 
-        // Toggle clicked item
-        currentItem.classList.toggle("active");
+      // Toggle clicked item
+      currentItem.classList.toggle("active");
 
-        if (currentBody) {
-            if (currentItem.classList.contains("active")) {
-                currentBody.style.maxHeight = currentBody.scrollHeight + "px";
-            } else {
-                currentBody.style.maxHeight = null;
-            }
+      if (currentBody) {
+        if (currentItem.classList.contains("active")) {
+          currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+        } else {
+          currentBody.style.maxHeight = null;
         }
+      }
     });
-});
-
-// ✅ Fix default open (first item)
-window.addEventListener("load", () => {
-  document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
-    const body = item.querySelector(".ppolicy_body");
-    body.style.maxHeight = body.scrollHeight + "px";
   });
-});
+
+  // ✅ Fix default open (first item)
+  window.addEventListener("load", () => {
+    document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
+      const body = item.querySelector(".ppolicy_body");
+      body.style.maxHeight = body.scrollHeight + "px";
+    });
+  });
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();

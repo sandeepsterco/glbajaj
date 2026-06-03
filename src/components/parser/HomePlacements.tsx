@@ -20,7 +20,7 @@ const fetchHomePlacements = async () => {
 
 export default function HomePlacements() {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["home_placements" ],
+    queryKey: ["home_placements"],
     queryFn: fetchHomePlacements,
   });
 
@@ -42,11 +42,11 @@ export default function HomePlacements() {
   const canLoop = placementData.length > SLIDES_PER_VIEW;
 
   return (
-    <div className="home_placement_students">
+    <div className="right_slider">
 
-      <div className="home_placement_static_card">
+      {/* <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian 2025</h4>
+        <h4 className="top_placed">Top Placed GLBian</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -54,8 +54,16 @@ export default function HomePlacements() {
         </div>
 
         <img src="/images/pattern/pattern1.png" className="pattern" />
-      </div>
+      </div> */}
 
+      <div className="slider_top">
+        <h4 className="top_placed">Top Placed GLBian</h4>
+
+        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
+          <div className="swiper-button-prev prev_swiper_btn"></div>
+          <div className="swiper-button-next next_swiper_btn"></div>
+        </div>
+      </div>
       <Swiper
         className="home_placement_student_slider"
         modules={[Navigation]}
@@ -63,8 +71,8 @@ export default function HomePlacements() {
         spaceBetween={27}
         loop={canLoop}
         navigation={canLoop ? {
-          nextEl: ".home_placement_static_card .next_swiper_btn",
-          prevEl: ".home_placement_static_card .prev_swiper_btn",
+          nextEl: ".right_slider .next_swiper_btn",
+          prevEl: ".right_slider .prev_swiper_btn",
         } : false}
         breakpoints={{
           0: {

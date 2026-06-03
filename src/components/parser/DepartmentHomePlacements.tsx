@@ -50,7 +50,7 @@ export default function DepartmentHomePlacements() {
 
       <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian 2025</h4>
+        <h4 className="top_placed">Top Placed GLBian</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>

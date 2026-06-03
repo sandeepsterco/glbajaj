@@ -29,8 +29,7 @@ export default function FacultyTabular({
               <tr>
                 <th>Name</th>
                 <th>Designation</th>
-                <th>Department</th>
-                <th>Experience</th>
+                <th>Qualification</th>
               </tr>
             </thead>
             <tbody>
@@ -40,18 +39,15 @@ export default function FacultyTabular({
                   <td data-label="Designation">
                     {item?.designation ?? "__"}
                   </td>
-                  <td data-label="Department">
-                    {item?.department ?? "Computer Science and Engineering"}
+                  <td data-label="Qualification">
+                    {item?.degree ?? "__"}
                   </td>
-                  <td data-label="Experience">
-                    {item?.experience ?? "__"}
-                  </td>
-                  {item?.slug && (
+                  {/* {item?.slug && (
                     <Link
                         href={`${BASE_URL}faculty/${item.slug}`}
                         className="strech_link"
                     />
-                    )}
+                    )} */}
                 </tr>
               ))}
             </tbody>

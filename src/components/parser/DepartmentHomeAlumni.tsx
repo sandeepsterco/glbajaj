@@ -14,6 +14,7 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/effect-fade";
 import Image from "next/image";
+import Link from "next/link";
 
 interface AlumniItem {
   name: string;
@@ -53,14 +54,8 @@ export default function DepartmentHomeAlumni() {
   if (isError || !data?.length) return null;
 
   return (
-    <div className="row justify-content-end">
-      <div className="col-lg-10">
-        <div className="ats_header">
-          <span className="font24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</span>
-          <h2 className="title48" data-aos="fade-up" data-aos-delay="400">
-            Success Stories from our Students <br /> and Alumni
-          </h2>
-        </div>
+    
+        
 
         <div className="ats_swip_slider">
 
@@ -128,7 +123,5 @@ export default function DepartmentHomeAlumni() {
           </div>
 
         </div>
-      </div>
-    </div>
   );
 }

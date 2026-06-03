@@ -17,7 +17,7 @@ export default async function PageHeader({ data, slug }: { data: any; slug: stri
                     <div className="container25">
                         <div className="about_breadcrumb">
                             <div>
-                                <p className="about_glbim_p">{data?.page_title}</p>
+                                <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
                             </div>
                             <div className="about_breadcrumb">
                                 {data?.tabs && (

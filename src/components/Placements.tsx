@@ -56,7 +56,7 @@ export default function Placements() {
              <div className="absolute inset-0 opacity-5 pointer-events-none" 
                   style={{ backgroundImage: `url('/zigzag.png')`, backgroundSize: '40px' }}></div>
              
-             <h4 className="text-xl font-bold text-[#8b6b3d] relative z-10">Top Placed GLBian 2025</h4>
+             <h4 className="text-xl font-bold text-[#8b6b3d] relative z-10">Top Placed GLBian</h4>
              
              <div className="flex gap-2 relative z-10">
                 <button className="w-8 h-8 border border-gray-200 flex items-center justify-center text-xs text-gray-400">❮</button>

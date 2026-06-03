@@ -38,12 +38,12 @@ export default function FacultyList({
             </figure>
             {item?.name && <h5>{item.name}</h5>}
             {item?.type && <p>{item.type}</p>}
-            {item?.slug && (
+            {/* {item?.slug && (
               <Link
                 href={`${BASE_URL}faculty/${item.slug}`}
                 className="strech_link"
               />
-            )}
+            )} */}
           </div>
         ))}
       </div>

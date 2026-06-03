@@ -1557,6 +1557,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni_chaper_main .csr-new-img { z-index: 9; }
 .alumni_event h4 { margin-bottom: 4rem; }
 .alumni_event .view_btns { text-align: center; margin-top: 4.6rem; }
+.btns{display: flex;gap: 0.5rem;}
 .award-sec.alumni_event { padding-block: 5rem 13rem; }
 .alumni-detail-wrap { position: relative; }
 .alumni-detail-wrap::before { background-color: var(--color-F4); content: ""; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; }
@@ -1996,7 +1997,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .cr-title { margin-bottom: 2.5rem; }
 .ug_list { margin-bottom: 5rem; }
 .dep-left { display: flex; /* gap: 1.5rem; */ }
-.cr-right { text-align: right; }
+.cr-right { text-align: right;justify-content: end;gap: 0.5rem; display: flex; }
 .dep-left .cr-exp { position: relative; margin-left: 1.5rem; padding-left: 1.5rem; }
 .dep-left .cr-exp::after { position: absolute; left: 0; top: 0.2rem; height: 2rem; background-color: var(--color-64); width: 0.1rem; content: ''; }
 .current-openings { padding-block: 10rem 10rem; }

@@ -17,16 +17,16 @@ export default async function ProgramDetailLayout({children, params}:Readonly<{c
     const programDetailData = data?.program_details
 
     const programDetailTab = {
-        tab_title: "Courses & Admission",
+        tab_title: programDetailData?.data?.name ?? "Courses & Admission",
         page_title: programDetailData?.data?.name ?? '',
         tab_group: "facilities-policy",
         active_tab_slug: "facilities-policy",
-        tabs:[
-            {
-                "slug": "facilities-policy",
-                "title": "Programs Offered"
-              },
-        ]
+        // tabs:[
+        //     {
+        //         "slug": "facilities-policy",
+        //         "title": "Programs Offered"
+        //       },
+        // ]
     }
 
     return(

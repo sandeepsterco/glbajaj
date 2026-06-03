@@ -53,7 +53,7 @@ function JobItem({
             </Link>
             <Link
               className="apply_btn apply"
-              href={`${hrefPrefix}/${job.slug}#apply`}
+              href={`${hrefPrefix}/${job.slug}/apply-now`}
             >
               Apply
             </Link>

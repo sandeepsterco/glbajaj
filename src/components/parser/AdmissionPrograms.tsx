@@ -3,7 +3,9 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { SkeletonGroup } from "../ui/Skeleton";
 import Link from "next/link";
-import { APPLY_NOW } from "@/src/config/config";
+import { BASE_URL } from "@/src/config/config";
+import { useState, useCallback } from "react";
+import ProgramApplyModal from "../programs/ProgramApplyModal";
 
 const fetchPrograms = async () => {
   const { data, error } = await apiFetch(`all-programs`);
@@ -17,8 +19,29 @@ export default function AdmissionPrograms() {
     queryFn: fetchPrograms,
   });
 
+  const [applyModal, setApplyModal] = useState<{
+    open: boolean;
+    departmentSlug?: string;
+  }>({ open: false });
+
+  const openApplyModal = useCallback((departmentSlug: string) => {
+    setApplyModal({ open: true, departmentSlug });
+  }, []);
+
+  const closeApplyModal = useCallback(() => {
+    setApplyModal({ open: false });
+  }, []);
+
   if (isLoading || isFetching) {
-    return <div className="program-loading"><SkeletonGroup count={6} wrapperClassName="grid gap-[3rem] !grid-cols-1" className="w-full h-[10rem]" /></div>;
+    return (
+      <div className="program-loading">
+        <SkeletonGroup
+          count={6}
+          wrapperClassName="grid gap-[3rem] !grid-cols-1"
+          className="w-full h-[10rem]"
+        />
+      </div>
+    );
   }
 
   if (!programs || programs.length === 0) {
@@ -32,7 +55,6 @@ export default function AdmissionPrograms() {
     acc[type].push(program);
     return acc;
   }, {});
-
 
   const formatTypeLabel = (type: string) =>
     type
@@ -57,7 +79,7 @@ export default function AdmissionPrograms() {
             <div className="program-box" key={program.slug}>
               <div className="program-text">
                 <h6>
-                  <a href={`/programs/${program.slug}`}>{program.name}</a>
+                  <a href={`/program/${program.slug}`}>{program.name}</a>
                 </h6>
               </div>
               <div className="program-right">
@@ -70,17 +92,22 @@ export default function AdmissionPrograms() {
                 </div>
                 <div className="affiliation">
                   <p>Affiliation</p>
-                  <span>{program.affiliation}</span>
+                  <span>{program.affiliation || "-"}</span>
                 </div>
                 <div className="apply-btn">
-                  <a href={APPLY_NOW}>Apply Now</a>
+                  <button
+                    type="button"
+                    onClick={() => openApplyModal(program.department_slug ?? program.slug)}
+                  >
+                    Apply Now
+                  </button>
                 </div>
                 <div className="program-btn">
                   <Link href={`/program/${program.slug}`}>
                     <span>
                       <img
                         src="/images/icons/right-arrow.svg"
-                        alt="GEU"
+                        alt="arrow"
                       />
                     </span>
                   </Link>
@@ -90,6 +117,12 @@ export default function AdmissionPrograms() {
           ))}
         </div>
       ))}
+
+      <ProgramApplyModal
+        open={applyModal.open}
+        departmentSlug={applyModal.departmentSlug}
+        onClose={closeApplyModal}
+      />
     </>
   );
 }

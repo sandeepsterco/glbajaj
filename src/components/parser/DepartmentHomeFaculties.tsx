@@ -56,7 +56,7 @@ export default function DepartmentHomeFaculties() {
             className="cse_faculties_slider"
         >
             {data?.map((item: any, index: number) => (
-                index <= 4 && (
+                item?.image && index <= 4  && (
                     <SwiperSlide key={item?.id || index}>
                         <div className="leader_card">
                             <figure>

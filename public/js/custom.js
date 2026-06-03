@@ -240,10 +240,10 @@
             fill: "row",
           },
         },
-        768: {
+        991: {
           slidesPerView: 3,
           grid: {
-            rows: 1,
+            rows: 2,
           },
         },
         1200: {

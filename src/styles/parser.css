@@ -520,7 +520,7 @@
  .homeFac_tabs { grid-template-columns: 21% 72%; }
 .home_testimonials .grid { gap: 11rem; }
 .home_testimonials .thumbs { margin-right: 0; }
-.home_sessions_section .right_col a { padding: 2.7rem 2.5rem 2.7rem 3.4rem; }
+.home_sessions_section .right_col a { padding: 2.3rem 2.5rem 2.3rem 3.4rem; }
 .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-21); }
 .home_footer .footer_links { margin: 2.6rem 0 2rem 36.3rem; }
 .home_footer .footer_bottom { margin-left: 36.3rem; }
@@ -532,6 +532,7 @@
 .homeFac_content:after { width: 7%; height: 38%; left: -8.8rem; }
 .home_testimonials .desc_content .desc { max-height: 32rem; }
 .home_testimonials .thumb-group { margin-top: 0; }
+.home_footer .footer_top{gap: 9.5rem;}
  }
 /* Institute Incubation Center End */
 .anti-ragging-page { padding-top: 10rem; }
@@ -541,7 +542,13 @@
 .res_publication .table-wrapper tbody tr td { font: var(--font-14); padding: 1.8rem 1.5rem ; }
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }
 
-@media (max-width:992px){
+@media (max-width:1366px){
+  .home_sessions_section .right_col a { padding: 1.9rem 2.5rem 1.9rem 3.4rem; }
+}
+
+
+
+@media (max-width:991px){
   .sec_title .title48{ letter-spacing: -1.4px; font: var(--font-28); font-weight: 400;}
   .home_research_section .research_group:before{padding-bottom: 111rem; display: none;}
   .home_research_section .research_group:after { z-index: 0; background-size: cover; width: 23.6rem; height: 35.6rem; top: auto; bottom: 0; left: -12rem; }
@@ -585,12 +592,12 @@
   .home_rank_award .more_btn figure { width: 3rem; height: 3rem; margin-top: 0.9rem; }
   .sec_title.left { padding-block: 0; }
   .home_placement_stats .single_placement:first-child{ padding-left: 0; border-left: 0;}
-  .home_placement_stats { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .home_placement_stats { display: grid; grid-template-columns: repeat(3, 1fr); }
   .home_placement_stats .title { font: var(--font-12); font-weight: 400; color: #000; }
   .home_placement_stats .count sup:first-child { top: 0.3rem; padding-right: 0.4rem; font: var(--font-16); }
   .home_placement_stats .single_placement { border-left: 1px solid #895737;}
   .home_placement_stats .count sup{top: 0.5rem; font: var(--font-12);}
-  .home_placement_stats .single_placement:last-child{ border-left: 0; padding-left: 0;}
+  /* .home_placement_stats .single_placement:last-child{ border-left: 0; padding-left: 0;} */
   .h_r_award_Card{ padding-inline: 3rem;}
   .home_placement_student_slider .placement_img{ position: relative;}
   .award_swipr_main { margin-top: 5rem; }
@@ -626,8 +633,8 @@
   .home_research_section .research_top{padding-block: 3.2rem 6.4rem;}
   .home_research_section .read_more_icon figure{width: 3rem; height: 3rem;}
   .sec_title figure img { margin: auto; max-width: 0.6rem; }
-  .home_research_section .research_stats { z-index: 9; position: relative; display: grid; grid-template-columns: repeat(2, 1fr); }
-  .home_research_section .single_stat{ min-width: auto; max-width: auto; padding-inline: 3rem 2rem;}
+  .home_research_section .research_stats { z-index: 9; position: relative; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .home_research_section .single_stat{ min-width: auto; max-width: 100%; padding-inline: 3rem 2rem;}
   .research_stats h4{ font: var(--font-36); letter-spacing: -1.8px; font-weight: 400;}
   .home_research_section .single_stat p { color: #fff; font: var(--font-12); /* max-width: 12rem; */ margin-top: .5rem; font-weight: 400; line-height: 1.4; }
   .research_card figure img{ min-height: 33.5rem; object-fit: cover;}
@@ -695,16 +702,7 @@
   .home_sessions_section .home_session_titl > h4{ font: var(--font-16); font-weight: 700;}
   .home_sessions_section .home_session_titl > h3{ font: var(--font-28);letter-spacing: -1.4px; font-weight: 400; margin-bottom: 4rem;} 
   .home_sessions_section .grid{ display: block; margin-inline: -1rem;}
-  .home_sessions_section .data-overlay .top .year{ font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
-  .home_sessions_section .data-overlay .bottom .year{font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
-  .home_sessions_section .data-overlay .top .date{ font: var(--font-11); letter-spacing: -0.31px;}
-  .home_sessions_section .data-overlay{ top: 0;}
-  .home_sessions_section .left_col .title{ font: var(--font-14); font-weight: 700;}
-  .home_sessions_section .data-overlay .name{ font: var(--font-11); font-weight: 700; line-height: 1; padding-top: 1rem;}
-  .home_sessions_section .data-overlay .top { gap: 0.6rem; }
-  .home_sessions_section .data-overlay .top .date{ height: 3.3rem; width: 3rem; margin: 0; padding-block: 1rem; line-height: 0.9; }
-  .home_sessions_section .data-overlay .top{ align-items: center;}
-  .home_sessions_section .data-overlay .bottom {margin-top: -1.5rem; gap: 1rem;}
+
   .home_happenings_section .sec_title { margin-bottom: 3rem; }
   .grid_data{ display: block;}
   .bottom_data p{ font: var(--font-12); font-weight: 600; margin-bottom: 1.5rem;}
@@ -717,9 +715,22 @@
   .home_footer .footer_bottom_right{justify-content: center;}
   .home_footer .subscribe_box { position: relative; width: 100%; }
   .home_footer .subscribe_box input{ max-width:26.3rem; height: 3.8rem;}
+  .home_research_section .single_stat:nth-child(2) { border-right: 0; }
+}
 
 
 
 
-
+@media (max-width:640px){
+  .home_placement_stats { grid-template-columns: repeat(2, 1fr); }
+    .home_sessions_section .data-overlay .top .year{ font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
+  .home_sessions_section .data-overlay .bottom .year{font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
+  .home_sessions_section .data-overlay .top .date{ font: var(--font-11); letter-spacing: -0.31px;}
+  .home_sessions_section .data-overlay{ top: 0;}
+  .home_sessions_section .left_col .title{ font: var(--font-14); font-weight: 700;}
+  .home_sessions_section .data-overlay .name{ font: var(--font-11); font-weight: 700; line-height: 1; padding-top: 1rem;}
+  .home_sessions_section .data-overlay .top { gap: 0.6rem; }
+  .home_sessions_section .data-overlay .top .date{ height: 3.3rem; width: 3rem; margin: 0; padding-block: 1rem; line-height: 0.9; }
+  .home_sessions_section .data-overlay .top{ align-items: center;}
+  .home_sessions_section .data-overlay .bottom {margin-top: -1.5rem; gap: 1rem;}
 }

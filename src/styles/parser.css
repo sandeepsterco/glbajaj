@@ -2636,8 +2636,6 @@
 }
 
 
-
-
 @media (max-width:640px){
   .home_placement_stats { grid-template-columns: repeat(2, 1fr); }
   .home_sessions_section .data-overlay .top .year{ font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}

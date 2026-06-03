@@ -997,6 +997,11 @@
 .ats_thumbsec { max-width: 88rem; position: absolute; bottom: 7rem; left: -16rem; width: 100%; }
 .swiper_thumbox .thu_info .name { font: var(--font-18); color: #000; font-weight: 600; margin-top: 2rem; }
 .swiper_thumbox .thu_info .designation { font: var(--font-16); margin-top: 1rem; }
+.deparment_page_placemen .home_placement_static_card{margin-top: 0;background-color: var(--color-white);}
+.deparment_page_placemen .home_placement_static_card .top_placed{color: var(--color-64);    padding-right: 14.1rem;}
+.deparment_page_placemen .home_placement_static_card .slider_btns{gap: 0.3rem;}
+.deparment_page_placemen .home_placement_static_card .slider_btns  div{    right: 0;}
+
 /* .ats_thumbsec .swiper-wrapper { gap: 5.6rem; }
 */
 .ats_thumbsec .swiper_thumbox img { object-fit: cover; transition: 0.3s; }

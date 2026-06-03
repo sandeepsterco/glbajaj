@@ -46,7 +46,7 @@ export default function DepartmentHomePlacements() {
   const canLoop = placementData.length > SLIDES_PER_VIEW;
 
   return (
-    <div className="home_placement_students">
+    <div className="home_placement_students deparment_page_placemen">
 
       <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
@@ -59,7 +59,8 @@ export default function DepartmentHomePlacements() {
 
         <img src="/images/pattern/pattern1.png" className="pattern" />
       </div>
-
+      <div className="right_slider">
+    
       <Swiper
         className="home_placement_student_slider"
         modules={[Navigation]}
@@ -88,6 +89,8 @@ export default function DepartmentHomePlacements() {
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
+
 
     </div>
   );

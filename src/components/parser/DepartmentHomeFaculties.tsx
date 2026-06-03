@@ -43,7 +43,7 @@ export default function DepartmentHomeFaculties() {
             modules={[Navigation]}
             slidesPerView={1.2}
             spaceBetween={20}
-            loop={shouldLoop}
+            loop={false}
             autoplay={false}
             breakpoints={{
                 768: { slidesPerView: 2.5, spaceBetween: 15 },
@@ -56,21 +56,23 @@ export default function DepartmentHomeFaculties() {
             className="cse_faculties_slider"
         >
             {data?.map((item: any, index: number) => (
-                <SwiperSlide key={item?.id || index}>
-                    <div className="leader_card">
-                        <figure>
-                            <Image src={item?.image || '/images/default/department-project.webp'} alt="leader" className="img-fluid w-100" height={417} width={383} loading="lazy" />
-                        </figure>
-                        {item?.name && (
-                            <h4>{item.name}</h4>
-                        )}
-                        {item?.type && (
-                            <p>{item.type}</p>
-                        )}
-                        <Link className="strech_link" href={`${BASE_URL}faculty/${item.slug}`}></Link>
+                index <= 4 && (
+                    <SwiperSlide key={item?.id || index}>
+                        <div className="leader_card">
+                            <figure>
+                                <Image src={item?.image || '/images/default/faculty.webp'} alt="leader" className="img-fluid w-100" height={255} width={287} loading="lazy" />
+                            </figure>
+                            {item?.name && (
+                                <h4>{item.name}</h4>
+                            )}
+                            {item?.type && (
+                                <p>{item.type}</p>
+                            )}
+                            {/* <Link className="strech_link" href={`${BASE_URL}faculty/${item.slug}`}></Link> */}
 
-                    </div>
-                </SwiperSlide>
+                        </div>
+                    </SwiperSlide>
+                )
             ))}
 
             {showNavigation && (

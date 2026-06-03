@@ -339,6 +339,7 @@
 .home_placement_company_header .slider_btns div {
   position: relative;
   display: unset;
+       right: 0rem;
 }
 
 .home_placement_company_slider .swiper-slide img {

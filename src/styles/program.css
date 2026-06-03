@@ -130,6 +130,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .cus-btn:hover { background-color: var(--color-89); }
 /* Career Paths */
 .program-detailsec2 { border-top: 1px solid #c0855257; padding-block: 10rem; }
+.program-detailsec2  .xtabs_nav .xtab_btn{    margin-right: 8rem;}
 .paths-text h5 { font-weight: 700; color: var(--color-33); margin-bottom: 4rem; }
 .paths-text .cus-tab .tabs ul li a { font: var(--font-16); color: var(--color-black); letter-spacing: 0; font-weight: 500; }
 

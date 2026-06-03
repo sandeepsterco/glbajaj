@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function AOSProvider({ children }:{children:React.ReactNode}) {
   useEffect(() => {
     AOS.init({
-      duration: 700,
+      duration: 900,
       once: true,
       offset: 50,
     });

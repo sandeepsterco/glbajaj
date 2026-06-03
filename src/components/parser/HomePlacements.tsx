@@ -68,7 +68,7 @@ export default function HomePlacements() {
         className="home_placement_student_slider"
         modules={[Navigation]}
         slidesPerView={SLIDES_PER_VIEW}
-        spaceBetween={27}
+        spaceBetween={20}
         loop={canLoop}
         navigation={canLoop ? {
           nextEl: ".right_slider .next_swiper_btn",
@@ -89,11 +89,11 @@ export default function HomePlacements() {
           },
           992: {
             slidesPerView: 2.5,
-            spaceBetween: 25,
+            spaceBetween: 20,
           },
           1200: {
             slidesPerView: 3,
-            spaceBetween: 27,
+            spaceBetween: 20,
           },
         }}
       >

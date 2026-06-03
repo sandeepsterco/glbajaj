@@ -67,15 +67,15 @@ export default function CourseSearch() {
       {/* dropdown */}
       {isOpen && debouncedQuery && (
         <div
-          className="absolute top-full left-0 w-full bg-white  rounded shadow mt-2 h-[30rem] overflow-y-auto z-50"
+          className="absolute top-full left-0 w-full bg-white  rounded shadow mt-2 max-h-[30rem] overflow-y-auto z-50"
           style={{ fontFamily: "var(--font-tasa)" }}
         >
           {/* Loading */}
-          {isLoading && <p className="py-[1rem] px-[2rem] text-[2rem] text-center">Loading...</p>}
+          {isLoading && <p className="no_course text-[2rem] text-center">Loading...</p>}
 
           {/* Error */}
           {isError && (
-            <p className="py-[1rem] px-[2rem] text-[2rem] text-red-500 text-center">Something went wrong</p>
+            <p className="no_course text-[2rem] text-red-500 text-center">Something went wrong</p>
           )}
 
           {/* No Results */}

@@ -113,7 +113,9 @@ function ProgramGroupSection({
           />
         ))
       ) : (
-        <p className="no-programs">No programs available.</p>
+        <div className="program-box">
+          <p className="no-programs">No programs available.</p>
+        </div>
       )}
     </div>
   );
@@ -140,7 +142,6 @@ export default function ProgramList() {
   }, []);
 
   useEffect(() => {
-    console.log("Fetching:", { paramsType, page }); // check these are updating
     setLoading(true);
     fetchPrograms(paramsType, page).then((res) => {
       console.log("Response:", res);
@@ -178,14 +179,14 @@ export default function ProgramList() {
                 <div className="item-content">
                   {loading ? (
                     <p>Loading programs...</p>
-                  ) : programsData && programsData.data.length > 0 ? (
-                    programsData.data.map((group) => (
-                      <ProgramGroupSection
+                  ) : programsData &&  programsData.data.length > 0 ? (
+                    programsData.data.map((group) => {
+                      return <ProgramGroupSection
                         key={group.slug}
                         group={group}
                         onApply={openApplyModal}
                       />
-                    ))
+                    })
                   ) : (
                     <p>No programs found.</p>
                   )}

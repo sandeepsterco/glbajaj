@@ -21,6 +21,14 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
+
+
+.vm-description{height: 22rem; overflow: hidden; transition:0.2s all ease-in-out}
+.vm-description.expanded{height:auto;}
+
+
+
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -639,7 +647,15 @@
 .hod_profile_bx figure { margin-top: 3rem; }
 .our_cse h4 { margin-bottom: 4rem; }
 .our_cse p { max-width: 85%; }
-.our_cse a { margin-left: -1rem; display: inline-block; margin-top: 1rem; }
+.our_cse a,
+.our_cse .view_more_btn { display: inline-block; margin-top: 1rem; }
+.view_more_btn{width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0;}
+.view_more_btn i{font:var(--font-16)}
+.view_more_btn.white{background-color: var(--color-white); display: flex; box-shadow: 0 4px 12px #00000026;}
+.view_more_btn:hover{background-color: var(--color-92);}
+.view_more_btn:hover img{filter: brightness(0) invert();}
+.view_more_btn.white i{color:red;}
+.view_more_btn.white:hover i{color:#fff;}
 .cse_vision { padding-block: 10rem; position: relative; }
 .cse_vision.HideHOD .hod_profile { display: none; }
 .vision_grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 5.6rem; position: relative; }

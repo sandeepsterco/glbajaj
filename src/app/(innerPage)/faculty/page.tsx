@@ -25,8 +25,7 @@ export default async function FacultyPage({
   searchParams: Promise<SearchParams>;
 }) {
   const params = await searchParams;
-  const gridPage = Number(params.grid_page) || 1;
-  const tablePage = Number(params.table_page) || 1;
+  const currentPage = Number(params.page) || 1;
   const department = params.department || "";
   const filter = params.filter || "a-z";
 
@@ -34,8 +33,7 @@ export default async function FacultyPage({
 
   // Build query string for faculty API
   const facultyQuery = new URLSearchParams({
-    grid_page: String(gridPage),
-    table_page: String(tablePage),
+    page: String(currentPage),
     ...(department && { department }),
     filter,
   }).toString();
@@ -72,7 +70,7 @@ export default async function FacultyPage({
             currentFilter={filter}
           />
 
-          {data?.grid?.data.length <= 0 && data?.table?.data.length <= 0 && (
+          {data?.data?.data.length <= 0 && (
             <div className="faculty_grid">
                 <h4>No Faculty Found!</h4>
             </div>
@@ -82,16 +80,16 @@ export default async function FacultyPage({
             data?.data?.data.length > 0 && (
               <FacultyList
                   data={data?.data}
-                  currentPage={gridPage}
-                  pageKey="grid_page"
+                  currentPage={currentPage}
+                  pageKey="page"
               />
             )
           ) : (
             data?.data?.data.length > 0 && (
               <FacultyTabular
                   data={data?.data}
-                  currentPage={tablePage}
-                  pageKey="table_page"
+                  currentPage={currentPage}
+                  pageKey="page"
               />
             )
           )}

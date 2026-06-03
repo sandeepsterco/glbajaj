@@ -241,10 +241,10 @@
             fill: "row",
           },
         },
-        768: {
+        991: {
           slidesPerView: 3,
           grid: {
-            rows: 1,
+            rows: 2,
           },
         },
         1200: {
@@ -750,14 +750,14 @@
     });
   }
 
-  // ─── Toggle Read More ─────────────────────────────────────────────────────────
   function toggleReadMore() {
-    document.querySelectorAll(".toggle-btn").forEach(function (btn) {
+    document.querySelectorAll(".toggle-btn:not([data-readmore-init])").forEach(function (btn) {
+      btn.setAttribute("data-readmore-init", "1");
       btn.addEventListener("click", function () {
         let content = this.closest(".content");
         let dots = content.querySelector(".dots");
         let moreText = content.querySelector(".more-text");
-
+  
         if (moreText.classList.contains("show")) {
           dots.style.display = "inline";
           moreText.classList.remove("show");
@@ -784,44 +784,87 @@
     const rawSrc = iframe.getAttribute("src");
     iframe.removeAttribute("src");
 
+    function isYouTubeUrl(url) {
+        return url.includes("youtube.com") || url.includes("youtu.be");
+    }
+
     function toEmbedUrl(url) {
-      const match = url.match(/[?&]v=([^&]+)/);
-      if (match) {
-        return "https://www.youtube.com/embed/" + match[1] + "?autoplay=1&rel=0";
-      }
-      if (url.includes("/embed/")) {
-        const base = url.split("?")[0];
-        const params = new URLSearchParams(url.split("?")[1] || "");
-        params.set("autoplay", "1");
-        params.set("rel", "0");
-        return base + "?" + params.toString();
-      }
-      return url;
+        // Handle YouTube URLs
+        if (isYouTubeUrl(url)) {
+            const match = url.match(/[?&]v=([^&]+)/);
+            if (match) {
+                return "https://www.youtube.com/embed/" + match[1] + "?autoplay=1&rel=0";
+            }
+            if (url.includes("/embed/")) {
+                const base = url.split("?")[0];
+                const params = new URLSearchParams(url.split("?")[1] || "");
+                params.set("autoplay", "1");
+                params.set("rel", "0");
+                return base + "?" + params.toString();
+            }
+        }
+        // For direct video URLs (mp4, webm, etc.) — return as-is
+        return url;
+    }
+
+    function isDirectVideo(url) {
+        return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
     }
 
     function openModal() {
-      iframe.src = toEmbedUrl(rawSrc);
-      overlay.classList.add("active");
-      document.body.style.overflow = "hidden";
+        const embedUrl = toEmbedUrl(rawSrc);
+
+        if (isDirectVideo(rawSrc)) {
+            // Replace iframe with a <video> element
+            const existingVideo = overlay.querySelector("video");
+            if (!existingVideo) {
+                const video = document.createElement("video");
+                video.setAttribute("controls", "");
+                video.setAttribute("autoplay", "");
+                video.setAttribute("playsinline", "");
+                video.style.width = "100%";
+                video.style.height = "100%";
+                video.src = rawSrc;
+                iframe.replaceWith(video);
+            } else {
+                existingVideo.src = rawSrc;
+                existingVideo.play();
+            }
+        } else {
+            iframe.src = embedUrl;
+        }
+
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
-      overlay.classList.remove("active");
-      iframe.removeAttribute("src");
-      document.body.style.overflow = "";
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+
+        // Stop iframe
+        const currentIframe = overlay.querySelector("iframe");
+        if (currentIframe) currentIframe.removeAttribute("src");
+
+        // Stop video
+        const video = overlay.querySelector("video");
+        if (video) {
+            video.pause();
+            video.src = "";
+        }
     }
 
     playBtn.addEventListener("click", openModal);
     closeBtn.addEventListener("click", closeModal);
 
     overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) closeModal();
+        if (e.target === overlay) closeModal();
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
+        if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
     });
-  }
+}
 
   function initStercoTabs() {
     document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {
@@ -908,6 +951,7 @@
       });
     });
   }
+
   // plament policy ACCORDION
 
   const policyheaders = document.querySelectorAll(".ppolicy_header");
@@ -940,6 +984,29 @@
     });
   });
 
+  // ─── View More Button ──────────────────────────────────────────────────────────
+ // ─── View More Button ──────────────────────────────────────────────────────────
+ function initViewMore() {
+    document.querySelectorAll(".view_more_btn:not([data-viewmore-init])").forEach((btn) => {
+      btn.setAttribute("data-viewmore-init", "1");
+      
+      const description = btn.parentElement.querySelector(".vm-description");
+      if (!description) return;
+
+      if (description.scrollHeight <= 200) {
+        btn.style.display = "none";
+        return;
+      }
+
+      btn.addEventListener("click", function () {
+        const icon = this.querySelector("i");
+        description.classList.toggle("expanded");
+        icon.classList.toggle("bi-plus-lg");
+        icon.classList.toggle("bi-dash-lg");
+      });
+    });
+  }
+
   // ✅ Fix default open (first item)
   window.addEventListener("load", () => {
     document.querySelectorAll(".ppolicy_item.active").forEach((item) => {
@@ -965,6 +1032,7 @@
     tabControl();
     toggleReadMore();
     initXTabs();
+    initViewMore(); 
   }
 
   window.addEventListener("resize", adjustMaxContent);

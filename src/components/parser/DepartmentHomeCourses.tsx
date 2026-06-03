@@ -46,11 +46,12 @@ interface CourseSectionProps {
 }
 
 function CourseSection({ label, programs }: CourseSectionProps) {
-    if (!programs.length) return null;
+    // if (!programs.length) return null;
 
     return (
         <div className="cse_cou_list">
             <p>{label}</p>
+            {!programs.length && <p>No courses available.</p>}
             {programs.map((program, idx:number) => (
                 <CourseCard key={idx} program={program} />
             ))}
@@ -85,9 +86,9 @@ export default function DepartmentHomeCourses() {
         return <p className="text-red-500">Failed to load courses. Please try again.</p>;
     }
 
-    if (!underGraduateData.length && !postGraduateData.length) {
-        return <p>No courses available for this department.</p>;
-    }
+    // if (!underGraduateData.length && !postGraduateData.length) {
+    //     return <p>No courses available for this department.</p>;
+    // }
 
     return (
         <div className="cou_off_box">

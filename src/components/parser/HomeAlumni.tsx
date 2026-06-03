@@ -3,7 +3,12 @@
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
 
 const fetchAlumniData = async () => {
   const { data, error } = await apiFetch(`modular/home`);
@@ -19,14 +24,11 @@ export default function HomeAlumni() {
 
   const rawData = data?.modular?.["alumuni"] ?? [];
 
-  // Group by type
-  const grouped: any = useMemo(() => {
-    return {
-      students: rawData.filter((i: any) => i.type === "Student"),
-      recruiters: rawData.filter((i: any) => i.type === "Recruiter"),
-      faculties: rawData.filter((i: any) => i.type === "Faculties"),
-    };
-  }, [rawData]);
+  const grouped: any = useMemo(() => ({
+    students: rawData.filter((i: any) => i.type === "Student"),
+    recruiters: rawData.filter((i: any) => i.type === "Recruiter"),
+    faculties: rawData.filter((i: any) => i.type === "Faculties"),
+  }), [rawData]);
 
   const tabs = [
     { key: "students", label: "Students" },
@@ -37,47 +39,54 @@ export default function HomeAlumni() {
   const [activeTab, setActiveTab] = useState("students");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Reset slide index when tab changes
+  // Refs for mobile swiper custom nav arrows
+  const mobilePrevRef = useRef<HTMLDivElement>(null);
+  const mobileNextRef = useRef<HTMLDivElement>(null);
+  const mobileSwiperRef = useRef<SwiperType | null>(null);
+
   const handleTabClick = (tabKey: any) => {
     setActiveTab(tabKey);
     setActiveIndex(0);
+    // Reset mobile swiper to first slide
+    mobileSwiperRef.current?.slideTo(0);
   };
 
   const currentItems = grouped[activeTab] ?? [];
   const activeItem = currentItems[activeIndex];
 
-  if (isLoading) return null; // or a skeleton
+  if (isLoading) return null;
 
   return (
     <div className="home_testimonials">
       <div className="container">
         <div className="grid">
-          {/* LEFT */}
-          <div className="left_col">
-            <img
-              className="pattern_img"
-              src="/images/pattern/pattern2.png"
-            />
 
-            <div className="sec_title">
+          {/* ── LEFT col (desktop) ── */}
+          <div className="left_col">
+            <img className="pattern_img" src="/images/pattern/pattern2.png" alt="" />
+
+            {/* sec_title — desktop only (hidden on mobile, rendered again below in mobile order) */}
+            <div className="sec_title d-none d-md-block">
               <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
               <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
                 Success Stories from our Students and Alumni
               </h2>
             </div>
 
-            {/* Description */}
-            <div className="desc_content">
+            {/* desc_content — desktop only */}
+            <div className="desc_content d-none d-md-block">
               <div className="quote-icon" data-aos="fade-up" data-aos-delay="600">
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
               {activeItem && (
-                <div className="desc active" data-aos="fade-up" data-aos-delay="800">{activeItem.message}</div>
+                <div className="desc active" data-aos="fade-up" data-aos-delay="800">
+                  {activeItem.message}
+                </div>
               )}
             </div>
 
-            {/* Thumbs */}
-            <div className="thumbs">
+            {/* Thumbs — desktop only */}
+            <div className="thumbs d-none d-md-block">
               <div className="thumb-group active" data-aos="fade-up" data-aos-delay="800">
                 {currentItems.map((item: any, index: number) => (
                   <div
@@ -87,7 +96,7 @@ export default function HomeAlumni() {
                   >
                     <Image src={item.image} alt={item.name} width={155} height={188} loading="lazy" />
                     <div className="thumb_info">
-                      <p className="name" >{item.name}</p>
+                      <p className="name">{item.name}</p>
                       <span className="designation">{item.branch}</span>
                     </div>
                   </div>
@@ -96,9 +105,18 @@ export default function HomeAlumni() {
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* ── RIGHT col (desktop) ── */}
           <div className="right">
-            {/* Tabs */}
+
+            {/* Mobile-only: sec_title at top */}
+            <div className="sec_title d-block d-md-none">
+              <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
+              <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
+                Success Stories from our Students and Alumni
+              </h2>
+            </div>
+
+            {/* Tabs — shared, always visible */}
             <div className="tabs">
               {tabs.map((tab) => (
                 <div
@@ -111,8 +129,18 @@ export default function HomeAlumni() {
               ))}
             </div>
 
-            {/* Main Image */}
-            <div className="main-images" data-aos="fade-up" data-aos-delay="200">
+            {/* Mobile-only: desc_content below tabs */}
+            <div className="desc_content d-block d-md-none">
+              <div className="quote-icon">
+                <img src="/images/icons/quote.png" alt="quote icon" />
+              </div>
+              {activeItem && (
+                <div className="desc active">{activeItem.message}</div>
+              )}
+            </div>
+
+            {/* ── Desktop: static main image ── */}
+            <div className="main-images d-none d-md-block" data-aos="fade-up" data-aos-delay="200">
               {activeItem && (
                 <Image
                   className="main-img active w-100"
@@ -125,8 +153,77 @@ export default function HomeAlumni() {
               )}
             </div>
 
-            {/* Person Info */}
-            <div className="tab_image_content" >
+            {/* ── Mobile: swiper slider ── */}
+            <div className="main-images mobile_slider d-block d-md-none">
+              {/* Custom nav arrows */}
+              <div
+                ref={mobilePrevRef}
+                className="swiper_prev_custom mobile_slider_prev"
+                role="button"
+                aria-label="Previous"
+              >
+                <img src="/images/icons/arrow.svg" alt="prev" className="img-fluid" />
+              </div>
+              <div
+                ref={mobileNextRef}
+                className="swiper_next_custom mobile_slider_next"
+                role="button"
+                aria-label="Next"
+              >
+                <img src="/images/icons/arrow.svg" alt="next" className="img-fluid" />
+              </div>
+
+              <Swiper
+                modules={[Navigation]}
+                slidesPerView={1}
+                spaceBetween={0}
+                loop={currentItems.length > 1}
+                navigation={{
+                  prevEl: mobilePrevRef.current,
+                  nextEl: mobileNextRef.current,
+                }}
+                onBeforeInit={(swiper) => {
+                  mobileSwiperRef.current = swiper;
+                  (swiper.params.navigation as any).prevEl = mobilePrevRef.current;
+                  (swiper.params.navigation as any).nextEl = mobileNextRef.current;
+                }}
+                onSwiper={(swiper) => {
+                  mobileSwiperRef.current = swiper;
+                  (swiper.navigation as any).prevEl = mobilePrevRef.current;
+                  (swiper.navigation as any).nextEl = mobileNextRef.current;
+                  swiper.navigation.update();
+                }}
+                onSlideChange={(swiper) => {
+                  setActiveIndex(swiper.realIndex);
+                }}
+                className="alumni_mobile_swiper"
+              >
+                {currentItems.map((item: any, index: number) => (
+                  <SwiperSlide key={index}>
+                    <div className="mobile_slide_wrap">
+                      <Image
+                        className="w-100"
+                        src={item.image}
+                        width={600}
+                        height={732}
+                        loading="lazy"
+                        alt={item.name}
+                      />
+                      {/* Person info inside each slide on mobile */}
+                      <div className="tab_image_content">
+                        <div className="person-info active">
+                          <div className="name">{item.name}</div>
+                          <div className="role">{item.branch}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* Person info — desktop only (below static image) */}
+            <div className="tab_image_content d-none d-md-block">
               {activeItem && (
                 <div className="person-info active">
                   <div className="name" data-aos="fade-up" data-aos-delay="400">{activeItem.name}</div>
@@ -134,6 +231,7 @@ export default function HomeAlumni() {
                 </div>
               )}
             </div>
+
           </div>
         </div>
       </div>

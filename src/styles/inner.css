@@ -37,8 +37,8 @@
 .custom_pages_lists .tab_btn:before { content: ""; border-bottom: 2px dashed var(--color-31); opacity: .3; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
 .custom_pages_lists .active .tab_btn:before { opacity: 1; border-color: var(--color-92); }
 /* About section start */
-.about_menu_bar { border-bottom: 1px solid #d7d4d4;background: #f4f7f4; }
-.about_top { background-color: var(--color-64); padding: 1.5rem 0; opacity: 1; position:relative;}
+.about_menu_bar { border-bottom: 1px solid #d7d4d4; background: #f4f7f4; }
+.about_top { background-color: var(--color-64); padding: 1.5rem 0; opacity: 1; position:relative; }
 .about_glbim_p { font: var(--font-30); color: #fff; font-weight: bold; }
 /* Flex replacement */
 .about_flex { display: flex; align-items: center; justify-content: space-between; padding-right: 30.5rem; }
@@ -197,7 +197,7 @@
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
-.department-page .inner_nav .about_menu_label{display:none;}
+.department-page .inner_nav .about_menu_label { display:none; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
 .happenings_page::before { background-image: url(/images/pattern/patch.png); width: 20.6rem; height: 61.6rem; position: absolute; top: 0; left: 0; content: ""; background-size: contain; }
 .news_section { padding-block: 10rem 4rem; background-color: var(--color-F4); }
@@ -226,7 +226,7 @@
 .newst_details_header { display: flex; align-items: center; }
 .newst_details_header date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; }
 .news_details h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
-.department-page .news_details_grid{margin-bottom: 2.5rem;}
+.department-page .news_details_grid { margin-bottom: 2.5rem; }
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
 .news_details_cnt p { font: var(--font-16); color: var(--color-33); margin-bottom: 2rem; }
 .news_details_img { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative; }
@@ -706,8 +706,8 @@
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title,
 .custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
-.custom_heading_grid .left{flex:1;}
-.department-page .custom_heading_grid .right{flex:unset;}
+.custom_heading_grid .left { flex:1; }
+.department-page .custom_heading_grid .right { flex:unset; }
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }
 .faculties_main .faculties_title .title48 { color: var(--color-92); }
 .laboraties_mainsec { background-color: var(--color-F4); padding-block: 1.2rem 10rem; }
@@ -1557,7 +1557,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni_chaper_main .csr-new-img { z-index: 9; }
 .alumni_event h4 { margin-bottom: 4rem; }
 .alumni_event .view_btns { text-align: center; margin-top: 4.6rem; }
-.btns{display: flex;gap: 0.5rem;}
+.btns { display: flex; gap: 0.5rem; }
 .award-sec.alumni_event { padding-block: 5rem 13rem; }
 .alumni-detail-wrap { position: relative; }
 .alumni-detail-wrap::before { background-color: var(--color-F4); content: ""; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; }
@@ -1997,7 +1997,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .cr-title { margin-bottom: 2.5rem; }
 .ug_list { margin-bottom: 5rem; }
 .dep-left { display: flex; /* gap: 1.5rem; */ }
-.cr-right { text-align: right;justify-content: end;gap: 0.5rem; display: flex; }
+.cr-right { text-align: right; justify-content: end; gap: 0.5rem; display: flex; }
 .dep-left .cr-exp { position: relative; margin-left: 1.5rem; padding-left: 1.5rem; }
 .dep-left .cr-exp::after { position: absolute; left: 0; top: 0.2rem; height: 2rem; background-color: var(--color-64); width: 0.1rem; content: ''; }
 .current-openings { padding-block: 10rem 10rem; }
@@ -2159,3 +2159,35 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .admin_form h4 { margin-block: 2rem; }
 .post_cumment { background-color: var(--color-92); padding: 1.2rem 8rem; color: var(--color-white); font-weight: 600; margin-top: 3rem; border: 0; display: inline-block; cursor: pointer; font: var(--font-16); }
 /* ============== blogs page listing ============= */
+/* best Practice page css */
+.best_prac_main { padding-block: 5rem 10rem; }
+.best_title { margin-bottom: 8.4rem; }
+.best_prac_grid { display: grid; gap: 12.5rem; grid-template-columns: 34.1% auto; }
+.best_prac_lft> h4 { margin-bottom: 4rem; }
+.best_pra_pdf a { display: inline-flex; align-items: center; gap: 1rem; font: var(--font-16); font-weight: 600; border-bottom: 0.1rem solid #7070704D; padding-bottom: 2.5rem; }
+.best_prac_grid .best_pra_pattren { padding-block: 5.6rem 0; }
+.pra_evsc_left > h4 { margin-bottom: 4rem; }
+.the_best_pr_grid { display: grid; gap: 7.8rem; grid-template-columns: 41.8% auto; align-items:center ; }
+.the_b_pra_lft { padding-inline: 2rem; position: relative; }
+.the_b_pra_lft::before { background-color: var(--color-F4); position: absolute; top: 15.4rem; left: 0; content: ''; height: auto; right: 0; z-index: -1; bottom: -2rem; }
+.best_prec_the { padding-block: 10rem 10rem; }
+.the_pr_rgt > h4 { margin-bottom: 4rem; }
+.the_pr_rgt >ul { margin-bottom: 4rem; }
+.ev_den_wrp { position: relative; }
+.best_prac2 { padding-block: 5rem 5rem; }
+.ev_den_wrp::before { background-color: var(--color-F4); content: ''; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; }
+.ev_den_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; padding-block: 8rem 8rem; }
+.ev_den_rgttext { padding: 9rem  12rem  0 23rem ; }
+.ev_den_rgttext >h4 { margin-bottom: 4rem; }
+.ev_den_rgttext .best_pra_pdf { margin-top:5rem; }
+.the_prac_indus { padding-block: 8rem 8rem; }
+.the_pra_contebx { margin-bottom: 5rem; }
+.the_pra_contebx h4 { margin-bottom: 4rem; }
+.the_pra_contebx .custom_bullet { margin-bottom: 2rem; }
+.the_bst_grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 3rem; }
+.the_bstbox > h4 { margin-bottom: 4rem; }
+.the_bstbox { background-color: var(--color-F5); padding: 2.5rem; position: relative; }
+.bs_plbm_enc { background-color: var(--color-F4); position: relative; padding-block: 10.2rem 10rem; }
+.bs_plbm_bx { position: relative; }
+.bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
+.bs_plbm_bx >h2 { margin-bottom: 4rem; }

@@ -1,8 +1,9 @@
 import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
+import DepartmentFilter from "../newsEvents/DepartmentFilter";
 
-export default async function MainWorkshop({data, slug}:{data:any, slug:string}){
+export default async function MainWorkshop({data, slug, departments, currentDepartment}:{data:any, slug:string, departments:any, currentDepartment:any}){
     return <section className="news_section">
     <div className="container">
         <div className="col-xl-11">
@@ -14,12 +15,10 @@ export default async function MainWorkshop({data, slug}:{data:any, slug:string})
                 </div>
                 <div className="news_right">
                     <div className="news_head">
-                    <select className="form-select" aria-label="Default select example">
-                            <option defaultValue=''>Select Department</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        <DepartmentFilter
+                            departments={departments}
+                            currentDepartment={currentDepartment}
+                        />
                     </div>  
                     <div className="news_cnt">
                         {data?.date && <p className="date">{new Date(data.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</p>}

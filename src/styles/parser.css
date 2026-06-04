@@ -1247,7 +1247,7 @@
 
 .home_sessions_section .grid .right_col ul {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   height: 100%;
   flex-direction: column;
   height: 60rem;

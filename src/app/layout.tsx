@@ -13,6 +13,7 @@ import "../styles/globals.css";
 
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
+import Script from "next/script";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -42,6 +43,10 @@ export default async function RootLayout({
             <Footer />
           </AOSProvider>
         </Providers>
+        <Script
+                    src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
+                    strategy="beforeInteractive"
+                />
         {/* <ScriptLoader /> */}
       </body>
     </html>

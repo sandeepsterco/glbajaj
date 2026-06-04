@@ -18,6 +18,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 declare global {
   interface Window {
+    Swiper?: unknown;
     __initCustomJS?: () => void;
   }
 }
@@ -162,36 +163,53 @@ const DepartmentFacultyGrid = dynamic(
 // multiple <ReactParser> instances are rendered on the same page.
 // ---------------------------------------------------------------------------
 
-// Tracks whether the first ReactParser instance has already claimed the scripts
-let scriptLoaderMounted = false;
+// First ReactParser instance on a page owns script injection; released on unmount
+// so client navigations back to parser pages can reclaim ownership.
+let parserScriptsOwner: object | null = null;
 
 function ParserScriptLoader() {
-  const [swiperReady, setSwiperReady] = useState(false);
+  const ownerToken = useRef({});
+  const [isOwner] = useState(() => {
+    if (parserScriptsOwner !== null) return false;
+    parserScriptsOwner = ownerToken.current;
+    return true;
+  });
+  const [swiperReady, setSwiperReady] = useState(
+    () => typeof window !== "undefined" && typeof window.Swiper !== "undefined"
+  );
 
-  // Claim ownership on first mount; release on unmount so a future
-  // navigation that re-mounts ReactParser can reclaim if needed.
-  const isOwner = useRef(false);
-  if (!scriptLoaderMounted) {
-    scriptLoaderMounted = true;
-    isOwner.current = true;
-  }
+  useEffect(() => {
+    return () => {
+      if (parserScriptsOwner === ownerToken.current) {
+        parserScriptsOwner = null;
+      }
+    };
+  }, []);
 
-  // Only the first instance renders the actual <Script> tags
-  if (!isOwner.current) return null;
+  const markSwiperReady = () => setSwiperReady(true);
+
+  if (!isOwner) return null;
 
   return (
     <>
       <Script
+        id="parser-swiper"
         src="/js/swiper-bundle.min.js"
         strategy="afterInteractive"
-        onLoad={() => setSwiperReady(true)}
+        onLoad={markSwiperReady}
+        onReady={markSwiperReady}
       />
       <Script
+        id="parser-fancybox"
         src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
-        strategy="lazyOnload"
+        strategy="beforeInteractive"
       />
       {swiperReady && (
-        <Script src="/js/custom.js" strategy="afterInteractive" />
+        <Script
+          id="parser-custom"
+          src="/js/custom.js"
+          strategy="afterInteractive"
+        />
       )}
       {swiperReady && <RouteChangeHandler />}
     </>
@@ -350,16 +368,31 @@ export default function ReactParser({ html }: { html: any }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (typeof window.__initCustomJS !== "function") return;
-      try {
-        window.__initCustomJS();
-      } catch (err) {
-        console.error("[ReactParser] __initCustomJS failed:", err);
-      }
-    }, 150);
+    let cancelled = false;
+    let attempts = 0;
+    let timer: ReturnType<typeof setTimeout>;
 
-    return () => clearTimeout(timer);
+    const tryInit = () => {
+      if (cancelled) return;
+      if (typeof window.__initCustomJS === "function") {
+        try {
+          window.__initCustomJS();
+        } catch (err) {
+          console.error("[ReactParser] __initCustomJS failed:", err);
+        }
+        return;
+      }
+      if (attempts++ < 20) {
+        timer = setTimeout(tryInit, 100);
+      }
+    };
+
+    timer = setTimeout(tryInit, 150);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [pathname, html]);
 
   if (!html) return null;

@@ -37,11 +37,11 @@ const COL_CLASSES: Record<number, string> = {
 };
 
 const SOCIALS = [
-  { icon: "facebook.png", label: "Facebook" },
-  { icon: "x-social.png", label: "X / Twitter" },
-  { icon: "youtube.png", label: "YouTube" },
-  { icon: "insta.png", label: "Instagram" },
-  { icon: "linkedin.png", label: "LinkedIn" },
+  { icon: "facebook.png", label: "Facebook", href:"https://www.facebook.com/glbitm" },
+  { icon: "x-social.png", label: "X / Twitter", href:"https://x.com/glbajaj" },
+  { icon: "youtube.png", label: "YouTube", href:"https://www.youtube.com/user/glbitm07" },
+  { icon: "insta.png", label: "Instagram", href:"https://www.instagram.com/glbajajitm/" },
+  { icon: "linkedin.png", label: "LinkedIn", href:"https://www.linkedin.com/school/g-l-bajaj-institute-of-technology-and-management/" },
 ];
 
 // Resolves label for any child type:
@@ -184,10 +184,10 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                   </ul>
                 </div>
                 <ul className="h_social_sec">
-                  {SOCIALS.map(({ icon, label }) => (
+                  {SOCIALS.map(({ icon, label, href }) => (
                     <li key={label}>
                       <Link
-                        href="#"
+                        href={href}
                         aria-label={label}
                         target="_blank"
                         className="social_link"

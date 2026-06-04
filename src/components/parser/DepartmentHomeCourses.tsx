@@ -31,7 +31,7 @@ function CourseCard({ program }: any) {
         <div className="cse_course relative">
             <div className="cse_course_title">{program.name ?? ''}</div>
             <div className="cse_course_info">
-                <div><strong>Duration</strong><br />{program.duration ?? "—"}</div>
+                <div><strong>Duration</strong><br />{program.duration ? program.duration + ' years' : "—"}</div>
                 <div><strong>Affiliation</strong><br />{program.affiliation ?? "—"}</div>
                 <div><strong>Approvals</strong><br />{program.approvals ?? "—"}</div>
             </div>

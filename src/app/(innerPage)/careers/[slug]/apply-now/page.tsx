@@ -3,6 +3,7 @@ import { apiFetch } from "@/src/lib/api";
 import ApplyNowForm from "./ApplyNowForm";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default async function CareerFormPage({ params }: { params: any }) {
     const { slug } = await params;
@@ -28,7 +29,7 @@ export default async function CareerFormPage({ params }: { params: any }) {
                     {careerData?.data?.title && (
                         <h4 className="font36">{careerData?.data?.title}</h4>
                     )}
-                    <Link className="apply_btn" href={`${BASE_URL}careers`}>Back to careers</Link>
+                    <Link className="apply_btn" href={`${BASE_URL}careers`}><i className="bi bi-arrow-left" style={{marginRight: '1rem'}}></i>Back</Link>
                 </div>
                 <ApplyNowForm openingName={careerData?.data?.title ?? ""} />
             </div>

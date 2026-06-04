@@ -1,0 +1,4 @@
+<svg id="phone" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path id="Path_24656" data-name="Path 24656" d="M6,7.687A1.686,1.686,0,0,1,7.687,6h2.766a.847.847,0,0,1,.8.578l1.261,3.786a.845.845,0,0,1-.422,1.025l-1.906.949a9.339,9.339,0,0,0,4.655,4.655l.949-1.906a.845.845,0,0,1,1.025-.422L20.6,15.926a.847.847,0,0,1,.578.8v2.766a1.686,1.686,0,0,1-1.687,1.687h-.843A12.649,12.649,0,0,1,6,8.53Z" transform="translate(-3.59 -3.59)" fill="none" stroke="#be9232" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  <path id="Path_24657" data-name="Path 24657" d="M0,0H20V20H0Z" fill="none"/>
+</svg>

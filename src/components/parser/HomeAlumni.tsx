@@ -69,7 +69,8 @@ export default function HomeAlumni() {
             <div className="sec_title d-none d-lg-block">
               <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
               <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
-                Success Stories from our Students and Alumni
+                Our Success Stories
+                 {/* from our Students and Alumni */}
               </h2>
             </div>
 

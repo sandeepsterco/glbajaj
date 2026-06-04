@@ -145,6 +145,9 @@
     return true;
   }
 
+
+
+  
   // ─── Swipers ──────────────────────────────────────────────────────────────────
   function resolveNavEl(root, selector) {
     if (!selector || typeof selector !== "string") return selector;
@@ -347,8 +350,8 @@
           spaceBetween: 5,
         },
 
-        768: {
-          slidesPerView: 3.4,
+        640: {
+          slidesPerView: 3,
           spaceBetween: 5,
         },
 
@@ -1014,6 +1017,47 @@
       body.style.maxHeight = body.scrollHeight + "px";
     });
   });
+
+
+
+// / ===== Mobile footer menu js 
+
+const footerTriggers = document.querySelectorAll('.footer-trigger');
+
+let currentModal = null;
+let activeTrigger = null;
+
+footerTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        const modalClass = [...trigger.classList].find(cls =>
+            cls.startsWith('modal')
+        );
+
+        const modal = document.querySelector(`.modal-new.${modalClass}`);
+        if (!modal) return;
+
+        // close previously opened modal
+        if (currentModal && currentModal !== modal) {
+            currentModal.classList.remove('show');
+            if (activeTrigger) activeTrigger.classList.remove('active');
+        }
+
+        // toggle current modal
+        modal.classList.toggle('show');
+        trigger.classList.toggle('active');
+
+        currentModal = modal.classList.contains('show') ? modal : null;
+        activeTrigger = trigger.classList.contains('active') ? trigger : null;
+    });
+});
+
+
+
+
+
+
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -1052,4 +1096,29 @@
     adjustMaxContentEarly();
     initAll();
   }
-})();
+})
+
+();
+
+document.querySelectorAll('.drop_btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const submenu = this.nextElementSibling;
+
+        document.querySelectorAll('.submenu').forEach(menu => {
+            if (menu !== submenu) {
+                menu.style.maxHeight = null;
+                menu.parentElement.classList.remove('active');
+            }
+        });
+
+        if (submenu.style.maxHeight) {
+            submenu.style.maxHeight = null;
+            this.parentElement.classList.remove('active');
+        } else {
+            submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            this.parentElement.classList.add('active');
+        }
+    });
+});

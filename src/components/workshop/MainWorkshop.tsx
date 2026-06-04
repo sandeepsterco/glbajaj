@@ -34,7 +34,7 @@ export default async function MainWorkshop({data, slug}:{data:any, slug:string})
 
                         {data?.slug && (
                             <Link href={BASE_URL + slug + "/" + data.slug}>
-                                <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid" />
+                                <img src="/images/home/slide_arrow_right.svg" alt="arrow" className="img-fluid" />
                             </Link>
                         )}
                         

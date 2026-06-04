@@ -6,6 +6,34 @@
 .home_banner_media { position: relative; width: 100%; height: 110rem;
     /* aspect-ratio: 16 / 7;  */
     overflow: hidden; background: #1d1d1d; }
+.home_banner_media .home_slide,
+.home_banner_media .home_slide .swiper-wrapper,
+.home_banner_media .home_slide .swiper-slide {
+    height: 100%;
+}
+.home_banner_image_slide,
+.home_banner_video_slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.home_banner_yt_wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.home_banner_yt_wrap iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100%;
+    min-width: 177.77vh;
+    transform: translate(-50%, -50%);
+    border: 0;
+}
 .home_banner_video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .home_banner .swiper-slide::before { width: 100%; height: 25%; position: absolute; left: 0; top: 0;  background: linear-gradient(#00000040 50%, #00000025 80%, #00000000 100%); content: ""; z-index: 1; }
 .home_banner .slider_caption { position: absolute; inset: 0; width: 100%; height: 100%; align-content: flex-end; z-index: 2; padding-bottom:18.7rem; }
@@ -75,7 +103,7 @@
     /* .home_placement_students .prev_swiper_btn:after, .home_placement_students .next_swiper_btn:after{width: 9rem; height: 7rem;} */
     /* .home_placement_companies .prev_swiper_btn:after, .home_placement_companies .next_swiper_btn:after{width: 9rem; height: 7rem;} */
     .home_placement_company_header .slider_btns{gap: 2.1rem; margin-right: 2.5rem;}
-    .courses_slider .prev_swiper_btn:after, .courses_slider .next_swiper_btn:after{width: 9rem; height: 7rem;}
+    /* .courses_slider .prev_swiper_btn:after, .courses_slider .next_swiper_btn:after{width: 9rem; height: 7rem;} */
     .home_courses_section .slider_btns{gap: 2rem; padding-right: 3.5rem;}
     .home_courses_section .courses_header{margin-bottom: 3rem;}
     .research_centre_section .grid{grid-template-columns: 40.8% auto;}
@@ -84,10 +112,15 @@
     .home_sessions_section .right_col a { padding: 2.2rem 2.5rem 2.2rem 3.4rem; }
 }
 
+@media (max-width: 1280px) {
+    
+    .courses_slider .prev_swiper_btn:after, .courses_slider .next_swiper_btn:after{ height: 100%; width: 100%;}
+}
 
 @media (max-width:991px){
     .home_banner .slider_caption{ padding-bottom: 3rem;}
     .courses_slider .prev_swiper_btn:after, .courses_slider .next_swiper_btn:after { width: 100%; height: 100%; }
     .home_banner_media{ aspect-ratio: auto; height: 100vh;}
     .home_banner_video{height: 100vh;}
+    
 }

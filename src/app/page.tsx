@@ -4,9 +4,6 @@ import { apiFetch } from "../lib/api";
 import ReactParser from "../components/common/reactParser/ReactParser";
 import { cache } from "react";
 
-const HERO_POSTER =
-  "https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg";
-
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
     getPageSEO(),
@@ -31,7 +28,6 @@ export default async function Home() {
 
   return (
     <>
-      <link rel="preload" as="image" href={HERO_POSTER} fetchPriority="high" />
       {seoData.schema && (
         <script
           type="application/ld+json"
@@ -41,20 +37,15 @@ export default async function Home() {
         />
       )}
       <main>
-        {homeData?.modular?.banner && homeData.modular.banner.length > 0 && (
-          <FullImageBanner data={homeData.modular.banner} />
-        )}
+        <FullImageBanner data={homeData?.modular?.banner ?? []} />
 
        
-
-        {/* <NotificationBar /> */}
-
-        {Object.keys(homeData?.cms).map((key) => {
+      {homeData?.cms && (
+         Object.keys(homeData?.cms).map((key) => {
           return <ReactParser key={key} html={homeData.cms[key]} />;
-        })}
-
-        {/* <RankingAward />
-        <Placements /> */}
+        })
+      )}
+       
       </main>
     </>
   );

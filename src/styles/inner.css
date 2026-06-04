@@ -221,17 +221,16 @@
 .news_list_right span { justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
 .news_list:hover .news_list_right span { background-color: var(--color-92); }
 .news_list:hover .news_list_right span img { filter: brightness(0) invert(); }
- .news_list_right .date { font: var(--font-16); color: var(--color-33); }
+.news_list_right .date { font: var(--font-16); color: var(--color-33); }
 .news_list_right h4 { color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block: 2rem; }
 .news_list_right p { font: var(--font-16); color: var(--color-33); }
-.news_list_right { padding-right: 10rem;padding-block: 2rem; }
-.news_list figure{height: 100%;}
-.news_list figure img{    height: 100%;
-    object-fit: cover;object-position: center;}
+.news_list_right { padding-right: 10rem; padding-block: 2rem; }
+.news_list figure { height: 100%; }
+.news_list figure img { height: 100%; object-fit: cover; object-position: center; }
 /* ==============news details page Start============= */
 .news_details { padding-block: 10rem; }
 .newst_details_header { display: flex; align-items: center; }
-.newst_details_header date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; }
+.newst_details_header .date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom: 0; }
 .news_details h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .department-page .news_details_grid { margin-bottom: 2.5rem; }
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
@@ -319,6 +318,7 @@
 .gallery_tab { display: flex; align-items: center; }
 .gallery_tab span { font: var(--font-16); color: var(--color-black); display: flex; gap: 1rem; align-items: center; border: 1px solid #e1e1e1; padding: 1.3rem 2rem; }
 .gallery_tab span:first-child { margin-right: -0.1rem; }
+.gallery_tab .resetBtn {margin-right: 1.5rem; font: var(--font-16); color: var(--color-white); align-items: center; gap: 1rem; padding: 1.3rem 2rem; display: flex; background: var(--color-92); }
 /* ==============HOD's Message page Start============= */
 .hod_section { padding-block: 8.2rem 11.6rem; }
 .hod_grid { display: grid; grid-template-columns: 54% auto; gap: 8.6rem; align-items: flex-start; }

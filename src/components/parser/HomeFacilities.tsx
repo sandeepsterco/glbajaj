@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +10,8 @@ import { useContainer25MaxWidth } from "@/src/hooks/useContainer25MaxWidth";
 import Image from "next/image";
 
 import "swiper/css";
+import Link from "next/link";
+import { BASE_URL } from "@/src/config/config";
 
 const fetchFacilities = async () => {
   const { data, error } = await apiFetch("home-facilities-slides");
@@ -19,6 +21,7 @@ const fetchFacilities = async () => {
 
 export default function HomeFacilities() {
   const [activeTab, setActiveTab] = useState(0);
+  const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRefs = useRef<Record<number, SwiperType>>({});
@@ -31,19 +34,48 @@ export default function HomeFacilities() {
 
   const tabsData = data?.homeFacilitiesSlides?.data;
 
-  const rewireNavigation = (idx: number) => {
+  const VISIBLE_SLIDES = 2.25;
+
+  const getSlideCount = (idx: number) =>
+    tabsData?.[idx]?.mapping_items?.slides?.length ?? 0;
+
+  const showNav = (idx: number) => idx !== -1 && getSlideCount(idx) > Math.floor(VISIBLE_SLIDES);
+
+  const updateNavState = useCallback((swiper: SwiperType) => {
+    setNavState({
+      isBeginning: swiper.isBeginning,
+      isEnd: swiper.isEnd,
+    });
+  }, []);
+
+  const rewireNavigation = useCallback((idx: number) => {
     const swiper = swiperRefs.current[idx];
     if (!swiper || !prevRef.current || !nextRef.current) return;
+
+    // Detach from old elements first
+    swiper.navigation.destroy();
+
+    // Point to the (now stable) DOM refs
+    (swiper.params.navigation as any).prevEl = prevRef.current;
+    (swiper.params.navigation as any).nextEl = nextRef.current;
     (swiper.navigation as any).prevEl = prevRef.current;
     (swiper.navigation as any).nextEl = nextRef.current;
+
+    swiper.navigation.init();
     swiper.navigation.update();
-  };
+    updateNavState(swiper);
+  }, [updateNavState]);
 
   const handleTabChange = (idx: number) => {
-    // On mobile, tapping the active accordion header closes it
     const next = activeTab === idx ? -1 : idx;
     setActiveTab(next);
+
     if (next !== -1) {
+      const count = getSlideCount(next);
+      setNavState({
+        isBeginning: true,
+        isEnd: count <= Math.ceil(VISIBLE_SLIDES),
+      });
       setTimeout(() => rewireNavigation(next), 0);
     }
   };
@@ -66,7 +98,6 @@ export default function HomeFacilities() {
                       The Best Environment for the Best Minds
                     </h3>
 
-                    {/* Desktop tabs — hidden on mobile via CSS */}
                     <div className="homeFac_btns">
                       {tabsData?.map((item: any, idx: number) => (
                         <div
@@ -79,22 +110,30 @@ export default function HomeFacilities() {
                       ))}
                     </div>
 
-                    <div className="navigation_btn" data-aos="fade-up" data-aos-delay="600">
+                    {/* Always in DOM — hidden via CSS when not needed */}
+                    <div
+                      className="navigation_btn"
+                      style={{ visibility: showNav(activeTab) ? "visible" : "hidden" }}
+                      data-aos="fade-up"
+                      data-aos-delay="600"
+                    >
                       <div
                         ref={prevRef}
-                        className="swiper_prev_custom"
-                        tabIndex={-1}
+                        className={`swiper_prev_custom ${navState.isBeginning ? "disabled" : ""}`}
+                        tabIndex={navState.isBeginning ? -1 : 0}
                         role="button"
                         aria-label="Previous slide"
+                        aria-disabled={navState.isBeginning}
                       >
                         <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
                       </div>
                       <div
                         ref={nextRef}
-                        className="swiper_next_custom"
-                        tabIndex={0}
+                        className={`swiper_next_custom ${navState.isEnd ? "disabled" : ""}`}
+                        tabIndex={navState.isEnd ? -1 : 0}
                         role="button"
                         aria-label="Next slide"
+                        aria-disabled={navState.isEnd}
                       >
                         <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
                       </div>
@@ -109,11 +148,6 @@ export default function HomeFacilities() {
                         key={`tabContent${idx}`}
                         id={`tab${idx}`}
                       >
-                        {/* 
-                          Accordion header — always rendered so it's always clickable.
-                          Hidden on desktop via CSS (display: none inside homeFac_nav_side's
-                          breakpoint), visible on mobile.
-                        */}
                         {item?.tab_title && (
                           <div
                             className="homeFac_accHeader"
@@ -130,7 +164,6 @@ export default function HomeFacilities() {
                           </div>
                         )}
 
-                        {/* Body only renders when this pane is active */}
                         <div className="homeFac_accBody">
                           <div className="homeFac_swiper_wrap">
                             {item?.mapping_items?.slides?.length > 0 && (
@@ -149,11 +182,19 @@ export default function HomeFacilities() {
                                   (swiper.params.navigation as any).nextEl = nextRef.current;
                                 }}
                                 onSwiper={(swiper) => {
+                                  swiperRefs.current[idx] = swiper;
                                   if (idx === activeTab) {
-                                    (swiper.navigation as any).prevEl = prevRef.current;
-                                    (swiper.navigation as any).nextEl = nextRef.current;
-                                    swiper.navigation.update();
+                                    rewireNavigation(idx);
                                   }
+                                }}
+                                onSlideChange={(swiper) => {
+                                  if (idx === activeTab) updateNavState(swiper);
+                                }}
+                                onReachBeginning={(swiper) => {
+                                  if (idx === activeTab) updateNavState(swiper);
+                                }}
+                                onReachEnd={(swiper) => {
+                                  if (idx === activeTab) updateNavState(swiper);
                                 }}
                                 breakpoints={{
                                   768: { slidesPerView: 2, spaceBetween: 15 },
@@ -178,6 +219,9 @@ export default function HomeFacilities() {
                                         <h4 className="font36" data-aos="fade-up" data-aos-delay="400">
                                           {slide.title}
                                         </h4>
+                                      )}
+                                      {slide?.slug && (
+                                        <Link className="strech_link" href={`${BASE_URL}${slide.slug}`} />
                                       )}
                                     </figure>
                                   </SwiperSlide>

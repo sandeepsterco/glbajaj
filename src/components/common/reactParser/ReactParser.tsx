@@ -12,6 +12,7 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 declare global {
   interface Window {

@@ -42,7 +42,7 @@ export default function NotificationBar() {
               {/* ✅ Animation lives on the TRACK, not individual items */}
               <div className="ticker-track">
                 {loopItems.map((n, i) => (
-                  <Link key={i} href={n.url ?? '#'} className="ticker-item" target="_blank">
+                  <Link key={i} href={n.url ?? '#'} className="ticker-item">
                     <span>{n.title}</span>
                     <FaChevronRight fontSize={10} />
                   </Link>

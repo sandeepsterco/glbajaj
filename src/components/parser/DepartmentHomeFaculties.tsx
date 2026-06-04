@@ -59,7 +59,7 @@ export default function DepartmentHomeFaculties() {
                 <SwiperSlide key={item?.id || index}>
                     <div className="leader_card">
                         <figure>
-                            <Image src={item.image} alt="leader" className="img-fluid w-100" height={417} width={383} loading="lazy" />
+                            <Image src={item?.image || '/images/default/department-project.webp'} alt="leader" className="img-fluid w-100" height={417} width={383} loading="lazy" />
                         </figure>
                         {item?.name && (
                             <h4>{item.name}</h4>

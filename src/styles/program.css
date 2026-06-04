@@ -52,7 +52,8 @@ This is the minimum CSS that you will need in order for this to work
 .affiliation p { font: var(--font-16); color: var(--color-black); font-weight: 600; margin:0; }
 .affiliation span { font: var(--font-14); color: var(--color-black); font-weight: 500; }
 .apply-btn { padding: 0 4rem; }
-.apply-btn a { font: var(--font-16); color: var(--color-89); font-weight: 600; border-bottom: 1px dashed var(--color-89); padding-bottom: 1rem; }
+.apply-btn a,
+.apply-btn button { font: var(--font-16); color: var(--color-89); font-weight: 600; border-bottom: 1px dashed var(--color-89); padding-bottom: 1rem; cursor: pointer;}
 .program-btn { }
 .program-btn a { background-color: var(--color-white); padding: 1.5rem 2rem; display: block; box-shadow: 0px 2px 4px #0000001a; }
 .program-btn a:hover { background-color: var(--color-89); }
@@ -94,7 +95,7 @@ textarea::placeholder { color: var(--color-black); }
 .content { margin-top: 2rem; }
 .more-text { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .more-text.show { max-height: 1000px; }
-.toggle-btn i { transition: transform 0.3s ease; }
+.toggle-btn i { transition: transform 0.3s ease; font:var(--font-16)}
 .toggle-btn.active i { transform: rotate(180deg); }
 button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); cursor: pointer; }
 /* Curriculum */

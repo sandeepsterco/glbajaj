@@ -412,14 +412,14 @@ const Footer = async () => {
               <h5>Admissions Helpline</h5>
               <ul>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                  <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon"
                     width={50}
                     height={50}
                   /></div>
                   <p><a href="tel:919989776661">+91 9989 776661</a></p>
                 </li>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                  <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon"
                     width={50}
                     height={50}
                   /></div>
@@ -436,33 +436,33 @@ const Footer = async () => {
         <div className="modal-new modal3">
           <div className="mobile-contact">
             <div className="contact-logo">
-              <Image src="/images/logo/colored-logo.webp" className="img-fluid" alt="Icon" 
+              <Image src="/images/logo/colored-logo.png" className="img-fluid" alt="Icon" 
               width={270} height={88} />
               <h6>GL Bajaj Institute of Technology and Management</h6>
             </div>
             <div className="contact_menu">
               <ul>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon" width={20} height={20}
+                  <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon" width={20} height={20}
                   /></div>
                   <p><a href="tel:+91 7290008310">+91 7290008310</a></p>
                 </li>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                  <div className="conatct_svg"><Image src="/images/icons/menu-telephone.svg" alt="Icon"
                     width={20}
                     height={20}
                   /></div>
                   <p><a href="tel:+8010-000-234">+8010-000-234</a></p>
                 </li>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                  <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon"
                     width={20}
                     height={20}
                   /></div>
                   <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
                 </li>                
                 <li>
-                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                  <div className="conatct_svg"><Image src="/images/icons/menu-location.svg" alt="Icon"
                     width={20}
                     height={20}
                   /></div>

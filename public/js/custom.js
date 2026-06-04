@@ -286,6 +286,7 @@
     new Swiper(".home_placement_student_slider", {
       slidesPerView: 3,
       spaceBetween: 27,
+      autoplay:true,
       loop: true,
       navigation: {
         nextEl: ".right_slider .next_swiper_btn",

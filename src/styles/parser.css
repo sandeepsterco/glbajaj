@@ -85,14 +85,14 @@
 .sec_title .desc { font: var(--font-16); line-height: 2.4rem; margin-top: 3rem; }
 .award_swipr_main { position: relative; margin-top: 8rem; }
 .home_rank_award { padding-block: 13rem 14.4rem; }
-.home_rank_award .more_btn { margin-top:2rem; display:flex; justify-content: center; }
+.home_rank_award .more_btn { margin-top:2rem; display:none; justify-content: center; }
 .home_rank_award .more_btn figure:hover { background-color: var(--color-92); }
 .home_rank_award .more_btn figure:hover img { filter: brightness(0) invert() ; }
 .home_rank_award .more_btn figure { transition: 0.3s; justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; display: flex; box-shadow: 0 4px 12px #00000026; }
-.h_r_award_Card { text-align: center; padding-inline: 4rem; position: relative; }
-.h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: #707070; top: 0; opacity: 0.35; }
+.h_r_award_Card { text-align: center; padding-inline:2rem; position: relative; }
+.h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: var(--color-64); top: 0; }
 .home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
-.h_r_award_Card figure img { width: auto; height: 5.7rem; margin: auto; margin-bottom: 2rem; }
+.h_r_award_Card figure img { width: auto; height: 7.7rem; margin: auto; margin-bottom: 2rem; }
 .h_r_award_Card h6 { font:var(--font-12); font-weight: var(--font-bold); line-height: 1.2rem; margin-bottom: 0.5rem; font-family: var(--font-tasa); }
 .h_r_award_Card p { font:var(--font-10); font-weight: var(--font-bold); line-height: 1.2; font-family: var(--font-tasa); margin-bottom: 1rem; }
 .h_r_award_Card span { font:var(--font-10); font-weight: var(--font-normal); line-height: 1rem; font-family: var(--font-tasa); }
@@ -203,11 +203,12 @@
 
 /* STATIC CARD */
 .home_placement_static_card {
-  background: var(--color-64);
+  /* background: var(--color-64); */
   /* width: 60rem; */
   height: 42.5rem;
   position: relative;
   margin-top: 6rem;
+  background-color: var(--color-white);
 }
 .right_slider h4{ font: var(--font-24); font-weight: 700; color: var(--color-64); margin-bottom: 3rem;}
 .home_placement_top_bar {
@@ -221,7 +222,7 @@
 
 .home_placement_static_card .top_placed {
   font: var(--font-24);
-  color: var(--color-white);
+  color: var(--color-64);
   font-weight: bold;
   text-align: right;
   margin: 4.6rem 0 6.5rem;
@@ -243,7 +244,7 @@
   transform: translateX(-50%);
   z-index: 1;
 }
-.recruiters{ max-width:23.5rem;}
+.recruiters{ max-width:23.5rem; background-color: var(--color-64); padding: 2rem;}
 .slider_top{ position: relative;}
 .right_slider .slider_btns .swiper-button-prev{ left: auto; right: 5rem;}
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn{ top: 1rem; }
@@ -657,11 +658,15 @@
   padding: 1.2rem 2rem;
   font: var(--font-16);
   line-height: 2.4rem;
+    background-color: var(--color-white);
+  color: var(--color-64);
+  font-weight: 700;
+
 }
 
 .home_courses_section .admission_data .btn:hover {
-  background-color: var(--color-FE);
-  color: var(--color-black);
+  background-color: var(--color-AE);
+  color: var(--color-white);
 }
 
 /************  end of courses Section ************/
@@ -2474,7 +2479,7 @@
 }
 
 @media (max-width:991px){
-  .sec_title .title48{ letter-spacing: -1.4px; font: var(--font-28); font-weight: 400;}
+  .sec_title .title48{ letter-spacing: -1.4px; font: var(--font-28); font-weight: 400; line-height: 1.3;}
   .home_research_section .research_group:before{padding-bottom: 111rem; display: none;}
   .home_research_section .research_group:after { z-index: 0; background-size: cover; width: 23.6rem; height: 35.6rem; top: auto; bottom: 0; left: -12rem; }
   .top_header{ display: none;}
@@ -2500,7 +2505,7 @@
   .home_courses_section .bottom_slider { margin-top: 5rem; position: relative; }
   .home_courses_section .slider_btns { padding-right: 0; }
   .home_research_section .research_top{ margin-inline: 0;}
-  .home_courses_section .slider_btns{ top: auto; left: 2.45rem; bottom: 10rem; position: absolute; }
+  .home_courses_section .slider_btns{ top: auto; left: 2.45rem; bottom: 10rem; position: absolute; gap: 1.3rem;}
   .home_courses_section .courses_slider_wrapper .swiper-slide{ min-height: auto; margin-bottom: 2rem; height: auto;}
   .courses_slider .overflow-hidden{margin-bottom: 3rem;}
   .caption_wrap .cap_desc{ display: none;}
@@ -2702,7 +2707,10 @@
     .m-pay-online a { background: #133B5C; color: #fff; padding-block: 1rem; display: flex; padding-inline: 4rem; text-decoration: none; font-size: 1.4rem; gap: 1rem; }
 
     /*mobile conatct css*/
-    .contact-logo { text-align: center; padding-block:10.6rem; margin-block: 1.5rem; margin-inline: 1.5rem; }
+    .contact-logo { text-align: center; padding-block:10.6rem; margin-block: 0rem; position: relative; }
+    .contact-logo::before{ content: ""; background-image: url(/images/contact_ventor.webp); background-position: center; width: 100%; height: 100%; position: absolute; top: 0rem ; right: 0rem; left: 0; bottom: 0; background-size: cover; z-index: -1; }
+
+    
     .contact_menu ul { list-style: none; }
     .contact_menu li { display: flex; border-bottom: 1px solid rgba(112,112,112,0.23); gap: 2rem; align-items: flex-start; padding-block: 2.5rem; }
     .contact_menu ul { padding-inline: 3rem; }
@@ -2748,11 +2756,12 @@
     .m-view a.download_prospectus_btn{ background-color: var(--color-64);}
     .m-view a.apply_online_btn:hover{ background-color: var(--color-64);}
     .m-view a.download_prospectus_btn:hover{ background-color: var(--color-AE);}
-    .contact-logo h6{ font: var(--font-16); color: var(--color-64); font-weight: 500;}
+    .contact-logo h6{ font: var(--font-14); color: var(--color-64); font-weight: 500; padding-top: 2rem;}
     .contact-logo  img{ margin: 0 auto;}
     .m-admission-helpline{ padding: 2rem 1rem 0;}
     .conatct_svg img{ min-width: 2rem; max-width: 2rem;}
     .others_mobile_menu{ padding-bottom: 3rem;}
+    .left_content{ position: relative;}
 
 
 
@@ -2764,7 +2773,7 @@
   .home_sessions_section .data-overlay .top .year{ font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
   .home_sessions_section .data-overlay .bottom .year{font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend);}
   .home_sessions_section .data-overlay .top .date{ font: var(--font-11); letter-spacing: -0.31px;}
-  .home_sessions_section .data-overlay{ top: 0; padding: 2rem 0;}
+  .home_sessions_section .data-overlay{ top: 20%; padding: 2rem 0;}
   .home_sessions_section .left_col .title{ font: var(--font-14); font-weight: 700;}
   .home_sessions_section .data-overlay .name{ font: var(--font-11); font-weight: 700; line-height: 1; padding-top: 1rem;}
   .home_sessions_section .data-overlay .top { gap: 0.6rem; }
@@ -2794,9 +2803,17 @@
   .home_footer .footer_bottom_right{gap: 2.7rem;}
   .homeFac_accBody figure{ max-height: 28.5rem; object-fit: cover;}
   .right_slider .slider_btns{gap: 0.8rem;}
+  .home_research_section .single_stat:last-child{ margin-top: -0.1rem;}
+  .home_research_section .single_stat:first-child { border-right: .1rem solid var(--color-C0); }
+  .home_research_section .single_stat:nth-child(2) { border-left: 0; }
+}
 
+@media (max-width:480px){
+   .home_sessions_section .data-overlay{ top: 10%;}
 }
 
 @media (max-width:360px){
   .home_testimonials .desc_content{ gap: 2rem;}
+  .home_sessions_section .data-overlay{ top: 0rem; padding-top: 1rem;}
+  .home_sessions_section .data-overlay{left: 45%; transform: translateX(-35%);}
 }

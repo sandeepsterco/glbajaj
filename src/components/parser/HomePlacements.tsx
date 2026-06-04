@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SkeletonGroup } from "../ui/Skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -66,7 +66,7 @@ export default function HomePlacements() {
       </div>
       <Swiper
         className="home_placement_student_slider"
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}        
         slidesPerView={SLIDES_PER_VIEW}
         spaceBetween={20}
         loop={canLoop}
@@ -74,6 +74,10 @@ export default function HomePlacements() {
           nextEl: ".right_slider .next_swiper_btn",
           prevEl: ".right_slider .prev_swiper_btn",
         } : false}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           0: {
             slidesPerView: 1,

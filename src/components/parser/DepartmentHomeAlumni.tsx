@@ -79,7 +79,7 @@ export default function DepartmentHomeAlumni() {
                       <div className="quote-icon" data-aos="fade-up" data-aos-delay="200">
                         <img src="/images/icons/quote.png" alt="quote icon" />
                       </div>
-                      <p data-aos="fade-up" data-aos-delay="400">{item.message}</p>
+                      <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{__html:item?.message}} />
                     </div>
                     <div className="ats_imgbx">
                       <img src={item.image} className="img-fluid" alt={item.name} data-aos="fade-up" data-aos-delay="600"/>

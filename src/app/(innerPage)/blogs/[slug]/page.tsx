@@ -36,17 +36,21 @@ function formatBlogDate(dateStr: string) {
   });
 }
 
-function BlogSections({ sections }: { sections: unknown }) {
+function BlogSections({ sections }: { sections: any }) {
   if (!sections) return null;
   if (typeof sections === "string") {
     return <ReactParser html={sections} />;
   }
-  if (typeof sections === "object") {
-    return Object.entries(sections as Record<string, string>).map(([key, html]) => (
-      <ReactParser key={key} html={html} />
-    ));
-  }
-  return null;
+  return sections?.map((item:any, idx:number) => (
+    <>
+      {/* {item?.title && (
+        <h3>{item.title}</h3>
+      )} */}
+      {item?.editors?.length > 0 && item.editors.map((editorItem:any, editorIdx:number)=>(
+        <ReactParser key={editorIdx + idx} html={editorItem?.content} />
+      ))}
+    </>
+  ));
 }
 
 export default async function BlogDetailPage({

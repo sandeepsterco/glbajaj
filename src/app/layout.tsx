@@ -1,7 +1,6 @@
-import { cache } from "react";
 import { Lexend, TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
-import ScriptLoader from "../components/ScriptLoader";
+// import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 import MainWrapper from "../components/MainWrapper";
 // import 'animate.css';
@@ -12,9 +11,9 @@ import "../styles/custom.css";
 import "../styles/globals.css";
 // import "../styles/module.css";
 
-import { apiFetch } from "../lib/api";
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
+import Script from "next/script";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -28,37 +27,27 @@ const fontLexend = Lexend({
   variable:'--font-lexend'
 })
 
-const getHeaderData = async function getHeaderData() {
-  const [headerRes, sidebarRes] = await Promise.all([
-    apiFetch("menu?location=header", { revalidate: 600 }),
-    apiFetch("menu?location=sidebar", { revalidate: 600 }),
-  ]);
-
-  return {
-    headerMenu: headerRes.data,
-    sidebarMenu: sidebarRes.data,
-    error: headerRes.error || sidebarRes.error,
-  }
-};
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerData = await getHeaderData();
 
   return (
     <html lang="en" className={`${tasaOrbiter.variable} ${fontLexend.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>
           <AOSProvider>
-            <Header headerData={headerData} />
+            <Header />
             <MainWrapper>{children}</MainWrapper>
             <Footer />
           </AOSProvider>
         </Providers>
-        <ScriptLoader />
+        <Script
+                    src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
+                    strategy="beforeInteractive"
+                />
+        {/* <ScriptLoader /> */}
       </body>
     </html>
   );

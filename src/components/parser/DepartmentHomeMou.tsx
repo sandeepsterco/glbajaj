@@ -127,10 +127,13 @@ export default function DepartmentHomeMou() {
         <div className="project_contentsec">
           {/* <h4 className="font24">Collaborations & MOUs</h4> */}
           <h3 className="font36">{activeItem.title}</h3>
-          <p>{activeItem.description}</p>
-          <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">
-            PDF
-          </a>
+          <p dangerouslySetInnerHTML={{__html:activeItem.description}}></p>
+          {activeItem?.pdf && (
+            <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">
+              PDF
+            </a>
+          )}
+          
         </div>
 
         {/* Image Slider Section */}

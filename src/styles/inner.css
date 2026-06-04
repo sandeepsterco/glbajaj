@@ -820,6 +820,7 @@
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
 .alumni_our_tem.our-team-list { padding-top: 0; }
+.alumni_our_tem.alumni_overview{    padding-block: 12rem 0rem;}
 .our-tem-sec { padding-bottom: 0; }
 .teamX_sec { padding-block: 5rem 15rem; }
 .teamX_titlesec { margin-bottom: 15rem; }

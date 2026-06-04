@@ -21,14 +21,8 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-
-
-.vm-description{height: 22rem; overflow: hidden; transition:0.2s all ease-in-out}
-.vm-description.expanded{height:auto;}
-
-
-
-
+.vm-description { height: 22rem; overflow: hidden; transition:0.2s all ease-in-out }
+.vm-description.expanded { height:auto; }
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -224,11 +218,15 @@
 .front_news .news_cnt a:hover { background-color: var(--color-92); }
 .front_news .news_cnt a:hover img { filter: brightness(0) invert(); }
 .news_list { display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0; }
-.news_list_right span { display: inline-block; margin-left: -1.5rem; margin-top: 3rem; }
+.news_list_right span { justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
+.news_list:hover .news_list_right span { background-color: var(--color-92); }
+.news_list:hover .news_list_right span img { filter: brightness(0) invert(); }
 .news_list_right .date { font: var(--font-16); color: var(--color-33); }
 .news_list_right h4 { color: var(--color-33); font: var(--font-21); font-weight: 600; padding-block: 2rem; }
 .news_list_right p { font: var(--font-16); color: var(--color-33); }
-.news_list_right { padding-right: 10rem; }
+.news_list_right { padding-right: 10rem; padding-block: 2rem; }
+.news_list figure { height: 100%; }
+.news_list figure img { height: 100%; object-fit: cover; object-position: center; }
 /* ==============news details page Start============= */
 .news_details { padding-block: 10rem; }
 .newst_details_header { display: flex; align-items: center; }
@@ -652,13 +650,13 @@
 .our_cse p { max-width: 85%; }
 .our_cse a,
 .our_cse .view_more_btn { display: inline-block; margin-top: 1rem; }
-.view_more_btn{width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0;}
-.view_more_btn i{font:var(--font-16)}
-.view_more_btn.white{background-color: var(--color-white); display: flex; box-shadow: 0 4px 12px #00000026;}
-.view_more_btn:hover{background-color: var(--color-92);}
-.view_more_btn:hover img{filter: brightness(0) invert();}
-.view_more_btn.white i{color:red;}
-.view_more_btn.white:hover i{color:#fff;}
+.view_more_btn { width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0; }
+.view_more_btn i { font:var(--font-16) }
+.view_more_btn.white { background-color: var(--color-white); display: flex; box-shadow: 0 4px 12px #00000026; }
+.view_more_btn:hover { background-color: var(--color-92); }
+.view_more_btn:hover img { filter: brightness(0) invert(); }
+.view_more_btn.white i { color:red; }
+.view_more_btn.white:hover i { color:#fff; }
 .cse_vision { padding-block: 10rem; position: relative; }
 .cse_vision.HideHOD .hod_profile { display: none; }
 .vision_grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 5.6rem; position: relative; }
@@ -823,7 +821,7 @@
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
 .alumni_our_tem.our-team-list { padding-top: 0; }
-.alumni_our_tem.alumni_overview{    padding-block: 12rem 0rem;}
+.alumni_our_tem.alumni_overview { padding-block: 12rem 0rem; }
 .our-tem-sec { padding-bottom: 0; }
 .teamX_sec { padding-block: 5rem 15rem; }
 .teamX_titlesec { margin-bottom: 15rem; }
@@ -1001,11 +999,10 @@
 .ats_thumbsec { max-width: 88rem; position: absolute; bottom: 7rem; left: -16rem; width: 100%; }
 .swiper_thumbox .thu_info .name { font: var(--font-18); color: #000; font-weight: 600; margin-top: 2rem; }
 .swiper_thumbox .thu_info .designation { font: var(--font-16); margin-top: 1rem; }
-.deparment_page_placemen .home_placement_static_card{margin-top: 0;background-color: var(--color-white);}
-.deparment_page_placemen .home_placement_static_card .top_placed{color: var(--color-64);    padding-right: 14.1rem;}
-.deparment_page_placemen .home_placement_static_card .slider_btns{gap: 0.3rem;}
-.deparment_page_placemen .home_placement_static_card .slider_btns  div{    right: 0;}
-
+.deparment_page_placemen .home_placement_static_card { margin-top: 0; background-color: var(--color-white); }
+.deparment_page_placemen .home_placement_static_card .top_placed { color: var(--color-64); padding-right: 14.1rem; }
+.deparment_page_placemen .home_placement_static_card .slider_btns { gap: 0.3rem; }
+.deparment_page_placemen .home_placement_static_card .slider_btns  div { right: 0; }
 /* .ats_thumbsec .swiper-wrapper { gap: 5.6rem; }
 */
 .ats_thumbsec .swiper_thumbox img { object-fit: cover; transition: 0.3s; }

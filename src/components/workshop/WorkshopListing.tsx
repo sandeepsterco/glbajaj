@@ -22,7 +22,7 @@ export default function WorkshopListing({data, slug}:{data:any, slug:string}) {
                             )}
 
                             {item?.slug && (
-                                <span> <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid" />
+                                <span> <img src="/images/home/slide_arrow_right.svg" alt="arrow" className="img-fluid" />
                                 </span>
                             )}
                             

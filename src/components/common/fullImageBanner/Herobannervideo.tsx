@@ -1,278 +1,124 @@
 "use client";
 
-// import Link from "next/link";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Pagination, Autoplay } from "swiper/modules";
-// import "swiper/css";
-// import "swiper/css/pagination";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
-const VIDEO_SRC =
-  "https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due";
+import type { BannerSlide } from "./FullImageBanner";
 
-// function getVideoUrl(url: string): string {
-//   if (!url) return "";
+function bannerHref(url: string | null | undefined): string {
+  if (!url) return "#";
+  if (url.startsWith("http") || url.startsWith("/")) return url;
+  return `/${url}`;
+}
 
-//   try {
-//     const videoUrl = new URL(url);
+function isDirectVideoUrl(url: string): boolean {
+  return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+}
 
-//     // Vimeo
-//     if (
-//       videoUrl.hostname.includes("vimeo.com") ||
-//       videoUrl.hostname.includes("player.vimeo.com")
-//     ) {
-//       videoUrl.searchParams.set("autoplay", "1");
-//       videoUrl.searchParams.set("muted", "1");
-//       videoUrl.searchParams.set("controls", "0");
-//       videoUrl.searchParams.set("loop", "1");
-//       videoUrl.searchParams.set("background", "1"); // hides controls + enables autoplay muted
-//       return videoUrl.toString();
-//     }
+function getYouTubeVideoId(url: URL): string {
+  if (url.hostname === "youtu.be") {
+    return url.pathname.replace(/^\//, "").split("/")[0] ?? "";
+  }
+  if (url.pathname.startsWith("/embed/")) {
+    return url.pathname.split("/")[2] ?? "";
+  }
+  return url.searchParams.get("v") ?? url.pathname.split("/").pop() ?? "";
+}
 
-//     // YouTube
-//     if (
-//       videoUrl.hostname.includes("youtube.com") ||
-//       videoUrl.hostname.includes("youtu.be")
-//     ) {
-//       videoUrl.searchParams.set("autoplay", "1");
-//       videoUrl.searchParams.set("mute", "1"); // YouTube uses "mute" not "muted"
-//       videoUrl.searchParams.set("controls", "0");
-//       videoUrl.searchParams.set("loop", "1");
-//       videoUrl.searchParams.set("playsinline", "1");
-//       videoUrl.searchParams.set("rel", "0");
-//       videoUrl.searchParams.set("modestbranding", "1");
-//       // loop requires playlist param set to the video id
-//       const videoId =
-//         videoUrl.searchParams.get("v") ||
-//         videoUrl.pathname.split("/").pop() ||
-//         "";
-//       if (videoId) videoUrl.searchParams.set("playlist", videoId);
-//       return videoUrl.toString();
-//     }
+function getVideoUrl(url: string): string {
+  if (!url) return "";
 
-//     return url; // fallback for other platforms
-//   } catch {
-//     return url; // if URL parsing fails, return as-is
-//   }
-// }
+  try {
+    const videoUrl = new URL(url);
 
-// Client island — only responsible for loading and playing the video.
-// The poster image is already painted by the server component before
-// this component's JS even downloads.
-export default function HeroBannerVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoSrc, setVideoSrc] = useState<string>("");
-  // Controls poster fade-out once video is ready to play
-  const [videoReady, setVideoReady] = useState(false);
+    if (
+      videoUrl.hostname.includes("vimeo.com") ||
+      videoUrl.hostname.includes("player.vimeo.com")
+    ) {
+      const embed = videoUrl.pathname.startsWith("/video/")
+        ? `https://player.vimeo.com/video/${videoUrl.pathname.split("/").pop()}`
+        : videoUrl.toString();
+      const params = new URLSearchParams({
+        autoplay: "1",
+        muted: "1",
+        controls: "0",
+        loop: "1",
+        background: "1",
+      });
+      return `${embed}?${params.toString()}`;
+    }
 
-  // Inject video src only after mount so the browser never queues
-  // a video network request during the initial page parse.
-  // IntersectionObserver fires immediately for above-fold elements
-  // but keeps bandwidth free for fonts/CSS during the critical path.
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    if (
+      videoUrl.hostname.includes("youtube.com") ||
+      videoUrl.hostname.includes("youtu.be")
+    ) {
+      let embedBase = "";
+      if (videoUrl.pathname.startsWith("/embed/")) {
+        embedBase = `${videoUrl.origin}${videoUrl.pathname}`;
+      } else if (videoUrl.hostname === "youtu.be") {
+        embedBase = `https://www.youtube.com/embed${videoUrl.pathname}`;
+      } else {
+        const videoId = getYouTubeVideoId(videoUrl);
+        if (!videoId) return url;
+        embedBase = `https://www.youtube.com/embed/${videoId}`;
+      }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVideoSrc(VIDEO_SRC);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0 }
-    );
+      const videoId = getYouTubeVideoId(videoUrl);
+      const params = new URLSearchParams({
+        autoplay: "1",
+        mute: "1",
+        controls: "0",
+        loop: "1",
+        playsinline: "1",
+        rel: "0",
+        modestbranding: "1",
+      });
+      if (videoId) params.set("playlist", videoId);
 
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
+      return `${embedBase}?${params.toString()}`;
+    }
 
-  // Once src is set, load and play
-  useEffect(() => {
-    if (!videoSrc || !videoRef.current) return;
-    const vid = videoRef.current;
-    vid.load();
-    vid.play().catch(() => {
-      // Autoplay blocked (power-save / browser policy) — poster stays visible
-    });
-  }, [videoSrc]);
+    return url;
+  } catch {
+    return url;
+  }
+}
 
+function SlideCaption({ slide }: { slide: BannerSlide }) {
+  if(!slide?.title && !slide?.sub_title) return null;
   return (
-    <>
-      {/*
-        SSR shell: video tag is in the HTML but src is empty.
-        The browser renders zero bytes of video on first load.
-        videoReady class fades the SSR poster out once canplay fires.
-      */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        onCanPlay={() => setVideoReady(true)}
-        className={`home_banner_video${videoReady ? " video-ready" : ""}`}
-      >
-        {videoSrc && <source src={videoSrc} type="video/mp4" />}
-      </video>
-
-      {/* <Swiper
-        className="home_slide"
-        modules={[Pagination, Autoplay]}
-        // loop={true}
-        // autoplay={{ delay: 4000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
-        onBeforeInit={(sw) => {
-          sw.el.style.setProperty("--swiper-duration", "4000ms");
-        }}
-      >
-        {data?.map((slide: any, index: number) => (
-          <SwiperSlide key={index}>
-            {!slide?.video_link ? (
-              <>
-                <picture>
-                  <source media="(min-width:992px)" srcSet={slide.desktopSrc} />
-                  <Image
-                    src={slide.image}
-                    alt={slide.heading || "banner image"}
-                    width={2545}
-                    height={1100}
-                    priority={index === 0}
-                    className="relative object-cover object-center w-100"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </picture>
-
-                <div className="slider_caption">
-                  <div className="container-fluid">
-                    <div
-                      className="caption_wrap"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      {slide?.title && (
-                        <blockquote
-                          className="title48"
-                          data-aos="fade-up"
-                          data-aos-delay="400"
-                        >
-                          {slide.title}
-                        </blockquote>
-                      )}
-                      <div className="cap_desc">
-                        {slide?.sub_title && (
-                          <p data-aos="fade-up" data-aos-delay="600">
-                            {slide.sub_title}
-                          </p>
-                        )}
-                        {slide?.url && (
-                          <Link
-                            href={slide.url || "#"}
-                            data-aos="fade-up"
-                            data-aos-delay="800"
-                          >
-                            <figure>
-                              <Image
-                                src="/images/home/hero/arrow_right.svg"
-                                alt="Read more"
-                                width={64}
-                                height={64}
-                              />
-                            </figure>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div
-                style={{
-                  position: "relative",
-                  paddingBottom: "56.4%",
-                  height: 0,
-                  overflow: "hidden",
-                }}
-              >
-                {slide?.thumbnail_image && (
-                  <Image
-                    src={slide.thumbnail_image}
-                    alt="Banner"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                )}
-
-                <iframe
-                  src={getVideoUrl(slide?.video_link)}
-                  className="absolute inset-0 w-full h-full border-0"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  loading="eager"
-                />
-
-                <div className="slider_caption">
-                  <div className="container-fluid">
-                    <div
-                      className="caption_wrap"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      {slide?.title && (
-                        <blockquote
-                          className="title48"
-                          data-aos="fade-up"
-                          data-aos-delay="400"
-                        >
-                          {slide.title}
-                        </blockquote>
-                      )}
-                      <div className="cap_desc">
-                        {slide?.sub_title && (
-                          <p data-aos="fade-up" data-aos-delay="600">
-                            {slide.sub_title}
-                          </p>
-                        )}
-                        {slide?.url && (
-                          <Link
-                            href={slide.url || "#"}
-                            data-aos="fade-up"
-                            data-aos-delay="800"
-                          >
-                            <figure>
-                              <Image
-                                src="/images/home/hero/arrow_right.svg"
-                                alt="Read more"
-                                width={64}
-                                height={64}
-                              />
-                            </figure>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper> */}
-
-      {/* <div className="slider_caption">
-        <div className="container-fluid">
-          <div className="caption_wrap">
-            <blockquote className="title48">
-              Recognized. Ranked. Respected.
+    <div className="slider_caption">
+      <div className="container-fluid">
+        <div
+          className="caption_wrap"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          {slide?.title && (
+            <blockquote
+              className="title48"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              {slide.title}
             </blockquote>
-            <div className="cap_desc">
-              <p>
-                Lorem ipsum dolor sit amet, consectet adipiscing elit.
+          )}
+          <div className="cap_desc">
+            {slide?.sub_title && (
+              <p data-aos="fade-up" data-aos-delay="600">
+                {slide.sub_title}
               </p>
-              <Link href={"/about-glbitm"}>
+            )}
+            {slide?.url && (
+              <Link
+                href={bannerHref(slide.url)}
+                data-aos="fade-up"
+                data-aos-delay="800"
+              >
                 <figure>
                   <Image
                     src="/images/home/hero/arrow_right.svg"
@@ -282,10 +128,74 @@ export default function HeroBannerVideo() {
                   />
                 </figure>
               </Link>
-            </div>
+            )}
           </div>
         </div>
-      </div> */}
-    </>
+      </div>
+    </div>
+  );
+}
+
+export default function HeroBannerVideo({ data }: { data: BannerSlide[] }) {
+  if (!data?.length) return null;
+
+  return (
+    <Swiper
+      className="home_slide"
+      modules={[Pagination, Autoplay]}
+      loop={data.length > 1}
+      autoplay={{ delay: 4000, disableOnInteraction: false }}
+      pagination={{ clickable: true }}
+      onBeforeInit={(sw) => {
+        sw.el.style.setProperty("--swiper-duration", "4000ms");
+      }}
+    >
+      {data.map((slide, index) => (
+        <SwiperSlide key={slide.slug ?? index}>
+          {slide?.video_link ? (
+            <div className="home_banner_video_slide">
+              {isDirectVideoUrl(slide.video_link) ? (
+                <video
+                  src={slide.video_link}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="home_banner_video"
+                />
+              ) : (
+                <div className="home_banner_yt_wrap">
+                  <iframe
+                    src={getVideoUrl(slide.video_link)}
+                    title={slide.title ?? "Banner video"}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+              )}
+              <SlideCaption slide={slide} />
+            </div>
+          ) : (
+            <>
+              {slide.image ? (
+                <div className="home_banner_image_slide">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title || "banner image"}
+                    fill
+                    priority={index === 0}
+                    className="object-cover object-center"
+                    sizes="100vw"
+                  />
+                </div>
+              ) : null}
+              <SlideCaption slide={slide} />
+            </>
+          )}
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

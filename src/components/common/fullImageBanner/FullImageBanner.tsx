@@ -1,27 +1,29 @@
-import Image from "next/image";
+"use client";
+
 import HeroBannerVideo from "./Herobannervideo";
 import "./banner.css";
 import dynamic from "next/dynamic";
-const NotificationBar = dynamic(()=>import("../../ui/notificationBar/NotificationBar"));
 
-const POSTER =
-  "https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg";
+const NotificationBar = dynamic(
+  () => import("../../ui/notificationBar/NotificationBar")
+);
 
-export default function HeroBanner({ data }: { data: any }) {
+export type BannerSlide = {
+  image?: string;
+  title?: string | null;
+  sub_title?: string | null;
+  url?: string | null;
+  description?: string | null;
+  video_link?: string;
+  thumbnail_image?: string;
+  slug?: string;
+};
+
+export default function HeroBanner({ data }: { data: BannerSlide[] }) {
   return (
     <section className="home_banner">
       <div className="home_banner_media">
-        <Image
-          src={POSTER}
-          alt="GL Bajaj campus"
-          fill
-          priority
-          fetchPriority="high"
-          className="home_banner_poster object-cover"
-          sizes="100vw"
-        />
-
-        <HeroBannerVideo />
+        <HeroBannerVideo data={data} />
       </div>
 
       <NotificationBar />

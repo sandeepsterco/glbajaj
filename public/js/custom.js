@@ -1014,6 +1014,45 @@
       body.style.maxHeight = body.scrollHeight + "px";
     });
   });
+
+
+
+// / ===== Mobile footer menu js 
+
+const footerTriggers = document.querySelectorAll('.footer-trigger');
+
+let currentModal = null;
+let activeTrigger = null;
+
+footerTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        const modalClass = [...trigger.classList].find(cls =>
+            cls.startsWith('modal')
+        );
+
+        const modal = document.querySelector(`.modal-new.${modalClass}`);
+        if (!modal) return;
+
+        // close previously opened modal
+        if (currentModal && currentModal !== modal) {
+            currentModal.classList.remove('show');
+            if (activeTrigger) activeTrigger.classList.remove('active');
+        }
+
+        // toggle current modal
+        modal.classList.toggle('show');
+        trigger.classList.toggle('active');
+
+        currentModal = modal.classList.contains('show') ? modal : null;
+        activeTrigger = trigger.classList.contains('active') ? trigger : null;
+    });
+});
+
+
+
+
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();

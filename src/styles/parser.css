@@ -245,7 +245,7 @@
 }
 .recruiters{ max-width:23.5rem;}
 .slider_top{ position: relative;}
-.slider_btns .swiper-button-prev{ left: auto; right: 5rem;}
+.right_slider .slider_btns .swiper-button-prev{ left: auto; right: 5rem;}
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn{ top: 1rem; }
 .recruiters h5{font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:#D2AB67; }
 .recruiters p{font: var(--font-16); font-weight: 400; color:var(--color-white); }

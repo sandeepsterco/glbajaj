@@ -369,7 +369,8 @@ const Footer = async () => {
                                 <span>
                                   <img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} />
                                 </span>
-                            </div>                          
+                            </div> 
+                            <a href="#" className="strech_link"></a>                          
                         </li>
                         
                         <li>
@@ -384,7 +385,7 @@ const Footer = async () => {
                                   <img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} />
                                 </span>
                             </div>  
-                            <a href="" className=""></a>                        
+                            <a href="#" className="strech_link"></a>                        
                         </li>
                       </ul>
                     </div>
@@ -395,72 +396,75 @@ const Footer = async () => {
           </div>
         </div>
         <div className="modal-new modal2">
-          <div className="mobile_admission">
-            <ul>
-              <li><a href="">Admission Procedure</a></li>
-              <li><a href="">Eligiblity</a></li>
-              <li><a href="">Fee Structure</a></li>
-              <li><a href="">Scholarship</a></li>
-              <li><a href="">Document Required</a></li>
-              <li><a href="">Admission FAQs</a></li>
-            </ul>
-          </div>
-
-          <div className="m-admission-helpline">
-            <h5>Admissions Helpline</h5>
-            <ul>
-              <li>
-                <div className="conatct_svg"><Image src="/images/svg-icons/m-phone-icon.svg" alt="Pro Icon"
-                  width={50}
-                  height={50}
-                /></div>
-                <p><a href="tel:919989776661">+91 9989 776661</a></p>
-              </li>
-              <li>
-                <div className="conatct_svg"><Image src="/images/svg-icons/mobile-mail-icon.svg" alt="Pro Icon"
-                  width={50}
-                  height={50}
-                /></div>
-                <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
-              </li>
-            </ul>
-          </div>
-          <div className="m-view">
-            <a href="">Apply Online</a>
-            <a href="">Download Prospectus</a>
+          <div className="mobile_admission_wrapper">
+            <div className="mobile_admission">
+              <h4 className="title28">Admissions 2026</h4>
+              <ul>
+                <li><a href="">Admission Procedure</a></li>
+                <li><a href="">Eligiblity</a></li>
+                <li><a href="">Fee Structure</a></li>
+                <li><a href="">Scholarship</a></li>
+                <li><a href="">Document Required</a></li>
+                <li><a href="">Admission FAQs</a></li>
+              </ul>
+            </div>
+            <div className="m-admission-helpline">
+              <h5>Admissions Helpline</h5>
+              <ul>
+                <li>
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                    width={50}
+                    height={50}
+                  /></div>
+                  <p><a href="tel:919989776661">+91 9989 776661</a></p>
+                </li>
+                <li>
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                    width={50}
+                    height={50}
+                  /></div>
+                  <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
+                </li>
+              </ul>
+            </div>
+            <div className="m-view">
+              <a href="" className="apply_online_btn">Apply Online</a>
+              <a href="" className="download_prospectus_btn">Download Prospectus</a>
+            </div>
           </div>
         </div>
         <div className="modal-new modal3">
           <div className="mobile-contact">
             <div className="contact-logo">
-              <Image src="/images/gla-logo-mathura-hover.webp" className="img-fluid" alt="Pro Icon"
-              width={50} height={50}/>
+              <Image src="/images/logo/colored-logo.webp" className="img-fluid" alt="Icon" 
+              width={270} height={88} />
+              <h6>GL Bajaj Institute of Technology and Management</h6>
             </div>
             <div className="contact_menu">
               <ul>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/svg-icons/m-phone-icon.svg" alt="Pro Icon" width={50} height={50}
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon" width={20} height={20}
                   /></div>
                   <p><a href="tel:+91 7290008310">+91 7290008310</a></p>
                 </li>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/svg-icons/mobile-print-icon.svg" alt="Pro Icon"
-                    width={50}
-                    height={50}
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                    width={20}
+                    height={20}
                   /></div>
                   <p><a href="tel:+8010-000-234">+8010-000-234</a></p>
                 </li>
                 <li>
-                  <div className="conatct_svg"><Image src="/images/svg-icons/mobile-mail-icon.svg" alt="Pro Icon"
-                    width={50}
-                    height={50}
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                    width={20}
+                    height={20}
                   /></div>
                   <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
                 </li>                
                 <li>
-                  <div className="conatct_svg"><Image src="/images/svg-icons/mobile-location-icon.svg" alt="Pro Icon"
-                    width={50}
-                    height={50}
+                  <div className="conatct_svg"><Image src="/images/icons/contact-phone.svg" alt="Icon"
+                    width={20}
+                    height={20}
                   /></div>
                   <p>Plot No.2 , APJ Abdul Kalam Road, Knowledge Park 3, Greater Noida, Uttar Pradesh, India, 201306</p>
                 </li>
@@ -472,7 +476,15 @@ const Footer = async () => {
           <div className="menu_scroll">
             <div className="mobile_menu">
               <ul>
-                <li><a href="">About Us</a></li>
+                 <li className="drop_down">
+                    <a href="#" className="drop_btn">About Us</a>
+                    <ul className="submenu">
+                        <li><a href="#">Overview</a></li>
+                        <li><a href="#">Our Inspiration</a></li>
+                        <li><a href="#">Logo Philosophy</a></li>
+                        <li><a href="#">Affiliations & Accreditations</a></li>
+                    </ul>
+                </li>
                 <li><a href="">Why GLBITM?</a></li>
                 <li><a href="">Facilities</a></li>
                 <li><a href="">Academics</a></li>
@@ -492,19 +504,7 @@ const Footer = async () => {
                 <li><a href="">Happenings</a></li>
                 <li><a href="">Alumni</a></li>
               </ul>
-            </div>
-            <div className="mobile_online_links">
-              <div className="m-login"><a href="">Login <Image src="/images/svg-icons/m-view-icon.svg"
-                className="img-fluid" alt="Pro Icon"
-                width={50}
-                height={50}
-              /></a></div>
-              <div className="m-pay-online"><a href="">Pay Online <Image src="/images/svg-icons/m-view-icon.svg"
-                className="img-fluid" alt="Pro Icon"
-                width={50}
-                height={50}
-              /></a></div>
-            </div>
+            </div>           
           </div>
         </div>
         <div className="tab-nav mobile-nav">

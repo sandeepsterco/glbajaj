@@ -66,7 +66,7 @@ export default function HomeAlumni() {
             <img className="pattern_img" src="/images/pattern/pattern2.png" alt="" />
 
             {/* sec_title — desktop only (hidden on mobile, rendered again below in mobile order) */}
-            <div className="sec_title d-none d-md-block">
+            <div className="sec_title d-none d-lg-block">
               <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
               <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
                 Success Stories from our Students and Alumni
@@ -74,7 +74,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* desc_content — desktop only */}
-            <div className="desc_content d-none d-md-block">
+            <div className="desc_content d-none d-lg-block">
               <div className="quote-icon" data-aos="fade-up" data-aos-delay="600">
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
@@ -86,7 +86,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* Thumbs — desktop only */}
-            <div className="thumbs d-none d-md-block">
+            <div className="thumbs d-none d-lg-block">
               <div className="thumb-group active" data-aos="fade-up" data-aos-delay="800">
                 {currentItems.map((item: any, index: number) => (
                   <div
@@ -109,7 +109,7 @@ export default function HomeAlumni() {
           <div className="right">
 
             {/* Mobile-only: sec_title at top */}
-            <div className="sec_title d-block d-md-none">
+            <div className="sec_title d-block d-lg-none">
               <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
               <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
                 Success Stories from our Students and Alumni
@@ -130,7 +130,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* Mobile-only: desc_content below tabs */}
-            <div className="desc_content d-block d-md-none">
+            <div className="desc_content d-block d-lg-none">
               <div className="quote-icon">
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
@@ -140,7 +140,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* ── Desktop: static main image ── */}
-            <div className="main-images d-none d-md-block" data-aos="fade-up" data-aos-delay="200">
+            <div className="main-images d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
               {activeItem && (
                 <Image
                   className="main-img active w-100"
@@ -154,24 +154,27 @@ export default function HomeAlumni() {
             </div>
 
             {/* ── Mobile: swiper slider ── */}
-            <div className="main-images mobile_slider d-block d-md-none">
+            <div className="main-images mobile_slider d-block d-lg-none">
               {/* Custom nav arrows */}
-              <div
-                ref={mobilePrevRef}
-                className="swiper_prev_custom mobile_slider_prev"
-                role="button"
-                aria-label="Previous"
-              >
-                <img src="/images/icons/arrow.svg" alt="prev" className="img-fluid" />
+              <div className="main_nv">
+                <div
+                  ref={mobilePrevRef}
+                  className="swiper_prev_custom mobile_slider_prev"
+                  role="button"
+                  aria-label="Previous"
+                >
+                  <img src="/images/icons/arrow.svg" alt="prev" className="img-fluid" />
+                </div>
+                <div
+                  ref={mobileNextRef}
+                  className="swiper_next_custom mobile_slider_next"
+                  role="button"
+                  aria-label="Next"
+                >
+                  <img src="/images/icons/arrow.svg" alt="next" className="img-fluid" />
+                </div>
               </div>
-              <div
-                ref={mobileNextRef}
-                className="swiper_next_custom mobile_slider_next"
-                role="button"
-                aria-label="Next"
-              >
-                <img src="/images/icons/arrow.svg" alt="next" className="img-fluid" />
-              </div>
+              
 
               <Swiper
                 modules={[Navigation]}
@@ -223,7 +226,7 @@ export default function HomeAlumni() {
             </div>
 
             {/* Person info — desktop only (below static image) */}
-            <div className="tab_image_content d-none d-md-block">
+            <div className="tab_image_content d-none d-lg-block">
               {activeItem && (
                 <div className="person-info active">
                   <div className="name" data-aos="fade-up" data-aos-delay="400">{activeItem.name}</div>

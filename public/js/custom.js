@@ -145,6 +145,9 @@
     return true;
   }
 
+
+
+  
   // ─── Swipers ──────────────────────────────────────────────────────────────────
   function resolveNavEl(root, selector) {
     if (!selector || typeof selector !== "string") return selector;
@@ -347,8 +350,8 @@
           spaceBetween: 5,
         },
 
-        768: {
-          slidesPerView: 3.4,
+        640: {
+          slidesPerView: 3,
           spaceBetween: 5,
         },
 
@@ -1053,6 +1056,8 @@ footerTriggers.forEach(trigger => {
 
 
 
+
+
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -1091,4 +1096,29 @@ footerTriggers.forEach(trigger => {
     adjustMaxContentEarly();
     initAll();
   }
-})();
+})
+
+();
+
+document.querySelectorAll('.drop_btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const submenu = this.nextElementSibling;
+
+        document.querySelectorAll('.submenu').forEach(menu => {
+            if (menu !== submenu) {
+                menu.style.maxHeight = null;
+                menu.parentElement.classList.remove('active');
+            }
+        });
+
+        if (submenu.style.maxHeight) {
+            submenu.style.maxHeight = null;
+            this.parentElement.classList.remove('active');
+        } else {
+            submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            this.parentElement.classList.add('active');
+        }
+    });
+});

@@ -483,7 +483,7 @@
 .home_courses_section .courses_slider_wrapper .swiper-slide {
   text-align: center;
   position: relative;
-  padding-inline: 2.5rem;
+  padding-inline: 1.9rem;
   border-left: 0.1rem solid var(--color-C00);
   min-height: 12.2rem;
 }
@@ -1251,12 +1251,14 @@
 
 .home_sessions_section .grid .right_col ul {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   height: 100%;
   flex-direction: column;
   height: 60rem;
   overflow: auto;
 }
+
+
 
 .home_sessions_section .left_col .content_col {
   position: relative;
@@ -1396,7 +1398,7 @@
 }
 
 .home_sessions_section .right_col a {
-  padding: 3.3rem 2.5rem 3.9rem 3.4rem;
+  padding: 3.6rem 2.5rem 3.9rem 3.4rem;
   background: var(--color-F5);
   display: flex;
   align-items: center;
@@ -2463,11 +2465,12 @@
 .submenu li a{ color: var(--color-33); display: block; font: var(--font-15);}
 
 @media (max-width:1399px){
-  .home_sessions_section .right_col a { padding: 1.9rem 2.5rem 1.9rem 3.4rem; }
+  .home_sessions_section .right_col a { padding:2.9rem 2.5rem 2.9rem 3.4rem; }
   .research_centre_section .centre_lists a { gap: 1.4rem; }
   .home_placement_company_header .slider_btns, .home_placement_static_card .slider_btns { gap: 1.2rem; }
   .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
   .home_courses_section .slider_btns{ top: 3rem; gap: 1.8rem;}
+  .right_col ul li a img{ width: 7rem;}
 
 }
 

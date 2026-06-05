@@ -63,6 +63,17 @@
 .dropdown_item:before{position:absolute; content:''; height:0.5px; background-color:#707070; width:100%; top:4.4rem; left:0; z-index: 999;}
 .drom_menu.active .dropdown_item { opacity: 1; visibility: visible; }
 .mega_container { margin: auto; display: grid; grid-template-columns: auto auto; column-gap: 10%; padding-right: 12rem; overflow-y: auto; max-height: 70vh; justify-content: space-between;}
+
+.dropdown_grid_academics::-webkit-scrollbar { width: 6px; }
+.dropdown_grid_academics::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+.dropdown_grid_academics::-webkit-scrollbar-thumb { background: rgba(210,171,103,0.7); border-radius: 20px; }
+.dropdown_grid_academics::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); }
+
+.dropdown_grid_about-glbitm::-webkit-scrollbar { width: 6px; }
+.dropdown_grid_about-glbitm::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+.dropdown_grid_about-glbitm::-webkit-scrollbar-thumb { background: rgba(210,171,103,0.7); border-radius: 20px; }
+.dropdown_grid_about-glbitm::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); }
+
 .mega_container .dropdown_col.has-children{margin-bottom: 6rem;}
 .dropdown_about-glbitm .mega_right .dropdown_col.has-children{margin-top:6rem; margin-bottom:0;}
 .mega_container .menu_title.has-children{margin-bottom: 5rem;}
@@ -80,7 +91,25 @@
 .humburger_mainsec { position: fixed; top: 0; right: -100%; width: auto; background-color: var(--color-33); transition: 0.3s ease; 
     padding: 20px; z-index: 999; padding: 8.9rem 11rem 19.6rem 15.3rem; max-width: 148.3rem; }
 .humburger_mainsec.active { right: 0; left: 0; margin: 0 auto; }
-.hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 58vh; overflow: auto; padding-right: 3rem;}
+.hmburger_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10rem; height: 58vh; overflow: auto; padding-right: 3rem; }
+.hmburger_grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hmburger_grid::-webkit-scrollbar-track {
+    background: rgba(210,171,103,0.2);
+}
+
+.hmburger_grid::-webkit-scrollbar-thumb {
+    background: rgba(210,171,103,0.7);
+    border-radius: 20px;
+}
+
+.hmburger_grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(210,171,103,0.9);
+}
+
+
 .hmburger_col .title24 { color: var(--color-D2); margin-bottom: 5.1rem; }
 .hmburger_col.happenings_col ul+.title24,
 .hmburger_col.facilities_col ul+.title24 { margin-top: 5.9rem; }

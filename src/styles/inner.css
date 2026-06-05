@@ -46,7 +46,7 @@
 .about_flex { display: flex; align-items: center; justify-content: space-between; padding-right: 30.5rem; }
 /* Breadcrumb section */
 .about_breadcrumb { display: flex; align-items: center; gap: 2.25rem; /* gap-9 = 36px = 2.25rem */ }
-.about_breadcrump_text { color: #fff; font-size: 1.2rem; line-height: 2.1rem; font-family: var(--font-tasa); }
+.about_breadcrump_text { color: #fff; font:  var(--font-12); line-height: 2.1rem; font-family: var(--font-tasa); }
 .breadcrumb_main { opacity: 1; }
 .breadcrumb_icon { color: #fff; font-size: 1.3rem; }
 .breadcrumb_sub { opacity: 0.5; }
@@ -103,7 +103,7 @@
 /* Text */
 .about_card_text { font-weight: 600; margin-top: 1rem; text-align: center; }
 /* Link */
-.about_card_link { margin-top: 4rem; font-size: 1.8rem; line-height: 2.1rem; color: var(--color-89); font-weight: 600; font-family: "TASA Orbiter"; display: inline-block; /* border-bottom: 1px dotted #895737; */
+.about_card_link { margin-top: 4rem; font: var(--font-18); line-height: 2.1rem; color: var(--color-89); font-weight: 600; font-family: "TASA Orbiter"; display: inline-block; /* border-bottom: 1px dotted #895737; */
     /* padding-bottom: 2rem; */ }
 .about_card_link { position: relative; }
 .about_card_link::after { content: ""; position: absolute; left: 0; bottom: -13px; width: 100%; height: 1px; background-image: repeating-linear-gradient(to right,
@@ -279,7 +279,7 @@
 .media_grid_Bx2 { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
 .media_grid_Bx1 figure,
 .media_grid_Bx2 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
-.media_grid_Bx1 figure img { max-width: 22rem; margin: 0 auto; }
+.media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; }
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }

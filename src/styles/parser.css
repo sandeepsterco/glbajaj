@@ -244,11 +244,11 @@
   transform: translateX(-50%);
   z-index: 1;
 }
-.recruiters{ max-width:23.5rem; background-color: var(--color-64); padding: 2rem;}
+.recruiters{ max-width:23.5rem; background-color: var(--color-64); padding: 2rem;text-align: center;}
 .slider_top{ position: relative;}
 .right_slider .slider_btns .swiper-button-prev{ left: auto; right: 5rem;}
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn{ top: 1rem; }
-.recruiters h5{font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:#D2AB67; }
+.recruiters h5{font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:var(--color-white); }
 .recruiters p{font: var(--font-16); font-weight: 400; color:var(--color-white); }
 .home_recruiters_slider { overflow: hidden; max-width: 23.5rem; margin-right: 10rem;}
 
@@ -280,8 +280,8 @@
   width: 10.2rem;
   object-fit: cover;
   position: absolute;
-  top: 1.4rem;
-  right: 2.2rem;
+  top: 1rem;
+  right: 0.5rem;
 }
 
 .home_placement_info {
@@ -619,9 +619,9 @@
   filter: brightness(0) invert(1);
 }
 
-.home_courses_section .admission_data .left {
+.home_courses_section .admission_data .rgt {
   display: flex;
-  gap: 13.2rem;
+  gap: 2rem;
 }
 
 .home_courses_section .admission_data .title {

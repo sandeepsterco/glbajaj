@@ -1,6 +1,6 @@
 import { Lexend, TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
-// import ScriptLoader from "../components/ScriptLoader";
+import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 import MainWrapper from "../components/MainWrapper";
 // import 'animate.css';
@@ -43,11 +43,7 @@ export default async function RootLayout({
             <Footer />
           </AOSProvider>
         </Providers>
-        <Script
-                    src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
-                    strategy="beforeInteractive"
-                />
-        {/* <ScriptLoader /> */}
+        <ScriptLoader />
       </body>
     </html>
   );

@@ -12,29 +12,13 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import Script from "next/script";
-import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-declare global {
-  interface Window {
-    Swiper?: unknown;
-    __initCustomJS?: () => void;
-  }
-}
-
-import ProgramDetailForm from "../../parser/ProgramDetailForm";
-import RouteChangeHandler from "../../parser/RouteChangeHandler";
 
 import '@/src/styles/fancybox.css'
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
-import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
-import HomePlacements from "../../parser/HomePlacements";
-import CareerJobListing from "../../parser/CareerJobListing";
-import HomeUpcomingEvents from "../../parser/HomeUpcomingEvents";
 
 function ParserWidgetFallback() {
   return (
@@ -45,180 +29,150 @@ function ParserWidgetFallback() {
   );
 }
 
+const HomePlacements = dynamic(() => import("../../parser/HomePlacements"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+const HomeUpcomingEvents = dynamic(() => import("../../parser/HomeUpcomingEvents"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
 const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const ContactForm = dynamic(() => import("../../parser/ContactForm"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AboutLeadership = dynamic(() => import("../../parser/AboutLeadership"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AwardsList = dynamic(() => import("../../parser/AwardsList"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const ConferenceLists = dynamic(() => import("../../parser/ConferenceLists"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const DepartmentHomeFaculties = dynamic(
   () => import("../../parser/DepartmentHomeFaculties"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback,  ssr:false, }
 );
 const DepartmentHomeLaboratories = dynamic(
   () => import("../../parser/DepartmentHomeLaboratories"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback,  ssr:false, }
 );
 const DepartmentHomeAlumni = dynamic(
   () => import("../../parser/DepartmentHomeAlumni"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback,  ssr:false, }
 );
 const DepartmentHomeCourses = dynamic(
   () => import("../../parser/DepartmentHomeCourses"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback,  ssr:false, }
 );
 const ResearchInnovation = dynamic(
   () => import("../../parser/ResearchInnovation"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback,  ssr:false, }
 );
 const HomeFacilities = dynamic(() => import("../../parser/HomeFacilities"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const PoliciesDisclosures = dynamic(
   () => import("../../parser/PoliciesDisclosures"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AchievementList = dynamic(() => import("../../parser/AchievementList"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const DepartmentHomeHappenings = dynamic(
   () => import("../../parser/DepartmentHomeHappenings"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false,  }
 );
 const DepartmentHomeActivities = dynamic(
   () => import("../../parser/DepartmentHomeActivities"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false,  }
 );
 const DigitalPathshalaVideoGrid = dynamic(
   () => import("../../parser/DigitalPathshalaVideoGrid"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false,  }
 );
 const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AlumniEventsMeetGrid = dynamic(
   () => import("../../parser/AlumniEventsMeetGrid"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const AdmissionPrograms = dynamic(
   () => import("../../parser/AdmissionPrograms"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentNotificationBar = dynamic(
   () => import("../../parser/DepartmentNotificationBar"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentHomeClubs = dynamic(
   () => import("../../parser/DepartmentHomeClubs"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentHomeMou = dynamic(
   () => import("../../parser/DepartmentHomeMou"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentHomeCEO = dynamic(
   () => import("../../parser/DepartmentHomeCEO"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentHomeAchievement = dynamic(
   () => import("../../parser/DepartmentHomeAchievement"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentLabsGrids = dynamic(
   () => import("../../parser/DepartmentLabsGrids"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
 const DepartmentFacultyGrid = dynamic(
   () => import("../../parser/DepartmentFacultyGrid"),
-  { loading: ParserWidgetFallback }
+  { loading: ParserWidgetFallback, ssr:false, }
 );
-
-// ---------------------------------------------------------------------------
-// ScriptLoader — inlined here so it only loads when ReactParser is mounted.
-// A module-level flag ensures the scripts are injected only once even when
-// multiple <ReactParser> instances are rendered on the same page.
-// ---------------------------------------------------------------------------
-
-// First ReactParser instance on a page owns script injection; released on unmount
-// so client navigations back to parser pages can reclaim ownership.
-let parserScriptsOwner: object | null = null;
-
-function ParserScriptLoader() {
-  const ownerToken = useRef({});
-  const [isOwner] = useState(() => {
-    if (parserScriptsOwner !== null) return false;
-    parserScriptsOwner = ownerToken.current;
-    return true;
-  });
-  const [swiperReady, setSwiperReady] = useState(
-    () => typeof window !== "undefined" && typeof window.Swiper !== "undefined"
-  );
-
-  useEffect(() => {
-    return () => {
-      if (parserScriptsOwner === ownerToken.current) {
-        parserScriptsOwner = null;
-      }
-    };
-  }, []);
-
-  const markSwiperReady = () => setSwiperReady(true);
-
-  if (!isOwner) return null;
-
-  return (
-    <>
-      <Script
-        id="parser-swiper"
-        src="/js/swiper-bundle.min.js"
-        strategy="afterInteractive"
-        onLoad={markSwiperReady}
-        onReady={markSwiperReady}
-      />
-      <Script
-        id="parser-fancybox"
-        src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
-        strategy="beforeInteractive"
-      />
-      {swiperReady && (
-        <Script
-          id="parser-custom"
-          src="/js/custom.js"
-          strategy="afterInteractive"
-        />
-      )}
-      {swiperReady && <RouteChangeHandler />}
-    </>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// HTML parser options
-// ---------------------------------------------------------------------------
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -365,34 +319,17 @@ const options: HTMLReactParserOptions = {
 // ---------------------------------------------------------------------------
 
 export default function ReactParser({ html }: { html: any }) {
+  console.log('react parser running ');
   const pathname = usePathname();
 
   useEffect(() => {
-    let cancelled = false;
-    let attempts = 0;
-    let timer: ReturnType<typeof setTimeout>;
+    if (
+      typeof window !== "undefined" &&
+      typeof (window as any).__initCustomJS === "function"
+    ) {
+      (window as any).__initCustomJS();
+    }
 
-    const tryInit = () => {
-      if (cancelled) return;
-      if (typeof window.__initCustomJS === "function") {
-        try {
-          window.__initCustomJS();
-        } catch (err) {
-          console.error("[ReactParser] __initCustomJS failed:", err);
-        }
-        return;
-      }
-      if (attempts++ < 20) {
-        timer = setTimeout(tryInit, 100);
-      }
-    };
-
-    timer = setTimeout(tryInit, 150);
-
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
   }, [pathname, html]);
 
   if (!html) return null;
@@ -424,10 +361,6 @@ export default function ReactParser({ html }: { html: any }) {
 
   return (
     <>
-      {/* Scripts injected here — only loads when a page actually uses ReactParser,
-          not on every route via layout. The module-level flag ensures only the
-          first instance on any given page renders the <Script> tags. */}
-      <ParserScriptLoader />
       {parse(sanitizedHtml, options)}
     </>
   );

@@ -11,11 +11,11 @@ export default function ScriptLoader() {
     <>
       <Script
         src="/js/swiper-bundle.min.js"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         onLoad={() => setSwiperReady(true)}
       />
       <Script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js" strategy="lazyOnload" />
-      {swiperReady && <Script src="/js/custom.js" strategy="afterInteractive" />}
+      {swiperReady && <Script src="/js/custom.js" strategy="lazyOnload" />}
       {swiperReady && <RouteChangeHandler />}
     </>
   );

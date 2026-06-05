@@ -37,7 +37,7 @@ export default async function Home() {
         />
       )}
       <main>
-        {/* <FullImageBanner data={homeData?.modular?.banner ?? []} /> */}
+        <FullImageBanner data={homeData?.modular?.banner ?? []} />
 
        
       {homeData?.cms && (

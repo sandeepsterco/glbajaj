@@ -254,11 +254,11 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* LINKS */
 .home_footer .footer_links { border-top: 1px solid #d2ab67; border-bottom: 1px solid #d2ab67; margin: 2.6rem 0 2rem; padding: 2rem 0; margin-left: 29.7rem; }
 .home_footer .footer_links ul { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
-.home_footer .footer_links a { font-size: 1.4rem; color: var(--color-white); text-decoration: none; }
+.home_footer .footer_links a { font: var(--font-14); color: var(--color-white); text-decoration: none; }
 /* BOTTOM */
 .home_footer .footer_bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; font-size: 1.4rem; margin-left: 29.7rem; }
 .home_footer .footer_bottom_left { display: flex; gap: 5rem; flex-wrap: wrap; }
-.home_footer .footer_bottom p { color: var(--color-white);margin-bottom: 0; }
+.home_footer .footer_bottom p { color: var(--color-white); margin-bottom: 0; font: var(--font-14); }
 .home_footer .footer_bottom_left a { color: var(--color-white); text-decoration: none; }
 .home_footer .footer_bottom_right { display: flex; align-items: center; gap: 4.7rem; flex-wrap: wrap; }
 /* SOCIAL */

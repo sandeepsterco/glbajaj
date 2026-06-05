@@ -103,7 +103,7 @@ export default function HomePlacements() {
       >
         {placementData.map((item: any, index: number) => (
           <SwiperSlide key={index}>
-            <figure className="flash-effect"><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+            <figure className="flash-effect-2"><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
             <div className="placem_cnt">
               <img
                 src={item?.logo_image}

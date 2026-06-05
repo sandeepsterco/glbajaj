@@ -368,6 +368,9 @@
   position: relative;
   margin-left: -3.7rem;
 }
+.right_imgage_col{ overflow: hidden;}
+.right_imgage_col img{  transition: transform 0.2s ease;}
+.right_imgage_col:hover img{transform: scale(1.2)!important;}
 
 .home_courses_section .left_content .watermark_logo {
   position: absolute;
@@ -729,7 +732,7 @@
   max-width: 20.2rem;
   padding-block: 2.1rem 2.9rem;
   border: 0.1rem solid var(--color-C0);
-  padding-inline: 4.2rem 2.9rem;
+  padding-inline: 3.2rem 2.9rem;
   margin-left: -0.1rem;
 }
 
@@ -759,7 +762,7 @@
   font: var(--font-16);
   line-height: 2.4rem;
   margin-top: 0.5rem;
-  max-width: 12rem;
+  max-width: 15rem;
   font-weight: 600;
 }
 
@@ -2465,38 +2468,67 @@
 .submenu li { padding: 0.6rem 0; }
 .submenu li a{ color: var(--color-33); display: block; font: var(--font-15);}
 
-.flash-effect {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
+.flash-effect { position: relative; overflow: hidden; display: inline-block; width: 100%; }
 
 .flash-effect::before {
   content: "";
   position: absolute;
   top: 0;
   left: -100%;
-  width: 60%;
+  width: 70%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
   transform: skewX(-25deg);
   z-index: 2;
   pointer-events: none;
 }
-
-.flash-effect:hover::before {
-  animation: flash 0.8s ease;
-}
-
+.flash-effect:hover::before { animation: flash 0.8s ease; }
 @keyframes flash {
   100% {
     left: 180%;
   }
+}
+.flash-effect-2 { position: relative; overflow: hidden; display: inline-block;  width: 100%;}
+.flash-effect-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none;
+}
+.flash-effect-2:hover::before { animation: flash 0.8s ease; }
+@keyframes flash {
+  100% {
+    left: 180%;
+  }
+}
+
+
+.grid_data .single_grid figure {
+  overflow: hidden;
+}
+
+.grid_data .single_grid figure img {
+  transition: transform 0.5s ease;
+}
+
+.grid_data .single_grid:hover figure img {
+  transform: scale(1.1);
 }
 
 @media (max-width:1399px){
@@ -2506,6 +2538,7 @@
   .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
   .home_courses_section .slider_btns{ top: 3rem; gap: 1.8rem;}
   .right_col ul li a img{ width: 7rem;}
+  .home_testimonials .desc_content{ padding: 6.4rem 0 11.1rem 19.5rem;}
 
 }
 

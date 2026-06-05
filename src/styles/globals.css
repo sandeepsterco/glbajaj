@@ -351,3 +351,9 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
   .home_footer .footer_links ul li{ padding-block: 0.5rem;}
   
 }
+
+
+::-webkit-scrollbar { width: 6px;}
+::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+::-webkit-scrollbar-thumb {  background: rgba(210,171,103,0.7); border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); }

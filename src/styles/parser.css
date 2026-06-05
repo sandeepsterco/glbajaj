@@ -2767,6 +2767,14 @@
 
 
 
+
+/* .dropdown_grid_academics::-webkit-scrollbar { width: 6px; }
+.dropdown_grid_academics::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+.dropdown_grid_academics::-webkit-scrollbar-thumb { background: rgba(210,171,103,0.7); border-radius: 20px; }
+.dropdown_grid_academics::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); } */
+
+
+
   /* =================mobile menu css================ */
 
       /* ===== Mobile menu Footer css ===== */

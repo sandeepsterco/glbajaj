@@ -64,7 +64,7 @@
 .drom_menu.active .dropdown_item { opacity: 1; visibility: visible; }
 .mega_container { margin: auto; display: grid; grid-template-columns: auto auto; column-gap: 10%; padding-right: 12rem; overflow-y: auto; max-height: 70vh; justify-content: space-between;}
 
-.dropdown_grid_academics::-webkit-scrollbar { width: 6px; }
+/* .dropdown_grid_academics::-webkit-scrollbar { width: 6px; }
 .dropdown_grid_academics::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
 .dropdown_grid_academics::-webkit-scrollbar-thumb { background: rgba(210,171,103,0.7); border-radius: 20px; }
 .dropdown_grid_academics::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); }
@@ -72,7 +72,7 @@
 .dropdown_grid_about-glbitm::-webkit-scrollbar { width: 6px; }
 .dropdown_grid_about-glbitm::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
 .dropdown_grid_about-glbitm::-webkit-scrollbar-thumb { background: rgba(210,171,103,0.7); border-radius: 20px; }
-.dropdown_grid_about-glbitm::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); }
+.dropdown_grid_about-glbitm::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.9); } */
 
 .mega_container .dropdown_col.has-children{margin-bottom: 6rem;}
 .dropdown_about-glbitm .mega_right .dropdown_col.has-children{margin-top:6rem; margin-bottom:0;}

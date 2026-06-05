@@ -133,7 +133,7 @@ export default function HeroBanner({ data }: { data: any }) {
                   />
                 </picture>
 
-                {slide?.title && slide?.sub_title && (
+                {(slide?.title || slide?.sub_title) && (
                   <SliderCaption slide={slide} />
                 )}
 
@@ -166,7 +166,7 @@ export default function HeroBanner({ data }: { data: any }) {
                   loading="eager"
                 />
 
-                {slide?.title && slide?.sub_title && (
+                {(slide?.title || slide?.sub_title) && (
                   <SliderCaption slide={slide} />
                 )}
               </div>

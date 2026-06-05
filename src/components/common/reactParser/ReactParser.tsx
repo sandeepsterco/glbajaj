@@ -238,12 +238,17 @@ const options: HTMLReactParserOptions = {
         );
       }
 
-      if (domNode.attribs && domNode.attribs.class) {
-        domNode.attribs.className = domNode.attribs.class
+      if (domNode.attribs?.class) {
+        const cleanedClass = domNode.attribs.class
           .replace(/\baos-init\b/g, "")
           .replace(/\baos-animate\b/g, "")
           .replace(/\s+/g, " ")
           .trim();
+        if (cleanedClass) {
+          domNode.attribs.class = cleanedClass;
+        } else {
+          delete domNode.attribs.class;
+        }
       }
 
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
@@ -323,19 +328,33 @@ export default function ReactParser({ html }: { html: any }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      typeof (window as any).__initCustomJS === "function"
-    ) {
-      (window as any).__initCustomJS();
-    }
+    if (typeof window === "undefined") return;
 
+    const schedule = (window as Window & { __scheduleInitCustomJS?: () => void }).__scheduleInitCustomJS;
+    const init = (window as Window & { __initCustomJS?: () => void }).__initCustomJS;
+
+    if (typeof schedule === "function") {
+      schedule();
+    } else if (typeof init === "function") {
+      init();
+    }
   }, [pathname, html]);
 
   if (!html) return null;
 
   const sanitizedHtml = DOMPurify.sanitize(html, {
-    ADD_ATTR: ["target"],
+    ADD_ATTR: [
+      "target",
+      "data-aos",
+      "data-aos-delay",
+      "data-aos-duration",
+      "data-aos-offset",
+      "data-aos-easing",
+      "data-aos-once",
+      "data-aos-mirror",
+      "data-aos-anchor",
+      "data-aos-anchor-placement",
+    ],
     ALLOWED_TAGS: [
       "a", "b", "i", "em", "strong", "span", "div", "p",
       "h1", "h2", "h3", "h4", "h5", "h6",
@@ -354,6 +373,9 @@ export default function ReactParser({ html }: { html: any }) {
       "width", "height", "style", "rel", "type",
       "data-src", "data-tab",
       "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
+      "data-aos", "data-aos-delay", "data-aos-duration", "data-aos-offset",
+      "data-aos-easing", "data-aos-once", "data-aos-mirror",
+      "data-aos-anchor", "data-aos-anchor-placement",
     ],
     ADD_DATA_URI_TAGS: ["img"],
     ALLOW_DATA_ATTR: true,

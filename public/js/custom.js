@@ -33,8 +33,9 @@
 
   // ─── Why GLB Section Tabs ─────────────────────────────────────────────────────
   function initWhyGlbSection() {
-    const section = document.querySelector(".why_glb_section");
+    const section = document.querySelector(".why_glb_section:not([data-customjs-init])");
     if (!section) return false;
+    section.setAttribute("data-customjs-init", "1");
 
     const tabs = Array.from(section.querySelectorAll(".tabs li"));
     const contents = Array.from(section.querySelectorAll(".tab_content"));
@@ -74,10 +75,11 @@
 
   // ─── Accordion ────────────────────────────────────────────────────────────────
   function initAccordion() {
-    const headers = document.querySelectorAll(".accordion-header");
+    const headers = document.querySelectorAll(".accordion-header:not([data-customjs-init])");
     if (!headers.length) return false;
 
     headers.forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", () => {
         const currentItem = header.parentElement;
         const currentBody = currentItem.querySelector(".accordion-body");
@@ -108,7 +110,8 @@
     headers[0].click();
 
     // ACCORDION (mobile)
-    document.querySelectorAll(".acc-header").forEach((header) => {
+    document.querySelectorAll(".acc-header:not([data-customjs-init])").forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", function () {
         let parent = this.parentElement;
         document.querySelectorAll(".tab-content").forEach((item) => {
@@ -283,7 +286,7 @@
       },
     });
 
-    new Swiper(".home_placement_student_slider", {
+    createSwiper(".home_placement_student_slider", {
       slidesPerView: 3,
       spaceBetween: 27,
       autoplay:true,
@@ -308,7 +311,7 @@
       },
     });
 
-    new Swiper(".home_recruiters_slider", {
+    createSwiper(".home_recruiters_slider", {
       slidesPerView: 1,
       spaceBetween: 15,
       loop: true,
@@ -615,7 +618,8 @@
   // ─── Tab + Accordion (generic) ────────────────────────────────────────────────
   function tabContent() {
     // TAB CLICK (desktop)
-    document.querySelectorAll(".tab-btn").forEach((button) => {
+    document.querySelectorAll(".tab-btn:not([data-customjs-init])").forEach((button) => {
+      button.setAttribute("data-customjs-init", "1");
       button.addEventListener("click", function () {
         document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
         document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
@@ -683,7 +687,8 @@
     });
 
     // ACCORDION (mobile)
-    document.querySelectorAll(".acc-header").forEach((header) => {
+    document.querySelectorAll(".acc-header:not([data-customjs-init])").forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", function () {
         let parent = this.parentElement;
         document.querySelectorAll(".tab-content").forEach((item) => {
@@ -924,7 +929,8 @@
   }
 
   function initXTabs() {
-    document.querySelectorAll(".xtabs_sec").forEach((section) => {
+    document.querySelectorAll(".xtabs_sec:not([data-customjs-init])").forEach((section) => {
+      section.setAttribute("data-customjs-init", "1");
       const tabBtns = section.querySelectorAll(".xtab_btn");
       const panels = section.querySelectorAll(".xtab_panel");
       const accBtns = section.querySelectorAll(".xacc_btn");
@@ -956,37 +962,83 @@
     });
   }
 
-  // plament policy ACCORDION
+  function initPolicyAccordion() {
+    const policyheaders = document.querySelectorAll(".ppolicy_header:not([data-customjs-init])");
+    if (!policyheaders.length) return;
 
-  const policyheaders = document.querySelectorAll(".ppolicy_header");
+    const firstItem = document.querySelector(".ppolicy_item:not([data-customjs-opened])");
+    if (firstItem) {
+      firstItem.setAttribute("data-customjs-opened", "1");
+      firstItem.classList.add("active");
+      const firstBody = firstItem.querySelector(".ppolicy_body");
+      if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+    }
 
-  // Auto-open first item on load
-  const firstItem = document.querySelector(".ppolicy_item");
-  if (firstItem) {
-    firstItem.classList.add("active");
-    const firstBody = firstItem.querySelector(".ppolicy_body");
-    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+    policyheaders.forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
+      header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".ppolicy_body");
+        currentItem.classList.toggle("active");
+
+        if (currentBody) {
+          if (currentItem.classList.contains("active")) {
+            currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+          } else {
+            currentBody.style.maxHeight = null;
+          }
+        }
+      });
+    });
   }
 
-  policyheaders.forEach((header) => {
-    header.addEventListener("click", () => {
-      const currentItem = header.parentElement;
-      const currentBody = currentItem.querySelector(".ppolicy_body");
+  function initFooterModals() {
+    document.querySelectorAll(".footer-trigger:not([data-customjs-init])").forEach((trigger) => {
+      trigger.setAttribute("data-customjs-init", "1");
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
 
-      // ❌ Removed: close other items logic
+        const modalClass = [...trigger.classList].find((cls) => cls.startsWith("modal"));
+        const modal = document.querySelector(`.modal-new.${modalClass}`);
+        if (!modal) return;
 
-      // Toggle clicked item
-      currentItem.classList.toggle("active");
+        const isOpen = modal.classList.contains("show");
+        document.querySelectorAll(".modal-new.show").forEach((m) => m.classList.remove("show"));
+        document.querySelectorAll(".footer-trigger.active").forEach((t) => t.classList.remove("active"));
 
-      if (currentBody) {
-        if (currentItem.classList.contains("active")) {
-          currentBody.style.maxHeight = currentBody.scrollHeight + "px";
-        } else {
-          currentBody.style.maxHeight = null;
+        if (!isOpen) {
+          modal.classList.add("show");
+          trigger.classList.add("active");
         }
-      }
+      });
     });
-  });
+  }
+
+  function initDropMenus() {
+    document.querySelectorAll(".drop_btn:not([data-customjs-init])").forEach((btn) => {
+      btn.setAttribute("data-customjs-init", "1");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const submenu = this.nextElementSibling;
+
+        document.querySelectorAll(".submenu").forEach((menu) => {
+          if (menu !== submenu) {
+            menu.style.maxHeight = null;
+            menu.parentElement.classList.remove("active");
+          }
+        });
+
+        if (submenu.style.maxHeight) {
+          submenu.style.maxHeight = null;
+          this.parentElement.classList.remove("active");
+        } else {
+          submenu.style.maxHeight = submenu.scrollHeight + "px";
+          this.parentElement.classList.add("active");
+        }
+      });
+    });
+  }
 
   // ─── View More Button ──────────────────────────────────────────────────────────
  // ─── View More Button ──────────────────────────────────────────────────────────
@@ -1021,44 +1073,6 @@
 
 
 
-// / ===== Mobile footer menu js 
-
-const footerTriggers = document.querySelectorAll('.footer-trigger');
-
-let currentModal = null;
-let activeTrigger = null;
-
-footerTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const modalClass = [...trigger.classList].find(cls =>
-            cls.startsWith('modal')
-        );
-
-        const modal = document.querySelector(`.modal-new.${modalClass}`);
-        if (!modal) return;
-
-        // close previously opened modal
-        if (currentModal && currentModal !== modal) {
-            currentModal.classList.remove('show');
-            if (activeTrigger) activeTrigger.classList.remove('active');
-        }
-
-        // toggle current modal
-        modal.classList.toggle('show');
-        trigger.classList.toggle('active');
-
-        currentModal = modal.classList.contains('show') ? modal : null;
-        activeTrigger = trigger.classList.contains('active') ? trigger : null;
-    });
-});
-
-
-
-
-
-
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -1067,6 +1081,9 @@ footerTriggers.forEach(trigger => {
     initAccordion();
     initYTModal();
     initStercoTabs();
+    initPolicyAccordion();
+    initFooterModals();
+    initDropMenus();
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
@@ -1077,7 +1094,15 @@ footerTriggers.forEach(trigger => {
     tabControl();
     toggleReadMore();
     initXTabs();
-    initViewMore(); 
+    initViewMore();
+  }
+
+  let initScheduledTimer;
+  function scheduleInitAll() {
+    clearTimeout(initScheduledTimer);
+    initScheduledTimer = setTimeout(function () {
+      requestAnimationFrame(initAll);
+    }, 150);
   }
 
   window.addEventListener("resize", adjustMaxContent);
@@ -1089,6 +1114,7 @@ footerTriggers.forEach(trigger => {
   });
 
   window.__initCustomJS = initAll;
+  window.__scheduleInitCustomJS = scheduleInitAll;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
@@ -1100,26 +1126,3 @@ footerTriggers.forEach(trigger => {
 })
 
 ();
-
-document.querySelectorAll('.drop_btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const submenu = this.nextElementSibling;
-
-        document.querySelectorAll('.submenu').forEach(menu => {
-            if (menu !== submenu) {
-                menu.style.maxHeight = null;
-                menu.parentElement.classList.remove('active');
-            }
-        });
-
-        if (submenu.style.maxHeight) {
-            submenu.style.maxHeight = null;
-            this.parentElement.classList.remove('active');
-        } else {
-            submenu.style.maxHeight = submenu.scrollHeight + 'px';
-            this.parentElement.classList.add('active');
-        }
-    });
-});

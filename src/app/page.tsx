@@ -1,8 +1,8 @@
 import FullImageBanner from "../components/common/fullImageBanner/FullImageBanner";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
-import ReactParser from "../components/common/reactParser/ReactParser";
 import { cache } from "react";
+import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
@@ -42,7 +42,7 @@ export default async function Home() {
        
       {homeData?.cms && (
          Object.keys(homeData?.cms).map((key) => {
-          return <ReactParser key={key} html={homeData.cms[key]} />;
+          return <ReactParserDynamic key={key} html={homeData.cms[key]} />;
         })
       )}
        

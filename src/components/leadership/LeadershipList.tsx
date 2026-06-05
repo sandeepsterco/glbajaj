@@ -12,7 +12,7 @@ const MessageComponent = async ({ data }: { data: any }) => {
                 <div className="administration_grid messages_grid">
                     {data?.map((item: any, idx: number) => (   
                         <div key={idx} className="administration_Bx" data-aos="fade-up" data-aos-delay="400">
-                            <figure>
+                            <figure className="flash-effect">
                                 <Image src={item.image || '/images/default/leadership.webp'} width={567} height={387} className="img-fluid" alt={item.name ?? 'leadership image'} />
                             </figure>
                             <div className="admini_msg_info"> 
@@ -48,7 +48,7 @@ const AdministrationComponent = ({ data }: { data: any }) => {
                 <div className="administration_grid">
                     {data?.data?.map((item: any, idx: number) => (
                         <div key={idx} className="administration_Bx" data-aos="fade-up" data-aos-delay="400">
-                            <figure>
+                            <figure  className="flash-effect">
                                 <Image src={item.image || ''} className="img-fluid" alt={item.name} width={255} height={287} />
                             </figure>
                             {item?.name && (

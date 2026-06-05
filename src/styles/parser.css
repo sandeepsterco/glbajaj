@@ -244,11 +244,11 @@
   transform: translateX(-50%);
   z-index: 1;
 }
-.recruiters{ max-width:23.5rem; background-color: var(--color-64); padding: 2rem;}
+.recruiters{ max-width:23.5rem; background-color: var(--color-64); padding: 2rem;text-align: center;}
 .slider_top{ position: relative;}
 .right_slider .slider_btns .swiper-button-prev{ left: auto; right: 5rem;}
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn{ top: 1rem; }
-.recruiters h5{font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:#D2AB67; }
+.recruiters h5{font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:var(--color-white); }
 .recruiters p{font: var(--font-16); font-weight: 400; color:var(--color-white); }
 .home_recruiters_slider { overflow: hidden; max-width: 23.5rem; margin-right: 10rem;}
 
@@ -280,8 +280,8 @@
   width: 10.2rem;
   object-fit: cover;
   position: absolute;
-  top: 1.4rem;
-  right: 2.2rem;
+  top: 1rem;
+  right: 0.5rem;
 }
 
 .home_placement_info {
@@ -368,6 +368,9 @@
   position: relative;
   margin-left: -3.7rem;
 }
+.right_imgage_col{ overflow: hidden;}
+.right_imgage_col img{  transition: transform 0.2s ease;}
+.right_imgage_col:hover img{transform: scale(1.2)!important;}
 
 .home_courses_section .left_content .watermark_logo {
   position: absolute;
@@ -619,9 +622,9 @@
   filter: brightness(0) invert(1);
 }
 
-.home_courses_section .admission_data .left {
+.home_courses_section .admission_data .rgt {
   display: flex;
-  gap: 13.2rem;
+  gap: 2rem;
 }
 
 .home_courses_section .admission_data .title {
@@ -729,7 +732,7 @@
   max-width: 20.2rem;
   padding-block: 2.1rem 2.9rem;
   border: 0.1rem solid var(--color-C0);
-  padding-inline: 4.2rem 2.9rem;
+  padding-inline: 3.2rem 2.9rem;
   margin-left: -0.1rem;
 }
 
@@ -759,7 +762,7 @@
   font: var(--font-16);
   line-height: 2.4rem;
   margin-top: 0.5rem;
-  max-width: 12rem;
+  max-width: 15rem;
   font-weight: 600;
 }
 
@@ -965,6 +968,7 @@
   height: 1.4rem;
   background-image: url('/images/icons/right-chevron1.png');
   background-repeat: no-repeat;
+  background-size: contain;
   /* border: 1px solid #707070; */
 }
 
@@ -2465,6 +2469,105 @@
 .submenu li { padding: 0.6rem 0; }
 .submenu li a{ color: var(--color-33); display: block; font: var(--font-15);}
 
+.flash-effect { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+.flash-effect::before {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.flash-effect:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+
+
+.leader_card:hover .flash-effect::before { -webkit-animation: shine .75s; animation: shine .75s; }
+.media_grid_Bx2:hover .flash-effect::before { -webkit-animation: shine .75s; animation: shine .75s; }
+.administration_Bx:hover .flash-effect::before { -webkit-animation: shine .75s; animation: shine .75s; }
+
+
+
+.flash-effect-2 { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+.flash-effect-2::before {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.flash-effect-2:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+
+.grid_data .single_grid figure {
+  overflow: hidden;
+}
+
+.grid_data .single_grid figure img {
+  transition: transform 0.5s ease;
+}
+
+.grid_data .single_grid:hover figure img {
+  transform: scale(1.1);
+}
+
+
+.about_ins_section figure.ins_big_img {
+  overflow: hidden;
+}
+
+.about_ins_section figure.ins_big_img img {
+  transition: transform 0.5s ease;
+}
+
+.about_ins_section figure.ins_big_img:hover img {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
 @media (max-width:1399px){
   .home_sessions_section .right_col a { padding:2.9rem 2.5rem 2.9rem 3.4rem; }
   .research_centre_section .centre_lists a { gap: 1.4rem; }
@@ -2472,6 +2575,7 @@
   .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
   .home_courses_section .slider_btns{ top: 3rem; gap: 1.8rem;}
   .right_col ul li a img{ width: 7rem;}
+  .home_testimonials .desc_content{ padding: 6.4rem 0 11.1rem 19.5rem;}
 
 }
 
@@ -2805,11 +2909,13 @@
   .home_footer .footer_contact h4{ font: var(--font-12);}
   .home_footer .footer_contact a{font: var(--font-12);}
   .home_footer .footer_bottom_right{gap: 2.7rem;}
-  .homeFac_accBody figure{ max-height: 28.5rem; object-fit: cover;}
+  .homeFac_accBody figure{ object-fit: cover;}
   .right_slider .slider_btns{gap: 0.8rem;}
   .home_research_section .single_stat:last-child{ margin-top: -0.1rem;}
   .home_research_section .single_stat:first-child { border-right: .1rem solid var(--color-C0); }
   .home_research_section .single_stat:nth-child(2) { border-left: 0; }
+  .h_r_award_Card figure img{height: 5rem;}
+  .home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev{ display: none;}
 }
 
 @media (max-width:480px){

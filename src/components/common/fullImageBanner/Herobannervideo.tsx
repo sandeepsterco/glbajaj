@@ -72,10 +72,14 @@ function getVideoUrl(url: string): string {
         autoplay: "1",
         mute: "1",
         controls: "0",
+        disablekb: "1",
         loop: "1",
         playsinline: "1",
         rel: "0",
         modestbranding: "1",
+        iv_load_policy: "3",
+        fs: "0", 
+        enablejsapi: "1",
       });
       if (videoId) params.set("playlist", videoId);
 

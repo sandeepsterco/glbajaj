@@ -205,7 +205,7 @@ export default function HomeFacilities() {
                               >
                                 {item.mapping_items.slides?.map((slide: any, slideIdx: number) => (
                                   <SwiperSlide key={slideIdx}>
-                                    <figure>
+                                    <figure className="flash-effect">
                                       <Image
                                         src={slide?.image || ""}
                                         className="w-100 img-fluid"

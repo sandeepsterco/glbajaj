@@ -59,7 +59,7 @@
   --font-17: normal normal 300 1.7rem/2.1 var(--font-tasa); 
   --font-16: normal normal 400 1.8rem/1.62 var(--font-tasa); 
   --font-14: normal normal 400 1.6rem/1.28 var(--font-tasa); 
-  --font-12: normal normal 400 1.2rem/1.75 var(--font-tasa); 
+  --font-12: normal normal 400 1.4rem/1.75 var(--font-tasa); 
   --font-10: normal normal 300 1rem/1.8 var(--font-tasa); 
   --font-8: normal normal 300 0.8/1 var(--font-tasa); 
   --font-bold: bold; --font-medium: 500; 
@@ -257,11 +257,11 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* LINKS */
 .home_footer .footer_links { border-top: 1px solid #d2ab67; border-bottom: 1px solid #d2ab67; margin: 2.6rem 0 2rem; padding: 2rem 0; margin-left: 29.7rem; }
 .home_footer .footer_links ul { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
-.home_footer .footer_links a { font-size: 1.4rem; color: var(--color-white); text-decoration: none; }
+.home_footer .footer_links a { font: var(--font-14); color: var(--color-white); text-decoration: none; }
 /* BOTTOM */
 .home_footer .footer_bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; font-size: 1.4rem; margin-left: 29.7rem; }
 .home_footer .footer_bottom_left { display: flex; gap: 5rem; flex-wrap: wrap; }
-.home_footer .footer_bottom p { color: var(--color-white);margin-bottom: 0; }
+.home_footer .footer_bottom p { color: var(--color-white); margin-bottom: 0; font: var(--font-14); }
 .home_footer .footer_bottom_left a { color: var(--color-white); text-decoration: none; }
 .home_footer .footer_bottom_right { display: flex; align-items: center; gap: 4.7rem; flex-wrap: wrap; }
 /* SOCIAL */
@@ -354,3 +354,4 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
   .home_footer .footer_links ul li{ padding-block: 0.5rem;}
   
 }
+/* .home_banner_yt_wrap iframe player-middle-controls{display: none!important;} */

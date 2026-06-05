@@ -28,12 +28,14 @@ export default function HomeAlumni() {
     students: rawData.filter((i: any) => i.type === "Student"),
     recruiters: rawData.filter((i: any) => i.type === "Recruiter"),
     faculties: rawData.filter((i: any) => i.type === "Faculties"),
+    alumnies: rawData.filter((i: any) => i.type === "Alumni"),
   }), [rawData]);
 
   const tabs = [
     { key: "students", label: "Students" },
     { key: "recruiters", label: "Recruiters" },
     { key: "faculties", label: "Faculties" },
+    { key: "alumnies", label: "Alumni" },
   ];
 
   const [activeTab, setActiveTab] = useState("students");
@@ -80,9 +82,9 @@ export default function HomeAlumni() {
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
               {activeItem && (
-                <div className="desc active" data-aos="fade-up" data-aos-delay="800">
-                  {activeItem.message}
-                </div>
+                <div className="desc active" data-aos="fade-up" data-aos-delay="800" dangerouslySetInnerHTML={{__html:activeItem?.message}} />
+                  // {activeItem.message}
+                // </div>
               )}
             </div>
 
@@ -95,7 +97,7 @@ export default function HomeAlumni() {
                     className={`thumb ${index === activeIndex ? "active" : ""}`}
                     onClick={() => setActiveIndex(index)}
                   >
-                    <Image src={item.image} alt={item.name} width={155} height={188} loading="lazy" />
+                    <figure><Image src={item.image} alt={item.name} width={155} height={188} loading="lazy" /></figure>
                     <div className="thumb_info">
                       <p className="name">{item.name}</p>
                       <span className="designation">{item.branch}</span>
@@ -141,16 +143,22 @@ export default function HomeAlumni() {
             </div>
 
             {/* ── Desktop: static main image ── */}
-            <div className="main-images d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+            <div
+              className="main-images d-none d-lg-block"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {activeItem && (
-                <Image
-                  className="main-img active w-100"
-                  src={activeItem.image}
-                  width={600}
-                  height={732}
-                  loading="lazy"
-                  alt={activeItem.name}
-                />
+                <figure className="flash-effect">
+                  <Image
+                    className="main-img active w-100"
+                    src={activeItem.image}
+                    width={600}
+                    height={732}
+                    loading="lazy"
+                    alt={activeItem.name}
+                  />
+                </figure>
               )}
             </div>
 

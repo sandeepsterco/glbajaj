@@ -1148,6 +1148,9 @@
 .spfc_tle h4,
 .spfc_tle>p { padding-bottom: 4rem; }
 .spfc_swiper { position: relative; }
+.spfc_swiper .sport_facilities { overflow: hidden; width: 100%; }
+.spfc_swiper .sport_facilities:not(.swiper-initialized) .swiper-wrapper { display: flex; }
+.spfc_swiper .sport_facilities:not(.swiper-initialized) .swiper-slide { flex-shrink: 0; width: 100%; }
 .spfc_swiper .navigation_btn { z-index: 9; }
 .spo_tabs_withswiper { padding-bottom: 10rem; }
 .spo_tabs_withswiper .swiper_prev_custom.swiper-button-lock,

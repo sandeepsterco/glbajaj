@@ -154,7 +154,13 @@
   // ─── Swipers ──────────────────────────────────────────────────────────────────
   function resolveNavEl(root, selector) {
     if (!selector || typeof selector !== "string") return selector;
-    const scopes = [root, root.parentElement, root.closest("section"), document];
+    const scopes = [
+      root,
+      root.parentElement,
+      root.closest(".spfc_swiper"),
+      root.closest("section"),
+      document,
+    ];
     for (let i = 0; i < scopes.length; i++) {
       const scope = scopes[i];
       if (!scope || !scope.querySelector) continue;
@@ -164,8 +170,7 @@
     return null;
   }
 
-  function createSwiper(selector, options) {
-    const el = document.querySelector(selector);
+  function createSwiperOnElement(el, options, label) {
     if (!el || el.nodeType !== 1) return null;
 
     // Skip React-managed Swipers (e.g. AboutLeadership on /about)
@@ -177,6 +182,10 @@
         el.querySelector(".swiper"))
     ) {
       return null;
+    }
+
+    if (el.swiper) {
+      el.swiper.destroy(true, true);
     }
 
     const opts = Object.assign({}, options);
@@ -196,9 +205,42 @@
     try {
       return new Swiper(el, opts);
     } catch (err) {
-      console.warn("[custom.js] Swiper init skipped for", selector, err);
+      console.warn("[custom.js] Swiper init skipped for", label || el.className, err);
       return null;
     }
+  }
+
+  function createSwiper(selector, options) {
+    const el = document.querySelector(selector);
+    return createSwiperOnElement(el, options, selector);
+  }
+
+  function createSwipers(selector, options) {
+    const instances = [];
+    document.querySelectorAll(selector).forEach((el) => {
+      const instance = createSwiperOnElement(el, options, selector);
+      if (instance) instances.push(instance);
+    });
+    return instances;
+  }
+
+  function destroySwipersBySelector(selector) {
+    document.querySelectorAll(selector).forEach((el) => {
+      if (el?.swiper) el.swiper.destroy(true, true);
+    });
+  }
+
+  function updateSwiperInPanel(panel) {
+    const swiperEl = panel?.querySelector(".sport_facilities.swiper, .sport_facilities");
+    if (!swiperEl?.swiper) return;
+    requestAnimationFrame(function () {
+      swiperEl.swiper.update();
+      swiperEl.swiper.navigation?.update?.();
+    });
+  }
+
+  function refreshActiveXTabsSwipers() {
+    document.querySelectorAll(".xtabs_sec .xtab_panel.active").forEach(updateSwiperInPanel);
   }
 
   function initSwipers() {
@@ -223,8 +265,7 @@
       ".AKTU_Swiper",
       ".workshop_slider_wrapper",
     ].forEach((sel) => {
-      const el = document.querySelector(sel);
-      if (el?.swiper) el.swiper.destroy(true, true);
+      destroySwipersBySelector(sel);
     });
 
     createSwiper(".award_ranking", {
@@ -538,12 +579,14 @@
       },
     });
 
-    createSwiper(".sport_facilities", {
+    createSwipers(".sport_facilities", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
       loop: false,
       autoplay: false,
+      observer: true,
+      observeParents: true,
       navigation: {
         nextEl: ".swiper_next_custom",
         prevEl: ".swiper_prev_custom",
@@ -553,6 +596,8 @@
         1200: { slidesPerView: 1, spaceBetween: 23 },
       },
     });
+
+    refreshActiveXTabsSwipers();
 
     createSwiper(".ncc_rank_ceremony", {
       slidesPerView: 1.2,
@@ -939,6 +984,11 @@
       if (tabBtns.length) tabBtns[0].classList.add("active");
       if (panels.length) panels[0].classList.add("active");
 
+      function activateXTabPanel(panel) {
+        if (!panel) return;
+        updateSwiperInPanel(panel);
+      }
+
       // desktop tabs
       tabBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -946,7 +996,9 @@
           tabBtns.forEach((b) => b.classList.remove("active"));
           panels.forEach((p) => p.classList.remove("active"));
           btn.classList.add("active");
-          section.querySelector("#" + target)?.classList.add("active");
+          const panel = target ? section.querySelector("#" + CSS.escape(target)) : null;
+          panel?.classList.add("active");
+          activateXTabPanel(panel);
         });
       });
 
@@ -956,9 +1008,14 @@
           const panel = btn.closest(".xtab_panel");
           const isActive = panel.classList.contains("active");
           panels.forEach((p) => p.classList.remove("active"));
-          if (!isActive) panel.classList.add("active");
+          if (!isActive) {
+            panel.classList.add("active");
+            activateXTabPanel(panel);
+          }
         });
       });
+
+      activateXTabPanel(panels[0]);
     });
   }
 
@@ -1040,7 +1097,6 @@
     });
   }
 
-  // ─── View More Button ──────────────────────────────────────────────────────────
  // ─── View More Button ──────────────────────────────────────────────────────────
  function initViewMore() {
     document.querySelectorAll(".view_more_btn:not([data-viewmore-init])").forEach((btn) => {
@@ -1084,6 +1140,7 @@
     initPolicyAccordion();
     initFooterModals();
     initDropMenus();
+    initXTabs();
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
@@ -1093,7 +1150,6 @@
     gridPopup();
     tabControl();
     toggleReadMore();
-    initXTabs();
     initViewMore();
   }
 

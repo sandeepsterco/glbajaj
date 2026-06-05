@@ -28,12 +28,14 @@ export default function HomeAlumni() {
     students: rawData.filter((i: any) => i.type === "Student"),
     recruiters: rawData.filter((i: any) => i.type === "Recruiter"),
     faculties: rawData.filter((i: any) => i.type === "Faculties"),
+    alumnies: rawData.filter((i: any) => i.type === "Alumni"),
   }), [rawData]);
 
   const tabs = [
     { key: "students", label: "Students" },
     { key: "recruiters", label: "Recruiters" },
     { key: "faculties", label: "Faculties" },
+    { key: "alumnies", label: "Alumni" },
   ];
 
   const [activeTab, setActiveTab] = useState("students");
@@ -80,9 +82,9 @@ export default function HomeAlumni() {
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
               {activeItem && (
-                <div className="desc active" data-aos="fade-up" data-aos-delay="800">
-                  {activeItem.message}
-                </div>
+                <div className="desc active" data-aos="fade-up" data-aos-delay="800" dangerouslySetInnerHTML={{__html:activeItem?.message}} />
+                  // {activeItem.message}
+                // </div>
               )}
             </div>
 

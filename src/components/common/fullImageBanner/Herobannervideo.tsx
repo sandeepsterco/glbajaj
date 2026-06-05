@@ -7,8 +7,6 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import type { BannerSlide } from "./FullImageBanner";
-
 function bannerHref(url: string | null | undefined): string {
   if (!url) return "#";
   if (url.startsWith("http") || url.startsWith("/")) return url;
@@ -92,7 +90,7 @@ function getVideoUrl(url: string): string {
   }
 }
 
-function SlideCaption({ slide }: { slide: BannerSlide }) {
+function SlideCaption({ slide }: { slide: any }) {
   if(!slide?.title && !slide?.sub_title) return null;
   return (
     <div className="slider_caption">
@@ -140,7 +138,7 @@ function SlideCaption({ slide }: { slide: BannerSlide }) {
   );
 }
 
-export default function HeroBannerVideo({ data }: { data: BannerSlide[] }) {
+export default function HeroBannerVideo({ data }: { data: any }) {
   if (!data?.length) return null;
 
   return (
@@ -154,7 +152,7 @@ export default function HeroBannerVideo({ data }: { data: BannerSlide[] }) {
         sw.el.style.setProperty("--swiper-duration", "4000ms");
       }}
     >
-      {data.map((slide, index) => (
+      {data.map((slide:any, index:number) => (
         <SwiperSlide key={slide.slug ?? index}>
           {slide?.video_link ? (
             <div className="home_banner_video_slide">

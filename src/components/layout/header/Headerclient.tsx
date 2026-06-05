@@ -65,8 +65,8 @@ function MenuColumn({
 }) {
   const hasSubChildren =
     child.has_children === true && child.children?.length > 0;
-  const childSlug =
-    child?.slug && child.slug !== "#" ? BASE_URL + child.slug : "#";
+  const childSlug = child?.slug ? BASE_URL + child.slug : child?.target_blank_url ? child.target_blank_url : "#";
+  const childTarget = child?.target_blank_url ? "_blank" : "_self";
   const isNavigable = child?.slug && child.slug !== "#";
 
   return (
@@ -79,6 +79,7 @@ function MenuColumn({
         <Link
           href={childSlug}
           className="menu_title_link"
+          target={childTarget}
           onClick={() => {
             if (isNavigable) {
               setMegaMenuOpen(false);
@@ -94,8 +95,8 @@ function MenuColumn({
         <ul>
           {child.children.map((sub: any, subIdx: number) => {
             const label = getChildLabel(sub);
-            const subSlug =
-              sub?.slug && sub.slug !== "#" ? BASE_URL + sub.slug : "#";
+            const subSlug = sub?.slug ? BASE_URL + sub.slug : sub?.target_blank_url ? sub.target_blank_url : "#";
+            const subTarget = sub?.target_blank_url ? "_blank" : "_self";
             const subNavigable = sub?.slug && sub.slug !== "#";
 
             if (!label) return null;
@@ -104,6 +105,7 @@ function MenuColumn({
               <li key={subIdx}>
                 <Link
                   href={subSlug}
+                  target={subTarget}
                   onClick={() => {
                     if (subNavigable) {
                       setMegaMenuOpen(false);
@@ -341,7 +343,8 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                         return (
                           <li key={itemIdx}>
                             <Link
-                              href={item?.slug ? BASE_URL + item.slug : ""}
+                              href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : '#'}
+                              target={item?.target_blank_url ? '_blank' : '_self'}
                             >
                               {item.title}
                             </Link>

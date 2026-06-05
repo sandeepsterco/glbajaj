@@ -3,8 +3,8 @@ import HeaderClient from "./Headerclient";
 
 async function getHeaderData() {
   const [headerRes, sidebarRes] = await Promise.all([
-    apiFetch("menu?location=header", { revalidate: 600 }),
-    apiFetch("menu?location=sidebar", { revalidate: 600 }),
+    apiFetch("menu?location=header"),
+    apiFetch("menu?location=sidebar"),
   ]);
 
   return {

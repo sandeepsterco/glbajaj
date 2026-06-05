@@ -1111,7 +1111,7 @@
   window.addEventListener("resize", function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(tabControl, 250);
-  });
+  }); 
 
   window.__initCustomJS = initAll;
   window.__scheduleInitCustomJS = scheduleInitAll;

@@ -2465,6 +2465,40 @@
 .submenu li { padding: 0.6rem 0; }
 .submenu li a{ color: var(--color-33); display: block; font: var(--font-15);}
 
+.flash-effect {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.flash-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.flash-effect:hover::before {
+  animation: flash 0.8s ease;
+}
+
+@keyframes flash {
+  100% {
+    left: 180%;
+  }
+}
+
 @media (max-width:1399px){
   .home_sessions_section .right_col a { padding:2.9rem 2.5rem 2.9rem 3.4rem; }
   .research_centre_section .centre_lists a { gap: 1.4rem; }
@@ -2805,11 +2839,13 @@
   .home_footer .footer_contact h4{ font: var(--font-12);}
   .home_footer .footer_contact a{font: var(--font-12);}
   .home_footer .footer_bottom_right{gap: 2.7rem;}
-  .homeFac_accBody figure{ max-height: 28.5rem; object-fit: cover;}
+  .homeFac_accBody figure{ object-fit: cover;}
   .right_slider .slider_btns{gap: 0.8rem;}
   .home_research_section .single_stat:last-child{ margin-top: -0.1rem;}
   .home_research_section .single_stat:first-child { border-right: .1rem solid var(--color-C0); }
   .home_research_section .single_stat:nth-child(2) { border-left: 0; }
+  .h_r_award_Card figure img{height: 5rem;}
+  .home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev{ display: none;}
 }
 
 @media (max-width:480px){

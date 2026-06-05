@@ -66,7 +66,7 @@ export default function HomePlacements() {
       </div>
       <Swiper
         className="home_placement_student_slider"
-        modules={[Navigation, Autoplay]}        
+        modules={[Navigation]}        
         slidesPerView={SLIDES_PER_VIEW}
         spaceBetween={20}
         loop={canLoop}
@@ -74,10 +74,10 @@ export default function HomePlacements() {
           nextEl: ".right_slider .next_swiper_btn",
           prevEl: ".right_slider .prev_swiper_btn",
         } : false}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -103,7 +103,7 @@ export default function HomePlacements() {
       >
         {placementData.map((item: any, index: number) => (
           <SwiperSlide key={index}>
-            <Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" />
+            <figure className="flash-effect"><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
             <div className="placem_cnt">
               <img
                 src={item?.logo_image}

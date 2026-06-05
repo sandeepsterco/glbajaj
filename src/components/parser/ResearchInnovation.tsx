@@ -64,7 +64,7 @@ export default function ResearchInnovation() {
         {slides?.map((slide:any, index:number) => (
           <SwiperSlide key={index}>
             <div className="research_card">
-              <figure>
+              <figure className="flash-effect">
                 <Image
                   src={slide?.image || ""}
                   alt="leader"

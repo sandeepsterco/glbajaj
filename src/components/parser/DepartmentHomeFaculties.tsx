@@ -55,8 +55,9 @@ export default function DepartmentHomeFaculties() {
             }}
             className="cse_faculties_slider"
         >
-            {data?.map((item: any, index: number) => (
-                item?.image && index <= 4  && (
+            {data?.filter((item: any) => item?.image)
+                .slice(0, 5)
+                .map((item: any, index: number) => (
                     <SwiperSlide key={item?.id || index}>
                         <div className="leader_card">
                             <figure>
@@ -68,12 +69,10 @@ export default function DepartmentHomeFaculties() {
                             {item?.type && (
                                 <p>{item.type}</p>
                             )}
-                            {/* <Link className="strech_link" href={`${BASE_URL}faculty/${item.slug}`}></Link> */}
-
                         </div>
                     </SwiperSlide>
-                )
-            ))}
+                ))
+            }
 
             {showNavigation && (
                 <div className="navigation_btn">

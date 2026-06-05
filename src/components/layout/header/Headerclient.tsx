@@ -16,7 +16,7 @@ type MenuItem = {
 
 function groupMenuItemsIntoColumns(menuItems: MenuItem[]): MenuItem[][] {
   // Fixed 1-2-2-1 distribution across 4 columns
-  const distributions = [1, 2, 2, 1];
+  const distributions = [1, 2, 1, 1];
   const columns: MenuItem[][] = [];
   let i = 0;
 

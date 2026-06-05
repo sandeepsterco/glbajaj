@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "./banner.css";
 import NotificationBar from "../../ui/notificationBar/NotificationBar";
-import { useEffect, useState } from "react";
 
 function getVideoUrl(url: string): string {
   if (!url) return "";
@@ -54,21 +53,60 @@ function getVideoUrl(url: string): string {
   }
 }
 
+function SliderCaption(slide: any) {
+  return (
+    <div className="slider_caption">
+      <div className="container-fluid">
+        <div
+          className="caption_wrap"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          {slide?.title && (
+            <blockquote
+              className="title48"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              {slide.title}
+            </blockquote>
+          )}
+          <div className="cap_desc">
+            {slide?.sub_title && (
+              <p data-aos="fade-up" data-aos-delay="600">
+                {slide.sub_title}
+              </p>
+            )}
+            {slide?.url && (
+              <Link
+                href={slide.url || "#"}
+                data-aos="fade-up"
+                data-aos-delay="800"
+              >
+                <figure>
+                  <Image
+                    src="/images/home/hero/arrow_right.svg"
+                    alt="Read more"
+                    width={64}
+                    height={64}
+                  />
+                </figure>
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 
 export default function HeroBanner({ data }: { data: any }) {
 
-  const [src, setSrc] = useState('');
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setSrc(
-      'https://www.youtube.com/embed/vWcpUhcpnns?autoplay=1&loop=1&playlist=vWcpUhcpnns&controls=0&modestbranding=1&rel=0&mute=1'
-    );
-  }, []);
 
   return (
     <section className="home_banner">
-      {/* <Swiper
+      <Swiper
         className="home_slide"
         modules={[Pagination, Autoplay]}
         // loop={true}
@@ -95,48 +133,11 @@ export default function HeroBanner({ data }: { data: any }) {
                   />
                 </picture>
 
-                <div className="slider_caption">
-                  <div className="container-fluid">
-                    <div
-                      className="caption_wrap"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      {slide?.title && (
-                        <blockquote
-                          className="title48"
-                          data-aos="fade-up"
-                          data-aos-delay="400"
-                        >
-                          {slide.title}
-                        </blockquote>
-                      )}
-                      <div className="cap_desc">
-                        {slide?.sub_title && (
-                          <p data-aos="fade-up" data-aos-delay="600">
-                            {slide.sub_title}
-                          </p>
-                        )}
-                        {slide?.url && (
-                          <Link
-                            href={slide.url || "#"}
-                            data-aos="fade-up"
-                            data-aos-delay="800"
-                          >
-                            <figure>
-                              <Image
-                                src="/images/home/hero/arrow_right.svg"
-                                alt="Read more"
-                                width={64}
-                                height={64}
-                              />
-                            </figure>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {slide?.title && slide?.sub_title && (
+                  <SliderCaption slide={slide} />
+                )}
+
+
               </>
             ) : (
               <div
@@ -165,93 +166,15 @@ export default function HeroBanner({ data }: { data: any }) {
                   loading="eager"
                 />
 
-                <div className="slider_caption">
-                  <div className="container-fluid">
-                    <div
-                      className="caption_wrap"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      {slide?.title && (
-                        <blockquote
-                          className="title48"
-                          data-aos="fade-up"
-                          data-aos-delay="400"
-                        >
-                          {slide.title}
-                        </blockquote>
-                      )}
-                      <div className="cap_desc">
-                        {slide?.sub_title && (
-                          <p data-aos="fade-up" data-aos-delay="600">
-                            {slide.sub_title}
-                          </p>
-                        )}
-                        {slide?.url && (
-                          <Link
-                            href={slide.url || "#"}
-                            data-aos="fade-up"
-                            data-aos-delay="800"
-                          >
-                            <figure>
-                              <Image
-                                src="/images/home/hero/arrow_right.svg"
-                                alt="Read more"
-                                width={64}
-                                height={64}
-                              />
-                            </figure>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {slide?.title && slide?.sub_title && (
+                  <SliderCaption slide={slide} />
+                )}
               </div>
             )}
           </SwiperSlide>
         ))}
-      </Swiper> */}
+      </Swiper>
 
-
-
-      <div className="home_banner_media">
-        {/* <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="home_banner_video"
-          poster="https://res.cloudinary.com/dbgrco4jr/video/upload/so_0,q_auto,f_auto,w_1920/v1779179213/home-page-video_uo6due.jpg"
-          preload="metadata"
-        >
-          <source
-            src="https://res.cloudinary.com/dbgrco4jr/video/upload/q_auto,f_auto/v1779179213/home-page-video_uo6due"
-            type="video/mp4"
-          />
-        </video> */}
-
-        
-
-
-        <iframe
-          width="560"
-          height="315"
-          src={src}
-          title="YouTube video player"
-          onLoad={() => setLoaded(true)}
-          frameBorder="0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-          style={{
-            opacity: loaded ? 1 : 0,
-            transition: 'opacity .3s'
-          }}
-          >
-            
-        </iframe>
-
-      </div>
 
       <NotificationBar />
     </section>

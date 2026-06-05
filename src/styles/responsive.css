@@ -12,18 +12,10 @@
 /* ========= 18-05-2026 Responsive ================ */
  
 @media (max-width: 1920px) {
-   .excellence-sec3 .blanket-box { grid-template-columns: 58.8% auto; }
-  .excellence-sec3 .blanket-text p:not(:first-of-type) {
-    padding-right: 0rem;
-}
-  .excellence-sec3 .blanket-list {
-        margin-right: -12rem;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-    }
-    .excellence-sec3 .blanket-list-img {
-    padding-left: 0rem;
-}
+  .excellence-sec3 .blanket-box { grid-template-columns: 58.8% auto; }
+  .excellence-sec3 .blanket-text p:not(:first-of-type) { padding-right: 0rem; }
+  .excellence-sec3 .blanket-list { margin-right: -12rem; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  .excellence-sec3 .blanket-list-img { padding-left: 0rem; }
 }
 
  
@@ -33,7 +25,8 @@
 
  
 @media (max-width: 1399px) {
-  
+  .our_inspiration_left a{ max-width: 7rem;}
+  .logo_philosophy_grid a{ max-width: 7rem;}
 }
 
  
@@ -50,16 +43,16 @@
  .report-grid { grid-template-columns: repeat(3, 1fr); }
  .iqac-commettee { width: 100%; overflow-x: auto; }
  .leadership_section{padding-block: 4rem;}
-.navigation_btn{bottom: 0;}
+ .navigation_btn{bottom: 0;}
  .leadership_slider .swiper-wrapper{padding-bottom: 5rem;}
  .leadership_section:before{display: none;}
 
 
  /* ========== */
  .happenings_page::before{display: none;}
-.the_institute_grid{grid-template-columns: 100%;}
+ .the_institute_grid{grid-template-columns: 100%;}
 .institute_cnt figure.pattern_img { padding-top: 5rem; }
-.about_right p { max-width: 100%; margin-top: 3rem; }
+ .about_right p { max-width: 100%; margin-top: 3rem; }
 .institute_cnt figure.pattern_img{display: none;}
 .accredation_grid{grid-template-columns: repeat(2, 1fr); gap:3rem;}
 /* the-group */

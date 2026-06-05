@@ -71,7 +71,7 @@ export default function AboutLeadership() {
             sliderData.map((item: any, idx: number) => (
               <SwiperSlide key={idx}>
                 <div className="leader_card relative">
-                  <figure>
+                  <figure className="flash-effect">
                     <Image
                       src={item.about_image}
                       alt={item.name}

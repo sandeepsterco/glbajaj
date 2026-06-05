@@ -1,190 +1,152 @@
-
 @media (min-width:1921px) {
-    .site_brand .navbar-brand {
-      width: 42.5rem;
-    }
-
-    .home_research_section .research_group::before{padding-bottom: 100rem;}
-    .home_research_section .research_group::after{height: 100rem;}
-    
-  }
-
+ .site_brand .navbar-brand { width: 42.5rem; }
+.home_research_section .research_group::before { padding-bottom: 100rem; }
+.home_research_section .research_group::after { height: 100rem; }
+ }
 /* ========= 18-05-2026 Responsive ================ */
- 
 @media (max-width: 1920px) {
-   .excellence-sec3 .blanket-box { grid-template-columns: 58.8% auto; }
-  .excellence-sec3 .blanket-text p:not(:first-of-type) {
-    padding-right: 0rem;
-}
-  .excellence-sec3 .blanket-list {
-        margin-right: -12rem;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-    }
-    .excellence-sec3 .blanket-list-img {
-    padding-left: 0rem;
-}
-}
-
- 
+ .excellence-sec3 .blanket-box { grid-template-columns: 58.8% auto; }
+.excellence-sec3 .blanket-text p:not(:first-of-type) { padding-right: 0rem; }
+.excellence-sec3 .blanket-list { margin-right: -12rem; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+.excellence-sec3 .blanket-list-img { padding-left: 0rem; }
+ }
 @media (max-width: 1599px) {
-  
-}
-
- 
+ }
 @media (max-width: 1399px) {
-  .home .home_testimonials .desc {
-  min-height: 25rem;
-}
-}
-
- 
+ .home .home_testimonials .desc { min-height: 25rem; }
+.our_inspiration_left a { max-width: 7rem; }
+.logo_philosophy_grid a { max-width: 7rem; }
+ }
+@media (min-width: 1399px) {
+ .home .home_testimonials .desc { min-height: 25rem; }
+ }
 @media (max-width: 1199px) {
-  
-}
-
- 
+ }
 @media (max-width: 991px) {
-
  .best-practice .accordion-item.active .accordion-body { padding-right: 6.6rem; }
- .dg-pathshala-btn { margin-top: 5rem; }
- .digital-patsala{margin-top: 3rem;}
- .report-grid { grid-template-columns: repeat(3, 1fr); }
- .iqac-commettee { width: 100%; overflow-x: auto; }
- .leadership_section{padding-block: 4rem;}
-.navigation_btn{bottom: 0;}
- .leadership_slider .swiper-wrapper{padding-bottom: 5rem;}
- .leadership_section:before{display: none;}
-
-
- /* ========== */
- .happenings_page::before{display: none;}
-.the_institute_grid{grid-template-columns: 100%;}
+.dg-pathshala-btn { margin-top: 5rem; }
+.digital-patsala { margin-top: 3rem; }
+.report-grid { grid-template-columns: repeat(3, 1fr); }
+.iqac-commettee { width: 100%; overflow-x: auto; }
+.leadership_section { padding-block: 4rem; }
+.navigation_btn { bottom: 0; }
+.leadership_slider .swiper-wrapper { padding-bottom: 5rem; }
+.leadership_section:before { display: none; }
+/* ========== */
+ .happenings_page::before { display: none; }
+.the_institute_grid { grid-template-columns: 100%; }
 .institute_cnt figure.pattern_img { padding-top: 5rem; }
 .about_right p { max-width: 100%; margin-top: 3rem; }
-.institute_cnt figure.pattern_img{display: none;}
-.accredation_grid{grid-template-columns: repeat(2, 1fr); gap:3rem;}
+.institute_cnt figure.pattern_img { display: none; }
+.accredation_grid { grid-template-columns: repeat(2, 1fr); gap:3rem; }
 /* the-group */
-.group_counter_grid { grid-template-columns: 58% auto; gap: 6.4rem;}
-
+.group_counter_grid { grid-template-columns: 58% auto; gap: 6.4rem; }
 /* messages-and-administration */
-.administration_grid { grid-template-columns: repeat(3, 1fr);}
-
-.governance-and-advisory-boards .the_institute_grid{gap: 3rem;}
+.administration_grid { grid-template-columns: repeat(3, 1fr); }
+.governance-and-advisory-boards .the_institute_grid { gap: 3rem; }
 .governance-and-advisory-boards .research-sec { padding-block: 5rem 3rem; }
-.governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(2, 1fr);}
-.governance-and-advisory-boards .cabIntroX_sex {padding-bottom: 0;}
-.team-members-grid{grid-template-columns: repeat(2, 1fr);}
+.governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(2, 1fr); }
+.governance-and-advisory-boards .cabIntroX_sex { padding-bottom: 0; }
+.team-members-grid { grid-template-columns: repeat(2, 1fr); }
 .committee_members { padding-block: 5rem; }
-}
-
- @media (max-width: 820px) {
-.report-grid { grid-template-columns: repeat(2, 1fr); }
-.our_inspiration_section { padding-block: 10rem 7rem;}
-.our_inspiration_section:before{inset: 0 0 0rem;}
-.about_vision { margin-top: 20rem; }
-.vision_mission_grid{ grid-template-columns: 35% 65%; }
-/* the-group */
-.group_section{padding-block: 5rem;}
-.group_counter_grid { grid-template-columns: 100%; gap: 4.4rem; padding-top: 3rem;}
-.chairman_grid {grid-template-columns: 100%;}
-.chairman_left{order: 2;}
-.chairman_right{order: 1;}
-.shaping_future_grid{grid-template-columns: 100%;}
  }
-@media (max-width: 767px) { 
-.the_institute_grid { gap: 4rem; padding-top: 3.2rem; } 
-.institute_cnt ul { margin-top: 3rem;} 
-.digital-pathshala-grid{grid-template-columns:100%; gap: 2rem; padding-top: 4.2rem;}
+@media (max-width: 820px) {
+ .report-grid { grid-template-columns: repeat(2, 1fr); }
+.our_inspiration_section { padding-block: 10rem 7rem; }
+.our_inspiration_section:before { inset: 0 0 0rem; }
+.about_vision { margin-top: 20rem; }
+.vision_mission_grid { grid-template-columns: 35% 65%; }
+/* the-group */
+.group_section { padding-block: 5rem; }
+.group_counter_grid { grid-template-columns: 100%; gap: 4.4rem; padding-top: 3rem; }
+.chairman_grid { grid-template-columns: 100%; }
+.chairman_left { order: 2; }
+.chairman_right { order: 1; }
+.shaping_future_grid { grid-template-columns: 100%; }
+ }
+@media (max-width: 767px) {
+ .the_institute_grid { gap: 4rem; padding-top: 3.2rem; }
+.institute_cnt ul { margin-top: 3rem; }
+.digital-pathshala-grid { grid-template-columns:100%; gap: 2rem; padding-top: 4.2rem; }
 .best-practice { margin-bottom: 3rem; }
 .best-practice .pub-item .num { margin-right: 2rem; }
 .our_inspiration_section:before { inset: 0 0 1rem; }
-.our_inspiration_grid{gap: 1rem;}
+.our_inspiration_grid { gap: 1rem; }
 .our_inspiration_left { padding-right: 9rem; }
 .about_vision { margin-top: 12rem; }
-.vision_mission_grid{ grid-template-columns:100%; gap: 4rem; padding-bottom: 5rem;}
+.vision_mission_grid { grid-template-columns:100%; gap: 4rem; padding-bottom: 5rem; }
 .accredation_section { padding-block: 5rem; }
-.accredation_wrapper{background-color: transparent; padding-top: 0;}
-.accredation_wrapper:after,.accredation_wrapper:before{display: none;}
-.accredation_grid{margin-inline: 0;}
+.accredation_wrapper { background-color: transparent; padding-top: 0; }
+.accredation_wrapper:after,.accredation_wrapper:before { display: none; }
+.accredation_grid { margin-inline: 0; }
 .accredation_bx figure img { margin-bottom: 3rem; }
 .accredation_bx:nth-child(2) figure, .accredation_bx:first-child figure { margin-top: 0.2rem; }
-.accredation_bx:nth-child(2){border-right: 0;}
-.accredation_bx{padding-inline: 0;}
-.acredation_swiper .swiper-wrapper{padding-bottom: 7rem;}
+.accredation_bx:nth-child(2) { border-right: 0; }
+.accredation_bx { padding-inline: 0; }
+.acredation_swiper .swiper-wrapper { padding-bottom: 7rem; }
 /* the-group */
-.chairman_right figure:before{display: none;}
+.chairman_right figure:before { display: none; }
 .hod_details { margin-top: 3rem; padding-top: 3rem; position: relative; }
 .chairman_section { padding-block: 4.2rem 3.6rem; }
 .shaping_future { padding-block: 4.4rem; }
 .shaping_future .container { padding-block: 3rem; }
-.chairman_left p{padding-right: 0;}
-.shaping_future_grid{gap:2rem}
-
+.chairman_left p { padding-right: 0; }
+.shaping_future_grid { gap:2rem }
 /* =awards-and-recognitions = */
 .award-sec { padding-block: 5rem 6rem; }
-.award-list{grid-template-columns: 100%; margin-top: 4.7rem;}
+.award-list { grid-template-columns: 100%; margin-top: 4.7rem; }
 /* messages-and-administration */
-.administration_grid.messages_grid{grid-template-columns: 100%;}
-.administration_grid:before{display: none;}
-.administration_grid{grid-template-columns:repeat(2, 1fr); gap: 7rem 2rem; padding-block: 6rem 0;}
+.administration_grid.messages_grid { grid-template-columns: 100%; }
+.administration_grid:before { display: none; }
+.administration_grid { grid-template-columns:repeat(2, 1fr); gap: 7rem 2rem; padding-block: 6rem 0; }
 .administration_section.messages_section { padding-block: 5rem 5rem; }
 .administration_section { padding-block: 4rem 4.9rem; }
-}
+ }
 @media (max-width: 620px) {
-.best-practice .accordion-body h4 { margin-bottom: 2rem; }
-.best-practice .pub-item .num {margin-right: 1rem; }
+ .best-practice .accordion-body h4 { margin-bottom: 2rem; }
+.best-practice .pub-item .num { margin-right: 1rem; }
 .best-practice .pub-item { margin-bottom: 1.8rem; }
 .best-practice .accordion-item.active .accordion-body { padding-right: 1.6rem; }
 .best-practice .accordion-item.active .accordion-body { padding: 0rem 1.5rem 2rem; }
-.best-practice .accordion-header {padding: 1.5rem 1.5rem; }
+.best-practice .accordion-header { padding: 1.5rem 1.5rem; }
 .best-practice .accordion-body ul li span { margin-bottom: 1rem; }
 .best-practice .accordion-body h4.border { margin-top: 1rem; padding-top: 2rem; }
 .supporting-btn { margin-top: 0.7rem; }
 .dg-pathshala-video-link.feadback-atr table th:nth-child(2) { width: auto; }
 .about_bottom { padding-top: 2rem; }
 .about_section { padding-block: 2rem; }
-.about_section h2{padding-right: 0;}
-.our_inspiration_grid { grid-template-columns: 100%; gap: 1rem;}
-.our_inspiration_section { padding-block: 4rem 0;}
- .logo_philosophy_grid { grid-template-columns: 100%; padding-block: 4rem;}
-.about_vision {margin-top: 12rem;}
-.vision_mission_grid{grid-template-columns: 100%; gap: 3rem;}
-.accredation_grid{grid-template-columns: 100%; margin-inline: 0;}
-.accredation_bx{padding-inline: 0; border-right: none;text-align: center; justify-items: center;}
+.about_section h2 { padding-right: 0; }
+.our_inspiration_grid { grid-template-columns: 100%; gap: 1rem; }
+.our_inspiration_section { padding-block: 4rem 0; }
+.logo_philosophy_grid { grid-template-columns: 100%; padding-block: 4rem; }
+.about_vision { margin-top: 12rem; }
+.vision_mission_grid { grid-template-columns: 100%; gap: 3rem; }
+.accredation_grid { grid-template-columns: 100%; margin-inline: 0; }
+.accredation_bx { padding-inline: 0; border-right: none; text-align: center; justify-items: center; }
 .our_inspiration_left { padding-right: 0rem; }
-/* the-group */
-
-
-}
- 
+/* the-group */ }
 @media (max-width: 575px) {
-.dg-pathshala-video-link table tr td { padding: 1rem 0.6rem 1rem;}
+ .dg-pathshala-video-link table tr td { padding: 1rem 0.6rem 1rem; }
 .facilities_policy { padding-block: 3rem 3rem; }
-.facilities_policy.iqac-event.dg-pathshala { padding-block: 3rem 3rem;}
-.dg-pathshala h2{margin-bottom: 0;}
-.dg-pathshala-video-link h2{margin-bottom: 2rem;}
+.facilities_policy.iqac-event.dg-pathshala { padding-block: 3rem 3rem; }
+.dg-pathshala h2 { margin-bottom: 0; }
+.dg-pathshala-video-link h2 { margin-bottom: 2rem; }
 .report-grid { grid-template-columns: 100% }
-.mom-meetings .report-grid{gap: 2rem;}
-.mom-meetings .report-grid  .fac_policy_list {margin-top: 0;}
-.mom-meetings  .fac_policy_list { padding: 2.5rem 2rem;}
-.mom-meetings .report-grid .reports:first-of-type {margin-bottom: 0;}
+.mom-meetings .report-grid { gap: 2rem; }
+.mom-meetings .report-grid  .fac_policy_list { margin-top: 0; }
+.mom-meetings  .fac_policy_list { padding: 2.5rem 2rem; }
+.mom-meetings .report-grid .reports:first-of-type { margin-bottom: 0; }
 .mom-meetings .fac_policy_list { align-items: center; margin-top: 1.4rem; }
 .facilities_policy.dg-pathshala-video-link.mom-meetings { padding-bottom: 3.8rem; }
 .about_vision { margin-top: 15rem; }
 .our_inspiration_section:before { inset: 0 0 -4rem; }
 /* the-group */
-    .team-members-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-  .governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(1, 1fr); }
-}
-
- 
+    .team-members-grid { grid-template-columns: repeat(1, 1fr); }
+.governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(1, 1fr); }
+ }
 @media (max-width: 399px) {
-  /* the-group */
-.group_counter ul li{padding: 2rem;}
+ /* the-group */
+.group_counter ul li { padding: 2rem; }
 .chairman_right figure:after { content: ""; bottom: -1.5rem; right: -1.5rem; }
-.administration_grid{grid-template-columns:repeat(1, 1fr)}
-}
-
+.administration_grid { grid-template-columns:repeat(1, 1fr) }
+ }

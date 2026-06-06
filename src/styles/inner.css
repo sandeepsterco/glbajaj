@@ -231,7 +231,7 @@
 .news_details { padding-block: 10rem; }
 .newst_details_header { display: flex; align-items: center; }
 .newst_details_header date,
-.newst_details_header .date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom:0;}
+.newst_details_header .date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom:0; }
 .news_details h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .department-page .news_details_grid { margin-bottom: 2.5rem; }
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
@@ -387,6 +387,15 @@
 .visionary_message h2 { color: var(--color-64); font: var(--font-24); margin-bottom: 4rem; font-weight: 700; }
 .visionary_message figure { margin-top: 8rem; position: relative; }
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+
+/* .visionary_message figure img {
+  transition: transform 0.5s ease!important;
+}
+
+.visionary_message figure:hover img {
+  transform: scale(1.1)!important;
+} */
+
 .message_details { padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative; }
 .message_details.bottom { padding-top:0; }
 .message_details::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
@@ -400,6 +409,8 @@
 .administration_section.messages_section .administration_Bx { background-color: var(--color-F5); }
 .administration_grid.messages_grid { grid-template-columns: repeat(2, 1fr); }
 .administration_section { padding-block: 10rem 15.9rem; background-color: var(--color-F4); }
+.administration_section .administration_grid .administration_Bx figure { display: none; }
+.administration_section .administration_grid .administration_Bx:nth-of-type(-n+4) figure { display: block; }
 .administration_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
 .administration_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .administration_Bx { background-color: var(--color-white); padding: 1.3rem; position: relative; }
@@ -412,6 +423,13 @@
 .administration_Bx a img { max-width: 1.6rem; }
 .administration_Bx .admini_msg_info { display: flex; align-items: center; justify-content: space-between; padding-inline: 2rem; }
 .admin_arr_icon { background-color: var(--color-white); width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.administration_Bx:hover .admin_arr_icon{ background-color: var(--color-92);}
+.administration_Bx:hover .admin_arr_icon img{ filter: brightness(0) invert(1);}
+
+
+
+
+
 /* ==============The Group page Start============= */
 .group_section { padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .group_section h2 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 4rem; }
@@ -462,7 +480,8 @@
 .institute_cnt .inst_pdf_btn ul { margin-bottom: 0; }
 .about_right p { margin-top: 5rem; max-width: 70%; }
 .about_bottom { padding-top: 5rem; }
-.logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
+.about_ins_section { padding-top: 10rem; }
+.logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem 0; }
 .logo_philosophy_grid h3 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
 .logo_philosophy_grid a { margin-left: -1.2rem; display: inline-block; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
@@ -694,9 +713,10 @@
 .ad_tabsec { background: var(--color-64); color: #fff; display: inline-flex; align-items: center; padding: 1.2rem 3.8rem 1.2rem 3.7rem; justify-content: space-between; gap: 17.4rem; }
 .ad_tabsec .ad_pro_list { display: flex; align-items: center; margin: 0; padding: 0; }
 .ad_tabsec .ad_pro_list .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
+.ad_tabsec .ad_rgtsec { display: flex; gap: 2rem; }
 .ad_leftsec .ad_title { padding-block: 1rem; color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold; }
-.ad_leftsec { display: flex; gap: 13.2rem; }
-.ad_tabsec .btn_styl1 { padding: 1.4rem 2rem; font: var(--font-16); line-height: 2.4rem; }
+.ad_leftsec { display: flex; gap:25.2rem; }
+.ad_tabsec .btn_styl1 { font: var(--font-16); padding: 1.4rem 2rem; line-height: 2.4rem; display: flex; align-items: center; }
 .cou_off_rgt img { width: 100%; }
 .cse_aca_calender { margin-right: 7rem; padding-top: 10rem; margin-left: 3.7rem; }
 .cse_aca_calender h4 { margin-bottom: 5.4rem; }
@@ -1702,14 +1722,14 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .place_infobox p { font: var(--font-18); color: var(--color-64); margin-bottom: 2.5rem; }
 .place_infobox p strong { font-weight: bold; }
 .place_infobox { text-align: center; padding: 1.5rem; }
-.place_complog { text-align: center; position: absolute; right: 0; top: 0; }
-.place_complog img { margin: auto; height: 7rem; }
+.place_complog { text-align: center; position: absolute; top: 1rem; right: .5rem; }
+.place_complog img { margin: auto; object-fit: cover; width: 10.2rem; }
 .place_pkg h3 { font-weight: 600; letter-spacing: 0; color: var(--color-33); }
 .place_imgbox { background-color: #e0e3e9; border-radius: 1.5rem; position: relative; }
 .place_imgbox::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
 .place_imgbox > figure { height: 37rem; }
-.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top; }
+.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top;    border-radius: 1.5rem; }
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
@@ -2213,3 +2233,4 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx { position: relative; }
 .bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
+

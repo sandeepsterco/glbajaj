@@ -21,7 +21,7 @@ export default function NotFound() {
               href="/"
               className="rounded-md bg-blue-600 px-[2rem] md:px-[3rem] py-[1rem] md:py-[1.5rem] text-[2rem] md:text-[2.5rem] font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition duration-200 go_back__btn" 
             >
-              Go back home
+              Back to Homepage
             </Link>
           </div>
         </div>

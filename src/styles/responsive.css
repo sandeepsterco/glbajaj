@@ -49,6 +49,21 @@
 .governance-and-advisory-boards .cabIntroX_sex { padding-bottom: 0; }
 .team-members-grid { grid-template-columns: repeat(2, 1fr); }
 .committee_members { padding-block: 5rem; }
+.about_section h2{ letter-spacing:0rem; padding-right: 0;}
+.about_section .row{ margin: 0;}
+.institute_cnt { padding-right: 0rem; }
+.the_institute_grid{padding-top: 4rem;}
+.our_inspiration_section { padding-block: 6rem;}
+.our_inspiration_section:before{ height: 100%; width: 100%;}
+.our_inspiration_grid{gap: 6rem;}
+.about_vision{ padding-top: 8rem;}
+.vision_mission_grid{ margin-top: 0;}
+.vision_mission_grid{grid-template-columns: 40% auto;}
+.about_leadership .navigation_btn { bottom: 0; position: relative; margin-top: 0; }
+.our_inspiration_section .row{ margin: 0;}
+.about_ins_section { padding-top: 5rem; }
+
+
  }
 @media (max-width: 820px) {
  .report-grid { grid-template-columns: repeat(2, 1fr); }
@@ -101,6 +116,8 @@
 .administration_grid { grid-template-columns:repeat(2, 1fr); gap: 7rem 2rem; padding-block: 6rem 0; }
 .administration_section.messages_section { padding-block: 5rem 5rem; }
 .administration_section { padding-block: 4rem 4.9rem; }
+.about_vision { padding-top: 5rem; }
+
  }
 @media (max-width: 620px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
@@ -117,13 +134,14 @@
 .about_section { padding-block: 2rem; }
 .about_section h2 { padding-right: 0; }
 .our_inspiration_grid { grid-template-columns: 100%; gap: 1rem; }
-.our_inspiration_section { padding-block: 4rem 0; }
+.our_inspiration_section { padding-block: 4rem; }
 .logo_philosophy_grid { grid-template-columns: 100%; padding-block: 4rem; }
 .about_vision { margin-top: 12rem; }
 .vision_mission_grid { grid-template-columns: 100%; gap: 3rem; }
 .accredation_grid { grid-template-columns: 100%; margin-inline: 0; }
 .accredation_bx { padding-inline: 0; border-right: none; text-align: center; justify-items: center; }
 .our_inspiration_left { padding-right: 0rem; }
+
 /* the-group */ }
 @media (max-width: 575px) {
  .dg-pathshala-video-link table tr td { padding: 1rem 0.6rem 1rem; }
@@ -138,7 +156,7 @@
 .mom-meetings .report-grid .reports:first-of-type { margin-bottom: 0; }
 .mom-meetings .fac_policy_list { align-items: center; margin-top: 1.4rem; }
 .facilities_policy.dg-pathshala-video-link.mom-meetings { padding-bottom: 3.8rem; }
-.about_vision { margin-top: 15rem; }
+.about_vision { margin-top:0rem; }
 .our_inspiration_section:before { inset: 0 0 -4rem; }
 /* the-group */
     .team-members-grid { grid-template-columns: repeat(1, 1fr); }

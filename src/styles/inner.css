@@ -387,6 +387,15 @@
 .visionary_message h2 { color: var(--color-64); font: var(--font-24); margin-bottom: 4rem; font-weight: 700; }
 .visionary_message figure { margin-top: 8rem; position: relative; }
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
+
+/* .visionary_message figure img {
+  transition: transform 0.5s ease!important;
+}
+
+.visionary_message figure:hover img {
+  transform: scale(1.1)!important;
+} */
+
 .message_details { padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative; }
 .message_details.bottom { padding-top:0; }
 .message_details::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
@@ -414,6 +423,13 @@
 .administration_Bx a img { max-width: 1.6rem; }
 .administration_Bx .admini_msg_info { display: flex; align-items: center; justify-content: space-between; padding-inline: 2rem; }
 .admin_arr_icon { background-color: var(--color-white); width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.administration_Bx:hover .admin_arr_icon{ background-color: var(--color-92);}
+.administration_Bx:hover .admin_arr_icon img{ filter: brightness(0) invert(1);}
+
+
+
+
+
 /* ==============The Group page Start============= */
 .group_section { padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .group_section h2 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 4rem; }
@@ -2221,3 +2237,4 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx { position: relative; }
 .bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
+

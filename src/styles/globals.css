@@ -243,10 +243,10 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_logo img { width: 260px; }
 .home_footer .footer_content { display: flex; justify-content: space-between; gap: 9rem; flex-wrap: wrap; }
 .home_footer .footer_address h3 { font-size: 2.1rem; line-height: 3.6rem; font-weight: 500; color: var(--color-white); }
-.home_footer .footer_address p { font-size: 1.6rem; line-height: 2.4rem; margin-top: 1.2rem; color: var(--color-white); }
+.home_footer .footer_address p { font: var(--font-16); line-height: 2.4rem; margin-top: 1.2rem; color: var(--color-white); }
 .home_footer .footer_contact { display: flex; gap: 4.5rem; flex-wrap: wrap; }
-.home_footer .footer_contact h4 { font-size: 1.6rem; font-weight: 600; color: var(--color-white); }
-.home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font-size: 1.6rem; color: var(--color-white); text-decoration: none; }
+.home_footer .footer_contact h4 { font: var(--font-16); font-weight: 600; color: var(--color-white); }
+.home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font: var(--font-16); color: var(--color-white); text-decoration: none; }
 .home_footer .footer_contact p{ color: var(--color-white);}
 @media (max-width: 1920px) {
  .home_footer .footer_contact { gap: 2.5rem; }
@@ -352,6 +352,12 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
   .home_footer .footer_links ul{ display: block;}
   .home_footer .footer_links ul li.text-white{ display: none;}
   .home_footer .footer_links ul li{ padding-block: 0.5rem;}
-  
+  .home_footer .footer_contact h4 { font: var(--font-12); }
+  .home_footer .footer_contact a { font: var(--font-12); }
 }
-/* .home_banner_yt_wrap iframe player-middle-controls{display: none!important;} */
+
+
+::-webkit-scrollbar { width: 6px;}
+::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+::-webkit-scrollbar-thumb {  background: rgba(210,171,103,0.9); border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(210,171,103,0.10); }

@@ -658,7 +658,7 @@
 .cse_banner_img figure::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; left: 0; right: 0; bottom: 0; content: ""; height: 33.7rem; }
 .cse_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 9; }
 .cse_banner_img figcaption h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
-.cse_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); }
+.cse_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); display:block;}
 .cse_banner_img figcaption p { color: var(--color-white); background-color: var(--color-92); padding: 0.5rem 1.5rem; display: inline-block; font: var(--font-21); font-weight: 500; }
 .our_cse { padding-block: 5rem; }
 .hod_profile_bx { background: linear-gradient(to bottom, #643c24 60%, #f4f7f4 0%); padding: 2.7rem 2.5rem; position: relative; z-index: 9; }

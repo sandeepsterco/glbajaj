@@ -144,7 +144,6 @@ export default function ProgramList() {
   useEffect(() => {
     setLoading(true);
     fetchPrograms(paramsType, page).then((res) => {
-      console.log("Response:", res);
       setProgramsData(res?.programs ?? null);
       setLoading(false);
     });

@@ -157,7 +157,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .process-text { }
 .process-text ol { padding: 0 0 0 2rem; list-style-type: auto; }
 .process-text ol li { font: var(--font-16); color: var(--color-33); font-weight: 500; margin-bottom: 3.5rem; padding: 0 0 0 2.2rem; }
-.cus-btn { background-color: var(--color-AE); padding: 1.6rem 3rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 5rem; }
+.cus-btn { background-color: var(--color-AE); padding: 1.6rem 3rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 5rem; width: unset; height:unset;}
 .cus-btn:hover { background-color: var(--color-89); }
 /* Career Paths */
 .program-detailsec2 { border-top: 1px solid #c0855257; padding-block: 10rem; }

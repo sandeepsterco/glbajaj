@@ -421,6 +421,7 @@
 .hod_right { margin-top: 3rem; position: relative; }
 .hod_right figure::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; bottom: 2.3rem; margin: auto 0; right: -10rem; z-index: -1; background-size: cover; background-repeat: no-repeat; }
 .hod_right figure img { width: 100%; }
+.hod_right img.company_logo{width: 15rem; position: absolute; top: 0.5rem; left: 1rem;}
 .hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }

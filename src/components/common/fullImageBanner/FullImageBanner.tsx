@@ -163,7 +163,7 @@ export default function HeroBanner({ data }: { data: any }) {
                   className="absolute inset-0 w-full h-full border-0"
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
-                  loading="eager"
+                  loading="lazy"
                 />
 
                 {(slide?.title || slide?.sub_title) && (

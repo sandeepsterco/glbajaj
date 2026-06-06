@@ -10,6 +10,7 @@ import "@/src/styles/inner.css";
 // import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
+import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 // import "@/src/styles/parser.css";
 
 export default async function DepartmentPage(){
@@ -21,6 +22,10 @@ export default async function DepartmentPage(){
         return <NotFound />;
     }
 
+    const combinedHtml = data?.data?.cms
+    ? Object.values(data?.data?.cms).join("")
+    : "";
+
     return(
         <div className="happenings_page">
             {data?.data?.tabs && (
@@ -28,9 +33,7 @@ export default async function DepartmentPage(){
             )}
 
             {data.data.cms.length == 0 ? <ComingSoon /> : (
-                Object.keys(data?.data?.cms)?.map((item:any, idx:number)=>(
-                    <ReactParser key={idx} html={data?.data?.cms[item]} />
-                ))
+                <ReactParserDynamic html={combinedHtml} />
             )}
 
             

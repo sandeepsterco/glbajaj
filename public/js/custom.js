@@ -259,6 +259,7 @@
       ".acredation_swiper",
       // ".cse_faculties_slider",
       ".cse_research_slider",
+      ".department_home_projects",
       ".hod_profile_slider",
       ".sport_facilities",
       ".ncc_rank_ceremony",
@@ -531,6 +532,18 @@
       },
     });
 
+    createSwiper(".department_home_projects", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".department_home_projects_next",
+        prevEl: ".department_home_projects_prev",
+      },
+    });
+
     const hodSwiperEl = document.querySelector(".hod_profile_slider");
 
     if (hodSwiperEl) {
@@ -561,18 +574,16 @@
       });
     }
 
-
-
     createSwiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,
       spaceBetween: 21,
       centeredSlides: false,
-      loop: true,
-      autoplay: { delay: 2000 },
-      navigation: {
-        nextEl: ".next_swiper_btn",
-        prevEl: ".prev_swiper_btn",
-      },
+      // loop: true,
+      // autoplay: { delay: 2000 },
+      // navigation: {
+      //   nextEl: ".next_swiper_btn",
+      //   prevEl: ".prev_swiper_btn",
+      // },
       breakpoints: {
         768: { slidesPerView: 2.5, spaceBetween: 30 },
         1200: { slidesPerView: 3.5, spaceBetween: 30 },
@@ -1105,10 +1116,11 @@
       const description = btn.parentElement.querySelector(".vm-description");
       if (!description) return;
 
-      if (description.scrollHeight <= 200) {
+      if (description.offsetHeight <= 240) {
         btn.style.display = "none";
         return;
       }
+      description.style.maxHeight = '240px';
 
       btn.addEventListener("click", function () {
         const icon = this.querySelector("i");

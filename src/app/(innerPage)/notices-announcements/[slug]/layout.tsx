@@ -8,14 +8,15 @@ import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { apiFetch } from "@/src/lib/api";
 
-export default async function MessageDetailLayout({ children }: { children: React.ReactNode }) {
+export default async function NoticeAnnouncementDetailLayout({ children }: { children: React.ReactNode }) {
     const slug = await getSlug(-2);
     const currentSlug = await getSlug();
 
-    if (!slug) return <>{children}</>;
+    // if (!slug) return <>{children}</>;
+    const {data, error} = await apiFetch(`notice-and-announcements/${currentSlug}`);
 
-    const {data, error} = await apiFetch(`award-recognitions/${currentSlug}`)
-    const currentPageTitle = data?.award_details?.data?.title;
+    const currentPageTitle = data?.notice_and_announcement_details?.data?.title;
+    // return <h1>testing</h1>
 
     return <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 

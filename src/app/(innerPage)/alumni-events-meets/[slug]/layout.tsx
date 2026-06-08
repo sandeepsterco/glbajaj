@@ -13,12 +13,9 @@ export default async function AlumniEventsDetailLayout({ children }: { children:
     const currentSlug = await getSlug();
 
     if (!slug) return <>{children}</>;
-
     const {data, error} = await apiFetch(`alumni-events/${currentSlug}`);
 
     const currentPageTitle = data?.alumni_event_details?.data?.title;
-
-
 
     return <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 

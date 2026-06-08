@@ -10,7 +10,7 @@ export default async function MainWorkshop({data, slug, departments, currentDepa
             <div className="front_news">
                 <div className="news_left">
                     <figure>
-                        <Image src={data.image || '/images/default/main-news.webp' } alt="GL Bajaj" className="img-fluid" width={850} height={519} />
+                        <Image src={data?.image || '/images/default/main-news.webp' } alt="GL Bajaj" className="img-fluid" width={850} height={519} />
                     </figure>
                 </div>
                 <div className="news_right">

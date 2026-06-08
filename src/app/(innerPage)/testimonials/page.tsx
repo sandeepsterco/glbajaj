@@ -13,7 +13,7 @@ import "@/src/styles/parser.css";
 export default async function TestimonialPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams;
     const currentPage = Number(page) || 1;
-    const { data, error } = await apiFetch(`alumni-testimonial?page=${currentPage}`);
+    const { data, error } = await apiFetch(`testimonial?page=${currentPage}`);
     const slug = await getSlug();
 
     if (error) {
@@ -22,7 +22,7 @@ export default async function TestimonialPage({ searchParams }: { searchParams: 
         )
     }
 
-    const pagination = data?.alumni_testimonials;
+    const pagination = data?.testimonials;
 
     return (
         <>

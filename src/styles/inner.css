@@ -198,6 +198,7 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
+.about_breadcrumb.menus p{width: max-content;}
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
 .department-page .inner_nav .about_menu_label { display:none; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }

@@ -1,8 +1,9 @@
 import FullImageBanner from "../components/common/fullImageBanner/FullImageBanner";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
-import { cache } from "react";
-import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
+import { cache, Suspense } from "react";
+import { SkeletonGroup } from "../components/ui/Skeleton";
+import HomeContent from "./HomeContent";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
@@ -26,10 +27,6 @@ export default async function Home() {
     </div>
   }
 
-  const combinedHtml = homeData?.cms
-    ? Object.values(homeData.cms).join("")
-    : "";
-
   return (
     <>
       {seoData.schema && (
@@ -43,8 +40,17 @@ export default async function Home() {
       <main>
         <FullImageBanner data={homeData?.modular?.banner ?? []} />
 
-
-        {combinedHtml && <ReactParserDynamic html={combinedHtml} />}
+        <Suspense
+          fallback={
+            <SkeletonGroup
+              count={6}
+              wrapperClassName="grid gap-[3rem]"
+              className="w-full h-[50rem]"
+            />
+          }
+        >
+            <HomeContent />
+        </Suspense>
 
       </main>
     </>

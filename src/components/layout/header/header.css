@@ -220,7 +220,7 @@
     .hmburger_grid {overflow: auto;}
   }
 
-  @media (max-width:992px){
+  @media (max-width:991px){
     .humburger_mainsec{ display: none;}
     .site_nav > ul{ display: none;}
     .hamb_open{ display: none;}

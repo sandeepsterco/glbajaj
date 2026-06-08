@@ -253,7 +253,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
  .home_footer .footer_logo img {
     width: 225px;
 }
-.home_footer .footer_content{gap: 5rem;}
+.home_footer .footer_content{gap: 0rem;}
  }
 /* LINKS */
 .home_footer .footer_links { border-top: 1px solid #d2ab67; border-bottom: 1px solid #d2ab67; margin: 2.6rem 0 2rem; padding: 2rem 0; margin-left: 29.7rem; }
@@ -326,14 +326,18 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 
 @media (max-width:1600px){
   .home_footer .footer_logo img {
-    width: 187px;
+    width: 26.7rem;
 }
 }
 
 @media (max-width:1366px){
-  .home_footer .footer_logo img {
-        width: 200px;
-    }
+  /* .home_footer .footer_logo img {
+        width: 20rem;
+    } */
+}
+
+@media (max-width:128px){
+ /* .home_footer .footer_logo img { width: 185px; } */
 }
 
 @media (max-width:991px){

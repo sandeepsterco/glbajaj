@@ -605,6 +605,7 @@
 .home_courses_section .slider_btns { top: 3rem; gap: 1.8rem; }
 .right_col ul li a img { width: 7rem; }
 .home_testimonials .desc_content { padding: 6.4rem 0 11.1rem 19.5rem; }
+/* .home_footer .footer_top { gap: 4.5rem; } */
  }
 @media (max-width:1280px) {
  .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.5rem; }
@@ -789,6 +790,16 @@
 .slider_btns .swiper-button-prev { right: auto; }
 .home_placement_company_header { display: none; }
 .homeFac_btns { display: none; }
+.group_section h2 {font: var(--font-28); letter-spacing: 0;}
+.chairman_left h3 {font: var(--font-28); letter-spacing: 0;}
+.group_counter_grid{ padding-top:2rem; display: flex; flex-wrap: wrap; gap: 3rem;}
+.group_counter{ width: 100%;}
+.group_section{ padding-block: 5rem; }
+.chairman_section{ padding-block: 5rem; overflow: hidden;}
+.shaping_future { padding-block: 5rem 0; }
+.shaping_future .container{ padding-block: 5rem;}
+.shaping_future_Bx figcaption h5{ line-height: 1.4;}
+.shaping_future .container25{ padding-inline: 0;}
 /* =================mobile menu css================ */
 	/* 100% { left: 125%; }
 */ }
@@ -1111,6 +1122,27 @@ main { overflow: hidden; }
 .others_mobile_menu { padding-bottom: 3rem; }
 .left_content { position: relative; }
  }
+
+@media (max-width:820px){
+  .chairman_grid{ display: flex;}
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width:640px) {
  .home_placement_stats { grid-template-columns: repeat(2, 1fr); }
 .home_sessions_section .data-overlay .top .year { font: var(--font-46); font-weight: 900; letter-spacing: -0.1rem; font-family: var(--font-lexend); }

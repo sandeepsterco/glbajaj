@@ -36,7 +36,7 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
         <div className="col-xl-11">
           <div className="front_news">
             <div className="news_left">
-              <figure>
+              <figure className="flash-effect-2">
                 <Image
                   src={data?.image || "/images/default/main-news.webp"}
                   alt="GL Bajaj"

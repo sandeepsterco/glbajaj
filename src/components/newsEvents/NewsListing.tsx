@@ -7,7 +7,7 @@ export default function NewsListing({data, slug}:{data:any, slug:string}) {
             <div className="container25">
                 {data.map((item:any, idx:number)=>(
                     <div key={idx} className="news_list">
-                        <figure>
+                        <figure  className="flash-effect-2">
                             <img src={item?.image || 'images/default/news-list.webp'} alt={item.heading || 'news'} className="img-fluid" />
                         </figure>
                         <div className="news_list_right">

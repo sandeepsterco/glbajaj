@@ -55,7 +55,7 @@ export default function ConferenceLists() {
             <div className="confrence_grid">
                 {conferenceData?.data && conferenceData.data?.map((item: any) => (
                     <div className="confrence_grid_Bx" key={item.id}>
-                        <figure>
+                        <figure  className="flash-effect-2">
                             <Image src={item.image || '/images/default/confrence.webp'} width={380} height={275} className="img-fluid" alt={item.title} />
                         </figure>
                         {item?.title && (

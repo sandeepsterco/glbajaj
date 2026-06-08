@@ -37,7 +37,7 @@ export default function IntershipRecord() {
             {placement_data && placement_data?.map((item:any, idx:number)=>(
                 <div key={idx} className="place_box relative">
                     <div className="place_imgbox" data-aos="fade-up" data-aos-delay="400">
-                        <figure>
+                        <figure className="flash-effect-2">
                             <img src={item.image ?? ''} alt={item?.name} />
                         </figure>
                         {item?.logo_image && (

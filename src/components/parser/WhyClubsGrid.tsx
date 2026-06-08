@@ -35,7 +35,7 @@ export default function WhyClubsGrid() {
       <div className="media_grid">
         {data?.data && data.data?.length > 0 && data.data.map((item:any, idx:number)=>(
           <div key={idx} className="media_grid_Bx1">
-            <figure>
+            <figure className="flash-effect-2">
               <Image src={item?.image ?? '/images/default/clubs_society.webp'} width={221} height={163} className="img-fluid" alt={item?.title ?? 'clubs & society image'} loading="lazy" />
             </figure>
             <div className="media_txt">

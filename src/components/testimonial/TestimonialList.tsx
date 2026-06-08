@@ -10,7 +10,7 @@ export default function TestimonialList({data, slug}:{data:any, slug:string}){
                 <div className="faculty_grid">
                     {data.map((item:any, idx:number)=>(
                         <div key={idx} className="faculty_Bx">
-                            <figure>
+                            <figure className="flash-effect-2"> 
                                 <Image src={item.image || ''} width={255} height={287} className="img-fluid" alt={item.name || 'faculty image'} loading="lazy" />
                             </figure>
                             {item?.name && (

@@ -478,7 +478,7 @@
 .institute_cnt figure.pattern_img { padding-top: 10rem; }
 .institute_cnt .inst_pdf_btn ul::before { display: none; }
 .institute_cnt .inst_pdf_btn ul { margin-bottom: 0; }
-.about_right p { margin-top: 5rem; max-width: 70%; }
+.about_right p { margin-top: 5rem; max-width: 75%; }
 .about_bottom { padding-top: 5rem; }
 .about_ins_section { padding-top: 10rem; }
 .logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
@@ -486,7 +486,7 @@
 .logo_philosophy_grid a { margin-left: -1.2rem; display: inline-block; }
 .about_ins_section .logo_philosophy_grid{padding-block: 10rem 0;}
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
-.our_inspiration_section::before { background-color: var(--color-64); bottom: 20rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
+.our_inspiration_section::before { background-color: var(--color-64); bottom: 15rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
 .our_inspiration_grid { display: grid; grid-template-columns: 57.5% auto; gap: 15rem; }
 .our_inspiration_left h3 { color: var(--color-white); }
 .our_inspiration_left h4 { margin: 3rem 0; color: var(--color-white); }
@@ -516,8 +516,8 @@
 .accredation_grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-inline: -4rem; padding-block: 5rem; }
 .accredation_bx { border-right: 1px solid rgba(174, 127, 44, 0.5); padding-inline: 4rem; }
 .accredation_bx figure img { margin-bottom: 5rem; }
-.accredation_bx:nth-child(2) figure { margin-top: 5.2rem; }
-.accredation_bx:nth-child(1) figure { margin-top: 5.2rem; }
+.accredation_bx:nth-child(2) figure { margin-top: 0rem; }
+.accredation_bx:nth-child(1) figure { margin-top: 0rem; }
 .accredation_bx:last-child { border-right: 0; }
 .acre_slider { margin-top: -24rem; }
 .acre_slider .acredation_swiper { padding-left: 0.5rem; }
@@ -597,6 +597,7 @@
 .tabs_section .acc-header { display: block; padding: 1.2rem; background: #f5f5f5; cursor: pointer; font-weight: 600; }
 .tabs_section .acc-body { display: none; padding: 1rem; }
 .tabs_section .tab-content.active .acc-body { display: block; }
+.about_glbim_p{ font: var(--font-24);}
  }
 .sterco_tabs_sec .sterco_tab_main { position: relative; padding-block:4rem 8rem; }
 .sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 55%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }

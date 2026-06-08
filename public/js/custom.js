@@ -1082,6 +1082,7 @@
     });
   }
 
+
   function initDropMenus() {
     document.querySelectorAll(".drop_btn:not([data-customjs-init])").forEach((btn) => {
       btn.setAttribute("data-customjs-init", "1");

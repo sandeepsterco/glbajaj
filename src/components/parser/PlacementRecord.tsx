@@ -46,7 +46,7 @@ export default function PlacementRecord() {
             data-aos-delay="600"
           >
             <div className="place_imgbox">
-              <figure>
+              <figure className="flash-effect-2">
                 <img
                   src={item.image ?? ""}
                   alt={item?.name}

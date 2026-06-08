@@ -201,7 +201,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                     onClick={() => openGallery(idx)}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <figure>
+                                    <figure className="flash-effect-2">
                                         {item.type === 'video' ? (
                                             <>
                                                 <video

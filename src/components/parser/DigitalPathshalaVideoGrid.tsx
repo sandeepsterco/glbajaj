@@ -145,7 +145,7 @@ export default function DigitalPathshalaVideoGrid() {
             data-caption={item?.title ?? ""}
             style={{ cursor: "pointer" }}
           >
-            <figure>
+            <figure  className="flash-effect-2">
               <Image
                 src={item?.thumbnail}
                 className="img-fluid w-100"

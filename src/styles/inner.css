@@ -343,7 +343,7 @@
  .hod_right::before { height: auto; }
  }
 /* ==============Faculty page Start============= */
-.faculty_section { padding-block: 0 12.6rem; }
+.faculty_section { padding-block: 10rem 12.6rem; }
 .faculty_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
 .faculty_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: 22rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .faculty_Bx { background-color: var(--color-F5); padding: 1.3rem; position: relative; }

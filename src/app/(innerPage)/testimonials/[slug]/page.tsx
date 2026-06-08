@@ -5,7 +5,7 @@ import { apiFetch } from "@/src/lib/api";
 export default async function TestimonialDetailPage({params}:{params:any}){
     const {slug} = await params;
 
-    const {data, error} = await apiFetch(`alumni-testimonial/${slug}`);
+    const {data, error} = await apiFetch(`testimonial/${slug}`);
 
     if(error){
         return (
@@ -14,6 +14,6 @@ export default async function TestimonialDetailPage({params}:{params:any}){
     }
 
     return(
-        <TestimonialDetail data={data?.alumni_testimonial_details} />
+        <TestimonialDetail data={data?.testimonial_details} />
     )
 }

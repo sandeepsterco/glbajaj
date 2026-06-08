@@ -25,9 +25,7 @@ export default function TestimonialDetail({ data }: { data: any }) {
                                         <img src="/images/icons/quote.png" alt="quote icon" />
                                     </div>
                                     <div className="desc students active">
-                                        <div className="des">
-                                            {data?.data?.message}
-                                        </div>
+                                        <div className="des" dangerouslySetInnerHTML={{__html:data?.data?.message}} />
                                         <p className="short_des">
                                             {data?.data?.long_desc}
                                         </p>

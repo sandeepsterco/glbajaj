@@ -10,10 +10,11 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 
-export default async function TestimonialPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
-    const { page } = await searchParams;
+export default async function TestimonialPage({ searchParams }: { searchParams: Promise<{ page?: string; type?: string }> }) {
+    const { page, type } = await searchParams;
     const currentPage = Number(page) || 1;
-    const { data, error } = await apiFetch(`testimonial?page=${currentPage}`);
+    const activeType = type || "student";
+    const { data, error } = await apiFetch(`testimonial?type=${activeType}&page=${currentPage}`);
     const slug = await getSlug();
 
     if (error) {
@@ -27,11 +28,13 @@ export default async function TestimonialPage({ searchParams }: { searchParams: 
     return (
         <>
             <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
-                <TestimonialList data={pagination?.data} slug={slug} />
+
+                <TestimonialList data={pagination?.data} slug={slug} activeType={activeType} />
                 <PaginationWrapper
                     currentPage={pagination?.current_page || 1}
                     totalPages={pagination?.last_page || 1}
                 />
+
             </InnerPageLayoutWrapper>
         </>
     )

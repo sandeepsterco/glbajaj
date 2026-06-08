@@ -22,6 +22,7 @@ const scrollToSection = (id: string) => {
   const headerHeight = 80;
   const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
   window.scrollTo({ top: y, behavior: "smooth" });
+  window.history.replaceState(null, "", window.location.pathname);
 };
 
 export default function NavLinks({ tabs, activeSlug, tabTitle, pathname }: NavLinksProps) {
@@ -37,9 +38,9 @@ export default function NavLinks({ tabs, activeSlug, tabTitle, pathname }: NavLi
   ) => {
     // If href contains '#', extract the hash and scroll to section
     if (href.includes("#")) {
-      e.preventDefault();
       const hash = href.split("#")[1];
       scrollToSection(hash);
+      // e.preventDefault();
     }
     // Otherwise, let Next.js <Link> handle normal navigation
   };
@@ -50,6 +51,7 @@ export default function NavLinks({ tabs, activeSlug, tabTitle, pathname }: NavLi
       <ul className="about_menu_links">
         {tabs.map((item, itemIdx) => {
           const href = buildHref(item);
+          if(pathname.includes('department') && item.title.toLowerCase() == 'home') return;
           return (
             <li key={itemIdx}>
               <Link

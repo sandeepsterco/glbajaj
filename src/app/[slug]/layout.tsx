@@ -8,6 +8,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { BASE_URL } from "@/src/config/config";
 
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
@@ -18,6 +19,27 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
     if(error){
         return <NotFound />;
     }
+
+    const parentMenu = data?.data?.parent_menu;
+
+    const breadcrumbs = [
+        {
+          label: "Home",
+          slug: BASE_URL,
+        },
+        ...(parentMenu
+          ? [
+              {
+                label: parentMenu.title,
+                slug: BASE_URL + parentMenu.url,
+              },
+            ]
+          : []),
+        {
+          label: data?.data?.page_title,
+        },
+      ];
+
 
     return(
         <div className="happenings_page">

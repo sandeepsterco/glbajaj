@@ -1,4 +1,4 @@
-import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { apiFetch } from "@/src/lib/api";
 import { getSlug } from "@/src/lib/getSlug";
 
@@ -8,13 +8,10 @@ export default async function DepartmentInnerPage(){
 
     const { data, error } = await apiFetch(`department/${slug}/${page}`);
 
-    const pageData = data?.data?.cms
+    const combinedHtml = data?.data?.cms
+    ? Object.values(data?.data?.cms).join("")
+    : "";
 
-    return(
-        <>
-            {Object.keys(pageData || []).map((key) => {
-                return <ReactParser key={key} html={pageData[key]} />;
-            })}
-        </>
-    )
+    return <ReactParserDynamic html={combinedHtml} />;
+    
 }

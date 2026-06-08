@@ -33,8 +33,9 @@
 
   // ─── Why GLB Section Tabs ─────────────────────────────────────────────────────
   function initWhyGlbSection() {
-    const section = document.querySelector(".why_glb_section");
+    const section = document.querySelector(".why_glb_section:not([data-customjs-init])");
     if (!section) return false;
+    section.setAttribute("data-customjs-init", "1");
 
     const tabs = Array.from(section.querySelectorAll(".tabs li"));
     const contents = Array.from(section.querySelectorAll(".tab_content"));
@@ -74,10 +75,11 @@
 
   // ─── Accordion ────────────────────────────────────────────────────────────────
   function initAccordion() {
-    const headers = document.querySelectorAll(".accordion-header");
+    const headers = document.querySelectorAll(".accordion-header:not([data-customjs-init])");
     if (!headers.length) return false;
 
     headers.forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", () => {
         const currentItem = header.parentElement;
         const currentBody = currentItem.querySelector(".accordion-body");
@@ -108,7 +110,8 @@
     headers[0].click();
 
     // ACCORDION (mobile)
-    document.querySelectorAll(".acc-header").forEach((header) => {
+    document.querySelectorAll(".acc-header:not([data-customjs-init])").forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", function () {
         let parent = this.parentElement;
         document.querySelectorAll(".tab-content").forEach((item) => {
@@ -151,7 +154,13 @@
   // ─── Swipers ──────────────────────────────────────────────────────────────────
   function resolveNavEl(root, selector) {
     if (!selector || typeof selector !== "string") return selector;
-    const scopes = [root, root.parentElement, root.closest("section"), document];
+    const scopes = [
+      root,
+      root.parentElement,
+      root.closest(".spfc_swiper"),
+      root.closest("section"),
+      document,
+    ];
     for (let i = 0; i < scopes.length; i++) {
       const scope = scopes[i];
       if (!scope || !scope.querySelector) continue;
@@ -161,8 +170,7 @@
     return null;
   }
 
-  function createSwiper(selector, options) {
-    const el = document.querySelector(selector);
+  function createSwiperOnElement(el, options, label) {
     if (!el || el.nodeType !== 1) return null;
 
     // Skip React-managed Swipers (e.g. AboutLeadership on /about)
@@ -174,6 +182,10 @@
         el.querySelector(".swiper"))
     ) {
       return null;
+    }
+
+    if (el.swiper) {
+      el.swiper.destroy(true, true);
     }
 
     const opts = Object.assign({}, options);
@@ -193,9 +205,42 @@
     try {
       return new Swiper(el, opts);
     } catch (err) {
-      console.warn("[custom.js] Swiper init skipped for", selector, err);
+      console.warn("[custom.js] Swiper init skipped for", label || el.className, err);
       return null;
     }
+  }
+
+  function createSwiper(selector, options) {
+    const el = document.querySelector(selector);
+    return createSwiperOnElement(el, options, selector);
+  }
+
+  function createSwipers(selector, options) {
+    const instances = [];
+    document.querySelectorAll(selector).forEach((el) => {
+      const instance = createSwiperOnElement(el, options, selector);
+      if (instance) instances.push(instance);
+    });
+    return instances;
+  }
+
+  function destroySwipersBySelector(selector) {
+    document.querySelectorAll(selector).forEach((el) => {
+      if (el?.swiper) el.swiper.destroy(true, true);
+    });
+  }
+
+  function updateSwiperInPanel(panel) {
+    const swiperEl = panel?.querySelector(".sport_facilities.swiper, .sport_facilities");
+    if (!swiperEl?.swiper) return;
+    requestAnimationFrame(function () {
+      swiperEl.swiper.update();
+      swiperEl.swiper.navigation?.update?.();
+    });
+  }
+
+  function refreshActiveXTabsSwipers() {
+    document.querySelectorAll(".xtabs_sec .xtab_panel.active").forEach(updateSwiperInPanel);
   }
 
   function initSwipers() {
@@ -214,14 +259,14 @@
       ".acredation_swiper",
       // ".cse_faculties_slider",
       ".cse_research_slider",
+      ".department_home_projects",
       ".hod_profile_slider",
       ".sport_facilities",
       ".ncc_rank_ceremony",
       ".AKTU_Swiper",
       ".workshop_slider_wrapper",
     ].forEach((sel) => {
-      const el = document.querySelector(sel);
-      if (el?.swiper) el.swiper.destroy(true, true);
+      destroySwipersBySelector(sel);
     });
 
     createSwiper(".award_ranking", {
@@ -283,7 +328,7 @@
       },
     });
 
-    new Swiper(".home_placement_student_slider", {
+    createSwiper(".home_placement_student_slider", {
       slidesPerView: 3,
       spaceBetween: 27,
       autoplay:true,
@@ -308,7 +353,7 @@
       },
     });
 
-    new Swiper(".home_recruiters_slider", {
+    createSwiper(".home_recruiters_slider", {
       slidesPerView: 1,
       spaceBetween: 15,
       loop: true,
@@ -487,6 +532,18 @@
       },
     });
 
+    createSwiper(".department_home_projects", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".department_home_projects_next",
+        prevEl: ".department_home_projects_prev",
+      },
+    });
+
     const hodSwiperEl = document.querySelector(".hod_profile_slider");
 
     if (hodSwiperEl) {
@@ -517,30 +574,30 @@
       });
     }
 
-
-
     createSwiper(".workshop_slider_wrapper", {
       slidesPerView: 1.2,
       spaceBetween: 21,
       centeredSlides: false,
-      loop: true,
-      autoplay: { delay: 2000 },
-      navigation: {
-        nextEl: ".next_swiper_btn",
-        prevEl: ".prev_swiper_btn",
-      },
+      // loop: true,
+      // autoplay: { delay: 2000 },
+      // navigation: {
+      //   nextEl: ".next_swiper_btn",
+      //   prevEl: ".prev_swiper_btn",
+      // },
       breakpoints: {
         768: { slidesPerView: 2.5, spaceBetween: 30 },
         1200: { slidesPerView: 3.5, spaceBetween: 30 },
       },
     });
 
-    createSwiper(".sport_facilities", {
+    createSwipers(".sport_facilities", {
       slidesPerView: 1.2,
       spaceBetween: 20,
       centeredSlides: false,
       loop: false,
       autoplay: false,
+      observer: true,
+      observeParents: true,
       navigation: {
         nextEl: ".swiper_next_custom",
         prevEl: ".swiper_prev_custom",
@@ -550,6 +607,8 @@
         1200: { slidesPerView: 1, spaceBetween: 23 },
       },
     });
+
+    refreshActiveXTabsSwipers();
 
     createSwiper(".ncc_rank_ceremony", {
       slidesPerView: 1.2,
@@ -615,7 +674,8 @@
   // ─── Tab + Accordion (generic) ────────────────────────────────────────────────
   function tabContent() {
     // TAB CLICK (desktop)
-    document.querySelectorAll(".tab-btn").forEach((button) => {
+    document.querySelectorAll(".tab-btn:not([data-customjs-init])").forEach((button) => {
+      button.setAttribute("data-customjs-init", "1");
       button.addEventListener("click", function () {
         document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
         document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
@@ -683,7 +743,8 @@
     });
 
     // ACCORDION (mobile)
-    document.querySelectorAll(".acc-header").forEach((header) => {
+    document.querySelectorAll(".acc-header:not([data-customjs-init])").forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
       header.addEventListener("click", function () {
         let parent = this.parentElement;
         document.querySelectorAll(".tab-content").forEach((item) => {
@@ -924,7 +985,8 @@
   }
 
   function initXTabs() {
-    document.querySelectorAll(".xtabs_sec").forEach((section) => {
+    document.querySelectorAll(".xtabs_sec:not([data-customjs-init])").forEach((section) => {
+      section.setAttribute("data-customjs-init", "1");
       const tabBtns = section.querySelectorAll(".xtab_btn");
       const panels = section.querySelectorAll(".xtab_panel");
       const accBtns = section.querySelectorAll(".xacc_btn");
@@ -933,6 +995,11 @@
       if (tabBtns.length) tabBtns[0].classList.add("active");
       if (panels.length) panels[0].classList.add("active");
 
+      function activateXTabPanel(panel) {
+        if (!panel) return;
+        updateSwiperInPanel(panel);
+      }
+
       // desktop tabs
       tabBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -940,7 +1007,9 @@
           tabBtns.forEach((b) => b.classList.remove("active"));
           panels.forEach((p) => p.classList.remove("active"));
           btn.classList.add("active");
-          section.querySelector("#" + target)?.classList.add("active");
+          const panel = target ? section.querySelector("#" + CSS.escape(target)) : null;
+          panel?.classList.add("active");
+          activateXTabPanel(panel);
         });
       });
 
@@ -950,45 +1019,95 @@
           const panel = btn.closest(".xtab_panel");
           const isActive = panel.classList.contains("active");
           panels.forEach((p) => p.classList.remove("active"));
-          if (!isActive) panel.classList.add("active");
+          if (!isActive) {
+            panel.classList.add("active");
+            activateXTabPanel(panel);
+          }
         });
+      });
+
+      activateXTabPanel(panels[0]);
+    });
+  }
+
+  function initPolicyAccordion() {
+    const policyheaders = document.querySelectorAll(".ppolicy_header:not([data-customjs-init])");
+    if (!policyheaders.length) return;
+
+    const firstItem = document.querySelector(".ppolicy_item:not([data-customjs-opened])");
+    if (firstItem) {
+      firstItem.setAttribute("data-customjs-opened", "1");
+      firstItem.classList.add("active");
+      const firstBody = firstItem.querySelector(".ppolicy_body");
+      if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+    }
+
+    policyheaders.forEach((header) => {
+      header.setAttribute("data-customjs-init", "1");
+      header.addEventListener("click", () => {
+        const currentItem = header.parentElement;
+        const currentBody = currentItem.querySelector(".ppolicy_body");
+        currentItem.classList.toggle("active");
+
+        if (currentBody) {
+          if (currentItem.classList.contains("active")) {
+            currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+          } else {
+            currentBody.style.maxHeight = null;
+          }
+        }
       });
     });
   }
 
-  // plament policy ACCORDION
+  function initFooterModals() {
+    document.querySelectorAll(".footer-trigger:not([data-customjs-init])").forEach((trigger) => {
+      trigger.setAttribute("data-customjs-init", "1");
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
 
-  const policyheaders = document.querySelectorAll(".ppolicy_header");
+        const modalClass = [...trigger.classList].find((cls) => cls.startsWith("modal"));
+        const modal = document.querySelector(`.modal-new.${modalClass}`);
+        if (!modal) return;
 
-  // Auto-open first item on load
-  const firstItem = document.querySelector(".ppolicy_item");
-  if (firstItem) {
-    firstItem.classList.add("active");
-    const firstBody = firstItem.querySelector(".ppolicy_body");
-    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + "px";
+        const isOpen = modal.classList.contains("show");
+        document.querySelectorAll(".modal-new.show").forEach((m) => m.classList.remove("show"));
+        document.querySelectorAll(".footer-trigger.active").forEach((t) => t.classList.remove("active"));
+
+        if (!isOpen) {
+          modal.classList.add("show");
+          trigger.classList.add("active");
+        }
+      });
+    });
   }
 
-  policyheaders.forEach((header) => {
-    header.addEventListener("click", () => {
-      const currentItem = header.parentElement;
-      const currentBody = currentItem.querySelector(".ppolicy_body");
+  function initDropMenus() {
+    document.querySelectorAll(".drop_btn:not([data-customjs-init])").forEach((btn) => {
+      btn.setAttribute("data-customjs-init", "1");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-      // ❌ Removed: close other items logic
+        const submenu = this.nextElementSibling;
 
-      // Toggle clicked item
-      currentItem.classList.toggle("active");
+        document.querySelectorAll(".submenu").forEach((menu) => {
+          if (menu !== submenu) {
+            menu.style.maxHeight = null;
+            menu.parentElement.classList.remove("active");
+          }
+        });
 
-      if (currentBody) {
-        if (currentItem.classList.contains("active")) {
-          currentBody.style.maxHeight = currentBody.scrollHeight + "px";
+        if (submenu.style.maxHeight) {
+          submenu.style.maxHeight = null;
+          this.parentElement.classList.remove("active");
         } else {
-          currentBody.style.maxHeight = null;
+          submenu.style.maxHeight = submenu.scrollHeight + "px";
+          this.parentElement.classList.add("active");
         }
-      }
+      });
     });
-  });
+  }
 
-  // ─── View More Button ──────────────────────────────────────────────────────────
  // ─── View More Button ──────────────────────────────────────────────────────────
  function initViewMore() {
     document.querySelectorAll(".view_more_btn:not([data-viewmore-init])").forEach((btn) => {
@@ -997,10 +1116,11 @@
       const description = btn.parentElement.querySelector(".vm-description");
       if (!description) return;
 
-      if (description.scrollHeight <= 200) {
+      if (description.offsetHeight <= 240) {
         btn.style.display = "none";
         return;
       }
+      description.style.maxHeight = '240px';
 
       btn.addEventListener("click", function () {
         const icon = this.querySelector("i");
@@ -1021,44 +1141,6 @@
 
 
 
-// / ===== Mobile footer menu js 
-
-const footerTriggers = document.querySelectorAll('.footer-trigger');
-
-let currentModal = null;
-let activeTrigger = null;
-
-footerTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const modalClass = [...trigger.classList].find(cls =>
-            cls.startsWith('modal')
-        );
-
-        const modal = document.querySelector(`.modal-new.${modalClass}`);
-        if (!modal) return;
-
-        // close previously opened modal
-        if (currentModal && currentModal !== modal) {
-            currentModal.classList.remove('show');
-            if (activeTrigger) activeTrigger.classList.remove('active');
-        }
-
-        // toggle current modal
-        modal.classList.toggle('show');
-        trigger.classList.toggle('active');
-
-        currentModal = modal.classList.contains('show') ? modal : null;
-        activeTrigger = trigger.classList.contains('active') ? trigger : null;
-    });
-});
-
-
-
-
-
-
   // ─── Main Init ────────────────────────────────────────────────────────────────
   function initAll() {
     adjustMaxContent();
@@ -1067,6 +1149,10 @@ footerTriggers.forEach(trigger => {
     initAccordion();
     initYTModal();
     initStercoTabs();
+    initPolicyAccordion();
+    initFooterModals();
+    initDropMenus();
+    initXTabs();
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });
@@ -1076,8 +1162,15 @@ footerTriggers.forEach(trigger => {
     gridPopup();
     tabControl();
     toggleReadMore();
-    initXTabs();
-    initViewMore(); 
+    initViewMore();
+  }
+
+  let initScheduledTimer;
+  function scheduleInitAll() {
+    clearTimeout(initScheduledTimer);
+    initScheduledTimer = setTimeout(function () {
+      requestAnimationFrame(initAll);
+    }, 150);
   }
 
   window.addEventListener("resize", adjustMaxContent);
@@ -1086,9 +1179,10 @@ footerTriggers.forEach(trigger => {
   window.addEventListener("resize", function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(tabControl, 250);
-  });
+  }); 
 
   window.__initCustomJS = initAll;
+  window.__scheduleInitCustomJS = scheduleInitAll;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", adjustMaxContentEarly, { once: true });
@@ -1100,26 +1194,3 @@ footerTriggers.forEach(trigger => {
 })
 
 ();
-
-document.querySelectorAll('.drop_btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const submenu = this.nextElementSibling;
-
-        document.querySelectorAll('.submenu').forEach(menu => {
-            if (menu !== submenu) {
-                menu.style.maxHeight = null;
-                menu.parentElement.classList.remove('active');
-            }
-        });
-
-        if (submenu.style.maxHeight) {
-            submenu.style.maxHeight = null;
-            this.parentElement.classList.remove('active');
-        } else {
-            submenu.style.maxHeight = submenu.scrollHeight + 'px';
-            this.parentElement.classList.add('active');
-        }
-    });
-});

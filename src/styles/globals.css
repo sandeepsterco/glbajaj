@@ -1,4 +1,7 @@
 @import "tailwindcss"; @theme { --font-tasa: "TASA Orbiter", sans-serif; }
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import "swiper/css/pagination";
 /* .strech_link { position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 9; }
 .has-html .fancybox__content { padding:0; }
 .gallery_tab span.active { background-color: var(--color-64); color:#fff; }

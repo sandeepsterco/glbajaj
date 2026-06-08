@@ -1,17 +1,17 @@
 import FullImageBanner from "../components/common/fullImageBanner/FullImageBanner";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
-import ReactParser from "../components/common/reactParser/ReactParser";
 import { cache } from "react";
+import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
     getPageSEO(),
     apiFetch("modular/home", { revalidate: 300 }),
   ]);
-  return { seoData, homeData: homeRes.data };  
+  return { seoData, homeData: homeRes.data };
 });
- 
+
 export async function generateMetadata() {
   const { seoData } = await getHomeData();
   return seoData;
@@ -20,11 +20,15 @@ export async function generateMetadata() {
 export default async function Home() {
   const { seoData, homeData } = await getHomeData();
 
-  if(!homeData?.modular && !homeData?.cms){
+  if (!homeData?.modular && !homeData?.cms) {
     return <div className="min-h-[100vh] flex items-center justify-center">
       <h1 className="text-[5rem] font-bold">Something wrong...</h1>
     </div>
   }
+
+  const combinedHtml = homeData?.cms
+    ? Object.values(homeData.cms).join("")
+    : "";
 
   return (
     <>
@@ -39,13 +43,9 @@ export default async function Home() {
       <main>
         <FullImageBanner data={homeData?.modular?.banner ?? []} />
 
-       
-      {homeData?.cms && (
-         Object.keys(homeData?.cms).map((key) => {
-          return <ReactParser key={key} html={homeData.cms[key]} />;
-        })
-      )}
-       
+
+        {combinedHtml && <ReactParserDynamic html={combinedHtml} />}
+
       </main>
     </>
   );

@@ -21,7 +21,7 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-.vm-description { height: 22rem; overflow: hidden; transition:0.2s all ease-in-out }
+/* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out } */
 .vm-description.expanded { height:auto; }
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
@@ -481,9 +481,10 @@
 .about_right p { margin-top: 5rem; max-width: 70%; }
 .about_bottom { padding-top: 5rem; }
 .about_ins_section { padding-top: 10rem; }
-.logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem 0; }
+.logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
 .logo_philosophy_grid h3 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
 .logo_philosophy_grid a { margin-left: -1.2rem; display: inline-block; }
+.about_ins_section .logo_philosophy_grid{padding-block: 10rem 0;}
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
 .our_inspiration_section::before { background-color: var(--color-64); bottom: 20rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
 .our_inspiration_grid { display: grid; grid-template-columns: 57.5% auto; gap: 15rem; }
@@ -792,14 +793,15 @@
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
-.dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; align-items: center; }
+.dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem;}
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
+.dep_projects .dep_project_grid .project_contentsec{padding-top: 3rem}
 .dep_projects { position: relative; }
 .dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; height: 100%; }
 .dep_projects.reverse::after { right:0; left:unset; background-image: url(/images/research_shap_02.png); }
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
-.project_contentsec .cus-btn { margin-top: 2rem; }
+.project_contentsec .cus-btn { margin-top: 2rem; width: auto; height: auto;}
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
@@ -1164,6 +1166,9 @@
 .spfc_tle h4,
 .spfc_tle>p { padding-bottom: 4rem; }
 .spfc_swiper { position: relative; }
+.spfc_swiper .sport_facilities { overflow: hidden; width: 100%; }
+.spfc_swiper .sport_facilities:not(.swiper-initialized) .swiper-wrapper { display: flex; }
+.spfc_swiper .sport_facilities:not(.swiper-initialized) .swiper-slide { flex-shrink: 0; width: 100%; }
 .spfc_swiper .navigation_btn { z-index: 9; }
 .spo_tabs_withswiper { padding-bottom: 10rem; }
 .spo_tabs_withswiper .swiper_prev_custom.swiper-button-lock,
@@ -1216,7 +1221,7 @@
 .best-practice .accordion-body ul li { list-style-type: disc; color: var(--color-D2); margin-bottom: 2rem; }
 .best-practice .accordion-body ul li::marker { width: 0.6rem; height: 0.6rem; }
 .best-practice .accordion-body ul li span { display: block; font-weight: 600; margin-bottom: 3rem; }
-.supporting-btn { font: var(--font-16); color: var(--color-white); background-color: var(--color-AE); padding: 1.4rem 2rem 1.3rem; margin-top: 6.7rem; display: inline-block; }
+.supporting-btn { font: var(--font-16); color: var(--color-white); background-color: var(--color-AE); padding: 1.4rem 2rem 1.3rem; margin-top: 6.7rem; display: inline-block;  width: auto; height: auto;}
 .iqac-menu-inner { margin-bottom: 5rem; }
 .iqac-menu-inner .about_menu_links li:first-child { padding-left: 0; }
 .iqac-menu-inner .about_menu_links { padding-bottom: 3.3rem; border-bottom: 1px solid #707070; }

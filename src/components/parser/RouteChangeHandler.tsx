@@ -4,10 +4,11 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-declare global{
-    interface Window {
-        __initCustomJS?: () => void;
-      }
+declare global {
+  interface Window {
+    __initCustomJS?: () => void;
+    __scheduleInitCustomJS?: () => void;
+  }
 }
 
 
@@ -16,14 +17,11 @@ export default function RouteChangeHandler() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Small delay to let the new DOM paint before initializing
-    const timer = setTimeout(() => {
-      if (typeof window.__initCustomJS === "function") {
-        window.__initCustomJS();
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
+    if (typeof window.__scheduleInitCustomJS === "function") {
+      window.__scheduleInitCustomJS();
+    } else if (typeof window.__initCustomJS === "function") {
+      window.__initCustomJS();
+    }
   }, [pathname]);
 
   return null;

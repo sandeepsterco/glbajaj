@@ -324,7 +324,7 @@ export default function ProgramDetailForm({
                 <option value="">
                   {formData.state
                     ? cities.length > 0 ? "City" : "No cities found"
-                    : "Select State First"}
+                    : "City"}
                 </option>
                 {cities.map(c => (
                   <option key={c.name} value={c.name}>{c.name}</option>

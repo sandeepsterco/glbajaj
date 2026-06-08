@@ -9,8 +9,8 @@ export default async function MainWorkshop({data, slug, departments, currentDepa
         <div className="col-xl-11">
             <div className="front_news">
                 <div className="news_left">
-                    <figure>
-                        <Image src={data.image || '/images/default/main-news.webp' } alt="GL Bajaj" className="img-fluid" width={850} height={519} />
+                    <figure className="flash-effect-2">
+                        <Image src={data?.image || '/images/default/main-news.webp' } alt="GL Bajaj" className="img-fluid" width={850} height={519} />
                     </figure>
                 </div>
                 <div className="news_right">

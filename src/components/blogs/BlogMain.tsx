@@ -11,7 +11,7 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
         <div className="col-xl-10">
           <div className="front_news">
             <div className="news_left">
-              <figure>
+              <figure className="flash-effect-2">
                 <Image
                   src={data?.image || "/images/blog-list-banner.webp"}
                   alt={data?.title || "GL Bajaj"}

@@ -1,6 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
+import NoData from "../ui/NoData";
 import DepartmentFilter from "./DepartmentFilter";
 
 interface Props {
@@ -11,6 +12,24 @@ interface Props {
 }
 
 export default function MainNews({ data, slug, departments, currentDepartment }: Props) {
+  if (!data) {
+    return (
+      <section className="news_section">
+        <div className="container">
+          <div className="col-xl-11">
+            <div className="news_head mb-4">
+              <DepartmentFilter
+                departments={departments}
+                currentDepartment={currentDepartment}
+              />
+            </div>
+            <NoData heading="No news & events found" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="news_section">
       <div className="container">

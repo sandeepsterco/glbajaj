@@ -5,12 +5,21 @@ import NavLinks from './NavLinks'; // <-- import client component
 import React from 'react';
 import { buildBreadcrumbs } from '@/src/lib/buildBreadcrumbs';
 
-export default async function PageHeader({ data, slug }: { data: any; slug: string;  }) {
+export default async function PageHeader({ data, slug, currentPageTitle }: { data: any; slug: string; currentPageTitle?:string  }) {
     const currentPageSlug = await getSlug(-2);
     const currentPage = data?.tabs?.find((tab: any) => tab.slug === data?.active_tab_slug);
     const activeSlug = data?.active_tab_slug;
-    const breadcrumbs = await buildBreadcrumbs(data);
+    const breadcrumbs = await buildBreadcrumbs(data, currentPageTitle);
     const pathname = await getPathname();
+    let totalLength;
+
+    console.log('page currentPageTitle',currentPageTitle);
+
+    if(currentPageTitle){
+        totalLength = breadcrumbs?.length-1
+    }else{
+        totalLength = breadcrumbs?.length-2
+    }
 
     return (
         <>
@@ -21,16 +30,16 @@ export default async function PageHeader({ data, slug }: { data: any; slug: stri
                             <div>
                                 <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
                             </div>
-                            <div className="about_breadcrumb">
+                            <div className="about_breadcrumb menus">
                                 {breadcrumbs?.map((item:any, idx:number)=>(
                                     <React.Fragment key={idx}>
                                         {item?.slug ? (
                                             <Link href={item?.slug}><p className="breadcrumb_main about_breadcrump_text">{item.label}</p></Link>
                                         ) : 
                                         (
-                                            <p className="breadcrumb_main about_breadcrump_text">{item.label}</p>
+                                            <p className="breadcrumb_main about_breadcrump_text">{item?.label}</p>
                                         )}
-                                        {idx < breadcrumbs?.length-1 && <FaChevronRight color='#fff' size={10} />}
+                                        {idx < totalLength && <FaChevronRight color='#fff' size={10} />}
                                     </React.Fragment>
                                 ))}
                                 {/* <p className="breadcrumb_main about_breadcrump_text">Home</p>

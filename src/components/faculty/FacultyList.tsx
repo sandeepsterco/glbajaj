@@ -26,7 +26,7 @@ export default function FacultyList({
       <div className="faculty_grid">
         {items.map((item: any, idx: number) => (
           <div key={idx} className="faculty_Bx">
-            <figure>
+            <figure className="flash-effect-2">
               <Image
                 src={item?.image || "/images/default/faculty.webp"}
                 width={255}

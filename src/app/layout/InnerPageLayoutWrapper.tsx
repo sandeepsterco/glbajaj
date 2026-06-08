@@ -3,7 +3,7 @@ import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
 import NotFound from "@/src/app/not-found";
 
-export default async function InnerPageLayoutWrapper({ slug, tabs, children, mainClass, showTabs }: { slug: string; children: React.ReactNode, tabs:any, mainClass:string, showTabs:boolean }) {
+export default async function InnerPageLayoutWrapper({ slug, tabs, children, mainClass, showTabs, currentPageTitle }: { slug: string; children: React.ReactNode, tabs:any, mainClass:string, showTabs:boolean, currentPageTitle?:string }) {
 
     let updatedTabs;
     if(tabs && tabs?.tabs?.length > 0){
@@ -18,7 +18,7 @@ export default async function InnerPageLayoutWrapper({ slug, tabs, children, mai
     return (
         <div className={mainClass || ''}>
             {updatedTabs && (
-            <PageHeader data={updatedTabs} slug={slug}  />
+            <PageHeader data={updatedTabs} slug={slug} currentPageTitle={currentPageTitle} />
             )}
             {children}
         </div>

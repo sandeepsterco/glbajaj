@@ -597,7 +597,7 @@
 .navigation_btn {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.6rem;
   margin-top: 3rem;
   padding-bottom: 1rem;
 }

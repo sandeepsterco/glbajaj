@@ -23,6 +23,9 @@
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
 /* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out } */
 .vm-description.expanded { height:auto; }
+
+.common_image_slider{overflow: hidden;}
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }

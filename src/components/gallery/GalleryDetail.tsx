@@ -220,10 +220,17 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                             </>
                                         ) : item.type === 'iframe' ? (
                                             <>
-                                                <img
+                                                <Image
                                                     src={item.src}
                                                     className="img-fluid"
                                                     alt={item.caption || `YouTube video ${idx + 1}`}
+                                                    width={640}
+                                                    height={426}
+                                                    loading='lazy'
+                                                    style={{
+                                                        height: "186px",
+                                                        objectFit: "cover",
+                                                      }}
                                                 />
                                                 <span>
                                                     <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" loading='lazy' />

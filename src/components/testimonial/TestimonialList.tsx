@@ -1,15 +1,17 @@
 import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
+import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
 const TESTIMONIAL_TABS = [
     { label: "Students", type: "student" },
     { label: "Recruiters", type: "recruiter" },
     { label: "Faculties", type: "faculties" },
+    { label: "Alumni", type: "alumni" },
 ] as const;
 
 export default function TestimonialList({ data, slug, activeType = "student" }: { data: any; slug: string; activeType?: string }) {
-    const showTabs = activeType !== "alumni";
+    const showTabs = activeType;
 
     return (
         <section className="faculty_section">
@@ -35,7 +37,7 @@ export default function TestimonialList({ data, slug, activeType = "student" }: 
                     </div>
                 )}
                 <div className="faculty_grid">
-                    {data.map((item: any, idx: number) => (
+                    {data?.data.map((item: any, idx: number) => (
                         <div key={idx} className="faculty_Bx">
                             <figure className="flash-effect-2">
                                 <Image src={item.image || ''} width={255} height={287} className="img-fluid" alt={item.name || 'faculty image'} loading="lazy" />
@@ -46,7 +48,7 @@ export default function TestimonialList({ data, slug, activeType = "student" }: 
                             {item?.branch && (
                                 <p>{item.branch}</p>
                             )}
-                            {activeType !== "alumni" && item?.type && (
+                            {item?.type && (
                                 <p>{item.type}</p>
                             )}
                             {item?.slug && (
@@ -58,6 +60,11 @@ export default function TestimonialList({ data, slug, activeType = "student" }: 
 
                 </div>
             </div>
+
+            <PaginationWrapper
+                    currentPage={data?.current_page || 1}
+                    totalPages={data?.last_page || 1}
+                />
         </section>
     )
 }

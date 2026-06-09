@@ -23,7 +23,8 @@ export default function FacultyTabular({
   return (
     <>
       <div className="tabular-list">
-        <div className="table-wrapper">
+        <div className="table-wrapper ">
+          <div className="table-responsive">
           <table>
             <thead>
               <tr>
@@ -52,6 +53,8 @@ export default function FacultyTabular({
               ))}
             </tbody>
           </table>
+          </div>
+          
         </div>
       </div>
 

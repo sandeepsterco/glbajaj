@@ -343,7 +343,7 @@
  .hod_right::before { height: auto; }
  }
 /* ==============Faculty page Start============= */
-.faculty_section { padding-block: 0 12.6rem; }
+.faculty_section { padding-block: 10rem 12.6rem; }
 .faculty_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
 .faculty_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: 22rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .faculty_Bx { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
@@ -618,7 +618,7 @@
 ========================= */
 .sterco_tabs_nav { position: relative; z-index: 2; padding-left: 12rem; }
 .sterco_tab_btn { position: relative; display: block; padding: 0.5rem 2rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
-.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; }
+.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain;}
 .sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
 /* =========================
    TAB CONTENT
@@ -642,11 +642,18 @@
 .sterco_tabs_nav { display: none; }
 .sterco_tab_panel { display: block; border-bottom: 1px solid #ddd; }
 .sterco_accordion_header { display: block; }
-.sterco_accordion_btn { width: 100%; padding: 1.5rem; border: none; background: #f5f5f5; text-align: left; cursor: pointer; font-weight: 600; }
+.sterco_accordion_btn { width: 100%; padding: 1.5rem; border: none; background: #f5f5f5; text-align: left; cursor: pointer; font-weight: 600; font: var(--font-18); }
 .sterco_accordion_content { display: none; grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; margin-top: 0; }
 .sterco_accordion_content::before { display: none; }
 .sterco_accordion_content.active { display: grid; }
 .sterco_content_box { padding-right: 0; }
+.sterco_accordion_btn{ position: relative;}
+.sterco_accordion_btn:after { content: ""; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; width: 1rem; height: 1.5rem; position: absolute; top: 1.7rem; right:2rem; transition: 0.5s; }
+.sterco_accordion_btn.active:after{ transform: rotate(90deg);}
+
+
+
+
  }
 /* ==============Research Code of Conduct page Start============= */
 .research_conduct { padding-block: 5rem 12rem; }

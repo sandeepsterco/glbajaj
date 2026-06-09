@@ -27,7 +27,7 @@ export default async function TestimonialPage({ searchParams }: { searchParams: 
     return (
         <>
             <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
-                <TestimonialList data={pagination?.data} slug={slug} type="alumni" />
+                <TestimonialList data={pagination?.data} slug={slug} activeType="alumni" />
                 <PaginationWrapper
                     currentPage={pagination?.current_page || 1}
                     totalPages={pagination?.last_page || 1}

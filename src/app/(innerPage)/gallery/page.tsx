@@ -10,8 +10,10 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 
-export default async function GalleryPage(){
-    const {data, error} = await apiFetch(`gallery`);
+export default async function GalleryPage({ searchParams }: { searchParams: Promise<{ page?: string }> }){
+    const { page } = await searchParams;
+    const currentPage = Number(page) || 1;
+    const {data, error} = await apiFetch(`gallery?page=${currentPage}`);
     const slug = await getSlug();
 
     if(error){

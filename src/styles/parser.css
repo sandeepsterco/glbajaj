@@ -1126,7 +1126,7 @@ main { overflow: hidden; }
 .conatct_svg img { min-width: 2rem; max-width: 2rem; }
 .others_mobile_menu { padding-bottom: 3rem; }
 .left_content { position: relative; }
-.shaping_future_leader h5{ font: var(--font-28);}
+.shaping_future_leader h5{ font: var(--font-28); letter-spacing: 0;}
  }
 
 @media (max-width:820px){
@@ -1196,6 +1196,17 @@ main { overflow: hidden; }
 .home_research_section .single_stat:nth-child(2) { border-left: 0; }
 .h_r_award_Card figure img { height: 5rem; }
 .home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev { display: none; }
+.group_counter ul { grid-template-columns: repeat(2, 1fr); }
+.shaping_future_grid{grid-template-columns: repeat(1, 1fr);}
+.shaping_future_Bx figcaption {
+    padding: 3rem 1rem 0;
+}
+.road-logo ul {
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+    gap: 2rem;
+}
+.road-logo ul li:nth-child(2), .road-logo ul li:nth-child(3){ display: none;}
  }
 @media (max-width:480px) {
  .home_sessions_section .data-overlay { top: 10%; }

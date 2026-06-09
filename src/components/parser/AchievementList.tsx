@@ -42,7 +42,7 @@ export default function AchievementList() {
             <div className="award-list">
                 {achievementData?.data && achievementData.data?.map((item: any, idx: number) => (
                     <div key={idx} className="award-box relative">
-                        <figure>
+                        <figure className="flash-effect-2">
                             <Image src={item.image || ''} width={600} height={443} className="w-100 img-fluid" loading="lazy" alt="award" data-aos="fade-up" data-aos-delay="200" />
                         </figure>
                         {item?.title && (

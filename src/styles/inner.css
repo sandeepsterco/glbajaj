@@ -343,7 +343,7 @@
  .hod_right::before { height: auto; }
  }
 /* ==============Faculty page Start============= */
-.faculty_section { padding-block: 0 12.6rem; }
+.faculty_section { padding-block: 10rem 12.6rem; }
 .faculty_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
 .faculty_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: 22rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .faculty_Bx { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
@@ -411,8 +411,8 @@
 .administration_section.messages_section .administration_Bx { background-color: var(--color-F5); }
 .administration_grid.messages_grid { grid-template-columns: repeat(2, 1fr); }
 .administration_section { padding-block: 10rem 15.9rem; background-color: var(--color-F4); }
-.administration_section .administration_grid .administration_Bx figure { display: none; }
-.administration_section .administration_grid .administration_Bx:nth-of-type(-n+4) figure { display: block; }
+.administration_section.admi_btm .administration_grid .administration_Bx figure { display: none; }
+.administration_section.admi_btm .administration_grid .administration_Bx:nth-of-type(-n+4) figure { display: block; }
 .administration_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
 .administration_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: -10rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .administration_Bx { background-color: var(--color-white); padding: 1.3rem; position: relative; }

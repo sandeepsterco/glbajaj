@@ -9,7 +9,7 @@ export default function MainGallery({data}:{data:any}){
                 <div className="gallery_grid">
                     {data?.map((item:any, idx:number)=>(
                         <div key={idx} className="gallery_grid_Bx">
-                            <figure>
+                            <figure className="flash-effect-2">
                                 <Image src={item.banner_image || '/images/default/gallery-main.webp'}  width={585} height={448} loading="lazy" className="img-fluid" alt={item.title || 'gallery'} />
                                 {(item.images > 0 || item.videos > 0) && (
                                     <span>

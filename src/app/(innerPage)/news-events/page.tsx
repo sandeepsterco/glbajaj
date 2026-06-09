@@ -59,10 +59,12 @@ export default async function NewsEvent({
       {otherListing.length > 0 && (
         <NewsListing data={otherListing} slug={slug} />
       )}
-      <PaginationWrapper
-        currentPage={pagination?.current_page || 1}
-        totalPages={pagination?.last_page || 1}
-      />
+      {allItems.length > 0 && (
+        <PaginationWrapper
+          currentPage={pagination?.current_page || 1}
+          totalPages={pagination?.last_page || 1}
+        />
+      )}
     </InnerPageLayoutWrapper>
   );
 }

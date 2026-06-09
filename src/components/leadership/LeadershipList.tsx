@@ -42,7 +42,7 @@ const MessageComponent = async ({ data }: { data: any }) => {
 
 const AdministrationComponent = ({ data }: { data: any }) => {
     return (
-        <section className="administration_section">
+        <section className="administration_section admi_btm">
             <div className="container25">
                 <h4 className="innerPage_title" data-aos="fade-up" data-aos-delay="200">Administration</h4>
                 <div className="administration_grid">

@@ -38,9 +38,12 @@ export default async function Workshop({
     return <ApiErrorFallback heading="Couldn't load Workshop Data" message={error} />;
   }
 
-  const pagination = data?.workshops;
-  const mainData = data?.workshops_first ?? null;
-  const otherListing: any[] = pagination?.data ?? [];
+  const pagination = data?.workshop;
+  const allItems: any[] = pagination?.data ?? [];
+
+  // First item → MainWorkshop, rest → WorkshopListing
+  const mainData = allItems[0] ?? null;
+  const otherListing = allItems.slice(1);
 
   const departments: { name: string; slug: string }[] = deptData?.data ?? [];
   const slug = "workshops";
@@ -56,10 +59,12 @@ export default async function Workshop({
       {otherListing.length > 0 && (
         <WorkshopListing data={otherListing} slug={slug} />
       )}
-      <PaginationWrapper
-        currentPage={pagination?.current_page || 1}
-        totalPages={pagination?.last_page || 1}
-      />
+      {allItems.length > 0 && (
+        <PaginationWrapper
+          currentPage={pagination?.current_page || 1}
+          totalPages={pagination?.last_page || 1}
+        />
+      )}
     </InnerPageLayoutWrapper>
   );
 }

@@ -2,9 +2,17 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
+import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import { getSlug } from "@/src/lib/getSlug";
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/program.css";
+import "@/src/styles/parser.css";
 
 export default async function NoticesAnnouncement() {
     const { data, error } = await apiFetch(`notice-and-announcements`);
+    const slug = await getSlug();
 
     if (error) {
         return (
@@ -16,25 +24,28 @@ export default async function NoticesAnnouncement() {
 
     return (
         <>
-          <section className="notice_announcement">
-            <div className="container25">
-                <div className="notice_grid">
-                    {updatedData && updatedData?.map((item:any, idx:number)=>(
-                        <div key={idx} className="notice_list">
-                            {item?.date && (
-                                <h4>{new Date(item.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</h4>
-                            )}
-                            {item?.title && (
-                                <p dangerouslySetInnerHTML={{__html:item.title}} />
-                            )}
-                            {item?.slug && (
-                                <Link href={`${BASE_URL}notices-announcements/${item.slug}`} className="strech_link" />
-                            )}
+            <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
+                <section className="notice_announcement">
+                    <div className="container25">
+                        <div className="notice_grid">
+                            {updatedData && updatedData?.map((item: any, idx: number) => (
+                                <div key={idx} className="notice_list">
+                                    {item?.date && (
+                                        <h4>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</h4>
+                                    )}
+                                    {item?.title && (
+                                        <p dangerouslySetInnerHTML={{ __html: item.title }} />
+                                    )}
+                                    {item?.slug && (
+                                        <Link href={`${BASE_URL}notices-announcements/${item.slug}`} className="strech_link" />
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-            </div>
-        </section>      
+                    </div>
+                </section>
+            </InnerPageLayoutWrapper>
+
         </>
     )
 }

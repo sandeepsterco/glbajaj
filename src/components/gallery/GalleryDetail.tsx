@@ -19,14 +19,14 @@ function getYoutubeThumbnail(url: string): string {
 }
 
 interface GalleryItem {
-    gallery_urls: string | null;
+    files: string | null;
     description: string;
     embed_url: string | null;
 }
 
 function isVideoItem(item: GalleryItem): boolean {
     if (item.embed_url) return true; // YouTube = video
-    const url = item.gallery_urls ?? '';
+    const url = item.files ?? '';
     return /\.(mp4|webm|ogg)$/i.test(url);
 }
 
@@ -57,7 +57,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                 };
             }
 
-            const url = item.gallery_urls ?? '';
+            const url = item.files ?? '';
             const isVideo = /\.(mp4|webm|ogg)$/i.test(url);
 
             return {

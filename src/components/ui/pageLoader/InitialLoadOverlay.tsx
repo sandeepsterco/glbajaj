@@ -1,45 +1,102 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageLoader from "./PageLoader";
 
-const MAX_OVERLAY_MS = 2200;
-const MIN_OVERLAY_MS = 280;
+const MAX_OVERLAY_MS = 8000;
+const MIN_OVERLAY_MS = 400;
+const POLL_MS = 80;
 
 /**
- * Never wait for window "load" — hero video and third-party scripts can block it
- * indefinitely and leave the overlay stuck.
+ * Full-page overlay for hard refresh / first document load only.
+ * Root layout keeps this mounted; it does not remount on client navigation,
+ * so per-route loading.tsx still handles in-app redirects.
  */
+function isRouteSkeletonVisible() {
+  return Boolean(
+    document.querySelector(".main-container .page-loader-content")
+  );
+}
+
+function isMainContentReady() {
+  const container = document.querySelector(".main-container");
+  if (!container) return false;
+  if (isRouteSkeletonVisible()) return false;
+
+  if (
+    container.querySelector(
+      ".happenings_page, main .swiper, main video, main iframe, .home_cms_section"
+    )
+  ) {
+    return true;
+  }
+
+  const main = container.querySelector("main");
+  if (main && (main.textContent?.trim().length ?? 0) > 60) {
+    return true;
+  }
+
+  const text = container.textContent?.trim() ?? "";
+  return container.scrollHeight > 280 && text.length > 80;
+}
+
 export default function InitialLoadOverlay() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const startedAt = performance.now();
-    let done = false;
+    let finished = false;
 
     const finish = () => {
-      if (done) return;
-      done = true;
+      if (finished) return;
+      finished = true;
+      cleanupRef.current?.();
+      cleanupRef.current = null;
+
       const elapsed = performance.now() - startedAt;
       const remaining = Math.max(0, MIN_OVERLAY_MS - elapsed);
-      window.setTimeout(() => setIsLoaded(true), remaining);
+      window.setTimeout(() => setIsDone(true), remaining);
     };
 
-    if (document.readyState !== "loading") {
-      finish();
-      return;
-    }
+    const tryFinish = () => {
+      if (isMainContentReady()) {
+        finish();
+        return true;
+      }
+      return false;
+    };
 
-    document.addEventListener("DOMContentLoaded", finish, { once: true });
-    const fallback = window.setTimeout(finish, MAX_OVERLAY_MS);
+    if (tryFinish()) return;
+
+    const poll = window.setInterval(() => {
+      if (tryFinish()) window.clearInterval(poll);
+    }, POLL_MS);
+
+    const maxTimeout = window.setTimeout(finish, MAX_OVERLAY_MS);
+
+    const container = document.querySelector(".main-container");
+    const observer = container
+      ? new MutationObserver(() => {
+          tryFinish();
+        })
+      : null;
+
+    observer?.observe(container!, { childList: true, subtree: true });
+
+    cleanupRef.current = () => {
+      window.clearInterval(poll);
+      window.clearTimeout(maxTimeout);
+      observer?.disconnect();
+    };
 
     return () => {
-      document.removeEventListener("DOMContentLoaded", finish);
-      window.clearTimeout(fallback);
+      cleanupRef.current?.();
+      cleanupRef.current = null;
     };
   }, []);
 
-  if (isLoaded) return null;
+  if (isDone) return null;
 
-  return <PageLoader variant="overlay" label="Loading site" />;
+  return <PageLoader variant="overlay" label="Loading" />;
 }

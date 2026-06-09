@@ -31,11 +31,14 @@
  .kf_grid { grid-template-columns: repeat(1, 1fr); }
 .tp_cam_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
 .tp_cam_col:nth-child(2) { border-top: .1rem solid #c0855280; border-bottom: .1rem solid #c0855280; border-left: none; border-right: none; padding: 3rem 0; }
-.teamX_grid { grid-template-columns: repeat(1, 1fr); }
 .our_recruiters .our_recruiters-grid { grid-template-columns: repeat(2, 1fr); }
 .our_age_right { grid-template-columns: repeat(1, 1fr); gap: 0; }
 .or_edge_pt { display: none; }
  }
+@media (max-width: 640px) {
+ .teamX_grid { grid-template-columns: repeat(1, 1fr); }
+}
+
 @media (max-width:480px) {
  .our_recruiters .our_recruiters-grid { grid-template-columns: repeat(1, 1fr); }
  }

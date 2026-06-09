@@ -976,6 +976,7 @@
 /* =============Training & Placement - Overview  Start============= */
 .tp_overview { padding-block: 5rem 10rem; }
 .tp_ov_title { margin-bottom: 7rem; }
+.tp_overview .row{ margin: 0;}
 .tp_ov_grid { display: grid; gap: 7.3rem; grid-template-columns: 37% auto; }
 .tp_ov_grid .tp_ov_left > .custom_bullet { margin-bottom: 3rem; }
 .admis_pro_pdfsec a { font: var(--font-16); border-bottom: 1px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom: 4rem; padding-bottom: 1rem; font-weight: 700; margin-top: 2rem; display: inline-flex; color: var(--color-33); }
@@ -1092,6 +1093,8 @@
 .transport-tabs .item { border: 1px solid #ddd; margin-bottom: 10px; }
 .transport-tabs .item-content { display: none; }
 .transport-tabs .item.active .item-content { display: block; }
+.about_breadcrumb.menus{ display: none;}
+
  }
 /* =============Transport Facilities  End============= */
 /* ============= Other Facilities   End============= */
@@ -1308,7 +1311,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .strategies-box:not(:first-child) h2 { font: var(--font-48); color: var(--color-64); }
 .strategies-box .Cnt { padding: 4.1rem 3.6rem 3.2rem 3rem; }
 .iqac-function { margin-block: 10rem 10.3rem; }
-.iqac-function .inner-iqac-function { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
+.iqac-function .inner-iqac-function { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 14.5rem; position: relative; }
 .inner-iqac-function-grid { display: grid; grid-template-columns: 60% 40%; }
 .inner-iqac-function-grid .inner-iqac-function-img { padding-right: 15rem; margin-left: -23rem; }
 .custome_list li { list-style-type: disc; margin-bottom: 2rem; }

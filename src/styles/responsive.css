@@ -49,13 +49,18 @@
 .governance-and-advisory-boards .research-sec { padding-block: 5rem 3rem; }
 .governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(2, 1fr); }
 .governance-and-advisory-boards .cabIntroX_sex { padding-bottom: 0; }
-.team-members-grid { grid-template-columns: repeat(2, 1fr); }
+.team-members-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem;}
 .committee_members { padding-block: 5rem; }
 .about_section h2{ letter-spacing:0rem; padding-right: 0; font: var(--font-28);}
 .inspiration_section h3{font: var(--font-28); margin-bottom: 4rem; letter-spacing: 0;}
 .philosophy_section h2{font: var(--font-28); letter-spacing: 0;}
 .visionary_message h3{font: var(--font-28); letter-spacing: 0;}
 .group_section h2 {font: var(--font-28); letter-spacing: 0;}
+.cabX_title_sec{ padding-bottom: 4rem;}
+.cabX_title_sec h3{font: var(--font-28); letter-spacing: 0;}
+.cabX_sec { padding-block: 5rem; }
+
+
 
 .about_section .row{ margin: 0;}
 .visionary_message figure{ margin-top: 0;}
@@ -98,7 +103,26 @@
 .message_details { grid-template-columns: 20% auto; padding-block: 7.2rem 0; }
 .message_cnt h3{ font: var(--font-30); letter-spacing: 0;}
 .visionary_section{ padding-block: 5rem;}
-
+.about_breadcrumb.menus{ display: none;}
+.sterco_accordion_content.active{ margin: 0; display: block;}
+.campus-facilities-transport .sterco_accordion_content, .csr-activities-page .sterco_accordion_content { margin-top: 0; }
+.sterco_tab_content .row{ margin: 0;}
+.sterco_accordion_content{ padding: 2rem 2rem 5rem;}
+.sterco_tabs_sec .sterco_tab_main{ padding:2rem;}
+.sterco_accordion_content figure{ margin-top: 3rem;}
+.sterco_tab_btn{ font: var(--font-24);}
+.sterco_tab_content .col-lg-10{ width: 100%;}
+.team-members div > p{ margin-bottom: 1rem; line-height: 1.3;}
+.llatest_sec .row{ margin: 0;}
+.llatest_grid{ display: flex; flex-direction: column-reverse; gap: 4rem;}
+.llatest_imgsec img{ width: 100%;}
+.llatest_left .title48{ font: var(--font-36);}
+.llatest_sec { padding-bottom: 5rem; }
+.cabIntroX_grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; display: grid; }
+.cabIntroX_card{ padding: 2.5rem;}
+.cabIntroX_img{ max-width: 20rem;}
+.cabIntroX_sex{ padding-block: 0 5rem;}
+.cabIntroX_info .cabIntroX_name{ line-height: 1.3;}
 
  }
 
@@ -123,11 +147,16 @@
 .philosophy_left p { padding-right: 0; }
 .message_details { grid-template-columns: 12% auto; padding-block: 7.2rem 0; gap: 3rem; }
 .chairman_grid{ display: flex;}
-
+.pdf_box .fac_mainpdf{grid-template-columns: repeat(2, 1fr); gap: 1.5rem;}
+.facilities_policy { padding-block: 5rem; }
+.sterco_tab_btn:after{width: 1rem; height: 1rem;}
+.sterco_content_box{ padding-right: 0;}
+.sterco_tabs_sec .sterco_tab_main:before{ z-index: -1; left: 0; right: 0; display: none;}
+.sterco_tab_main{  background-color: var(--color-ed);}
 
  }
 
- 
+
 @media (max-width: 767px) {
  .the_institute_grid { gap: 4rem; padding-top: 3.2rem; }
 .institute_cnt ul { margin-top: 3rem; }
@@ -171,6 +200,8 @@
 .our_inspiration_grid figure>img{ max-width: 30rem; margin-bottom: 3rem;}
 .logo_philosophy_grid figure{ max-width: 15rem;}
 .philosophy_right figure img{ max-width: 20rem;}
+.team-members{padding: 2rem;}
+
  }
 @media (max-width: 620px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
@@ -199,6 +230,15 @@
 .philosophy_cnt img{max-width: 5rem;}
 .about_ins_section figure.ins_big_img img { min-height: 30rem; object-fit: cover; }
 .our_inspiration_grid figure > img { max-width: 25rem; margin-bottom: 3rem; }
+.pdf_box .fac_mainpdf{grid-template-columns: repeat(1, 1fr); gap: 1.5rem;}
+.custom_pages_lists{ display: flex; flex-wrap: wrap;}
+.custom_pages_lists li{ width: 100%;}
+.custom_pages_lists .tab_btn{ text-align: left;}
+.team-members-grid { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
+.team-members div{ min-height: 100%;}
+.committee_members h5 { margin-bottom: 3rem; }
+.cabIntroX_grid { grid-template-columns: repeat(1, 1fr); gap: 2rem; }
+
 
 /* the-group */ }
 @media (max-width: 575px) {

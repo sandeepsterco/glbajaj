@@ -410,4 +410,59 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .member-grid:before { z-index: 0; }
 .dean blockquote { font: var(--font-18); font-weight: 600; margin: 0; }
 
+@media (max-width:991px){
+    .award-heading h3 span{ display: inline; letter-spacing: 0;}
+    .award-heading h3 {font: var(--font-28); letter-spacing: 0;}
+    .award-list{ margin-top: 5rem;}
+    .award-box p{ line-height: 1.4;}
+    .award-sec{ padding-block: 5rem;}
+    .award-box p{ padding: 2rem 0;}
+    .csr-txt h3 {font: var(--font-28); letter-spacing: 0;}
+    .csr-sec { padding-block: 5rem; }
+    .csr-list{ display: flex; flex-wrap: wrap; padding-block: 0 5rem;}
+    .csr-bg:before{ display: none;}
+    .csr-text-list { padding: 0rem ; }
+    .csr-text h3 {font: var(--font-30); letter-spacing: 0; margin-bottom: 2rem;}
+    .csr-text-list1 { padding: 0; }
+    .csr-list-new{display: flex; padding-block: 0 5rem; flex-direction: column-reverse; margin-top: 2rem;}
+    .csr-img{ width: 100%;}
+    .csr-list2 .csr-text-list { padding: 0; }
+    .csr-list2{ display: flex; flex-wrap: wrap;}
+    .csr-list2{padding-block: 5rem;}
+    .csr-sec1 { padding-block: 0; }
+    .road-list { grid-template-columns: 100%; gap:5rem; display: grid; }
+    .road-logo{padding-inline: 0;}
+    .road-img:before{ display: none;}
+    .road-text { padding-top: 0; }
+    .road-text h3{font: var(--font-30); letter-spacing: 0;}
+    .csr-design1{ position: relative; display: none;}
+    .road-left-img{ display: none;}
+    .road-list-bottom{grid-template-columns:100%; padding-top: 5rem;}
+    .training-img{ display: none;}
+    .csr-sec2{ padding-block: 5rem; margin-top: 5rem;}
+    .stationary-list{ grid-template-columns: repeat(1, 1fr);}
+    .stationary-text { padding: 2rem 0; }
+    .blanket-text { padding: 0; }
+    .blanket-box, .blanket-list { margin-right: 0; display: flex; flex-direction: column-reverse; gap: 3rem;}
+    .csr-sec3{ padding-block: 5rem;}
+    .csr-sec3 .row, .csr-sec4 .row{ margin: 0;}
+    .blanket-text h3{font: var(--font-30); letter-spacing: 0;}
+    .clothes-text { padding: 0; }
+    .clothes{ display: flex; flex-wrap: wrap; flex-direction: column-reverse; gap: 3rem; padding-top: 2rem;}
+    .csr-sec4 { padding-block: 0 5rem; }
+    .sterco_tabs_nav{ padding: 0;}
+    .program-text h6 a{ line-height: 1.3;}
+
+
+
+
+
+
+
+}
+
+@media (max-width:640px){
+    .award-list{grid-template-columns: repeat(1, 1fr);}
+}
+
 

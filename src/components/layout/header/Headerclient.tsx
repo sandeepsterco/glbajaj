@@ -532,14 +532,15 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                     <h4 className="title24">{menuData.title}</h4>
                   )}
                   <ul>
-                    {menuData.children.map((item, itemIdx) => (
+                    {menuData.children.map((item:any, itemIdx:number) => (
                       <li key={itemIdx}>
                         <Link
-                          href={item?.slug ? BASE_URL + item.slug : ""}
-                          onClick={() => setSidebarOpen(false)}
-                        >
-                          {item.title}
-                        </Link>
+                        href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : ""}
+                        target={item?.target_blank_url ? "_blank" : "_self"}
+                        onClick={() => setSidebarOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
                       </li>
                     ))}
                   </ul>

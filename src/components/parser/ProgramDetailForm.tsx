@@ -4,7 +4,8 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
 import { State, City } from "country-state-city";
-import { API_URL } from "@/src/config/config";
+import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
+import RecaptchaField from "./RecaptchaField";
 
 interface Department {
   name: string;
@@ -18,10 +19,10 @@ interface FormData {
   countryCode: string;
   phone: string;
   dob: string;
-  state: string;       // isoCode e.g. "UP"
-  stateLabel: string;  // display name
+  state: string;      
+  stateLabel: string;  
   city: string;
-  department: string;  // slug
+  department: string; 
 }
 
 interface FormErrors {
@@ -32,7 +33,16 @@ interface FormErrors {
   state?: string;
   city?: string;
   department?: string;
+  recaptcha?: string;
 }
+
+type ApiFieldErrors = Record<string, string[] | string>;
+
+type ApiResponse = {
+  success?: boolean;
+  message?: string;
+  errors?: ApiFieldErrors;
+};
 
 interface SubmitState {
   status: "idle" | "loading" | "success" | "error";
@@ -64,6 +74,15 @@ function validate(fd: FormData): FormErrors {
   return e;
 }
 
+function normalizeApiErrors(errors?: ApiFieldErrors): FormErrors {
+  const normalized: FormErrors = {};
+
+  Object.entries(errors ?? {}).forEach(([field, value]) => {
+    normalized[field as keyof FormErrors] = Array.isArray(value) ? value[0] : value;
+  });
+
+  return normalized;
+}
 
 export interface ProgramDetailFormProps {
   /** Pre-select department when opened from program list modal */
@@ -96,6 +115,8 @@ export default function ProgramDetailForm({
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
   const [submitState, setSubmitState] = useState<SubmitState>({ status: "idle", message: "" });
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
 
   // Pre-select department when slug is available (detail page or list modal)
   useEffect(() => {
@@ -118,6 +139,11 @@ export default function ProgramDetailForm({
     setFormData(prev => ({ ...prev, city: "" }));
     if (errors.city) setErrors(prev => ({ ...prev, city: undefined }));
   }, [formData.state]);
+
+  const resetRecaptcha = () => {
+    setRecaptchaToken(null);
+    setRecaptchaKey((key) => key + 1);
+  };
 
   // Generic field change handler
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -161,19 +187,26 @@ export default function ProgramDetailForm({
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
 
+    if (RECAPTCHA_SITE_KEY && !recaptchaToken) {
+      setErrors((prev) => ({ ...prev, recaptcha: "Please complete the reCAPTCHA verification." }));
+      setSubmitState({ status: "error", message: "Please complete the reCAPTCHA verification." });
+      return;
+    }
+
     setSubmitState({ status: "loading", message: "" });
 
     try {
       const selectedDept = departments.find(d => d.slug === formData.department);
 
       const payload = {
-        name:   formData.name.trim(),
-        email:  formData.email.trim(),
+        name: formData.name.trim(),
+        email: formData.email.trim(),
         phone: formData.phone.trim(),
-        dob:            formData.dob,
-        state:          formData.stateLabel,
-        city:           formData.city,
-        department_name:     selectedDept?.name ?? formData.department,
+        dob: formData.dob,
+        state: formData.stateLabel,
+        city: formData.city,
+        department_name: selectedDept?.name ?? formData.department,
+        ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       };
 
       const res = await fetch(`${API_URL}program-form`, {
@@ -182,13 +215,20 @@ export default function ProgramDetailForm({
         body: JSON.stringify(payload),
       });
 
-      const result = await res.json();
+      const result: ApiResponse = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !result.success) {
+        const apiErrors = normalizeApiErrors(result.errors);
+        setErrors((prev) => ({ ...prev, ...apiErrors }));
+        setTouched((prev) => ({
+          ...prev,
+          ...Object.fromEntries(Object.keys(apiErrors).map((key) => [key, true])),
+        }));
         setSubmitState({
           status: "error",
-          message: result?.message || result?.error || "Something went wrong. Please try again.",
+          message: result?.message || "Something went wrong. Please try again.",
         });
+        resetRecaptcha();
         return;
       }
 
@@ -201,8 +241,10 @@ export default function ProgramDetailForm({
       setFormData({ name: "", email: "", countryCode: "+91", phone: "", dob: "", state: "", stateLabel: "", city: "", department: "" });
       setTouched({});
       setErrors({});
+      resetRecaptcha();
     } catch {
       setSubmitState({ status: "error", message: "Network error. Please check your connection and try again." });
+      resetRecaptcha();
     }
   };
 
@@ -210,7 +252,7 @@ export default function ProgramDetailForm({
 
   // Helper — show error only when field has been touched
   const fieldError = (field: keyof FormErrors) =>
-    touched[field] && errors[field] ? (
+    touched[field as keyof FormData] && errors[field] ? (
       <p className="field-error" role="alert">{errors[field]}</p>
     ) : null;
 
@@ -360,6 +402,21 @@ export default function ProgramDetailForm({
             the form of SMS/E-mail/Call.
           </div>
 
+          {RECAPTCHA_SITE_KEY ? (
+            <div className="form-group" style={{ marginTop: "1rem" }}>
+              <RecaptchaField
+                key={recaptchaKey}
+                siteKey={RECAPTCHA_SITE_KEY}
+                onChange={(token) => {
+                  setRecaptchaToken(token);
+                  setErrors((prev) => ({ ...prev, recaptcha: undefined }));
+                }}
+                onExpired={() => setRecaptchaToken(null)}
+              />
+              {errors.recaptcha ? <p className="field-error" role="alert">{errors.recaptcha}</p> : null}
+            </div>
+          ) : null}
+
           {/* Submit */}
           <button className="btn" type="submit" disabled={isSubmitting}>
             {isSubmitting
@@ -385,56 +442,6 @@ export default function ProgramDetailForm({
         </form>
       </div>
 
-      <style>{`
-        .field-error {
-          display: block;
-          margin-top: 4px;
-          font-size: var(--font-16);
-          color: #e53e3e;
-        }
-        .has-error input,
-        .has-error select {
-          border-color: #e53e3e !important;
-        }
-        .btn-loading {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .spinner {
-          width: 16px;
-          height: 16px;
-          border: 2px solid rgba(255,255,255,0.4);
-          border-top-color: #fff;
-          border-radius: 50%;
-          animation: spin 0.7s linear infinite;
-          display: inline-block;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
-        .form-feedback {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          margin-top: 14px;
-          padding: 12px 16px;
-          border-radius: 6px;
-          font-size: var(--font-18);
-          line-height: 1.5;
-          font-weight: 500;
-        }
-        .form-feedback--success {
-          background: #f0fff4;
-          border: 1px solid #68d391;
-          color: #276749;
-        }
-        .form-feedback--error {
-          background: #fff5f5;
-          border: 1px solid #fc8181;
-          color: #c53030;
-        }
-        .feedback-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-      `}</style>
     </div>
   );
 }

@@ -179,7 +179,7 @@ const options: HTMLReactParserOptions = {
     if (domNode instanceof Element && domNode.attribs) {
 
       // ✅ Hide empty block/inline elements (no visible text or child elements)
-      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'td', 'th', 'ul', 'ol', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'figure', 'figcaption', 'blockquote', 'pre', 'code', 'sup', 'sub', 'button', 'iframe', 'nav', 'main', 'picture', 'source', 'video', 'audio', 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'g', 'use', 'label', 'form', 'input', 'textarea', 'select', 'option', 'dl', 'dt', 'dd', 'small', 'mark', 'details', 'summary'];
+      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'td', 'th', 'ul', 'ol', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'figure', 'figcaption', 'blockquote', 'pre', 'code', 'sup', 'sub', 'button', 'iframe', 'nav', 'main', 'picture', 'source', 'video', 'audio', 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'g', 'use', 'label', 'input', 'textarea', 'select', 'option', 'dl', 'dt', 'dd', 'small', 'mark', 'details', 'summary'];
       if (emptyTags.includes(domNode.name)) {
         const hasText = domNode.children.some(
           (child) => child.type === 'text' && (child as any).data?.trim() !== ''

@@ -238,6 +238,14 @@
     .scrolled .bottom_header .btn_head_menu { padding-block: 2rem; }
   }
 
+
+  @media (max-width:640px){
+    .global_search_dialog .sec_inpu_box{max-width: 90%;}
+    .global_search_dialog .sec_inpu_box input{padding: 1rem 5.5rem 1rem 2rem; font: var(--font-16);}
+    .global_search_dialog .secbtn_close{top: 2rem; right: 1.6rem;}
+    .secbtn_close svg{ width: 2rem;}
+  }
+
   @media (max-width:480px){
     .menu_bars { width: auto; }
   }

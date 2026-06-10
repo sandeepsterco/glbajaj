@@ -541,6 +541,8 @@
 .exam-system-page .kf_grid { grid-template-columns: repeat(2, 1fr); }
 /* Examinations - System of Evaluation css end */
 .iicenter_bottom_content p a { color: var(--color-AE); font-weight: 600; }
+.reserch_bx:has(h4:empty) { margin-block:0rem; }
+
 @media (max-width:1536px) {
  .homeFac_tabs { grid-template-columns: 21% 72%; }
 .home_testimonials .grid { gap: 11rem; }
@@ -1131,8 +1133,18 @@ main { overflow: hidden; }
 .exam-system-page { padding-block: 5rem; }
 .examrules_table_wrap .exam_tabsec > h4{ padding-top:2rem;}
 .res_publication { padding-block: 5rem; }
-
-
+.hod_grid{ display: flex; flex-direction: column-reverse;}
+.hod_section { padding-block: 5rem; overflow: hidden; }
+.hod_right { margin-top: 0; }
+.hod_left h3{ margin-bottom: 2rem; font: var(--font-28); letter-spacing: 0; font-weight: 600;}
+.hod_left{ padding-top: 3rem;}
+.hod_left p { padding-right: 0rem; }
+.admis_pro_pdfsec a{border-bottom: 0px solid #d7d4d4; margin-bottom: 0;}
+.hod_right:before{    inset: 0 .5rem -7rem 10rem;}
+.reserch_bx:has(h4:not(:empty)) h4 { margin-block: 3rem 2rem; }
+.anti-ragging-page { padding-top: 5rem; }
+.res_pub_title h4:empty{ display: none;}
+.notice_announcement { padding-block: 5rem; }
 
  }
 
@@ -1141,12 +1153,18 @@ main { overflow: hidden; }
   .chairman_left h3{  margin-bottom: 3rem;}
   .chairman_left p { padding-right: 0; }
   .chairman_section{ border-bottom: 0; padding-bottom: 0;}
-  .hod_details { margin-top: 3rem; padding-top: 4rem; }
+  .hod_details { margin-top: 3rem; padding-top: 4rem; } 
+  .chairman_grid { display: flex; }
 }
 
-@media (max-width:820px) {
- .chairman_grid { display: flex; }
- }
+@media (max-width:767px){
+  .iicenter_section{ padding-block: 5rem;}
+  .iicenter_heading_wrap h4{ margin-bottom: 2rem;}
+  .iicenter_section:after{background-size: cover; width: 100%; height: 5.3rem;}
+  .iicenter_bottom_content { padding-top: 2rem; }
+  .res_publication table th:first-child{ white-space: nowrap;}
+
+}
 
 
 @media (max-width:640px) {
@@ -1197,11 +1215,19 @@ main { overflow: hidden; }
 .exam-system-page .kf_grid { grid-template-columns: repeat(1, 1fr); }
 .res_publication .table-wrapper tbody tr td:last-child{ white-space: nowrap;}
 .tp_ov_pattern { display: none;}
+.research_conduct h3, .academic_facility_section h2, .or_cmit_right h3{ font: var(--font-24);}
+.our_cmit_grid { gap: 3rem; }
 
  }
+
 @media (max-width:480px) {
  .home_sessions_section .data-overlay { top: 10%; }
  .examrules_text { padding-top: 2rem; }
+ .or_commit_sec .our_enqsec{ display: none;}
+ .commitees-and-chairs .res_publication.grievance-policy{ padding-bottom: 0;}
+ .grievance .res_publication .res_publication_ttl p:empty{ display: none;}
+ .res_publication_ttl h4:empty{ display: none;}
+ .grievance .res_publication .res_publication_ttl p{ padding-block:0 2rem; padding-top: 0;}
 
  }
 @media (max-width:360px) {

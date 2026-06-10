@@ -563,9 +563,10 @@
 .academic_counter li p { margin-bottom: 0; }
 .classroom_facility { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding-top: 7rem; }
 .classroom_facility li { font: var(--font-18); color: var(--color-black); font-weight: 600; padding-right: 2rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); padding-bottom: 3rem; }
-.library_grid { display: grid; grid-template-columns: 60% auto; gap: 13rem; padding-block: 8rem 5rem; position: relative; }
+.library_grid { display: grid; grid-template-columns: 60% auto; gap: 10rem; padding-block: 8rem 5rem; position: relative; }
+.academic_library .row{ margin-left: 0;}
 .library_grid::before { background-color: var(--color-F4); position: absolute; top: 0; bottom: 0; content: ""; width: 100%; z-index: -1; left: 15rem; }
-.library_right h4 { margin-block: 4rem; }
+.library_right h4 { margin-block: 3rem; }
 .library_img { position: relative; position: relative; }
 .library_img ul { position: absolute; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); padding-inline: 25rem; z-index: 2; }
 .library_img::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; bottom: 0; left: 0; right: 0; height: 25.6rem; content: ""; }
@@ -573,6 +574,8 @@
 .library_img ul li:first-child { border-left: 1px solid rgba(255, 255, 255, 0.5); }
 .the_collection_grid { display: grid; grid-template-columns: 40% auto; gap: 1rem; position: relative; padding-block: 5rem 15rem; }
 .the_collection_grid::before { background-color: var(--color-F4); position: absolute; top: 0; bottom: 0; content: ""; width: 100%; z-index: -1; right: 15rem; }
+.collection_section .row{ margin: 0;}
+.about_right img{ width: 100%;}
 .collection_cnt { padding-right: 12rem; }
 .collection_cnt h3 { margin-bottom: 4rem; }
 .collection_cnt p { margin-bottom: 3rem; }
@@ -612,7 +615,7 @@
 .academic_tab_reverse .sterco_tab_main .sterco_tabs_nav { position: absolute; right: 20.5rem; max-width: 57rem; }
 .academic_tab_reverse .sterco_tab_panel { margin-left: -13rem; }
 .academic_tab_reverse .sterco_accordion_content { grid-template-columns: 51% auto; margin-top: -16rem; padding-block: 13rem; display: grid; gap: 15rem; }
-.academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; }
+.academic_tab_reverse .sterco_tab_main:before { left: 133px; right: -17.5rem; bottom: 65%; }
 .academic_tab_reverse .sterco_accordion_content:before { left: -2.5rem; }
 .campus-facilities-transport .sterco_accordion_content { margin-top: -25rem; }
 .csr-activities-page .sterco_accordion_content { margin-top: -25rem; }
@@ -631,7 +634,7 @@
 .sterco_accordion_content { position: relative; display: grid; grid-template-columns: 40% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 11rem 10rem; margin-top: -38rem; }
 /* .sterco_accordion_content::before { content: ""; position: absolute; top: 10rem; bottom: 0; left: -15.5rem; right: -2.5rem; background-color: var(--color-F4); z-index: -1; }
 */
-.sterco_content_box { padding-right: 6rem; padding-bottom: 0rem; }
+.sterco_content_box { padding-right: 1rem; padding-bottom: 0rem; }
 .sterco_content_box p { margin-bottom: 0; }
 .sterco_accordion_content figure { margin: 0; }
 .sterco_accordion_content img { width: 100%; display: block; }
@@ -659,6 +662,7 @@
 .research_conduct h3 { margin-bottom: 4rem; }
 .research_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; padding-top: 5rem; }
 .reserch_bx h4 { margin-block: 8rem 4rem; }
+.reserch_bx h4:empty{ display: none;}
 .reserch_bx .custom_bullet { padding-right: 6rem; }
 .reserch_bx p { padding-right: 5rem; }
 .reserch_bx .custom_bullet li { margin-block: 2.5rem; }
@@ -891,8 +895,9 @@
 .careerg_title h3 { margin-bottom: 8rem; }
 .careerg_imggrd { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 .career_empo_sec { background-color: var(--color-F4); padding-block: 10rem 10rem; position: relative; }
+.careerg_imgbx img{ width: 100%;}
 .career_emptitle { margin-bottom: 6.5rem; position: relative; }
-.career_emptitle:before { content: ""; left: 0; top: -10rem; height: 1rem; width: 69.3rem; background-color: var(--color-FE); position: absolute; }
+.career_emptitle:before { content: ""; left: 0; top: -10rem; height: 1rem; max-width: 69.3rem; background-color: var(--color-FE); position: absolute; width: 100%; }
 .career_emptitle p { font: var(--font-30); padding-right: 1.5rem; }
 .careerTabsX { display: grid; grid-template-columns: 71.2% 24.6%; gap: 5rem; align-items: center; }
 .careerTabsX_btn { font: var(--font-21); padding-bottom: 1.6rem; margin-bottom: 4rem; border-bottom: 0.1rem dashed var(--color-92); display: table; cursor: pointer; }
@@ -1398,7 +1403,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .computer-center .reports { display: grid; grid-template-columns: 35%; margin-block: 4rem; }
 .computer-center .reports .fac_policy_list { display: flex; align-items: center; gap: 3rem; justify-content: start; background-color: transparent; padding: 0 0 2.5rem 0; border-bottom: 1px solid #7070706e; }
 .computer-center-top { position: relative; }
-.computer-center-top::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
+.computer-center-top::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; max-width:100%; height: 1.1rem; top: -10rem; }
 .computer-lab-bg { background: var(--color-89); padding: 5rem 12.4rem 4.9rem 5.2rem; display: grid; grid-template-columns: 38.3% auto; gap: 6.3rem; margin-top: 8.1rem; }
 .computer-lab-bg h3 { font: var(--font-21); font-weight: 700; color: var(--color-white); }
 .computer-lab-Cnt { padding-top: 2rem; }
@@ -1737,6 +1742,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .our_recruiters .our_recruiters-grid li img { transition: transform 0.4s ease; }
 .our_recruiters .our_recruiters-grid li:hover img { transform: scale(1.08); }
 .placement_main { padding-block: 8rem 10rem; }
+.placement_main .row{ margin: 0;}
 .placement_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .place_box { background-color: #f3e9dced; border-radius: 1.5rem; }
 .place_infobox h3 { font: var(--font-24); color: #633d27; margin-bottom: 1.5rem; font-weight: bold; }
@@ -2254,3 +2260,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx { position: relative; }
 .bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
+.career_empo_sec2 .row{ margin: 0;}
+
+

@@ -68,6 +68,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-duration h3, .program-intake h3, .program-approvals h3 { letter-spacing: -1.8px; color: var(--color-64); }
 .program-duration p { color: var(--color-33); font: var(--font-16); font-weight: 500; }
 .program-img { margin-left: -17rem; }
+.program-form{ margin-top: 4rem;}
 .form-container { background: var(--color-white); box-shadow: 0px 13px 34px #0000000D; opacity: 1; backdrop-filter: blur(3px); padding: 3.5rem; height: 100%; }
 .form-container .form-group { margin-bottom: 1.5rem; }
 .form-container input, .form-container select, .form-container textarea { width: 100%; padding: 1.2rem; border: 1px solid #E1E1E1; font: var(--font-16); outline: none; color: var(--color-black); background:#fff; }
@@ -85,6 +86,7 @@ textarea::placeholder { color: var(--color-black); }
 .form-container .login-text { text-align: center; margin-top: 2.5rem; font:var(--font-16); }
 .form-container .login-text a { text-decoration: none; color: var(--color-black); }
 .form-container .login-text a:hover { color: var(--color-64); }
+.contact-admission .contact-icon{ display: none;}
 @media(min-width:2300px) {
  .form-container input, .form-container select { padding: 0.8rem; }
 .form-container .btn { width: 100%; padding: 1.4rem; }
@@ -411,6 +413,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .member-grid:before { z-index: 0; }
 .dean blockquote { font: var(--font-18); font-weight: 600; margin: 0; }
 
+@media (max-width:1280px){
+    .program-btn a{padding: 1rem 1.5rem;}
+}
+
 @media (max-width:991px){
     .award-heading h3 span{ display: inline; letter-spacing: 0;}
     .award-heading h3 {font: var(--font-28); letter-spacing: 0;}
@@ -468,7 +474,19 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .examinar_grid{gap: 6rem;}
     .exam_pdfsec ul li a{ font: var(--font-16);}
     .exam_pdfsec ul li{margin-bottom: 2rem; padding-bottom: 2rem;}
-    
+    .txdcx_banner_img figcaption h3{ font: var(--font-30); line-height: 1.2; letter-spacing: 0;}
+    .txdcx_banner_img figcaption { bottom: 5rem; left: 5rem; }
+    .txdcx_banner_img figcaption p{ font: var(--font-16);}
+    .tcex_btm_des { padding-top: 5rem; }
+    .txdcx_banner_img figcaption h3{ font: var(--font-18);}
+    .txdcx_banner_img figcaption p{ font: var(--font-14);}
+    .contact-sec { padding-block: 5rem; }
+    .contact-list{ display: block;}
+    .contact-form .form-container{ margin-top: 3rem; padding: 2.5rem;}
+    .direction{ display: block;}
+    .direction .direction-img{ display: none;}
+    .contact-form input{ padding: 0.7rem 1.5rem;}
+    .our-tem-sec h3:empty, .our-tem-sec h4:empty{ display: none;}
 
 
 }
@@ -479,6 +497,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .examinar_grid { gap: 6rem; display: flex; flex-wrap: wrap;}
     .exam_imgbox{ width: 100%;}
     .exam_pdfsec{ width: 100%;}
+    .txdcx_banner_img figcaption { bottom: 2rem; left: 2rem; }
+    .txdcx_banner_img figure>img{ min-height: 30rem; object-fit: cover;}
+    .cont-mail a{ line-height: 2.3;}
+
 
 }
 
@@ -487,6 +509,11 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .apply-btn{ padding: 0 4rem 0 0;}
     .affiliation { padding: 0; }
     .duration:first-child { padding: 0 2rem 0 0; }
+    .contact-admission { grid-template-columns: repeat(1, 1fr); display: grid; }
+    .admission-box:nth-child(2), .admission-box:nth-child(4){border: 1px solid var(--color-C0); margin-top: -0.1rem;}
+    .admission-box:nth-child(3){margin-top: -0.1rem;}
+    .form-container{ padding: 2rem;}
+
 
 }
 @media (max-width:375px){

@@ -1589,6 +1589,6 @@ a:not([href]):not([class]):hover {
   bottom: 0;
 }
 
-/* @media (max-width:991px){
-  .row { display: block; flex-wrap: wrap; margin-right: 0rem; margin-left: 0rem; }
-} */
+@media (max-width:991px){
+  .row { margin-right: 0rem; margin-left: 0rem; }
+}

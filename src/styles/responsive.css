@@ -22,7 +22,8 @@
 @media (min-width: 1399px) {
  .home .home_testimonials .desc { min-height: 25rem; }
  }
-@media (max-width: 1199px) {
+@media (max-width: 1280px) {
+    
  }
 @media (max-width: 991px) {
  .best-practice .accordion-item.active .accordion-body { padding-right: 6.6rem; }
@@ -58,8 +59,18 @@
 .group_section h2 {font: var(--font-28); letter-spacing: 0;}
 .cabX_title_sec{ padding-bottom: 4rem;}
 .cabX_title_sec h3{font: var(--font-28); letter-spacing: 0;}
-.cabX_sec { padding-block: 5rem; }
+.research_conduct h3{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.academic_facility_section h2{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.or_cmit_right h3{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.tcex_btm_des .font36{font: var(--font-28); letter-spacing: 0; line-height: 1.3; margin-bottom: 2rem;}
+.tp_ov_title h4{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.value_bgbox .title36 {font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.industrial_visit_section h3 {font: var(--font-28); letter-spacing: 0; line-height: 1.3; margin-bottom: 3rem;}
+.careerg_title h3 { margin-bottom:3rem; font: var(--font-28); letter-spacing: 0; line-height: 1.3; }
 
+
+.cabX_sec { padding-block: 5rem; }
+.tp_ov_title { margin-bottom: 2rem; }
 .about_section .row{ margin: 0;}
 .visionary_message figure{ margin-top: 0;}
 .message_details:before{ display: none;}
@@ -106,7 +117,7 @@
 .campus-facilities-transport .sterco_accordion_content, .csr-activities-page .sterco_accordion_content { margin-top: 0; }
 .sterco_tab_content .row{ margin: 0;}
 .sterco_accordion_content{ padding: 2rem 2rem 5rem;}
-.sterco_tabs_sec .sterco_tab_main{ padding:2rem;}
+.sterco_tabs_sec .sterco_tab_main{ padding:2rem 0;}
 .sterco_accordion_content figure{ margin-top: 3rem;}
 .sterco_tab_btn{ font: var(--font-24);}
 .sterco_tab_content .col-lg-10{ width: 100%;}
@@ -131,6 +142,9 @@
 .tp_overview .custom_bullet li{ color: var(--color-33);}
 .value-education-sec2 .inner-iqac-function { padding: 3rem; }
 .inner-iqac-function-grid{ display: block;}
+.inner-iqac-function .inner-iqac-function-grid-2{ display: grid; grid-template-columns: 100%; gap:2rem;}
+
+.inner-iqac-function .inner-iqac-function-grid-2 .inner-iqac-function-Cnt{ order: 2;}
 .inner-iqac-function-grid .inner-iqac-function-img{ margin: 0; padding: 0;}
 .excellence-center-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 0; }
 .inner-iqac-function-grid-2 .inner-iqac-function-img{ padding: 0; margin: 0;}
@@ -145,6 +159,134 @@
 .teamX_titlesec:has(h4:empty){ display: none;}
 .placement_grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
 .placement_main { padding-block: 5rem; }
+.research_conduct { padding-block: 5rem; }
+.research_grid{padding-top: 3rem;}
+.academic_facility_section .row{ margin: 0;}
+.the_classroom_grid{ padding-top: 5rem; gap: 9rem;}
+.the_classroom_grid{ display: flex; flex-wrap: wrap; flex-direction: column-reverse;}
+.classroom_cnt_Bx > p { padding-right: 0; padding-block: 2rem 3rem; }
+.classroom_facility li{ line-height: 1.3;}
+.library_grid{ padding-block:5rem; grid-template-columns:100%; gap: 3rem;}
+.library_right h4{ font: var(--font-24);}
+.library_img ul{ padding-inline: 0;}
+.library_img ul li{ font: var(--font-14);}
+.collection_cnt { padding-right: 0; }
+.the_collection_grid { grid-template-columns: 100%; padding-block: 5rem; display: flex; flex-direction: column-reverse; flex-wrap: wrap; }
+.library_grid:before{ display: none;}
+.academic_facility_section{ padding-block: 5rem 2rem;}
+.the_collection_grid:before{ display: none;}
+.lab_cnt { padding-right: 0; }
+.the_lab_grid { padding-block: 5rem; grid-template-columns: 100%;}
+.sterco_tabs_sec { background-color: var(--color-ed);}
+.sterco_tab_btn{padding: .5rem 2rem 0.5rem 0;}
+.sterco_tab_btn:after{width: 1rem; height: 1rem; top: 1.6rem;}
+.sterco_tab_content .sterco_accordion_content { padding: 2rem 0;}
+.academic_library .row{ margin: 0;}
+.lab_cnt h4{ font: var(--font-28); line-height: 1.3; padding-block: 2rem;}
+.lab_section .row{ margin: 0;}
+.sterco_accordion_content{ display: block; margin-top: 2rem;}
+
+.sterco_tabs_sec .sterco_accordion_content{ display: flex; flex-direction: column-reverse;}
+.sterco_tabs_sec .sterco_accordion_content:before{ display: none;}
+.library_img ul{ background-color: var(--color-33); position: relative; grid-template-columns: repeat(3, 1fr);}
+.collection_cnt h3{ margin-block:3rem 2rem;}
+.computer-center:after{ display: none;}
+.computer-center{ padding-block: 5rem;}
+.computer-lab-bg{margin-top: 5rem; padding: 5rem 2rem; grid-template-columns:100%; gap: 2rem;}
+.computer-lab-bg p{ margin-block: 2rem;}
+.comuter-lab-bottom{ margin: 0; padding-block: 5rem 0;}
+.computer-center-top:before{ top: -5rem;}
+.computer-lab-bg ul li{ line-height: 1.8rem;}
+.comuter-lab-bottom{ display: flex; flex-direction: column-reverse;}
+.comuter-lab-bottom-img { padding-right: 0; width: 100%; }
+
+.computer-center-galley{ padding-block: 5rem;}
+.comuter-lab-bottom h3{ margin-bottom: 2rem;}
+.computer-center-galley-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem;}
+.computer-center-galley-grid figcaption h3{ line-height: 1.4;}
+.academic_tab_reverse .sterco_tab_main .sterco_tabs_nav { max-width: 100%; position: relative; right: 0; }
+.academic_tab_reverse{ padding-block:3rem 5rem;}
+.academic_tab_reverse .sterco_tab_panel { margin-left: 0; }
+.academic_tab_reverse .sterco_accordion_content{ margin:4rem 0 0; padding: 0; gap: 3rem;}
+.workshop { padding-block: 5rem; }
+
+.computer-lab-bg ul{ width: 100%; gap: 5rem; padding-top: 2rem;}
+.academic_tab_reverse .view-details{padding: 1rem 2rem 1rem;}
+.computer-center-galley-grid figure>img{ width: 100%;}
+.our_cmit_grid{ gap: 5rem;}
+.anti_ragging_section ul{ padding: 2rem;}
+.anti_ragging_section { margin-bottom: 0rem; }
+.our_cmit_grid p:empty{ display: none;}
+.programmes_offered { padding-block: 5rem; }
+.programmes_ct_title h4{ font: var(--font-36); font-weight: 600;}
+.programmes_offered_sec .cus-btn{margin-top:1rem;}
+.admission_process p { padding-right: 0; }
+.admission_process .tp_ov_pattern{ display: none;}
+.course_grid { gap: 3rem; display: flex; flex-wrap: wrap; }
+.course_grid_Bx{ width: 100%;}
+
+.courses_admission_section{padding-block: 0 5rem;}
+.res_publication_ttl p:empty{ display: none;}
+.admission_fee_structure .table-wrapper{ padding-block: 0 5rem;}
+.iqac-mission-vission { padding-block: 5rem; }
+.iqac-mission-vission-grid{ padding: 2rem; display: block;}
+.iqac-vission .pattern_img{ display: none;}
+.iqac-mission-Cnt h2:empty{ display: none;}
+.iqac-goal{ margin-top: 3rem;}
+.iqac-mission-vission h2 { margin-bottom: 2rem; }
+.leteral_entry_grid{ display: block;}
+.fee_payment_section { padding: 2rem; margin-top: 3rem; }
+.fee_payment_section_Cnt, .fee_payment_section_adres { padding-inline: 0; }
+.fee_payment_section_adres:before{left: 0; right: 0;}
+.fee_payment_section figure{ display: none;}
+
+.fee_payment_section_adres{ padding-block: 2rem ;}
+.leteral_entry_section { padding-block: 0 5rem; }
+
+.table-description { padding-block: 5rem; }
+.fee-refund-policy .res_publication + .table-description{padding-block: 0 5rem}
+.contact-heading h3{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
+.institute_faq_section { padding: 5rem 0; }
+.institute_faq_section .tp_accbox{padding: 3rem;}
+.institute_faq_section .tp_accbox .accordion-header .icon{ height: 4rem; width: 4rem; padding: 0;}
+.tp_overview .tp_ov_grid{ grid-template-columns:100%; display: grid;}
+.tp_overview .tp_ov_grid .tp_ov_left { order: 2;}
+.tp_overview .tp_ov_grid .tp_ov_rgtimg { order: 1;}
+.tp_overview .tp_ov_pattern{ display: none;}
+.our_enqsec a{ font: var(--font-28); font-weight: 600;}
+.or_cmit_right h4 { margin-bottom: 2rem; }
+.our_cmit_grid { gap: 3rem; }
+.our_recruiters { padding-block: 5rem; }
+.ct_grd_bx figure{ display: none;}
+.res_publication .res_publication_ttl{ display: none ;}
+.international_relations_section { padding-block: 5rem; }
+.school_of_ai { padding-block: 5rem; }
+.school_of_ai blockquote{ font: var(--font-21); line-height: 1.3; padding-block: 2rem 4rem;}
+.school_of_ai h3{ font: var(--font-28); font-weight: 600;}
+.vvdn_technologies { padding-block: 5rem; }
+.institutional-grid .institutional-img { padding-left: 0; }
+.institutional-grid{ display: flex; flex-direction: column-reverse; gap: 3rem;}
+.institutional-img img{ width: 100%;}
+.vvdn-Cnt blockquote{ max-width: 100%; font: var(--font-21);  line-height: 1.3; padding-block: 2rem 4rem;}
+.institutional-grid-2{display: flex; flex-direction: column; gap: 3rem;}
+.institutional-grid-2 .institutional-img { padding-right: 0; }
+.vvdn-Cnt p { max-width: 100%; }
+.school_of_ai p { padding-right: 0; }
+.careergX_sec { padding-block: 5rem; }
+.career_empo_sec2 { padding-block: 0 5rem; }
+.tocr_grid { gap:5rem; display: flex; flex-direction: column-reverse; justify-content: center; }
+.tocr_right{ width: 100%;}
+.tocr_left h3{ font: var(--font-36);}
+.career_sec_tabmain{padding-block: 5rem;}
+.career_emptitle p{ font: var(--font-21);}
+.career_emptitle { margin-bottom: 2rem; }
+.career_sec_tabmain .xtabs_sec{ display: flex; flex-direction: column-reverse;}
+.career_sec_tabmain:before{ display: none;}
+.xtabs_nav{ width: 100%;}
+.xtab_content_area{ width: 100%;}
+.career_emptitle p{padding-right: 0rem;}
+
+
 
  }
 
@@ -224,6 +366,18 @@
 .philosophy_right figure img{ max-width: 20rem;}
 .team-members{padding: 2rem;}
 .faculty_header .form-select { max-width: 48%; }
+.the_classroom_grid{ gap: 5rem;}
+.sterco_tabs_sec .sterco_accordion_content{ display: none;}
+.sterco_tabs_sec .sterco_accordion_content.active{ display: block;}
+.computer-center .reports{grid-template-columns: 30rem;}
+.sterco_content_box{ padding-bottom: 2rem;}
+.xacc_header .xacc_btn{ font: var(--font-18); display: flex; justify-content: space-between; background-color: #f6f6f6; padding:2rem 2rem; width: 100%; text-align: left; margin-bottom: 1rem;}
+.school_ai_grid{ grid-template-columns: repeat(2, 1fr);}
+.industrial_visit_section h3, .careerg_title h3{ font: var(--font-24); font-weight: 600;}
+.career_sec_tabmain .xacc_header .xacc_btn{ background-color: var(--color-white);}
+
+
+
  }
 @media (max-width: 620px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
@@ -262,6 +416,13 @@
 .cabIntroX_grid { grid-template-columns: repeat(1, 1fr); gap: 2rem; }
 .placement_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
 .place_imgbox > figure { height: auto;}
+.research_grid{ display: flex; flex-wrap: wrap;}
+.reserch_bx .custom_bullet { padding-right: 0; }
+.reserch_bx p { padding-right: 0; }
+.reserch_bx .custom_bullet li:last-child{ margin-block: 2.5rem 0;}
+.our_ts_sec ul li a{ font: var(--font-18);}
+.our_ts_sec ul li a img { width: 2.6rem; height: 2.5rem; }
+
 
 
 /* the-group */ }
@@ -285,13 +446,31 @@
 .governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(1, 1fr); }
 
 .about_section h2{ font: var(--font-24); font-weight: 600; line-height: 1.3;}
+.tcex_btm_des .font36{ font: var(--font-24); font-weight: 600; line-height: 1.3;}
 .inspiration_section h3{font: var(--font-24); font-weight: 600; line-height: 1.3;}
+.industrial_visit_section h3 {font: var(--font-24); font-weight: 600; line-height: 1.3;}
 .media_grid { grid-template-columns: repeat(1, 1fr); }
 .faculty_header .form-select { max-width: 100%; }
 .faculty_header{ flex-wrap: wrap; gap: 2rem;}
-
+.research_conduct h3{  font: var(--font-24); line-height: 1.3; font-weight: 600;}
+.research_conduct h3, .academic_facility_section h2{  font: var(--font-24); line-height: 1.3; font-weight: 600;}
+.classroom_facility{ grid-template-columns: repeat(1, 1fr);}
+.library_img ul{ grid-template-columns: repeat(1, 1fr); gap: 2rem; padding: 2rem;}
+.library_img ul li{ padding: 0; border: 0;}
+.computer-center-galley-grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
+.lab_cnt h4{ padding-right: 0; font: var(--font-24);}
+.sterco_accordion_btn{ line-height: 1.4;}
+.courses_btn { justify-content: center; gap: 1rem; display: flex; flex-wrap: wrap; }
+.tp_ov_title h4{ font: var(--font-24); font-weight: 600;}
+.admission_process .apply_now{ padding: 1rem 2.5rem;}
+.res_publication .table-responsive{ margin-bottom: 2rem;}
+.ct_grd_bx .ct_info h2{ font: var(--font-36);}
+.school_ai_grid { grid-template-columns: repeat(1, 1fr); }
+.careerg_imggrd { grid-template-columns: 100%; }
 
  }
+
+
 @media (max-width: 399px) {
  /* the-group */
 .group_counter ul li { padding: 2rem; }
@@ -301,6 +480,5 @@
 .about_ins_section figure.ins_big_img img { object-fit: cover; min-height: 25rem; }
 .administration_grid{ gap: 0; padding-block: 3rem 0;}
 .administration_Bx{margin-block:3rem;}
-
 
  }

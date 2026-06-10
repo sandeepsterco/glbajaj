@@ -18,7 +18,7 @@ export async function buildBreadcrumbs(data: any, currentPageTitle?:string) {
     ...(parent_menus ? parent_menus.map((item: any) => (item.url ? { label: item.title, slug: BASE_URL + item.url } : { label: item.title })) : []),
     ...(isProgram ? [{ label: "Programs Offered", slug: BASE_URL + "programs-offered" }] : []),
     ...(isDepartmentDetail ? ([{label:"Departments", slug:BASE_URL + "departments"}]) : []),
-    ...(isDepartmentDetail ? ([{label:data?.tab_title}]) : []),
+    ...(isDepartmentDetail ? ([{label:data?.tab_title ?? data?.department_name}]) : []),
     { label: data?.menu_title ?? data?.page_title ?? '' },
     currentPageTitle && {label:currentPageTitle}
   ];

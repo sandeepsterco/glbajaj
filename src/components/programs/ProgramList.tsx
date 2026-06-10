@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { apiFetch } from "@/src/lib/api";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
-import { BASE_URL } from "@/src/config/config";
+import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import ProgramApplyModal from "./ProgramApplyModal";
@@ -11,7 +11,7 @@ interface Program {
   name: string;
   duration: string;
   affiliation: string | null;
-  type: string;
+  type: string | null;
   slug: string;
 }
 
@@ -67,12 +67,9 @@ function ProgramBox({
           <span>{program.affiliation || "-"}</span>
         </div>
         <div className="apply-btn">
-          <button
-            type="button"
-            onClick={() => onApply(departmentSlug)}
-          >
+          <Link href={APPLY_NOW ?? '/apply-now'}>
             Apply Now
-          </button>
+          </Link>
         </div>
         <div className="program-btn">
           <Link href={`/program/${program.slug}`}>
@@ -203,11 +200,11 @@ export default function ProgramList() {
         </div>
       </div>
 
-      <ProgramApplyModal
+      {/* <ProgramApplyModal
         open={applyModal.open}
         departmentSlug={applyModal.departmentSlug}
         onClose={closeApplyModal}
-      />
+      /> */}
     </section>
   );
 }

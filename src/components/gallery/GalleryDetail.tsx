@@ -50,7 +50,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
         return galleryUrls.map((item: GalleryItem) => {
             if (item.embed_url) {
                 return {
-                    src: getYoutubeThumbnail(item.embed_url),
+                    src: item.files ?? getYoutubeThumbnail(item.embed_url), 
                     embedUrl: item.embed_url,
                     type: 'iframe' as const,
                     caption: item.description ?? '',
@@ -224,13 +224,9 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                                     src={item.src}
                                                     className="img-fluid"
                                                     alt={item.caption || `YouTube video ${idx + 1}`}
-                                                    width={640}
-                                                    height={426}
+                                                    width={392}
+                                                    height={261}
                                                     loading='lazy'
-                                                    style={{
-                                                        height: "186px",
-                                                        objectFit: "cover",
-                                                      }}
                                                 />
                                                 <span>
                                                     <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" loading='lazy' />

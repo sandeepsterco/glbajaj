@@ -835,12 +835,12 @@
         let moreText = content.querySelector(".more-text");
   
         if (moreText.classList.contains("show")) {
-          dots.style.display = "inline";
+          // dots.style.display = "inline";
           moreText.classList.remove("show");
           this.innerHTML = '<i class="bi bi-plus-lg"></i>';
           this.classList.remove("active");
         } else {
-          dots.style.display = "none";
+          // dots.style.display = "none";
           moreText.classList.add("show");
           this.innerHTML = '<i class="bi bi-dash-lg"></i>';
           this.classList.add("active");

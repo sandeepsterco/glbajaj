@@ -220,6 +220,11 @@
     .hmburger_grid {overflow: auto;}
   }
 
+    @media (max-width:1280px){
+        .menu_bars{width: 9rem;}
+    }
+
+
   @media (max-width:991px){
     .humburger_mainsec{ display: none;}
     .site_nav > ul{ display: none;}
@@ -231,4 +236,8 @@
     .menu_bars .search_open { margin-right: 0; padding-right: 0; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.3); padding-left: 2rem; }
     .bottom_header .container-fluid{ padding-inline: 3rem;}
     .scrolled .bottom_header .btn_head_menu { padding-block: 2rem; }
+  }
+
+  @media (max-width:480px){
+    .menu_bars { width: auto; }
   }

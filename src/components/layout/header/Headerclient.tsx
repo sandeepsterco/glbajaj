@@ -219,7 +219,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                   className="navbar-brand"
                   aria-label="GL Bajaj home"
                 >
-                  {isScrolled || (!isHome && !megaMenuOpen) ? (
+                  {(isScrolled && !megaMenuOpen) || (!isHome && !megaMenuOpen) ? (
                     <Image
                       src="/images/logo/colored-logo.png"
                       alt="GL Bajaj University"

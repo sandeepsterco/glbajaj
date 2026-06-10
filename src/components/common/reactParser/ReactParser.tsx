@@ -177,6 +177,21 @@ const DepartmentFacultyGrid = dynamic(
 const options: HTMLReactParserOptions = {
   replace(domNode) {
     if (domNode instanceof Element && domNode.attribs) {
+
+      // ✅ Hide empty block/inline elements (no visible text or child elements)
+      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'td', 'th', 'ul', 'ol', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'figure', 'figcaption', 'blockquote', 'pre', 'code', 'sup', 'sub', 'button', 'iframe', 'nav', 'main', 'picture', 'source', 'video', 'audio', 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'g', 'use', 'label', 'form', 'input', 'textarea', 'select', 'option', 'dl', 'dt', 'dd', 'small', 'mark', 'details', 'summary'];
+      if (emptyTags.includes(domNode.name)) {
+        const hasText = domNode.children.some(
+          (child) => child.type === 'text' && (child as any).data?.trim() !== ''
+        );
+        const hasElement = domNode.children.some(
+          (child) => child.type === 'tag'
+        );
+        if (!hasText && !hasElement) {
+          return <></>;  // ✅ renders nothing
+        }
+      }
+
       if (domNode.name === "img") {
         const props = attributesToProps(domNode.attribs) as any;
         const resolvedSrc = (() => {

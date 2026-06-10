@@ -29,11 +29,8 @@ export default async function TestimonialPage({ searchParams }: { searchParams: 
         <>
             <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
 
-                <TestimonialList data={pagination?.data} slug={slug} activeType={activeType} />
-                <PaginationWrapper
-                    currentPage={pagination?.current_page || 1}
-                    totalPages={pagination?.last_page || 1}
-                />
+                <TestimonialList data={pagination} slug={slug} activeType={activeType} />
+                
 
             </InnerPageLayoutWrapper>
         </>

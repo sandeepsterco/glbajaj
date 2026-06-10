@@ -264,6 +264,7 @@
       ".sport_facilities",
       ".ncc_rank_ceremony",
       ".AKTU_Swiper",
+      ".default_image_slider",
       ".workshop_slider_wrapper",
     ].forEach((sel) => {
       destroySwipersBySelector(sel);
@@ -666,6 +667,16 @@
           spaceBetween: 40,
         },
       },
+    });
+
+    // Replace the single createSwiper call with this:
+    document.querySelectorAll(".default_image_slider").forEach((el) => {
+      createSwiperOnElement(el, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: false,
+        autoplay: { delay: 2000 },
+      }, ".default_image_slider");
     });
 
     return true;

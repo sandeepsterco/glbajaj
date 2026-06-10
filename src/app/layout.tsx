@@ -3,17 +3,18 @@ import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 import MainWrapper from "../components/MainWrapper";
+import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 // import 'animate.css';
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 // import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../styles/custom.css";
 // import "../styles/program.css";
 import "../styles/globals.css";
+import "../components/ui/pageLoader/page-loader.css";
 // import "../styles/module.css";
 
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
-import Script from "next/script";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>
           <AOSProvider>
+            <InitialLoadOverlay />
             <Header />
             <MainWrapper>{children}</MainWrapper>
             <Footer />

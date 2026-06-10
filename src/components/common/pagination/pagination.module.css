@@ -76,3 +76,7 @@
     font-size: 13px;
   }
 }
+
+@media (max-width:640px){
+    .pageLink { min-width: 25px; height: 25px; }
+}

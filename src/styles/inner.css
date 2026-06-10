@@ -1592,6 +1592,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumi_vision_mission_grid { display: grid; grid-template-columns: 25% 25% auto; gap: 10rem; padding-block: 0 10rem; z-index: 1; position: relative; }
 .alumi_vision_mission_grid h4 { margin-bottom: 3rem; }
 .alumni_about_vision{z-index: -1;position: relative;}
+.entrepreneurship .alumni_about_vision{padding-block: 10rem 10rem;}
 .al_vision_Bx p { font: var(--font-30); color: var(--color-33); }
 .alumni_objsec { position: relative; background-color: var(--color-64); padding-block: 10rem 11rem; }
 .alumni_obgrid { display: grid; grid-template-columns: 58% auto; gap: 15rem; }

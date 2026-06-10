@@ -11,7 +11,7 @@ export default function ContactForm() {
         address: '',
         phone: '',
         email: '',
-        query: '',
+        message: '',
         type: '',
     });
 
@@ -21,7 +21,7 @@ export default function ContactForm() {
             address: '',
             phone: '',
             email: '',
-            query: '',
+            message: '',
             type: '',
         })
     }
@@ -91,7 +91,7 @@ export default function ContactForm() {
 
                     <div className="form-group">
                         <textarea id="exampleFormControlTextarea1" rows={5}
-                            placeholder="Query" name="query" value={fieldsData.query} onChange={changeHandler}></textarea>
+                            placeholder="Message" name="message" value={fieldsData.message} onChange={changeHandler}></textarea>
                     </div>
 
                     <div className="form-group">

@@ -247,6 +247,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_contact { display: flex; gap: 4.5rem; flex-wrap: wrap; }
 .home_footer .footer_contact h4 { font: var(--font-16); font-weight: 600; color: var(--color-white); }
 .home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font: var(--font-16); color: var(--color-white); text-decoration: none; }
+.home_footer .footer_contact a:hover{ color: #d2ab67}
 .home_footer .footer_contact p{ color: var(--color-white);}
 @media (max-width: 1920px) {
  .home_footer .footer_contact { gap: 2.5rem; }
@@ -264,6 +265,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_bottom_left { display: flex; gap: 5rem; flex-wrap: wrap; }
 .home_footer .footer_bottom p { color: var(--color-white); margin-bottom: 0; font: var(--font-14); }
 .home_footer .footer_bottom_left a { color: var(--color-white); text-decoration: none; }
+.home_footer .footer_bottom_left a:hover{ color:#d2ab67;}
 .home_footer .footer_bottom_right { display: flex; align-items: center; gap: 4.7rem; flex-wrap: wrap; }
 /* SOCIAL */
 .home_footer .social_icons {

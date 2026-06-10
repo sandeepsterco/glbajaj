@@ -2257,9 +2257,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx { position: relative; }
 .bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
-<<<<<<< HEAD
 .career_empo_sec2 .row{ margin: 0;}
 
 
-=======
->>>>>>> 13b798808e30a257522a627b7494755e3cabbfb5

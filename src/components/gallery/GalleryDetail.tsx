@@ -230,7 +230,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                                     style={{
                                                         height: "186px",
                                                         objectFit: "cover",
-                                                      }}
+                                                    }}
                                                 />
                                                 <span>
                                                     <img src="/images/icons/play-button.svg" className="img-fluid" alt="video play" loading='lazy' />

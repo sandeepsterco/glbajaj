@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function BlogGrid({ data, slug }: { data: any; slug: string }) {
   return (
     <div className="blog_Bx">
-      <figure>
+      <figure className="flash-effect-2">
         <Image
           src={data?.image || "/images/blog-listing-placeholder.webp"}
           className="img-fluid"

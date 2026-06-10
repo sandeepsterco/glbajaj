@@ -252,7 +252,7 @@ export default function ProgramDetailForm({
 
   // Helper — show error only when field has been touched
   const fieldError = (field: keyof FormErrors) =>
-    touched[field] && errors[field] ? (
+    touched[field as keyof FormData] && errors[field] ? (
       <p className="field-error" role="alert">{errors[field]}</p>
     ) : null;
 

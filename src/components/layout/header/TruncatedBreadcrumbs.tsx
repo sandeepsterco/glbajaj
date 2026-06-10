@@ -52,19 +52,6 @@ export default function TruncatedBreadcrumbs({ breadcrumbs, totalLength }: Props
     return () => observer.disconnect();
   }, [compute]);
 
-  // Check if rendered width > 40% of container25 (width-based trigger)
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const containerWidth = containerRef.current.closest('.container25')?.clientWidth ?? 0;
-    const selfWidth = containerRef.current.scrollWidth;
-    if (selfWidth > containerWidth * 0.4 && hiddenItems.length === 0 && breadcrumbs.length > 2) {
-      const first = breadcrumbs[0];
-      const last2 = breadcrumbs.slice(-2);
-      const middle = breadcrumbs.slice(1, -2);
-      setHiddenItems(middle);
-      setVisibleItems([first, ...last2]);
-    }
-  });
 
   const renderItem = (item: BreadcrumbItem) =>
     item.slug ? (

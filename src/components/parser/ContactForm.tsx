@@ -12,13 +12,13 @@ type ContactFormState = {
   address: string;
   phone: string;
   email: string;
-  message: string;
+  description: string;
   type: string;
 };
 
 type ApiResponse = {
   success?: boolean;
-  message?: string;
+  description?: string;
   errors?: FieldErrors;
 };
 
@@ -27,7 +27,7 @@ const INITIAL_FORM: ContactFormState = {
   address: "",
   phone: "",
   email: "",
-  message: "",
+  description: "",
   type: "admission",
 };
 
@@ -103,12 +103,12 @@ export default function ContactForm() {
           setErrors(data.errors);
         }
 
-        toast.error(data.message || "Failed to submit form");
+        toast.error(data.description || "Failed to submit form");
         resetRecaptcha();
         return;
       }
 
-      toast.success(data.message || "Thank you! Your message has been submitted.");
+      toast.success(data.description || "Thank you! Your message has been submitted.");
       resetFields();
       resetRecaptcha();
     } catch {
@@ -147,8 +147,8 @@ export default function ContactForm() {
           </div>
 
           <div className="form-group">
-            <textarea id="exampleFormControlTextarea1" rows={5} placeholder="Message" name="message" value={fieldsData.message} onChange={changeHandler}></textarea>
-            {getFieldError("message") ? <p className="field-error" role="alert">{getFieldError("message")}</p> : null}
+            <textarea id="exampleFormControlTextarea1" rows={5} placeholder="Message" name="description" value={fieldsData.description} onChange={changeHandler}></textarea>
+            {getFieldError("description") ? <p className="field-error" role="alert">{getFieldError("description")}</p> : null}
           </div>
 
           <div className="form-group">

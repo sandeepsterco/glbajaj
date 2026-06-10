@@ -19,10 +19,10 @@ interface FormData {
   countryCode: string;
   phone: string;
   dob: string;
-  state: string;       // isoCode e.g. "UP"
-  stateLabel: string;  // display name
+  state: string;      
+  stateLabel: string;  
   city: string;
-  department: string;  // slug
+  department: string; 
 }
 
 interface FormErrors {
@@ -442,56 +442,6 @@ export default function ProgramDetailForm({
         </form>
       </div>
 
-      <style>{`
-        .field-error {
-          display: block;
-          margin-top: 4px;
-          font-size: var(--font-16);
-          color: #e53e3e;
-        }
-        .has-error input,
-        .has-error select {
-          border-color: #e53e3e !important;
-        }
-        .btn-loading {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .spinner {
-          width: 16px;
-          height: 16px;
-          border: 2px solid rgba(255,255,255,0.4);
-          border-top-color: #fff;
-          border-radius: 50%;
-          animation: spin 0.7s linear infinite;
-          display: inline-block;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
-        .form-feedback {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          margin-top: 14px;
-          padding: 12px 16px;
-          border-radius: 6px;
-          font-size: var(--font-18);
-          line-height: 1.5;
-          font-weight: 500;
-        }
-        .form-feedback--success {
-          background: #f0fff4;
-          border: 1px solid #68d391;
-          color: #276749;
-        }
-        .form-feedback--error {
-          background: #fff5f5;
-          border: 1px solid #fc8181;
-          color: #c53030;
-        }
-        .feedback-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-      `}</style>
     </div>
   );
 }

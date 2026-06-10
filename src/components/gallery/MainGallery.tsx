@@ -2,7 +2,8 @@ import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MainGallery({data}:{data:any}){
+export default function MainGallery({data, currentPage='gallery'}:{data:any, currentPage?:string}){
+    if(data?.length === 0) return null;
     return(
         <section className="media_gallery">
             <div className="container25">
@@ -35,7 +36,7 @@ export default function MainGallery({data}:{data:any}){
                                 <h5>{item.title}</h5>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}gallery/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}${currentPage}/${item.slug}`} className="strech_link" />
                             )}
                         </div> 
                     ))}

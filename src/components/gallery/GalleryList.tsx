@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationWrapper from "../common/pagination/PaginationWrapper"; // adjust import path
 
-export default function GalleryList({data, currentPage='gallery'}:{data:any, currentPage?:string}){
+export default function GalleryList({data, currentPage='gallery', customClass}:{data:any, currentPage?:string, customClass?:string}){
     const pagination = data; // current_page, last_page are at data level (data.others)
 
     return(
-        <section className="gallery_list_section">
+        <section className={`gallery_list_section ${customClass ?? ''}`}>
             <div className="container25">
                 <div className="gallery_list">
                     {data?.data.map((item:any, idx:number)=>(

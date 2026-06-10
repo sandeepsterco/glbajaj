@@ -21,10 +21,17 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-/* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out } */
+/* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out }
+*/
 .vm-description.expanded { height:auto; }
+.common_image_slider { overflow: hidden; }
 
-.common_image_slider{overflow: hidden;}
+
+.field-error { display: block; margin-top: 4px; font-size: var(--font-16); color: #e53e3e; }
+.has-error input,
+.has-error select { border-color: #e53e3e !important; }
+.form-feedback{font:var(--font-16)}
+
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
@@ -201,7 +208,9 @@
 /* ==============news listing page Start============= */
 .about_breadcrumb { display: flex; align-items: center; justify-content: space-between; }
 .about_breadcrumb p { margin-bottom: 0; }
-.about_breadcrumb.menus p{width: max-content;}
+.about_breadcrumb.menus p { max-width: 20rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; white-space: nowrap;}
+/* .about_breadcrumb.menus .about_breadcrump_text { }
+*/
 .inner_nav { align-items: center; padding-block: 1.5rem; display:flex; }
 .department-page .inner_nav .about_menu_label { display:none; }
 .inner_nav .about_menu_label { border-right: 1px solid #999; padding-right: 1.5rem; font: var(--font-18); font-family: var(--font-tasa); font-weight: 600; color: var(--color-black); line-height: 0.8; }
@@ -239,7 +248,7 @@
 .news_details h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; padding-block: 3rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .department-page .news_details_grid { margin-bottom: 2.5rem; }
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
-.news_details_gallery{margin-top:7rem;}
+.news_details_gallery { margin-top:7rem; }
 .news_details_cnt p { font: var(--font-16); color: var(--color-33); margin-bottom: 2rem; }
 .news_details_img { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative; }
 .news_details_img figure { position: relative; z-index: 9; }
@@ -303,7 +312,8 @@
 .gallery_grid_Bx span figcaption { display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400; }
 .gallery_grid h5 { font: var(--font-24); color: var(--color-64); font-weight: 700; padding-inline: 4.4rem; margin-block: 2rem; }
 .gallery_list_section { padding-block: 4rem 11.6rem; }
-.glbitm-glance .gallery_list .gallery_details figure{cursor: auto;}
+.gallery_list_section.workshops-and-seminars-list{padding-block: 10rem 11.6rem;}
+.glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
 .gallery_list { column-count: 3; gap: 3rem; margin-inline: -2rem; }
 .gallery_list_bx { position: relative; background-color: var(--color-F5); break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem; }
 .gallery_list_bx figure { position: relative; }
@@ -393,15 +403,9 @@
 .visionary_message h2 { color: var(--color-64); font: var(--font-24); margin-bottom: 4rem; font-weight: 700; }
 .visionary_message figure { margin-top: 8rem; position: relative; }
 .visionary_message figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
-
-/* .visionary_message figure img {
-  transition: transform 0.5s ease!important;
-}
-
-.visionary_message figure:hover img {
-  transform: scale(1.1)!important;
-} */
-
+/* .visionary_message figure img { transition: transform 0.5s ease!important; }
+.visionary_message figure:hover img { transform: scale(1.1)!important; }
+*/
 .message_details { padding-block: 10.2rem 0; display: grid; grid-template-columns: 25% auto; position: relative; }
 .message_details.bottom { padding-top:0; }
 .message_details::before { background-image: url(/images/pattern/hod-pattern.png); width: 34rem; height: 21.6rem; content: ""; position: absolute; top: 10.2rem; margin: auto 0; left: -34rem; background-size: contain; background-repeat: no-repeat; }
@@ -429,13 +433,8 @@
 .administration_Bx a img { max-width: 1.6rem; }
 .administration_Bx .admini_msg_info { display: flex; align-items: center; justify-content: space-between; padding-inline: 2rem; }
 .admin_arr_icon { background-color: var(--color-white); width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
-.administration_Bx:hover .admin_arr_icon{ background-color: var(--color-92);}
-.administration_Bx:hover .admin_arr_icon img{ filter: brightness(0) invert(1);}
-
-
-
-
-
+.administration_Bx:hover .admin_arr_icon { background-color: var(--color-92); }
+.administration_Bx:hover .admin_arr_icon img { filter: brightness(0) invert(1); }
 /* ==============The Group page Start============= */
 .group_section { padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .group_section h2 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 4rem; }
@@ -490,7 +489,7 @@
 .logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
 .logo_philosophy_grid h3 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
 .logo_philosophy_grid a { margin-left: -1.2rem; display: inline-block; }
-.about_ins_section .logo_philosophy_grid{padding-block: 10rem 0;}
+.about_ins_section .logo_philosophy_grid { padding-block: 10rem 0; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
 .our_inspiration_section::before { background-color: var(--color-64); bottom: 15rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
 .our_inspiration_grid { display: grid; grid-template-columns: 57.5% auto; gap: 15rem; }
@@ -603,7 +602,7 @@
 .tabs_section .acc-header { display: block; padding: 1.2rem; background: #f5f5f5; cursor: pointer; font-weight: 600; }
 .tabs_section .acc-body { display: none; padding: 1rem; }
 .tabs_section .tab-content.active .acc-body { display: block; }
-.about_glbim_p{ font: var(--font-24);}
+.about_glbim_p { font: var(--font-24); }
  }
 .sterco_tabs_sec .sterco_tab_main { position: relative; padding-block:4rem 8rem; }
 .sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 55%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }
@@ -622,7 +621,7 @@
 ========================= */
 .sterco_tabs_nav { position: relative; z-index: 2; padding-left: 12rem; }
 .sterco_tab_btn { position: relative; display: block; padding: 0.5rem 2rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
-.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain;}
+.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; }
 .sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
 /* =========================
    TAB CONTENT
@@ -651,13 +650,9 @@
 .sterco_accordion_content::before { display: none; }
 .sterco_accordion_content.active { display: grid; }
 .sterco_content_box { padding-right: 0; }
-.sterco_accordion_btn{ position: relative;}
+.sterco_accordion_btn { position: relative; }
 .sterco_accordion_btn:after { content: ""; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; width: 1rem; height: 1.5rem; position: absolute; top: 1.7rem; right:2rem; transition: 0.5s; }
-.sterco_accordion_btn.active:after{ transform: rotate(90deg);}
-
-
-
-
+.sterco_accordion_btn.active:after { transform: rotate(90deg); }
  }
 /* ==============Research Code of Conduct page Start============= */
 .research_conduct { padding-block: 5rem 12rem; }
@@ -673,7 +668,7 @@
 .cse_banner_img figure::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; left: 0; right: 0; bottom: 0; content: ""; height: 33.7rem; }
 .cse_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 9; }
 .cse_banner_img figcaption h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
-.cse_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); display:block;}
+.cse_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); display:block; }
 .cse_banner_img figcaption p { color: var(--color-white); background-color: var(--color-92); padding: 0.5rem 1.5rem; display: inline-block; font: var(--font-21); font-weight: 500; }
 .our_cse { padding-block: 5rem; }
 .hod_profile_bx { background: linear-gradient(to bottom, #643c24 60%, #f4f7f4 0%); padding: 2.7rem 2.5rem; position: relative; z-index: 9; }
@@ -807,15 +802,15 @@
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
-.dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem;}
+.dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; }
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
-.dep_projects .dep_project_grid .project_contentsec{padding-top: 3rem}
+.dep_projects .dep_project_grid .project_contentsec { padding-top: 3rem }
 .dep_projects { position: relative; }
 .dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; height: 100%; }
 .dep_projects.reverse::after { right:0; left:unset; background-image: url(/images/research_shap_02.png); }
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
-.project_contentsec .cus-btn { margin-top: 2rem; width: auto; height: auto;}
+.project_contentsec .cus-btn { margin-top: 2rem; width: auto; height: auto; }
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
@@ -940,6 +935,7 @@
 .tcex_btm_des { padding-top: 6.4rem; }
 .ct_area { padding-block: 10rem 10rem; }
 .tcex_btm_des .font36 { margin-bottom: 5rem; }
+.tcex_btm_des.apply_now_contents{display:grid; grid-template-columns: 52% auto; gap: 6.8rem;} 
 .ct_grid_sec { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
 .ct_grd_bx { background-color: var(--color-F5); }
 .ct_title .font24 { margin-bottom: 4rem; }
@@ -980,7 +976,7 @@
 /* =============Training & Placement - Overview  Start============= */
 .tp_overview { padding-block: 5rem 10rem; }
 .tp_ov_title { margin-bottom: 7rem; }
-.tp_overview .row{ margin: 0;}
+.tp_overview .row { margin: 0; }
 .tp_ov_grid { display: grid; gap: 7.3rem; grid-template-columns: 37% auto; }
 .tp_ov_grid .tp_ov_left > .custom_bullet { margin-bottom: 3rem; }
 .admis_pro_pdfsec a { font: var(--font-16); border-bottom: 1px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom: 4rem; padding-bottom: 1rem; font-weight: 700; margin-top: 2rem; display: inline-flex; color: var(--color-33); }
@@ -1097,8 +1093,7 @@
 .transport-tabs .item { border: 1px solid #ddd; margin-bottom: 10px; }
 .transport-tabs .item-content { display: none; }
 .transport-tabs .item.active .item-content { display: block; }
-.about_breadcrumb.menus{ display: none;}
-
+.about_breadcrumb.menus { display: none; }
  }
 /* =============Transport Facilities  End============= */
 /* ============= Other Facilities   End============= */
@@ -1238,7 +1233,7 @@
 .best-practice .accordion-body ul li { list-style-type: disc; color: var(--color-D2); margin-bottom: 2rem; }
 .best-practice .accordion-body ul li::marker { width: 0.6rem; height: 0.6rem; }
 .best-practice .accordion-body ul li span { display: block; font-weight: 600; margin-bottom: 3rem; }
-.supporting-btn { font: var(--font-16); color: var(--color-white); background-color: var(--color-AE); padding: 1.4rem 2rem 1.3rem; margin-top: 6.7rem; display: inline-block;  width: auto; height: auto;}
+.supporting-btn { font: var(--font-16); color: var(--color-white); background-color: var(--color-AE); padding: 1.4rem 2rem 1.3rem; margin-top: 6.7rem; display: inline-block; width: auto; height: auto; }
 .iqac-menu-inner { margin-bottom: 5rem; }
 .iqac-menu-inner .about_menu_links li:first-child { padding-left: 0; }
 .iqac-menu-inner .about_menu_links { padding-bottom: 3.3rem; border-bottom: 1px solid #707070; }
@@ -1323,7 +1318,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .inner-iqac-function-Cnt h2 { margin-bottom: 4rem; }
 .inner-iqac-function-grid-2 { display: grid; grid-template-columns: 40% 60%; margin-top: 7.4rem; }
 .inner-iqac-function-grid-2 .inner-iqac-function-img { padding-left: 15rem; margin-right: -23rem; z-index: 1; }
-.iqac-function .inner-iqac-function::after {z-index: -1; content: ""; position: absolute; background: url("/images/fn-iqac.webp") bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; /* or set a specific height */ }
+.iqac-function .inner-iqac-function::after { z-index: -1; content: ""; position: absolute; background: url("/images/fn-iqac.webp") bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; /* or set a specific height */ }
 .iqac-value-eduction-cell { padding-top: 5.2rem; padding-bottom: 0.8rem; }
 .iqac-value-eduction-cell h3 { margin-bottom: 4rem; }
 .education-cell-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; margin-top: 4rem; }
@@ -1449,7 +1444,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .excellence-center-sec2 .inner-iqac-function-Cnt P:nth-of-type(1) span { font-weight: 700; }
 .excellence-center-sec2 .inner-iqac-function-Cnt P:nth-of-type(1) { font: var(--font-16); }
 .excellence-center-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 5.5rem; }
-.excellence-center-sec2.iqac-function .inner-iqac-function::after { z-index: -1;content: ""; position: absolute; background: url(/images/pattern/nvidia-design.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
+.excellence-center-sec2.iqac-function .inner-iqac-function::after { z-index: -1; content: ""; position: absolute; background: url(/images/pattern/nvidia-design.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
 .excellence-sec3 .blanket-text { padding: 0rem 8rem 0 0rem; }
 .excellence-sec3 .blanket-list { grid-template-columns: 33.33% 33.33% 33.33%; gap: 0; }
 .excellence-sec3 .blanket-list-img { padding-left: 3.2rem; }
@@ -1598,7 +1593,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni-title { font-size: 1.25rem; margin-bottom: 1.25rem; color: #222; }
 .alumi_vision_mission_grid { display: grid; grid-template-columns: 25% 25% auto; gap: 10rem; padding-block: 0 10rem; z-index: 1; position: relative; }
 .alumi_vision_mission_grid h4 { margin-bottom: 3rem; }
-.alumni_about_vision{z-index: -1;position: relative;}
+.alumni_about_vision { z-index: -1; position: relative; }
 .al_vision_Bx p { font: var(--font-30); color: var(--color-33); }
 .alumni_objsec { position: relative; background-color: var(--color-64); padding-block: 10rem 11rem; }
 .alumni_obgrid { display: grid; grid-template-columns: 58% auto; gap: 15rem; }
@@ -1752,7 +1747,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .place_imgbox::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
 .place_imgbox > figure { height: 37rem; }
-.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top;    border-radius: 1.5rem; }
+.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top; border-radius: 1.5rem; }
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
@@ -2256,4 +2251,3 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx { position: relative; }
 .bs_plbm_bx::before { position: absolute; content: ""; background-color: var(--color-FE); width: 69.3rem; height: 1.1rem; top: -10rem; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
-

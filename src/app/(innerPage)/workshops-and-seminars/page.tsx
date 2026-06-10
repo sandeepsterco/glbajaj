@@ -26,7 +26,7 @@ export default async function GalleryPage({ searchParams }: { searchParams: Prom
         <>
         <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
             <MainGallery data={data?.featured}  currentPage="workshops-and-seminars" />
-            <GalleryList data={data?.others} currentPage="workshops-and-seminars" />
+            <GalleryList data={data?.others} currentPage="workshops-and-seminars" customClass="workshops-and-seminars-list" />
             </InnerPageLayoutWrapper>
         </>
     )

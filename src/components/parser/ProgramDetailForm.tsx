@@ -428,13 +428,11 @@ export default function ProgramDetailForm({
           {/* Feedback */}
           {submitState.status === "success" && (
             <div className="form-feedback form-feedback--success" role="alert">
-              <span className="feedback-icon" aria-hidden="true">✓</span>
               {submitState.message}
             </div>
           )}
           {submitState.status === "error" && (
             <div className="form-feedback form-feedback--error" role="alert">
-              <span className="feedback-icon" aria-hidden="true">✕</span>
               {submitState.message}
             </div>
           )}

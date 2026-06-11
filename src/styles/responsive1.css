@@ -1,5 +1,5 @@
 @media (max-width: 991px) {
- .kf_grid { grid-template-columns: repeat(2, 1fr); }
+ .kf_grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 3rem; }
 .tp_ov_grid { grid-template-columns: repeat(1, 1fr); }
 .our_cmit_grid { grid-template-columns:1fr; }
 .chairman_grid { grid-template-columns: 1fr; }

@@ -157,7 +157,7 @@
 .swiper_next_custom:hover img { filter: brightness(0) invert(1); }
 .home_courses_section .admission_data .rgt { display: flex; gap: 2rem; }
 .home_courses_section .admission_data .title { padding-block: 1rem; color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold; }
-.home_courses_section .admission_data .links { display: flex; align-items: center; margin: 0; padding: 0; }
+.home_courses_section .admission_data .links { display: flex; align-items: center; margin: 0; padding: 0; gap: 4rem;}
 /* .home_courses_section .admission_data .links a { }
 */
 .home_courses_section .admission_data .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
@@ -469,7 +469,7 @@
 .shaping_future_leader h4 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
 .shaping_future_leader h5 { color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; }
 .shaping_future_Bx { position: relative; }
-.shaping_future_Bx figcaption { padding: 3rem 3rem 0; }
+.shaping_future_Bx figcaption { padding:0rem 3rem 0; }
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
 /* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
 */
@@ -1145,6 +1145,17 @@ main { overflow: hidden; }
 .anti-ragging-page { padding-top: 5rem; }
 .res_pub_title h4:empty{ display: none;}
 .notice_announcement { padding-block: 5rem; }
+.shaping_future_Bx figure { padding-bottom: 0; }
+.shaping_future_Bx figcaption { padding: 2rem 2rem 0; }
+.facility-image-grid .shaping_future_grid { grid-template-columns: repeat(2, 1fr); }
+.res_publica_tblsec{ padding-block: 0 5rem;}
+.publications .res_publica_tblsec:not(:last-of-type) { padding-bottom: 3rem; }
+.res_pub_title h4 { margin-bottom: 3rem; }
+.ipr-vision .vision_mission_grid { grid-template-columns: 100%; padding-block: 5rem; }
+.ipr-vision { margin-bottom: 5rem; }
+.ipr-patents .table-description{ padding-block:2rem;}
+.about_vision.ipr-vision .vision_mission_grid{ padding-block: 0 5rem;}
+.vision_Bx p{ font: var(--font-24);}
 
  }
 
@@ -1163,6 +1174,9 @@ main { overflow: hidden; }
   .iicenter_section:after{background-size: cover; width: 100%; height: 5.3rem;}
   .iicenter_bottom_content { padding-top: 2rem; }
   .res_publication table th:first-child{ white-space: nowrap;}
+  .res_publi_list{ display: block;}
+  .res_publi_list li a{ padding-block: 1.5rem;}
+  .institute_cnt ul{grid-template-columns: repeat(1, 1fr);}
 
 }
 
@@ -1209,7 +1223,7 @@ main { overflow: hidden; }
 .home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev { display: none; }
 .group_counter ul { grid-template-columns: repeat(2, 1fr); }
 .shaping_future_grid{grid-template-columns: repeat(1, 1fr);}
-.shaping_future_Bx figcaption { padding: 3rem 1rem 0; }
+.shaping_future_Bx figcaption { padding: 2rem 1rem 0; }
 .road-logo ul { grid-template-columns: repeat(1, 1fr); display: grid; gap: 2rem; }
 .road-logo ul li:nth-child(2), .road-logo ul li:nth-child(3){ display: none;}
 .exam-system-page .kf_grid { grid-template-columns: repeat(1, 1fr); }
@@ -1217,8 +1231,13 @@ main { overflow: hidden; }
 .tp_ov_pattern { display: none;}
 .research_conduct h3, .academic_facility_section h2, .or_cmit_right h3{ font: var(--font-24);}
 .our_cmit_grid { gap: 3rem; }
-
  }
+
+@media (max-width:575px) {
+ .facility-image-grid .shaping_future_grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+
 
 @media (max-width:480px) {
  .home_sessions_section .data-overlay { top: 10%; }
@@ -1228,7 +1247,7 @@ main { overflow: hidden; }
  .grievance .res_publication .res_publication_ttl p:empty{ display: none;}
  .res_publication_ttl h4:empty{ display: none;}
  .grievance .res_publication .res_publication_ttl p{ padding-block:0 2rem; padding-top: 0;}
-
+.group_counter ul{ grid-template-columns: repeat(1, 1fr); }
  }
 @media (max-width:360px) {
  .home_testimonials .desc_content { gap: 2rem; }

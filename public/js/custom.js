@@ -420,7 +420,7 @@
     });
 
     createSwiper(".courses_slider_wrapper", {
-      slidesPerView: 8,
+      slidesPerView: 7,
       spaceBetween: 20,
       loop: true,
 
@@ -461,7 +461,7 @@
         },
 
         1400: {
-          slidesPerView: 8,
+          slidesPerView: 7,
           spaceBetween: 20,
         },
       },

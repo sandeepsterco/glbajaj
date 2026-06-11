@@ -3,7 +3,6 @@ import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";
 import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
 
-// Same cache key — deduped with generateMetadata call
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
     getPageSEO(),
@@ -13,7 +12,7 @@ const getHomeData = cache(async () => {
 });
 
 export default async function HomeContent() {
-  const { homeData } = await getHomeData(); // ✅ This is what Suspense catches
+  const { homeData } = await getHomeData();
 
   if (!homeData?.modular && !homeData?.cms) {
     return (

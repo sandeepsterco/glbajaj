@@ -1,7 +1,9 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
+import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api"
 import { getSlug } from "@/src/lib/getSlug"
+import Link from "next/link";
 
 export default async function ProgramDetail(){
     const slug = await getSlug();
@@ -14,5 +16,12 @@ export default async function ProgramDetail(){
 
     // SkeletonGroup
 
-    return <ReactParserDynamic html={combinedHtml} />;
+    return (
+        <>
+            <ReactParserDynamic html={combinedHtml} />
+            {data?.department && (
+                <Link href={`${BASE_URL}department/${data.department.slug}`} className="btn_styl1 button_strip">Go to {data.department.name}</Link>
+            )}
+        </>
+    );
 }

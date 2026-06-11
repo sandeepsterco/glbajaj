@@ -1,5 +1,4 @@
-/* ── XTABS (unique, no conflict) ────────────────────────── */
-  .xtab_panel { display: none; }
+.xtab_panel { display: none; }
 .xtab_btn { font:var(--font-16); }
 .xtab_btn.active { color: var(--color-black); }
 .xtab_panel.active { display: block; }
@@ -21,9 +20,8 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-/* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out }
-*/
-.vm-description.expanded { height:auto; }
+.vm-description {overflow: hidden; transition:0.2s all ease-in-out }
+.vm-description.expanded { height:auto; max-height: unset !important; }
 .common_image_slider { overflow: hidden; }
 
 
@@ -758,7 +756,8 @@
 .faculties_main .faculties_title,
 .custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
 .custom_heading_grid .left { flex:1; }
-.department-page .custom_heading_grid .right { flex:unset; }
+.department-page .custom_heading_grid .right,
+.inner .custom_heading_grid .right { flex:unset; }
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }
 .faculties_main .faculties_title .title48 { color: var(--color-92); }
 .laboraties_mainsec { background-color: var(--color-F4); padding-block: 1.2rem 10rem; }

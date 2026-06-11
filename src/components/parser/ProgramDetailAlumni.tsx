@@ -18,29 +18,22 @@ import Link from "next/link";
 import ApiError from "../ui/ApiError";
 import NoData from "../ui/NoData";
 
-interface AlumniItem {
-  name: string;
-  image: string;
-  branch: string;
-  message: string;
-  type: string;
-}
 
-const getDepartmentAlumni = async (slug: string): Promise<AlumniItem[]> => {
-  const { data, error } = await apiFetch(`department/${slug}/home`);
+const getProgramAlumni = async (slug: string) => {
+  const { data, error } = await apiFetch(`program/${slug}`);
   if (error) throw new Error(error);
-  return data?.data?.modular?.alumuni ?? [];
+  return data?.program_details?.data?.testimonials ?? [];
 };
 
-export default function DepartmentHomeAlumni() {
+export default function ProgramDetailAlumni() {
   const pathname = usePathname();
   const slug = pathname.split('/').filter(Boolean).pop() ?? '';
 
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
-  const { data, isLoading, isError } = useQuery<AlumniItem[]>({
-    queryKey: ["department-home-alumni", slug],
-    queryFn: () => getDepartmentAlumni(slug),
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["program-detail-alumni", slug],
+    queryFn: () => getProgramAlumni(slug),
   });
 
   if (isLoading) {
@@ -79,7 +72,7 @@ export default function DepartmentHomeAlumni() {
           }}
           mousewheel={{ invert: false, sensitivity: 1, forceToAxis: true }}
         >
-          {data.map((item, index) => (
+          {data.map((item:any, index:number) => (
             <SwiperSlide key={index}>
               <div className="ats_slid_box">
                 <div className="ats_textbox">
@@ -112,7 +105,7 @@ export default function DepartmentHomeAlumni() {
           watchSlidesProgress={true}
           mousewheel={{ sensitivity: 1 }}
         >
-          {data.map((item, index) => (
+          {data.map((item:any, index:number) => (
             <SwiperSlide key={index}>
               <div className="swiper_thumbox">
                 <div className="pt_thumb_img">

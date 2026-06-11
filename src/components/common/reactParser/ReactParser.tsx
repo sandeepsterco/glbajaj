@@ -37,6 +37,11 @@ const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHo
   loading: ParserWidgetFallback,
   ssr:false,
 });
+const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+
 const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"), {
   loading: ParserWidgetFallback,
   ssr:false,
@@ -54,6 +59,10 @@ const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
   ssr:false,
 });
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
+});
+const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCourses"), {
   loading: ParserWidgetFallback,
   ssr:false,
 });
@@ -91,6 +100,10 @@ const DepartmentHomeLaboratories = dynamic(
 );
 const DepartmentHomeAlumni = dynamic(
   () => import("../../parser/DepartmentHomeAlumni"),
+  { loading: ParserWidgetFallback,  ssr:false, }
+);
+const ProgramDetailAlumni = dynamic(
+  () => import("../../parser/ProgramDetailAlumni"),
   { loading: ParserWidgetFallback,  ssr:false, }
 );
 const DepartmentHomeCourses = dynamic(
@@ -179,7 +192,7 @@ const options: HTMLReactParserOptions = {
     if (domNode instanceof Element && domNode.attribs) {
 
       // ✅ Hide empty block/inline elements (no visible text or child elements)
-      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'td', 'th', 'ul', 'ol', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'figure', 'figcaption', 'blockquote', 'pre', 'code', 'sup', 'sub', 'button', 'iframe', 'nav', 'main', 'picture', 'source', 'video', 'audio', 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'g', 'use', 'label', 'input', 'textarea', 'select', 'option', 'dl', 'dt', 'dd', 'small', 'mark', 'details', 'summary'];
+      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
       if (emptyTags.includes(domNode.name)) {
         const hasText = domNode.children.some(
           (child) => child.type === 'text' && (child as any).data?.trim() !== ''
@@ -268,6 +281,7 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
       if (domNode.attribs.id === "add-on-courses") return <AddOnCourses />;
+      if (domNode.attribs.id === "program-add-on-courses") return <ProgramAddOnCourses />;
       if (domNode.attribs.id === "research_innovation")
         return <ResearchInnovation />;
       if (domNode.attribs.id === "home_facilities") return <HomeFacilities />;
@@ -287,6 +301,8 @@ const options: HTMLReactParserOptions = {
         return <DepartmentHomeLaboratories />;
       if (domNode.attribs.id === "department_home_alumni")
         return <DepartmentHomeAlumni />;
+      if (domNode.attribs.id === "program_detail_alumni")
+        return <ProgramDetailAlumni />;
       if (domNode.attribs.id === "department_home_courses")
         return <DepartmentHomeCourses />;
       if (domNode.attribs.id === "department_home_happenings")
@@ -328,8 +344,9 @@ const options: HTMLReactParserOptions = {
         return <HomePlacements />;
       if (domNode.attribs.id === "career_job_listing")
         return <CareerJobListing />;
-      if (domNode.attribs.id === "home_upcoming_events")
-        return <HomeUpcomingEvents />;
+      if (domNode.attribs.id === "home_upcoming_events") return <HomeUpcomingEvents />;
+      if (domNode.attribs.id === "program_detail_placements") return <ProgramDetailPlacements />;
+      
     }
   },
 };

@@ -14,19 +14,19 @@ import NoData from "../ui/NoData";
 
 const SLIDES_PER_VIEW = 3;
 
-const fetchDepartmentFacultyGrid = async (slug: string) => {
-  const { data, error } = await apiFetch(`department/${slug}/home`);
+const fetchProgramPlacements = async (slug: string) => {
+  const { data, error } = await apiFetch(`program/${slug}`);
   if (error) throw new Error(error);
-  return data?.data?.modular?.['intern-placement'];
+  return data?.program_details?.data?.['intern-placement'];
 };
 
-export default function DepartmentHomePlacements() {
+export default function ProgramDetailPlacements() {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["department_faculty_grid", slug],
-    queryFn: () => fetchDepartmentFacultyGrid(slug),
+    queryKey: ["program-placements", slug],
+    queryFn: () => fetchProgramPlacements(slug),
   });
 
   const placementData: any[] = data ?? [];

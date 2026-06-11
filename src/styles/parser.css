@@ -162,8 +162,8 @@
 */
 .home_courses_section .admission_data .dot { height: 0.6rem; width: 0.6rem; background: var(--color-C0); border-radius: 50%; margin-inline: 2rem; display: inline-block; }
 .home_courses_section .admission_data ul li:last-child .dot { display: none; }
-.home_courses_section .admission_data .btn { padding: 1.2rem 2rem; font: var(--font-16); line-height: 2.4rem; background-color: var(--color-white); color: var(--color-64); font-weight: 700; }
-.home_courses_section .admission_data .btn:hover { background-color: var(--color-AE); color: var(--color-white); }
+.home_courses_section .admission_data .btn { padding: 1.2rem 2rem; font: var(--font-16); line-height: 2.4rem;  font-weight: 700; }
+.home_courses_section .admission_data .btn:hover {    background-color: var(--color-white); color: var(--color-64); }
 /************  end of courses Section ************/
 /************  start home_research_section ************/
 .home_research_section .container2 { width: calc(100% - ((100% - min(1475px, 76.8229vw)) / 2)); }
@@ -426,6 +426,15 @@
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
 .swiper-button-lock { display: none; }
+
+/* program_detail_beyond */
+
+.program_detail_beyond{padding:10rem 0; border-bottom: 1px solid #c0855257;}
+.program_detail_beyond .bottom_slider{margin:0;}
+
+/* program_detail_beyond */
+
+
 @media (max-width:2440px) {
  .hod_right::before { height: auto; }
  }

@@ -1,5 +1,4 @@
-/* ── XTABS (unique, no conflict) ────────────────────────── */
-  .xtab_panel { display: none; }
+.xtab_panel { display: none; }
 .xtab_btn { font:var(--font-16); }
 .xtab_btn.active { color: var(--color-black); }
 .xtab_panel.active { display: block; }
@@ -21,9 +20,8 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-/* .vm-description { height: 24rem; overflow: hidden; transition:0.2s all ease-in-out }
-*/
-.vm-description.expanded { height:auto; }
+.vm-description {overflow: hidden; transition:0.2s all ease-in-out }
+.vm-description.expanded { height:auto; max-height: unset !important; }
 .common_image_slider { overflow: hidden; }
 
 
@@ -760,7 +758,8 @@
 .faculties_main .faculties_title,
 .custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
 .custom_heading_grid .left { flex:1; }
-.department-page .custom_heading_grid .right { flex:unset; }
+.department-page .custom_heading_grid .right,
+.inner .custom_heading_grid .right { flex:unset; }
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }
 .faculties_main .faculties_title .title48 { color: var(--color-92); }
 .laboraties_mainsec { background-color: var(--color-F4); padding-block: 1.2rem 10rem; }
@@ -1604,9 +1603,16 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni-title { font-size: 1.25rem; margin-bottom: 1.25rem; color: #222; }
 .alumi_vision_mission_grid { display: grid; grid-template-columns: 25% 25% auto; gap: 10rem; padding-block: 0 10rem; z-index: 1; position: relative; }
 .alumi_vision_mission_grid h4 { margin-bottom: 3rem; }
+<<<<<<< HEAD
 .alumni_about_vision { z-index: -1; position: relative; padding-top: 10rem; }
 .alumi_vision_mission_grid { z-index: 1; grid-template-columns: 50% auto; gap: 10rem; padding-block: 0; display: grid; position: relative; }
 
+=======
+.alumni_about_vision { z-index: -1; position: relative; }
+.entrepreneurship .alumni_about_vision { padding-block: 10rem 0rem; }
+.entrepreneurship_table  table tr td a { color: #4a7ebb; text-decoration: none; }
+.entrepreneurship_table  table tr td a:hover { text-decoration: underline; }
+>>>>>>> 4c225577395eb59c53cef63bfcd06a3618e21a7f
 .al_vision_Bx p { font: var(--font-30); color: var(--color-33); }
 .alumni_objsec { position: relative; background-color: var(--color-64); padding-block: 10rem 11rem; }
 .alumni_obgrid { display: grid; grid-template-columns: 58% auto; gap: 15rem; }

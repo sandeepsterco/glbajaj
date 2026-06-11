@@ -104,6 +104,12 @@
 
 .btn_styl1 {
   background: var(--color-AE);
+  color:var(--color-white);
+  transition:0.3s ease-in-out all;
+}
+
+.btn_styl1:hover{
+  background-color: var(--color-64);
 }
 
 @media (min-width: 768px) {

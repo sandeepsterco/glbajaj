@@ -9,6 +9,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { SkeletonGroup } from "../ui/Skeleton";
+import NoData from "../ui/NoData";
 
 const fetchDepartmentActivitiesData = async (slug: string) => {
   const { data, error } = await apiFetch(`department/${slug}/home`);
@@ -32,7 +34,13 @@ export default function DepartmentHomeActivities() {
   const shouldLoop = slideCount > maxSlidesPerView;
   const showNavigation = shouldLoop;
 
-  if (isLoading || activitiesData.length === 0) return null;
+  if(isLoading){
+    return <SkeletonGroup count={3} wrapperClassName="!flex gap-[3rem]" className="w-full h-[30rem]" />
+  }
+
+  if(activitiesData.length == 0){
+    return <NoData />
+  }
 
   return (
     <Swiper
@@ -65,10 +73,10 @@ export default function DepartmentHomeActivities() {
             <div className="activities_caption">
               <p>{item.title}</p>
             </div>
-            {item.type === "club" && item?.slug && (
+            {item?.slug && (
               <Link
                 className="strech_link"
-                href={BASE_URL + "why-clubs-societies/" + item.slug}
+                href={`${slug}/activity/${item.slug}`}
               />
             )}
           </div>

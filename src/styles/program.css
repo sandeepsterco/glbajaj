@@ -10,6 +10,11 @@
 .cus-tab .item.active::before { background: #444; color: #eee; }
 /* .cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
 */
+
+.button_strip{display:block; font:var(--font-20); text-transform: uppercase; text-align: center; padding: 2rem; letter-spacing: 0.1rem;}
+.home_testimonials.inner{padding: 10rem 0 2rem;}
+
+
 @media all and (min-width: 800px) {
  .cus-tab .item.active .item-content { }
 .cus-tab .tabs-side .tabs li { margin-bottom: 2px; }
@@ -102,7 +107,7 @@ textarea::placeholder { color: var(--color-black); }
 .toggle-btn.active i { transform: rotate(180deg); }
 button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); cursor: pointer; }
 /* Curriculum */
-.program-detailsec1 { padding-block: 7rem 10rem; position: relative; }
+.program-detailsec1 { padding-block: 10rem 10rem; position: relative; }
 .curriculum-img { position: absolute; top: 0; margin-left: -30rem; }
 .curriculum-text { margin-bottom: 6rem; }
 .curriculum-text h5 { font-weight: 700; color: var(--color-33); }

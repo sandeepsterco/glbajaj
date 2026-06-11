@@ -14,8 +14,6 @@ export default async function ProgramDetail(){
 
     if(!combinedHtml) return <h1>Loading...</h1>
 
-    // SkeletonGroup
-
     return (
         <>
             <ReactParserDynamic html={combinedHtml} />

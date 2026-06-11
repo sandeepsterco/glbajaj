@@ -7,10 +7,10 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
 
-export default async function LabsInnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
+export default async function DepartmentActivityLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug, page} = await params;
 
-    const {data, error} = await apiFetch(`department/${slug}/labs`);
+    const {data, error} = await apiFetch(`department/${slug}/activity`);
 
     if(error){
         return <NotFound />;
@@ -19,7 +19,8 @@ export default async function LabsInnerPageLayout({children, params}:Readonly<{c
     return(
         <div className="happenings_page">
             <PageHeader data={data.data} slug={slug} />
-            {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children}
+            {children}
+            {/* {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children} */}
         </div>
     )
 }

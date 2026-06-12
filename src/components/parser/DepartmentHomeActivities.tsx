@@ -73,10 +73,11 @@ export default function DepartmentHomeActivities() {
             <div className="activities_caption">
               <p>{item.title}</p>
             </div>
-            {item?.slug && (
+            {(item?.pdf || item?.slug) && (
               <Link
                 className="strech_link"
-                href={`${slug}/activity/${item.slug}`}
+                href={item?.pdf ? item.pdf : `${slug}/activity/${item.slug}`}
+                target={item?.pdf ? '_blank' : '_self'}
               />
             )}
           </div>

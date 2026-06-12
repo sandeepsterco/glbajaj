@@ -16,13 +16,20 @@
  .home .home_testimonials .desc { min-height: 25rem; }
 .our_inspiration_left a { max-width: 7rem; }
 .logo_philosophy_grid a { max-width: 7rem; }
-.our_inspiration_section:before { inset: 0 0 15rem; }
-.about_right p { max-width: 75%; }
+.our_inspiration_section:before{inset: 0 0 15rem;}
+.about_right p{max-width: 75%;}
+.about_iic_grid .about_iic_cont { padding-right: 15rem; }
+
  }
 @media (min-width: 1399px) {
  .home .home_testimonials .desc { min-height: 25rem; }
  }
 @media (max-width: 1280px) {
+    .about_breadcrumb.menus svg{ width: 0.7rem;}    
+ }
+
+ @media (max-width:1170px){
+    .admin_arr_icon img{ max-width: 1rem;}
  }
 @media (max-width: 991px) {
  .best-practice .accordion-item.active .accordion-body { padding-right: 6.6rem; }
@@ -65,6 +72,12 @@
 .value_bgbox .title36 { font: var(--font-28); letter-spacing: 0; line-height: 1.3; }
 .industrial_visit_section h3 { font: var(--font-28); letter-spacing: 0; line-height: 1.3; margin-bottom: 3rem; }
 .careerg_title h3 { margin-bottom:3rem; font: var(--font-28); letter-spacing: 0; line-height: 1.3; }
+.confrence_section h2{ margin-bottom:3rem; font: var(--font-28); letter-spacing: 0; line-height: 1.3; padding-right: 0;}
+.alumi_ov_hero h3 { margin-bottom:3rem; font: var(--font-28); letter-spacing: 0; line-height: 1.3; }
+.acx_sec h3{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+
+
+
 .cabX_sec { padding-block: 5rem; }
 .tp_ov_title { margin-bottom: 2rem; }
 .about_section .row { margin: 0; }
@@ -135,12 +148,13 @@
 .tp_ov_grid { grid-template-columns: repeat(1, 1fr); display: flex; flex-direction: column-reverse; gap: 3rem; }
 .tp_ov_pattern { padding-block: 3rem; }
 .iqac-function { margin-block: 0rem; }
-.tp_overview .custom_bullet li { color: var(--color-33); }
-.value-education-sec2 .inner-iqac-function { padding: 3rem; }
-.inner-iqac-function-grid { display: block; }
-.inner-iqac-function .inner-iqac-function-grid-2 { display: grid; grid-template-columns: 100%; gap:2rem; }
-.inner-iqac-function .inner-iqac-function-grid-2 .inner-iqac-function-Cnt { order: 2; }
-.inner-iqac-function-grid .inner-iqac-function-img { margin: 0; padding: 0; }
+.tp_overview .custom_bullet li{ color: var(--color-33);}
+.value-education-sec2 .inner-iqac-function { padding: 3rem; margin-bottom: 2rem; }
+.inner-iqac-function-grid{ display: block;}
+.inner-iqac-function .inner-iqac-function-grid-2{ display: grid; grid-template-columns: 100%; gap:2rem;}
+
+.inner-iqac-function .inner-iqac-function-grid-2 .inner-iqac-function-Cnt{ order: 2;}
+.inner-iqac-function-grid .inner-iqac-function-img{ margin: 0; padding: 0;}
 .excellence-center-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 0; }
 .inner-iqac-function-grid-2 .inner-iqac-function-img { padding: 0; margin: 0; }
 .inner-iqac-function-grid-2 { display: flex; flex-direction: column-reverse; }
@@ -148,8 +162,8 @@
 .tp_ov_left > h4 { margin-bottom: 2rem; }
 .faculty_header { padding-top: 0; }
 .faculty_section .tabular-list { margin-top: 5rem; }
-.faculty_section { padding-block: 5rem; }
-.faculty_header .form-select { max-width: 30rem; }
+.faculty_section { padding-block: 5rem; overflow: hidden; }
+.faculty_header .form-select{    max-width: 30rem;}
 .alumni_our_tem { padding-block:10rem 5rem; overflow: hidden; }
 .teamX_titlesec:has(h4:empty) { display: none; }
 .placement_grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
@@ -303,6 +317,129 @@
 .dg-pathshala-video-link h2 { font: var(--font-24); }
 .dg-pathshala>.digital-pathshala-grid{padding-top: 0;}
 .dg-pathshala-btn .supporting-btn{margin-top: 0;}
+.career_sec_tabmain .xtabs_sec{ display: flex; flex-direction: column-reverse;}
+.career_sec_tabmain:before{ display: none;}
+.xtabs_nav{ width: 100%;}
+.xtab_content_area{ width: 100%;}
+.career_emptitle p{padding-right: 0rem;}
+.confrence_section { padding-block: 5rem; }
+.confrence_grid { gap: 4rem 3rem; margin-top: 4rem; }
+.confrence_grid_Bx p + img { max-width: 5rem; margin-left: -0.9rem; }
+.res_publi_list{ margin-bottom: 0;}
+.about_iic_grid { display: flex; flex-direction: column-reverse; padding: 3rem;}
+.about_iic_grid .about_iic_cont{ padding:3rem 0;}
+.res_publication.innovate { padding-block: 5rem; }
+.iic-third-sec, .iic-achivement { padding-top: 5rem; }
+.iic-achivement-bg{ padding: 2rem;}
+.iic-achivement-Cnt { padding-right: 4rem; padding-block: 0; }
+.mentor-institute h2{ font: var(--font-24);}
+.mentor-institute { margin-bottom: 5rem; }
+.bhashini-sec1 .bhashini-sec1-grid{ display: flex; flex-wrap: wrap; margin-inline: 0;}
+.bhashini-sec1{ margin: 0; padding-block: 5rem;}
+.bhashini_cont .road-text{ margin: 0; padding:0 0 5rem 0;}
+.road-text.bhshini-main h3{ padding-right: 0; font: var(--font-28);}
+.bhashini-img{ width: 100%;}
+.fdp h2 { margin-top: 0; }
+.fdp { padding-block: 5rem; overflow: hidden; }
+.fdp h3{font: var(--font-28); line-height: 1.3; letter-spacing: 0; width: 100%;}
+.fdp-grid{ display: flex; flex-direction: column-reverse; gap: 3rem;}
+.fdp-Cnt{ padding-right: 0;}
+.group_counter{ padding-top: 2rem;}
+.speakers-wrapper { padding-block: 5rem; }
+.speakers-grid{ gap: 2rem;}
+.glbitm-express-grid{ display: flex; flex-direction: column-reverse;}
+.glbitm-express{ padding-block: 5rem; overflow: hidden;}
+.glbitm-express-Cnt h2{ font: var(--font-28); font-weight: 600; letter-spacing: 0; margin-block:4rem 3rem;}
+.glbitm-express-Cnt{ padding-right: 0;}
+.glbitm-express-Cnt p{ padding-right: 0;}
+.glbitm-express-img:after{ height: 98%;}
+.award-sec.student-research-pro{ padding-block:5rem 0;}
+.student-research-pro .award-list{ margin-top: 0;}
+.media_grid_Bx{ padding: 2rem;}
+.admin_arr_icon{ min-width: 3rem; max-width: 3rem; height: 3rem; margin-top: 0;}
+.administration_Bx h5{ line-height: 1.3;}
+.administration_Bx .admini_msg_info{ gap: 2rem;}
+.value-education-event { padding-block: 5rem; }
+.value-education-event h2{ font: var(--font-28);}
+.alumni_ove { padding-block: 5rem; }
+.alumi_vision_mission_grid{ display: flex; flex-wrap: wrap; gap: 4rem; padding-block: 0 5rem;}
+.al_ob_imbx { margin-top: 0; }
+.alumni_objsec{ padding-block: 5rem;}
+.al_ob_contentsec h3{ font: var(--font-24); letter-spacing: 0;}
+.al_ob_contentsec h3{ margin-bottom: 2rem;}
+.alumni_obgrid { grid-template-columns: 55% auto; gap: 8rem; display: grid; }
+.alumni_our_tem.alumni_overview { padding-block: 5rem 0; }
+.club_grid .club_textbox { padding-inline: 0; padding-bottom: 2rem; }
+.club_grid .club_textbox > h4 { margin-bottom: 2rem; }
+.club_grid .club_textbox > h3 { margin-bottom: 3rem; line-height: 1.3; }
+.club_soci_bottom { display: flex; flex-direction: column-reverse;}
+.con_infoimg{ width: 100%;}
+.club_soci_bottom{ gap: 5rem;}
+.club_soci_bottom h3, .club_soci_bottom h5{ font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.club_soci_bottom h3, .club_soci_bottom h5 { margin-bottom: 2rem; }
+.club_soci_bottom{ padding-block: 5rem;}
+.con_infoclub > p { padding-bottom:0rem; }
+.alumni_evt_meetsec{ padding-block: 5rem;}
+.alumni_evt_meetsec .evt_titlesec > h4, .alumni_evt_meetsec .evt_titlesec > h3{ font: var(--font-28); letter-spacing: 0;}
+.alumni_evt_meetsec{ display: flex; flex-direction: column-reverse; gap: 3rem;}
+.club_grid .club_textbox > h3{font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
+.clb_bgbox:before{ display: none;}
+.supporting-btn{ margin-top: 0;}
+.award-sec.alumni_event { padding-block: 5rem; }
+.distinguished-alumni{padding-block: 5rem;}
+.alumni-achivement h3{ font: var(--font-28); letter-spacing: 0;}
+.alumni-achivement-grid{ display: flex; flex-direction: column-reverse;}
+.alumni-achivement-cnt{ padding: 7rem 0 0;}
+.alumni-achivement-cnt blockquote{ font: var(--font-28); margin-bottom: 3rem;}
+.alumni-achivement-cnt figure{ display: none;}
+.alumni-achivement { padding-block: 5rem; }
+.distinguished-alumni-grid{ grid-template-columns: repeat(3, 1fr);}
+.distinguished-img{ padding-bottom: 2rem;}
+.faculty_section .faculty_grid{ padding-block:4rem 0 ;}
+.bhashini_cont ul{ padding-top: 3rem; grid-template-columns: repeat(3, 1fr);}
+.bhashini_cont li{ line-height: 1.3;}
+.gl_bajaj_grid{ display: block;}
+.life_bajaj_section { padding-block: 5rem; }
+.gl_bajaj_grid:before{ display: none;}
+.gl_bajaj_grid .club_textbox{ padding-inline: 0; padding-block: 3rem 5rem;}
+.gl_bajaj_grid .club_textbox > h3{ font: var(--font-28); letter-spacing: 0;}
+.bottom_pattern{ display: none;}
+.gallery_list_section { padding-block: 0rem 5rem; }
+.gallery_list_header{    padding-block: 3rem 5rem;}
+.gallery_list { column-count: 3; gap:2rem; margin-inline: 0; }
+.gallery_details{ margin-bottom: 2rem;}
+.alumni-achivement h3{ margin-block: 2rem 3rem;}
+.affiliations-sec { padding-block: 4rem 5rem; }
+.clubs-Sec02 .media_txt .cus-btn{ padding: 1rem 2rem;}
+.alumni_about_vision{ padding-top: 5rem;}
+.al_vision_Bx p{ font: var(--font-24);}
+.res_publication:last-child { padding-bottom: 5rem; }
+.entrepreneurship .res_publication{ padding-block: 0 5rem;}
+.committee_members{ border-bottom: 0;}
+.team-members div{ min-height: auto;}
+.gallery_list_section.workshops-and-seminars-list { padding-block: 5rem; }
+.gallery_list_bx:last-child{ margin-bottom: 0;}
+.workshops-and-seminars-list .gallery_list{ column-count: 1;}
+.workshops-and-seminars-list .gallery_list figure img{ width: 100%;}
+.acx_grid{ display: flex; flex-direction: column-reverse; gap: 5rem; margin-bottom: 2rem;}
+.acx_sec .acx_ttl{ padding-block: 5rem;}
+.acx_lft figure{ display: none;}
+.acx_grid2{ display: grid; flex-wrap: wrap; gap: 2rem; grid-template-columns: 100%;}
+.acx_grid2 span{ margin-bottom: 2rem;}
+.acx_list { max-width: 100%; }
+.career_emptitle h4{ margin-bottom: 2rem;}
+.career_sec_tabmain .xtab_btn{margin-bottom: 2rem;}
+.campus_sport_factab .career_sec_tabmain .xtabs_sec{ display: block;}
+.campus_sport_factab .row{ margin: 0; display: block;}
+.caree_tab_btn{ display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 2rem;}
+.amatra_gym { padding-block: 5rem;}
+.mess_cafeteria { margin-bottom: 0; }
+.library_grid{ display: block;}
+.library_right{ padding-top: 3rem;}
+.sterco_tabs_sec .sterco_tab_main:before{ display: none;}
+.acx_lft p { padding-right: 0; }
+
+
  }
 @media (max-width: 820px) {
  .report-grid { grid-template-columns: repeat(2, 1fr); }
@@ -331,6 +468,19 @@
 .sterco_tabs_sec .sterco_tab_main:before { z-index: -1; left: 0; right: 0; display: none; }
 .sterco_tab_main { background-color: var(--color-ed); }
 .education-cell-grid { grid-template-columns: repeat(3, 1fr); }
+.sterco_tab_btn:after{width: 1rem; height: 1rem;}
+.sterco_content_box{ padding-right: 0;}
+.sterco_tabs_sec .sterco_tab_main:before{ z-index: -1; left: 0; right: 0; display: none;}
+.sterco_tab_main{  background-color: var(--color-ed);}
+.iic-achivement-Cnt p { margin-bottom: 3rem; padding-right: 3rem; }
+.iic-achivement-Cnt h3 { margin-block: 2rem 2rem; }
+.speakers-grid { grid-template-columns: repeat(2, 1fr);} 
+.speakers-card h3{ line-height: 1.3;}
+.road-text.bhshini-main p{ padding-right: 0;}
+.alumni_event h4 { margin-bottom: 2rem; }
+.amatra_title { max-width: 100%; margin-bottom: 3rem; }
+
+
  }
 @media (max-width: 767px) {
  .the_institute_grid { gap: 4rem; padding-top: 3.2rem; }
@@ -395,8 +545,30 @@
 .ev_den_grid { padding: 1.5rem; }
 .bs_plbm_bx { padding-block: 4rem; }
 .iqac-value-eduction-cell h3 { font: var(--font-24); margin-bottom: 2rem; }
+.the_classroom_grid{ gap: 5rem;}
+.sterco_tabs_sec .sterco_accordion_content{ display: none;}
+.sterco_tabs_sec .sterco_accordion_content.active{ display: flex;}
+.sterco_tabs_sec.cent_inno .sterco_accordion_content.active{ display: block;} 
+
+
+.computer-center .reports{grid-template-columns: 30rem;}
+.sterco_content_box{ padding-bottom: 2rem;}
+.xacc_header .xacc_btn{ font: var(--font-18); display: flex; justify-content: space-between; background-color: #f6f6f6; padding:2rem 2rem; width: 100%; text-align: left; margin-bottom: 1rem;}
+.school_ai_grid{ grid-template-columns: repeat(2, 1fr);}
+.industrial_visit_section h3, .careerg_title h3{ font: var(--font-24); font-weight: 600;}
+.career_sec_tabmain .xacc_header .xacc_btn{ background-color: var(--color-white);}
+.confrence_grid { grid-template-columns: repeat(2, 1fr);}
+.speakers-grid-2 { grid-template-columns: 100%; }
+.speakers-grid-2 .speakers-card.wide { padding-inline: 0; padding-block: 0; }
+.speakers-card{ padding-inline: 3rem;}
+.alumni_obgrid{ display: flex; flex-wrap: wrap; flex-direction: column-reverse; gap: 3rem;}
+.bhashini_cont ul { grid-template-columns: repeat(1, 1fr); }
+.bhashini-sec1 { margin: 0; padding-block: 5rem 0; }
+.collection_cnt h2{ font:var(--font-24); margin-top: 2rem;}
+
+
  }
-@media (max-width: 620px) {
+@media (max-width: 640px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
 .best-practice .pub-item .num { margin-right: 1rem; }
 .best-practice .pub-item { margin-bottom: 1.8rem; }
@@ -439,7 +611,23 @@
 .reserch_bx .custom_bullet li:last-child { margin-block: 2.5rem 0; }
 .our_ts_sec ul li a { font: var(--font-18); }
 .our_ts_sec ul li a img { width: 2.6rem; height: 2.5rem; }
+.confrence_grid { grid-template-columns: repeat(1, 1fr); }
+.confrence_grid_Bx figure img{ width: 100%;}
+.confrence_grid_Bx p{ min-height: auto; margin-bottom: 2rem;}
+.iic-achivement-grid{ display: flex; flex-direction: column-reverse;}
+.iic-achivement-img{ height: auto; margin-bottom: 3rem;}
+.mentor-grid{grid-template-columns: repeat(1, 1fr);}
+.iic-achivement-Cnt{ padding-right: 0;}
+.iic-achivement-Cnt p{ padding-right: 0;}
+.acx_lft h4{ margin-bottom: 2rem;}
+.amatra_grid { grid-template-columns: repeat(1, 1fr); }
+.library_right h4{ letter-spacing: 0;}
+.acx_grid{ gap: 3rem;}
+.acx_list{ display: block;}
+.acx_list li{ padding-block: 2rem;}
+
 /* the-group */ }
+
 @media (max-width: 575px) {
  .dg-pathshala-video-link table tr td { padding: 1rem 0.6rem 1rem; }
 .facilities_policy { padding-block: 3rem 3rem; }
@@ -471,8 +659,8 @@
 .library_img ul { grid-template-columns: repeat(1, 1fr); gap: 2rem; padding: 2rem; }
 .library_img ul li { padding: 0; border: 0; }
 .computer-center-galley-grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
-.lab_cnt h4 { padding-right: 0; font: var(--font-24); }
-.sterco_accordion_btn { line-height: 1.4; }
+.lab_cnt h4{ padding-right: 0; font: var(--font-24); letter-spacing: 0;}
+.sterco_accordion_btn{ line-height: 1.4;}
 .courses_btn { justify-content: center; gap: 1rem; display: flex; flex-wrap: wrap; }
 .tp_ov_title h4 { font: var(--font-24); font-weight: 600; }
 .admission_process .apply_now { padding: 1rem 2.5rem; }
@@ -484,6 +672,37 @@
 .fac_policy_list .fac_policy_right { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
 .education-cell-grid { grid-template-columns: repeat(2, 1fr); }
 .value-education-sec2 .inner-iqac-function { padding: 2rem; }
+.confrence_section h2{ margin-bottom:2rem; font: var(--font-24); line-height: 1.2;}
+.road-text.bhshini-main h3 { font: var(--font-24); font-weight: 600;}
+.speakers-grid { grid-template-columns: repeat(1, 1fr); }
+.glbitm-express-Cnt h2{ font: var(--font-24); padding-top: 5rem; font-weight: 600;}
+.fdp h3{ font: var(--font-24); font-weight: 600;}
+.glbitm-express-img-design{ display: none;}
+.fdp-grid{ margin-top: 3rem;}
+.value-education-event h2{ font: var(--font-24);}
+.fac_policy_list { padding:2rem}
+.alumi_ov_hero h3{ font: var(--font-24);}
+.al_vision_Bx p{ font: var(--font-21); line-height: 1.3;}
+.al_ob_contentsec h3{ font: var(--font-21); line-height: 1.3;}
+.club_grid .club_textbox > h3{ font: var(--font-24); font-weight: 600;}
+.club_soci_bottom h3, .club_soci_bottom h5{ font: var(--font-24); font-weight: 600;}
+.club_soci_bottom { padding-block: 5rem 0; }
+.alumni_evt_meetsec .evt_titlesec > h4, .alumni_evt_meetsec .evt_titlesec > h3 { margin-bottom: 2rem; }
+.alumni_evt_meetsec .evt_titlesec p + p { margin-bottom: 0; }
+.alumni_evt_meetsec .evt_titlesec > h4, .alumni_evt_meetsec .evt_titlesec > h3{font: var(--font-24); font-weight: 600;}
+.club_soci_bottom { gap: 2rem; }
+.alumni-achivement-cnt blockquote{ font: var(--font-24);}
+.alumni-achivement h3 { margin-block: 2rem 4rem; }
+.distinguished-alumni-grid { grid-template-columns: repeat(2, 1fr); }
+.gl_bajaj_grid .club_textbox > h3{ font: var(--font-24); font-weight: 600;}
+.gallery_list { column-count: 2; }
+.alumni-achivement h3{ font: var(--font-24); font-weight: 600; line-height: 1.2;}
+
+.acx_sec h3 { font: var(--font-24); font-weight: 600; }
+.acx_list{ margin-bottom: 4rem;}
+
+
+
  }
 @media (max-width: 399px) {
  /* the-group */
@@ -492,6 +711,13 @@
 .administration_grid { grid-template-columns:repeat(1, 1fr) }
 .acre_slider .navigation_btn { margin-bottom: 0.5rem; }
 .about_ins_section figure.ins_big_img img { object-fit: cover; min-height: 25rem; }
-.administration_grid { gap: 0; padding-block: 3rem 0; }
-.administration_Bx { margin-block:3rem; }
+.administration_grid{ gap: 0; padding-block: 3rem 0;}
+.administration_Bx{margin-block:3rem;}
+.administration_Bx:last-child{ margin-block:3rem 0;}
+.fac_policy_list{ display: block;}
+.fac_policy_right{ display: flex; padding-top: 2rem; align-items: center; gap: 2rem;}
+.distinguished-alumni-grid { grid-template-columns: repeat(1, 1fr); }
+.gallery_list { column-count: 1; }
+
+
  }

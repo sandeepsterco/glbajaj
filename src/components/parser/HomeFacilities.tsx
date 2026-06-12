@@ -84,7 +84,7 @@ export default function HomeFacilities() {
     <section className="homeFac_sec">
       <div className="full-width">
         <div className="container25 max-content-lg pe-lg-0 me-lg-0">
-          <div className="col-lg-11 ms-end">
+          <div className="col-lg-12 ms-end">
             <div className="homeFac_main">
               <div className="homeFac_tabs_wrapper">
                 <div className="homeFac_tabs">

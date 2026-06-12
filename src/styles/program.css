@@ -450,12 +450,13 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .road-logo{padding-inline: 0;}
     .road-img:before{ display: none;}
     .road-text { padding-top: 0; }
-    .road-text h3{font: var(--font-30); letter-spacing: 0;}
+    .road-text h3{font: var(--font-28); letter-spacing: 0;}
     .csr-design1{ position: relative; display: none;}
     .road-left-img{ display: none;}
     .road-list-bottom{grid-template-columns:100%; padding-top: 5rem;}
     .training-img{ display: none;}
     .csr-sec2{ padding-block: 5rem; margin-top: 5rem;}
+    .student-chapters .csr-sec2{ margin-top: 0;}
     .stationary-list{ grid-template-columns: repeat(1, 1fr);}
     .stationary-text { padding: 2rem 0; }
     .blanket-text { padding: 0; }
@@ -507,9 +508,43 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .hierarchy-text{padding-inline: 5rem;}
     .faculty_grid { grid-template-columns: repeat(2, 1fr); gap: 7rem 2rem; }
     .road-text h3{ margin-bottom: 2rem;}
-
+    .blanket-text h3{ font: var(--font-28);}
+    .excellence-sec3 .blanket-list{ margin-right: 0;}
+    .ar-vr-sec h3{ font: var(--font-28); font-weight: 600;}
+    .center-exle-brand-grid{ gap:2rem;}
+    .ar-vr-sec { margin-bottom: 5rem; }
+    .advance-robotics-lab{padding-block: 5rem;}
+    .robotics-lab-grid{ display: block; left: 0;}
+    .robotics-lab-grid-Cnt{ padding-top: 5rem;}
+    .Cnt-img { grid-template-columns: 66% auto; gap: 0; display: grid; justify-content: space-between; }
+    .innovation-incubation{ padding-block: 5rem;}
+    .innovation-incubation h3{ font: var(--font-28); letter-spacing: 0; margin-block: 5rem 2rem; line-height:1.3;}
+    .innovation-incubation-grid1{ display:flex; flex-direction: column-reverse; padding: 0; gap: 1rem;}
+    .innovation-incubation-Cnt figure{ display: none;}
+    .innovation-incubation-grid-2{ display: block; padding: 0;}
+    .innovation-incubation-Cnt{ padding-top:2rem;}
+    .wide-service { margin-top: 5rem; }
+    .education-cell-grid{grid-template-columns: repeat(3, 1fr);}
+    .mission h4{ margin-bottom: 2rem;}
+    .wipro-oracle-exe-center .tabs_section{ display: block;}
+    .wipro-oracle-exe-center .tab_content .acc-body{ position: relative; margin-top: 4rem; grid-template-columns: 100%;}
+    .tabs_section .tab-btn:after{ width: 0.6rem; background-size: contain;}
+    .objective-pattern{ display: none;}
+    .wipro-oracle-exe-center .tabs_section { padding-bottom: 0;}
+    .feature-list .item:last-child p{ margin-bottom: 0;}
+    .hackathons h3{font: var(--font-28); line-height: 1.3;}
+    .hackathons .tp_ov_title h3{ margin-bottom: 2rem;}
 
 }
+
+
+
+@media (max-width:767px){
+    .Cnt-img { grid-template-columns: 100%; }
+    .tabs_section .tab-content.active .acc-body{ margin: 0;}
+
+}
+
 
 @media (max-width:640px){
     .award-list{grid-template-columns: repeat(1, 1fr);}
@@ -523,6 +558,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .hierarchy-box{grid-template-columns: 100%;}
     .hierarchy-text{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(2, 1fr); }
+    .mission-Cnt {
+        padding: 4rem;
+    }
 
 }
 
@@ -531,7 +569,12 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .csr-txt h4{margin-bottom: 2rem;}
 .csr-text h3{ font: var(--font-24); font-weight: 600;}
 .award-heading h3{ font: var(--font-24); font-weight: 600;}
-
+.tcex_btm_des { padding-top: 3rem; }
+.innovation-incubation h3{ font: var(--font-24); font-weight: 600; margin-block:2rem 2rem;}
+.education-cell-grid { grid-template-columns: repeat(2, 1fr); }
+.mission-Cnt { padding: 3rem; }
+.institute_faq_section .tp_accbox .accordion-header .icon{ height: 3rem; min-width: 3rem; line-height: 1;}
+.road-text h3{ font: var(--font-24);}
 
 }
 
@@ -546,11 +589,13 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .admission-box:nth-child(3){margin-top: -0.1rem;}
     .form-container{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
+    .accordion-body{ padding-inline: 0;}
 
 
 }
 @media (max-width:375px){
     .program-right .program-btn{ padding-right: 4rem;}
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
+    .education-cell-grid { grid-template-columns: repeat(1, 1fr); }
 }
 

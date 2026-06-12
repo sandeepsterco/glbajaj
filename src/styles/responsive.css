@@ -149,7 +149,7 @@
 .tp_ov_pattern { padding-block: 3rem; }
 .iqac-function { margin-block: 0rem; }
 .tp_overview .custom_bullet li{ color: var(--color-33);}
-.value-education-sec2 .inner-iqac-function { padding: 3rem; margin-bottom: 2rem; }
+.value-education-sec2 .inner-iqac-function { padding: 3rem; margin-bottom:5rem; }
 .inner-iqac-function-grid{ display: block;}
 .inner-iqac-function .inner-iqac-function-grid-2{ display: grid; grid-template-columns: 100%; gap:2rem;}
 
@@ -305,15 +305,15 @@
 .ev_den_rgttext > h4 { margin-bottom: 2rem; }
 .pra_evsc_left > h4 { margin-bottom: 2rem; }
 .bs_plbm_bx::before { max-width: 60%; }
-.best_title h4 { font: var(--font-28); }
+.best_title h4 { font: var(--font-28); letter-spacing: 0; }
 .best_title { margin-bottom: 3rem; }
 .best_prac_lft > h4 { margin-bottom: 2rem; }
 .best_prac_lft .best_pra_pdf { display: none; }
-.iqac-value-eduction-cell h3 { font: var(--font-28); margin-bottom: 3rem; }
+.iqac-value-eduction-cell h3 { font: var(--font-28); margin-bottom: 3rem; letter-spacing: 0; font-weight: 600;}
 .facilities_policy h2 { margin-bottom: 2rem; }
 .value-education-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 0; }
 .value-education-event h2 { font-size: 2.4rem; font-weight: bold; }
-.value-education-sec2 .inner-iqac-function-Cnt p:first-of-type { font: var(--font-21); line-height: 3rem; }
+.value-education-sec2 .inner-iqac-function-Cnt p:first-of-type { font: var(--font-21); line-height: 3rem; margin: 2rem 0;}
 .dg-pathshala-video-link h2 { font: var(--font-24); }
 .dg-pathshala>.digital-pathshala-grid{padding-top: 0;}
 .dg-pathshala-btn .supporting-btn{margin-top: 0;}
@@ -438,7 +438,184 @@
 .library_right{ padding-top: 3rem;}
 .sterco_tabs_sec .sterco_tab_main:before{ display: none;}
 .acx_lft p { padding-right: 0; }
-
+.value-education-sec2 .csr-design{ right: 0;}
+.committee_members h5 { margin-bottom: 3rem; }
+.our_inspiration_left h4{ font: var(--font-28); letter-spacing: 0;}
+.digital-patsala figure span{ max-width: 5rem;}
+.digital-patsala figcaption{ padding: 1rem;}
+.digital-patsala figcaption h3{ font: var(--font-18);}
+.incu_hig_title h4 br{ display: none;}
+.inc_high_grid{ gap: 5rem;}
+.incubation-highlight-sec .incu_hig_title { margin-bottom: 5rem; }
+.ins_indu_cell{ padding-block: 5rem 12rem;}
+.primary_obj_aic { padding-block: 5rem; }
+.primary_obj_grid { display: flex; flex-direction: column-reverse; gap: 3rem;}
+.primary_obj_grid h5{ margin-bottom: 3rem; padding-top:0;}
+.primary_obj_grid h3{ font: var(--font-24); margin-bottom: 3rem;}
+.primary_obj_aic_two{padding-block: 5rem;}
+.primary_obj_aic_two:after{ display: none;}
+.primary_obj_aic_two h3{font: var(--font-24); margin-bottom: 3rem;}
+.primary_obj_aic_two p{ margin-bottom: 4rem;}
+.incu_hig_title h4{ font: var(--font-28); letter-spacing: 0; font-weight: 600;}
+.fo_aic_com_grid{ display: block; left: 0; right: 0; padding-block: 5rem; }
+.fo_aic_bgbox{background-color: transparent;}
+.fo_aic_com_grid .fo_content_rgt h5{ margin-block: 5rem 2rem;}
+.fo_aic_com_grid .fo_content_rgt h3{ font: var(--font-24); font-weight: 600;}
+.other_activi_sec { padding-block: 5rem; }
+.other_acti_grid{ display: block;}
+.oth_ac_rgt{ padding-top: 3rem;}
+.other_activi_sec2 { padding-bottom: 5rem; }
+.psychology_counsellor{ padding-block: 5rem; overflow: hidden;}
+.pyscho_grid{ display: flex; flex-direction: column-reverse; gap:7rem;}
+.pyscho_grid .pyscho_infosec > p:last-child{ margin-bottom: 0;}
+.inc_high_grid{ display: flex; flex-direction: column-reverse;}
+.incubation-highlight-sec .inc_high_pattern{ display: none;}
+.incubation-highlight-sec { padding-block: 5rem; }
+.ins_in_btm_des { padding-top: 2rem; }
+.ins_to_title:before{ width: auto; left: 3rem; right: 3rem;}
+.trans_rout_sec { padding-block: 5rem; }
+.trans_rout_sec h4{ margin-bottom: 2rem;}
+.trans_tb_box .trans_tb_box{ padding-top: 0;}
+.tran_root_grid{ display: block;}
+.tsn_rou_box{ padding: 1rem 3rem;}
+.tran_root_rgt h4{ margin: 0 0 2rem;}
+.bs_rou_pattern{ display: none;}
+.team-members-sec.tras_drive_con{ padding-block: 5rem;}
+.auditorium_conf_title h3{ font: var(--font-28); letter-spacing: 0; margin-bottom: 4rem;}
+.center-of-excellence .auditorium_conf_grid{ display: flex; flex-direction: column-reverse; gap: 3rem;}
+.auditorium_conf_left figure{ display: none;}
+.center-of-excellence .auditorium_conf_title, .center-of-excellence .auditorium_conf_left h4 { margin-bottom: 2rem; }
+.center-of-excellence .auditorium_conf_grid{ margin-bottom: 5rem;}
+.lounch-event-Cnt h2{ font: var(--font-24);}
+.lounch-event-grid{ display: block;}
+.lounch-event-Cnt{ padding-top: 3rem;}
+.lounch-event-img-design{ display: none;}
+.lounch-event { margin-block: 0 5rem; }
+.excellence-sec3 .row{ margin: 0;}
+.excellence-sec3 .blanket-box{ display: flex; flex-direction: column-reverse; margin-right: 0;}
+.excutive-summary .design{ display: none;}
+.excutive-summary-sec{ padding-block: 5rem;}
+.excutive-summary{ display: block; padding-right: 0;}
+.mission-Cnt { padding: 5rem; }
+.excutive-summary .mission figure{ display: none;}
+.vission h4{ margin-block: 4rem 2rem;}
+.methodolgy{ padding-block: 5rem;}
+.methodolgy-grid{ gap: 3rem;}
+.wipro-oracle-exe-center { padding-block: 5rem; }
+.wipro-oracle-grid{ display: flex; flex-direction: column-reverse; gap: 4rem;}
+.wipro-oracle-cnt h3{ font: var(--font-28); font-weight: 600; padding-block: 4rem 2rem;}
+.wipro-oracle-exe-center .tabs_section:before{ margin-top: 4rem;}
+.tabs_section .tab-buttons{ padding-left: 2rem;}
+.tabs_section .tab-btn{ font: var(--font-24);}
+.wipro-oracle-exe-center .tab_content_left{ padding: 2rem;}
+.wipro-oracle-exe-center .tab_content .acc-body{margin-left: 3rem;}
+.excellence-sec3 .blanket-text { padding: 0; }
+.wipro-oracle-cnt { padding-right: 0; }
+.lounch-event-Cnt h2 span{ font: var(--font-24); font-weight: 600;}
+.centobject_sec{padding-block: 5rem;}
+.centbenfit_sec{padding-block: 5rem;}
+.centobjec_caption > ul { padding-right: 0; }
+.entbenfit_caption > ul { padding-right: 0; }
+.tp_ov_title h4 br{ display: none;}
+.tp_ov_title h4{ margin-bottom: 4rem;}
+.clbcri_grid_bx{ padding-block: 5rem; display: block;}
+.clbcri_grid_bx img{ width: 100%;}
+.clbcri_grid_bx img+img{ display: none;}
+.entrepreneurship_section { padding-block: 5rem; }
+.entrepreneurship_section_grid{ display: block;}
+.entrepreneurship_section_bx{ padding-top: 3rem;}
+.innovation_tabs .sterco_tab_main:after{ display: none;}
+.innovation_tabs.sterco_tabs_sec { background-color: var(--color-AE); }
+.innovation_tabs.sterco_tabs_sec .sterco_tab_main{ padding-top: 0;}
+.innovation_tabs{ padding-block: 5rem;}
+.innovation_tabs_bx{ padding: 3rem; margin-top: 3rem; min-height: auto;}
+.sterco_tabs_sec .sterco_accordion_content{ max-width: 100%;}
+.innovation_tabs_bx{ width: 100%;}
+.innovation_event { padding-block: 0; }
+.innovation_event_grid{ padding-block: 5rem; display: flex; flex-direction: column-reverse; gap: 5rem; background-color: transparent;}
+.evnt_innovation_Bx img{ width: 100%;}
+.evnt_enno_Bx h4 { margin-bottom: 3rem; padding-top: 0rem; }
+.evnt_enno_Bx img{ display: none;}
+.regional_meets{ padding-block: 5rem;}
+.regional_meets blockquote{ font: var(--font-28); line-height: 1.3;}
+.regional_meets h5{ margin-bottom: 3rem;}
+.Cnt-img img{ display: none;}
+.innvation_lap_grid{ display: block; left: 0;}
+.robotics-lab-grid-Cnt .Cnt-img{ grid-template-columns: 100%; padding-bottom: 3rem;}
+.robotics-lab-grid-Cnt  blockquote{ max-width: 100%;}
+.smart_india { max-width: 100%; padding-right: 0; }
+.innovation_leap_wrapper{padding-block: 0 5rem;}
+.clbcri_grid_bx:before{ display: none;}
+.clbcri_grid_bx:after{ display: none;}
+.innovation_event_grid:before{ display: none;}
+.innovation_event_grid:after{ display: none;}
+.clbcri_bx{ padding-left: 3rem;}
+.innovation-cell-iic .clbcri_grid_bx { padding: 0 0 5rem; margin-top: 5rem;}
+.institute_faq_section .tp_accbox .accordion-item, .institute_faq_section .tp_accbox .accordion-body { max-height: 100% !important; }
+.stu_cen_title > h3{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
+.stu_cen_title { margin-bottom: 5rem; }
+.stu_cen_po_main { padding-block: 5rem 2rem; }
+.scp-sec { margin-bottom: 5rem; }
+.scp-sec .scp-wrap{padding: 4rem;}
+.navrang_sec .philosophy_right{ margin-top: 0;}
+.objective_clubs { padding-right: 0; }
+.clubs_table { padding-left: 0; margin-top: 4rem; }
+.navrang_club_section { padding: 5rem 0; }
+.navrang_list ul li a{padding-block: 2rem; font-weight: 600; display: block; line-height: 1.3;}
+.nss-ncc-aim-grid{ flex-direction: column-reverse; display: flex;}
+.nss-ncc-aim-img p{ padding: 2rem 0 3rem; margin-top: 0;}
+.nss-ncc-aim-Cnt figure{ display:none;}
+.nss-ncc-aim-Cnt { padding-right: 0; }
+.nss-ncc-aim-Cnt p:nth-of-type(2){ margin-bottom: 0;}
+.nss-ncc-aim-grid{ margin-bottom: 5rem;}
+.flash-effect-2:before{ display: none;}
+.nss-ncc-aim-Cnt p:nth-of-type(2){ font: var(--font-24);}
+.logo_philosophy_grid{ padding-block: 5rem;}
+.motto-ncc p:nth-of-type(2){ font: var(--font-24);}
+.ncc-core-values{ padding-block: 5rem;}
+.ncc-core-values p{ font: var(--font-28); letter-spacing: 0; font-weight: 600;}
+.ncc-core-values figure{ display: none;}
+.pledge { margin-block: 5rem; }
+.pledge-lab-grid{ display: block;}
+.pledge-lab-grid-Cnt{ padding-top: 3rem;}
+.pledge-lab-grid-Cnt h3{ padding-right: 0; font: var(--font-24);}
+.ncc-flag .csr-text-list { padding: 0; }
+.ncc-rank-ceremony-grid{ display: block;}
+.ncc-rank-ceremony_cont { padding-right: 0; }
+.csr-sec1.ieee_wrapper { padding-block: 5rem; }
+.ieee_grid { grid-template-columns: 100%; gap: 4rem; display: grid; }
+.student-chapters .csr-txt h3{  margin-bottom: 0;}
+.tp_ov_left .tp_ov_pattern_2{ display: none;}
+.or_cmit_left img{ width: 100%;}
+.alumni_evt_meetsec .evt_titlesec p + p { margin-bottom: 0; }
+.sports-gym .the_institute_grid{ padding-top: 0;}
+.sports_gym_wrap h4{ font: var(--font-28); letter-spacing: 0;}
+.about_bottom h4 br{ display: none;}
+.sports_gym_wrap h3 br{ display: none;}
+.counselling-support .the_institute_grid{ padding-top: 0;}
+.institute_cnt h5{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
+.or_cmit_right figure{ display: none;}
+.counselling-support .key_fun_sec{ padding-bottom: 0rem;}
+.key_feature_yourdost .csr-list2 { padding-block: 5rem 0;  }
+.yourdost_section{margin: 0; padding-block: 5rem;}
+.counselling-support .clothes{padding-top: 5rem;}
+.roshni_section h3{ font: var(--font-24); padding-bottom: 1rem;}
+.roshni_section h4{ font: var(--font-18);}
+.life-at-campus .the_institute_grid{ padding-top: 0;}
+.front_news{ display: block;}
+.news_section{ padding-block: 5rem;}
+.news_left img{ width: 100%;}
+.news_right{ padding-top: 5rem;}
+.news_head{ justify-content: flex-start; padding-bottom: 3rem;}
+.news_right{ padding-inline: 0;}
+.front_news .news_cnt a{ margin-left: 0.2rem;}
+.news_right h3{ padding-block: 0rem 2rem;}
+.news_list_right { padding-right: 2rem; }
+.news_list{ gap: 5rem;}
+.news_listing { padding-block: 2rem 5rem; }
+.media_coverage { padding-block: 7rem 5rem; }
+.media_gallery { padding-block: 5rem;}
+.archives .gallery_list_section { padding-block: 5rem;}
 
  }
 @media (max-width: 820px) {
@@ -485,7 +662,7 @@
 @media (max-width: 767px) {
  .the_institute_grid { gap: 4rem; padding-top: 3.2rem; }
 .institute_cnt ul { margin-top: 3rem; }
-.digital-pathshala-grid { grid-template-columns:100%; gap: 0rem; padding-top: 0rem; }
+.digital-pathshala-grid { grid-template-columns:100%; gap: 1rem; padding-top: 0rem; }
 .best-practice { margin-bottom: 3rem; }
 .best-practice .pub-item .num { margin-right: 2rem; }
 .our_inspiration_section:before { inset: 0 0 1rem; }
@@ -544,7 +721,7 @@
 .best_prac2 { padding-block: 3rem ; }
 .ev_den_grid { padding: 1.5rem; }
 .bs_plbm_bx { padding-block: 4rem; }
-.iqac-value-eduction-cell h3 { font: var(--font-24); margin-bottom: 2rem; }
+.iqac-value-eduction-cell h3 { font: var(--font-24); margin-bottom: 2rem; font-weight: 600; }
 .the_classroom_grid{ gap: 5rem;}
 .sterco_tabs_sec .sterco_accordion_content{ display: none;}
 .sterco_tabs_sec .sterco_accordion_content.active{ display: flex;}
@@ -565,8 +742,46 @@
 .bhashini_cont ul { grid-template-columns: repeat(1, 1fr); }
 .bhashini-sec1 { margin: 0; padding-block: 5rem 0; }
 .collection_cnt h2{ font:var(--font-24); margin-top: 2rem;}
+.institute_cnt ul:before{ display: none;}
+.iic-achivement-grid { display: flex; flex-direction: column-reverse; }
+.iic-achivement-img{ height: 100%; margin-bottom: 3rem;}
+.mentor-grid{grid-template-columns: repeat(1, 1fr);}
+.res_publication.innovate{ padding-block: 0 5rem;}
+.res_publication.innovate-student{ padding-block: 5rem;}
+.fo_aic_com_grid{ padding-block: 5rem 0;}
+.center-exle-brand-grid{grid-template-columns: repeat(3, 1fr);}
+.Cnt-img img{ display: none;}
+.wipro-oracle-exe-center .tabs_section:before{ display: none;}
+.innovation-cell-iic .innovation_tabs_bx{ margin-top: 0;}
+.innovation-cell-iic .sterco_tab_content .sterco_accordion_content{ padding-block: 0;}
 
+.navrang_sec .philosophy_grid{ display: flex; flex-direction: column-reverse;}
+.navrang_sec .philosophy_grid{ gap: 7rem;}
+.navrang_sec .philosophy_left h3{ margin-bottom: 2rem;}
+.philosophy_section.navrang_sec h2{ letter-spacing: 0; margin-bottom: 3rem; font-weight: 600;}
+.in_essence_section { padding-block: 5rem; }
+.in_essence_section blockquote:empty{ display: none;}
+.navrang_list li:nth-child(2n) { padding-left: 0; }
+.navrang_list ul { grid-template-columns: repeat(1, 1fr); row-gap: 0; display: grid; }
+.navrang_list { padding-top: 2rem; }
+.navrang_club { padding-bottom: 0; }
+.in_essence_section .row{ display: block;}
+.in_essence_section .clubs_table{ overflow: scroll;}
 
+.philosophy_section.navrang_sec h2{ font: var(--font-28); font-weight: 600;}
+.navrang_sec .philosophy_left h3{ font: var(--font-21); font-weight: 600;}
+.news_list{ display: block; padding: 3rem;}
+.news_list figure img{ width: 100%;}
+.news_list_right{ padding-right: 0;}
+.gallery_grid{grid-template-columns: repeat(1, 1fr);}
+.gallery_grid_Bx img{ width: 100%;}
+.gallery_grid h5{ padding-inline: 0;}
+.gallery_list { column-count: 2;}
+.strategies-grid {grid-template-columns: repeat(1, 1fr);}
+.strategies-grid-2 {grid-template-columns: repeat(1, 1fr);}
+.strategies-box.Cnt{ padding-left: 0;}
+.strategies { padding-top: 5rem; }
+.tabbed-content{ margin-bottom: 3rem;}
  }
 @media (max-width: 640px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
@@ -584,7 +799,7 @@
 .our_inspiration_grid { grid-template-columns: 100%; gap: 1rem; }
 .our_inspiration_section { padding-block: 4rem; }
 .logo_philosophy_grid { grid-template-columns: 100%; padding-block: 4rem; }
-.about_vision { margin-top: 12rem; }
+.about_vision { margin-top:0rem; }
 .vision_mission_grid { grid-template-columns: 100%; gap: 3rem; }
 .accredation_grid { grid-template-columns: 100%; margin-inline: 0; }
 .accredation_bx { padding-inline: 0; border-right: none; text-align: left; justify-items: center; }
@@ -600,7 +815,7 @@
 .custom_pages_lists li { width: 100%; }
 .custom_pages_lists .tab_btn { text-align: left; }
 .team-members-grid { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
-.team-members div { min-height: 100%; }
+.team-members div { min-height: auto; }
 .committee_members h5 { margin-bottom: 3rem; }
 .cabIntroX_grid { grid-template-columns: repeat(1, 1fr); gap: 2rem; }
 .placement_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
@@ -625,6 +840,12 @@
 .acx_grid{ gap: 3rem;}
 .acx_list{ display: block;}
 .acx_list li{ padding-block: 2rem;}
+.evnt_innovation_Bx h5{ padding-right: 0;}
+.evnt_innovation_Bx h5{ margin-block: 0rem 3rem;}
+.evnt_innovation_Bx{padding: 2.7rem 2.5rem;}
+.regional_meets_grid {grid-template-columns: repeat(1, 1fr);}
+.archives .gallery_list{ column-count: 1;}
+
 
 /* the-group */ }
 
@@ -701,6 +922,39 @@
 .acx_sec h3 { font: var(--font-24); font-weight: 600; }
 .acx_list{ margin-bottom: 4rem;}
 
+.incu_hig_title h4{ font: var(--font-24); font-weight: 600; }
+.inc_high_lft > h4 { margin-bottom: 2rem; }
+.inc_high_grid { gap: 3rem; }
+.oth_ac_lft:before{height: 100%; top: 3.4rem;}
+.oth_ac_rgt { padding-top: 6rem; }
+.pri_dark_imggrid {grid-template-columns: repeat(1, 1fr);}
+.auditorium_conf_title h3{ font: var(--font-24); font-weight: 600;}
+.csr-sec3:before{ display: none;}
+.csr-sec3{ margin-bottom: 5rem;}
+.ar-vr-grid { grid-template-columns: repeat(1, 1fr);}
+.center-exle-brand-grid { grid-template-columns: repeat(2, 1fr); }
+.robotics-lab-grid-Cnt h2{margin-bottom: 2rem;}
+.mission p{ font: var(--font-18); line-height: 1.3;}
+.methodolgy-grid { grid-template-columns: repeat(1, 1fr);}
+.lounch-event-Cnt { padding-right: 0; }
+.innovation-incubation-Cnt p { padding-right: 0; }
+.innvation_lap_grid blockquote{ font: var(--font-24); font-weight: 600;}
+.regional_meets blockquote{ font: var(--font-24); font-weight: 600;}
+.innovation_tabs_bx blockquote{font: var(--font-21); font-weight: 600;}
+.innovation_tabs_bx ul li{ font: var(--font-16); padding-block: 1rem;}
+.stu_cen_title > h3{font: var(--font-24); font-weight: 600; margin-bottom: 3rem;}
+.gov_polbox{ display: block;}
+.gov_polbox > h6{ margin-bottom: 3rem;}
+.res_publication { padding-block: 3rem 5rem; }
+.scp-text > h6{ line-height: 1.3;}
+.navrang_sec .philosophy_right{ padding: 4rem;}
+.sports_gym_wrap h4{ font: var(--font-24); font-weight: 600;}
+.about_bottom h4{ font: var(--font-24); font-weight:500;}
+
+.sports_facilities_section { margin-top: 2rem; }
+.institute_cnt h5{ font: var(--font-24); font-weight: 600;}
+
+
 
 
  }
@@ -718,6 +972,10 @@
 .fac_policy_right{ display: flex; padding-top: 2rem; align-items: center; gap: 2rem;}
 .distinguished-alumni-grid { grid-template-columns: repeat(1, 1fr); }
 .gallery_list { column-count: 1; }
+.robotics-lab-grid-Cnt ol { padding-right: 0; }
+.center-exle-brand-grid .bg { padding: 1.5rem 3.3rem; }
+.institute_faq_section .tp_accbox .accordion-header{ gap: 3rem;}
+.institute_faq_section .tp_accbox .accordion-header .icon{ display: block; text-align: center;}
 
 
  }

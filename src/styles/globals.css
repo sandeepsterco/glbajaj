@@ -26,7 +26,7 @@ html { font-size: min(0.52083333vw, 10px); }
 .container { width: min(1800px, 81.8181818vw); container-type: inline-size; margin-left: auto; margin-right: auto; padding-inline: 1rem; }
 .container-md { max-width: min(1885px, 85.6818182vw); padding-left: 1.5rem; padding-right: 1.5rem; margin-left: auto; margin-right: auto; }
 .container-lg { width: min(100%, 2005px); padding-left: 1.5rem; padding-right: 1.5rem; margin: 0 auto; }
-.inner-container { width: clamp(900px, 67.0454545vw, 1475px); padding-inline: 1.5rem; }
+.inner-container { width: clamp(900px, 67.0454545vw, 1475px); padding-inline: 1.5rem; margin: 0 auto; }
 html { font-size: min(0.45454545vw, 10px); scroll-behavior: smooth; }
 .container55 { max-width: clamp(
     var(--container55-min),
@@ -87,6 +87,7 @@ html { font-size: 62.5%; }
 .container-fluid { max-width: 100%; padding-inline: 1.6rem; }
 .container { max-width: 100%; padding-inline: 1.6rem; }
 .container25 { max-width: 100%; padding-inline: 1.6rem; }
+.container-md{ max-width: 100%; padding-inline: 2.5rem; }
  }
 @media (max-width: 330px) {
  html { font-size: 50.5%; }

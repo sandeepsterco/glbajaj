@@ -1008,11 +1008,11 @@
 .home_testimonials { padding: 3.5rem 0; }
 .home_testimonials .grid { gap: 0rem; display: block; margin: 0; }
 .home_testimonials .grid .sec_title { margin-left: 0; margin-right: 0; }
-.home_testimonials .desc_content { gap:3rem; margin: 0; display: flex; }
+.home_testimonials .desc_content { gap:3rem; margin: 0; display: flex; padding: 2rem 0 0;}
 .home_testimonials .quote-icon { max-width: 4rem; }
 .home_testimonials .desc_content .desc { font: var(--font-16); margin-top: 0; }
 .desc_content { padding-top: 4rem; }
-.home_testimonials .tabs, .tabs_design1 { justify-content: flex-start; margin-block: 4rem 2rem; }
+.home_testimonials .tabs, .tabs_design1 { justify-content: flex-start; margin-block: 4rem 2rem;  flex-wrap: wrap;}
 .home_testimonials .right .name { font: var(--font-14); font-weight: 600; color: var(--color-black); }
 .home_testimonials .right .role { font: var(--font-12); font-weight: 400; color: var(--color-33); margin-top: 1rem; }
 .home_testimonials .right .tab_image_content { margin-top: 2rem; padding-bottom: 3rem; position: relative; padding-inline: 1rem; }
@@ -1251,6 +1251,8 @@ main { overflow: hidden; }
 
 @media (max-width:575px) {
  .facility-image-grid .shaping_future_grid { grid-template-columns: repeat(1, 1fr); }
+ .right_slider .swiper { margin-right: -3rem;}
+ .right_slider .slider_btns{ width: 7rem;}
 }
 
 

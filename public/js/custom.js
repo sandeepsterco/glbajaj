@@ -39,7 +39,7 @@
 
     const tabs = Array.from(section.querySelectorAll(".tabs li"));
     const contents = Array.from(section.querySelectorAll(".tab_content"));
-    const images = Array.from(section.querySelectorAll(".bg_image"));
+    const images = Array.from(section.querySelectorAll(".bg_image_group"));
     const btnPrev = section.querySelector(".btn-prev");
     const btnNext = section.querySelector(".btn-next");
 

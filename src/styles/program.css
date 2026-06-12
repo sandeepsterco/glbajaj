@@ -11,8 +11,12 @@
 /* .cus-tab .item.active .item-content { -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
 */
 
-.button_strip{display:block; font:var(--font-20); text-transform: uppercase; text-align: center; padding: 2rem; letter-spacing: 0.1rem;}
+/* .button_strip{display:block; font:var(--font-20); text-transform: uppercase; text-align: center; padding: 2rem; letter-spacing: 0.1rem;} */
 .home_testimonials.inner{padding: 10rem 0 2rem;}
+.program_strip{background:var(--color-AE);}
+.program_strip .content{ display:flex; justify-content: space-between; margin:0; padding-block: 2rem; align-items: center;}
+.program_strip p{margin:0; color:var(--color-white); font:var(--font-22)}
+.program_strip .button_strip{}
 
 
 @media all and (min-width: 800px) {

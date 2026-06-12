@@ -18,7 +18,16 @@ export default async function ProgramDetail(){
         <>
             <ReactParserDynamic html={combinedHtml} />
             {data?.department && (
-                <Link href={`${BASE_URL}department/${data.department.slug}`} className="btn_styl1 button_strip">Go to {data.department.name}</Link>
+                <div className="program_strip">
+                    <div className="container25">
+                        <div className="content">
+                            <p>Learn More About the {data.department.name}</p>
+                            <Link href={`${BASE_URL}department/${data.department.slug}`} className="arrow_btn button_strip">
+                                <img src='/images/home/slide_arrow_right.svg' />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             )}
         </>
     );

@@ -4,6 +4,9 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { SkeletonGroup } from "../ui/Skeleton";
+import ApiError from "../ui/ApiError";
+import { useEffect, useState } from "react";
 
 const fetchHappeningsData=async()=>{
   const {data, error} = await apiFetch(`modular/home`);
@@ -13,16 +16,32 @@ const fetchHappeningsData=async()=>{
 }
 
 export default function HomeHappenings() {
-  const {data, isLoading} = useQuery({
+  const [isMobile, setIsMobile] = useState(false);
+  const {data, isLoading, isError} = useQuery({
     queryKey:['home_happenings'],
     queryFn:fetchHappeningsData,
   })
 
-  const happeningsData = data?.modular?.["news-events"];
+  useEffect(()=>{
+    if(window.innerWidth < 768){
+      setIsMobile(true);
+    }
+  }, [])
+
+  if(isLoading){
+    return isMobile ? <SkeletonGroup count={2} wrapperClassName="!block" className="w-full h-[25rem] !mb-[1rem]" /> : <SkeletonGroup count={8} wrapperClassName="grid-cols-4" className="w-full h-[38rem]" />
+  }
+
+  if(isError){
+    return <ApiError />
+  }
+
+  const happeningsData = data?.modular?.["news-events"] ?? [];
+  const updatedData = isMobile ? happeningsData.filter((item:any, idx:number)=>idx < 2) : happeningsData
 
   return (
     <div className="grid_data">
-      {happeningsData && happeningsData.length > 0 && happeningsData.map((item:any, singleIdx:number)=>(
+      {updatedData && updatedData.length > 0 && updatedData.map((item:any, singleIdx:number)=>(
         <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`} data-aos="fade-up" data-aos-delay="200">
           {item?.image && (
             <figure>

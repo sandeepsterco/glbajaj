@@ -6,6 +6,7 @@ import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import ProgramApplyModal from "./ProgramApplyModal";
+import { SkeletonGroup } from "../ui/Skeleton";
 
 interface Program {
   name: string;
@@ -174,7 +175,7 @@ export default function ProgramList() {
               <div className="item">
                 <div className="item-content">
                   {loading ? (
-                    <p>Loading programs...</p>
+                    <SkeletonGroup count={6} wrapperClassName="!block gap-[3rem]" className="w-full h-[25rem] !mb-[3rem]" />
                   ) : programsData &&  programsData.data.length > 0 ? (
                     programsData.data.map((group) => {
                       return <ProgramGroupSection

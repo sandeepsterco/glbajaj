@@ -23,7 +23,7 @@ export default async function Home() {
 
   if (!homeData?.modular && !homeData?.cms) {
     return <div className="min-h-[100vh] flex items-center justify-center">
-      <h1 className="text-[5rem] font-bold">Something wrong...</h1>
+      <h1 className="md:!text-[5rem] !text-[2rem] md:!font-bold !font-normal">Something wrong...</h1>
     </div>
   }
 
@@ -49,7 +49,7 @@ export default async function Home() {
             />
           }
         >
-            <HomeContent />
+          <HomeContent data={homeData} />
         </Suspense>
 
       </main>

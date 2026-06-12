@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import PageLoader from "./PageLoader";
 
 const MAX_OVERLAY_MS = 8000;
-const MIN_OVERLAY_MS = 400;
+const MIN_OVERLAY_MS = 1000;
 const POLL_MS = 80;
 
 /**

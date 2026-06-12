@@ -244,6 +244,11 @@
     .global_search_dialog .sec_inpu_box input{padding: 1rem 5.5rem 1rem 2rem; font: var(--font-16);}
     .global_search_dialog .secbtn_close{top: 2rem; right: 1.6rem;}
     .secbtn_close svg{ width: 2rem;}
+
+    .site_brand .navbar-brand{width: 18.8rem;}
+
+    /* .bottom_header .container-fluid{padding-inline: 1rem;}
+    .bottom_header .btn_head_menu{padding-block: 1rem;} */
   }
 
   @media (max-width:480px){

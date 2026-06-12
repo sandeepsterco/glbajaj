@@ -127,3 +127,7 @@
     .home_banner_video{height: 100vh;}
     
 }
+
+@media (max-width:640px){
+    .home_banner:after{height: 10.6rem;}
+}

@@ -1162,7 +1162,7 @@
     initYTModal();
     initStercoTabs();
     initPolicyAccordion();
-    initFooterModals();
+    // initFooterModals();
     initDropMenus();
     initXTabs();
 

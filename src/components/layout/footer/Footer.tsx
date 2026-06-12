@@ -2,13 +2,24 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import MobileMenu from "./MobileMenu";
+import React from "react";
 
 const Footer = async () => {
-  const { data: footerData, error: footerError } = await apiFetch(
-    "menu?location=footer",
-  );
+  const [
+    { data: footerData, error: footerError },
+    { data: infoData, error: infoError }
+  ] = await Promise.all([apiFetch("menu?location=footer"), apiFetch("info")]);
+
+  const getValue = (key: string) => {
+    const found = infoData?.data.find((item: any) => item.key == key) ?? null;
+    return {
+      value: found?.value ?? null,
+      image: found?.image ?? null,
+    }
+  }
+
+  if (footerError && infoError) return;
 
   return (
     <>
@@ -26,36 +37,46 @@ const Footer = async () => {
 
             <div className="footer_content">
               <div className="footer_address">
-                <h3>GL Bajaj Institute of Technology and Management</h3>
-                <p>
-                  Plot No.2 , APJ Abdul Kalam Road, Knowledge Park 3, Greater
-                  Noida, Uttar Pradesh, India, 201306
-                </p>
+                {getValue('institute_name').value && (
+                  <h3>{getValue('institute_name').value}</h3>
+                )}
+                {getValue('address').value && (
+                  <p>{getValue('address').value}</p>
+                )}
               </div>
 
               <div className="footer_contact">
+                {getValue('email').value && (
+                  <div>
+                    <h4>Email</h4>
+                    <a href={`mailto:${getValue('email').value}`}>{getValue('email').value}</a>
+                  </div>
+                )}
+
+                {getValue('helpline').value && (
+                  <div>
+                    <h4>Helpline No.</h4>
+                    <a href={`tel:${getValue('helpline').value.split('-').join('')}`}>{getValue('helpline').value}</a>
+                  </div>
+                )}
                 <div>
-                  <h4>Email</h4>
-                  <a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a>
+
                 </div>
 
-                <div>
-                  <h4>Helpline No.</h4>
-                  <a href="tel:8010000234">8010-000-234</a>
-                </div>
+                {getValue('phone').value && (
+                  <div>
+                    <h4>Phone</h4>
+                    <p>
+                      <a href={`tel:${getValue('phone').value}`}>{getValue('phone').value}</a>,
+                      <a href={`tel:${getValue('phone1').value}`}>{getValue('phone1').value}</a>
+                    </p>
+                  </div>
+                )}
 
-                <div>
-                  <h4>Phone</h4>
-                  <p>
-                    <a href="tel:+917290008310">+91 7290008310</a>,
-                    <a href="tel:+917290008390">+91 7290008390</a>
-                  </p>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* <!-- Quick Links --> */}
           <div className="footer_links">
             <ul>
               <li>
@@ -79,12 +100,14 @@ const Footer = async () => {
             </ul>
           </div>
 
-          {/* <!-- Bottom --> */}
           <div className="footer_bottom">
             <div className="footer_bottom_left">
-              <p>
-                Copyright © 2026 GL Bajaj Institute of Technology and Management
-              </p>
+              {getValue('copyright').value && (
+                <p>
+                  {getValue('copyright').value}
+                </p>
+              )}
+
               <p>
                 Website Design and Development by {" "}
                 <a href="https://www.stercodigitex.com/" target="_blank">
@@ -96,33 +119,52 @@ const Footer = async () => {
             <div className="footer_bottom_right">
               {/* <!-- Social Icons --> */}
               <div className="social_icons">
-                <a href="https://www.facebook.com/glbitm" target="_blank">
-                  <img
-                    src="/images/icons/social/facebook-color.svg"
-                    alt="facebook icon"
-                  />
-                </a>
-                <a href="https://x.com/glbajaj" target="_blank">
-                  <img src="/images/icons/social/x-color.svg" alt="" />
-                </a>
-                <a href="https://www.youtube.com/user/glbitm07" target="_blank">
-                  <img
-                    src="/images/icons/social/youtube-color.svg"
-                    alt=""
-                  />
-                </a>
-                <a href="https://www.instagram.com/glbajajitm/" target="_blank">
-                  <img
-                    src="/images/icons/social/insta-color.svg"
-                    alt=""
-                  />
-                </a>
-                <a href="https://www.linkedin.com/school/g-l-bajaj-institute-of-technology-and-management/" target="_blank">
-                  <img
-                    src="/images/icons/social/linkedin-color.svg"
-                    alt=""
-                  />
-                </a>
+
+                {getValue('facebook').value && (
+                  <a href={getValue('facebook').value} target="_blank">
+                    <img
+                      src={getValue('facebook').image}
+                      alt="facebook icon"
+                    />
+                  </a>
+                )}
+
+                {getValue('twitter').value && (
+                  <a href={getValue('twitter').value} target="_blank">
+                    <img
+                      src={getValue('twitter').image}
+                      alt="X icon"
+                    />
+                  </a>
+                )}
+
+                {getValue('youtube').value && (
+                  <a href={getValue('youtube').value} target="_blank">
+                    <img
+                      src={getValue('youtube').image}
+                      alt="youtube icon"
+                    />
+                  </a>
+                )}
+
+                {getValue('instagram').value && (
+                  <a href={getValue('instagram').value} target="_blank">
+                    <img
+                      src={getValue('instagram').image}
+                      alt="instagram icon"
+                    />
+                  </a>
+                )}
+
+                {getValue('linkedin').value && (
+                  <a href={getValue('linkedin').value} target="_blank">
+                    <img
+                      src={getValue('linkedin').image}
+                      alt="linkedin icon"
+                    />
+                  </a>
+                )}
+
               </div>
 
               {/* <!-- Subscribe --> */}

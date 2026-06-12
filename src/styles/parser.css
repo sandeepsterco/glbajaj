@@ -581,10 +581,15 @@
 .res_publication .table-wrapper thead tr th { font: var(--font-16); }
 .fixed-bottom.mobile-footer { display: none; }
 .drop_down .drop_btn { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-.submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; list-style: none; padding:0 2rem; margin: 0; max-height: 0; }
-.drop_down.active .submenu { margin-bottom: 2rem; }
+.submenu { max-height: 0; overflow: hidden; transition: all 0.1s ease-in-out; list-style: none; margin: 0; max-height: 0;  padding: 0 2rem;}
+.submenu.open{max-height:unset; padding: 1rem 2rem}
+/* .drop_down.active .submenu { margin-bottom: 2rem; } */
+/* .menu_scroll .drop_down > .submenu > .drop_down .drop_btn{padding: 1rem 0rem;} */
+.menu_scroll .drop_down > .submenu {background: #f4f7f4;}
+.menu_scroll .drop_down > .submenu > .drop_down > .submenu {background:#e9e9e9;} 
+.menu_scroll .drop_down > .submenu > .drop_down > .submenu.open{margin-top:1rem;}
 .submenu li { padding: 0.6rem 0; }
-.submenu li a { color: var(--color-33); display: block; font: var(--font-15); }
+.submenu li a { color: var(--color-33); display: block; font: var(--font-15); position:relative;}
 .flash-effect { position: relative; overflow: hidden; display: inline-block; width: 100%; }
 .flash-effect::before { position: absolute; top: 0; left: -100%; z-index: 2; display: block; content: ''; width: 50%; height: 100%; background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%); background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%); -webkit-transform: skewX(-25deg); transform: skewX(-25deg); }
 .flash-effect:hover::before { -webkit-animation: shine .75s; animation: shine .75s; }
@@ -1060,8 +1065,8 @@
 .tab.active .active_img { display: block; }
 .modal-new { position: fixed; left: 0; bottom: 0; width: 100%; height: 100vh; overflow-y: scroll; background: var(--color-F5); transform: translateY(100%); transition: transform 0.3s ease; z-index: 9999; padding-bottom: 8rem; }
 .footer-trigger svg { stroke: currentColor; color: #fff; }
-.mobile_menu>ul>li>a::after { content: ""; background-image:url("/images/home/slide_arrow_right.svg"); width: 6px; height: 12px; position: absolute; right: 1rem; background-position: center; top: 2rem; transition: transform 0.3s ease; }
-.mobile_menu>ul>li.active>a::after { transform: rotate(90deg); }
+.mobile_menu .drop_btn::after { content: ""; background-image:url("/images/home/slide_arrow_right.svg"); width: 12px; height: 12px; position: absolute; right: 1rem; background-position: center; top: 50%; transition: transform 0.3s ease; background-repeat:no-repeat; transform:translateY(-50%);}
+.mobile_menu .drop_down.active > .drop_btn::after { transform: translateY(-50%) rotate(90deg); }
 .modal-new.show { transform: translateY(0px); }
 .pro_menu { background-color: var(--color-F5); padding: 3rem; }
 .courses_Box { padding-top: 3.5rem; margin-inline: -1rem; }

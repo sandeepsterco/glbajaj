@@ -31,7 +31,6 @@ function ParserWidgetFallback() {
 
 const HomePlacements = dynamic(() => import("../../parser/HomePlacements"), {
   loading: ParserWidgetFallback,
-  ssr:false,
 });
 const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"), {
   loading: ParserWidgetFallback,
@@ -56,7 +55,6 @@ const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm")
 });
 const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
   loading: ParserWidgetFallback,
-  ssr:false,
 });
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
   loading: ParserWidgetFallback,
@@ -68,11 +66,9 @@ const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCours
 });
 const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"), {
   loading: ParserWidgetFallback,
-  ssr:false,
 });
 const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"), {
   loading: ParserWidgetFallback,
-  ssr:false,
 });
 const ContactForm = dynamic(() => import("../../parser/ContactForm"), {
   loading: ParserWidgetFallback,
@@ -116,7 +112,6 @@ const ResearchInnovation = dynamic(
 );
 const HomeFacilities = dynamic(() => import("../../parser/HomeFacilities"), {
   loading: ParserWidgetFallback,
-  ssr:false,
 });
 const PoliciesDisclosures = dynamic(
   () => import("../../parser/PoliciesDisclosures"),

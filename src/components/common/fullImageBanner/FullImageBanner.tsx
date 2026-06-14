@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "./banner.css";
@@ -13,7 +14,6 @@ function getVideoUrl(url: string): string {
   try {
     const videoUrl = new URL(url);
 
-    // Vimeo
     if (
       videoUrl.hostname.includes("vimeo.com") ||
       videoUrl.hostname.includes("player.vimeo.com")
@@ -22,23 +22,21 @@ function getVideoUrl(url: string): string {
       videoUrl.searchParams.set("muted", "1");
       videoUrl.searchParams.set("controls", "0");
       videoUrl.searchParams.set("loop", "1");
-      videoUrl.searchParams.set("background", "1"); // hides controls + enables autoplay muted
+      videoUrl.searchParams.set("background", "1");
       return videoUrl.toString();
     }
 
-    // YouTube
     if (
       videoUrl.hostname.includes("youtube.com") ||
       videoUrl.hostname.includes("youtu.be")
     ) {
       videoUrl.searchParams.set("autoplay", "1");
-      videoUrl.searchParams.set("mute", "1"); // YouTube uses "mute" not "muted"
+      videoUrl.searchParams.set("mute", "1");
       videoUrl.searchParams.set("controls", "0");
       videoUrl.searchParams.set("loop", "1");
       videoUrl.searchParams.set("playsinline", "1");
       videoUrl.searchParams.set("rel", "0");
       videoUrl.searchParams.set("modestbranding", "1");
-      // loop requires playlist param set to the video id
       const videoId =
         videoUrl.searchParams.get("v") ||
         videoUrl.pathname.split("/").pop() ||
@@ -47,42 +45,24 @@ function getVideoUrl(url: string): string {
       return videoUrl.toString();
     }
 
-    return url; // fallback for other platforms
+    return url;
   } catch {
-    return url; // if URL parsing fails, return as-is
+    return url;
   }
 }
 
-function SliderCaption(slide: any) {
+function SliderCaption({ slide }: { slide: any }) {
   return (
     <div className="slider_caption">
       <div className="container-fluid">
-        <div
-          className="caption_wrap"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+        <div className="caption_wrap">
           {slide?.title && (
-            <blockquote
-              className="title48"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              {slide.title}
-            </blockquote>
+            <blockquote className="title48">{slide.title}</blockquote>
           )}
           <div className="cap_desc">
-            {slide?.sub_title && (
-              <p data-aos="fade-up" data-aos-delay="600">
-                {slide.sub_title}
-              </p>
-            )}
+            {slide?.sub_title && <p>{slide.sub_title}</p>}
             {slide?.url && (
-              <Link
-                href={slide.url || "#"}
-                data-aos="fade-up"
-                data-aos-delay="800"
-              >
+              <Link href={slide.url || "#"}>
                 <figure>
                   <Image
                     src="/images/home/hero/arrow_right.svg"
@@ -97,20 +77,75 @@ function SliderCaption(slide: any) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
+function HeroVideoSlide({
+  slide,
+  index,
+}: {
+  slide: any;
+  index: number;
+}) {
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    if (index !== 0 || loadVideo) return;
+
+    const activate = () => setLoadVideo(true);
+
+    if (typeof window.requestIdleCallback === "function") {
+      const idleId = window.requestIdleCallback(activate, { timeout: 4000 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(activate, 4000);
+    return () => window.clearTimeout(timeoutId);
+  }, [index, loadVideo]);
+
+  return (
+    <div className="home_banner_video_facade">
+      {slide?.thumbnail_image ? (
+        <Image
+          src={slide.thumbnail_image}
+          alt={slide.title || "Banner"}
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          className={`object-cover ${loadVideo ? "home_banner_video_poster--hidden" : ""}`}
+        />
+      ) : (
+        <div className="home_banner_video_placeholder" aria-hidden="true" />
+      )}
+
+      {loadVideo ? (
+        <iframe
+          src={getVideoUrl(slide?.video_link)}
+          title={slide?.title || "Banner video"}
+          className="home_banner_video_iframe"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          className="home_banner_video_play"
+          aria-label="Play banner video"
+          onClick={() => setLoadVideo(true)}
+        />
+      )}
+
+      {(slide?.title || slide?.sub_title) && <SliderCaption slide={slide} />}
+    </div>
+  );
+}
 
 export default function HeroBanner({ data }: { data: any }) {
-
-
   return (
     <section className="home_banner">
       <Swiper
         className="home_slide"
         modules={[Pagination, Autoplay]}
-        // loop={true}
-        // autoplay={{ delay: 4000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         onBeforeInit={(sw) => {
           sw.el.style.setProperty("--swiper-duration", "4000ms");
@@ -136,45 +171,13 @@ export default function HeroBanner({ data }: { data: any }) {
                 {(slide?.title || slide?.sub_title) && (
                   <SliderCaption slide={slide} />
                 )}
-
-
               </>
             ) : (
-              <div
-                style={{
-                  position: "relative",
-                  paddingBottom: "56.4%",
-                  height: 0,
-                  overflow: "hidden",
-                }}
-              >
-                {slide?.thumbnail_image && (
-                  <Image
-                    src={slide.thumbnail_image}
-                    alt="Banner"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                )}
-
-                <iframe
-                  src={getVideoUrl(slide?.video_link)}
-                  className="absolute inset-0 w-full h-full border-0"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-
-                {(slide?.title || slide?.sub_title) && (
-                  <SliderCaption slide={slide} />
-                )}
-              </div>
+              <HeroVideoSlide slide={slide} index={index} />
             )}
           </SwiperSlide>
         ))}
       </Swiper>
-
 
       <NotificationBar />
     </section>

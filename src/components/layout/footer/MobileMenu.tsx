@@ -72,13 +72,15 @@ function MenuList({ items, depth = 0 }: { items: MenuItem[]; depth?: number }) {
 
 type ModalKey = "modal1" | "modal2" | "modal3" | "modal4";
 
+
+
 export default function MobileMenu() {
     const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
     const [fetched, setFetched] = useState<Partial<Record<ModalKey, boolean>>>({});
     const [headerMenu, setHeaderMenu] = useState<MenuItem[]>([]);
     const [sidebarMenu, setSidebarMenu] = useState<MenuItem[]>([]);
     const [footerMenu, setFooterMenu] = useState<MenuItem[]>([]);
-    const [contactInfo, setContactInfo] = useState(null);
+    const [contactInfo, setContactInfo] = useState([]);
     const [loading, setLoading] = useState<Partial<Record<ModalKey, boolean>>>({});
 
     const fetchMenu = useCallback(async (location: string): Promise<MenuItem[]> => {
@@ -118,7 +120,7 @@ export default function MobileMenu() {
 
         if (modal === "modal3") {
             const contactData = await fetchContactInfo();
-            
+            setContactInfo(contactData);
         }
 
         if (modal === "modal4") {
@@ -134,6 +136,14 @@ export default function MobileMenu() {
 
         setLoading((prev) => ({ ...prev, [modal]: false }));
     }, [activeModal, fetchMenu, fetched]);
+
+    const getValue = (key: string) => {
+        const found = contactInfo?.find((item: any) => item.key == key) ?? { value: null, image: null };
+        return {
+          value: found?.value ?? null,
+          image: found?.image ?? null, 
+        }
+    }
 
     return (
         <div className="fixed-bottom mobile-footer">
@@ -216,26 +226,36 @@ export default function MobileMenu() {
                 <div className="mobile-contact">
                     <div className="contact-logo">
                         <Image src="/images/logo/colored-logo.png" className="img-fluid" alt="Icon" width={270} height={88} />
-                        <h6>GL Bajaj Institute of Technology and Management</h6>
+                        {getValue('institute_name').value && (
+                            <h6>{getValue('institute_name').value}</h6>
+                        )}
                     </div>
                     <div className="contact_menu">
                         <ul>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon" width={20} height={20} /></div>
-                                <p><a href="tel:+91 7290008310">+91 7290008310</a></p>
-                            </li>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-telephone.svg" alt="Icon" width={20} height={20} /></div>
-                                <p><a href="tel:+8010-000-234">+8010-000-234</a></p>
-                            </li>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon" width={20} height={20} /></div>
-                                <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
-                            </li>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-location.svg" alt="Icon" width={20} height={20} /></div>
-                                <p>Plot No.2, APJ Abdul Kalam Road, Knowledge Park 3, Greater Noida, Uttar Pradesh, India, 201306</p>
-                            </li>
+                            {getValue('phone').value && (
+                                <li>
+                                    <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon" width={20} height={20} /></div>
+                                    <p><a href={`tel:${getValue('phone').value}`}>{getValue('phone').value}</a>, <a href={`tel:${getValue('phone1').value}`}>{getValue('phone1').value}</a></p>
+                                </li>
+                            )}
+                            {getValue('helpline').value && (
+                                <li>
+                                    <div className="conatct_svg"><Image src="/images/icons/menu-telephone.svg" alt="Icon" width={20} height={20} /></div>
+                                    <p><a href={`tel:${getValue('helpline').value}`}>{getValue('helpline').value}</a></p>
+                                </li>
+                            )}
+                            {getValue('email').value && (
+                                <li>
+                                    <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon" width={20} height={20} /></div>
+                                    <p><a href={`mailto:${getValue('email').value}`}>{getValue('email').value}</a></p>
+                                </li>
+                            )}
+                            {getValue('address').value && ( 
+                                <li>
+                                    <div className="conatct_svg"><Image src="/images/icons/menu-location.svg" alt="Icon" width={20} height={20} /></div>
+                                    <p>{getValue('address').value}</p>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>

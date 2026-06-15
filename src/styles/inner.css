@@ -482,14 +482,14 @@
 .about_ins_section { padding-top: 10rem; }
 .logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
 .logo_philosophy_grid h3 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
-.logo_philosophy_grid a { margin-left: -1.2rem; display: inline-block; }
+.logo_philosophy_grid a { margin-top: 3rem; }
 .about_ins_section .logo_philosophy_grid { padding-block: 10rem 0; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
 .our_inspiration_section::before { background-color: var(--color-64); bottom: 15rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
 .our_inspiration_grid { display: grid; grid-template-columns: 57.5% auto; gap: 15rem; }
 .our_inspiration_left h3 { color: var(--color-white); }
 .our_inspiration_left h4 { margin: 3rem 0; color: var(--color-white); }
-.our_inspiration_left a { margin-left: -1.2rem; display: inline-block; }
+.our_inspiration_left a { margin-top: 4rem; }
 .our_inspiration_left p { color: var(--color-white); }
 .vision_mission_grid { display: grid; grid-template-columns: 30% 30% auto; gap: 10rem; margin-top: -8rem; padding-block: 0 10rem; border-bottom: 1.1rem solid var(--color-FE); z-index: 1; position: relative; }
 .vision_mission_grid h4 { margin-bottom: 3rem; }

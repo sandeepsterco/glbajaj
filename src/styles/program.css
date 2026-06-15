@@ -484,11 +484,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .examinar_grid{gap: 6rem;}
     .exam_pdfsec ul li a{ font: var(--font-16);}
     .exam_pdfsec ul li{margin-bottom: 2rem; padding-bottom: 2rem;}
-    .txdcx_banner_img figcaption h3{ font: var(--font-30); line-height: 1.2; letter-spacing: 0;}
+    .txdcx_banner_img figcaption h3{ font: var(--font-18); line-height: 1.3; letter-spacing: 0;}
     .txdcx_banner_img figcaption { bottom: 5rem; left: 5rem; }
     .txdcx_banner_img figcaption p{ font: var(--font-16);}
     .tcex_btm_des { padding-top: 5rem; }
-    .txdcx_banner_img figcaption h3{ font: var(--font-18);}
     .txdcx_banner_img figcaption p{ font: var(--font-14);}
     .contact-sec { padding-block: 5rem; }
     .contact-list{ display: block;}
@@ -534,6 +533,42 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .feature-list .item:last-child p{ margin-bottom: 0;}
     .hackathons h3{font: var(--font-28); line-height: 1.3;}
     .hackathons .tp_ov_title h3{ margin-bottom: 2rem;}
+    .csr-list-new{ display: grid; grid-template-columns: 100%;}
+    .blood_donation_Bx1 blockquote, .blood_donation_Bx blockquote{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
+    .blood_donation_Bx1 { padding: 0; }
+    .csr-list-new .blood_donation_Bx1{ order: 2;}
+    .csr-list-new .common_image_slider{ order: 1;}
+    .program-duration h3, .program-intake h3, .program-approvals h3{ font: var(--font-30); letter-spacing: 0; font-weight: 700;}
+    .program-duration h5, .program-intake h5, .program-approvals h5{ font: var(--font-18); font-weight: 600;}
+    .program-about { grid-template-columns: 100%; gap: 2.5rem; display: grid; }
+    .program-detailsec { padding-block: 5rem; }
+    .program-detailsec1 { padding-block: 5rem; }
+    .curriculum-list { grid-template-columns: repeat(2, 1fr);}
+    .eligibility { grid-template-columns: repeat(1, 1fr); gap: 0 5rem; margin-right: 0; padding-top: 5rem; display: grid; }
+    .eligibility-boxs { grid-template-columns: repeat(1, 1fr); display: grid; gap: 3rem; }
+    .securing-box { background-color: var(--color-92); margin-top: 3.4rem; margin-left: 0; margin-right: 0; padding: 2.2rem; width: 100%; }
+    .counseling-text { padding-inline: 0; }
+    .application{ padding-top: 5rem;}
+    .eligibility-btn .cus-btn{ margin-top: 2rem; padding: 1rem 2rem;}
+    .program-img { margin-left: 0; }
+    .program-detailsec2 { padding-block: 5rem; }
+    .program-detailsec2 .xtabs_nav .xtab_btn { margin-right: 2rem; padding-bottom: 2rem; }
+    .career-list{ margin-top: 4rem; gap: 2rem;}
+    .peo-list{ gap: 5rem;}
+    .peo-box{ padding-block: 5rem;}
+    .peo-text h5, .pso-text h5{ margin-bottom: 3rem;}
+    .peo-text ul li:last-child{ margin-bottom: 0;}
+    .program-top{ padding-bottom: 5rem;}
+    .institute_faq_section .accordion-body{ padding-inline: 0 4rem;}
+    .contact-heading h3 { font: var(--font-28); font-weight: 600; letter-spacing: 0; }
+    .institute_faq_section .col-lg-9{ width: 100%;}
+    .institute_faq_section { padding:5rem 0; }
+    .bottom_menus{ display: none;}
+    .award-detail-text { padding-inline: 0; }
+    .award-detail-heading { margin-bottom: 4rem; }
+    .award-detail-list1{ display: none;}
+    .award-detail-sec { padding-block: 5rem; }
+
 
 }
 
@@ -542,6 +577,12 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 @media (max-width:767px){
     .Cnt-img { grid-template-columns: 100%; }
     .tabs_section .tab-content.active .acc-body{ margin: 0;}
+    .career-list{ padding-bottom: 3rem;}
+    .xtab_panel .career-list{ display: none;}
+    .xtab_panel.active .career-list{ display: grid;}
+    .peo-list { grid-template-columns: repeat(1, 1fr); }
+    .peo-box .peo-img{ display: none;}
+
 
 }
 
@@ -549,6 +590,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 @media (max-width:640px){
     .award-list{grid-template-columns: repeat(1, 1fr);}
     .cus-tab .tabs ul li a { padding: 0 0 1rem; margin-bottom: 1rem; }
+    .testimonials .cus-tab .tabs ul li a { margin-bottom: 0rem; }
     .examinar_grid { gap: 6rem; display: flex; flex-wrap: wrap;}
     .exam_imgbox{ width: 100%;}
     .exam_pdfsec{ width: 100%;}
@@ -561,6 +603,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .mission-Cnt {
         padding: 4rem;
     }
+    .career-list { grid-template-columns: repeat(2, 1fr); padding-bottom: 3rem;}
 
 }
 
@@ -573,15 +616,20 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .innovation-incubation h3{ font: var(--font-24); font-weight: 600; margin-block:2rem 2rem;}
 .education-cell-grid { grid-template-columns: repeat(2, 1fr); }
 .mission-Cnt { padding: 3rem; }
-.institute_faq_section .tp_accbox .accordion-header .icon{ height: 3rem; min-width: 3rem; line-height: 1;}
+.institute_faq_section .tp_accbox .accordion-header .icon{ height: 3rem; min-width: 3rem; line-height: 1.3; padding-bottom: 0.8rem; }
 .road-text h3{ font: var(--font-24);}
+.blood_donation_Bx1 blockquote, .blood_donation_Bx blockquote{ font: var(--font-24); font-weight: 600;}
+.contact-heading h3 { font: var(--font-24); font-weight: 600 ;}
+.contact-icon { margin-right: 1rem; }
+
+
 
 }
 
 
 @media (max-width:480px){
-    .program-right { justify-content: space-between; align-items: center; display: flex; flex-wrap: wrap; gap: 2rem; }
-    .apply-btn{ padding: 0 4rem 0 0;}
+    .program-right { justify-content: space-between; align-items: center; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .apply-btn{ padding:0;}
     .affiliation { padding: 0; }
     .duration:first-child { padding: 0 2rem 0 0; }
     .contact-admission { grid-template-columns: repeat(1, 1fr); display: grid; }
@@ -590,6 +638,19 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .form-container{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
     .accordion-body{ padding-inline: 0;}
+    .item-content .program-list:nth-last-child(2) { padding-block:0 4rem; }
+    .program-duration h3, .program-intake h3, .program-approvals h3{font: var(--font-24); font-weight: 600;}
+    .program-duration p{ font: var(--font-14);}
+    .program-duration h5, .program-intake h5, .program-approvals h5{ font: var(--font-16); font-weight: 600;}    
+    .form-container input, .form-container select, .form-container textarea{padding: 0.5rem 1.2rem;}
+    .career-list { grid-template-columns: repeat(1, 1fr); gap: 4rem;}
+    .pso-text ul li:last-child{ margin-bottom: 0;}
+    .program_strip a.arrow_btn{ min-width: 4rem;}
+    .program-duration, .program-intake, .program-approvals{padding-left: 1rem;}
+    .curriculum-list { grid-template-columns: repeat(1, 1fr); gap: 2rem; }
+    .application-text:empty{ display: none;}
+    .process-text ol li{margin-bottom: 2rem;}
+
 
 
 }

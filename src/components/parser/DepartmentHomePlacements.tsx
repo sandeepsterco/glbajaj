@@ -87,8 +87,8 @@ export default function DepartmentHomePlacements() {
         >
           {placementData.map((item: any, index: number) => (
             <SwiperSlide key={index}>
-              <Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" />
-              <img
+              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+              <div className="placem_cnt"><img
                 src={item?.logo_image}
                 className="placement_img"
                 alt="placement company"
@@ -98,6 +98,7 @@ export default function DepartmentHomePlacements() {
                   {item?.package}<sup>LPA</sup>
                 </h3>
                 <p>{item.name}</p>
+              </div>
               </div>
             </SwiperSlide>
           ))}

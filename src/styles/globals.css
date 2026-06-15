@@ -244,7 +244,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
  /* .home_footer .footer_logo img { width: 185px; }
 */ }
 @media (max-width:991px) {
- .title24 { font: var(--font-16); font-weight: 700; }
+ /* .title24 { font: var(--font-16); font-weight: 700; } */
 .container-fluid, .container, .container25, .inner-container { padding-inline: 2.7rem; width: 100%;}
 .home_footer .footer_top { display: block; }
 .home_footer { padding: 4rem 0 10rem; text-align: center; }

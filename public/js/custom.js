@@ -348,9 +348,13 @@
           spaceBetween: 20,
         },
         992: {
-          slidesPerView: 3,
-          spaceBetween: 27,
-        },
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
       },
     });
 

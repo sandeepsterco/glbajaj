@@ -480,7 +480,7 @@
 .shaping_future_leader h4 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
 .shaping_future_leader h5 { color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; }
 .shaping_future_Bx { position: relative; }
-.shaping_future_Bx figcaption { padding:0rem 3rem 0; }
+.shaping_future_Bx figcaption { padding:0rem 3rem 0; margin-top: 3rem;}
 .shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
 /* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
 */

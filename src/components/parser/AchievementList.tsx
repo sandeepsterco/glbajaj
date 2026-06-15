@@ -49,7 +49,7 @@ export default function AchievementList() {
                             <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
                         )}
                         {item?.slug && (
-                            <Link href={`${BASE_URL}${slug}/${item.slug}`} className="strech_link" />
+                            <Link href={`${BASE_URL}achievements/${item.slug}`} className="strech_link" />
                         )}
                     </div>
                 ))}

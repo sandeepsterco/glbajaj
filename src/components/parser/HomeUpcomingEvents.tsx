@@ -98,12 +98,15 @@ export default function HomeUpcomingEvents() {
 
               <div className="right">
                 <Link href={`/news-events/${first.slug}`} data-aos="fade-up" data-aos-delay="800">
-                  <img
+                  <div className="arrow_btn1">
+                    <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                  </div>
+                  {/* <img
                     src="/images/home/see_more_icon.svg"
                     alt="right chevron icon"
                     width="60"
                     height="40"
-                  />
+                  /> */}
                 </Link>
               </div>
             </div>

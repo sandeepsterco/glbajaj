@@ -425,16 +425,16 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         ) : null}
 
         {successMessage ? (
-        <div className="success_message">
+        <div className="form-feedback form-feedback--success" role="alert">
           <p>{successMessage}</p>
         </div>
       ) : null}
 
-      {errorMessage ? (
+      {/* {errorMessage ? (
         <div className="error_message">
           <p>{errorMessage}</p>
         </div>
-      ) : null}
+      ) : null} */}
       </div>
     </form>
   );

@@ -74,6 +74,25 @@ a { text-decoration: none; }
   filter: brightness(0) invert();
 } */
 
+.arrow_btn1{
+  background:#fff;
+  width: 4rem;
+  height: 4rem;
+  transition: all .3s;
+  display: flex;
+  box-shadow: 0 4px 12px #00000026;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow_btn1:hover{
+  background-color: var(--color-92);
+}
+
+.arrow_btn1:hover img{
+  filter: brightness(0) invert();
+}
+
 
 @media (max-width: 991px) {
  .container-fluid { max-width: 100%; width: 100%; padding-inline: 1.5rem; }

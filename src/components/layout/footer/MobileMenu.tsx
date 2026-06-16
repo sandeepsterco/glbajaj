@@ -2,7 +2,9 @@
 import Image from "next/image";
 import { useState, useCallback } from "react";
 import { SkeletonGroup } from "../../ui/Skeleton";
-import { API_URL } from "@/src/config/config";
+import { API_URL, BASE_URL } from "@/src/config/config";
+import Link from "next/link";
+import CourseSearch from "../../parser/CourseSearch";
 
 interface MenuItem {
     type?: string;
@@ -118,6 +120,17 @@ export default function MobileMenu() {
         setFetched((prev) => ({ ...prev, [modal]: true }));
         setLoading((prev) => ({ ...prev, [modal]: true }));
 
+        if (modal === "modal1") {
+            const contactData = await fetchContactInfo();
+            setContactInfo(contactData);
+        }
+
+        if (modal === "modal2") {
+            const [contactData, headerItems] = await Promise.all([fetchContactInfo(), fetchMenu("header")])
+            setContactInfo(contactData);
+            setHeaderMenu(headerItems);
+        }
+
         if (modal === "modal3") {
             const contactData = await fetchContactInfo();
             setContactInfo(contactData);
@@ -138,10 +151,11 @@ export default function MobileMenu() {
     }, [activeModal, fetchMenu, fetched]);
 
     const getValue = (key: string) => {
-        const found = contactInfo?.find((item: any) => item.key == key) ?? { value: null, image: null };
+        const found = contactInfo?.find((item: any) => item.key == key) ?? { value: null, image: null, url:null };
         return {
-          value: found?.value ?? null,
-          image: found?.image ?? null, 
+            value: found?.value ?? null,
+            image: found?.image ?? null,
+            url: found?.url ?? null,
         }
     }
 
@@ -156,30 +170,36 @@ export default function MobileMenu() {
                             <div className="pro_menu">
                                 <div className="section-heading">Courses</div>
                                 <div className="home_courses_section">
-                                    <div className="search-box input_group">
-                                        <input placeholder="Search Courses" className="search_input" type="text" />
-                                        <Image src="/images/icons/search.png" alt="search icon" className="search_icon" width={20} height={20} />
-                                    </div>
+                                    <CourseSearch />
                                 </div>
                                 <div className="courses_Box">
-                                    <ul className="menu-list">
-                                        <li>
-                                            <figure><img src="/images/undergraduate-img.webp" alt="" className="img-fluid" /></figure>
-                                            <div className="course_bx">
-                                                <figcaption><h4>Undergraduate</h4><p>Courses</p></figcaption>
-                                                <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
-                                            </div>
-                                            <a href="#" className="strech_link"></a>
-                                        </li>
-                                        <li>
-                                            <figure><img src="/images/postgraduate-img.webp" alt="" className="img-fluid" /></figure>
-                                            <div className="course_bx">
-                                                <figcaption><h4>Post Graduate</h4><p>Courses</p></figcaption>
-                                                <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
-                                            </div>
-                                            <a href="#" className="strech_link"></a>
-                                        </li>
-                                    </ul>
+                                    {loading['modal1'] ? (
+                                        <SkeletonGroup count={2} wrapperClassName="!block mt-[1rem]" className="w-full h-[30rem] !mb-[1rem]" />
+                                    ) : (
+                                        <ul className="menu-list">
+                                            <li>
+                                                <figure>
+                                                    <Image src={getValue('under_graduate').image ?? "/images/undergraduate-img.webp"} alt="Undergraduate Course" className="img-fluid" width={335} height={190} loading="lazy" />
+                                                </figure>
+                                                <div className="course_bx">
+                                                    <figcaption dangerouslySetInnerHTML={{__html:getValue('under_graduate')?.value ?? ''}} />
+                                                    <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
+                                                </div>
+                                                <a href={getValue('under_graduate')?.url ?? ''} className="strech_link"></a>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <Image src={getValue('post_graduate').image ?? "/images/undergraduate-img.webp"} alt="Undergraduate Course" className="img-fluid" width={335} height={190} loading="lazy" />
+                                                </figure>
+                                                <div className="course_bx">
+                                                    <figcaption dangerouslySetInnerHTML={{__html:getValue('post_graduate')?.value ?? ''}} />
+                                                    <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
+                                                </div>
+                                                <a href={getValue('post_graduate')?.url ?? ''} className="strech_link"></a>
+                                            </li>
+                                        </ul>
+                                    )}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -190,34 +210,43 @@ export default function MobileMenu() {
             {/* Modal 2 - Admissions */}
             <div className={`modal-new modal2 ${activeModal === "modal2" ? "show" : ""}`}>
                 <div className="mobile_admission_wrapper">
-                    <div className="mobile_admission">
-                        <h4 className="title28">Admissions 2026</h4>
-                        <ul>
-                            <li><a href="">Admission Procedure</a></li>
-                            <li><a href="">Eligiblity</a></li>
-                            <li><a href="">Fee Structure</a></li>
-                            <li><a href="">Scholarship</a></li>
-                            <li><a href="">Document Required</a></li>
-                            <li><a href="">Admission FAQs</a></li>
-                        </ul>
-                    </div>
-                    <div className="m-admission-helpline">
-                        <h5>Admissions Helpline</h5>
-                        <ul>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon" width={50} height={50} /></div>
-                                <p><a href="tel:919989776661">+91 9989 776661</a></p>
-                            </li>
-                            <li>
-                                <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon" width={50} height={50} /></div>
-                                <p><a href="mailto:office@glbitm.ac.in">office@glbitm.ac.in</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="m-view">
-                        <a href="" className="apply_online_btn">Apply Online</a>
-                        <a href="" className="download_prospectus_btn">Download Prospectus</a>
-                    </div>
+                    {loading["modal2"] ? (
+                        <SkeletonGroup count={10} wrapperClassName="!block mt-[1rem]" className="w-full h-[5rem] !mb-[0.5rem]" />
+                    ) : (
+                        <>
+                            <div className="mobile_admission">
+                                <h4 className="title28">Admissions {new Date().getFullYear()}</h4>
+
+                                <ul>
+                                    {headerMenu?.length > 0 && headerMenu.find((item) => item.title == 'Admission')?.children.map((item, idx) => (
+                                        <li key={idx}>
+                                            <Link href={item?.target_blank_url ? item.target_blank_url : item.slug ? BASE_URL + item.slug : ''} target={item?.target_blank_url ? '_blank' : '_self'}>{item.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                            </div>
+                            <div className="m-admission-helpline">
+                                <h5>Admissions Helpline</h5>
+                                <ul>
+                                    <li>
+                                        <div className="conatct_svg"><Image src="/images/icons/menu-phone.svg" alt="Icon" width={50} height={50} /></div>
+                                        <p><a href={`tel:${getValue('admission_helpline').value}`}>{getValue('admission_helpline').value}</a></p>
+                                    </li>
+                                    <li>
+                                        <div className="conatct_svg"><Image src="/images/icons/menu-mail.svg" alt="Icon" width={50} height={50} /></div>
+                                        <p><a href={`mailto:${getValue('email').value}`}>{getValue('email').value}</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="m-view">
+                                <a href={`${BASE_URL}apply-now`} className="apply_online_btn">Apply Online</a>
+                                <a href={getValue('prospectus').image ?? ''} target="_blank" className="download_prospectus_btn">{getValue('prospectus').value}</a>
+                            </div>
+                        </>
+                    )
+                    }
                 </div>
             </div>
 
@@ -250,7 +279,7 @@ export default function MobileMenu() {
                                     <p><a href={`mailto:${getValue('email').value}`}>{getValue('email').value}</a></p>
                                 </li>
                             )}
-                            {getValue('address').value && ( 
+                            {getValue('address').value && (
                                 <li>
                                     <div className="conatct_svg"><Image src="/images/icons/menu-location.svg" alt="Icon" width={20} height={20} /></div>
                                     <p>{getValue('address').value}</p>

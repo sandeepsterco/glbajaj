@@ -251,8 +251,9 @@
       ".award_ranking",
       ".studentsSwiper",
       ".companySwiper",
-      ".home_placement_student_slider",
+      // ".home_placement_student_slider",
       ".home_recruiters_slider",
+      ".home_research_incubation",
       ".home_placement_company_slider",
       ".courses_slider_wrapper",
       ".leadership_slider",
@@ -297,7 +298,7 @@
           },
         },
         1200: {
-          slidesPerView: 5,
+          slidesPerView: 6,
           grid: {
             rows: 1,
           },
@@ -329,14 +330,58 @@
       },
     });
 
-    createSwiper(".home_placement_student_slider", {
-      slidesPerView: 3,
-      spaceBetween: 27,
-      autoplay:true,
+    // createSwiper(".home_placement_student_slider", {
+    //   slidesPerView: 3,
+    //   spaceBetween: 27,
+    //   autoplay:true,
+    //   loop: true,
+    //   navigation: {
+    //     nextEl: ".right_slider .next_swiper_btn",
+    //     prevEl: ".right_slider .prev_swiper_btn",
+    //   },
+    //   breakpoints: {
+    //     320: {
+    //       slidesPerView: 1,
+    //       spaceBetween: 15,
+    //     },
+    //     768: {
+    //       slidesPerView: 2,
+    //       spaceBetween: 20,
+    //     },
+    //     992: {
+    //       slidesPerView: 3,
+    //       spaceBetween: 27,
+    //     },
+    //   },
+    // });
+
+    createSwiper(".home_recruiters_slider", {
+      slidesPerView: 1,
+      spaceBetween: 15,
       loop: true,
+      autoplay: false,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        992: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+      },
+    });
+
+    createSwiper(".home_research_incubation", {
+      slidesPerView: 3,
+      spaceBetween: 15,
       navigation: {
-        nextEl: ".right_slider .next_swiper_btn",
-        prevEl: ".right_slider .prev_swiper_btn",
+        nextEl: ".home_research_incubation_section .next_swiper_btn",
+        prevEl: ".home_research_incubation_section .prev_swiper_btn",
       },
       breakpoints: {
         320: {
@@ -345,40 +390,20 @@
         },
         768: {
           slidesPerView: 2,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         992: {
           slidesPerView: 3,
-          spaceBetween: 27,
-        },
-      },
-    });
-
-    createSwiper(".home_recruiters_slider", {
-      slidesPerView: 1,
-      spaceBetween: 15,
-      loop: true,
-      autoplay: true,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        992: {
-          slidesPerView: 1,
           spaceBetween: 15,
         },
       },
     });
 
     createSwiper(".home_placement_company_slider", {
-      slidesPerView: 5,
+      slidesPerView: 6,
       spaceBetween: 28,
-      loop: true,
+      // loop: true,
+      watchOverflow: true,
       autoplay: {
         delay: 2000,
       },
@@ -408,12 +433,12 @@
         },
 
         1200: {
-          slidesPerView: 5,
+          slidesPerView: 6,
           spaceBetween: 0,
         },
 
         1400: {
-          slidesPerView: 5,
+          slidesPerView: 6,
           spaceBetween: 0,
         },
       },
@@ -853,94 +878,93 @@
     const overlay = document.getElementById("ytModalOverlay");
     const iframe = document.getElementById("ytModalIframe");
     const closeBtn = document.getElementById("ytModalClose");
-    const playBtn = document.querySelector(".home_about_glb_section .thumbnail");
-
-    if (!overlay || !iframe || !closeBtn || !playBtn) return;
-
-    const rawSrc = iframe.getAttribute("src");
-    iframe.removeAttribute("src");
-
+    const playBtns = document.querySelectorAll(".home_about_glb_section .thumbnail");
+  
+    if (!overlay || !iframe || !closeBtn || !playBtns.length) return;
+  
     function isYouTubeUrl(url) {
-        return url.includes("youtube.com") || url.includes("youtu.be");
+      return url.includes("youtube.com") || url.includes("youtu.be");
     }
-
+  
     function toEmbedUrl(url) {
-        // Handle YouTube URLs
-        if (isYouTubeUrl(url)) {
-            const match = url.match(/[?&]v=([^&]+)/);
-            if (match) {
-                return "https://www.youtube.com/embed/" + match[1] + "?autoplay=1&rel=0";
-            }
-            if (url.includes("/embed/")) {
-                const base = url.split("?")[0];
-                const params = new URLSearchParams(url.split("?")[1] || "");
-                params.set("autoplay", "1");
-                params.set("rel", "0");
-                return base + "?" + params.toString();
-            }
+      if (isYouTubeUrl(url)) {
+        const match = url.match(/[?&]v=([^&]+)/);
+        if (match) {
+          return "https://www.youtube.com/embed/" + match[1] + "?autoplay=1&rel=0";
         }
-        // For direct video URLs (mp4, webm, etc.) — return as-is
-        return url;
+        if (url.includes("/embed/")) {
+          const base = url.split("?")[0];
+          const params = new URLSearchParams(url.split("?")[1] || "");
+          params.set("autoplay", "1");
+          params.set("rel", "0");
+          return base + "?" + params.toString();
+        }
+      }
+      return url;
     }
-
+  
     function isDirectVideo(url) {
-        return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+      return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
     }
-
-    function openModal() {
-        const embedUrl = toEmbedUrl(rawSrc);
-
-        if (isDirectVideo(rawSrc)) {
-            // Replace iframe with a <video> element
-            const existingVideo = overlay.querySelector("video");
-            if (!existingVideo) {
-                const video = document.createElement("video");
-                video.setAttribute("controls", "");
-                video.setAttribute("autoplay", "");
-                video.setAttribute("playsinline", "");
-                video.style.width = "100%";
-                video.style.height = "100%";
-                video.src = rawSrc;
-                iframe.replaceWith(video);
-            } else {
-                existingVideo.src = rawSrc;
-                existingVideo.play();
-            }
+  
+    function openModal(rawSrc) {
+      const embedUrl = toEmbedUrl(rawSrc);
+  
+      if (isDirectVideo(rawSrc)) {
+        const existingVideo = overlay.querySelector("video");
+        if (!existingVideo) {
+          const video = document.createElement("video");
+          video.setAttribute("controls", "");
+          video.setAttribute("autoplay", "");
+          video.setAttribute("playsinline", "");
+          video.style.width = "100%";
+          video.style.height = "100%";
+          video.src = rawSrc;
+          iframe.replaceWith(video);
         } else {
-            iframe.src = embedUrl;
+          existingVideo.src = rawSrc;
+          existingVideo.play();
         }
-
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
+      } else {
+        const liveIframe = overlay.querySelector("iframe");
+        if (liveIframe) liveIframe.src = embedUrl;
+      }
+  
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
-
+  
     function closeModal() {
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-
-        // Stop iframe
-        const currentIframe = overlay.querySelector("iframe");
-        if (currentIframe) currentIframe.removeAttribute("src");
-
-        // Stop video
-        const video = overlay.querySelector("video");
-        if (video) {
-            video.pause();
-            video.src = "";
-        }
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+  
+      const currentIframe = overlay.querySelector("iframe");
+      if (currentIframe) currentIframe.removeAttribute("src");
+  
+      const video = overlay.querySelector("video");
+      if (video) {
+        video.pause();
+        video.src = "";
+      }
     }
-
-    playBtn.addEventListener("click", openModal);
+  
+    playBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const rawSrc = btn.getAttribute("data-video");
+        if (rawSrc) openModal(rawSrc);
+      });
+    });
+  
     closeBtn.addEventListener("click", closeModal);
-
+  
     overlay.addEventListener("click", function (e) {
-        if (e.target === overlay) closeModal();
+      if (e.target === overlay) closeModal();
     });
-
+  
     document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
+      if (e.key === "Escape" && overlay.classList.contains("active")) closeModal();
     });
-}
+  }
 
   function initStercoTabs() {
     document.querySelectorAll(".sterco_tabs_sec").forEach((section) => {

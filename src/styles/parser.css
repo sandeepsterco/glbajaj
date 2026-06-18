@@ -50,13 +50,13 @@
 .home_placement_section { background: #eeeeee; padding: 5.5rem 0 12rem; }
 .home_placement_section .home_placement_container { width: 1200px; max-width: 90%; margin: auto; }
 /* TOP */
-.home_placement_top { display: grid; gap: 2rem; grid-template-columns: 28.5% 1fr; align-items: end; margin: 0 -3rem; }
+.home_placement_top { display: grid; gap: 2rem; grid-template-columns: 40% auto; align-items: end; /*margin: 0 -3rem;*/ }
 .home_placement_left .sec_title .title48 { margin-top: 0.5rem; }
 .home_placement_small { font-size: 14px; margin-bottom: 10px; }
 .home_placement_stats { display: grid; grid-template-columns: 1fr 1fr 1fr; }
 .home_placement_stats .single_placement { border-left: 1px solid #BF8552; height: 18rem; padding: 3rem 2rem 0 6rem; }
-.home_placement_stats .single_placement h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-92); }
-.home_placement_stats .single_placement h3 sup { color: var(--color-33); }
+.home_placement_stats .single_placement h3 { font: var(--font-60);  color: var(--color-92); font-weight: 600; line-height:7.3rem; letter-spacing: -1.5px; color:var(--color-5A)}
+.home_placement_stats .single_placement h3 sup { color: var(--color-5A); }
 .home_placement_stats .count { font: var(--font-48); line-height: 4.8rem; font-weight: normal; letter-spacing: -2.4px; margin-bottom: 0.5rem; }
 .home_placement_stats .count sup { font: var(--font-16); font-weight: 600; letter-spacing: 0; top: 0.8rem; }
 .home_placement_stats .count sup:first-child { top: 0.8rem; }
@@ -64,24 +64,25 @@
 .home_placement_stats .single_placement:nth-of-type(2) .count>sup:nth-of-type(1) { font-weight: 400; }
 .home_placement_stats .title { font: var(--font-16); font-weight: 600; }
 /* STUDENTS */
-.home_placement_students { gap: 2.5rem; margin-top: 7rem; display: grid; grid-template-columns: 34% 64.5%; /* grid-template-columns: 35.4% auto; */ }
+.home_placement_students { gap: 2.5rem; margin-top: 7rem; display: grid; grid-template-columns: 34% 64.5%; }
 .home_placement_students .right_slider { width: 100%; }
 /* STATIC CARD */
 .home_placement_static_card { /* background: var(--color-64); */
   /* width: 60rem; */
-  height: 42.5rem; position: relative; margin-top: 6rem; background-color: var(--color-white); }
+  /* height: 42.5rem; margin-top: 6rem; */
+   position: relative;  background-color: var(--color-white); }
 .right_slider h4 { font: var(--font-24); font-weight: 700; color: var(--color-64); margin-bottom: 3rem; }
 .home_placement_top_bar { height: 1.1rem; background: #fece49; position: absolute; top: 0; left: 0; width: 25rem; }
-.home_placement_static_card .top_placed { font: var(--font-24); color: var(--color-64); font-weight: bold; text-align: right; margin: 4.6rem 0 6.5rem; padding-right: 8.1rem; }
+.home_placement_static_card .top_placed { font: var(--font-30); color: var(--color-64); font-weight: bold; text-align: right; margin: 3rem 0 6.5rem; padding-right: 8.1rem; }
 .home_placement_static_card>img.pattern { position: absolute; bottom: 0; }
 .home_placement_static_card .slider_btns { position: absolute; display: flex; gap: 1.3rem; justify-content: center; left: 49%; bottom: 4.3rem; transform: translateX(-50%); z-index: 1; }
-.recruiters { max-width:23.5rem; background-color: var(--color-64); padding: 2rem; text-align: center; }
+.recruiters { padding: 2rem; text-align: center; }
 .slider_top { position: relative; }
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5rem; }
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn { top: 1rem; }
-.recruiters h5 { font: var(--font-48); letter-spacing: -2.4px; font-weight: 400; color:var(--color-white); }
-.recruiters p { font: var(--font-16); font-weight: 400; color:var(--color-white); }
-.home_recruiters_slider { overflow: hidden; max-width: 23.5rem; margin-right: 10rem; }
+.recruiters h5 { font: var(--font-54); letter-spacing: -2px; font-weight: 400; color:var(--color-5A); font-weight: 600;}
+.recruiters p { font: var(--font-22); font-weight: 400; }
+.home_recruiters_slider { overflow: hidden; max-width: 30rem; margin-right: 10rem; }
 /* .home_placement_static_card .slider_btns div { position: relative; padding: 0; display: unset; cursor: pointer; }
 */
 .home_placement_static_card .slider_btns div { position: relative; padding: 0; cursor: pointer; }
@@ -100,14 +101,14 @@
 .home_placement_companies .navigation_btn { top: 0; bottom: auto; right: 3.8rem; }
 .home_placement_company_header { margin-block: 0.8rem 2.8rem; display: flex; justify-content: space-between; }
 .home_placement_company_header .slider_btns { display: flex; gap: 1.3rem; }
-.home_placement_company_header .slider_btns div { position: relative; display: unset; right: 0rem; }
+.home_placement_company_header .slider_btns div { position: relative; right: 0rem; }
 .home_placement_company_slider .swiper-slide img { /* height: 40px; object-fit: contain; */ }
 /************  end of home placement  CSS End ************/
 /************  start of courses Section ************/
 .home_courses_section { padding: 12.8rem 0; }
 .home_courses_section .content_row { margin-left: auto; }
 .home_courses_section .grid { display: grid; grid-template-columns: auto 54%; gap: 10rem; }
-.home_courses_section .left_content { padding-top: 3.9rem; position: relative; margin-left: -3.7rem; }
+.home_courses_section .left_content { padding-top: 3.9rem; position: relative;}
 .right_imgage_col { overflow: hidden; }
 .right_imgage_col img { transition: transform 0.2s ease; }
 .right_imgage_col:hover img { transform: scale(1.2)!important; }
@@ -177,8 +178,8 @@
 .home_research_section .single_stat:first-child { border-right: 0; }
 /* .home_research_section .single_stat:not(:last-child) { border-right: 1px solid var(--color-C0); }
 */
-.home_research_section .single_stat .count { font: var(--font-48); letter-spacing: -0.24rem; font-weight: normal; }
-.home_research_section .single_stat .count sup { font: var(--font-16); line-height: 2.4rem; letter-spacing: 0; top: -2rem; left: 0.5rem; font-weight: normal; }
+.home_research_section .single_stat .count { line-height: 7rem; font-weight: 600;}
+.home_research_section .single_stat .count sup { font: var(--font-16); line-height: 2.4rem; letter-spacing: 0; top: 1rem; left: 0.5rem; font-weight: normal; }
 .home_research_section .single_stat p { color: #fff; font: var(--font-16); line-height: 2.4rem; margin-top: 0.5rem; max-width: 15rem; font-weight: 600; }
 .home_research_section .read_more_icon figure { width: 4rem; height: 4rem; margin-top: 2.1rem; display: flex; align-items: center; justify-content: center; border: 0.1rem solid var(--color-white); filter: brightness(0) invert(1); }
 .home_research_section .read_more_icon figure:hover { background-color: var(--color-white); filter: brightness(1) invert(0); }
@@ -245,8 +246,8 @@
 .home_about_glb_section { padding: 11.8rem 0 12.7rem; }
 .home_about_glb_section .container-lg { padding: 0; }
 .home_about_glb_section .grid { display: grid; gap: 3rem; grid-template-columns: 27.2% auto; }
-.home_about_glb_section .left_col { padding-left: 2.5rem; }
-.home_about_glb_section .left_col figure { position: relative; padding-left: 2.5rem; }
+/* .home_about_glb_section .left_col { padding-left: 2.5rem; } */
+.home_about_glb_section .left_col figure { position: relative; /* padding-left: 2.5rem;*/ }
 .home_about_glb_section .left_col figure:before { position: absolute; content: ''; top: 5rem; left: 0; width: 100%; height: 45.4rem; object-fit: cover; background: var(--color-F4); z-index: -1; }
 .home_about_glb_section .left_col .pattern { padding-left: 2.5rem; }
 .home_about_glb_section .about_top { display: flex; justify-content: space-between; align-items: start; gap: 6.6rem; padding-left: 6.5rem; margin-bottom: 3.8rem; background: transparent; padding-block: 0; }
@@ -266,6 +267,8 @@
 .home_about_glb_section .thumbnail { position: relative; }
 .home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.35; top: 0; left: 0; }
 .home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; }
+.home_about_glb_section .icon img{width:5rem;}
+.home_about_glb_section .video_grid{display: grid; grid-template-columns: repeat(4, 1fr); padding: 1.5rem; background: var(--color-F4); gap: 1.5rem;}
 .corporate_board { display: none; }
 /************  end of home_about_glb_section ************/
 /************  start of home_sessions_section ************/
@@ -435,6 +438,102 @@
 .program_detail_beyond .bottom_slider{margin:0;}
 
 /* program_detail_beyond */
+
+/* home_research_incubation*/
+
+.home_research_incubation_section{
+  padding: 12rem 0 12rem;
+}
+
+.home_research_incubation_section .home_placement_students{
+  grid-template-columns: 70% auto;
+  margin-top: 0;
+}
+
+.home_research_incubation_section .slider_top{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.home_research_incubation_section .swiper-button-prev,
+.home_research_incubation_section .swiper-button-next{
+  position:relative;
+  top: unset;
+    right: unset;
+    left: unset;
+    bottom: unset;
+    margin-top: 0;
+}
+
+.home_research_incubation_section .slider_btns{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.home_research_incubation .slide_card{
+  position:relative;
+}
+
+.home_research_incubation .slide_card:before{
+  position:absolute;
+  left:0;
+  top:0;
+  content:'';
+  height:100%;
+  width:100%;
+  background:rgba(0 0 0 / 40%);
+}
+
+.home_research_incubation .contents{
+  position:absolute;
+  top:50%;
+  height: auto;
+  display: block;
+  transform: translateY(-50%);
+  padding: 0 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.home_research_incubation .contents .image_title{
+  color:#fff;
+  font:var(--font-40);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.home_research_incubation .contents .image_title small{
+  font:var(--font-24)
+}
+
+.home_research_incubation .contents p{
+  color:#fff;
+  margin:0;
+  line-height: 2.2rem;
+}
+
+.home_research_incubation_section .right_data{
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 5rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.home_research_incubation_section .right_data .logo{
+  margin:auto;
+  max-width: 15rem;
+}
+
+.home_research_incubation_section .right_data .logo_content{
+  margin-top: 3rem;
+}
+
+/* end of home_research_incubation */
 
 
 @media (max-width:2440px) {

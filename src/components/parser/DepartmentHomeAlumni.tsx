@@ -29,7 +29,7 @@ interface AlumniItem {
 const getDepartmentAlumni = async (slug: string): Promise<AlumniItem[]> => {
   const { data, error } = await apiFetch(`department/${slug}/home`);
   if (error) throw new Error(error);
-  return data?.data?.modular?.alumuni ?? [];
+  return data?.data?.modular?.testimonials ?? [];
 };
 
 export default function DepartmentHomeAlumni() {

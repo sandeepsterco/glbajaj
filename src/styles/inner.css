@@ -1710,7 +1710,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .ncc-rank-ceremony_cont p:nth-of-type(2) span { font-weight: 600; }
 .ncc-rank-ceremony-grid { display: grid; grid-template-columns: 43.2% 56.8%; padding-inline: 0.55rem; }
 .ncc-rank-ceremony_img { position: relative; }
-.ceremony_navigation .swiper_prev_custom,
+.ceremony_navigation .swiper_prev_custom{position: absolute; top: 48%; transform: translateY(-50%); z-index: 1;    transform: rotate(180deg);}
 .ceremony_navigation .swiper_next_custom { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; }
 .ceremony_navigation .swiper_next_custom { right: -3rem; }
 .ceremony_navigation .swiper_prev_custom { left: -3rem; }

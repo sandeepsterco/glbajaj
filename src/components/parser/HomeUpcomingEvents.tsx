@@ -8,7 +8,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-interface UpcomingEvent {
+// "mediaCoverage" entries: no image, just title/date/slug
+interface MediaCoverageItem {
+  id: number;
+  title: string;
+  date: string;
+  featured: string | null;
+  slug: string;
+  image:string | null;
+}
+
+// "newsAndEvents" entries: full card data including image
+interface NewsEventItem {
   id: number;
   heading: string;
   title: string | null;
@@ -17,13 +28,21 @@ interface UpcomingEvent {
   date: string;
   description: string;
   bg_color: string | null;
+  display_order: number | null;
+  featured: string | null;
   slug: string;
 }
 
-const fetchUpcomingEvents = async (): Promise<UpcomingEvent[]> => {
-  const { data, error } = await apiFetch("upcoming-events");
+interface UpcomingEventsResponse {
+  status: boolean;
+  mediaCoverage: MediaCoverageItem[];
+  newsAndEvents: NewsEventItem[];
+}
+
+const fetchUpcomingEvents = async (): Promise<UpcomingEventsResponse> => {
+  const { data, error } = await apiFetch("featured-media-coverage-and-news");
   if (error) throw new Error(error);
-  return data?.upcoming_events ?? [];
+  return data ?? { status: false, mediaCoverage: [], newsAndEvents: [] };
 };
 
 function formatDateParts(dateStr: string) {
@@ -51,9 +70,10 @@ export default function HomeUpcomingEvents() {
     );
   }
 
-  if (isError || !events || events.length === 0) return null;
+  const hasMediaCoverage = !!events?.mediaCoverage?.length;
+  const hasNewsAndEvents = !!events?.newsAndEvents?.length;
 
-  const [, ...rest] = events;
+  if (isError || !events || (!hasMediaCoverage && !hasNewsAndEvents)) return null;
 
   return (
     <>
@@ -62,19 +82,19 @@ export default function HomeUpcomingEvents() {
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop={events.length > 1}
+            loop={events.newsAndEvents.length > 1}
             slidesPerView={1}
             speed={800}
           >
-            {events.map((event) => {
+            {events.mediaCoverage.map((event: MediaCoverageItem) => {
               const d = formatDateParts(event.date);
               return (
                 <SwiperSlide key={event.id}>
                   <div className="content_col">
                     <figure>
                       <img
-                        src={event.image}
-                        alt={event.heading}
+                        src={event.image ?? ''}
+                        alt={event.title}
                         data-aos="fade-up"
                         data-aos-delay="800"
                         loading="lazy"
@@ -90,12 +110,12 @@ export default function HomeUpcomingEvents() {
                           {d.full}
                         </p>
                         <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
-                          {event.heading}
+                          {event.title}
                         </h4>
                       </div>
 
                       <div className="right">
-                        <Link href={`/news-events/${event.slug}`} data-aos="fade-up" data-aos-delay="800">
+                        <Link href={`/media-coverage`} data-aos="fade-up" data-aos-delay="800">
                           <div className="arrow_btn1">
                             <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
                           </div>
@@ -111,7 +131,7 @@ export default function HomeUpcomingEvents() {
 
         <div className="right_col">
           <ul>
-            {rest.map((event) => {
+            {events.newsAndEvents.map((event: NewsEventItem) => {
               const d = formatDateParts(event.date);
               return (
                 <li key={event.id} data-aos="fade-up" data-aos-delay="200">

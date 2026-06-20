@@ -157,8 +157,8 @@ export default function ProgramList() {
                 <ul>
                   {[
                     { label: "All Courses", type: "all" },
-                    { label: "Undergraduate Courses", type: "under-graduate" },
-                    { label: "Postgraduate Courses", type: "post-graduate" },
+                    { label: "Under Graduate Courses", type: "under-graduate" },
+                    { label: "Post Graduate Courses", type: "post-graduate" },
                   ].map(({ label, type }) => (
                     <li key={type}>
                       <Link

@@ -3,23 +3,24 @@
 
   let frozenWidth = null;
 
-  // ─── Max Content Width ────────────────────────────────────────────────────────
   function adjustMaxContent() {
-    const container = document.querySelector(".container25");
-    if (!container) return;
-
     const windowWidth = window.innerWidth;
-    const containerOffset = container.getBoundingClientRect().left + window.scrollX;
-    const containerWidth = container.offsetWidth;
-    const rightEdge_calc = containerOffset + containerWidth;
 
-    let rightEdge = rightEdge_calc;
+    // Same logic as your global .container
+    const mainContainerWidth = Math.min(
+      1800,
+      windowWidth * 0.818181818
+    );
+
+    const leftGap = (windowWidth - mainContainerWidth) / 2;
+
+    let width = windowWidth - leftGap;
 
     if (windowWidth >= 2550) {
       if (!frozenWidth) {
-        frozenWidth = rightEdge_calc;
+        frozenWidth = width;
       }
-      rightEdge = frozenWidth;
+      width = frozenWidth;
     } else {
       frozenWidth = null;
     }
@@ -28,10 +29,11 @@
       .querySelectorAll(
         ".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl"
       )
-      .forEach((el) => (el.style.maxWidth = rightEdge + "px"));
-  }
+      .forEach((el) => {
+        el.style.maxWidth = `${width}px`;
+      });
+    }
 
-  // ─── Why GLB Section Tabs ─────────────────────────────────────────────────────
   function initWhyGlbSection() {
     const section = document.querySelector(".why_glb_section:not([data-customjs-init])");
     if (!section) return false;
@@ -73,7 +75,6 @@
     return true;
   }
 
-  // ─── Accordion ────────────────────────────────────────────────────────────────
   function initAccordion() {
     const headers = document.querySelectorAll(".accordion-header:not([data-customjs-init])");
     if (!headers.length) return false;
@@ -124,7 +125,6 @@
     return true;
   }
 
-  // ─── Media Grid Popup ─────────────────────────────────────────────────────────
   function gridPopup() {
     const items = document.querySelectorAll(".media_grid_Bx");
 
@@ -151,7 +151,6 @@
 
 
   
-  // ─── Swipers ──────────────────────────────────────────────────────────────────
   function resolveNavEl(root, selector) {
     if (!selector || typeof selector !== "string") return selector;
     const scopes = [
@@ -173,7 +172,6 @@
   function createSwiperOnElement(el, options, label) {
     if (!el || el.nodeType !== 1) return null;
 
-    // Skip React-managed Swipers (e.g. AboutLeadership on /about)
     if (
       el.hasAttribute("data-swiper-react") ||
       el.closest("[data-swiper-react]") ||
@@ -246,7 +244,6 @@
   function initSwipers() {
     if (typeof Swiper === "undefined") return false;
 
-    // Destroy any existing instances before re-init
     [
       ".award_ranking",
       ".studentsSwiper",
@@ -254,6 +251,7 @@
       // ".home_placement_student_slider",
       ".home_recruiters_slider",
       ".home_research_incubation",
+      ".home_about_video",
       ".home_placement_company_slider",
       ".courses_slider_wrapper",
       ".leadership_slider",
@@ -398,6 +396,34 @@
           },
           1200: {
             slidesPerView: 3,
+            spaceBetween: 20,
+          },
+      },
+    });
+
+    createSwiper(".home_about_video", {
+      slidesPerView: 4,
+      spaceBetween: 15,
+      autoplay: true,
+      // navigation: {
+      //   nextEl: ".home_about_video .next_swiper_btn",
+      //   prevEl: ".home_about_video .prev_swiper_btn",
+      // },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 4,
             spaceBetween: 20,
           },
       },

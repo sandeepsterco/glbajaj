@@ -31,6 +31,7 @@ function ParserWidgetFallback() {
 
 const HomePlacements = dynamic(() => import("../../parser/HomePlacements"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"), {
   loading: ParserWidgetFallback,
@@ -55,6 +56,11 @@ const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm")
 });
 const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
   loading: ParserWidgetFallback,
+  ssr:false,
+});
+const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"), {
+  loading: ParserWidgetFallback,
+  ssr:false,
 });
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
   loading: ParserWidgetFallback,
@@ -66,9 +72,11 @@ const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCours
 });
 const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"), {
   loading: ParserWidgetFallback,
+  ssr:false,
 });
 const ContactForm = dynamic(() => import("../../parser/ContactForm"), {
   loading: ParserWidgetFallback,
@@ -275,6 +283,7 @@ const options: HTMLReactParserOptions = {
       }
 
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
+      if (domNode.attribs.id === "home_course_tabs") return <HomeCoursesTabs />;
       if (domNode.attribs.id === "add-on-courses") return <AddOnCourses />;
       if (domNode.attribs.id === "program-add-on-courses") return <ProgramAddOnCourses />;
       if (domNode.attribs.id === "research_innovation")

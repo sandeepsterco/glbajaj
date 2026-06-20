@@ -15,6 +15,8 @@ import "../components/ui/pageLoader/page-loader.css";
 
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
+import Link from "next/link";
+import { APPLY_NOW } from "../config/config";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -41,6 +43,15 @@ export default async function RootLayout({
           <AOSProvider>
             <InitialLoadOverlay />
             <Header />
+            <div className="fixButtons">
+              <Link
+                href={APPLY_NOW ?? ''}
+                target="_blank"
+                className="vertical-floating-btn CTA_Applynow"
+              >
+                360 View
+              </Link>
+            </div>
             <MainWrapper>{children}</MainWrapper>
             <Footer />
           </AOSProvider>

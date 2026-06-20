@@ -112,17 +112,19 @@
 .right_imgage_col { overflow: hidden; }
 .right_imgage_col img { transition: transform 0.2s ease; }
 .right_imgage_col:hover img { transform: scale(1.2)!important; }
-.home_courses_section .left_content .watermark_logo { position: absolute; }
+.home_courses_section .left_content .watermark_logo { position: absolute; z-index: -1;}
 .home_courses_section .left_content .title48 { color: var(--color-92); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: normal; max-width: 47.5rem; }
-.home_courses_section .left_content .courses_links { margin-top: 7.1rem; display: grid; grid-template-columns: 50% auto; gap: 2.45rem; max-width: 47.5rem; }
-.home_courses_section .courses_links .course_link { position: relative; font: var(--font-21); text-decoration: none; line-height: 2.5rem; color: #333; font-weight: 500; padding-bottom: 2.6rem; }
+.home_courses_section .courses_links { margin-top: 7.1rem; display: grid; grid-template-columns: 50% auto; gap: 2.45rem; max-width: 47.5rem; }
+.home_courses_section .courses_links li{list-style-type: none;}
+.home_courses_section .courses_links .course_link { position: relative; font: var(--font-21); text-decoration: none; line-height: 2.5rem; color: #333; font-weight: 500; padding-bottom: 2.6rem; text-align: left; cursor:pointer;}
 .home_courses_section .courses_links .course_link:before { position: absolute; content: ""; height: 1px; width: 100%; background: var(--color-C0); opacity: 0.3; bottom: 0; left: 0; }
+.home_courses_section .course_link.active{color: var(--color-64);}
 .home_courses_section .input_group { position: relative; margin-top: 2.7rem; }
 .home_courses_section .input_group input { width: 100%; height: 5.5rem; border: 1px solid var(--color-C0); padding: 1.7rem 2.1rem 1.6rem 2.1rem; font: var(--font-18); line-height: 2.4rem; background: #fff; }
 .home_courses_section .input_group input:focus { outline: none; }
 .home_courses_section .courses_lists { padding-block: 0.5rem; padding-inline: 1rem; cursor: pointer; font: var(--font-16); border-bottom: 1px solid #ccc; }
 .home_courses_section .search_icon { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); }
-.home_courses_section .bottom_slider { margin-top: -25rem; position: relative; }
+.home_courses_section .bottom_slider { /*margin-top: -25rem;*/ position: relative; margin-top: 1rem;}
 .home_courses_section .courses_slider { background: rgb(243 233 220 / 93%); padding: 1.2rem 2.2rem 4.2rem 3.7rem; }
 .home_courses_section .courses_header { margin-bottom: 3.2rem; display: flex; justify-content: space-between; }
 .home_courses_section .courses_header h4 { margin-top: 1rem; }
@@ -225,6 +227,7 @@
 .why_glb_section .tabs li.active .arrow { background-image: url('/images/icons/right-chevron-right.png'); }
 .why_glb_section .tab_content { color: #fff; margin-top: 10.4rem; display: none; }
 .why_glb_section .tab_content.active { display: block; }
+.why_glb_section .info_grid{display: flex; justify-content: space-between; align-items: center;}
 .why_glb_section .tab_content .name { color: #fff; font: var(--font-24); line-height: 3.6rem; font-weight: bold; }
 .why_glb_section .tab_content .desc { color: #fff; font: var(--font-16); margin-top: 1rem; }
 .why_glb_section .tab_content .yrs { position: relative; padding-top: 5.2rem; margin-top: 2.6rem; color: #fff; font: var(--font-24); line-height: 2.6rem; font-weight: bold; }
@@ -245,12 +248,12 @@
 /************  start of home_about_glb_section ************/
 .home_about_glb_section { padding: 11.8rem 0 12.7rem; }
 .home_about_glb_section .container-lg { padding: 0; }
-.home_about_glb_section .grid { display: grid; gap: 3rem; grid-template-columns: 27.2% auto; }
+.home_about_glb_section .grid { display: grid; gap: 3rem; grid-template-columns: 29% auto; }
 /* .home_about_glb_section .left_col { padding-left: 2.5rem; } */
 .home_about_glb_section .left_col figure { position: relative; /* padding-left: 2.5rem;*/ }
 .home_about_glb_section .left_col figure:before { position: absolute; content: ''; top: 5rem; left: 0; width: 100%; height: 45.4rem; object-fit: cover; background: var(--color-F4); z-index: -1; }
 .home_about_glb_section .left_col .pattern { padding-left: 2.5rem; }
-.home_about_glb_section .about_top { display: flex; justify-content: space-between; align-items: start; gap: 6.6rem; padding-left: 6.5rem; margin-bottom: 3.8rem; background: transparent; padding-block: 0; }
+.home_about_glb_section .about_top { display: flex; justify-content: space-between; align-items: start; gap: 6.6rem; padding-left: 2.5rem; margin-bottom: 3.8rem; background: transparent; padding-block: 0; }
 .home_about_glb_section .about_top .heading { margin-top: 2rem; }
 .home_about_glb_section .about_top .desc { padding-right: 6.6rem; }
 .home_about_glb_section .about_top .more_btn { cursor: pointer; background-color: var(--color-white); width: 4rem; height: 4rem; box-shadow: 0 4px 12px #00000026; display: flex; align-items: center; justify-content: center; }
@@ -268,7 +271,7 @@
 .home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.35; top: 0; left: 0; }
 .home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; }
 .home_about_glb_section .icon img{width:5rem;}
-.home_about_glb_section .video_grid{display: grid; grid-template-columns: repeat(4, 1fr); padding: 1.5rem; background: var(--color-F4); gap: 1.5rem;}
+.home_about_glb_section .video_grid{padding: 1.5rem; background: var(--color-F4);}
 .corporate_board { display: none; }
 /************  end of home_about_glb_section ************/
 /************  start of home_sessions_section ************/
@@ -592,7 +595,7 @@
 .homeFac_main { padding-left: 0rem; }
 .homeFac_title h4,
 .homeFac_title p { padding-bottom: 3rem; }
-.homeFac_tabs { display: grid; grid-template-columns: 20% 72%; gap: 13.9rem; align-items: center; }
+.homeFac_tabs { display: grid; grid-template-columns: 20% 73.9%; gap: 13.9rem; align-items: center; }
 .homeFac_nav_side .navigation_btn { margin-top: 6rem; position: relative; bottom: unset; right: unset; }
 .homeFac_nav_side { padding-top: 3rem; }
 .homeFac_nav_side h3 { padding-block: 1rem 10rem; color: var(--color-92); line-height: 1; font-weight: 400; }

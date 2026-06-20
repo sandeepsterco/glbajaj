@@ -393,7 +393,32 @@
           spaceBetween: 15,
         },
         992: {
-          slidesPerView: 3,
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+      },
+    });
+
+    createSwiper(".home_recruiters_slider", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      loop: true,
+      autoplay: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        992: {
+          slidesPerView: 1,
           spaceBetween: 15,
         },
       },

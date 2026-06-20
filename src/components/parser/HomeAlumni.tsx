@@ -32,13 +32,13 @@ export default function HomeAlumni() {
   }), [rawData]);
 
   const tabs = [
-    { key: "students", label: "Students" },
+    { key: "alumnies", label: "Alumni" },
     { key: "recruiters", label: "Recruiters" },
     { key: "faculties", label: "Faculties" },
-    { key: "alumnies", label: "Alumni" },
+    { key: "students", label: "Students" },
   ];
 
-  const [activeTab, setActiveTab] = useState("students");
+  const [activeTab, setActiveTab] = useState("alumnies");
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Refs for mobile swiper custom nav arrows

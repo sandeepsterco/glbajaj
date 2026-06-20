@@ -4,6 +4,9 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { SkeletonGroup } from "../ui/Skeleton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 interface UpcomingEvent {
   id: number;
@@ -50,72 +53,65 @@ export default function HomeUpcomingEvents() {
 
   if (isError || !events || events.length === 0) return null;
 
-  const [first, ...rest] = events;
-  const firstDate = formatDateParts(first.date);
+  const [, ...rest] = events;
 
   return (
     <>
       <div className="grid">
         <div className="left_col">
-          <div className="content_col">
-            <figure>
-              <img
-                src={first.image}
-                alt={first.heading}
-                data-aos="fade-up"
-                data-aos-delay="800"
-                loading="lazy"
-                width="723"
-                height="568"
-                className="img-fluid w-100"
-              />
-            </figure>
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={events.length > 1}
+            slidesPerView={1}
+            speed={800}
+          >
+            {events.map((event) => {
+              const d = formatDateParts(event.date);
+              return (
+                <SwiperSlide key={event.id}>
+                  <div className="content_col">
+                    <figure>
+                      <img
+                        src={event.image}
+                        alt={event.heading}
+                        data-aos="fade-up"
+                        data-aos-delay="800"
+                        loading="lazy"
+                        width="723"
+                        height="568"
+                        className="img-fluid w-100"
+                      />
+                    </figure>
 
-            <div className="data-overlay">
-              <div className="top" data-aos="fade-up" data-aos-delay="800">
-                <span className="date">
-                  {firstDate.day}
-                  <br />
-                  {firstDate.month}
-                </span>
-                <span className="year">{firstDate.year.slice(0, 2)}</span>
-              </div>
-              <div className="bottom" data-aos="fade-up" data-aos-delay="800">
-                <span className="year">{firstDate.year.slice(2)}</span>
-                <h6 className="name">{first.heading}</h6>
-              </div>
-            </div>
+                    <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
+                      <div className="left">
+                        <p className="date text-white" data-aos="fade-up" data-aos-delay="800">
+                          {d.full}
+                        </p>
+                        <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
+                          {event.heading}
+                        </h4>
+                      </div>
 
-            <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
-              <div className="left">
-                <p className="date text-white" data-aos="fade-up" data-aos-delay="800">
-                  {firstDate.full}
-                </p>
-                <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
-                  {first.heading}
-                </h4>
-              </div>
-
-              <div className="right">
-                <Link href={`/news-events/${first.slug}`} data-aos="fade-up" data-aos-delay="800">
-                  <div className="arrow_btn1">
-                    <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                      <div className="right">
+                        <Link href={`/news-events/${event.slug}`} data-aos="fade-up" data-aos-delay="800">
+                          <div className="arrow_btn1">
+                            <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  {/* <img
-                    src="/images/home/see_more_icon.svg"
-                    alt="right chevron icon"
-                    width="60"
-                    height="40"
-                  /> */}
-                </Link>
-              </div>
-            </div>
-          </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
 
         <div className="right_col">
           <ul>
-            {rest.map((event, index) => {
+            {rest.map((event) => {
               const d = formatDateParts(event.date);
               return (
                 <li key={event.id} data-aos="fade-up" data-aos-delay="200">

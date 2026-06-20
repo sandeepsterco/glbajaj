@@ -77,10 +77,11 @@ function ProgramBox({ program }: { program: Program }) {
   );
 }
 
-function ProgramGroupSection({ group }: { group: ProgramGroup }) {
+function ProgramGroupSection({ group }: { group: ProgramGroup}) {
   return (
-    <div className="program-list">
-      <h5>{group.name}</h5>
+    // <div className="program-list">
+    <div className="single_program">
+      {/* <h5>{group.name}</h5> */}
       {group.programs && group.programs.length > 0 ? (
         group.programs.map((program) => (
           <ProgramBox key={program.slug} program={program} />
@@ -137,15 +138,17 @@ export default function HomeCoursesTabs() {
               {loading ? (
                 <div className="program-list">
                   <SkeletonGroup
-                    count={6}
+                    count={4}
                     wrapperClassName="!block gap-[3rem]"
                     className="w-full h-[8rem] !mb-[1.5rem]"
                   />
                 </div>
               ) : programsData && programsData.data.length > 0 ? (
-                programsData.data.map((group) => (
-                  <ProgramGroupSection key={group.slug} group={group} />
-                ))
+                  <div className="program-list">
+                    {programsData.data.map((group) => (
+                      <ProgramGroupSection key={group.slug} group={group} />
+                    ))}
+                  </div>
               ) : (
                 <p>No programs found.</p>
               )}

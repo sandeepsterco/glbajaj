@@ -62,7 +62,7 @@
 .home_placement_stats .count sup:first-child { top: 0.8rem; }
 .home_placement_stats .single_placement:nth-of-type(3) .count>sup:nth-of-type(1),
 .home_placement_stats .single_placement:nth-of-type(2) .count>sup:nth-of-type(1) { font-weight: 400; }
-.home_placement_stats .title { font: var(--font-16); font-weight: 600; }
+.home_placement_stats .title { font: var(--font-22); font-weight: 600; }
 /* STUDENTS */
 .home_placement_students { gap: 2.5rem; margin-top: 7rem; display: grid; grid-template-columns: 34% 64.5%; }
 .home_placement_students .right_slider { width: 100%; }
@@ -80,9 +80,9 @@
 .slider_top { position: relative; }
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5rem; }
 .slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn { top: 1rem; }
-.recruiters h5 { font: var(--font-54); letter-spacing: -2px; font-weight: 400; color:var(--color-5A); font-weight: 600;}
+.recruiters h5 { font: var(--font-54); letter-spacing: -2px; font-weight: 400; color:var(--color-5A); font-weight: 600; margin-top:5rem;}
 .recruiters p { font: var(--font-22); font-weight: 400; }
-.home_recruiters_slider { overflow: hidden; max-width: 30rem; margin-right: 10rem; }
+.home_recruiters_slider { overflow: hidden; max-width: 40rem; margin-right: 10rem; }
 /* .home_placement_static_card .slider_btns div { position: relative; padding: 0; display: unset; cursor: pointer; }
 */
 .home_placement_static_card .slider_btns div { position: relative; padding: 0; cursor: pointer; }
@@ -281,7 +281,7 @@
   height: 100%; flex-direction: column; height: 60rem; overflow: auto; }
 .home_sessions_section .left_col .content_col { position: relative; }
 .home_sessions_section .grid .left_col figure { position: relative; }
-.home_sessions_section .grid .left_col figure:before { position: absolute; content: ''; height: 100%; width: 100%; top: 0; left: 0; -webkit-backdrop-filter: blur(13px); backdrop-filter: blur(13px); mix-blend-mode: difference; background-color: var(--color-64); z-index: 1; }
+/* .home_sessions_section .grid .left_col figure:before { position: absolute; content: ''; height: 100%; width: 100%; top: 0; left: 0; -webkit-backdrop-filter: blur(13px); backdrop-filter: blur(13px); mix-blend-mode: difference; background-color: var(--color-64); z-index: 1; } */
 .home_sessions_section .data-overlay { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); top: 10.6rem; padding: 3rem 0; z-index: 2; }
 .home_sessions_section .data-overlay .top { display: flex; gap: 2rem; }
 .home_sessions_section .data-overlay .top .date { font: var(--font-24); line-height: 2.3rem; color: #fff; letter-spacing: -0.67px; font-weight: normal; text-transform: uppercase; border-top: 1px solid var(--color-FE); border-bottom: 1px solid var(--color-FE); padding: 1rem 0; width: 5rem; text-align: center; display: flex; align-items: center; justify-content: center; }
@@ -490,10 +490,9 @@
 
 .home_research_incubation .contents{
   position:absolute;
-  top:50%;
+  bottom:4rem;
   height: auto;
   display: block;
-  transform: translateY(-50%);
   padding: 0 3rem;
   text-align: center;
   width: 100%;
@@ -529,7 +528,7 @@
 
 .home_research_incubation_section .right_data .logo{
   margin:auto;
-  max-width: 15rem;
+  max-width: 20rem;
 }
 
 .home_research_incubation_section .right_data .logo_content{
@@ -548,7 +547,7 @@
  }
 @media (max-width:1536px) {
  .home_courses_section .slider_btns { gap: 1rem; display: flex; padding-right: 1.5rem; }
-.home_placement_static_card { height: 41.4rem; }
+/* .home_placement_static_card { height: 41.4rem; } */
 .why_glb_section .sec_title h5:before { bottom: -9px; }
 .research_centre_section .centre_lists a { gap: 0.4rem; }
 .why_glb_section .tabs li .arrow { background-size: contain; }

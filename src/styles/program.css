@@ -52,11 +52,11 @@ This is the minimum CSS that you will need in order for this to work
 .program-list h5 { padding-block: 0 3rem; color: var(--color-33); font-weight: 600; }
 .homepage .program-list h5 { padding-block: 0 1rem; font:var(--font-16); font-weight:600; }
 .program-box { background-color: var(--color-F4); display: flex; align-items: center; justify-content: space-between; padding: 3rem; border-top: 1px solid #c0855247; }
-.homepage .program-box {padding: 2rem;}
+.homepage .program-box {padding: 3rem 2rem; background-color:transparent}
 .program-text { }
 .program-text h6 { font-weight: 600; color: var(--color-89); }
-.program-text h6 a { font: var(--font-18); font-weight: 600; color: var(--color-89); }
-.homepage .program-text h6 a { font: var(--font-16); }
+.program-text h6 a { font: var(--font-18); font-weight: 600; color: var(--color-89);}
+.homepage .program-text h6 a { font: var(--font-20);  color:#333; font-weight: 500;}
 .program-text p { font: var(--font-14); color: var(--color-black); font-weight: 500; padding-top: .5rem; }
 .program-right { display: flex; align-items: center; justify-content: space-between; }
 .duration { border-left: 1px solid var(--color-D2); padding: 0 4rem; }
@@ -70,8 +70,8 @@ This is the minimum CSS that you will need in order for this to work
 .apply-btn button { font: var(--font-16); color: var(--color-89); font-weight: 600; border-bottom: 1px dashed var(--color-89); padding-bottom: 1rem; cursor: pointer;}
 .program-btn { }
 .program-btn a { background-color: var(--color-white); padding: 1.5rem 2rem; display: block; box-shadow: 0px 2px 4px #0000001a; }
-.homepage .program-btn a {padding: .5rem; height:2.5rem; width:2.5rem; display:flex; align-items:center; justify-content:center;}
-.homepage .program-btn a img{width:0.5rem;}
+.homepage .program-btn a {padding: .5rem; height:3.5rem; width:3.5rem; display:flex; align-items:center; justify-content:center;}
+.homepage .program-btn a img{width:0.7rem;}
 .program-btn a:hover { background-color: var(--color-89); }
 .program-btn a:hover img { filter: brightness(0) invert(1); }
 /* program-detail */

@@ -127,19 +127,24 @@
 
   function gridPopup() {
     const items = document.querySelectorAll(".media_grid_Bx");
+    if (!items.length) return true;
 
     items.forEach((item, index) => {
+      if (item.hasAttribute("data-grid-popup-init")) return;
+      item.setAttribute("data-grid-popup-init", "1");
+
       item.addEventListener("click", function () {
-        let gallery = [];
+        const FancyboxApi = window.Fancybox;
+        if (!FancyboxApi) return;
 
-        items.forEach((el) => {
-          gallery.push({
-            src: el.getAttribute("data-src"),
-            type: "image",
-          });
-        });
+        const gallery = Array.from(
+          document.querySelectorAll(".media_grid_Bx")
+        ).map((el) => ({
+          src: el.getAttribute("data-src"),
+          type: "image",
+        }));
 
-        Fancybox.show(gallery, {
+        FancyboxApi.show(gallery, {
           startIndex: index,
         });
       });

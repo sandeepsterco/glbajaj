@@ -1,5 +1,6 @@
 import { getSlug } from "@/src/lib/getSlug";
 import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import "@/src/styles/fancybox.css";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";

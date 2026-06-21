@@ -24,14 +24,24 @@ function scheduleDeferredLoad(callback) {
   window.addEventListener("pointerdown", run, { once: true });
 }
 
+const FANCYBOX_PATHS = ["/gallery", "/digital-pathshala", "/media-coverage"];
+
 function pageNeedsFancybox(pathname) {
-  if (pathname.includes("/gallery") || pathname.includes("/digital-pathshala")) {
+  if (FANCYBOX_PATHS.some((segment) => pathname.includes(segment))) {
     return true;
   }
 
   return Boolean(
     document.querySelector(".media_grid_Bx, [data-fancybox]")
   );
+}
+
+function scheduleCustomJsInit() {
+  if (typeof window.__scheduleInitCustomJS === "function") {
+    window.__scheduleInitCustomJS();
+  } else if (typeof window.__initCustomJS === "function") {
+    window.__initCustomJS();
+  }
 }
 
 export default function ScriptLoader() {
@@ -48,14 +58,26 @@ export default function ScriptLoader() {
   useEffect(() => {
     if (!deferredReady) return;
 
-    setNeedsFancybox(pageNeedsFancybox(pathname));
+    const check = () => {
+      const needs = pageNeedsFancybox(pathname);
+      setNeedsFancybox(needs);
 
-    const recheck = window.setTimeout(() => {
-      setNeedsFancybox(pageNeedsFancybox(pathname));
-    }, 2000);
+      if (needs && document.querySelector(".media_grid_Bx, [data-fancybox]")) {
+        scheduleCustomJsInit();
+      }
+    };
 
-    return () => window.clearTimeout(recheck);
+    check();
+
+    const timers = [500, 1500, 3000].map((delay) => window.setTimeout(check, delay));
+
+    return () => timers.forEach((id) => window.clearTimeout(id));
   }, [deferredReady, pathname]);
+
+  useEffect(() => {
+    if (!fancyboxReady || !needsFancybox) return;
+    scheduleCustomJsInit();
+  }, [fancyboxReady, needsFancybox]);
 
   const canLoadCustomJs = swiperReady && (!needsFancybox || fancyboxReady);
 

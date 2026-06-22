@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { SkeletonGroup } from "../../ui/Skeleton";
 import { API_URL, BASE_URL } from "@/src/config/config";
 import Link from "next/link";
@@ -85,9 +85,16 @@ export default function MobileMenu() {
     const [contactInfo, setContactInfo] = useState([]);
     const [loading, setLoading] = useState<Partial<Record<ModalKey, boolean>>>({});
 
-    const isMobile = window.innerWidth < 991
+    const [isMobile, setIsMobile] = useState(false);
 
-    if(!isMobile) return;
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 991);
+        check(); // run on mount
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+
+    if (!isMobile) return null;
 
     const fetchMenu = useCallback(async (location: string): Promise<MenuItem[]> => {
         try {

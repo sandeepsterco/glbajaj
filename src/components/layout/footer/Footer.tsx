@@ -55,38 +55,38 @@ const Footer = async () => {
 
             <div className="footer_content">
               <div className="footer_address">
-                {getValue('institute_name').value && (
-                  <h3>{getValue('institute_name').value}</h3>
+                {getValue('institute_name')?.value && (
+                  <h3>{getValue('institute_name')?.value}</h3>
                 )}
-                {getValue('address').value && (
-                  <p>{getValue('address').value}</p>
+                {getValue('address')?.value && (
+                  <p>{getValue('address')?.value}</p>
                 )}
               </div>
 
               <div className="footer_contact">
-                {getValue('email').value && (
+                {getValue('email')?.value && (
                   <div>
                     <h4>Email</h4>
-                    <a href={`mailto:${getValue('email').value}`}>{getValue('email').value}</a>
+                    <a href={`mailto:${getValue('email')?.value}`}>{getValue('email')?.value}</a>
                   </div>
                 )}
 
-                {getValue('helpline').value && (
+                {getValue('helpline')?.value && (
                   <div>
                     <h4>Helpline No.</h4>
-                    <a href={`tel:${getValue('helpline').value.split('-').join('')}`}>{getValue('helpline').value}</a>
+                    <a href={`tel:${getValue('helpline')?.value.split('-').join('')}`}>{getValue('helpline')?.value}</a>
                   </div>
                 )}
                 <div>
 
                 </div>
 
-                {getValue('phone').value && (
+                {getValue('phone')?.value && (
                   <div>
                     <h4>Phone</h4>
                     <p>
-                      <a href={`tel:${getValue('phone').value}`}>{getValue('phone').value}</a>,
-                      <a href={`tel:${getValue('phone1').value}`}>{getValue('phone1').value}</a>
+                      <a href={`tel:${getValue('phone')?.value}`}>{getValue('phone')?.value}</a>,
+                      <a href={`tel:${getValue('phone1')?.value}`}>{getValue('phone1')?.value}</a>
                     </p>
                   </div>
                 )}
@@ -120,9 +120,9 @@ const Footer = async () => {
 
           <div className="footer_bottom">
             <div className="footer_bottom_left">
-              {getValue('copyright').value && (
+              {getValue('copyright')?.value && (
                 <p>
-                  {getValue('copyright').value}
+                  {getValue('copyright')?.value}
                 </p>
               )}
 
@@ -138,46 +138,46 @@ const Footer = async () => {
               {/* <!-- Social Icons --> */}
               <div className="social_icons">
 
-                {getValue('facebook').value && (
-                  <a href={getValue('facebook').value} target="_blank">
+                {getValue('facebook')?.value && (
+                  <a href={getValue('facebook')?.value} target="_blank">
                     <img
-                      src={getValue('facebook').image}
+                      src={getValue('facebook')?.image}
                       alt="facebook icon"
                     />
                   </a>
                 )}
 
-                {getValue('twitter').value && (
-                  <a href={getValue('twitter').value} target="_blank">
+                {getValue('twitter')?.value && (
+                  <a href={getValue('twitter')?.value} target="_blank">
                     <img
-                      src={getValue('twitter').image}
+                      src={getValue('twitter')?.image}
                       alt="X icon"
                     />
                   </a>
                 )}
 
-                {getValue('youtube').value && (
-                  <a href={getValue('youtube').value} target="_blank">
+                {getValue('youtube')?.value && (
+                  <a href={getValue('youtube')?.value} target="_blank">
                     <img
-                      src={getValue('youtube').image}
+                      src={getValue('youtube')?.image}
                       alt="youtube icon"
                     />
                   </a>
                 )}
 
-                {getValue('instagram').value && (
-                  <a href={getValue('instagram').value} target="_blank">
+                {getValue('instagram')?.value && (
+                  <a href={getValue('instagram')?.value} target="_blank">
                     <img
-                      src={getValue('instagram').image}
+                      src={getValue('instagram')?.image}
                       alt="instagram icon"
                     />
                   </a>
                 )}
 
-                {getValue('linkedin').value && (
-                  <a href={getValue('linkedin').value} target="_blank">
+                {getValue('linkedin')?.value && (
+                  <a href={getValue('linkedin')?.value} target="_blank">
                     <img
-                      src={getValue('linkedin').image}
+                      src={getValue('linkedin')?.image}
                       alt="linkedin icon"
                     />
                   </a>

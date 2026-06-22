@@ -1214,6 +1214,7 @@
 .home_sessions_section .data-overlay { padding:4rem 0; }
 .home .home_testimonials .desc { min-height: 100%; }
 .footer_address { width: 100%; }
+.home_footer .footer_content .footer_address{flex:unset;}
 .homeFac_accHeader .homeFac_accChevron { display: none; }
 .homeFac_pane .homeFac_accHeader span { font: var(--font-18); font-weight: 600; color: var(--color-black); }
 .homeFac_pane.active .homeFac_accHeader span { color: var(--color-92); }

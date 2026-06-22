@@ -119,6 +119,13 @@ a { text-decoration: none; }
 .vertical-floating-btn:hover{
   background-color: var(--color-64);
 }
+.vertical-floating-btn img{
+  filter: invert(1);
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  width: 4rem;
+  margin-top: 1rem;
+}
 
 @media (max-width: 991px) {
  .container-fluid { max-width: 100%; width: 100%; padding-inline: 1.5rem; }
@@ -234,10 +241,11 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* TOP SECTION */
 .home_footer .footer_top { display: grid; grid-template-columns: auto 1fr; gap: 3.7rem; align-items: center; }
 .home_footer .footer_logo img { width: 260px; }
-.home_footer .footer_content { display: flex; justify-content: space-between; gap: 9rem; flex-wrap: wrap; }
+.home_footer .footer_content { display: flex; justify-content: space-between; gap: 9rem;}
+.home_footer .footer_content .footer_address{flex: 1;}
 .home_footer .footer_address h3 { font: var(--font-21); line-height: 3.6rem; font-weight: 500; color: var(--color-white); }
 .home_footer .footer_address p { font: var(--font-14); line-height: 2.4rem; margin-top: 1.2rem; color: var(--color-white); }
-.home_footer .footer_contact { display: flex; gap: 4.5rem; flex-wrap: wrap; }
+.home_footer .footer_contact { display: flex; gap: 4.5rem;}
 .home_footer .footer_contact h4 { font: var(--font-16); font-weight: 600; color: var(--color-white); }
 .home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font: var(--font-16); color: var(--color-white); text-decoration: none; }
 .home_footer .footer_contact a:hover { color: #d2ab67 }
@@ -298,7 +306,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_address h3 { font: var(--font-14); font-weight: 500; }
 .home_footer .footer_address p { font: var(--font-12); padding-inline: 3rem; margin-top: 1.5rem; }
 .footer_contact { display: block; }
-.home_footer .footer_content { gap: 2.5rem; justify-content: center; }
+.home_footer .footer_content { gap: 2.5rem; justify-content: center; flex-wrap: wrap;}
 .home_footer .footer_contact { display: block; margin: 0 auto; }
 .footer_contact div { display: flex; justify-content: center; gap: 1rem; align-items: center; }
 .home_footer .footer_contact a { margin-top: 0; }

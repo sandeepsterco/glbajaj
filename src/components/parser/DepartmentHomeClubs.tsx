@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -29,7 +29,7 @@ export default function DepartmentHomeClubs() {
 
 
   const slideCount = clubsData.length;
-  const maxSlidesPerView = 4;
+  const maxSlidesPerView = 1;
   const shouldLoop = slideCount > maxSlidesPerView;
   const showNavigation = shouldLoop;
 
@@ -37,14 +37,18 @@ export default function DepartmentHomeClubs() {
 
   return (
     <Swiper
-      modules={[Navigation]}
+      modules={[Navigation, Autoplay]}
       slidesPerView={1.2}
       spaceBetween={20}
       loop={shouldLoop}
-      autoplay={false}
+      autoplay={{
+        delay:3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       breakpoints={{
-        768: { slidesPerView: 2, spaceBetween: 15 },
-        1200: { slidesPerView: 4, spaceBetween: 30 },
+        768: { slidesPerView: 1.5, spaceBetween: 30 },
+        1200: { slidesPerView: 1, spaceBetween: 30 },
       }}
       navigation={{
         nextEl: ".department_home_clubs_next",
@@ -54,7 +58,7 @@ export default function DepartmentHomeClubs() {
     >
       {clubsData.map((item: any, idx: number) => (
         <SwiperSlide key={item?.id || idx}>
-          <div className="media_grid_Bx1">
+          <div className="dep_clubs_card">
             <figure>
               <Image
                 src={item.image}
@@ -64,22 +68,24 @@ export default function DepartmentHomeClubs() {
               data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             {item?.title && (
-              <div className="media_txt">
-                <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
+              <div className="dep_club_contents">
+                <h3 className="font36 " data-aos="fade-up" data-aos-delay="200">{item.title}</h3>
+                <div className="content" dangerouslySetInnerHTML={{__html:item.short_description}} data-aos="fade-up" data-aos-delay="200" />
+                {item?.slug && (
+                  <Link href={BASE_URL + "why-clubs-societies/" + item.slug} className="cus-btn " data-aos="fade-up" data-aos-delay="200">
+                      View More
+                  </Link>
+                )}
+                
               </div>
             )}
-            {item?.slug && (
-              <Link
-                className="strech_link"
-                href={BASE_URL + "why-clubs-societies/" + item.slug}
-              />
-            )}
+            
           </div>
         </SwiperSlide>
       ))}
 
       {showNavigation && (
-        <div className="navigation_btn" data-aos="fade-up" data-aos-delay="600">
+        <div className="navigation_btn" data-aos="fade-up" data-aos-delay="200">
           <div className="prev-btn swiper_prev_custom department_home_clubs_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>

@@ -88,8 +88,9 @@ export default function DepartmentHomeAlumni() {
                   </div>
                   <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{ __html: item?.message }} />
                 </div>
+
                 <div className="ats_imgbx">
-                  <img src={item.image} className="img-fluid" alt={item.name} data-aos="fade-up" data-aos-delay="600" />
+                  <img src={item.image} className="img-fluid w-100" alt={item.name} data-aos="fade-up" data-aos-delay="600" />
                   <div className="ats_authinfo">
                     <div className="ats_auname" data-aos="fade-up" data-aos-delay="800">{item.name}</div>
                     <div className="ats_auth_dis" data-aos="fade-up" data-aos-delay="1000">{item.branch}</div>

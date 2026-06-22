@@ -208,6 +208,24 @@ const options: HTMLReactParserOptions = {
         }
       }
 
+      if (domNode.name === "a") {
+        const props = attributesToProps(domNode.attribs) as any;
+        const href = props.href?.trim();
+        const classList = (domNode.attribs?.class || "").split(" ");
+      
+        // Hide read_more_icon anchors with no valid href
+        if (classList.includes("dynamic_btn") && (!href || href === "#")) {
+          return <></>;
+        }
+      
+        const { href: _href, ...rest } = props;
+        return (
+          <Link href={href || "#"} {...rest}>
+            {domToReact(domNode.children as any, options)}
+          </Link>
+        );
+      }
+
       if (domNode.name === "img") {
         const props = attributesToProps(domNode.attribs) as any;
         const resolvedSrc = (() => {

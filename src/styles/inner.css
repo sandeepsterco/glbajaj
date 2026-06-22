@@ -818,6 +818,8 @@
 .activites_sec .navigation_btn { bottom: unset; position: relative; right: unset; left: 1rem; }
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
+.dep_clubs_card{display: grid; grid-template-columns: 40% auto; position:relative; gap: 15rem;}
+.dep_clubs_card .dep_club_contents{}
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
 .dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; }
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }

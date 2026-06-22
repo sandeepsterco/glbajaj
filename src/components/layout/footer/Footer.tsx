@@ -13,9 +13,14 @@ const Footer = async () => {
 
   const getValue = (key: string) => {
     const found = infoData?.data.find((item: any) => item.key == key) ?? null;
-    return {
-      value: found?.value ?? null,
-      image: found?.image ?? null,
+    if (found?.value || found?.image || found?.url) {
+      return {
+        value: found?.value ?? null,
+        image: found?.image ?? null,
+        url: found?.url ?? null,
+      }
+    } else {
+      return null;
     }
   }
 
@@ -23,15 +28,19 @@ const Footer = async () => {
 
   return (
     <>
-    <div className="fixButtons">
-              <Link
-                href={APPLY_NOW ?? ''}
-                target="_blank"
-                className="vertical-floating-btn CTA_Applynow"
-              >
-                360 View
-              </Link>
-            </div>
+      {getValue('360_view') && (
+        <div className="fixButtons">
+          <Link
+            href={getValue('360_view')?.url}
+            target="_blank"
+            className="vertical-floating-btn CTA_Applynow"
+          >
+            <img src={getValue('360_view')?.image} className="icon" />
+            View
+          </Link>
+        </div>
+      )}
+
       <footer className="home_footer">
         <div className="container">
           <div className="footer_top">
@@ -195,11 +204,6 @@ const Footer = async () => {
 
   );
 };
-
-
-
-
-
 
 
 export default Footer;

@@ -68,10 +68,10 @@ export default function DepartmentHomeActivities() {
                 width={380}
                 height={275}
                 alt={item.title}
-              />
+               data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             <div className="activities_caption">
-              <p>{item.title}</p>
+              <p  data-aos="fade-up" data-aos-delay="400">{item.title}</p>
             </div>
             {(item?.pdf || item?.slug) && (
               <Link
@@ -85,7 +85,7 @@ export default function DepartmentHomeActivities() {
       ))}
 
       {showNavigation && (
-        <div className="navigation_btn">
+        <div className="navigation_btn"  data-aos="fade-up" data-aos-delay="600"> 
           <div className="prev-btn swiper_prev_custom department_activities_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +15,7 @@ const SLIDES_PER_VIEW = 3;
 const fetchHomePlacements = async () => {
   const { data, error } = await apiFetch(`modular/home`);
   if (error) throw new Error(error);
-  return data?.modular?.['intern-placement'];
+  return data?.modular?.["intern-placement"];
 };
 
 export default function HomePlacements() {
@@ -43,7 +43,6 @@ export default function HomePlacements() {
 
   return (
     <div className="right_slider">
-
       {/* <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
         <h4 className="top_placed">Top Placed GLBian</h4>
@@ -66,14 +65,18 @@ export default function HomePlacements() {
       </div>
       <Swiper
         className="home_placement_student_slider"
-        modules={[Navigation]}        
+        modules={[Navigation]}
         slidesPerView={SLIDES_PER_VIEW}
         spaceBetween={20}
         loop={canLoop}
-        navigation={canLoop ? {
-          nextEl: ".right_slider .next_swiper_btn",
-          prevEl: ".right_slider .prev_swiper_btn",
-        } : false}
+        navigation={
+          canLoop
+            ? {
+                nextEl: ".right_slider .next_swiper_btn",
+                prevEl: ".right_slider .prev_swiper_btn",
+              }
+            : false
+        }
         // autoplay={{
         //   delay: 3000,
         //   disableOnInteraction: false,
@@ -103,7 +106,15 @@ export default function HomePlacements() {
       >
         {placementData.map((item: any, index: number) => (
           <SwiperSlide key={index}>
-            <figure className="flash-effect-2"><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+            <figure className="flash-effect-2">
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={349}
+                height={409}
+                loading="lazy"
+              />
+            </figure>
             <div className="placem_cnt">
               <img
                 src={item?.logo_image}
@@ -112,7 +123,8 @@ export default function HomePlacements() {
               />
               <div className="home_placement_info">
                 <h3 className="placement">
-                  {item?.package}<sup>LPA</sup>
+                  {item?.package}
+                  <sup>LPA</sup>
                 </h3>
                 <p>{item.name}</p>
               </div>
@@ -120,7 +132,6 @@ export default function HomePlacements() {
           </SwiperSlide>
         ))}
       </Swiper>
-
     </div>
   );
 }

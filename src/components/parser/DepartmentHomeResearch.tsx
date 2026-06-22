@@ -7,11 +7,8 @@ import { usePathname } from "next/navigation";
 import { SkeletonGroup } from "../ui/Skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import ApiError from "../ui/ApiError";
-import NoData from "../ui/NoData";
 import { BASE_URL } from "@/src/config/config";
+import Link from "next/link";
 
 const SLIDES_PER_VIEW = 3;
 
@@ -75,9 +72,9 @@ export default function DepartmentHomeResearch() {
                   <p>{item.title}</p>
                 </div>
               )}
-              {/* {item?.slug && (
-                <a className="strech_link" href={`${BASE_URL}department/${slug}/research/${item.slug}`}></a>
-              )} */}
+              {item?.slug && (
+                <Link className="strech_link" href={`${BASE_URL}department/${slug}/research/${item.slug}`} />
+              )}
             </div>
           </SwiperSlide>
         ))}

@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
         hostname: "**",
       },
     ],
+    unoptimized: true,
+    domains: ["project-demo.in"],
   },
 
   async rewrites() {

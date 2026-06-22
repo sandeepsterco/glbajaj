@@ -1038,6 +1038,9 @@
 .tp_place_main.home_placement_section { background-color: transparent; margin-bottom: 10rem; }
 .tp_place_main .font24 { margin-bottom: 1rem; }
 .tp_place_main .home_placement_students { margin-top: 5rem; }
+.home_placement_students .slider_btns {    position: absolute;
+    top: 1.3rem;
+    right: -0.3rem;}
 .alumni_testimonial_section { padding-block: 16.8rem 2.6rem; background-color: var(--color-F4); }
 .ats_textbox { display: grid; gap: 8.2rem; padding-top: 11rem; grid-template-columns: 14% auto; }
 .ats_textbox p { font: var(--font-21); }

@@ -61,11 +61,11 @@ export default function DepartmentHomeClubs() {
                 width={380}
                 height={275}
                 alt={item.title}
-              />
+              data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             {item?.title && (
               <div className="media_txt">
-                <p>{item.title}</p>
+                <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
               </div>
             )}
             {item?.slug && (
@@ -79,7 +79,7 @@ export default function DepartmentHomeClubs() {
       ))}
 
       {showNavigation && (
-        <div className="navigation_btn">
+        <div className="navigation_btn" data-aos="fade-up" data-aos-delay="600">
           <div className="prev-btn swiper_prev_custom department_home_clubs_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>

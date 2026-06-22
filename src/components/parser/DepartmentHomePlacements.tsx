@@ -62,8 +62,8 @@ export default function DepartmentHomePlacements() {
   return (
     <div className="home_placement_students deparment_page_placemen">
       <div className="home_placement_static_card">
-        <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian</h4>
+        <div className="home_placement_top_bar" data-aos="fade-up" data-aos-delay="200"></div>
+        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="400">Top Placed GLBian</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -87,17 +87,17 @@ export default function DepartmentHomePlacements() {
         >
           {placementData.map((item: any, index: number) => (
             <SwiperSlide key={index}>
-              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" data-aos="fade-up" data-aos-delay="200"/></figure>
               <div className="placem_cnt"><img
                 src={item?.logo_image}
                 className="placement_img"
                 alt="placement company"
-              />
+              data-aos="fade-up" data-aos-delay="200"/>
               <div className="home_placement_info">
-                <h3 className="placement">
+                <h3 className="placement" data-aos="fade-up" data-aos-delay="400">
                   {item?.package}<sup>LPA</sup>
                 </h3>
-                <p>{item.name}</p>
+                <p data-aos="fade-up" data-aos-delay="600">{item.name}</p>
               </div>
               </div>
             </SwiperSlide>

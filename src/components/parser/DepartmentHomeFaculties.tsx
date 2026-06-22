@@ -61,13 +61,13 @@ export default function DepartmentHomeFaculties() {
                     <SwiperSlide key={item?.id || index}>
                         <div className="leader_card">
                             <figure>
-                                <Image src={item?.image || '/images/default/faculty.webp'} alt="leader" className="img-fluid w-100" height={255} width={287} loading="lazy" />
+                                <Image src={item?.image || '/images/default/faculty.webp'} alt="leader" className="img-fluid w-100" height={255} width={287} loading="lazy" data-aos="fade-up" data-aos-delay="200"/>
                             </figure>
                             {item?.name && (
-                                <h4>{item.name}</h4>
+                                <h4 data-aos="fade-up" data-aos-delay="400">{item.name}</h4>
                             )}
                             {item?.type && (
-                                <p>{item.type}</p>
+                                <p data-aos="fade-up" data-aos-delay="600">{item.type}</p>
                             )}
                         </div>
                     </SwiperSlide>
@@ -75,7 +75,7 @@ export default function DepartmentHomeFaculties() {
             }
 
             {showNavigation && (
-                <div className="navigation_btn">
+                <div className="navigation_btn" data-aos="fade-up" data-aos-delay="800">
                     <div className="prev-btn swiper_prev_custom department_faculty_prev"><img src="/images/icons/arrow.svg" alt="arrow"
                         className="img-fluid" /></div>
                     <div className="next-btn swiper_next_custom department_faculty_next"><img src="/images/icons/arrow.svg" alt="arrow"

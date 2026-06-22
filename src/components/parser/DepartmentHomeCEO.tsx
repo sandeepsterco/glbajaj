@@ -62,10 +62,10 @@ export default function DepartmentHomeCEO() {
                 height={275}
                 alt={item.title}
                 loading="lazy"
-              />
+              data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             <div className="activities_caption">
-              <p>{item.title}</p>
+              <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
             </div>
             {item?.slug && (
               <Link
@@ -78,7 +78,7 @@ export default function DepartmentHomeCEO() {
       ))}
 
       {showNavigation && (
-        <div className="navigation_btn">
+        <div className="navigation_btn" data-aos="fade-up" data-aos-delay="600">
           <div className="prev-btn swiper_prev_custom department_home_ceo_prev">
             <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
           </div>

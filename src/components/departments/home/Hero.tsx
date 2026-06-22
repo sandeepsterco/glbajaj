@@ -9,7 +9,7 @@ export default function DepartmentHero() {
               <figure>
                 <img src="" alt="" />
               </figure>
-              <h3 className="font24"></h3>
+              <h3 className="font24" ></h3>
             </div>
           </div>
         </div>

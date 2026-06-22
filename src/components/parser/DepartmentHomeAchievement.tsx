@@ -31,11 +31,11 @@ export default function DepartmentHomeAchievement() {
     <div className="achivent_grid">
       {DepartmentHomeAchievementData.map((item:any, idx:number)=>(
         <div key={idx} className="achivecard">
-          <figure><Image src={item?.image} alt={item.title} className="img-fluid w-100" width="600" height="443" loading="lazy" /></figure>
+          <figure><Image src={item?.image} alt={item.title} className="img-fluid w-100" width="600" height="443" loading="lazy" data-aos="fade-up" data-aos-delay="200" /></figure>
           <div className="achiv_caption">
-            <p>{item.title}</p>
+            <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
           </div>
-          <Link className="strech_link" href={`${BASE_URL}achievements/${item.slug}`}></Link>
+          <Link className="strech_link" href={`${BASE_URL}achievements/${item.slug}`} ></Link>
         </div>
       ))}
     </div>

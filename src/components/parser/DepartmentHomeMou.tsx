@@ -92,8 +92,8 @@ export default function DepartmentHomeMou() {
     <>
       {/* Dynamic Tabs */}
       <div className="mou_heading">
-        <h4 className="font24">Collaborations & MOUs</h4>
-        <div className="tabs tabs_design1">
+        <h4 className="font24" data-aos="fade-up" data-aos-delay="200">Collaborations & MOUs</h4>
+        <div className="tabs tabs_design1" data-aos="fade-up" data-aos-delay="400">
           {tabs.map((type) => (
             <div
               key={type}
@@ -107,13 +107,13 @@ export default function DepartmentHomeMou() {
       </div>
 
       {tabItems.length > 1 && (
-        <div className="tab_subnav">
+        <div className="tab_subnav" >
           {tabItems.map((item, idx) => (
             <button
               key={item.slug}
               className={`subnav_btn ${activeItemIndex === idx ? "active" : ""}`}
               onClick={() => handleItemClick(idx)}
-            >
+            data-aos="fade-up" data-aos-delay="600">
               {item.title}
             </button>
           ))}
@@ -126,8 +126,8 @@ export default function DepartmentHomeMou() {
         {/* Content Section */}
         <div className="project_contentsec">
           {/* <h4 className="font24">Collaborations & MOUs</h4> */}
-          <h3 className="font36">{activeItem.title}</h3>
-          <p dangerouslySetInnerHTML={{__html:activeItem.description}}></p>
+          <h3 className="font36" data-aos="fade-up" data-aos-delay="200">{activeItem.title}</h3>
+          <p dangerouslySetInnerHTML={{__html:activeItem.description}} data-aos="fade-up" data-aos-delay="400"></p>
           {activeItem?.pdf && (
             <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">
               PDF
@@ -157,7 +157,7 @@ export default function DepartmentHomeMou() {
                     className="w-100 img-fluid"
                     width={850}
                     height={600}
-                  />
+                  data-aos="fade-up" data-aos-delay="600"/>
                 </figure>
               </SwiperSlide>
             ))}

@@ -20,7 +20,7 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
-.vm-description {overflow: hidden; transition:0.2s all ease-in-out }
+.vm-description { overflow: hidden; transition:0.2s all ease-in-out }
 .vm-description.expanded { height:auto; max-height: unset !important; }
 .common_image_slider { overflow: hidden; }
 .field-error { display: block; margin-top: 4px; font-size: var(--font-16); color: #e53e3e; }
@@ -306,7 +306,7 @@
 .gallery_grid_Bx span figcaption { display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400; }
 .gallery_grid h5 { font: var(--font-24); color: var(--color-64); font-weight: 700; padding-inline: 4.4rem; margin-block: 2rem; }
 .gallery_list_section { padding-block: 4rem 11.6rem; }
-.archives .gallery_list_section{ padding-block: 10rem;}
+.archives .gallery_list_section { padding-block: 10rem; }
 .gallery_list_section.workshops-and-seminars-list { padding-block: 10rem 11.6rem; }
 .glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
 .gallery_list { column-count: 3; gap: 3rem; margin-inline: -2rem; }
@@ -330,8 +330,7 @@
 .gallery_tab { display: flex; align-items: center; }
 .gallery_tab span,
 .gallery_tab button { font: var(--font-16); color: var(--color-black); display: flex; gap: 1rem; align-items: center; border: 1px solid #e1e1e1; padding: 1.3rem 2rem; }
-.gallery_tab .cursor-pointer img{ max-width: 2rem; min-width: 1.5rem;}
- 
+.gallery_tab .cursor-pointer img { max-width: 2rem; min-width: 1.5rem; }
 .gallery_tab span:first-child,
 .gallery_tab button:first-child { margin-right: -0.1rem; }
 /* ==============HOD's Message page Start============= */
@@ -549,8 +548,7 @@
 .confrence_grid { margin-top: 7.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; row-gap: 3.8rem; }
 .confrence_grid_Bx { position: relative; }
 .confrence_grid_Bx p { font: var(--font-18); font-weight: 500; color: var(--color-black); padding: 2rem 3rem 0 0; margin-bottom: 0; min-height: 12rem; line-height: 1.3; }
-.confrence_grid_Bx p+img{ max-width: 7rem; margin-left: -1.3rem; }
-
+.confrence_grid_Bx p+img { max-width: 7rem; margin-left: -1.3rem; }
 .confrence_grid_Bx .icon { margin-left: -1.2rem; margin-top: 1rem; }
 /* ==============Academic Facilities page Start============= */
 .academic_facility_section { padding-block: 5rem 7rem; }
@@ -593,17 +591,13 @@
 .tab_navigation { position: relative; }
 .tab_content_left { padding-right: 11rem; }
 .tabs_section .tab-buttons { display: block; padding-left: 12rem; position: relative; z-index: 2; }
-.tabs_section .tab-btn:after { background-image: url(/images/icons/right-chevron1.png); position: absolute; top: 2.3rem; right: -2rem; height: 2rem; width: 2rem; content: ""; background-repeat: no-repeat; background-size: contain;}
+.tabs_section .tab-btn:after { background-image: url(/images/icons/right-chevron1.png); position: absolute; top: 2.3rem; right: -2rem; height: 2rem; width: 2rem; content: ""; background-repeat: no-repeat; background-size: contain; }
 .tabs_section .tab-btn { padding: 1rem 2rem; border: none; font: var(--font-36); cursor: pointer; color: rgba(100, 60, 36, 0.5); background-color: transparent; display: block; line-height: 1; letter-spacing: -0.18rem; text-align: left; position: relative; }
 .tabs_section .tab-btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
 .tabs_section .tab-content { display: none; }
 .tabs_section .tab-content.active { display: block; }
 .tabs_section .acc-header { display: none; }
-.our_inspiration_section .arrow_btn1{ margin-left: 0; margin-top: 1rem;}
-
-
-
-
+.our_inspiration_section .arrow_btn1 { margin-left: 0; margin-top: 1rem; }
 @media (max-width: 768px) {
  .tabs_section .tab-buttons { display: none; }
 .tabs_section .tab-content { display: block; border-bottom: 1px solid #ddd; }
@@ -611,10 +605,8 @@
 .tabs_section .acc-body { display: none; padding: 1rem; }
 .tabs_section .tab-content.active .acc-body { display: block; }
 .about_glbim_p { font: var(--font-24); }
-.tabs_section .acc-header{ font: var(--font-18);}
-.wipro-oracle-exe-center .tabs_section{ padding-block:5rem;}
-
-
+.tabs_section .acc-header { font: var(--font-18); }
+.wipro-oracle-exe-center .tabs_section { padding-block:5rem; }
  }
 .sterco_tabs_sec .sterco_tab_main { position: relative; padding-block:4rem 8rem; }
 .sterco_tabs_sec .sterco_tab_main::before { content: ""; position: absolute; top: 0; bottom: 55%; left: 0; right: -4rem; background-color: var(--color-ed); z-index: 0; }
@@ -633,9 +625,7 @@
 ========================= */
 .sterco_tabs_nav { position: relative; z-index: 2; padding-left: 12rem; }
 .sterco_tab_btn { position: relative; display: block; padding: 0.5rem 2rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
-.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; 
-    /* filter: brightness(0) invert(1);  */
-}
+.sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; /* filter: brightness(0) invert(1); */ }
 .sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
 /* =========================
    TAB CONTENT
@@ -679,7 +669,7 @@
 .reserch_bx .custom_bullet li { margin-block: 2.5rem; }
 /* ==============Research Code of Conduct page Start============= */
 .cse_section { background-color: var(--color-F4); }
-.cse_banner_img { position: relative; overflow: hidden;}
+.cse_banner_img { position: relative; overflow: hidden; }
 .cse_banner_img figure::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; left: 0; right: 0; bottom: 0; content: ""; height: 33.7rem; }
 .cse_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 9; }
 .cse_banner_img figcaption h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
@@ -692,7 +682,7 @@
 .hod_profile_bx figure { margin-top: 3rem; }
 .our_cse h4 { margin-bottom: 4rem; }
 .our_cse p { max-width: 85%; }
-.in_essence_section blockquote:empty{ display: none;}
+.in_essence_section blockquote:empty { display: none; }
 .our_cse a,
 .our_cse .view_more_btn { display: inline-block; margin-top: 2rem; }
 .view_more_btn { width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0; }
@@ -720,6 +710,14 @@
 .profile h4 { font: var(--font-18); margin-block: 3rem 2rem; color: var(--color-black); font-weight: 600; }
 .profile p { margin-bottom: 0; line-height: 2.4rem; margin-bottom: 1rem; }
 .hod_profile { position: relative; }
+.cse_vision .vision_grid { grid-template-columns: 60% auto; }
+.depat_vision .vision_grid_bx { margin-bottom: 3rem; }
+.cse_vision .hod_profile_bx { background: linear-gradient(#fff 60%, #643c24  0%); padding: 0; }
+.cse_vision .hod_profile_bx  .hod_info { padding: 2rem; }
+.cse_vision .hod_profile_bx  .hod_info h4 { color: var(--color-white); margin-top: 0; }
+.cse_vision .hod_profile_bx  .hod_info p,
+.cse_vision .hod_profile_bx  .hod_info a { color: var(--color-white); }
+.cse_vision .hod_profile_bx  .hod_info a img{    filter: brightness(0) invert();}
 /* .hod_profile::before { background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.4rem; position: absolute; right: -26rem; bottom: 1rem; content: ""; background-repeat: no-repeat; z-index: 1; }
 */
 /* ============== CSE Department Code of Conduct page Start============= */
@@ -731,7 +729,7 @@
 .cse_cou_list p { font: var(--font-21); margin-bottom: 4rem; font-weight: 500; }
 .cse_course { display: flex; justify-content: space-between; align-items: flex-start; padding: 2rem 0; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
 .cse_course_info { display: flex; gap: 60px; color: var(--color-33); }
-.cse_course_title { font: var(--font-18); color: var(--color-89); font-weight: 600;line-height: 1.3;  }
+.cse_course_title { font: var(--font-18); color: var(--color-89); font-weight: 600; line-height: 1.3; }
 .cou_main_title .font24 { margin-bottom: 1rem; }
 .cse_course_info { font: var(--font-16); }
 .cse_cou_list:not(:last-child) { padding-bottom: 5.2rem; }
@@ -794,7 +792,7 @@
 .resboxrgt .research_box { min-width: 20.2rem; text-align: center; max-width: 20.2rem; padding-block: 2.1rem 3.9rem; border: 0.1rem solid var(--color-C0); }
 .resboxrgt .research_box p { color: var(--color-white); }
 .resboxrgt .research_box:not(:first-child) { border-left: none; }
-.cse_research_main .cse_research_slider { margin-bottom: 10rem;}
+.cse_research_main .cse_research_slider { margin-bottom: 10rem; }
 .cse_research_slider .navigation_btn { position: relative; bottom: 0; right: 0; }
 .cse_research_slider .navigation_btn .swiper_next_custom,
 .cse_research_slider .navigation_btn .swiper_prev_custom { box-shadow: none; }
@@ -848,11 +846,8 @@
 .department_faculty .faculty_grid { padding-top:4rem; }
 /* ================= Department faculty page ================*/
 /* ============== Research Publication start============= */
-.res_publication {
-    padding-block: 10rem 0rem;
-}
-.res_publication:last-child{ padding-bottom: 12rem;}
-
+.res_publication { padding-block: 10rem 0rem; }
+.res_publication:last-child { padding-bottom: 12rem; }
 .res_pub_title h4 { margin-bottom: 5rem; }
 .res_publi_list { display: flex; gap: 4rem; margin-bottom: 4rem; }
 .res_publi_list li a { gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4; width: 100%; }
@@ -1110,10 +1105,7 @@
 .tras_drive_con .team-members p { margin-bottom: 1rem; }
 .tras_drive_con .team-members h3 img { display: inline; }
 .tras_drive_con .team-members h3 span { font: var(--font-16); color: var(--color-AE); }
-.admin_form .form-check .form-check-input{ margin-right: 1rem;}
-
-
-
+.admin_form .form-check .form-check-input { margin-right: 1rem; }
 /* ================= MOBILE ACCORDION ================= */
 @media (max-width: 991px) {
  .transport-tabs .tabs { display: none; }
@@ -1612,7 +1604,6 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .insp_contentsec p { padding-right: 11rem; }
 @media (max-width: 991px) {
  .club_grid { grid-template-columns: repeat(1, 1fr); }
-
  }
 /* Clubs & Societies Page css End */
 /* Alumni-Overview Page css start */
@@ -1624,7 +1615,6 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumi_vision_mission_grid h4 { margin-bottom: 3rem; }
 .alumni_about_vision { z-index: -1; position: relative; padding-top: 10rem; }
 .alumi_vision_mission_grid { z-index: 1; grid-template-columns: 50% auto; gap: 10rem; padding-block: 0; display: grid; position: relative; }
-
 .alumni_about_vision { z-index: -1; position: relative; }
 .entrepreneurship .alumni_about_vision { padding-block: 10rem 0rem; }
 .entrepreneurship_table  table tr td a { color: #4a7ebb; text-decoration: none; }
@@ -1729,7 +1719,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .ncc-rank-ceremony_cont p:nth-of-type(2) span { font-weight: 600; }
 .ncc-rank-ceremony-grid { display: grid; grid-template-columns: 43.2% 56.8%; padding-inline: 0.55rem; }
 .ncc-rank-ceremony_img { position: relative; }
-.ceremony_navigation .swiper_prev_custom{position: absolute; top: 48%; transform: translateY(-50%); z-index: 1;    transform: rotate(180deg);}
+.ceremony_navigation .swiper_prev_custom { position: absolute; top: 48%; transform: translateY(-50%); z-index: 1; transform: rotate(180deg); }
 .ceremony_navigation .swiper_next_custom { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; }
 .ceremony_navigation .swiper_next_custom { right: -3rem; }
 .ceremony_navigation .swiper_prev_custom { left: -3rem; }
@@ -1757,7 +1747,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .distinguished-alumni h2 { margin-bottom: 8.6rem; }
 .distinguished-alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7.6rem 2rem; }
 .distinguished-img { padding-inline: 1.3rem; padding-bottom: 3.8rem; background-color: var(--color-white); }
-.distinguished-img figure{ overflow-y: visible ;}
+.distinguished-img figure { overflow-y: visible ; }
 .distinguished-img figure img { margin-top: -4.6rem; }
 .distinguished-caption { margin-top: 1.6rem; }
 .distinguished-caption h3 { font: var(--font-18); font-weight: 600; padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #ae7f2c; }
@@ -2286,12 +2276,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .the_bstbox { background-color: var(--color-F5); padding: 2.5rem; position: relative; }
 .bs_plbm_enc { background-color: var(--color-F4); position: relative; }
 .bs_plbm_bx { position: relative; padding-block: 10.2rem 10rem; }
-.bs_plbm_bx::before {    content: "";
-    background-color: var(--color-FE);
-    max-width: 69.3rem;
-    height: 1.1rem;
-    position: absolute;
-    top: 0;
-    width: 100%;}
+.bs_plbm_bx::before { content: ""; background-color: var(--color-FE); max-width: 69.3rem; height: 1.1rem; position: absolute; top: 0; width: 100%; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
 .career_empo_sec2 .row { margin: 0; }

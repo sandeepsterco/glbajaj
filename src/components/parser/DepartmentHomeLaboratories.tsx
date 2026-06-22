@@ -47,7 +47,7 @@ export default function DepartmentHomeLaboratories() {
             autoplay={false}
             breakpoints={{
                 768: { slidesPerView: 2.5, spaceBetween: 15 },
-                1200: { slidesPerView: 2.25, spaceBetween: 40 },
+                1200: { slidesPerView: 3, spaceBetween: 40 },
             }}
             navigation={{
                 nextEl: ".department_lab_next",
@@ -57,15 +57,15 @@ export default function DepartmentHomeLaboratories() {
             {data?.length > 0 && data?.map((item: any, idx: number) => (
                 <SwiperSlide key={idx}>
                     <div className="lab_card">
-                        <figure>
+                        <figure >
                             <Image src={item.image || '/images/default/laboratories.webp'} width={600} height={715} alt={item.title || 'laboratory image'}
-                                className="img-fluid w-100" />
+                                className="img-fluid w-100" data-aos="fade-up" data-aos-delay="600"/>
                         </figure>
                         {item?.title && (
-                            <h4 className="font36">{item.title}</h4>
+                            <h4 className="font36" data-aos="fade-up" data-aos-delay="800">{item.title}</h4>
                         )}
                         {item?.url && (
-                            <Link className="strech_link" href={BASE_URL + 'department/laboratories/' + item.url}></Link>
+                            <Link className="strech_link" href={BASE_URL + 'department/laboratories/' + item.url} data-aos="fade-up" data-aos-delay="1000"> </Link>
                         )}
                     </div>
                 </SwiperSlide>

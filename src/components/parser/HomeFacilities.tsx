@@ -199,7 +199,7 @@ export default function HomeFacilities() {
                                 breakpoints={{
                                   640: { slidesPerView: 2, spaceBetween: 15 },
                                   991: { slidesPerView: 2.25, spaceBetween: 15 },
-                                  1200: { slidesPerView: 2.25, spaceBetween: 23 },
+                                  1200: { slidesPerView: 3, spaceBetween: 23 },
                                 }}
                                 className="homeFac_swiper"
                               >

@@ -24,7 +24,7 @@ function scheduleDeferredLoad(callback) {
   window.addEventListener("pointerdown", run, { once: true });
 }
 
-const FANCYBOX_PATHS = ["/gallery", "/digital-pathshala", "/media-coverage"];
+const FANCYBOX_PATHS = ["/gallery", "/digital-pathshala"];
 
 function pageNeedsFancybox(pathname) {
   if (FANCYBOX_PATHS.some((segment) => pathname.includes(segment))) {

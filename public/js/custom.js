@@ -382,6 +382,7 @@
     createSwiper(".home_research_incubation", {
       slidesPerView: 3,
       spaceBetween: 15,
+      autoplay:true,
       navigation: {
         nextEl: ".home_research_incubation_section .next_swiper_btn",
         prevEl: ".home_research_incubation_section .prev_swiper_btn",

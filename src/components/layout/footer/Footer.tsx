@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/src/config/config";
+import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +23,15 @@ const Footer = async () => {
 
   return (
     <>
+    <div className="fixButtons">
+              <Link
+                href={APPLY_NOW ?? ''}
+                target="_blank"
+                className="vertical-floating-btn CTA_Applynow"
+              >
+                360 View
+              </Link>
+            </div>
       <footer className="home_footer">
         <div className="container">
           <div className="footer_top">

@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 const getNotifications = async (slug:string) => {
   const { data, error } = await apiFetch(`department/${slug}/home`);
   if (error) throw new Error(error);
-  return data?.data?.modular?.notifications;
+  return data?.data?.modular?.notifications ?? [];
 }
 
 export default function DepartmentNotificationBar() {

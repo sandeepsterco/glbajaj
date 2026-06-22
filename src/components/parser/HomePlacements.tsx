@@ -57,9 +57,9 @@ export default function HomePlacements() {
       </div> */}
 
       <div className="slider_top">
-        <h4 className="top_placed">Top Placed GLBian</h4>
+        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="200">Top Placed GLBian</h4> 
 
-        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
+        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`} data-aos="fade-up" data-aos-delay="200">
           <div className="swiper-button-prev prev_swiper_btn"></div>
           <div className="swiper-button-next next_swiper_btn"></div>
         </div>
@@ -100,6 +100,7 @@ export default function HomePlacements() {
             spaceBetween: 20,
           },
         }}
+        data-aos="fade-up" data-aos-delay="200"
       >
         {placementData.map((item: any, index: number) => (
           <SwiperSlide key={index}>

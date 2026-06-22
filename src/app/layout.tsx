@@ -43,15 +43,6 @@ export default async function RootLayout({
           <AOSProvider>
             <InitialLoadOverlay />
             <Header />
-            <div className="fixButtons">
-              <Link
-                href={APPLY_NOW ?? ''}
-                target="_blank"
-                className="vertical-floating-btn CTA_Applynow"
-              >
-                360 View
-              </Link>
-            </div>
             <MainWrapper>{children}</MainWrapper>
             <Footer />
           </AOSProvider>

@@ -768,8 +768,10 @@
 .faculties_main { padding-block: 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title,
-.custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; }
+.custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; gap: 2rem;}
 .custom_heading_grid .left { flex:1; }
+.custom_heading_grid .sub_title2 {margin-bottom: 2rem;}
+.custom_heading_grid .title2 {color: var(--color-92); letter-spacing: -2.4px;}
 .department-page .custom_heading_grid .right,
 .inner .custom_heading_grid .right { flex:unset; }
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }

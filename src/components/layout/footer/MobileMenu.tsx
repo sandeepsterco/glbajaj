@@ -85,6 +85,10 @@ export default function MobileMenu() {
     const [contactInfo, setContactInfo] = useState([]);
     const [loading, setLoading] = useState<Partial<Record<ModalKey, boolean>>>({});
 
+    const isMobile = window.innerWidth < 991
+
+    if(!isMobile) return;
+
     const fetchMenu = useCallback(async (location: string): Promise<MenuItem[]> => {
         try {
             const res = await fetch(`${API_URL}menu?location=${location}`);

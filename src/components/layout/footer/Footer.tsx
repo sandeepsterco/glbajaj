@@ -11,6 +11,8 @@ const Footer = async () => {
     { data: infoData, error: infoError }
   ] = await Promise.all([apiFetch("menu?location=footer"), apiFetch("info")]);
 
+  
+
   const getValue = (key: string) => {
     const found = infoData?.data.find((item: any) => item.key == key) ?? null;
     if (found?.value || found?.image || found?.url) {
@@ -197,9 +199,7 @@ const Footer = async () => {
         </div>
       </footer>
 
-
-
-      <MobileMenu />
+        <MobileMenu />
     </>
 
   );

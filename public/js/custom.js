@@ -599,21 +599,21 @@
     //   },
     // });
 
-    createSwiper(".cse_research_slider", {
-      slidesPerView: 1.2,
-      spaceBetween: 20,
-      centeredSlides: false,
-      loop: true,
-      autoplay: false,
-      navigation: {
-        nextEl: ".department_research_next",
-        prevEl: ".department_research_prev",
-      },
-      breakpoints: {
-        768: { slidesPerView: 2.5, spaceBetween: 15 },
-        1200: { slidesPerView: 3.35, spaceBetween: 20 },
-      },
-    });
+    // createSwiper(".cse_research_slider", {
+    //   slidesPerView: 1.2,
+    //   spaceBetween: 20,
+    //   centeredSlides: false,
+    //   loop: true,
+    //   autoplay: false,
+    //   navigation: {
+    //     nextEl: ".department_research_next",
+    //     prevEl: ".department_research_prev",
+    //   },
+    //   breakpoints: {
+    //     768: { slidesPerView: 2.5, spaceBetween: 15 },
+    //     1200: { slidesPerView: 3.35, spaceBetween: 20 },
+    //   },
+    // });
 
     createSwiper(".department_home_projects", {
       slidesPerView: 1,

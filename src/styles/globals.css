@@ -127,6 +127,22 @@ a { text-decoration: none; }
   margin-top: 1rem;
 }
 
+.subscribe_loader {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 991px) {
  .container-fluid { max-width: 100%; width: 100%; padding-inline: 1.5rem; }
 .container { max-width: 100%; width: 100%; padding-inline: 1.5rem; }

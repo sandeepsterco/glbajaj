@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import React from "react";
+import Subscribe from "./Subscribe";
 
 const Footer = async () => {
   const [
@@ -11,7 +12,7 @@ const Footer = async () => {
     { data: infoData, error: infoError }
   ] = await Promise.all([apiFetch("menu?location=footer"), apiFetch("info")]);
 
-  
+
 
   const getValue = (key: string) => {
     const found = infoData?.data.find((item: any) => item.key == key) ?? null;
@@ -37,7 +38,7 @@ const Footer = async () => {
             target="_blank"
             className="vertical-floating-btn CTA_Applynow"
           >
-            <img src={getValue('360_view')?.image} className="icon" />
+            <img src={getValue('360_view')?.image} className="icon" alt="360 icon" />
             View
           </Link>
         </div>
@@ -187,19 +188,14 @@ const Footer = async () => {
 
               </div>
 
-              {/* <!-- Subscribe --> */}
-              <div className="subscribe_box">
-                <input type="email" placeholder="Enter Email to Subscribe" />
-                <button>
-                  <img src="/images/icons/send-yellow.svg" alt="" />
-                </button>
-              </div>
+              <Subscribe />
+
             </div>
           </div>
         </div>
       </footer>
 
-        <MobileMenu />
+      <MobileMenu />
     </>
 
   );

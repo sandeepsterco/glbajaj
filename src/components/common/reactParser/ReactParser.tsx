@@ -381,7 +381,6 @@ const options: HTMLReactParserOptions = {
 // ---------------------------------------------------------------------------
 
 export default function ReactParser({ html }: { html: any }) {
-  console.log('react parser running ');
   const pathname = usePathname();
 
   useEffect(() => {

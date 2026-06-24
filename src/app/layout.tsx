@@ -15,8 +15,7 @@ import "../components/ui/pageLoader/page-loader.css";
 
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
-import Link from "next/link";
-import { APPLY_NOW } from "../config/config";
+import { Toaster } from "react-hot-toast";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
@@ -45,6 +44,7 @@ export default async function RootLayout({
             <Header />
             <MainWrapper>{children}</MainWrapper>
             <Footer />
+            <Toaster />
           </AOSProvider>
         </Providers>
         <ScriptLoader />

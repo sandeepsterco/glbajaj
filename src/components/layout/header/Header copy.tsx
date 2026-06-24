@@ -90,7 +90,6 @@ function DesktopNav({
 }
 
 export default function GLBajajHeader({ headerData }: { headerData: any }) {
-  console.log("header data headerData", headerData);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const hoveredItem =

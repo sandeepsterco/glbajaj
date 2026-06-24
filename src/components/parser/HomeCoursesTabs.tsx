@@ -120,7 +120,7 @@ export default function HomeCoursesTabs() {
   return (
     
       <div className="tabbed-content homepage">
-          <div className="courses_links">
+          <menu className="courses_links">
             {TABS.map(({ label, type }) => (
               <li key={type}>
                 <button
@@ -132,7 +132,7 @@ export default function HomeCoursesTabs() {
                 </button>
               </li>
             ))}
-          </div>
+          </menu>
 
             {/* <div className="item-content"> */}
               {loading ? (

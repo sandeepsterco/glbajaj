@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import RouteChangeHandler from "./parser/RouteChangeHandler";
+import { useNonce } from "../lib/NonceProvider";
 
 function scheduleDeferredLoad(callback) {
   let done = false;
@@ -46,6 +47,7 @@ function scheduleCustomJsInit() {
 
 export default function ScriptLoader() {
   const pathname = usePathname();
+  const nonce = useNonce();  
   const [deferredReady, setDeferredReady] = useState(false);
   const [swiperReady, setSwiperReady] = useState(false);
   const [needsFancybox, setNeedsFancybox] = useState(false);
@@ -87,6 +89,7 @@ export default function ScriptLoader() {
         <Script
           src="/js/swiper-bundle.min.js"
           strategy="lazyOnload"
+          nonce={nonce}
           onLoad={() => setSwiperReady(true)}
         />
       )}
@@ -94,11 +97,12 @@ export default function ScriptLoader() {
         <Script
           src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"
           strategy="lazyOnload"
+          nonce={nonce}
           onLoad={() => setFancyboxReady(true)}
         />
       )}
       {canLoadCustomJs && (
-        <Script src="/js/custom.js" strategy="lazyOnload" />
+        <Script src="/js/custom.js" strategy="lazyOnload" nonce={nonce} />
       )}
       {canLoadCustomJs && <RouteChangeHandler />}
     </>

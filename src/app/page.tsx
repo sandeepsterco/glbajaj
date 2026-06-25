@@ -10,7 +10,7 @@ const getHomeData = cache(async () => {
     getPageSEO(),
     apiFetch("modular/home", { revalidate: 300 }),
   ]);
-  return { seoData, homeData: homeRes.data };
+  return { seoData, homeData: homeRes.data.data };
 });
 
 export async function generateMetadata() {

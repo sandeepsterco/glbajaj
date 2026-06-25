@@ -55,10 +55,10 @@ export default function HomeHappenings() {
                   <p className="date" data-aos="fade-up" data-aos-delay="200">{item.date}</p>
                 )}
                 {item?.description && (
-                  <p className="desc" data-aos="fade-up" data-aos-delay="200">{item.description}</p>
+                  <p className="desc">{item.description}</p>
                 )}
                 {item?.subtitle && (
-                  <h4 className="sub_title" data-aos="fade-up" data-aos-delay="200">{item.subtitle}</h4>
+                  <h4 className="sub_title">{item.subtitle}</h4>
                 )}
               </div>
           </div>

@@ -30,7 +30,7 @@ export default function ResearchInnovation() {
   }
 
 
-  const slides = data?.modular?.["research-innovation"];
+  const slides = data?.data?.modular?.["research-innovation"];
 
   return (
     <div className="research_slider_wrapper">

@@ -22,7 +22,7 @@ export default function HomeAlumni() {
     queryFn: fetchAlumniData,
   });
 
-  const rawData = data?.modular?.["testimonials"] ?? [];
+  const rawData = data?.data?.modular?.["testimonials"] ?? [];
 
   const grouped: any = useMemo(() => ({
     students: rawData.filter((i: any) => i.type === "Student"),

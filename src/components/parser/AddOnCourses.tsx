@@ -21,7 +21,7 @@ export default function AddOnCourses() {
     queryFn: fetchCourses,
   });
 
-  const sliderData = data?.modular?.["facts-and-figure"];
+  const sliderData = data?.data?.modular?.["facts-and-figure"];
 
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);

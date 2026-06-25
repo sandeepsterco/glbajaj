@@ -36,7 +36,7 @@ export default function HomeHappenings() {
     return <ApiError />
   }
 
-  const happeningsData = data?.modular?.["news-events"] ?? [];
+  const happeningsData = data?.data?.modular?.["news-events"] ?? [];
   const updatedData = isMobile ? happeningsData.filter((item:any, idx:number)=>idx < 2) : happeningsData
 
   return (

@@ -15,7 +15,7 @@ const SLIDES_PER_VIEW = 3;
 const fetchHomePlacements = async () => {
   const { data, error } = await apiFetch(`modular/home`);
   if (error) throw new Error(error);
-  return data?.modular?.["intern-placement"];
+  return data?.data?.modular?.["intern-placement"];
 };
 
 export default function HomePlacements() {

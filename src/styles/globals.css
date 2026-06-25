@@ -106,7 +106,7 @@ a { text-decoration: none; }
   background-color: var(--color-AE);
   justify-content: center;
   align-items: center;
-  padding: 3rem 1.5rem;
+  padding: 2rem 0.4rem;
   font-weight: 400;
   line-height: 1;
   text-decoration: none;
@@ -114,6 +114,7 @@ a { text-decoration: none; }
   display: flex;
   box-shadow: -2px 2px 8px #00000026;
   color: #fff !important;
+  border-radius: 0.4rem 0 0 0.4rem;
 }
 
 .vertical-floating-btn:hover{
@@ -126,6 +127,9 @@ a { text-decoration: none; }
   width: 4rem;
   margin-top: 1rem;
 }
+
+.vertical-floating-btn.CTA_applynow_btn{ background-color:var(--color-64);}
+.vertical-floating-btn.CTA_applynow_btn:hover{ background-color: var(--color-AE);}
 
 .subscribe_loader {
   display: inline-block;

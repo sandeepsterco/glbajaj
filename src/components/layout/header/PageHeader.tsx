@@ -21,15 +21,15 @@ export default async function PageHeader({ data, slug, currentPageTitle }: { dat
     <>
       <div className="about_menu_bar">
         <div className="about_top">
-          <div className="container25">
-            <div className="about_breadcrumb">
-              <div>
-                <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
-              </div>
+          <div className="container-fluid">
+              <div className="about_breadcrumb">
+                <div>
+                  <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
+                </div>
 
-              {/* ↓ Replaced the old map with the smart truncating component */}
-              <TruncatedBreadcrumbs breadcrumbs={cleanBreadcrumbs} totalLength={totalLength} />
-            </div>
+                {/* ↓ Replaced the old map with the smart truncating component */}
+                <TruncatedBreadcrumbs breadcrumbs={cleanBreadcrumbs} totalLength={totalLength} />
+              </div>
           </div>
         </div>
 

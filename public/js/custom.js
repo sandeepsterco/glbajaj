@@ -751,6 +751,21 @@
       },
     });
 
+    createSwiper(".alumni_achievement_slider", {
+      // 3 slides poori aur 4th slide thodi si dikhegi
+      slidesPerView: 1, // Mobile ke liye
+      spaceBetween: 15,
+      centeredSlides: false, // Left se start karne ke liye false rakhein
+      loop: false,
+      autoplay: {
+        delay:5000
+      },
+      navigation: {
+        nextEl: ".alumni_achievement_right",
+        prevEl: ".alumni_achievement_left",
+      },
+    });
+
     // Replace the single createSwiper call with this:
     document.querySelectorAll(".default_image_slider").forEach((el) => {
       createSwiperOnElement(el, {

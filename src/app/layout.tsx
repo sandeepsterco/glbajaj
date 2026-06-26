@@ -7,6 +7,7 @@ import MainWrapper from "../components/MainWrapper";
 import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 import "../styles/custom.css";
 import "../styles/globals.css";
+import "../styles/program.css";
 import "../components/ui/pageLoader/page-loader.css";
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";

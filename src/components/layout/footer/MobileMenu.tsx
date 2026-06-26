@@ -94,8 +94,6 @@ export default function MobileMenu() {
         return () => window.removeEventListener("resize", check);
     }, []);
 
-    if (!isMobile) return null;
-
     const fetchMenu = useCallback(async (location: string): Promise<MenuItem[]> => {
         try {
             const res = await fetch(`${API_URL}menu?location=${location}`);
@@ -169,6 +167,8 @@ export default function MobileMenu() {
             url: found?.url ?? null,
         }
     }
+
+    if (!isMobile) return null;
 
     return (
         <div className="fixed-bottom mobile-footer">

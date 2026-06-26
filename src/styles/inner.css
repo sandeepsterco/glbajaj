@@ -896,7 +896,7 @@
 .teamX_titlesec { margin-bottom: 15rem; }
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
 .teamX_titlesec .font36 { margin-bottom: 4rem; }
-.teamX_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 7rem; position: relative; }
+.teamX_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; row-gap: 7rem; position: relative; }
 .teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .teamX_card { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
 .teamX_card figure { margin-top: -5rem; }

@@ -1084,6 +1084,61 @@
     });
   }
 
+  function initProgramBoxAccordion() {
+    document.querySelectorAll(".program-box-outer:not([data-pbacc-init])").forEach((outer) => {
+      outer.setAttribute("data-pbacc-init", "1");
+  
+      const inner = outer.querySelector(".program-box-inner");
+      if (!inner) return; // No inner content, skip entirely
+  
+      const programBox = outer.querySelector(".program-box");
+      const programRight = programBox?.querySelector(".program-right");
+      if (!programBox || !programRight) return;
+  
+      // Hide inner by default
+      inner.style.maxHeight = "0";
+      inner.style.overflow = "hidden";
+      inner.style.transition = "max-height 0.3s ease";
+  
+      // Create and inject toggle button into .program-right
+      const toggleBtn = document.createElement("button");
+      toggleBtn.className = "pbacc-toggle-btn";
+      toggleBtn.type = "button";
+      toggleBtn.innerHTML = `<span class="pbacc-icon">+</span>`;
+      programRight.appendChild(toggleBtn);
+  
+      toggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+  
+        const isActive = outer.classList.contains("active");
+  
+        // Close all siblings
+        const siblings = outer.parentElement?.querySelectorAll(".program-box-outer[data-pbacc-init]");
+        siblings?.forEach((sib) => {
+          if (sib !== outer) {
+            sib.classList.remove("active");
+            const sibInner = sib.querySelector(".program-box-inner");
+            const sibIcon = sib.querySelector(".pbacc-icon");
+            if (sibInner) sibInner.style.maxHeight = "0";
+            if (sibIcon) sibIcon.textContent = "+";
+          }
+        });
+  
+        // Toggle current
+        if (!isActive) {
+          outer.classList.add("active");
+          inner.style.maxHeight = inner.scrollHeight + "px";
+          toggleBtn.querySelector(".pbacc-icon").textContent = "−";
+        } else {
+          outer.classList.remove("active");
+          inner.style.maxHeight = "0";
+          toggleBtn.querySelector(".pbacc-icon").textContent = "+";
+        }
+      });
+    });
+  }
+
   // ─── Early Max-Content (before DOMContentLoaded) ──────────────────────────────
   function adjustMaxContentEarly() {
     if (document.querySelector(".container25")) {
@@ -1105,6 +1160,7 @@
       function activateXTabPanel(panel) {
         if (!panel) return;
         updateSwiperInPanel(panel);
+        initProgramBoxAccordion();
       }
 
       // desktop tabs

@@ -232,7 +232,7 @@ const options: HTMLReactParserOptions = {
         const resolvedSrc = (() => {
           const s = props.src || "";
           if (!s)
-            return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+            return "";
           if (
             s.startsWith("http") ||
             s.startsWith("/") ||
@@ -241,6 +241,8 @@ const options: HTMLReactParserOptions = {
             return s;
           return "/" + s;
         })();
+
+        if (!resolvedSrc) return <></>;
 
         const parsedWidth =
           props.width && !isNaN(parseInt(props.width as string, 10))

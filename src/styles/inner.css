@@ -28,6 +28,19 @@
 .has-error input,
 .has-error select { border-color: #e53e3e !important; }
 .form-feedback { font:var(--font-16) }
+
+.table_with_qr{display: flex; gap: 5rem;}
+.table_with_qr .table_content{flex: 1;}
+.table_with_qr .qr_code img{max-width: 20rem;}
+.table_with_qr .qr_msg{font:var(--font-12)}
+.table_with_qr .qr_code h4{margin-bottom: 1rem;}
+.table_with_qr .qr_code h5{font: var(--font-18); margin-bottom: 1.5rem;}
+.table_with_qr .qr_code p{font: var(--font-12); line-height: 2rem;}
+
+.pbacc-toggle-btn{justify-content: center; align-items: center; width: 3.5rem; height: 3.5rem; padding: .5rem; display: flex; background-color: var(--color-white); box-shadow: 0 2px 4px #0000001a;  cursor: pointer;}
+.pbacc-toggle-btn .pbacc-icon{font: var(--font-18);}
+
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -1368,7 +1381,8 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .team-members-sec { margin-top: 10rem; }
 .team-members-sec h2 { font: var(--font-30); margin-bottom: 4rem; }
 .team-members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4rem; }
-.team-members { background-color: var(--color-F5); display: flex; padding: 3.1rem 8.5rem 3.1rem 2.2rem; flex-direction: column; }
+.team-members { background-color: var(--color-F5); display: flex; flex-direction: column; }
+.team-members .content{padding: 3.1rem 2.2rem;}
 .team-members div { margin-top: auto; min-height: 10rem; }
 .team-members h3 { font: var(--font-21); color: var(--color-AE); margin-bottom: 2.4rem; }
 .team-members div>p { font: var(--font-18); color: var(--color-black); font-weight: 700; margin-bottom: 0; }

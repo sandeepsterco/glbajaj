@@ -51,9 +51,16 @@ This is the minimum CSS that you will need in order for this to work
 .homepage .program-list { padding-block: 3.5rem 0; }
 .program-list h5 { padding-block: 0 3rem; color: var(--color-33); font-weight: 600; }
 .homepage .program-list h5 { padding-block: 0 1rem; font:var(--font-16); font-weight:600; }
-.program-box { background-color: var(--color-F4); display: flex; align-items: center; justify-content: space-between; padding: 3rem; border-bottom: 1px solid #c0855247; }
-.homepage .program-box {padding: 3rem 2rem; background-color:transparent}
+.program-box { background-color: var(--color-F4); display: flex; align-items: center; justify-content: space-between; padding: 3rem; border-bottom: 1px solid #c0855247; position:relative;}
+.homepage .program-box-inner{margin: 0px 5rem; border-left: 2px solid var(--color-C0);}
+.homepage .program-box {background-color:transparent}
+.program-box-inner .program-box{padding: 2rem 2rem;}
+.homepage .program-box{padding:0;}
+.homepage .program-box .program_link{padding: 3rem 2rem; display: flex; justify-content: space-between; width: 100%; align-items: center;}
+.homepage .program-box .program_link:hover{background: #00000012;}
 .program-text { }
+.program-box .strech_link{z-index: 0;}
+.program-box .program-right{z-index: 1;}
 .program-text h6 { font-weight: 600; color: var(--color-89); }
 .program-text h6 a { font: var(--font-18); font-weight: 600; color: var(--color-89);}
 .homepage .program-text h6 a { font: var(--font-20);  color:#333; font-weight: 500;}

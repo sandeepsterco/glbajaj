@@ -37,8 +37,10 @@
 .table_with_qr .qr_code h5{font: var(--font-18); margin-bottom: 1.5rem;}
 .table_with_qr .qr_code p{font: var(--font-12); line-height: 2rem;}
 
-.pbacc-toggle-btn{justify-content: center; align-items: center; width: 3.5rem; height: 3.5rem; padding: .5rem; display: flex; background-color: var(--color-white); box-shadow: 0 2px 4px #0000001a;  cursor: pointer;}
-.pbacc-toggle-btn .pbacc-icon{font: var(--font-18);}
+.pbacc-toggle-btn{justify-content: center; align-items: center; width: 3.5rem; height: 3.5rem; padding: .5rem; display: flex; background-color: var(--color-white); box-shadow: 0 2px 4px #0000001a;  cursor: pointer; transition: all .3s; }
+.pbacc-toggle-btn:hover{background-color: var(--color-92);}
+.pbacc-toggle-btn .pbacc-icon{font: var(--font-20); color: #ff0100;}
+.pbacc-toggle-btn:hover .pbacc-icon{color:var(--color-white)}
 
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */

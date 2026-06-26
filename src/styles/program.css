@@ -48,7 +48,7 @@ This is the minimum CSS that you will need in order for this to work
  }
 .item-content { padding-top: 5rem; }
 .program-list { padding-block: 5rem 0; }
-.homepage .program-list { padding-block: 3.5rem 0; }
+.homepage .program-list { padding-block: 2.5rem 0; }
 .program-list h5 { padding-block: 0 3rem; color: var(--color-33); font-weight: 600; }
 .homepage .program-list h5 { padding-block: 0 1rem; font:var(--font-16); font-weight:600; }
 .program-box { background-color: var(--color-F4); display: flex; align-items: center; justify-content: space-between; padding: 3rem; border-bottom: 1px solid #c0855247; position:relative;}

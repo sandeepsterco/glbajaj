@@ -263,7 +263,7 @@
       ".leadership_slider",
       ".acredation_swiper",
       // ".cse_faculties_slider",
-      ".cse_research_slider",
+      // ".cse_research_slider",
       ".department_home_projects",
       ".hod_profile_slider",
       ".sport_facilities",

@@ -4,18 +4,19 @@
   let frozenWidth = null;
 
   function adjustMaxContent() {
+    if (!document.querySelector(".container25")) return; // ← guard
+  
     const windowWidth = window.innerWidth;
-
-    // Same logic as your global .container
+  
     const mainContainerWidth = Math.min(
       1800,
       windowWidth * 0.818181818
     );
-
+  
     const leftGap = (windowWidth - mainContainerWidth) / 2;
-
+  
     let width = windowWidth - leftGap;
-
+  
     if (windowWidth >= 2550) {
       if (!frozenWidth) {
         frozenWidth = width;
@@ -24,7 +25,7 @@
     } else {
       frozenWidth = null;
     }
-
+  
     document
       .querySelectorAll(
         ".max-content, .max-content-sm, .max-content-md, .max-content-lg, .max-content-xl, .max-content-xxl"
@@ -32,7 +33,7 @@
       .forEach((el) => {
         el.style.maxWidth = `${width}px`;
       });
-    }
+  }
 
   function initWhyGlbSection() {
     const section = document.querySelector(".why_glb_section:not([data-customjs-init])");
@@ -1355,7 +1356,11 @@
     }, 150);
   }
 
-  window.addEventListener("resize", adjustMaxContent);
+  let maxContentResizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(maxContentResizeTimer);
+    maxContentResizeTimer = setTimeout(adjustMaxContent, 150);
+  });
 
   let resizeTimer;
   window.addEventListener("resize", function () {

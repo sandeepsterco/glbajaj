@@ -747,7 +747,7 @@
 .cou_main_title .title48 { color: var(--color-92); }
 .cou_off_box { background-color: var(--color-f3); padding: 4.1rem 5.2rem 7.6rem 3.8rem; }
 .cse_cou_list p { font: var(--font-21); margin-bottom: 4rem; font-weight: 500; }
-.cse_course { display: flex; justify-content: space-between; align-items: flex-start; padding: 2rem 0; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
+.cse_course { display: flex; justify-content: space-between; align-items: flex-start; padding: 2rem 0; border-bottom: 1px solid rgba(192, 133, 82, 0.5); gap: 2rem;}
 .cse_course_info { display: flex; gap: 60px; color: var(--color-33); }
 .cse_course_title { font: var(--font-18); color: var(--color-89); font-weight: 600; line-height: 1.3; }
 .cou_main_title .font24 { margin-bottom: 1rem; }

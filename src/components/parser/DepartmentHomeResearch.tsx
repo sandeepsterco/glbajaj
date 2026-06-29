@@ -72,7 +72,7 @@ export default function DepartmentHomeResearch() {
                   <p>{item.title}</p>
                 </div>
               )}
-              {item?.slug && (
+              {item?.slug && !item?.no_detail && (
                 <Link className="strech_link" href={`${BASE_URL}department/${slug}/research/${item.slug}`} />
               )}
             </div>

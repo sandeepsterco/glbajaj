@@ -59,7 +59,7 @@ This is the minimum CSS that you will need in order for this to work
 .homepage .program-box .program_link{padding: 2rem 2rem; display: flex; justify-content: space-between; width: 100%; align-items: center;}
 .homepage .program-box-inner .program_link{padding: 1.5rem 1.5rem;}
 .homepage .program-box .program_link:hover{background: #00000012;}
-.homepage .program-box-inner .program-text h6{font: var(--font-14);}
+.homepage .program-box-inner .program-text h6{font: var(--font-16);}
 .program-text { }
 .program-box .strech_link{z-index: 0;}
 .program-box .program-right{z-index: 1;}

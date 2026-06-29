@@ -1137,6 +1137,24 @@
         }
       });
     });
+
+    // Open first accordion in each parent container by default
+    document.querySelectorAll(".program-box-outer[data-pbacc-init]").forEach((outer) => {
+      const parent = outer.parentElement;
+      if (parent?.dataset.pbaccParentInit) return;
+      parent.dataset.pbaccParentInit = "1";
+
+      const firstOuter = parent.querySelector(".program-box-outer[data-pbacc-init]");
+      if (!firstOuter) return;
+
+      const inner = firstOuter.querySelector(".program-box-inner");
+      const icon = firstOuter.querySelector(".pbacc-icon");
+      if (!inner) return;
+
+      firstOuter.classList.add("active");
+      inner.style.maxHeight = inner.scrollHeight + "px";
+      if (icon) icon.textContent = "−";
+    });
   }
 
   // ─── Early Max-Content (before DOMContentLoaded) ──────────────────────────────

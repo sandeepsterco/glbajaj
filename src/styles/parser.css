@@ -615,7 +615,7 @@
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
 /* ==============The Group page End============= */
 /* =============Home Facilities  start============= */
-.homeFac_sec { background-color: var(--color-F4); padding-block: 0 12.6rem; overflow: hidden; }
+.homeFac_sec { background-color: var(--color-F4); padding-block: 1.2rem 12.6rem; overflow: hidden; }
 .homeFac_content { position: relative; }
 .homeFac_content::after { background-image: url(/images/lab_line_shap.png); width: 10.8rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; height: 37.8rem; left: -10.8rem; background-size: cover; }
 .homeFac_main { padding-left: 0rem; }

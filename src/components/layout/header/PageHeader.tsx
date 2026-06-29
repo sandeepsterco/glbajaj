@@ -35,7 +35,7 @@ export default async function PageHeader({ data, slug, currentPageTitle }: { dat
 
         {data?.tabs && (
           <div className="bottom_menus">
-            <div className="container25">
+            <div className="container-fluid">
               <NavLinks
                 tabs={data.tabs}
                 activeSlug={activeSlug}

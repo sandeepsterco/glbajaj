@@ -20,6 +20,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
 import DepartmentHomeResearch from "../../parser/DepartmentHomeResearch";
+import HomeCourseRight from "../../parser/HomeCourseRight";
 
 function ParserWidgetFallback() {
   return (
@@ -279,6 +280,14 @@ const options: HTMLReactParserOptions = {
         );
       }
 
+      if(domNode.name == 'iframe'){
+        const classList = (domNode.attribs?.class || "").split(/\s+/);
+        const src = (domNode.attribs?.src || "").trim();
+        if (classList.includes("parser_common") && !src) {
+          return <></>;
+        }
+      }
+
       if (domNode.name === "a") {
         const props = attributesToProps(domNode.attribs) as any;
         const href = props.href || "#";
@@ -372,6 +381,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "home_upcoming_events") return <HomeUpcomingEvents />;
       if (domNode.attribs.id === "program_detail_placements") return <ProgramDetailPlacements />;
       if (domNode.attribs.id === "department_home_research") return <DepartmentHomeResearch />;
+      if (domNode.attribs.id === "home_course_right") return <HomeCourseRight />;
       
       
     }

@@ -110,11 +110,12 @@
 .home_courses_section .grid { display: grid; grid-template-columns: auto 54%; gap: 10rem; }
 .home_courses_section .left_content { /*padding-top: 3.9rem;*/ position: relative;}
 .right_imgage_col { overflow: hidden; }
+.right_imgage_col iframe{width:100%; pointer-events: none;}
 .right_imgage_col img { transition: transform 0.2s ease; }
 .right_imgage_col:hover img { transform: scale(1.2)!important; }
 .home_courses_section .left_content .watermark_logo { position: absolute; z-index: -1;}
 .home_courses_section .left_content .title48 { color: var(--color-92); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: normal; max-width: 47.5rem; }
-.home_courses_section .courses_links { margin-top: 5rem; display: flex; grid-template-columns: 50% auto; gap: 2.45rem; /*max-width: 47.5rem;*/ }
+.home_courses_section .courses_links { margin-top: 4rem; display: flex; grid-template-columns: 50% auto; gap: 2.45rem; /*max-width: 47.5rem;*/ }
 .home_courses_section .courses_links li{list-style-type: none;}
 .home_courses_section .courses_links .course_link { position: relative; font: var(--font-21); text-decoration: none; line-height: 2.5rem; color: #333; font-weight: 500; padding-bottom: 2.6rem; text-align: left; cursor:pointer;}
 .home_courses_section .courses_links .course_link:before { position: absolute; content: ""; height: 1px; width: 100%; background: var(--color-C0); opacity: 0.3; bottom: 0; left: 0; }
@@ -125,7 +126,7 @@
 .home_courses_section .input_group input:focus { outline: none; }
 .home_courses_section .courses_lists { padding-block: 0.5rem; padding-inline: 1rem; cursor: pointer; font: var(--font-16); border-bottom: 1px solid #ccc; }
 .home_courses_section .search_icon { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); }
-.home_courses_section .bottom_slider { /*margin-top: -25rem;*/ position: relative; margin-top: 1rem;}
+.home_courses_section .bottom_slider { /*margin-top: -25rem;*/ position: relative; margin-top: 2rem;}
 .home_courses_section .courses_slider { background: rgb(243 233 220 / 93%); padding: 1.2rem 2.2rem 4.2rem 3.7rem; }
 .home_courses_section .courses_header { margin-bottom: 3.2rem; display: flex; justify-content: space-between; }
 .home_courses_section .courses_header h4 { margin-top: 1rem; }
@@ -271,9 +272,9 @@
 .home_about_glb_section .single_stat sup { font: var(--font-16); top: -0.2rem; font-weight: 400; letter-spacing: 0; left: 2px; color: #000; }
 .home_about_glb_section .single_stat .title { font: var(--font-16); }
 .home_about_glb_section .thumbnail { position: relative; }
-.home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.35; top: 0; left: 0; }
-.home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; }
-.home_about_glb_section .icon img{width:5rem;}
+.home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.1; top: 0; left: 0; }
+.home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; cursor: pointer; display: flex; background: #fff; width: 5rem; height: 5rem; padding: 1rem; border-radius: 50%; align-items: center; justify-content: center; bottom:2rem; left:2rem;}
+.home_about_glb_section .icon img{width:2rem;}
 .home_about_glb_section .video_grid{padding: 2.5rem; background: var(--color-F4); margin-top: 3rem;}
 .video_grid h5{ margin-block: 2rem 1rem;}
 .video_grid h3 {
@@ -533,7 +534,8 @@
 }
 
 .home_research_incubation .contents .image_title small{
-  font:var(--font-24)
+  font:var(--font-24);
+  text-transform: none;
 }
 
 .home_research_incubation .contents p{

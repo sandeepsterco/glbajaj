@@ -738,6 +738,10 @@
 
 .dep_projects .dep_project_grid{display:block;}
 .dep_projects:after{z-index: 0; opacity:0.2;}
+
+.custom_heading_grid .title2{ font: var(--font-30); letter-spacing: -1.4px;}
+.left_section .right a{ margin: 2rem -1rem; display: block;}
+
 }
 
 @media (max-width: 820px) {

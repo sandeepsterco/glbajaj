@@ -63,7 +63,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-text { }
 .program-box .strech_link{z-index: 0;}
 .program-box .program-right{z-index: 1;}
-.program-text h6 { font-weight: 600; color: var(--color-89); }
+.program-text h6 { font-weight: 600; color: var(--color-89); line-height: 1.4; }
 .program-text h6 a { font: var(--font-18); font-weight: 600; color: var(--color-89);}
 .homepage .program-text h6 a { font: var(--font-20);  color:#333; font-weight: 500;}
 .program-text p { font: var(--font-14); color: var(--color-black); font-weight: 500; padding-top: .5rem; }
@@ -583,6 +583,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .award-detail-heading { margin-bottom: 4rem; }
     .award-detail-list1{ display: none;}
     .award-detail-sec { padding-block: 5rem; }
+    
 
 
 }

@@ -103,6 +103,12 @@
 .home_placement_company_header .slider_btns { display: flex; gap: 1.3rem; }
 .home_placement_company_header .slider_btns div { position: relative; right: 0rem; }
 .home_placement_company_slider .swiper-slide img { /* height: 40px; object-fit: contain; */ }
+
+
+
+.home_placement_company_slider img{ padding-inline: 3rem;}
+
+
 /************  end of home placement  CSS End ************/
 /************  start of courses Section ************/
 .home_courses_section { padding: 10rem 0; }
@@ -272,15 +278,12 @@
 .home_about_glb_section .single_stat sup { font: var(--font-16); top: -0.2rem; font-weight: 400; letter-spacing: 0; left: 2px; color: #000; }
 .home_about_glb_section .single_stat .title { font: var(--font-16); }
 .home_about_glb_section .thumbnail { position: relative; }
-<<<<<<< HEAD
 /* .home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.35; top: 0; left: 0; } */
 .home_about_glb_section .thumbnail .icon { background: transparent; text-align: center; border: none; position: absolute; top: auto; left: 5rem; bottom: 0.1rem; transform: translate(-50%, -50%); cursor: pointer; width: 5rem; height: 5rem; background-color: var(--color-white); padding: 1rem; border-radius: 5rem;}
 .home_about_glb_section .icon img{width:1.8rem; margin: 0 auto;}
-=======
 .home_about_glb_section .thumbnail:before { position: absolute; content: ''; height: 100%; width: 100%; background: #000; opacity: 0.1; top: 0; left: 0; }
-.home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; cursor: pointer; display: flex; background: #fff; width: 5rem; height: 5rem; padding: 1rem; border-radius: 50%; align-items: center; justify-content: center; bottom:2rem; left:2rem;}
+.home_about_glb_section .thumbnail .icon { background: transparent; border: none; position: absolute; cursor: pointer; display: flex; background: #fff; width: 5rem; height: 5rem; padding: 1rem; border-radius: 50%; align-items: center; justify-content: center; bottom:1rem; left:5rem;}
 .home_about_glb_section .icon img{width:2rem;}
->>>>>>> 00af25fc0a001bb6df5c4d5d4b18aadfd415f9a5
 .home_about_glb_section .video_grid{padding: 2.5rem; background: var(--color-F4); margin-top: 3rem;}
 .video_grid h5{ margin-block: 2rem 1rem;}
 .video_grid h3 {

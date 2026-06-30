@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import "./banner.css";
 import NotificationBar from "../../ui/notificationBar/NotificationBar";
+import "./banner.css";
 
 function getVideoUrl(url: string): string {
   if (!url) return "";
@@ -88,6 +88,16 @@ function HeroVideoSlide({
   index: number;
 }) {
   const [loadVideo, setLoadVideo] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); 
+
+  useEffect(()=>{
+    const updateWidth = ()=>{
+      setIsMobile(window.innerWidth < 768)
+    }
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return()=>window.removeEventListener('resize',updateWidth)
+  }, [])
 
   useEffect(() => {
     if (index !== 0 || loadVideo) return;
@@ -120,7 +130,7 @@ function HeroVideoSlide({
 
       {loadVideo ? (
         <iframe
-          src={getVideoUrl(slide?.video_link)}
+          src={getVideoUrl((isMobile && slide?.mobile_video_link) || slide?.video_link)}
           title={slide?.title || "Banner video"}
           className="home_banner_video_iframe"
           allow="autoplay; fullscreen; picture-in-picture"

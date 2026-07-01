@@ -261,7 +261,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* TOP SECTION */
 .home_footer .footer_top { display: grid; grid-template-columns: auto 1fr; gap: 3.7rem; align-items: center; }
 .home_footer .footer_logo img { width: 260px; }
-.home_footer .footer_content { display: flex; justify-content: space-between; gap: 9rem;}
+.home_footer .footer_content { display: flex; justify-content: space-between; gap: 5rem;}
 .home_footer .footer_content .footer_address{flex: 1;}
 .home_footer .footer_address h3 { font: var(--font-21); line-height: 3.6rem; font-weight: 500; color: var(--color-white); }
 .home_footer .footer_address p { font: var(--font-14); line-height: 2.4rem; margin-top: 1.2rem; color: var(--color-white); }

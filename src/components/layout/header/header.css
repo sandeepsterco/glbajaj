@@ -44,7 +44,7 @@
 .site_nav>ul>li>a { display: inline-block; position: relative; font: var(--font-21); color: var(--color-white); letter-spacing: -0.19px; 
     font-weight: var(--font-medium); z-index: 1; text-decoration: none; transition: all .5s ease; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; 
     -ms-transition: all .5s ease; -o-transition: all .5s ease; }
-.site_nav>ul>li.active>a:before{position:absolute; content:''; height:3px; width:100%; left:0; width:100%; background:var(--color-92); bottom: -4.8rem;}
+.site_nav>ul>li.active>a:before{position:absolute; content:''; height:3px; width:100%; left:0; width:100%; background:var(--color-92); bottom: -3.6rem;}
 .scrolled .site_nav > ul > li > a,
 .inner_header .site_nav > ul > li > a{
     color:var(--color-black)

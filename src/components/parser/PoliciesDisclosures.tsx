@@ -18,10 +18,7 @@ const getPolicyLists = async () => {
 
 const PolicyItem = ({ item, idx }: { item: any; idx: number }) => (
     <div
-        className="fac_policy_list"
-        data-aos="fade-up"
-        data-aos-delay={600 + (idx + 1) * 100}
-    >
+        className="fac_policy_list">
         <div className="fac_policy_left">
             <h5>{item?.title}</h5>
         </div>
@@ -54,7 +51,7 @@ const PolicyTabContent = ({ value }: { value: any }) => {
             <>
                 {Object.entries(value).map(([subKey, subItems]) => (
                     <div key={subKey} className="policy_subgroup">
-                        <h4 data-aos="fade-up" data-aos-delay="400">{subKey}</h4>
+                        <h4>{subKey}</h4>
                         {subItems.map((item: any, idx: number) => (
                             <PolicyItem key={item.id ?? idx} item={item} idx={idx} />
                         ))}

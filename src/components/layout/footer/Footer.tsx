@@ -39,7 +39,7 @@ const Footer = async () => {
             Apply Now
           </Link>
           <Link
-            href={getValue('360_view')?.url}
+            href="https://www.glbitm.org/virtual-tour/GLB-AVT04062025"
             target="_blank"
             className="vertical-floating-btn CTA_Applynow"
           >
@@ -98,21 +98,17 @@ const Footer = async () => {
                     </p>
                   </div>
                 )}
-
               </div>
             </div>
           </div>
-
           <div className="footer_links">
             <ul>
-              <li>
+              {/* <li>
                 <Link href="#!">Quick Links</Link>
-              </li>
+              </li> */}
               {footerData?.menuItems?.map((item: any, idx: number) => (
                 <React.Fragment key={idx}>
-                  <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
-                    •
-                  </li>
+                  
                   <li>
                     <Link
                       href={item?.slug ? BASE_URL + item.slug : ''}
@@ -120,6 +116,9 @@ const Footer = async () => {
                     >
                       {item.title}
                     </Link>
+                  </li>
+                  <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
+                    •
                   </li>
                 </React.Fragment>
               ))}

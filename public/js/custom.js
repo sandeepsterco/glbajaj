@@ -1052,20 +1052,30 @@
       if (accordionButtons.length > 0) accordionButtons[0].classList.add("active");
       if (accordionContents.length > 0) accordionContents[0].classList.add("active");
 
-      // Desktop tab click
-      tabButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const target = button.getAttribute("data-tab");
+     // Desktop tab click
+tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const target = button.getAttribute("data-tab");
+        const activePanel = section.querySelector("#" + target);
 
-          tabButtons.forEach((btn) => btn.classList.remove("active"));
-          tabPanels.forEach((panel) => panel.classList.remove("active"));
+        if (!activePanel || activePanel.classList.contains("active")) return;
 
-          button.classList.add("active");
+        const currentPanel = section.querySelector(".sterco_tab_panel.active");
 
-          const activePanel = section.querySelector("#" + target);
-          if (activePanel) activePanel.classList.add("active");
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        // Fade out current
+        if (currentPanel) {
+            currentPanel.classList.remove("active");
+        }
+
+        // Fade in new panel
+        requestAnimationFrame(() => {
+            activePanel.classList.add("active");
         });
-      });
+    });
+});
 
       // Mobile accordion click
       accordionButtons.forEach((button) => {

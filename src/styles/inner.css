@@ -237,7 +237,7 @@
 .news_right p { font: var(--font-16); color: var(--color-33); }
 .news_right a { margin-left: -1.5rem; display: inline-block; margin-top: 2rem; }
 .news_listing { padding-block: 2rem 12rem; }
-.front_news .news_cnt a { background-color: var(--color-white); justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 3rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
+.front_news .news_cnt a { background-color: var(--color-white); justify-content: center; align-items: center; margin-left: 0rem; width: 4rem; height: 4rem; margin-top: 3rem; transition: all .3s; display: flex; box-shadow: 0 4px 12px #00000026; }
 .front_news .news_cnt a:hover { background-color: var(--color-92); }
 .front_news .news_cnt a:hover img { filter: brightness(0) invert(); }
 .news_list { display: grid; grid-template-columns: 40% auto; background-color: var(--color-F5); align-items: center; gap: 7.8rem; position: relative; margin: 2rem 0; }
@@ -300,13 +300,14 @@
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 2rem 0 0 2.7rem; position: relative; }
-.media_txt::before { background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem; }
+.media_txt::before { background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem; height: 8rem; }
 .media_grid1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
 .media_grid_Bx1,
 .media_grid_Bx2 { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
 .media_grid_Bx1 figure,
 .media_grid_Bx2 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; }
+.media_grid_Bx2 a{ margin-top: -3rem;}
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -368,6 +369,8 @@
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
 .dean_staemail { font: var(--font-16); margin-bottom: 2rem; }
 .dean_staemail a { color: var(--color-AE); font-weight: 700; }
+.dean_staemail a:hover{ color:var(--color-64);}
+
 @media (max-width: 2440px) {
  .hod_right::before { height: auto; }
  }
@@ -503,7 +506,7 @@
 .about_ins_section { padding-top: 10rem; }
 .logo_philosophy_grid { display: grid; grid-template-columns: 18% auto; gap: 4rem; padding-block: 10rem; }
 .logo_philosophy_grid h3 { color: var(--color-64); font: var(--font-24); font-weight: 700; padding-block: 0 2rem; }
-.logo_philosophy_grid a { margin-left: 0rem; display: inline-block; }
+.logo_philosophy_grid a { margin-left: 0rem;}
 .logo_philosophy_grid a { margin-top: 3rem; }
 .about_ins_section .logo_philosophy_grid { padding-block: 10rem 0; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
@@ -536,6 +539,7 @@
 .accredation_wrapper::before { background-color: var(--color-F4); position: absolute; left: -12.5rem; width: 12.5rem; top: 0; bottom: 0; content: ""; }
 .accredation_grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-inline: -4rem; padding-block: 5rem; }
 .accredation_bx { border-right: 1px solid rgba(174, 127, 44, 0.5); padding-inline: 4rem; }
+.accredation_bx figure{ min-height: 18rem;}
 .accredation_bx figure img { margin-bottom: 5rem; }
 .accredation_bx:nth-child(2) figure { margin-top: 0rem; }
 .accredation_bx:nth-child(1) figure { margin-top: 0rem; }
@@ -651,6 +655,12 @@
 ========================= */
 .sterco_tab_panel { display: none; }
 .sterco_tab_panel.active { display: block; }
+
+
+
+
+
+
 .sterco_accordion_content { position: relative; display: grid; grid-template-columns: 40% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 11rem 10rem; margin-top: -38rem; }
 /* .sterco_accordion_content::before { content: ""; position: absolute; top: 10rem; bottom: 0; left: -15.5rem; right: -2.5rem; background-color: var(--color-F4); z-index: -1; }
 */
@@ -1020,7 +1030,7 @@
 .tp_overview .row { margin: 0; }
 .tp_ov_grid { display: grid; gap: 7.3rem; grid-template-columns: 37% auto; }
 .tp_ov_grid .tp_ov_left > .custom_bullet { margin-bottom: 3rem; }
-.admis_pro_pdfsec a { font: var(--font-16); border-bottom: 1px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom: 4rem; padding-bottom: 1rem; font-weight: 700; margin-top: 2rem; display: inline-flex; color: var(--color-33); }
+.admis_pro_pdfsec a { font: var(--font-16); border-bottom: 0px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom:0rem; padding-bottom: 1rem; font-weight: 700; margin-top: 2rem; display: inline-flex; color: var(--color-33); }
 .admis_pro_pdfsec a:hover { color: var(--color-92); }
 .tp_ov_left>h4 { margin-bottom: 4rem; }
 .tp_ov_pattern { padding-block: 9.3rem 0; }
@@ -1383,11 +1393,11 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .team-members-sec { margin-top: 10rem; }
 .team-members-sec h2 { font: var(--font-30); margin-bottom: 4rem; }
 .team-members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4rem; }
-.team-members { background-color: var(--color-F5); display: flex; flex-direction: column; }
-.team-members .content{padding: 3.1rem 2.2rem;}
+.team-members { background-color: var(--color-F5);}
+.team-members .content{padding: 3.1rem 2.2rem; display: flex; flex-wrap: wrap; flex-direction: column;}
 .team-members div { margin-top: auto; min-height: 10rem; }
-.team-members h3 { font: var(--font-21); color: var(--color-AE); margin-bottom: 2.4rem; }
-.team-members div>p { font: var(--font-18); color: var(--color-black); font-weight: 700; margin-bottom: 0; }
+.team-members h3 { font: var(--font-21); color: var(--color-AE); margin-bottom: 1rem; min-height: 6rem;}
+.team-members div>p { font: var(--font-18); color: var(--color-black); font-weight: 700; margin-bottom: 1rem; }
 .team-members span { font: var(--font-16); color: var(--color-33); font-weight: 400; }
 .value-education-event { padding-top: 10rem; }
 .value-education-event h2 { font: var(--font-30); }
@@ -1878,9 +1888,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
-.research_and_incubation .center_icu_logosec { display: flex; }
+.research_and_incubation .center_icu_logosec { display: flex; padding-top: 3rem; flex-wrap: wrap;}
 .center_icu_logosec { display: flex; gap: 3rem; display: none; }
-.center_icu_logosec .icu_imgsec { padding: 2rem; background-color: var(--color-white); width: 20rem; }
+.center_icu_logosec .icu_imgsec { background-color: var(--color-white); max-width: 25rem; padding: 2rem 6rem; }
 .center_icu_logosec .icu_imgsec figure img { margin: auto; }
 /* ================  Student Chapters  =============== */
 .ieee_grid { display: grid; grid-template-columns: 25% auto; gap: 7.5rem; }
@@ -2111,7 +2121,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .cr-sec { padding-block: 10rem 10rem; margin-top: 10rem; border-top: .1rem solid #c0855280; }
 .cr-item { display: grid; grid-template-columns: auto 17%; align-items: center; padding: 1.5rem; background-color: var(--color-F4); justify-content: space-between; margin-bottom: 2.5rem; }
 .cr-left h5 { font-weight: 600; }
-.apply_btn { padding: 1.1rem 2.5rem; background: var(--color-AE); color: var(--color-white); border: none; font: var(--font-16); font-weight: 600; cursor: pointer; }
+.apply_btn { padding: 0.7rem 2.5rem; background: var(--color-AE); color: var(--color-white); border: none; font: var(--font-16); font-weight: 600; cursor: pointer; }
 .apply_btn:hover { background-color: var(--color-64); }
 .cr-title { margin-bottom: 2.5rem; }
 .ug_list { margin-bottom: 5rem; }
@@ -2124,7 +2134,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .detail_job ul { margin-bottom: 4rem; }
 .detail_job ul li { margin-bottom: 2rem; position: relative; padding-inline: 2.2rem; }
 .detail_job p { margin-bottom: 2rem; }
-.job_de_titl { display: grid; grid-template-columns: repeat(2, 1fr); }
+.job_de_titl { display: grid; grid-template-columns: repeat(2, 1fr); padding-bottom: 5rem; }
 .job-heading { margin-bottom: 4rem; }
 .job_de_titl h3 { margin-bottom: 1rem; }
 .career_form { padding-block: 10rem 10rem; }

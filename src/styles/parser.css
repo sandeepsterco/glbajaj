@@ -28,7 +28,7 @@
 .home_rank_award .more_btn figure:hover img { filter: brightness(0) invert() ; }
 .home_rank_award .more_btn figure { transition: 0.3s; justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; display: flex; box-shadow: 0 4px 12px #00000026; }
 .h_r_award_Card { text-align: center; padding-inline:2rem; position: relative; }
-.h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: var(--color-64); top: 0; }
+.h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: var(--color-64); top: 0; opacity: 0.3; }
 .home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
 .h_r_award_Card figure img { width: auto; height: 7.7rem; margin: auto; margin-bottom: 2rem; }
 .h_r_award_Card h6 { font:var(--font-12); font-weight: var(--font-bold); line-height: 1.2rem; margin-bottom: 0.5rem; font-family: var(--font-tasa); }
@@ -73,7 +73,7 @@
    position: relative;  background-color: var(--color-white); }
 .right_slider h4 { font: var(--font-24); font-weight: 700; color: var(--color-64); margin-bottom: 3rem; }
 .home_placement_top_bar { height: 1.1rem; background: #fece49; position: absolute; top: 0; left: 0; width: 25rem; }
-.home_placement_static_card .top_placed { font: var(--font-30); color: var(--color-64); font-weight: bold; text-align: right; margin: 3rem 0 6.5rem; padding-right: 8.1rem; }
+.home_placement_static_card .top_placed { font: var(--font-30); color: var(--color-64); font-weight: bold; text-align: center; margin: 3rem 0 6.5rem; padding-right: 5rem; }
 .home_placement_static_card>img.pattern { position: absolute; bottom: 0; }
 .home_placement_static_card .slider_btns { position: absolute; display: flex; gap: 1.3rem; justify-content: center; left: 49%; bottom: 4.3rem;top: auto; transform: translateX(-50%); z-index: 1; }
 .recruiters { padding: 2rem; text-align: center; }
@@ -117,8 +117,8 @@
 .home_courses_section .left_content { /*padding-top: 3.9rem;*/ position: relative;}
 .right_imgage_col { overflow: hidden; }
 .right_imgage_col iframe{width:100%; pointer-events: none;}
-.right_imgage_col img { transition: transform 0.2s ease; }
-.right_imgage_col:hover img { transform: scale(1.2)!important; }
+/* .right_imgage_col img { transition: transform 0.2s ease; }
+.right_imgage_col:hover img { transform: scale(1.2)!important; } */
 .home_courses_section .left_content .watermark_logo { position: absolute; z-index: -1;}
 .home_courses_section .left_content .title48 { color: var(--color-92); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: normal; max-width: 47.5rem; }
 .home_courses_section .courses_links { margin-top: 4rem; display: flex; grid-template-columns: 50% auto; gap: 2.45rem; /*max-width: 47.5rem;*/ }
@@ -148,6 +148,7 @@
 .home_courses_section .courses_slider_wrapper .icon { margin-inline: auto; height: 4rem; width: 4rem; background: var(--color-C0); display: flex; align-items: center; justify-content: center; }
 .home_courses_section .courses_slider_wrapper p { color: #000; font: var(--font-16); line-height: 2.4rem; text-transform: uppercase; font-weight: 600; margin-top: 1.3rem; }
 .home_courses_section .admission_data { background: var(--color-64); color: #fff; display: flex; align-items: center; padding: 1.2rem 1.6rem 1.2rem 3.7rem; justify-content: space-between; }
+.home_courses_section .admission_data a:hover{ color: var(--color-FE);}
 .research_card::before { width: 100%; height: 17rem; background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; content: ''; position: absolute; bottom: 0rem; left: 0rem; right: 0rem; z-index: 1; }
 .research_card { position: relative; }
 .research_card .res_caption { padding: 0 5.1rem 3.3rem 3.4rem; position: absolute; bottom: 0; z-index: 2; }
@@ -315,7 +316,7 @@
 .home_sessions_section .left_col .date { font: var(--font-16); font-weight: normal; margin-bottom: 1rem; }
 .home_sessions_section .left_col .title { font: var(--font-24); line-height: 3rem; margin-top: 1.5rem; font-weight: 700; }
 .home_sessions_section .left_col .right { display: flex; align-items: center; top: 0.5rem; position: relative; }
-.home_sessions_section .right_col a { padding: 3.6rem 2.5rem 3.9rem 3.4rem; background: var(--color-F5); display: flex; align-items: center; transition: 0.3s; }
+.home_sessions_section .right_col a { padding: 3.2rem 2.5rem 3.2rem 3.4rem; background: var(--color-F5); display: flex; align-items: center; transition: 0.3s; }
 .home_sessions_section .right_col a:hover { background-color: var(--color-92); }
 .home_sessions_section .right_col a:hover span,
 .home_sessions_section .right_col a:hover p { color: var(--color-white); }
@@ -582,6 +583,8 @@
 @media (max-width:1920px) {
  .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-21); }
 .single_grid .content { left: 4rem; }
+.home_sessions_section .right_col a { padding: 2.9rem 2.5rem 3rem 3.4rem;}
+
  }
 @media (max-width:1536px) {
  .home_courses_section .slider_btns { gap: 1rem; display: flex; padding-right: 1.5rem; }
@@ -620,7 +623,7 @@
 .shaping_future_leader h5 { color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; }
 .shaping_future_Bx { position: relative; }
 .shaping_future_Bx figcaption { padding:0rem 3rem 0; margin-top: 3rem;}
-.shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); }
+.shaping_future_Bx figcaption h5 { font: var(--font-18); font-weight: 600; color: var(--color-black); min-height: 4.7rem;}
 /* .shaping_future_Bx figcaption span { margin-left: -1rem; margin-top: 2rem; display: block; }
 */
 .shaping_future_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; row-gap: 4.7rem; }
@@ -692,6 +695,7 @@
 /* Examinations - System of Evaluation css end */
 .iicenter_bottom_content p a { color: var(--color-AE); font-weight: 600; }
 .reserch_bx:has(h4:empty) { margin-block:0rem; }
+.iicenter_bottom_content p a:hover{ color:var(--color-64);}
 
 @media (max-width:1536px) {
  .homeFac_tabs { grid-template-columns: 21% 72%; }

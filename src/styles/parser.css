@@ -793,7 +793,7 @@
 .home_courses_section { padding:4rem 0 0; }
 .home_courses_section .left_content { margin-left: 0; padding-top: 0; }
 .home_courses_section .grid { display: block; }
-.home_courses_section .left_content .courses_links { display: block; max-width: 100%; }
+/* .home_courses_section .left_content .courses_links { display: block; max-width: 100%; } */
 .home_courses_section .courses_links .course_link { display: block; padding-block: 2.6rem; }
 .home_courses_section .grid .right_imgage_col { display: none; }
 .home_courses_section .admission_data .links { display: none; }
@@ -1030,14 +1030,14 @@
 .home_courses_section { padding:4rem 0 0; }
 .home_courses_section .left_content { margin-left: 0; padding-top: 0; }
 .home_courses_section .grid { display: block; }
-.home_courses_section .left_content .courses_links { display: block; max-width: 100%; }
+/* .home_courses_section .left_content .courses_links { display: block; max-width: 100%; } */
 .home_courses_section .courses_links .course_link { display: block; padding-block: 2.6rem; }
 .home_courses_section .grid .right_imgage_col { display: none; }
 .home_courses_section .admission_data .links { display: none; }
 .home_courses_section .bottom_slider { margin-top: 5rem; position: relative; }
 .home_courses_section .slider_btns { padding-right: 0; }
 .home_research_section .research_top { margin-inline: 0; }
-.home_courses_section .slider_btns { top: auto; left: 2.45rem; bottom: 10rem; position: absolute; gap: 1.3rem; }
+.home_courses_section .slider_btns { top: auto; left: 2.45rem; bottom: 12rem; position: absolute; gap: 1.3rem; }
 .home_courses_section .courses_slider_wrapper .swiper-slide { min-height: auto; margin-bottom: 2rem; height: auto; }
 .courses_slider .overflow-hidden { margin-bottom: 3rem; }
 .caption_wrap .cap_desc { display: none; }
@@ -1080,7 +1080,7 @@
 .swiper-button-prev, .swiper-button-next { width: 3rem !important; height: 3rem !important; }
 .home_placement_company_header .slider_btns, .home_placement_static_card .slider_btns { gap: 1.2rem; }
 .home_placement_company_slider { margin-right: -3rem; }
-.home_courses_section .left_content .title48 { font: var(--font-28); letter-spacing: -1.4px; font-weight: 400; }
+.home_courses_section .left_content .title48 { font: var(--font-28); letter-spacing: -1.4px; font-weight: 400; line-height: 1.2; }
 .home_courses_section .left_content .courses_links { margin-top: 2rem; }
 .home_courses_section .left_content .watermark_logo { position: absolute; left: 0; right: -2rem; top: -2rem; width: 100%; }
 .home_courses_section .container-fluid { padding-inline: 0; }
@@ -1252,7 +1252,7 @@
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 0; }
 .homeFac_sec { padding-block: 0 3rem; }
 .main-images { position: relative; margin-top: 3rem; margin-inline: -1rem; }
-.main_nv { position: absolute; top: 35%; bottom: 0; height: 5rem; z-index: 999; display: flex; align-items: center; justify-content: space-between; left: 0; right: 0; margin: 0 -2rem; }
+.main_nv { position: absolute; top: 35%; bottom: 0; height: 5rem; z-index: 9; display: flex; align-items: center; justify-content: space-between; left: 0; right: 0; margin: 0 -2rem; }
 .home_sessions_section .data-overlay { padding:4rem 0; }
 .home .home_testimonials .desc { min-height: 100%; }
 .footer_address { width: 100%; }
@@ -1395,12 +1395,15 @@ main { overflow: hidden; }
 .tp_ov_pattern { display: none;}
 .research_conduct h3, .academic_facility_section h2, .or_cmit_right h3{ font: var(--font-24);}
 .our_cmit_grid { gap: 3rem; }
+/* .home_courses_section .left_content .courses_links { display: block; max-width: 100%; } */
  }
 
 @media (max-width:575px) {
  .facility-image-grid .shaping_future_grid { grid-template-columns: repeat(1, 1fr); }
  .right_slider .swiper { margin-right: -3rem;}
  .right_slider .slider_btns{ width: 7rem;}
+ .home_courses_section .slider_btns{bottom: 10rem;}
+ .sec_title .title48{ line-height: 1.2;}
 }
 
 

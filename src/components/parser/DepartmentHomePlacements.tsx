@@ -83,8 +83,31 @@ export default function DepartmentHomePlacements() {
           navigation={canLoop ? {
             nextEl: ".home_placement_static_card .next_swiper_btn",
             prevEl: ".home_placement_static_card .prev_swiper_btn",
-          } : false}
-        >
+          } : false}        
+          breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 15,
+          },
+          576: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          992: {
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        }}
+        data-aos="fade-up" data-aos-delay="200"
+      >
           {placementData?.map((item: any, index: number) => (
             <SwiperSlide key={index}>
               <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" data-aos="fade-up" data-aos-delay="200"/></figure>

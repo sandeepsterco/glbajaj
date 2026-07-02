@@ -47,7 +47,7 @@ export default function DepartmentHomeClubs() {
         pauseOnMouseEnter: true,
       }}
       breakpoints={{
-        768: { slidesPerView: 1.5, spaceBetween: 30 },
+        320: { slidesPerView: 1, spaceBetween: 30 },
         1200: { slidesPerView: 1, spaceBetween: 30 },
       }}
       navigation={{

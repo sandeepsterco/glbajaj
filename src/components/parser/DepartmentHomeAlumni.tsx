@@ -77,6 +77,11 @@ export default function DepartmentHomeAlumni() {
           thumbs={{
             swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
+          autoplay={{
+            delay:3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           mousewheel={{ invert: false, sensitivity: 1, forceToAxis: true }}
         >
           {data.map((item, index) => (

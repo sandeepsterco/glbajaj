@@ -359,6 +359,12 @@
     //   },
     // });
 
+    document.querySelectorAll('.in_essence_section figure').forEach(figure => {
+    if (!figure.querySelector('*') && figure.textContent.trim() === '') {
+        figure.style.display = 'none';
+    }
+});
+
     createSwiper(".home_recruiters_slider", {
       slidesPerView: 1,
       spaceBetween: 15,

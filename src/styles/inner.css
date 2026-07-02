@@ -1981,7 +1981,12 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .in_essence_section { padding-block: 10rem 5rem; border-bottom: 1px solid rgba(174, 127, 44, 0.5); }
 .in_essence_section blockquote { padding-bottom: 3rem; }
 .in_essence_section figure { margin-block: 8rem; }
-.clubs_table .table-wrapper { box-shadow: none; }
+.in_essence_section figure:empty{ display: none;}
+.in_essence_section figure:has(img[src=""]) {
+    display: none;
+}
+
+.clubs_table .table-wrapper { box-shadow: none;}
 .objective_clubs { padding-right: 7.8rem; }
 .clubs_table { padding-left: 3rem; }
 .objective_clubs h4 { margin-bottom: 4rem; }
@@ -2080,7 +2085,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .sterco_tab_main { padding-bottom: 0; }
 .innovation_tabs .sterco_tab_main .sterco_tab_btn { color: #ffffff80; }
 .innovation_tabs .sterco_tab_main .sterco_tab_btn.active { color: var(--color-white); }
-.peo_rgt_box .poe_title { font: var(--font-18); font-weight: 700; margin-bottom: 1rem; }
+.peo_rgt_box .poe_title { font: var(--font-18); font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
 .peo_rgt_box .peo_box:not(:last-child) { margin-bottom: 3rem; }
 .innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .innovation_tabs .tab_content .acc-body::before { background-color: transparent; }

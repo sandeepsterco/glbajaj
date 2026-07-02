@@ -19,7 +19,12 @@
 .our_inspiration_section:before{inset: 0 0 15rem;}
 .about_right p{max-width: 75%;}
 .about_iic_grid .about_iic_cont { padding-right: 15rem; }
-
+.cse_banner_img figcaption h3 span{letter-spacing: 0;}
+.cse_research_main .resach_bgbox:before{padding-bottom: 90rem;}
+.cse_research_main .resach_bgbox:after{height: 90rem;}
+.activites_sec {
+    padding-block: 15rem 11rem;
+}
  }
 @media (min-width: 1399px) {
  .home .home_testimonials .desc { min-height: 18rem; }
@@ -395,7 +400,7 @@
 .alumni-achivement { padding-block: 5rem; }
 .distinguished-alumni-grid{ grid-template-columns: repeat(3, 1fr);}
 .distinguished-img{ padding-bottom: 2rem;}
-.faculty_section .faculty_grid{ padding-block:4rem 0 ;}
+.faculty_section .faculty_grid{ padding-block:4rem 0 ; grid-template-columns: repeat(3, 1fr);}
 .bhashini_cont ul{ padding-top: 3rem; grid-template-columns: repeat(3, 1fr);}
 .bhashini_cont li{ line-height: 1.3;}
 .gl_bajaj_grid{ display: block;}
@@ -506,7 +511,7 @@
 .wipro-oracle-cnt h3{ font: var(--font-28); font-weight: 600; padding-block: 4rem 2rem;}
 .wipro-oracle-exe-center .tabs_section:before{ margin-top: 4rem;}
 .tabs_section .tab-buttons{ padding-left: 2rem;}
-.tabs_section .tab-btn{ font: var(--font-24);}
+.tabs_section .tab-btn{ font: var(--font-24); letter-spacing: 0;}
 .wipro-oracle-exe-center .tab_content_left{ padding: 2rem;}
 .wipro-oracle-exe-center .tab_content .acc-body{margin-left: 3rem;}
 .excellence-sec3 .blanket-text { padding: 0; }
@@ -652,12 +657,12 @@
 .cou_main_title .font24{ font: var(--font-21); font-weight: 600; margin-bottom: 1rem;}
 .cse_cou_list p{ margin-bottom: 2rem;}
 .cse_cou_list p:last-child{ margin-bottom: 0rem;}
-.cou_off_box{ padding: 3rem;}
+.cou_off_box{ padding: 2rem;}
 .cse_section{ padding-block: 5rem;}
 .our_cse { padding-block: 5rem 0; }
 .our_cse h4{ margin-bottom: 2rem; font: var(--font-28); letter-spacing: 0; font-weight: 600; line-height: 1.3;}
 .ad_tabsec .ad_leftsec{ gap: 0; flex-wrap: wrap;}
-.cse_aca_calender { margin-left: 0; margin-right: 0; padding-top: 5rem; }
+.cse_aca_calender { margin-left: 0; margin-right: 0; padding-top: 0rem; }
 .academic_list { grid-template-columns: repeat(2, 1fr); gap: 0rem; display: grid; }
 .cse_vision { padding-block: 5rem; position: relative; overflow: hidden; }
 .vision_grid{gap: 3rem; grid-template-columns: 100%;}
@@ -680,7 +685,7 @@
 .activites_sec { padding-block: 0 5rem; }
 .activites_sec .title48{ font: var(--font-28); margin-bottom: 3rem; font-weight: 600;}
 .activites_sec  .container .container25{ padding-inline: 0;}
-.department_clubs_section .activities_swiper{ padding-top: 5rem;}
+.department_clubs_section .activities_swiper{ padding-top: 0rem;}
 .department-page .tabs_section .acc-header{ position: relative; line-height: 1.3;}
 .peo_main .tabs_section:after{ display: none;}
 .department-page .tabs_section .tab-content.active .acc-body { display: block; }
@@ -742,17 +747,15 @@
 .custom_heading_grid .title2{ font: var(--font-30); letter-spacing: -1.4px;}
 .left_section .right a{ margin: 2rem -1rem; display: block;}
 .center_icu_logosec .icu_imgsec{max-width: 22rem;}
+.cse_research_main .resach_bgbox:before{padding-bottom: 90rem;}
+.cse_research_main .resach_bgbox:after{height: 90rem;}
+.dep_clubs_card figure img{ max-width: 25rem;}
+.depat_vision { padding-right: 0; }
+.hod_profile_bx figure { margin-top: 0; }
+.ats_textbox { grid-template-columns: 4rem auto; gap: 4rem; padding-top: 1rem; }
 
-
-
-
-
-
-
-
-
-
-
+.ats_slid_box { grid-template-columns: 100%; gap: 5rem; }
+.ats_thumbsec{ display: none;}
 
 }
 
@@ -868,7 +871,7 @@
 
 .computer-center .reports{grid-template-columns: 30rem;}
 .sterco_content_box{ padding-bottom: 2rem;}
-.xacc_header .xacc_btn{ font: var(--font-18); display: flex; justify-content: space-between; background-color: #f6f6f6; padding:2rem 2rem; width: 100%; text-align: left; margin-bottom: 1rem;}
+.xacc_header .xacc_btn{ font: var(--font-18); display: flex; justify-content: space-between; background-color:var(--color-92); padding:2rem 2rem; width: 100%; text-align: left; margin-bottom: 1rem; color: var(--color-white);}
 .school_ai_grid{ grid-template-columns: repeat(2, 1fr);}
 .industrial_visit_section h3, .careerg_title h3{ font: var(--font-24); font-weight: 600;}
 .career_sec_tabmain .xacc_header .xacc_btn{ background-color: var(--color-white);}
@@ -940,7 +943,7 @@
 .cse_research_main .resach_bgbox:after{ display: none;}
 .resach_bgbox .row{ margin: 0; display: block;}
 .research_box h4{ font: var(--font-36); font-weight: 600;}
-.resboxrgt .research_box{ min-width: auto; max-width: 100%; width: 33.33%;}
+.resboxrgt .research_box{ min-width: auto; max-width: 100%; width: 33.33%; padding-block: 2rem 2.5rem;}
 .resboxrgt { display: flex; width: 100%; }
 .project_contentsec .cus-btn{ padding: 1rem 2rem;}
 .faculties_main .faculties_title, .custom_heading_grid{ display: block;}
@@ -950,17 +953,17 @@
 .blog_listing { padding-block: 4rem 5rem; }
 .blog_listing_right .input-group{ display: none;}
 .recent_comments { margin-top: 2rem; }
-
-
-
-
-
-
-
-
-
+.home_courses_section .left_content .courses_links{ display: none;}
+.our_cse h4{ line-height: 1.2;}
+.dep_clubs_card figure img { max-width: 22rem; }
+.dep_clubs_card .dep_club_contents { margin-top: 1rem; }
+.faculty_section .faculty_grid{ grid-template-columns: repeat(2, 1fr);}
+.accredation_bx figure { min-height: auto; }
+.administration_grid {grid-template-columns: repeat(2, 1fr);}
 
  }
+
+
 @media (max-width: 640px) {
  .best-practice .accordion-body h4 { margin-bottom: 2rem; }
 .best-practice .pub-item .num { margin-right: 1rem; }
@@ -1025,7 +1028,7 @@
 .archives .gallery_list{ column-count: 1;}
 .academic_list{grid-template-columns: repeat(1, 1fr);}
 .activies_col figure img{ width: 100%;}
-.peo_main{ padding-bottom: 5rem;}
+.peo_main{ padding-bottom:0rem;}
 .department_home_mou .mou_heading { flex-wrap: wrap; gap: 3rem; }
 
 
@@ -1172,7 +1175,7 @@
 .blog_details_left blockquote { font: var(--font-21); margin-bottom: 2rem; font-weight: 600; line-height: 1.3; }
 .message_cnt h3 { font: var(--font-24); letter-spacing: 0; font-weight: 600; line-height: 1.3;}
 .visionary_message h3{ font: var(--font-24); letter-spacing: 0; font-weight: 600;}
-
+.faculty_section .faculty_grid{ grid-template-columns: repeat(1, 1fr);}
 
  }
 
@@ -1180,6 +1183,7 @@
  .program-duration, .program-intake, .program-approvals { padding-left: 1rem; }
  .grid_listing ul.custom_bullet { grid-template-columns: repeat(1, 1fr); }
  .post_cumment{ padding: 1.2rem 4rem;}
+ .faculties_main .fac_rgt_arrow img{ max-width:6rem;}
 
 }
 @media (max-width: 399px) {

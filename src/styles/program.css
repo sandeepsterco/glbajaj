@@ -490,7 +490,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .program-list { padding-block: 0 4rem; }
     .item-content .program-list:nth-last-child(2) { padding-block: 0; }
     .program-box{ display: block;}
-    .program-right{ padding-top: 2rem;}
+    .program-right{ padding-top: 0rem; min-width: 1rem;}
     .duration:first-child{ border-left: 0; padding: 0 4rem 0 0;}
     .program-btn a { background-color: var(--color-white); padding: 1rem 1.2rem; display: block; box-shadow: 0 2px 4px #0000001a; width: 3rem; height: 3rem; }
     .cus-tab .tabs ul li a{padding: 0 0 1.5rem;}
@@ -583,7 +583,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .award-detail-heading { margin-bottom: 4rem; }
     .award-detail-list1{ display: none;}
     .award-detail-sec { padding-block: 5rem; }
-    
+    .program-text h6{ padding-right: 2rem;}
+    .program-box .program-right img{ min-width: 0.7rem;}
+    .cus-btn{padding: 1rem 2.5rem;}
 
 
 }
@@ -598,7 +600,13 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .xtab_panel.active .career-list{ display: grid;}
     .peo-list { grid-template-columns: repeat(1, 1fr); }
     .peo-box .peo-img{ display: none;}
-
+    .program-text h6{ font: var(--font-16); font-weight: 600;}
+    .homepage .program-box .program_link{ padding: 1rem;}
+    .depat_vision { padding-right: 0; }
+    .cse_vision .vision_grid{ display: flex; width: 100%; flex-direction: column-reverse;}
+    .hod_profile_bx figure { margin-top: 0; }
+    .faculties_main .fac_rgt_arrow{ margin-left: -1rem; margin-top: 2rem;}
+    .lab_rgtswiper{ margin-top:3rem;}
 
 }
 
@@ -644,7 +652,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 
 
 @media (max-width:480px){
-    .program-right { justify-content: space-between; align-items: center; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .program-right { justify-content: space-between; align-items: center; display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
     .apply-btn{ padding:0;}
     .affiliation { padding: 0; }
     .duration:first-child { padding: 0 2rem 0 0; }
@@ -671,7 +679,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 
 }
 @media (max-width:375px){
-    .program-right .program-btn{ padding-right: 4rem;}
+    /* .program-right .program-btn{ padding-right: 4rem;} */
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
     .education-cell-grid { grid-template-columns: repeat(1, 1fr); }
 }

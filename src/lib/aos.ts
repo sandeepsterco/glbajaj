@@ -7,7 +7,7 @@ export const AOS_OPTIONS = {
 } as const;
 
 let initialized = false;
-let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+let debounceTimer: any| null = null;
 
 function revealInViewportElements() {
   const offset = AOS_OPTIONS.offset;

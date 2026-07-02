@@ -49,7 +49,7 @@ export default function FooterGate({ children }: { children: React.ReactNode }) 
         })
       : null;
 
-    observer?.observe(container, {
+    observer?.observe(container as Node, {
       childList: true,
       subtree: true,
       attributes: true,

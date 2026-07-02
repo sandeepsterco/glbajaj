@@ -41,8 +41,7 @@ const Footer = async () => {
           <Link
             href="https://www.glbitm.org/virtual-tour/GLB-AVT04062025"
             target="_blank"
-            className="vertical-floating-btn CTA_Applynow"
-          >
+            className="vertical-floating-btn CTA_Applynow">
             <img src={getValue('360_view')?.image} className="icon" alt="360 icon" />
             View
           </Link>

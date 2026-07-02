@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BASE_URL } from "@/src/config/config";
+import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
 
 interface Tab {
   slug: string;
@@ -17,11 +18,7 @@ interface NavLinksProps {
 }
 
 const scrollToSection = (id: string) => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const headerHeight = 80;
-  const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-  window.scrollTo({ top: y, behavior: "smooth" });
+  scrollToHashWhenReady(`#${id}`, { behavior: "smooth" });
   window.history.replaceState(null, "", window.location.pathname);
 };
 

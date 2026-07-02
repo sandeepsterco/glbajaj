@@ -12,6 +12,7 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import '@/src/styles/fancybox.css'
@@ -406,6 +407,25 @@ export default function ReactParser({ html }: { html: any }) {
     } else if (typeof init === "function") {
       init();
     }
+
+    let cancelHashScroll = () => {};
+
+    const runHashScroll = () => {
+      cancelHashScroll();
+      cancelHashScroll = scrollToHashWhenReady(undefined, { behavior: "smooth" });
+    };
+
+    // Delay so parsed HTML and nested dynamic widgets can mount first.
+    const hashScrollTimer = window.setTimeout(runHashScroll, 150);
+
+    const onHashChange = () => runHashScroll();
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      window.clearTimeout(hashScrollTimer);
+      window.removeEventListener("hashchange", onHashChange);
+      cancelHashScroll();
+    };
   }, [pathname, html]);
 
   if (!html) return null;

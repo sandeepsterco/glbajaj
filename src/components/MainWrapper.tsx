@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const getSlugClass = (pathname:any, typeOnly:any) => {
@@ -26,6 +27,13 @@ export default function MainWrapper({ children,
   const pathname = usePathname();
   // const slugClass = getSlugClass(pathname);
   const typeClass = getSlugClass(pathname, "true");
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash || hash === "#") {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return <div className={`main-container ${typeClass}`}>{children}</div>;
 }

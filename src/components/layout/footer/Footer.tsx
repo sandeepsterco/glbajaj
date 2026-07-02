@@ -106,7 +106,7 @@ const Footer = async () => {
           <div className="footer_links">
             <ul>
               <li>
-                <Link href="#!">Quick Links</Link>
+                <button className="btn">Quick Links</button>
               </li>
               {footerData?.menuItems?.map((item: any, idx: number) => (
                 <React.Fragment key={idx}>
@@ -115,8 +115,8 @@ const Footer = async () => {
                   </li>
                   <li>
                     <Link
-                      href={item?.slug ? BASE_URL + item.slug : ''}
-                      className="text-[1.4rem] leading-[2.1rem] text-white"
+                      href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : '#'}
+                      target={item?.target_blank_url ? '_blank' : '_self'}
                     >
                       {item.title}
                     </Link>

@@ -1,10 +1,14 @@
 "use client"
 
+import ThankYouPage from "@/src/app/(innerPage)/thank-you/page";
+import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Subscribe() {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -56,11 +60,8 @@ export default function Subscribe() {
             return;
         }
 
-        toast.success(data?.message ?? "Subscribed successfully!", {
-            position: "bottom-center",
-            duration: 4000,
-        });
         setEmail("");
+        router.push("/thank-you");
     }
 
     const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>)=>{

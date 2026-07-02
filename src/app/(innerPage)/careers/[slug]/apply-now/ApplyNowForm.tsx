@@ -226,6 +226,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
       }
 
       // setSuccessMessage(result.message || "Form submitted successfully.");
+      router.push(`${BASE_URL}thank-you`);
       setForm(INITIAL_FORM(openingName));
       setSelectedCountryCode("");
       setSelectedStateCode("");
@@ -236,7 +237,6 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
       resetRecaptcha();
     } finally {
       setIsSubmitting(false);
-      router.push(`${BASE_URL}thank-you`);
     }
   };
 

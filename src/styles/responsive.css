@@ -56,6 +56,7 @@
 .group_counter_grid { grid-template-columns: 58% auto; gap: 6.4rem; }
 /* messages-and-administration */
 .administration_grid { grid-template-columns: repeat(3, 1fr); overflow: hidden; }
+.administration_Bx a{word-break: break-all;}
 .governance-and-advisory-boards .the_institute_grid { gap: 3rem; }
 .governance-and-advisory-boards .research-sec { padding-block: 5rem 3rem; }
 .governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(2, 1fr); }
@@ -255,7 +256,7 @@
 .fee-refund-policy .res_publication + .table-description { padding-block: 0 5rem }
 
 .institute_faq_section { padding: 5rem 0; }
-.institute_faq_section .tp_accbox { padding: 3rem; }
+.institute_faq_section .tp_accbox { padding: 3rem 3rem 0.1rem; }
 .institute_faq_section .tp_accbox .accordion-header .icon { height: 4rem; width: 4rem; padding: 0; display: block;  text-align: center;}
 .tp_overview .tp_ov_grid { grid-template-columns:100%; display: grid; }
 .tp_overview .tp_ov_grid .tp_ov_left { order: 2; }
@@ -608,7 +609,7 @@
 .yourdost_section{margin: 0; padding-block: 5rem;}
 .counselling-support .clothes{padding-top: 5rem;}
 .roshni_section h3{ font: var(--font-24); padding-bottom: 1rem;}
-.roshni_section h4{ font: var(--font-18);}
+.roshni_section h4{ font: var(--font-18); line-height: 1.4;}
 .life-at-campus .the_institute_grid{ padding-top: 0;}
 .front_news{ display: block;}
 .news_section{ padding-block: 5rem;}
@@ -662,7 +663,7 @@
 .our_cse { padding-block: 5rem 0; }
 .our_cse h4{ margin-bottom: 2rem; font: var(--font-28); letter-spacing: 0; font-weight: 600; line-height: 1.3;}
 .ad_tabsec .ad_leftsec{ gap: 0; flex-wrap: wrap;}
-.cse_aca_calender { margin-left: 0; margin-right: 0; padding-top: 0rem; }
+.cse_aca_calender { margin-left: 0; margin-right: 0; padding-top: 3rem; }
 .academic_list { grid-template-columns: repeat(2, 1fr); gap: 0rem; display: grid; }
 .cse_vision { padding-block: 5rem; position: relative; overflow: hidden; }
 .vision_grid{gap: 3rem; grid-template-columns: 100%;}
@@ -692,7 +693,7 @@
 .department-page .tabs_section .tab-content .acc-body { display: none; }
 .our_cse p { max-width: 100%; }
 .vision_grid_bx p{ font: var(--font-24);}
- .vm-description{ max-height: 100%!important;}
+ /* .vm-description{ max-height: 100%!important;} */
 .cse_course_offered .row{ margin: 0; display: block;}
 .cse_course{ flex-wrap: wrap;}
 .cse_course_info{ width: 100%; padding-top: 3rem;}
@@ -756,6 +757,20 @@
 
 .ats_slid_box { grid-template-columns: 100%; gap: 5rem; }
 .ats_thumbsec{ display: none;}
+.table_with_qr { flex-wrap: wrap; overflow: scroll; }
+.team-members h3{ min-height: auto;}
+.alumni-achivement-img:after{bottom: -1rem; top: 3rem; height: auto;}
+.txdcx_banner_img figcaption{bottom: 3rem; left: 3rem;}
+.txdcx_banner_img figcaption h3{ font: var(--font-28); letter-spacing: 0;}
+.faculty_grid { grid-template-columns: repeat(3, 1fr); }
+.alumni-detail-wrap:before{ display: none;}
+.alumni-detail-grid{ grid-template-columns: repeat(1, 1fr); padding-block: 2rem 5rem;}
+.alumni-detail-content { padding: 0; }
+.alumni-detail-grid-reverse{ display: flex; flex-direction: column-reverse; padding-bottom: 0; margin-top: 3rem;}
+.alumni-detail-grid-reverse .alumni-detail-content { padding: 0; }
+.alumni-pattern-right{ display: none;}
+.alc_contextsec{    margin-bottom: 5rem;}
+.alu-detail-title h3{ font: var(--font-28); letter-spacing: 0; line-height: 1.3;}
 
 }
 
@@ -799,6 +814,8 @@
 .amatra_title { max-width: 100%; margin-bottom: 3rem; }
 
 
+
+
  }
 @media (max-width: 767px) {
  .the_institute_grid { gap: 4rem; padding-top: 3.2rem; }
@@ -833,7 +850,10 @@
 /* messages-and-administration */
 .administration_grid.messages_grid { grid-template-columns: 100%; }
 .administration_grid:before { display: none; }
-.administration_grid { grid-template-columns:repeat(2, 1fr); gap: 7rem 2rem; padding-block: 6rem 0; }
+.administration_grid { grid-template-columns:repeat(2, 1fr); gap: 2rem 2rem; padding-block: 6rem 0; }
+.administration_Bx:has(figure) { margin-top: 5rem; }
+.administration_Bx:first-child:has(figure) { margin-top: 4rem; }
+
 .administration_section.messages_section { padding-block: 5rem 5rem; }
 .administration_section { padding-block: 4rem 4.9rem; }
 .about_vision { padding-top: 5rem; }
@@ -959,7 +979,12 @@
 .dep_clubs_card .dep_club_contents { margin-top: 1rem; }
 .faculty_section .faculty_grid{ grid-template-columns: repeat(2, 1fr);}
 .accredation_bx figure { min-height: auto; }
-.administration_grid {grid-template-columns: repeat(2, 1fr);}
+.computer-lab-bg ul{ flex-wrap: wrap; gap: 3rem;}
+.computer-lab-bg ul li{ line-height: 1.2;}
+.kf_card h5{ margin-bottom: 0; line-height: 1.3;}
+.faculty_grid { grid-template-columns: repeat(2, 1fr); }
+
+
 
  }
 
@@ -1030,8 +1055,10 @@
 .activies_col figure img{ width: 100%;}
 .peo_main{ padding-bottom:0rem;}
 .department_home_mou .mou_heading { flex-wrap: wrap; gap: 3rem; }
-
-
+.dep_clubs_card figure img { max-width: 20rem; }
+.scp-sec .scp-wrap { padding: 2rem; }
+.blog_Bx > figure img { width: 100%; }
+.blog_listing_left {grid-template-columns: repeat(1, 1fr);}
 
 /* the-group */ }
 
@@ -1176,14 +1203,28 @@
 .message_cnt h3 { font: var(--font-24); letter-spacing: 0; font-weight: 600; line-height: 1.3;}
 .visionary_message h3{ font: var(--font-24); letter-spacing: 0; font-weight: 600;}
 .faculty_section .faculty_grid{ grid-template-columns: repeat(1, 1fr);}
+.team-members .content{padding: 1rem 0 0;}
+.alumni-achivement-img { padding-bottom: 0.7rem; padding-right: 2rem; }
+.distinguished-caption h3{ line-height: 1.3;}
+.txdcx_banner_img figcaption h3 { font: var(--font-21); line-height: 1.3; }
+.txdcx_banner_img figcaption p{ line-height: 1.3; font: var(--font-16);}
+.txdcx_banner_img figcaption .date{ color: var(--color-white);}
+.faculty_grid { grid-template-columns: repeat(1, 1fr); }
+.admin_form .row .col-lg-6{ width: 100%;}
+.admin_form .form-control{ height: 4rem;}
+.archive_section{ margin-top: 0;}
+.mentor-bx { padding: 2rem; }
+.supporting-btn{ padding: 1rem 2rem;}
+
 
  }
 
 @media (max-width: 480px) {
  .program-duration, .program-intake, .program-approvals { padding-left: 1rem; }
  .grid_listing ul.custom_bullet { grid-template-columns: repeat(1, 1fr); }
- .post_cumment{ padding: 1.2rem 4rem;}
+ .post_cumment{ padding: 0.7rem 2rem;}
  .faculties_main .fac_rgt_arrow img{ max-width:6rem;}
+ .administration_grid{ grid-template-columns: repeat(1, 1fr);}
 
 }
 @media (max-width: 399px) {
@@ -1207,7 +1248,10 @@
 .cse_banner_img figcaption { bottom: 2rem; left: 2rem; }
 .admin_header .admin_details{ padding-top: 2rem;}
 .admin_header{ display: block;}
-
+.home_placement_student_slider img { width: 100%; height: 100%; object-fit: cover; }
+.home_placement_student_slider .swiper-slide{ height: auto;}
+.lab_rgtswiper h4{ padding-right: 0; line-height: 1.2;}
+.cse_vision .hod_profile_bx .hod_info h4{ line-height: 1.3;}
 
 
  }

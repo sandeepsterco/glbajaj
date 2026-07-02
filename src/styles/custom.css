@@ -1597,4 +1597,5 @@ a:not([href]):not([class]):hover {
 
 @media (max-width:991px){
   .row { margin-right: 0rem; margin-left: 0rem; }
+  .col-lg-6{ width: 100%;}
 }

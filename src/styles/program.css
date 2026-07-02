@@ -548,7 +548,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .feature-list .item:last-child p{ margin-bottom: 0;}
     .hackathons h3{font: var(--font-28); line-height: 1.3;}
     .hackathons .tp_ov_title h3{ margin-bottom: 2rem;}
-    .csr-list-new{ display: grid; grid-template-columns: 100%;}
+    /* .csr-list-new{ display: grid; grid-template-columns: 100%;} */
     .blood_donation_Bx1 blockquote, .blood_donation_Bx blockquote{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
     .blood_donation_Bx1 { padding: 0; }
     .csr-list-new .blood_donation_Bx1{ order: 2;}
@@ -583,7 +583,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .award-detail-heading { margin-bottom: 4rem; }
     .award-detail-list1{ display: none;}
     .award-detail-sec { padding-block: 5rem; }
-    .program-text h6{ padding-right: 2rem;}
+    .program-text h6{ padding: 0 0 1.5rem 0;}
     .program-box .program-right img{ min-width: 0.7rem;}
     .cus-btn{padding: 1rem 2.5rem;}
 
@@ -607,7 +607,11 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .hod_profile_bx figure { margin-top: 0; }
     .faculties_main .fac_rgt_arrow{ margin-left: -1rem; margin-top: 2rem;}
     .lab_rgtswiper{ margin-top:3rem;}
-
+    .program-text h6{ padding: 0 0 1rem;}
+    .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2rem; display: flex; flex-direction: column-reverse; }
+    .award-detail-img { padding-inline: 0; }
+    .award-detail-text1{ display: none;}
+    .award-detail-text p{ margin-bottom: 0;}
 }
 
 
@@ -624,10 +628,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .hierarchy-box{grid-template-columns: 100%;}
     .hierarchy-text{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(2, 1fr); }
-    .mission-Cnt {
-        padding: 4rem;
-    }
+    .mission-Cnt { padding: 4rem; }
     .career-list { grid-template-columns: repeat(2, 1fr); padding-bottom: 3rem;}
+   
+    .txdcx_banner_img figcaption { right: 3rem; }
 
 }
 
@@ -645,6 +649,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .blood_donation_Bx1 blockquote, .blood_donation_Bx blockquote{ font: var(--font-24); font-weight: 600;}
 .contact-heading h3 { font: var(--font-24); font-weight: 600 ;}
 .contact-icon { margin-right: 1rem; }
+.road-text h3{ line-height: 1.2;}
 
 
 

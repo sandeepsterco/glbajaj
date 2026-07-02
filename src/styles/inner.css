@@ -882,7 +882,9 @@
 .res_publication:last-child { padding-bottom: 12rem; }
 .res_pub_title h4 { margin-bottom: 5rem; }
 .res_publi_list { display: flex; gap: 4rem; margin-bottom: 4rem; }
-.res_publi_list li a { gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4; width: 100%; }
+.res_publi_list li a { gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4; width: 100%; text-align: left;
+    align-items: center;
+    line-height: 1.3; }
 .res_publica_tblsec:not(:last-of-type) { padding-bottom: 7rem; }
 .res_publica_tblsec:last-of-type { padding-bottom: 0; }
 .table-description { padding-block: 10rem 5rem; }
@@ -2111,7 +2113,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innvation_lap_grid h4 { font: var(--font-21); font-weight: 700; margin-bottom: 4rem; color: var(--color-33); }
 .smart_india { padding-top: 5rem; margin-top: 5rem; border-top: 0.1rem solid #C0855280; padding-right: 7rem; }
 .innvation_lap_grid .robotics-lab-grid-Cnt p:first-child { margin-bottom:0rem; }
-.institute_faq_section { padding: 10rem; }
+.institute_faq_section { padding: 10rem 0; }
 .institute_faq_section .tp_accbox { background-color: #F9F9F9; padding: 4.4rem 5.5rem 2rem 6.4rem; }
 .institute_faq_section .tp_accbox .accordion-item,
 .institute_faq_section .tp_accbox .accordion-body { background: transparent; }

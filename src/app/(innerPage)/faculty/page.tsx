@@ -40,7 +40,7 @@ export default async function FacultyPage({
 
   const [{ data, error }, { data: deptData }] = await Promise.all([
     apiFetch(`faculty?${facultyQuery}`),
-    apiFetch("departments"),
+    apiFetch("department-faculty-list"),
   ]);
 
   if (error) {
@@ -50,7 +50,7 @@ export default async function FacultyPage({
   }
 
   const departments: { name: string; slug: string; image: string }[] =
-    deptData?.data || [];
+    deptData?.departments || [];
 
   const facultyType = data?.type;
 

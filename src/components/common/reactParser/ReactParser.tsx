@@ -13,6 +13,8 @@ import DOMPurify from "isomorphic-dompurify";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
+import { scheduleRefreshAOSSequence } from "@/src/lib/aos";
+import { markRouteContentReady } from "@/src/lib/mainContentReady";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import '@/src/styles/fancybox.css'
@@ -222,6 +224,26 @@ const options: HTMLReactParserOptions = {
         }
       
         const { href: _href, ...rest } = props;
+      
+        // In-page hash links: handle manually. next/link's client-side
+        // navigation uses history.pushState, which does NOT fire a native
+        // 'hashchange' event, so our ReactParser listener never sees these.
+        if (href && href.startsWith("#")) {
+          return (
+            <a
+              {...rest}
+              href={href}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, "", href);
+                scrollToHashWhenReady(href, { behavior: "smooth" });
+              }}
+            >
+              {domToReact(domNode.children as any, options)}
+            </a>
+          );
+        }
+      
         return (
           <Link href={href || "#"} {...rest}>
             {domToReact(domNode.children as any, options)}
@@ -399,6 +421,10 @@ export default function ReactParser({ html }: { html: any }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    markRouteContentReady();
+
+    const cancelAosRefresh = scheduleRefreshAOSSequence();
+
     const schedule = (window as Window & { __scheduleInitCustomJS?: () => void }).__scheduleInitCustomJS;
     const init = (window as Window & { __initCustomJS?: () => void }).__initCustomJS;
 
@@ -422,13 +448,19 @@ export default function ReactParser({ html }: { html: any }) {
     window.addEventListener("hashchange", onHashChange);
 
     return () => {
+      cancelAosRefresh();
       window.clearTimeout(hashScrollTimer);
       window.removeEventListener("hashchange", onHashChange);
       cancelHashScroll();
     };
   }, [pathname, html]);
 
-  if (!html) return null;
+  if (!html) {
+    if (typeof window !== "undefined") {
+      markRouteContentReady();
+    }
+    return null;
+  }
 
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR: [

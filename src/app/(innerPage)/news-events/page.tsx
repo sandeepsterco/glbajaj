@@ -31,7 +31,7 @@ export default async function NewsEvent({
 
   const [{ data, error }, { data: deptData }] = await Promise.all([
     apiFetch(`news-and-events?${query}`),
-    apiFetch("departments"),
+    apiFetch("department-news-list"),
   ]);
 
   if (error) {
@@ -45,7 +45,7 @@ export default async function NewsEvent({
   const mainData = allItems[0] ?? null;
   const otherListing = allItems.slice(1);
 
-  const departments: { name: string; slug: string }[] = deptData?.data ?? [];
+  const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
   const slug = "news-events";
 
   return (
@@ -60,10 +60,12 @@ export default async function NewsEvent({
         <NewsListing data={otherListing} slug={slug} />
       )}
       {allItems.length > 0 && (
-        <PaginationWrapper
-          currentPage={pagination?.current_page || 1}
-          totalPages={pagination?.last_page || 1}
-        />
+        <div className="news_pagination">
+          <PaginationWrapper
+            currentPage={pagination?.current_page || 1}
+            totalPages={pagination?.last_page || 1}
+          />
+        </div>
       )}
     </InnerPageLayoutWrapper>
   );

@@ -9,9 +9,21 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 
-export default async function NoticesAnnouncement() {
-    const { data, error } = await apiFetch(`notice-and-announcements`);
+interface SearchParams {
+    page?: string;
+    search?: string;
+    category?: string;
+    year?: string;
+    month?: string;
+}
+
+export default async function NoticesAnnouncement({searchParams}:{searchParams:Promise<SearchParams>}) {
+    const params = await searchParams;
+    const currentPage = Number(params.page) || 1;
+
+    const { data, error } = await apiFetch(`notice-and-announcements?page=${currentPage}`);
     const slug = await getSlug();
 
     if (error) {
@@ -19,7 +31,7 @@ export default async function NoticesAnnouncement() {
             <ApiErrorFallback heading="Couldn't load news" message={error} />
         )
     }
-
+    const pagination = data?.notice_and_announcements;
     const updatedData = data?.notice_and_announcements?.data;
 
     return (
@@ -36,13 +48,18 @@ export default async function NoticesAnnouncement() {
                                     {item?.title && (
                                         <p dangerouslySetInnerHTML={{ __html: item.title }} />
                                     )}
-                                    {item?.slug && (
+                                    {item?.slug && (item?.no_detail !== 'true') && (
                                         <Link href={`${BASE_URL}notices-announcements/${item.slug}`} className="strech_link" />
                                     )}
                                 </div>
                             ))}
                         </div>
                     </div>
+
+                    <PaginationWrapper
+                        currentPage={pagination?.current_page || 1}
+                        totalPages={pagination?.last_page || 1}
+                    />
                 </section>
             </InnerPageLayoutWrapper>
 

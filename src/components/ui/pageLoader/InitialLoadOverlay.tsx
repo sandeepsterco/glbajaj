@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import PageLoader from "./PageLoader";
+import { isMiddleContentReady } from "@/src/lib/mainContentReady";
 
 const MAX_OVERLAY_MS = 8000;
 const MIN_OVERLAY_MS = 0;
@@ -12,34 +13,6 @@ const POLL_MS = 80;
  * Root layout keeps this mounted; it does not remount on client navigation,
  * so per-route loading.tsx still handles in-app redirects.
  */
-function isRouteSkeletonVisible() {
-  return Boolean(
-    document.querySelector(".main-container .page-loader-content")
-  );
-}
-
-function isMainContentReady() {
-  const container = document.querySelector(".main-container");
-  if (!container) return false;
-  if (isRouteSkeletonVisible()) return false;
-
-  if (
-    container.querySelector(
-      ".happenings_page, main .swiper, main video, main iframe, .home_cms_section"
-    )
-  ) {
-    return true;
-  }
-
-  const main = container.querySelector("main");
-  if (main && (main.textContent?.trim().length ?? 0) > 60) {
-    return true;
-  }
-
-  const text = container.textContent?.trim() ?? "";
-  return container.scrollHeight > 280 && text.length > 80;
-}
-
 export default function InitialLoadOverlay() {
   const [isDone, setIsDone] = useState(false);
   const cleanupRef = useRef<(() => void) | null>(null);
@@ -60,7 +33,7 @@ export default function InitialLoadOverlay() {
     };
 
     const tryFinish = () => {
-      if (isMainContentReady()) {
+      if (isMiddleContentReady()) {
         finish();
         return true;
       }
@@ -82,7 +55,12 @@ export default function InitialLoadOverlay() {
         })
       : null;
 
-    observer?.observe(container!, { childList: true, subtree: true });
+    observer?.observe(container!, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-awaiting-parser", "data-route-content-ready", "class"],
+    });
 
     cleanupRef.current = () => {
       window.clearInterval(poll);

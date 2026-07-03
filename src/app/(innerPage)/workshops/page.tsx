@@ -31,7 +31,7 @@ export default async function Workshop({
 
   const [{ data, error }, { data: deptData }] = await Promise.all([
     apiFetch(`workshops?${query}`),
-    apiFetch("departments"),
+    apiFetch("department-workshop-list"),
   ]);
 
   if (error) {
@@ -45,7 +45,7 @@ export default async function Workshop({
   const mainData = allItems[0] ?? null;
   const otherListing = allItems.slice(1);
 
-  const departments: { name: string; slug: string }[] = deptData?.data ?? [];
+  const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
   const slug = "workshops";
 
   return (

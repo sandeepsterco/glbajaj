@@ -392,7 +392,7 @@
 .inspiration_section { padding-block: 5rem 14.2rem; }
 .inspiration_grid { display: grid; grid-template-columns: 49% auto; gap: 15.7rem; }
 .inspiration_section h3 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 7.2rem; }
-.inspiration_details { margin-top: 4rem; padding-top: 4rem; position: relative; }
+.inspiration_details { margin-top: 4rem; padding-top: 4rem; position: relative; display: flex; align-items: center; justify-content: space-between;}
 .inspiration_details::before { background-color: #d2ab67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0; }
 .inspiration_details h4 { font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom: 1rem; }
 .inspiration_right { position: relative; }
@@ -963,6 +963,8 @@
 .careerTabsX_accHeader { display: block; padding: 12px; font-weight: 600; cursor: pointer; background: #f5f5f5; }
 .careerTabsX_accBody { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .careerTabsX_pane.active .careerTabsX_accBody { max-height: 500px; }
+.inspiration_details{display:block; align-items: unset;}
+.inspiration_details .apply_btn{margin-top: 2rem; display:inline-block;}
  }
 .career_empo_sec2 { padding-block: 10rem 11.6rem; }
 .tocr_grid { display: grid; grid-template-columns: 39.3% 56.4%; gap: 6.5rem; align-items: end; }

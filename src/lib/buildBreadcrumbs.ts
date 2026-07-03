@@ -13,7 +13,7 @@ export async function buildBreadcrumbs(data: any, currentPageTitle?:string) {
   const isDepartmentDetail = pathname.includes("department") && !pathname.includes("departments");
 
   return [
-    { label: "Home", slug: BASE_URL },
+    // { label: "Home", slug: BASE_URL },
     ...(isProgramsOffered || isProgram || isDepartments ? [{ label: "Academics" }] : []),
     ...(parent_menus ? parent_menus.map((item: any) => (item.url ? { label: item.title, slug: BASE_URL + item.url } : { label: item.title })) : []),
     ...(isProgram ? [{ label: "Programs Offered", slug: BASE_URL + "programs-offered" }] : []),

@@ -1,9 +1,10 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useMemo, useState } from "react";
+import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { City, Country, ICity, ICountry, IState, State } from "country-state-city";
-import { RECAPTCHA_SITE_KEY } from "@/src/config/config";
+import { BASE_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
+import { useRouter } from "next/navigation";
 
 type FieldErrors = Record<string, string[]>;
 
@@ -78,6 +79,8 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
   const [selectedStateCode, setSelectedStateCode] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const resetRecaptcha = () => {
     setRecaptchaToken(null);
@@ -167,6 +170,13 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
     setErrorMessage("");
   };
 
+  const resetFileInput = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSuccessMessage("");
@@ -215,11 +225,12 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         return;
       }
 
-      setSuccessMessage(result.message || "Form submitted successfully.");
+      // setSuccessMessage(result.message || "Form submitted successfully.");
+      router.push(`${BASE_URL}thank-you`);
       setForm(INITIAL_FORM(openingName));
       setSelectedCountryCode("");
       setSelectedStateCode("");
-      setSelectedFile(null);
+      resetFileInput();
       resetRecaptcha();
     } catch {
       setErrorMessage("Unable to submit the form right now. Please try again.");
@@ -395,17 +406,11 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         </div>
         <div className="fm_gr_grid">
           <div className="form-group">
-            <input type="file" className="input_form" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onChange={handleFileChange} />
+            <input ref={fileInputRef} type="file" className="input_form" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onChange={handleFileChange} />
             {getError("file") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("file")}</p> : null}
           </div>
-          <div className="form-group" style={{ display: "flex", gap: "1rem" }}>
-            <button type="submit" className="apply_btn" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Apply Now"}
-            </button>
-          </div>
-        </div>
-
-        {RECAPTCHA_SITE_KEY ? (
+          
+          {RECAPTCHA_SITE_KEY ? (
           <div className="form-group" style={{ marginTop: "1rem" }}>
             <RecaptchaField
               key={recaptchaKey}
@@ -423,12 +428,21 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             ) : null}
           </div>
         ) : null}
+        </div>
 
-        {successMessage ? (
+        <div className="form-group" style={{ display: "flex", gap: "1rem" }}>
+            <button type="submit" className="apply_btn" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Apply Now"}
+            </button>
+          </div>
+
+        
+
+        {/* {successMessage ? (
         <div className="form-feedback form-feedback--success" role="alert">
           <p>{successMessage}</p>
         </div>
-      ) : null}
+      ) : null} */}
 
       {/* {errorMessage ? (
         <div className="error_message">

@@ -224,6 +224,26 @@ const options: HTMLReactParserOptions = {
         }
       
         const { href: _href, ...rest } = props;
+      
+        // In-page hash links: handle manually. next/link's client-side
+        // navigation uses history.pushState, which does NOT fire a native
+        // 'hashchange' event, so our ReactParser listener never sees these.
+        if (href && href.startsWith("#")) {
+          return (
+            <a
+              {...rest}
+              href={href}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, "", href);
+                scrollToHashWhenReady(href, { behavior: "smooth" });
+              }}
+            >
+              {domToReact(domNode.children as any, options)}
+            </a>
+          );
+        }
+      
         return (
           <Link href={href || "#"} {...rest}>
             {domToReact(domNode.children as any, options)}

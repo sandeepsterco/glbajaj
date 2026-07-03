@@ -30,6 +30,7 @@ export default function MainWrapper({ children,
 
   useEffect(() => {
     const hash = window.location.hash;
+    console.log('page hash',hash);
     if (!hash || hash === "#") {
       window.scrollTo(0, 0);
     }

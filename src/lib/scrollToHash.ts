@@ -1,5 +1,6 @@
 const DEFAULT_HEADER_OFFSET = 200;
 const MAX_WAIT_MS = 10000;
+const STABILIZE_MS = 2500;
 
 export type ScrollToHashOptions = {
   offset?: number;
@@ -36,7 +37,9 @@ export function scrollToHashElement(
 
 /**
  * Waits for a hash target to appear in the DOM (e.g. after ReactParser renders)
- * then scrolls to it with a fixed header offset.
+ * then scrolls to it with a fixed header offset. Keeps correcting the scroll
+ * position for a short window afterwards, since lazily-loaded widgets
+ * (dynamic() imports with skeleton fallbacks) often resize right after we land.
  */
 export function scrollToHashWhenReady(
   hash?: string,
@@ -48,13 +51,50 @@ export function scrollToHashWhenReady(
   if (!id) return () => {};
 
   let cancelled = false;
+  let resizeObserver: ResizeObserver | null = null;
+  let stabilizeTimeout: number | null = null;
+
+  const stopStabilizing = () => {
+    resizeObserver?.disconnect();
+    resizeObserver = null;
+    if (stabilizeTimeout) {
+      window.clearTimeout(stabilizeTimeout);
+      stabilizeTimeout = null;
+    }
+  };
+
+  const stabilizeScroll = () => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    let lastTop = el.getBoundingClientRect().top;
+
+    resizeObserver = new ResizeObserver(() => {
+      if (cancelled) return;
+      const newTop = el.getBoundingClientRect().top;
+      if (Math.abs(newTop - lastTop) > 2) {
+        scrollToHashElement(id, { ...options, behavior: "auto" });
+        lastTop = el.getBoundingClientRect().top;
+      }
+    });
+    resizeObserver.observe(document.body);
+
+    stabilizeTimeout = window.setTimeout(stopStabilizing, STABILIZE_MS);
+  };
 
   const tryScroll = () => {
     if (cancelled) return true;
-    return scrollToHashElement(id, options);
+    const success = scrollToHashElement(id, options);
+    if (success) stabilizeScroll();
+    return success;
   };
 
-  if (tryScroll()) return () => { cancelled = true; };
+  if (tryScroll()) {
+    return () => {
+      cancelled = true;
+      stopStabilizing();
+    };
+  }
 
   const observer = new MutationObserver(() => {
     if (tryScroll()) observer.disconnect();
@@ -68,5 +108,6 @@ export function scrollToHashWhenReady(
     cancelled = true;
     observer.disconnect();
     window.clearTimeout(timeout);
+    stopStabilizing();
   };
 }

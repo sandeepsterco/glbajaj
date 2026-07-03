@@ -3,6 +3,7 @@ import { Lexend, TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
+import FooterGate from "../components/layout/footer/FooterGate";
 import MainWrapper from "../components/MainWrapper";
 import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 import "../styles/custom.css";
@@ -41,7 +42,9 @@ export default async function RootLayout({
               <InitialLoadOverlay />
               <Header />
               <MainWrapper>{children}</MainWrapper>
-              <Footer />
+              <FooterGate>
+                <Footer />
+              </FooterGate>
               <Toaster />
             </AOSProvider>
           </Providers>

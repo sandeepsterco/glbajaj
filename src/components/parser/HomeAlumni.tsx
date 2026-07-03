@@ -101,6 +101,7 @@ export default function HomeAlumni() {
                     <div className="thumb_info">
                       <p className="name">{item.name}</p>
                       <span className="designation">{item.branch}</span>
+                      <p className="designation">{item.course}</p>
                     </div>
                   </div>
                 ))}
@@ -226,6 +227,7 @@ export default function HomeAlumni() {
                         <div className="person-info active">
                           <div className="name">{item.name}</div>
                           <div className="role">{item.branch}</div>
+                          <p className="course">{item.course}</p>
                         </div>
                       </div>
                     </div>
@@ -240,6 +242,7 @@ export default function HomeAlumni() {
                 <div className="person-info active">
                   <div className="name" data-aos="fade-up" data-aos-delay="400">{activeItem.name}</div>
                   <div className="role" data-aos="fade-up" data-aos-delay="800">{activeItem.branch}</div>
+                  <p className="course" data-aos="fade-up" data-aos-delay="800">{activeItem.course}</p>
                 </div>
               )}
             </div>

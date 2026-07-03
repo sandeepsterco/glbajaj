@@ -51,6 +51,9 @@ export default function TestimonialList({ data, slug, activeType = "student", cu
                             {item?.type && currentPage !== "alumni-testimonials" && (
                                 <p>{item.type}</p>
                             )}
+                            {item?.course && (
+                                <p>{item.course}</p>
+                            )}
                             {item?.slug && (
                                 <Link href={`${BASE_URL}testimonials/${item.slug}`} className="strech_link" />
                             )}

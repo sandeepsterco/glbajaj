@@ -957,6 +957,12 @@
 .more_view { font: var(--font-21); padding-bottom: 1.6rem; margin-bottom: 4rem; cursor: pointer; }
 .careerTabsX_pane.active { display: block; }
 .careerTabsX_accHeader { display: none; }
+.accreditations_section{ padding-block: 10rem 0;}
+.accreditations_section h4 { color: var(--color-92); font: var(--font-36); letter-spacing: -.18rem; padding-right: 7rem; }
+.accreditaion_media_grid ul{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-block: 3rem 5rem;}
+.accreditaion_media_grid ul li{ border: 1px solid #ddd;}
+.accreditations_section p{ font-weight: 600; margin-bottom: 4rem;}
+
 @media (max-width: 768px) {
  .careerTabsX_nav { display: none; }
 .careerTabsX_pane { display: block; border-bottom: 1px solid #ddd; }

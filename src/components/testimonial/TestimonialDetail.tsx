@@ -33,6 +33,7 @@ export default function TestimonialDetail({ data }: { data: any }) {
                                             {data?.data?.name && <h5 className="name">{data.data.name}</h5>}
                                             {data?.data?.type && <p>{data.data.type}</p>}
                                             {data?.data?.branch && <p>{data.data.branch}</p>}
+                                            {data?.data?.course && <p>{data.data.course}</p>}
                                         </div>
                                     </div>
                                 </div>

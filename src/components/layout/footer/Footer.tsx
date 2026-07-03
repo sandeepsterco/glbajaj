@@ -102,15 +102,10 @@ const Footer = async () => {
           </div>
           <div className="footer_links">
             <ul>
-<<<<<<< HEAD
               {/* <li>
                 <Link href="#!">Quick Links</Link>
               </li> */}
-=======
-              <li>
-                <button className="btn">Quick Links</button>
-              </li>
->>>>>>> f2338092f4fd4dab09dfdb599b0e0e0bf2ef60c6
+             
               {footerData?.menuItems?.map((item: any, idx: number) => (
                 <React.Fragment key={idx}>
                   

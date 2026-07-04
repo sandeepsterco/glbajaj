@@ -311,6 +311,24 @@ const options: HTMLReactParserOptions = {
         }
       }
 
+      if (domNode.name === 'div') {
+        const classList = (domNode.attribs?.class || '').split(/\s+/);
+        if (classList.includes('tcex_btm_des')) {
+          const isEmptyNode = (node: any): boolean => {
+            if (node.type === 'text') return !node.data?.trim();
+            if (node.type === 'tag') {
+              if (node.name === 'br' || node.name === 'hr') return true;
+              return (node.children || []).every(isEmptyNode);
+            }
+            return true; // comments, etc.
+          };
+          const isEmpty = domNode.children.every(isEmptyNode);
+          if (isEmpty) {
+            return <></>;
+          }
+        }
+      }
+
       if (domNode.name === "a") {
         const props = attributesToProps(domNode.attribs) as any;
         const href = props.href || "#";

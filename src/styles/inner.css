@@ -20,6 +20,7 @@
 /* ==== career page========== */
 /* =========department home mou ===============*/
 .department_home_mou .mou_heading { display: flex; justify-content: space-between; }
+.department_home_mou .mou_heading .font24{font: var(--font-36); font-weight: 700;}
 .vm-description { overflow: hidden; transition:0.2s all ease-in-out }
 .vm-description.expanded { height:auto; max-height: unset !important; }
 .common_image_slider { overflow: hidden; }
@@ -59,7 +60,7 @@
 .custom_pages_lists .tab_btn:before { content: ""; border-bottom: 2px dashed var(--color-31); opacity: .3; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
 .custom_pages_lists .active .tab_btn:before { opacity: 1; border-color: var(--color-92); }
 /* About section start */
-.about_menu_bar { border-bottom: 1px solid #d7d4d4; background: #f4f7f4; }
+.about_menu_bar { border-bottom: 1px solid #d7d4d4; background: #f4f7f4; position: sticky; top: 16.1rem; z-index: 99;}
 .about_top { background-color: var(--color-64); padding: 1.5rem 0; opacity: 1; position:relative; }
 .about_glbim_p { font: var(--font-30); color: #fff; font-weight: bold; }
 /* Flex replacement */
@@ -374,6 +375,7 @@
 
 @media (max-width: 2440px) {
  .hod_right::before { height: auto; }
+.about_menu_bar{top: 14rem;}
  }
 /* ==============Faculty page Start============= */
 .faculty_section { padding-block: 10rem 12.6rem; }
@@ -701,12 +703,22 @@
 .cse_section { background-color: var(--color-F4); }
 .cse_banner_img { position: relative; overflow: hidden; }
 .cse_banner_img figure::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; left: 0; right: 0; bottom: 0; content: ""; height: 33.7rem; }
-.cse_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 9; }
-.cse_banner_img figcaption h3 { font: var(--font-48); letter-spacing: -2.4px; color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
+.cse_banner_img figcaption { position: absolute; bottom: 7rem; left: 12.5rem; z-index: 1; }
+.cse_banner_img figcaption h3 { font: var(--font-48); color: var(--color-white); margin-bottom: 1rem; font-weight: 400; }
 .cse_banner_img figcaption h3 span { font-weight: 700; color: var(--color-white); display:block; }
 .cse_banner_img figcaption p { color: var(--color-white); background-color: var(--color-92); padding: 0.5rem 1.5rem; display: inline-block; font: var(--font-21); font-weight: 500; }
 .our_cse { padding-block: 5rem; }
-.hod_profile_bx { background: linear-gradient(to bottom, #643c24 60%, #f4f7f4 0%); padding: 2.7rem 2.5rem; position: relative; z-index: 9; }
+.hod_profile_bx { background: linear-gradient(to bottom, #643c24 60%, #f4f7f4 0%); padding: 2.7rem 2.5rem; position: relative; /* z-index: 9;*/ }
+.hod_profile .hod_profile_bx:before{
+    content: "";
+    background: var(--color-AE);
+    z-index: -1;
+    width: 100%;
+    position: absolute;
+    top: 5rem;
+    bottom: -2.5rem;
+    right: -2.5rem;
+}
 .navigation_btn { position: absolute; bottom: -3rem; right: 2rem; }
 .profile a { display: flex; align-items: center; gap: 1rem; font: var(--font-16); color: var(--color-33); }
 .hod_profile_bx figure { margin-top: 3rem; }
@@ -736,6 +748,8 @@
 .vision_grid_bx .vision_pattern { margin-top: 1.5rem; display: inline-block; }
 .HideHOD .vision_grid_bx .vision_pattern { position: absolute; right: calc(100% + 5rem); top: 4.2rem; }
 .depat_vision{ padding-right: 4.8rem;}
+.depat_vision .font24{display:flex; align-items: center;}
+.depat_vision .font24 img{width: 3rem; margin-right:1rem;}
 .hod_profile { padding-left: 0rem; }
 .profile h3 { font: var(--font-24); color: var(--color-white); font-weight: 700; padding-right: 4rem; }
 .profile h4 { font: var(--font-18); margin-block: 3rem 2rem; color: var(--color-black); font-weight: 600; }
@@ -780,7 +794,7 @@
 .peo_main .tabs_section { display: grid; gap: 6.2rem; grid-template-columns: 45.6% 50%; justify-content: center; padding-inline: 15rem 15rem; padding-block: 8rem 10rem; position: relative; }
 .peo_main .tab_content .acc-body { display: inherit; margin: 0; padding: 0; }
 .peo_main .tabs_section .tab-buttons { padding-left: 0; }
-.peo_main .tabs_section::before { background-color: var(--color-AE); max-height: 42.1rem; bottom: 0; right: 0; }
+.peo_main .tabs_section::before { background-color: var(--color-64); max-height: 42.1rem; bottom: 0; right: 0; }
 .peo_main .tabs_section .tab-btn.active { color: var(--color-white); }
 .peo_main .tabs_section .tab-btn { padding-left: 0; }
 .peo_main .tabs_section .tab-btn { color: #ffffff80; }
@@ -789,7 +803,7 @@
 .peo_main .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .peo_main .tab_content .acc-body::before { background-color: transparent; }
 .peo_main { padding-top: 10rem; }
-.peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; background-repeat: no-repeat; height: 21.4rem; z-index: 9; right: 0; left: 15rem; }
+.peo_main .tabs_section::after { background-image: url(/images/peo_shape_bottom.png); width: 100%; position: absolute; top: 41rem; content: ""; background-repeat: no-repeat; height: 21.4rem; z-index: -1; right: 0; left: 15rem; }
 .peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 99; position: relative; margin-top: -4rem; height: 56rem; overflow-y: auto; }
 /* ============  department placement  ================== */
 .department_placement .home_placement_top { display: block; }
@@ -823,7 +837,7 @@
 .resboxrgt .research_box { min-width: 20.2rem; text-align: center; max-width: 20.2rem; padding-block: 2.1rem 3.9rem; border: 0.1rem solid var(--color-C0); }
 .resboxrgt .research_box p { color: var(--color-white); }
 .resboxrgt .research_box:not(:first-child) { border-left: none; }
-.cse_research_main .cse_research_slider { margin-bottom: 10rem; padding-left: 28.5rem;}
+.cse_research_main .cse_research_slider { margin-bottom: 10rem; margin-left: 15rem;}
 .cse_research_slider .navigation_btn { position: relative; bottom: 0; right: 0; }
 .cse_research_slider .navigation_btn .swiper_next_custom,
 .cse_research_slider .navigation_btn .swiper_prev_custom { box-shadow: none; }
@@ -838,7 +852,7 @@
 .achivent_bgbox { background-color: var(--color-F4); padding-block: 9.3rem 7.2rem; }
 .achivent_bgbox .font24 { margin-bottom: 2rem; }
 .achivent_bgbox .title48 { color: var(--color-92); margin-bottom: 4rem; }
-.achivent_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; }
+.achivent_grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2rem; }
 .achivecard { position: relative; }
 .achivecard .achiv_caption { padding: 3rem 2rem 0 2rem; }
 .achivecard p { font: var(--font-18); font-weight: 600; line-height: 1.3; }
@@ -856,10 +870,11 @@
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
 .dep_projects .dep_project_grid .project_contentsec { padding-top: 3rem }
 .dep_projects { position: relative; }
-.dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; height: 100%; }
+.dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 1; top: 0; left: 0; height: 100%; }
 .dep_projects.reverse::after { right:0; left:unset; background-image: url(/images/research_shap_02.png); }
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
+.project_contentsec h3{font-weight: 600;}
 .project_contentsec .cus-btn { margin-top: 2rem; width: auto; height: auto; }
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
@@ -868,7 +883,14 @@
 /* ================= Department achievement page ================*/
 .achivment_innerpage { padding-block: 8rem; }
 /* ================= Department achievement page ================*/
+
+.department_clubs_section{position:relative;}
+.department_clubs_section .bg_image{position:absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.2; object-fit: cover;}
+
 /* ================= Department labs section ================*/
+
+
+
 .department_labs_section { border-bottom: .1rem solid #c0855280; }
 .department_labs_section .title48 { margin-bottom:3rem; }
 /* .department_labs_section .desc span { font:var(--font-16)!important; }
@@ -1103,7 +1125,7 @@
 .swiper_thumbox .thu_info .name { font: var(--font-18); color: #000; font-weight: 600; margin-top: 2rem; }
 .swiper_thumbox .thu_info .designation { font: var(--font-16); margin-top: 1rem; }
 .deparment_page_placemen .home_placement_static_card { margin-top: 0; background-color: var(--color-white); }
-.deparment_page_placemen .home_placement_static_card .top_placed { color: var(--color-64); padding-right: 14.1rem; }
+.deparment_page_placemen .home_placement_static_card .top_placed { color: var(--color-64); padding-right: 5rem; }
 .deparment_page_placemen .home_placement_static_card .slider_btns { gap: 0.3rem; }
 .deparment_page_placemen .home_placement_static_card .slider_btns  div { right: 0; }
 /* .ats_thumbsec .swiper-wrapper { gap: 5.6rem; }

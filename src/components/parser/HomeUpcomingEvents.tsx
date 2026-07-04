@@ -83,8 +83,9 @@ export default function HomeUpcomingEvents() {
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={events.newsAndEvents.length > 1}
-            slidesPerView={1}
+            slidesPerView={2}
             speed={800}
+            spaceBetween={20}
           >
             {events.mediaCoverage.map((event: MediaCoverageItem) => {
               const d = formatDateParts(event.date);
@@ -154,6 +155,7 @@ export default function HomeUpcomingEvents() {
             })}
           </ul>
         </div>
+
       </div>
     </>
   );

@@ -51,7 +51,7 @@ export default function DepartmentHomeActivities() {
       autoplay={false}
       breakpoints={{
         768: { slidesPerView: 2, spaceBetween: 15 },
-        1200: { slidesPerView: 3, spaceBetween: 30 },
+        1200: { slidesPerView: 4, spaceBetween: 30 },
       }}
       navigation={{
         nextEl: ".department_activities_next",

@@ -60,20 +60,8 @@ export default function DepartmentHomePlacements() {
   const canLoop = placementData.length > SLIDES_PER_VIEW;
 
   return (
-    <div className="home_placement_students deparment_page_placemen">
-      <div className="home_placement_static_card">
-        <div className="home_placement_top_bar" data-aos="fade-up" data-aos-delay="200"></div>
-        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="400">Top Placed GLBian</h4>
+      
 
-        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
-          <div className="swiper-button-prev prev_swiper_btn"></div>
-          <div className="swiper-button-next next_swiper_btn"></div>
-        </div>
-
-        <img src="/images/pattern/pattern1.png" className="pattern" alt="" />
-      </div>
-
-      <div className="right_slider">
         <Swiper
           className="home_placement_student_slider"
           modules={[Navigation]}
@@ -81,8 +69,8 @@ export default function DepartmentHomePlacements() {
           spaceBetween={27}
           loop={canLoop}
           navigation={canLoop ? {
-            nextEl: ".home_placement_static_card .next_swiper_btn",
-            prevEl: ".home_placement_static_card .prev_swiper_btn",
+            nextEl: ".deparment_page_placemen .next_swiper_btn",
+            prevEl: ".deparment_page_placemen .prev_swiper_btn",
           } : false}        
           breakpoints={{
           0: {
@@ -126,7 +114,5 @@ export default function DepartmentHomePlacements() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
-    </div>
   );
 }

@@ -396,6 +396,7 @@
 .inspiration_grid { display: grid; grid-template-columns: 49% auto; gap: 15.7rem; }
 .inspiration_section h3 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 7.2rem; }
 .inspiration_details { margin-top: 4rem; padding-top: 4rem; position: relative; display: flex; align-items: center; justify-content: space-between;}
+.inspiration_left .inspiration_details{ display: block;}
 .inspiration_details::before { background-color: #d2ab67; height: 1px; width: 50%; position: absolute; content: ""; top: 0; left: 0; }
 .inspiration_details h4 { font: var(--font-18); font-weight: 600; color: var(--color-black); margin-bottom: 1rem; }
 .inspiration_right { position: relative; }
@@ -672,6 +673,7 @@
 .sterco_accordion_content figure { margin: 0; }
 .sterco_accordion_content img { width: 100%; display: block; }
 .sterco_accordion_header { display: none; }
+.sterco_content_box a{ margin-top: 5rem;}
 /* =========================
    MOBILE
 ========================= */
@@ -838,6 +840,7 @@
 .resboxrgt .research_box p { color: var(--color-white); }
 .resboxrgt .research_box:not(:first-child) { border-left: none; }
 .cse_research_main .cse_research_slider { margin-bottom: 10rem; margin-left: 15rem;}
+.cse_research_main{ padding-bottom: 5rem;}
 .cse_research_slider .navigation_btn { position: relative; bottom: 0; right: 0; }
 .cse_research_slider .navigation_btn .swiper_next_custom,
 .cse_research_slider .navigation_btn .swiper_prev_custom { box-shadow: none; }
@@ -847,9 +850,10 @@
 .research_card .res_caption span { font: var(--font-17); color: var(--color-white); }
 .research_card .res_caption p { font: var(--font-24); color: var(--color-white); }
 .cse_research_main .resach_bgbox { position: relative; border-top: 1.1rem solid var(--color-FE); }
-.cse_research_main .resach_bgbox::before { content: ""; background-color: #1d1d1d; bottom: 0; left: 0; top: 0; width: 100%; position: absolute; z-index: -1; padding-bottom: 96rem; }
-.cse_research_main .resach_bgbox::after { background-image: url(/images/research_shap_01.png); width: 30.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; z-index: -1; height: 95.6rem; }
-.achivent_bgbox { background-color: var(--color-F4); padding-block: 9.3rem 7.2rem; }
+.cse_research_main .resach_bgbox::before { content: ""; background-color: #1d1d1d; bottom: 0; left: 0; top: 0; width: 100%; position: absolute; z-index: -1; padding-bottom: 87rem; }
+.cse_research_main .resach_bgbox::after { background-image: url(/images/research_shap_01.png); width: 30.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 9; top: 0; left: 0; z-index: -1; height: 87rem; }
+.achivent_bgbox { background-color: var(--color-F4); padding-block: 9.3rem 7.2rem;}
+.cabX_herobanner figure img{ width: 100%;}
 .achivent_bgbox .font24 { margin-bottom: 2rem; }
 .achivent_bgbox .title48 { color: var(--color-92); margin-bottom: 4rem; }
 .achivent_grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2rem; }
@@ -864,7 +868,6 @@
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
 .dep_clubs_card{display: grid; grid-template-columns: 40% auto; position:relative; gap: 15rem;}
-.dep_clubs_card .dep_club_contents{}
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
 .dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; }
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
@@ -879,18 +882,16 @@
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
+
 /* ============== CSE Department Code of Conduct page End============= */
+
 /* ================= Department achievement page ================*/
 .achivment_innerpage { padding-block: 8rem; }
 /* ================= Department achievement page ================*/
-
 .department_clubs_section{position:relative;}
 .department_clubs_section .bg_image{position:absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.2; object-fit: cover;}
 
 /* ================= Department labs section ================*/
-
-
-
 .department_labs_section { border-bottom: .1rem solid #c0855280; }
 .department_labs_section .title48 { margin-bottom:3rem; }
 /* .department_labs_section .desc span { font:var(--font-16)!important; }
@@ -1305,7 +1306,7 @@
 .aktu_grid .aktu_siwpr { position: relative; }
 .aktu_grid .aktu_siwpr .navigation_btn { position: absolute; bottom: -3rem; left: 2rem; z-index: 9; }
 .amatra_gym { padding-block: 12rem 10rem; border-bottom: 1px solid #c085524d; }
-.amatra_title { margin-bottom: 4.2rem; max-width: 69%; }
+.amatra_title { margin-bottom: 4.2rem; max-width: 100%; }
 .amatra_title h4 { height: 4rem; }
 .amatra_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .hostel_facilies .library_grid { grid-template-columns: 58% auto; }
@@ -1315,6 +1316,7 @@
 .mess_cafeteria { margin-bottom: 10rem; }
 .medicl_faci_tabse .tab_content .acc-body { margin-top: -25rem; }
 .medicl_faci_tabse .tab_content .acc-body::before { right: -1rem; }
+
 /* ============= Campus Facilities End============= */
 /* *************************Kundan Css Start******************* */
 /* ============================= Iqac Page Styling css =========== */
@@ -2360,3 +2362,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .bs_plbm_bx::before { content: ""; background-color: var(--color-FE); max-width: 69.3rem; height: 1.1rem; position: absolute; top: 0; width: 100%; }
 .bs_plbm_bx >h2 { margin-bottom: 4rem; }
 .career_empo_sec2 .row { margin: 0; }
+.ranking_section.center-of-excellence .auditorium_conf_grid{ margin-bottom: 0;}
+.ranking_section.center-of-excellence .auditorium_conf_left figure {
+    margin-top:0rem;
+}

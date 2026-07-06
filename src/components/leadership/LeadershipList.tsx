@@ -75,7 +75,7 @@ const AdministrationComponent = ({ data }: { data: any }) => {
 export default function LeadershipList({ data }: { data: any }) {
     return (
         <>
-            <MessageComponent data={data?.leadership} />
+            {/* <MessageComponent data={data?.leadership} /> */}
             <AdministrationComponent data={data?.administrator} />
         </>
     )

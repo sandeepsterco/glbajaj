@@ -986,6 +986,15 @@
 .accreditaion_media_grid ul{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-block: 3rem 5rem;}
 .accreditaion_media_grid ul li{ border: 1px solid #ddd;}
 .accreditations_section p{ font-weight: 600; margin-bottom: 4rem;}
+.accreditaion_media_wrapper { display: grid; grid-template-columns: 62% auto; gap: 5rem;}
+.accreditations_section .accreditaion_media_wrapper h4{ padding-right: 0;}
+.accreditaion_media_wrapper .accreditaion_media_grid ul { grid-template-columns: repeat(2, 1fr); margin-top: 7rem;}
+.accreditaion_media_wrapper .accreditaion_media_grid ul li img{ border: 1px solid #eee;}
+.accreditaion_media_wrapper .accreditaion_media_grid2 ul li img{ border: 1px solid #eee;}
+
+
+
+
 
 @media (max-width: 768px) {
  .careerTabsX_nav { display: none; }

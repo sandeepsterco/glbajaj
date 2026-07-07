@@ -1189,6 +1189,12 @@
 .tras_drive_con .team-members h3 img { display: inline; }
 .tras_drive_con .team-members h3 span { font: var(--font-16); color: var(--color-AE); }
 .admin_form .form-check .form-check-input { margin-right: 1rem; }
+.fac_mainpdf .grid{ grid-template-columns: repeat(2, 1fr); display: grid; gap: 5rem;}
+.fac_mainpdf .left>h5 { color: var(--color-92); font: var(--font-36); letter-spacing: -.18rem; margin-bottom: 3rem;}
+.fac_mainpdf .right>h5 { color: var(--color-92); font: var(--font-36); letter-spacing: -.18rem; margin-bottom: 3rem;}
+
+
+
 /* ================= MOBILE ACCORDION ================= */
 @media (max-width: 991px) {
  .transport-tabs .tabs { display: none; }

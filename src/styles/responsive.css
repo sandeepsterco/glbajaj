@@ -778,8 +778,10 @@
 .accreditaion_media_wrapper { grid-template-columns: 100%; }
 .accreditations_section { padding-block: 5rem 0; }
 .accreditations_section .accreditaion_media_wrapper h4{ font: var(--font-28);}
-
 .accreditations_section .accreditaion_media_wrapper2 h4{ font: var(--font-28);}
+.fac_mainpdf .grid{ grid-template-columns: repeat(1, 1fr); display: grid; gap: 5rem;}
+.fac_mainpdf .left>h5 { font: var(--font-28); letter-spacing: 0rem; margin-bottom: 2rem;}
+.fac_mainpdf .right>h5 { font: var(--font-28); letter-spacing: 0rem; margin-bottom: 2rem;}
 
 }
 
@@ -1225,6 +1227,8 @@
 .mentor-bx { padding: 2rem; }
 .supporting-btn{ padding: 1rem 2rem;}
 .about_menu_bar { top: 9rem; }
+.fac_mainpdf .left>h5 { font: var(--font-24); margin-bottom: 2rem;}
+.fac_mainpdf .right>h5 { font: var(--font-24); margin-bottom: 2rem;}
 
  }
 

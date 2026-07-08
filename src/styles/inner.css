@@ -597,8 +597,10 @@
 .library_img::after { background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; position: absolute; bottom: 0; left: 0; right: 0; height: 25.6rem; content: ""; }
 .library_img ul li { color: var(--color-white); border-right: 1px solid rgba(255, 255, 255, 0.5); padding-inline: 1.5rem; font: var(--font-16); padding-block: 2rem; }
 .library_img ul li:first-child { border-left: 1px solid rgba(255, 255, 255, 0.5); }
-.the_collection_grid { display: grid; grid-template-columns: 40% auto; gap: 1rem; position: relative; padding-block: 5rem 15rem; }
-.the_collection_grid::before { background-color: var(--color-F4); position: absolute; top: 0; bottom: 0; content: ""; width: 100%; z-index: -1; right: 15rem; }
+.the_collection_grid { display: grid; grid-template-columns: 40% auto; gap: 1rem; position: relative; }
+.mess_cafeteria .outer{position:relative; padding-block: 5rem 8rem;}
+.mess_cafeteria .outer::before { background-color: var(--color-F4); position: absolute; top: 0; bottom: 0; content: ""; width: 100%; z-index: -1; right: 15rem; }
+.mess_cafeteria .outer .bottom_description{padding-right: 17rem;}
 .collection_section .row { margin: 0; }
 .about_right img { width: 100%; }
 .collection_cnt { padding-right: 12rem; }

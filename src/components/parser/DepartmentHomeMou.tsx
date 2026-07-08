@@ -150,13 +150,14 @@ export default function DepartmentHomeMou() {
           >
             {images.map((imgObj, i) => (
               <SwiperSlide key={i}>
-                <figure>
+                <figure className="flash-effect media_grid_Bx3">
                   <Image
                     src={imgObj.images}
                     alt={`${activeItem.title} image ${i + 1}`}
                     className="w-100 img-fluid"
                     width={850}
                     height={600}
+                    loading="lazy"
                   data-aos="fade-up" data-aos-delay="600"/>
                 </figure>
               </SwiperSlide>

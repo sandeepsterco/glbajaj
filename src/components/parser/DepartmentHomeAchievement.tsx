@@ -33,7 +33,7 @@ export default function DepartmentHomeAchievement() {
         <div key={idx} className="achivecard">
           <figure><Image src={item?.image} alt={item.title} className="img-fluid w-100" width="600" height="443" loading="lazy" data-aos="fade-up" data-aos-delay="200" /></figure>
           <div className="achiv_caption">
-            <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
+            <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{__html:item.title}} />
           </div>
           <Link className="strech_link" href={`${BASE_URL}achievements/${item.slug}`} ></Link>
         </div>

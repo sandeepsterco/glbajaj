@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function RelatedStories({data}:{data:any}){
     return(
-        <section className="related_stories" id="happenings">
+        <section className="related_stories" id="news-announcement">
             <div className="container25">
-                <h2>News & Events</h2>
+                <h2>News & Announcement</h2>
                 <div className="related_story_grid">
                     {data.map((item:any, idx:number)=>(
                         <div key={idx} className="related_stroty_Bx">

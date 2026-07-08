@@ -22,7 +22,7 @@ export default async function DepartmentAboutPage() {
                                         <Image src={item?.image ?? '/images/default/department-project.webp'} alt={item?.title ?? 'Department Achievement'} width={600} height={443} loading="lazy" /></figure>
                                     {item?.title && (
                                         <div className="achiv_caption">
-                                            <p>{item?.title}</p>
+                                            <p dangerouslySetInnerHTML={{ __html: item?.title }} />
                                         </div>
                                     )}
 

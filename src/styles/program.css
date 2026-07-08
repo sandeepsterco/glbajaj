@@ -335,7 +335,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
 .award-detail-text1 figure { max-width: 60rem; }
 .award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
-.award-detail-text1 ul.insta_icons li a { margin-top: 2.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 1.5rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
+.award-detail-text1 ul.insta_icons li a { margin-top: 3.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 0rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
 .award-detail-text1 ul.insta_icons li a img { width: 3rem; display: inline; }
 .award-detail-text1 { padding: 1rem 14rem; }
 .award-detail-text1 figure { margin-top: 3rem; }

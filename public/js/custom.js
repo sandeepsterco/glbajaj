@@ -509,8 +509,8 @@
     });
 
     createSwiper(".courses_slider_wrapper", {
-      slidesPerView: 7,
-      spaceBetween: 20,
+      slidesPerView: 6,
+      spaceBetween: 0,
       loop: true,
 
       autoplay: {
@@ -526,32 +526,32 @@
       breakpoints: {
         0: {
           slidesPerView: 2.5,
-          spaceBetween: 10,
+          spaceBetween: 0,
         },
 
         480: {
           slidesPerView: 3.5,
-          spaceBetween: 12,
+          spaceBetween: 0,
         },
 
         768: {
           slidesPerView: 4.3,
-          spaceBetween: 15,
+          spaceBetween: 0,
         },
 
         992: {
           slidesPerView: 5,
-          spaceBetween: 18,
+          spaceBetween: 0,
         },
 
         1200: {
           slidesPerView: 6,
-          spaceBetween: 20,
+          spaceBetween: 0,
         },
 
         1400: {
-          slidesPerView: 7,
-          spaceBetween: 20,
+          slidesPerView: 6,
+          spaceBetween:0,
         },
       },
     });

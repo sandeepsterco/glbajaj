@@ -310,6 +310,7 @@
 .media_grid_Bx2 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; }
 .media_grid_Bx2 a{ margin-top: -3rem;}
+.media_grid_Bx3{ padding: 2rem 2rem; background:#ebebeb;}
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -761,12 +762,13 @@
 .hod_profile { position: relative; }
 .cse_vision .vision_grid { grid-template-columns: 60% auto; }
 .depat_vision .vision_grid_bx { margin-bottom: 3rem; }
-.cse_vision .hod_profile_bx { background: linear-gradient(#fff 60%, #643c24  0%); padding: 0; }
-.cse_vision .hod_profile_bx  .hod_info { padding: 2rem; }
-.cse_vision .hod_profile_bx  .hod_info h4 { color: var(--color-white); margin-top: 0; }
+.cse_vision .hod_profile_bx { background: linear-gradient(#fff 60%, #643c24  0%); padding: 0; background:transparent;}
+.cse_vision .hod_profile_bx  .hod_info { padding: 2rem; margin-top: 3rem;}
+.cse_vision .hod_profile_bx  .hod_info h4 { color: var(--color-white); margin-top: 0; color: var(--color-64); font: var(--font-22); font-weight: bold;}
 .cse_vision .hod_profile_bx  .hod_info p,
-.cse_vision .hod_profile_bx  .hod_info a { color: var(--color-white); }
-.cse_vision .hod_profile_bx  .hod_info a img{    filter: brightness(0) invert();}
+.cse_vision .hod_profile_bx  .hod_info a {}
+/* .cse_vision .hod_profile_bx  .hod_info a img{    filter: brightness(0) invert();} */
+.cse_vision .hod_profile_bx:before{bottom: 18.5rem;}
 /* .hod_profile::before { background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.4rem; position: absolute; right: -26rem; bottom: 1rem; content: ""; background-repeat: no-repeat; z-index: 1; }
 */
 /* ============== CSE Department Code of Conduct page Start============= */
@@ -860,8 +862,8 @@
 .achivent_bgbox .title48 { color: var(--color-92); margin-bottom: 4rem; }
 .achivent_grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2rem; }
 .achivecard { position: relative; }
-.achivecard .achiv_caption { padding: 3rem 2rem 0 2rem; }
-.achivecard p { font: var(--font-18); font-weight: 600; line-height: 1.3; }
+.achivecard .achiv_caption { padding: 3rem 2rem; background: #efefef;}
+.achivecard p { font: var(--font-20); font-weight: 600; line-height: 1.3; color: var(--color-64); min-height: 5rem;}
 .activites_sec .activies_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; }
 .activites_sec { padding-block: 10rem 11rem; }
 .activites_sec .font24 { margin-bottom: 2rem; }
@@ -869,7 +871,11 @@
 .activites_sec .navigation_btn { bottom: unset; position: relative; right: unset; left: 1rem; }
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
+.activies_col .activities_caption p{font: var(--font-22); font-weight: 500; line-height: 2.4rem;}
 .dep_clubs_card{display: grid; grid-template-columns: 40% auto; position:relative; gap: 15rem;}
+.dep_clubs_card .font36{margin-bottom: 5rem;}
+.dep_club_contents .content,
+.dep_club_contents .content p{font: var(--font-20); font-weight: 500; line-height: 3.5rem;} 
 .dep_projects { padding-block: 17.5rem 17.1rem; background-color: var(--color-F4); }
 .dep_projects .dep_project_grid { display: grid; grid-template-columns: 57% 32.9%; gap: 15rem; }
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
@@ -892,6 +898,7 @@
 /* ================= Department achievement page ================*/
 .department_clubs_section{position:relative;}
 .department_clubs_section .bg_image{position:absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.2; object-fit: cover;}
+.department_clubs_section .title48{margin-bottom: 5rem;}
 
 /* ================= Department labs section ================*/
 .department_labs_section { border-bottom: .1rem solid #c0855280; }
@@ -1587,6 +1594,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .robotics-lab-grid-img figure:nth-of-type(2) { padding-inline: 10.4rem 2.5rem; margin-top: 2.8rem; }
 .innovation-incubation { padding-block: 10.3rem 6rem; background-color: var(--color-F4); }
 .innovation-incubation h3 { margin-block: 4rem; font: var(--font-36); letter-spacing: -1.8px; color: var(--color-92); }
+.main-container.innovation-incubation{padding:0;}
 .big-img { margin-block: 5rem 6rem; }
 .innovation-incubation-grid1 { display: grid; grid-template-columns: 35% auto; padding-left: 25.1rem; gap: 11rem; }
 .innovation-incubation-Cnt p { padding-right: 2rem; }
@@ -1719,6 +1727,12 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .al_ob_contentsec h4 { color: var(--color-white); margin-bottom: 4rem; font-weight: bold; }
 .al_ob_contentsec h3 { margin-bottom: 4rem; color: var(--color-white); }
 .al_ob_contentsec li { color: var(--color-white); margin-bottom: 2.5rem; }
+.alumni_obgrid .qr_code h4{margin-bottom: 2rem; color:var(--color-white)}
+.alumni_obgrid .qr_code h5{font: var(--font-18); margin-bottom: 1.5rem; color:var(--color-white)}
+.alumni_obgrid .qr_code p{font: var(--font-12); line-height: 2rem; color:var(--color-white)}
+.alumni_obgrid .qr_code img{max-width: 25rem; margin-bottom: 1.5rem;}
+
+
 .alumni_our_tem { padding-block: 12rem 16.4rem; }
 .alumni_our_tem .teamX_titlesec { margin-bottom: 9rem; }
 .alumni_committe_member.team-members-sec { margin-top: 0; border-bottom: none; border-top: 0.1rem solid #e3ccb9; padding-block: 12rem 13rem; }
@@ -1832,11 +1846,13 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni-achivement-grid { display: grid; grid-template-columns: 61.8% auto; overflow: hidden;}
 .alumni-achivement-cnt { padding-right: 15.7rem; }
 .alumni-achivement h3 { margin-block: 4rem 5rem; }
+.alumni-achivement-cnt .designation{margin-bottom: 3rem; color: var(--color-64); font:var(--font-24); font-weight: 600;} 
 .alumni-achivement-cnt blockquote,
 .alumni-achivement-cnt blockquote p { font: var(--font-30); margin-bottom: 5rem; }
 .alumni-achivement-cnt figure { margin-top: 5rem; }
 .alumni-achivement-img { position: relative; padding-bottom: 2rem; padding-right: 3rem;}
-.alumni-achivement-img::after { position: absolute; content: ""; width: 100%; height: 100%; background-color: var(--color-AE); right: -3rem; bottom: -3rem; z-index: -1; }
+.alumni-achivement-img .image_col{position:relative;}
+.alumni-achivement-img .image_col::after { position: absolute; content: ""; width: 100%; height: 100%; background-color: var(--color-AE); right: -3rem; bottom: -3rem; z-index: -1; }
 .alumni-achivement .navigation_btn{position: relative; right: unset; bottom: unset;}
 .distinguished-alumni { padding-block: 10rem; background-color: var(--color-F4); }
 .distinguished-alumni h2 { margin-bottom: 8.6rem; }
@@ -2143,7 +2159,15 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .tabs_section .tab-btn:after { filter: brightness(0) invert(1); }
 .innovation_tabs .tab_content .acc-body::before { background-color: transparent; }
 .innovation_tabs .sterco_tab_main::after { background-image: url(/images/state-of-art.webp); position: absolute; top: 42.1rem; content: ""; background-repeat: no-repeat; height: 8.5rem; z-index: 9; right: 0; left: 18rem; background-color:#fafafa; }
-.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 10; position: relative; margin-top: -4rem; }
+.peo_rgt_box { background-color: var(--color-white); padding: 8.8rem 12.5rem 8.8rem 10rem; z-index: 10; position: relative; margin-top: -4rem; 
+
+}
+
+.peo_rgt_box::-webkit-scrollbar { width: 6px; }
+.peo_rgt_box::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }
+.peo_rgt_box::-webkit-scrollbar-thumb { background: #8f5b3d; border-radius: 4px; }
+.peo_rgt_box::-webkit-scrollbar-thumb:hover { background: #936245; }
+
 .innovation_event { padding-block: 10rem 5rem; }
 .innovation_event_grid { display: grid; grid-template-columns: 38.5% auto; gap: 15rem; padding: 10rem 0rem; background-color: var(--color-F4); position: relative; justify-content: space-between; }
 .innovation_event_grid::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }

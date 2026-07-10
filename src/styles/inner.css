@@ -891,6 +891,7 @@
 .dep_succ_sto .home_testimonials .desc { font: var(--font-30); line-height: 4.2rem; }
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
+.second_order { order: 2;}
 
 /* ============== CSE Department Code of Conduct page End============= */
 

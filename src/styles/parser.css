@@ -74,10 +74,14 @@
 .home_placement_static_card { /* background: var(--color-64); */
   /* width: 60rem; */
   /* height: 42.5rem; margin-top: 6rem; */
-   position: relative;  background-color: var(--color-white); }
+   position: relative;  background-color: var(--color-white);}
+
+   .home_placement_section .home_placement_students .home_placement_static_card{ margin-bottom: 7rem;}
+   .home_research_incubation_section .home_placement_students .home_placement_static_card{ margin-bottom: 0rem;}
+
 .right_slider h4 { font: var(--font-24); font-weight: 700; color: var(--color-64); margin-bottom: 3rem; }
 .home_placement_top_bar { height: 1.1rem; background: #fece49; position: absolute; top: 0; left: 0; width: 25rem; }
-.home_placement_static_card .top_placed { font: var(--font-30); color: var(--color-64); font-weight: bold; text-align: center; margin: 3rem 0 6.5rem; padding-right: 5rem; }
+.home_placement_static_card .top_placed { font: var(--font-30); color: var(--color-64); font-weight: bold; text-align: center; margin: 4rem 0 2rem; padding-right: 5rem; }
 .home_placement_static_card>img.pattern { position: absolute; bottom: 0; }
 .home_placement_static_card .slider_btns { position: absolute; display: flex; gap: 1.3rem; justify-content: center; left: 49%; bottom: 4.3rem;top: auto; transform: translateX(-50%); z-index: 1; }
 .recruiters { padding: 2rem; text-align: center; }

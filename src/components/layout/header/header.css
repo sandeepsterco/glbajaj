@@ -110,7 +110,7 @@
 }
 
 
-.hmburger_col .title24 { color: var(--color-D2); margin-bottom: 5.1rem; min-height: 5rem;}
+.hmburger_col .title24 { color: var(--color-D2); margin-bottom: 4rem; min-height: 5rem;}
 .hmburger_col.happenings_col ul+.title24,
 .hmburger_col.facilities_col ul+.title24 { margin-top: 5.9rem; }
 .hmburger_col ul li { margin-bottom: 1.2rem; }

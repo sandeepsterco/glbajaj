@@ -200,7 +200,7 @@ h4 { font: var(--font-24); color: var(--color-black); }
 h5 { font: var(--font-21); color: var(--color-black); }
 h6 { font: var(--font-18); color: var(--color-black); }
 .title60 { font: var(--font-60); color: var(--color-0b); }
-.title48 { font: var(--font-48); color: var(--color-0b); position:relative; }
+.title48 { font: var(--font-48); color: var(--color-0b); position:relative; line-height: 1.1; }
 .title42 { font: var(--font-42); letter-spacing: 0.084rem; color: var(--color-black); }
 .title32 { font: var(--font-32); font-weight: 300; color: var(--color-black); }
 .title36 { font: var(--font-36); }
@@ -224,7 +224,6 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .custom_bullet li::before { width: 0.6rem; height: 0.6rem; background-color: var(--color-D2); position: absolute; left: 0; top: 1rem; content: ""; border-radius: 1rem; }
 /* override tailwind css */
 .title60 { font: var(--font-60); color: var(--color-0b); }
-.title48 { font: var(--font-48); color: var(--color-0b); }
 .title42 { font: var(--font-42); letter-spacing: 0.084rem; color: var(--color-black); }
 .title32 { font: var(--font-32); font-weight: 300; color: var(--color-black); }
 .title36 { font: var(--font-36); }

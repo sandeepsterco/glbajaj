@@ -872,7 +872,7 @@
 .activites_sec .navigation_btn { bottom: unset; position: relative; right: unset; left: 1rem; }
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
-.activies_col .activities_caption p{font: var(--font-22); font-weight: 500; line-height: 2.4rem;}
+.activies_col .activities_caption p{font: var(--font-22); font-weight: 500; line-height: 1.5;}
 .dep_clubs_card{display: grid; grid-template-columns: 40% auto; position:relative; gap: 15rem;}
 .dep_clubs_card .font36{margin-bottom: 5rem;}
 .dep_club_contents .content,
@@ -2259,7 +2259,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .how-it-works-sec .inner-iqac-function-Cnt h4 { color: var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 4rem; font-weight: normal; }
 .how-it-works-sec .inner-iqac-function-Cnt p { font: var(--font-16); }
 .how-it-works-sec .inner-iqac-function-Cnt p:first-of-type { font: var(--font-16); }
-.how-it-works-sec .inner-iqac-function-grid .inner-iqac-function-Cnt { margin-top: 5rem; padding-right: 5rem; }
+.how-it-works-sec .inner-iqac-function-grid .inner-iqac-function-Cnt { margin-top: 0rem; padding-right: 3rem; }
 .how-it-works-sec .inner-iqac-function-grid .inner-iqac-function-img { position: relative; z-index: 1; }
 .value-education-sec2.how-it-works-sec .inner-iqac-function { padding-block: 10rem 0rem; }
 .how-it-works-sec .bottom_content { padding-block: 10rem; background-color: #F4F7F4; }
@@ -2408,3 +2408,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .ranking_section.center-of-excellence .auditorium_conf_left figure {
     margin-top:0rem;
 }
+.detail_section ul.custom_bullet{ padding-bottom: 4rem;}
+.detail_section ul.custom_bullet:last-child{ padding-bottom: 0;}
+.custom_bullet li{ position: relative;}
+.custom_bullet li:before{ background-color: var(--color-31); height: 0.7rem; width: 0.7rem; position: absolute; content: ""; left: 0; top: 1.1rem;}
+.code-space-obj ul{ padding-bottom: 4rem;}
+.code-space-obj h3{ margin-bottom: 2rem;}

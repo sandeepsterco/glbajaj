@@ -763,7 +763,7 @@
 .cse_vision .vision_grid { grid-template-columns: 60% auto; }
 .depat_vision .vision_grid_bx { margin-bottom: 3rem; }
 .cse_vision .hod_profile_bx { background: linear-gradient(#fff 60%, #643c24  0%); padding: 0; background:transparent;}
-.cse_vision .hod_profile_bx  .hod_info { padding: 2rem; margin-top: 3rem;}
+.cse_vision .hod_profile_bx  .hod_info { padding: 2rem; margin-top: 3rem; min-height: 18rem;}
 .cse_vision .hod_profile_bx  .hod_info h4 { color: var(--color-white); margin-top: 0; color: var(--color-64); font: var(--font-22); font-weight: bold;}
 .cse_vision .hod_profile_bx  .hod_info p,
 .cse_vision .hod_profile_bx  .hod_info a {}
@@ -830,6 +830,7 @@
 .lab_rgtswiper h4 { color: var(--color-64); margin-top: 2rem; }
 .lab_lftsec .title48 { margin-bottom: 5rem; line-height: 4.8rem; color: var(--color-92); }
 .lab_lftsec .font24 { margin-bottom: 1rem; }
+.proj_imgsec figure img{ width: 100%;}
 /* .lab_lftsec p { font: var(--font-21); }
 */
 .lab_rgtswiper { position: relative; }

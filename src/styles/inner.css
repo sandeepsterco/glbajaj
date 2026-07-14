@@ -863,8 +863,8 @@
 .achivent_bgbox .title48 { color: var(--color-92); margin-bottom: 4rem; }
 .achivent_grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2rem; }
 .achivecard { position: relative; }
-.achivecard .achiv_caption { padding: 3rem 2rem; background: #efefef;}
-.achivecard p { font: var(--font-20); font-weight: 600; line-height: 1.3; color: var(--color-64); min-height: 5rem;}
+.achivecard .achiv_caption { padding: 3rem 2rem; background: var(--color-92);}
+.achivecard p { font: var(--font-20); font-weight: 600; line-height: 1.3; color: var(--color-white); min-height: 5rem;}
 .activites_sec .activies_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; }
 .activites_sec { padding-block: 10rem 11rem; }
 .activites_sec .font24 { margin-bottom: 2rem; }
@@ -872,7 +872,7 @@
 .activites_sec .navigation_btn { bottom: unset; position: relative; right: unset; left: 1rem; }
 .activies_col { position: relative; }
 .activies_col p { padding-top: 1.3rem; }
-.activies_col .activities_caption p{font: var(--font-22); font-weight: 500; line-height: 1.5;}
+.activies_col .activities_caption p{font: var(--font-22); font-weight: 600; line-height: 2.5rem; color:var(--color-64);}
 .dep_clubs_card{display: grid; grid-template-columns: 40% auto; position:relative; gap: 15rem;}
 .dep_clubs_card .font36{margin-bottom: 5rem;}
 .dep_club_contents .content,

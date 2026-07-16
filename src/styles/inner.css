@@ -254,6 +254,7 @@
 .news_pagination{margin-bottom: 5rem;}
 /* ==============news details page Start============= */
 .news_details { padding-block: 10rem; }
+.news_details h4{ margin-block:3rem 1rem; font-weight: 500;}
 .newst_details_header { display: flex; align-items: center; }
 .newst_details_header date,
 .newst_details_header .date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom:0; }
@@ -863,8 +864,8 @@
 .achivent_bgbox .title48 { color: var(--color-92); margin-bottom: 4rem; }
 .achivent_grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2rem; }
 .achivecard { position: relative; }
-.achivecard .achiv_caption { padding: 3rem 2rem; background: var(--color-92);}
-.achivecard p { font: var(--font-20); font-weight: 600; line-height: 1.3; color: var(--color-white); min-height: 5rem;}
+.achivecard .achiv_caption { padding: 3rem 2rem; background: var(--color-white);}
+.achivecard p { font: var(--font-20); font-weight: 600; line-height: 1.3; color: var(--color-black); min-height: 5rem;}
 .activites_sec .activies_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.1rem; }
 .activites_sec { padding-block: 10rem 11rem; }
 .activites_sec .font24 { margin-bottom: 2rem; }
@@ -1433,7 +1434,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .iqac-function { margin-block: 10rem 10.3rem; }
 .iqac-function .inner-iqac-function { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 14.5rem; position: relative; }
 .inner-iqac-function-grid { display: grid; grid-template-columns: 60% 40%; }
-.inner-iqac-function-grid .inner-iqac-function-img { padding-right: 15rem; margin-left: -23rem; }
+.inner-iqac-function-grid .inner-iqac-function-img { padding-right: 11rem; margin-left: -23rem; }
 .custome_list li { list-style-type: disc; margin-bottom: 2rem; }
 .custome_list li::marker { color: var(--color-D2); }
 .inner-iqac-function-Cnt h2 { margin-bottom: 4rem; }
@@ -1565,7 +1566,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .lounch-event-Cnt { padding-right: 2rem; }
 .excellence-center-sec2 .inner-iqac-function-Cnt P:nth-of-type(1) span { font-weight: 700; }
 .excellence-center-sec2 .inner-iqac-function-Cnt P:nth-of-type(1) { font: var(--font-16); }
-.excellence-center-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 5.5rem; }
+.excellence-center-sec2 .inner-iqac-function-grid .inner-iqac-function-Cnt { padding-right: 0rem; }
 .excellence-center-sec2.iqac-function .inner-iqac-function::after { z-index: -1; content: ""; position: absolute; background: url(/images/pattern/nvidia-design.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
 .excellence-sec3 .blanket-text { padding: 0rem 8rem 0 0rem; }
 .excellence-sec3 .blanket-list { grid-template-columns: 33.33% 33.33% 33.33%; gap: 0; }
@@ -2059,6 +2060,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 
 .clubs_table .table-wrapper { box-shadow: none;}
 .objective_clubs { padding-right: 7.8rem; }
+.objective_clubs ul{ padding-bottom: 3rem;}
 .clubs_table { padding-left: 3rem; }
 .objective_clubs h4 { margin-bottom: 4rem; }
 .navrang_club_section { padding:5rem 11.6rem ; }
@@ -2196,7 +2198,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .institute_faq_section .tp_accbox .accordion-body { background: transparent; }
 .institute_faq_section .tp_accbox  .accordion-item.active .accordion-body { padding:0 0 3.8rem 0; }
 .institute_faq_section .tp_accbox .accordion-header { padding:1.5rem 0; border-top: 0.1rem solid #E1E1E1; }
-.institute_faq_section .tp_accbox .accordion-header h3 { font-weight: 500; }
+.institute_faq_section .tp_accbox .accordion-header h3 { font-weight: 500; margin-block: 0;  font: var(--font-30);}
 .institute_faq_section .tp_accbox .accordion-header .icon { color: #c49a4a; border: 1px solid #c49a4a26; padding: .8rem 1.4rem; font-size: 2.3rem; width: 5.2rem; display: grid; align-items: center; justify-content: center; }
 .horizontal_tab .xtabs_nav .xtab_btn { margin-right: 3rem; cursor: pointer; font-weight: 500; padding-bottom: 4.3rem; }
 .horizontal_tab .xtabs_nav .xtab_btn.active { border-bottom: 0.3rem solid var(--color-92); font-weight: 600; }

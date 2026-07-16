@@ -7,7 +7,7 @@ export default function AchievementDetail({data}:{data:any}) {
             <div className="container25">
                 <div className="award-detail-heading">
                     {data?.data?.title && (
-                        <h4>{data.data.title}</h4>
+                        <h4 dangerouslySetInnerHTML={{__html:data.data.title}} />
                     )}
                 </div>
             </div>

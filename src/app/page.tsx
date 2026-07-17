@@ -21,11 +21,11 @@ export async function generateMetadata() {
 export default async function Home() {
   const { seoData, homeData } = await getHomeData();
 
-  if (!homeData?.modular && !homeData?.cms) {
-    return <div className="min-h-[100vh] flex items-center justify-center">
-      <h1 className="md:!text-[5rem] !text-[2rem] md:!font-bold !font-normal">Something wrong...</h1>
-    </div>
-  }
+  // if (!homeData?.modular && !homeData?.cms) {
+  //   return <div className="min-h-[100vh] flex items-center justify-center">
+  //     <h1 className="md:!text-[5rem] !text-[2rem] md:!font-bold !font-normal">Something wrong...</h1>
+  //   </div>
+  // }
 
   return (
     <>

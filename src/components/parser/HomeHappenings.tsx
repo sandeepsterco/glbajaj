@@ -52,13 +52,13 @@ export default function HomeHappenings() {
           <div className="content" >
               <div className="bottom_data">
                 {item?.date && (
-                  <p className="date" data-aos="fade-up" data-aos-delay="200">{item.date}</p>
+                  <p className="date" data-aos="fade-up" data-aos-delay="200" style={{color:item?.font_color}}>{item.date}</p>
                 )}
                 {item?.description && (
-                  <p className="desc">{item.description}</p>
+                  <p className="desc" style={{color:item?.font_color}}>{item.description}</p>
                 )}
                 {item?.subtitle && (
-                  <h4 className="sub_title">{item.subtitle}</h4>
+                  <h4 className="sub_title" style={{color:item?.font_color}}>{item.subtitle}</h4>
                 )}
               </div>
           </div>

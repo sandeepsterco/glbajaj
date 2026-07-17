@@ -377,9 +377,9 @@
 .single_grid .content { position: absolute; bottom: 4rem; left: 5rem; right: 4.1rem; z-index: 2; min-height: 6rem; }
 .single_grid .content .bottom_data .date { color: var(--color-white); font-weight: 600; visibility: hidden;}
 .single_grid .content .bottom_data .desc { color: var(--color-white); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
-.single_grid.no_image:nth-child(1) { background-color: #AE7F2C; }
-.single_grid.no_image:nth-child(3) { background-color: var(--color-92); }
-.single_grid.no_image:nth-child(5) { background-color: var(--color-FE); }
+/* .single_grid.no_image:nth-child(1) { background-color: #AE7F2C; } */
+/* .single_grid.no_image:nth-child(3) { background-color: var(--color-92); } */
+/* .single_grid.no_image:nth-child(5) { background-color: var(--color-FE); } */
 .single_grid.no_image:nth-child(5) .content .bottom_data .date,
 .single_grid.no_image:nth-child(5) .content .bottom_data .sub_title { color: var(--color-black); }
 .single_grid.no_image .content { height: 100%; position: relative; left: 0; bottom: 0; right: 0; padding: 5.9rem 7.8rem 5.4rem 5rem; }
@@ -387,9 +387,9 @@
 .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-30); color: var(--color-white); }
 .single_grid figure { position: relative; }
 .single_grid figure::before { content: ""; position: absolute; inset: 0; background: transparent linear-gradient(180deg, #00000000 0%, #000000 100%) 0% 0% no-repeat padding-box; z-index: 2; height: 20.6rem; opacity: 0.8; bottom: 0; top: auto; }
-.single_grid:nth-child(2) { background: #AE7F2C; }
-.single_grid:nth-child(3) { background: var(--color-FE); }
-.single_grid:nth-child(8) { background: #fece49; }
+/* .single_grid:nth-child(2) { background: #AE7F2C; } */
+/* .single_grid:nth-child(3) { background: var(--color-FE); } */
+/* .single_grid:nth-child(8) { background: #fece49; } */
 /* .single_grid:nth-child(8) .bottom_data .date { color: var(--color-black); }
 */
 .single_grid.no_image:nth-child(8) .content .bottom_data .sub_title { color: var(--color-black); max-width: 80%; }

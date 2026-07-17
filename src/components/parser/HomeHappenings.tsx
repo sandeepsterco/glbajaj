@@ -42,7 +42,7 @@ export default function HomeHappenings() {
   return (
     <div className="grid_data">
       {updatedData && updatedData.length > 0 && updatedData.map((item:any, singleIdx:number)=>(
-        <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`} data-aos="fade-up" data-aos-delay="200">
+        <div key={singleIdx} className={`single_grid ${!item?.image && item?.image=="" ? 'no_image' : ''}`} data-aos="fade-up" data-aos-delay="200" style={{backgroundColor:item?.bg_color ?? ''}}>
           {item?.image && (
             <figure>
               <Image src={item.image} alt="happening image" className="img-fluid w-100 " width={636} height={443} loading="lazy" data-aos="fade-up" data-aos-delay="200"/>

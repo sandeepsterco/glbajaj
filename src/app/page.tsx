@@ -12,7 +12,7 @@ const getHomeData = cache(async () => {
   ]);
   return { seoData, homeData: homeRes.data.data };
 });
-
+    
 export async function generateMetadata() {
   const { seoData } = await getHomeData();
   return seoData;

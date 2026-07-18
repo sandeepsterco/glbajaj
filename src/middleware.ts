@@ -48,11 +48,11 @@ function buildCsp(nonce: string, isDev: boolean): string {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isDev = process.env.NODE_ENV === 'development';
-  const nonce = crypto.randomUUID();
-  const cspHeader = buildCsp(nonce, isDev);
 
-  // Redirect /department/:slug/home -> /department/:slug
+  // const isDev = process.env.NODE_ENV === 'development';
+  // const nonce = crypto.randomUUID();
+  // const cspHeader = buildCsp(nonce, isDev);
+
   const match = pathname.match(/^\/department\/([^/]+)\/home$/);
   if (match) {
     const slug = match[1];
@@ -63,14 +63,18 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-pathname', pathname);
-  requestHeaders.set('x-nonce', nonce);
-  requestHeaders.set('Content-Security-Policy', cspHeader);
+
+  // Enable these in production
+  // requestHeaders.set('x-nonce', nonce);
+  // requestHeaders.set('Content-Security-Policy', cspHeader);
 
   const response = NextResponse.next({
     request: { headers: requestHeaders },
   });
 
-  response.headers.set('Content-Security-Policy', cspHeader);
+  // Enable these in production
+  // response.headers.set('Content-Security-Policy', cspHeader);
+
   response.headers.set('x-pathname', pathname);
 
   return response;

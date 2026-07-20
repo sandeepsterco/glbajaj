@@ -897,7 +897,9 @@
 /* ============== CSE Department Code of Conduct page End============= */
 
 /* ================= Department achievement page ================*/
+
 .achivment_innerpage { padding-block: 8rem; }
+
 /* ================= Department achievement page ================*/
 .department_clubs_section{position:relative;}
 .department_clubs_section .bg_image{position:absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.2; object-fit: cover;}

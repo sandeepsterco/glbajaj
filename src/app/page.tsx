@@ -5,14 +5,14 @@ import { cache, Suspense } from "react";
 import { SkeletonGroup } from "../components/ui/Skeleton";
 import HomeContent from "./HomeContent";
 
-const getHomeData = cache(async () => {
+const getHomeData = async () => {
   const [seoData, homeRes] = await Promise.all([
     getPageSEO(),
     apiFetch("modular/home", { revalidate: 300 }),
   ]);
   return { seoData, homeData: homeRes.data.data };
-});
-
+};
+    
 export async function generateMetadata() {
   const { seoData } = await getHomeData();
   return seoData;

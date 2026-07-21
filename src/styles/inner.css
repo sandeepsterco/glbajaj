@@ -357,6 +357,8 @@
 .gallery_tab .cursor-pointer img { max-width: 2rem; min-width: 1.5rem; }
 .gallery_tab span:first-child,
 .gallery_tab button:first-child { margin-right: -0.1rem; }
+.news_details_cnt h2{ margin-bottom: 3rem;}
+.news_details_cnt h5{ margin-bottom: 3rem;}
 /* ==============HOD's Message page Start============= */
 .hod_section { padding-block: 8.2rem 11.6rem; }
 .hod_grid { display: grid; grid-template-columns: 54% auto; gap: 8.6rem; align-items: flex-start; }

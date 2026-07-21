@@ -206,7 +206,7 @@ h6 { font: var(--font-18); color: var(--color-black); }
 .title36 { font: var(--font-36); }
 .title30 { font-size: 3em; line-height: 4.2rem; color: var(--color-33); text-align: left; font-family: var(--font-tasa); }
 .title28 { font: var(--font-28); font-weight: 500; color: var(--color-black); }
-.title24 { font-size: 2.4rem; line-height: 2.6rem; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
+.title24 { font-size: 2.4rem; line-height:1.4; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
 .title18 { font: var(--font-18); font-family: var(--font-tasa); font-weight: bold; color: var(--color-black); }
 .font24 { font-size: 2.4rem; line-height: 2.6rem; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
 .font36 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; font-weight: 400; }
@@ -229,7 +229,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .title36 { font: var(--font-36); }
 .title30 { font-size: 3em; line-height: 4.2rem; color: var(--color-33); text-align: left; font-family: var(--font-tasa); }
 .title28 { font: var(--font-28); font-weight: 500; color: var(--color-black); }
-.title24 { font-size: 2.4rem; line-height: 2.6rem; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
+.title24 { font-size: 2.4rem; line-height: 1.4; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
 .title18 { font: var(--font-18); font-family: var(--font-tasa); font-weight: bold; color: var(--color-black); }
 .font24 { font-size: 2.4rem; line-height: 2.6rem; font-weight: bold; color: var(--color-64); font-family: var(--font-tasa); }
 .font36 { color: var(--color-92); font: var(--font-36); letter-spacing: -0.18rem; font-weight: 400; }

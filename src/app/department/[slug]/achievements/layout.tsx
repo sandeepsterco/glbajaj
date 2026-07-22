@@ -16,12 +16,14 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
         return <NotFound />;
     }
 
-    const pageData = data?.data?.modular?.achivements;
+    const mainData = data?.data?.modular ?? [];
+
+    const pageData = mainData?.achivements;
 
     return(
         <div className="happenings_page">
             <PageHeader data={data.data} slug={slug}  />
-            {pageData.length == 0 ? <ComingSoon /> : children}
+            {pageData?.length == 0 ? <ComingSoon /> : children}
         </div>
     )
 }

@@ -787,6 +787,9 @@
 .news_details {
     padding-block: 5rem 0;
 }
+.exam_pdfsec ul{display: grid; grid-template-columns: repeat(1, 1fr); column-gap: 0rem;}
+.about_menu_bar { top: 9rem; }
+.examinaer_sec { padding-block: 5rem; }
 }
 
 @media (max-width: 820px) {

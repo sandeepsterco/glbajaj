@@ -154,7 +154,36 @@
     return true;
   }
 
-
+  function galleryDetailsPopup() {
+    const items = document.querySelectorAll(".gallery_details:not([data-gallery-init])");
+    if (!items.length) return true;
+  
+    const allItems = Array.from(document.querySelectorAll(".gallery_details"));
+  
+    items.forEach((item) => {
+      item.setAttribute("data-gallery-init", "1");
+  
+      item.addEventListener("click", function () {
+        const FancyboxApi = window.Fancybox;
+        if (!FancyboxApi) return;
+  
+        const index = allItems.indexOf(item);
+  
+        const gallery = allItems.map((el) => ({
+          src: el.getAttribute("data-src"),
+          type: "image",
+          caption: el.getAttribute("data-caption"),
+        }));
+  
+        FancyboxApi.show(gallery, {
+          startIndex: index,
+          Thumbs: false,
+        });
+      });
+    });
+  
+    return true;
+  }
 
   
   function resolveNavEl(root, selector) {
@@ -1359,6 +1388,7 @@ tabButtons.forEach((button) => {
 
     tabContent();
     gridPopup();
+    galleryDetailsPopup();
     tabControl();
     toggleReadMore();
     initViewMore();

@@ -33,7 +33,7 @@ function pageNeedsFancybox(pathname) {
   }
 
   return Boolean(
-    document.querySelector(".media_grid_Bx, [data-fancybox]")
+    document.querySelector(".media_grid_Bx, .gallery_details, [data-fancybox]")
   );
 }
 

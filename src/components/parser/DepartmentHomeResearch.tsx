@@ -64,7 +64,7 @@ export default function DepartmentHomeResearch() {
         {researchData?.map((item: any, index: number) => (
           <SwiperSlide key={index}>
             <div className="research_card">
-              <figure>
+              <figure className="flash-effect-2">
                 <Image src={item.image} alt={item.title ?? 'department research image'} className="img-fluid w-100" width={426} height={318} loading="lazy" />
               </figure>
               {item?.title && (

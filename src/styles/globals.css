@@ -280,6 +280,8 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_links a,
 .home_footer .footer_links .btn { font: var(--font-14); color: var(--color-white); text-decoration: none; }
 /* BOTTOM */
+
+.home_footer .footer_links a:hover{ color: #d2ab67;}
 .home_footer .footer_bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; font-size: 1.4rem; margin-left: 29.7rem; }
 .home_footer .footer_bottom_left { display: flex; gap: 5rem; flex-wrap: wrap; }
 .home_footer .footer_bottom p { color: var(--color-white); margin-bottom: 0; font: var(--font-14); }
@@ -289,7 +291,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 /* SOCIAL */
 .home_footer .social_icons { display: flex; gap: 1rem; }
 .home_footer .social_icons a { width: 25px; height: 25px; background: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 6px; transition: 0.3s; }
-.home_footer .social_icons a:hover { background: #fece49; }
+.home_footer .social_icons a:hover { transform: rotate(360deg); }
 /* .home_footer .social_icons img { width: 15px; }
 */
 .home_footer .subscribe_box { position: relative; }

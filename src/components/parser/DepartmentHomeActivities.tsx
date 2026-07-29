@@ -62,7 +62,7 @@ export default function DepartmentHomeActivities() {
       {activitiesData.map((item: any, idx: number) => (
         <SwiperSlide key={item?.id || idx}>
           <div className="activies_col">
-            <figure>
+            <figure className="flash-effect-2">
               <Image
                 src={item.image}
                 width={380}

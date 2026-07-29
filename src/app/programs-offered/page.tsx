@@ -15,7 +15,7 @@ export default async function ProgramsOffered(){
     return(
         <main>
             <PageHeader data={data?.data} slug={slug} />
-            <Suspense fallback={<PageLoader variant="inner" />}>
+            <Suspense fallback={<PageLoader variant="home" />}>
                 <ProgramList />
             </Suspense>
         </main>

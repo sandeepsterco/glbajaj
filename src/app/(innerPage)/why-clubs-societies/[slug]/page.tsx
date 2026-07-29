@@ -13,7 +13,7 @@ export default async function PlacementDetailPage({params}:{params:any}){
         )
     }
 
-    const whyClubDetailData = data?.club_or_society_details?.cms
+    const whyClubDetailData = data?.club_or_society_details?.cms ?? {};
 
     return(
         Object.keys(whyClubDetailData).map((key:any) => {

@@ -98,7 +98,7 @@ export default function DepartmentHomePlacements() {
       >
           {placementData?.map((item: any, index: number) => (
             <SwiperSlide key={index}>
-              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" data-aos="fade-up" data-aos-delay="200"/></figure>
+              <figure className="flash-effect-2"><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" data-aos="fade-up" data-aos-delay="200"/></figure>
               <div className="placem_cnt"><img
                 src={item?.logo_image}
                 className="placement_img"

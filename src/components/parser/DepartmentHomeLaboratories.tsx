@@ -57,7 +57,7 @@ export default function DepartmentHomeLaboratories() {
             {data?.length > 0 && data?.map((item: any, idx: number) => (
                 <SwiperSlide key={idx}>
                     <div className="lab_card">
-                        <figure >
+                        <figure className="flash-effect-2">
                             <Image src={item.image || '/images/default/laboratories.webp'} width={600} height={715} alt={item.title || 'laboratory image'}
                                 className="img-fluid w-100" data-aos="fade-up" data-aos-delay="600"/>
                         </figure>

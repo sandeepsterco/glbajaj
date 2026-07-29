@@ -294,6 +294,7 @@
       // ".cse_faculties_slider",
       // ".cse_research_slider",
       ".department_home_projects",
+      ".multi_column_slider",
       ".hod_profile_slider",
       ".sport_facilities",
       ".ncc_rank_ceremony",
@@ -660,6 +661,18 @@
       navigation: {
         nextEl: ".department_home_projects_next",
         prevEl: ".department_home_projects_prev",
+      },
+    });
+
+    createSwiper(".multi_column_slider", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".multi_column_slider_next",
+        prevEl: ".multi_column_slider_prev",
       },
     });
 

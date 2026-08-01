@@ -898,8 +898,10 @@
 .dep_projects .dep_project_grid.reverse { grid-template-columns: 32.9% 57% ; }
 .dep_projects .dep_project_grid .project_contentsec { padding-top: 3rem }
 .dep_projects { position: relative; }
+.dep_projects.other{padding-block: 10rem; margin-bottom: 10rem;}
 .dep_projects::after { background-image: url(/images/research_shap_01.png); width: 20.6rem; position: absolute; content: ""; background-repeat: repeat; z-index: 1; top: 0; left: 0; height: 100%; }
 .dep_projects.reverse::after { right:0; left:unset; background-image: url(/images/research_shap_02.png); }
+.dep_projects.other:after{display: none;}
 .project_contentsec h4,
 .project_contentsec h3 { margin-bottom: 4rem; }
 .project_contentsec h3{font-weight: 600;}

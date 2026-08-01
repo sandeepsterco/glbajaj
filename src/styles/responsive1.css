@@ -14,6 +14,7 @@
 .key_fun_sec { padding-block: 0 5rem; }
 .tp_ov_pattern { display: none; }
 .teamX_grid { grid-template-columns: repeat(2, 1fr); }
+.teamX_grid > :first-child{ grid-column: auto; align-items: center; gap: 0rem; padding-inline: 1.3rem; display: inline-block; }
 .our_recruiters .our_recruiters-grid { grid-template-columns: repeat(4, 1fr); }
 .value_bgbox .val_grid { grid-template-columns: 1fr; gap: 2rem; }
 .value_bgbox .val_grid .valu_rgt figure { margin-top: 0; }

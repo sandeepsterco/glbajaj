@@ -254,7 +254,7 @@
 .news_pagination{margin-bottom: 5rem;}
 /* ==============news details page Start============= */
 .news_details { padding-block: 10rem; }
-.news_details h4{ margin-block:3rem 1rem; font-weight: 500;}
+.news_details h4{ margin-block:0rem 1rem; font-weight: 500;}
 .newst_details_header { display: flex; align-items: center; }
 .newst_details_header date,
 .newst_details_header .date { font: var(--font-16); color: var(--color-33); border-right: 1px solid #eee; padding-right: 3rem; margin-right: 3rem; line-height: 0.8; margin-bottom:0; }
@@ -264,13 +264,9 @@
 .news_details_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12.5rem; padding-block: 5rem 0rem; margin-right: -10rem; }
 /* .news_details_grid.odd{direction: rtl;} */
 
-.news_details_grid.odd > *:first-child {
-    order: 2;
-}
-
-.news_details_grid.odd > *:last-child {
-    order: 1;
-}
+.news_details_grid.odd > *:first-child { order: 2; }
+.news_details_grid.odd > *:last-child { order: 1; }
+.common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 2rem;}
 
 
 .news_details_grid.odd .news_details_cnt{text-align: left;}
@@ -910,6 +906,8 @@
 .short_des { margin-top: 4.6rem; }
 .dep_succ_sto .home_testimonials .thumb.active .thumb_des { opacity: 0; }
 .second_order { order: 2;}
+.training_btn{ max-width: 50rem; margin-top: 6rem; align-items: center;} 
+.training_btn h5{ margin-bottom: 0;}
 
 /* ============== CSE Department Code of Conduct page End============= */
 
@@ -965,7 +963,9 @@
 .teamX_titlesec { margin-bottom: 15rem; }
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
 .teamX_titlesec .font36 { margin-bottom: 4rem; }
-.teamX_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; row-gap: 7rem; position: relative; }
+.teamX_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; row-gap: 7rem; position: relative; justify-items: center;}
+.teamX_grid > :first-child { grid-column: span 4; display: flex; gap: 4rem; align-items: center; padding-inline: 1.6rem 10rem; }
+
 .teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .teamX_card { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
 .teamX_card figure { margin-top: -5rem; }
@@ -1022,10 +1022,10 @@
 .accreditaion_media_wrapper .accreditaion_media_grid ul { grid-template-columns: repeat(2, 1fr); margin-top: 7rem;}
 .accreditaion_media_wrapper .accreditaion_media_grid ul li img{ border: 1px solid #eee;}
 .accreditaion_media_wrapper .accreditaion_media_grid2 ul li img{ border: 1px solid #eee;}
-
-
-
-
+.head_grid{ display: grid; grid-template-columns: 50% auto; gap: 4rem; background-color:#f6f6f6; padding: 2rem; margin-top:7rem;}
+.cont_sc h5{ font: var(--font-16); margin-bottom: 1.5rem;}
+.cont_sc a { align-items: center; gap: 1rem; display: flex; font: var(--font-16); }
+.cont_sc a img{ max-width: 2rem;}
 
 @media (max-width: 768px) {
  .careerTabsX_nav { display: none; }
@@ -1036,6 +1036,7 @@
 .inspiration_details{display:block; align-items: unset;}
 .inspiration_details .apply_btn{margin-top: 2rem; display:inline-block;}
 .news_pagination{margin-bottom:3rem;}
+.head_grid{grid-template-columns:100%;}
  }
 .career_empo_sec2 { padding-block: 10rem 11.6rem; }
 .tocr_grid { display: grid; grid-template-columns: 39.3% 56.4%; gap: 6.5rem; align-items: end; }
@@ -1446,6 +1447,13 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .strategies-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
 .strategies-box:first-of-type { background-color: transparent; align-content: center; }
 .strategies-box:first-of-type h2 { margin-bottom: 4rem; }
+
+.strategies-grid > :first-child {
+    grid-column: span 3;
+    margin-bottom: 3rem;
+}
+
+
 .strategies-box { background-color: var(--color-F5); position: relative; }
 .strategies-box:not(:first-child)::before { content: ""; position: absolute; top: 0; left: 3rem; background-color: var(--color-FE); height: 0.5rem; width: 25rem; }
 .strategies-box:not(:first-child) h2 { font: var(--font-48); color: var(--color-64); }
@@ -1895,7 +1903,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .placement_main { padding-block: 8rem 10rem; }
 .placement_main .row { margin: 0; }
 .placement_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
-.place_box { background-color: #f3e9dced; border-radius: 1.5rem; }
+.place_box { background-color: #f3e9dced; border-radius: 1.5rem; margin-top: 3rem;}
 .place_infobox h3 { font: var(--font-24); color: #633d27; margin-bottom: 1.5rem; font-weight: bold; }
 .place_infobox p { font: var(--font-18); color: var(--color-64); margin-bottom: 2.5rem; }
 .place_infobox p strong { font-weight: bold; }

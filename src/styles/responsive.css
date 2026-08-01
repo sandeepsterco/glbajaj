@@ -955,7 +955,6 @@
 .navrang_club { padding-bottom: 0; }
 .in_essence_section .row{ display: block;}
 .in_essence_section .clubs_table{ overflow: scroll;}
-
 .philosophy_section.navrang_sec h2{ font: var(--font-28); font-weight: 600;}
 .navrang_sec .philosophy_left h3{ font: var(--font-21); font-weight: 600;}
 .news_list{ display: block; padding: 3rem;}
@@ -965,6 +964,9 @@
 .gallery_grid_Bx img{ width: 100%;}
 .gallery_grid h5{ padding-inline: 0;}
 .gallery_list { column-count: 2;}
+.strategies-grid > :first-child { grid-column: span 1; margin-bottom: 3rem; }
+.iqac-mission-Cnt { padding-right: 0; }
+.iqac-function .inner-iqac-function{ padding: 4rem;}
 .strategies-grid {grid-template-columns: repeat(1, 1fr);}
 .strategies-grid-2 {grid-template-columns: repeat(1, 1fr);}
 .strategies-box.Cnt{ padding-left: 0;}
@@ -995,7 +997,6 @@
 .project_contentsec .cus-btn{ padding: 1rem 2rem;}
 .faculties_main .faculties_title, .custom_heading_grid{ display: block;}
 .department-page .custom_heading_grid .right{ margin: 2rem 0 0 -1.2rem;}
-
 .blog_listing_right{ padding-top: 4rem;}
 .blog_listing { padding-block: 4rem 5rem; }
 .blog_listing_right .input-group{ display: none;}
@@ -1021,9 +1022,7 @@
 .more-info{ padding: 3rem;}
 .btn-grp { gap: 2rem; flex-wrap: wrap; }
 .ncc-song-lyrics{padding-block: 7rem 6rem;}
-.ncc-rank-ceremony {
-    padding-block: 6rem 7rem;
-}
+.ncc-rank-ceremony { padding-block: 6rem 7rem;}
 
  }
 

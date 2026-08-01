@@ -825,6 +825,25 @@
       }, ".default_image_slider");
     });
 
+    document.querySelectorAll(".default_image_slider2").forEach((el) => {
+      createSwiperOnElement(el, {
+        slidesPerView: 2,
+        spaceBetween: 25,
+        loop: false,
+        autoplay: { delay: 3000 },
+        breakpoints:{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          992: {
+            slidesPerView: 2,
+            spaceBetween: 25,
+          },
+        }
+      }, ".default_image_slider2");
+    });
+
     return true;
   }
 

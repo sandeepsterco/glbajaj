@@ -426,7 +426,7 @@
 .home_testimonials .thumb .name { font: var(--font-18); color: #000; font-weight: 600; margin-block: 2rem 0.5rem; }
 .home_testimonials .thumb .designation { font: var(--font-16); margin-top: 0rem; }
 .visionary_message figure > img{ width: 100%;}
-.acre_slider h3{ margin: 0 0 3rem 3rem;}
+.acre_slider h3{ margin: 0 0 3rem 29rem;}
 /* =========================
    RIGHT SECTION
 ========================= */
@@ -481,49 +481,18 @@
 
 .program_detail_beyond{padding:10rem 0; border-bottom: 1px solid #c0855257;}
 .program_detail_beyond .bottom_slider{margin:0;}
-
 /* program_detail_beyond */
 
 /* home_research_incubation*/
 
-.home_research_incubation_section{
-  padding: 12rem 0 12rem;
-  background: #eeeeee;
-}
-
-.home_research_incubation_section .title2{
-  color: var(--color-92);
-}
-
-.home_research_incubation_section .home_placement_students{
-  grid-template-columns: 70% auto;
-  margin-top: 0;
-}
-
-.home_research_incubation_section .slider_top{
-  display:flex;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-}
-
+.home_research_incubation_section{ padding: 12rem 0 12rem; background: #eeeeee; }
+.home_research_incubation_section .title2{ color: var(--color-92); }
+.home_research_incubation_section .home_placement_students{ grid-template-columns: 70% auto; margin-top: 0; }
+.home_research_incubation_section .slider_top{ display:flex; justify-content: space-between; margin-bottom: 3rem; }
 .home_research_incubation_section .swiper-button-prev,
-.home_research_incubation_section .swiper-button-next{
-  position:relative;
-  top: unset;
-    right: unset;
-    left: unset;
-    bottom: unset;
-    margin-top: 0;
-}
-
-.home_research_incubation_section .slider_btns{
-  display: flex;
-  gap: 0.5rem;
-}
-
-.home_research_incubation .slide_card{
-  position:relative;
-}
+.home_research_incubation_section .swiper-button-next{ position:relative; top: unset; right: unset; left: unset; bottom: unset; margin-top: 0; }
+.home_research_incubation_section .slider_btns{ display: flex; gap: 0.5rem; }
+.home_research_incubation .slide_card{ position:relative; }
 
 /* .home_research_incubation .slide_card:before{
   position:absolute;
@@ -550,74 +519,32 @@
 
 
 
-.home_research_incubation .contents{
-  position:absolute;
-  bottom:2rem;
-  height: auto;
-  display: block;
-  padding: 0 3rem;
-  text-align: center;
-  width: 100%;
-  z-index: 2;
-}
-
-.home_research_incubation .contents .image_title{
-  color:#fff;
-  font:var(--font-40);
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.home_research_incubation .contents .image_title small{
-  font:var(--font-24);
-  text-transform: none;
-}
-
-.home_research_incubation .contents p{
-  color:#fff;
-  margin:0;
-  line-height: 2.2rem;
-  min-height: 7rem;
-}
-
-.home_research_incubation_section .right_data{
-  top: 50%;
-  position: relative;
-  transform: translateY(-50%);
-  width: 100%;
-  padding: 0 5rem;
-  text-align: center;
-  z-index: 1;
-}
-
-.home_research_incubation_section .right_data .logo{
-  margin:auto;
-  max-width: 20rem;
-}
-
-.home_research_incubation_section .right_data .logo_content{
-  margin-top: 3rem;
-}
+.home_research_incubation .contents{ position:absolute; bottom:2rem; height: auto; display: block; padding: 0 3rem; text-align: center; width: 100%; z-index: 2; }
+.home_research_incubation .contents .image_title{ color:#fff; font:var(--font-40); text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
+.home_research_incubation .contents .image_title small{ font:var(--font-24); text-transform: none; }
+.home_research_incubation .contents p{ color:#fff; margin:0; line-height: 2.2rem; min-height: 7rem; }
+.home_research_incubation_section .right_data{ top: 50%; position: relative; transform: translateY(-50%); width: 100%; padding: 0 5rem; text-align: center; z-index: 1; }
+.home_research_incubation_section .right_data .logo{ margin:auto; max-width: 20rem; }
+.home_research_incubation_section .right_data .logo_content{ margin-top: 3rem; }
 
 /* end of home_research_incubation */
-
 
 @media (max-width:2440px) {
  .hod_right::before { height: auto; }
  }
+
 @media (max-width:1920px) {
- .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-21); }
+.single_grid.no_image .content .bottom_data .sub_title { font: var(--font-21); }
 .single_grid .content { left: 4rem; }
 .home_sessions_section .right_col a { padding: 2.9rem 2.5rem 3rem 3.4rem;}
 .why_glb_section .tab_content { margin-top: 6rem; }
 .why_glb_section .tabs { margin-top: 8rem; }
 .why_glb_section { padding: 10rem 0; }
 
-
  }
+
 @media (max-width:1536px) {
- .home_courses_section .slider_btns { gap: 1rem; display: flex; padding-right: 1.5rem; }
+.home_courses_section .slider_btns { gap: 1rem; display: flex; padding-right: 1.5rem; }
 /* .home_placement_static_card { height: 41.4rem; } */
 .why_glb_section .sec_title h5:before { bottom: -9px; }
 .research_centre_section .centre_lists a { gap: 0.4rem; }
@@ -687,14 +614,10 @@
 opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem; content: "";}
 .home_courses_section .common_image_slider figcaption p{ font: var(--font-24); letter-spacing: -0.12rem; color: var(--color-white);}
 
-
-
-
-
 @media (max-width: 768px) {
  /* .homeFac_nav_side { display: none; }
 */
-  .homeFac_tabs { grid-template-columns: 100%; }
+.homeFac_tabs { grid-template-columns: 100%; }
 .homeFac_pane { display: block; /* border-bottom: 1px solid #ddd; */ }
 .homeFac_accHeader { display: block; font-weight: 600; cursor: pointer; }
 .homeFac_accBody { max-height: 0; overflow: hidden; transition: 0.4s; }
@@ -1038,7 +961,6 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .about_ins_section figure.ins_big_img { overflow: hidden; }
 .about_ins_section figure.ins_big_img img { transition: transform 0.5s ease; }
 .about_ins_section figure.ins_big_img:hover img { transform: scale(1.1); }
-
 
 .profile:hover figure .flash-effect-2::before { -webkit-animation: shine .75s; animation: shine .75s; }
 .research_card:hover figure.flash-effect-2::before { -webkit-animation: shine .75s; animation: shine .75s; }

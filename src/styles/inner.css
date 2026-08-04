@@ -525,14 +525,17 @@
 .logo_philosophy_grid a { margin-top: 3rem; }
 .about_ins_section .logo_philosophy_grid { padding-block: 10rem 0; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
-.our_inspiration_section::before { background-color: var(--color-64); bottom: 15rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
-.our_inspiration_grid { display: grid; grid-template-columns:70% auto; gap: 15rem; }
+.our_inspiration_section::before { background-color: var(--color-64); bottom: 10rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
+.our_inspiration_grid { display: grid; grid-template-columns:55% auto; gap: 15rem; }
 .our_inspiration_left h3 { color: var(--color-white); }
 .our_inspiration_left h4 { margin: 3rem 0; color: var(--color-white); }
 .our_inspiration_left a { margin-top: 4rem; }
 .our_inspiration_left p { color: var(--color-white); }
-.vision_mission_grid { display: grid; grid-template-columns: 30% 30% auto; gap: 10rem; margin-top: -8rem; padding-block: 0 10rem; border-bottom: 1.1rem solid var(--color-FE); z-index: 1; position: relative; }
+.vision_mission_grid { display: grid; grid-template-columns: 30% 30% auto; gap: 10rem; margin-top: -2rem; padding-block: 0 10rem; border-bottom: 1.1rem solid var(--color-FE); z-index: 1; position: relative; }
 .vision_mission_grid h4 { margin-bottom: 3rem; }
+.vision_Bx h4, .mission_Bx h4{ align-items: center; display: flex; }
+.vision_Bx h4 img, .mission_Bx h4 img{ background-color: #c08552; width: 4rem; margin-right: 1.2rem; padding: .9rem; box-shadow: 0 5px 8px #00000014; }
+
 .vision_Bx p { font: var(--font-30); color: var(--color-33); }
 .leadership_section { padding-block: 14.7rem 16rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
 .leadership_section::before { background-image: url(/images/pattern/leadership_patch.webp); position: absolute; top: 0; bottom: 0; left: 0; width: 20.6rem; content: ""; }
@@ -957,15 +960,15 @@
 /* ============== Placement Policy End============= */
 /* ============== Our Team start============= */
 .alumni_our_tem.our-team-list { padding-top: 0; }
-.alumni_our_tem.alumni_overview { padding-block: 12rem 0rem; }
+/* .alumni_our_tem.alumni_overview { padding-block: 12rem 0rem; } */
 .our-tem-sec { padding-bottom: 0; }
 .teamX_sec { padding-block: 5rem 15rem; }
 .teamX_titlesec { margin-bottom: 15rem; }
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
 .teamX_titlesec .font36 { margin-bottom: 4rem; }
 .teamX_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; row-gap: 7rem; position: relative; justify-items: center;}
-.teamX_grid > :first-child { grid-column: span 4; display: flex; gap: 4rem; align-items: center; padding-inline: 1.6rem 10rem; }
-
+.our-team-list .teamX_grid > :first-child { grid-column: span 4; display: flex; gap: 4rem; align-items: center; padding-inline: 1.6rem 10rem; }
+.alumni_objsec .custom_bullet li:before{ background-color: var(--color-white);}
 .teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .teamX_card { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
 .teamX_card figure { margin-top: -5rem; }
@@ -974,6 +977,7 @@
 .teamX_info .teamX_name { font: var(--font-18); font-weight: 600; margin-bottom: 0.5rem; }
 .teamX_info .teamX_role { font: var(--font-16); margin-bottom: 1.5rem; }
 .teamX_coninfo a { display: flex; align-items: center; gap: 1rem; }
+.teamX_coninfo a:hover{color:var(--color-92);}
 .teamX_coninfo ul li { margin-bottom: 0.5rem; }
 /* ============== Our Team End============= */
 /* ==============Corporate Advisory Board start============= */
@@ -1383,6 +1387,9 @@
 .iqac-menu-inner .about_menu_links li a { padding-bottom: 4.3rem; color: var(--color-black); }
 .iqac-menu-inner .about_menu_links li a.active { border-bottom: 3px solid var(--color-92); font-weight: 600; }
 .facilities_policy.iqac-event.dg-pathshala { padding-block: 5rem 5rem; border-bottom: 1px solid var(--color-C0); }
+.iqac-event .fac_mainpdf{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;}
+.iqac-event .fac_mainpdf .fac_policy_list{ padding: 2rem; margin-top: 0; display: flex; flex-direction: column;}
+.iqac-event .fac_mainpdf .fac_policy_list .fac_policy_right{ display: flex; gap: 2rem; margin-top: 3rem;}
 .dg-pathshala-video-link h2,
 .dg-pathshala h2 { font: var(--font-36); color: var(--color-92); letter-spacing: -1.8px; }
 .digital-pathshala-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3.3rem 2rem; margin-inline: -1.5rem; }
@@ -1735,6 +1742,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .insp_contentsec p { padding-right: 11rem; }
 @media (max-width: 991px) {
  .club_grid { grid-template-columns: repeat(1, 1fr); }
+ .iqac-event .fac_mainpdf{grid-template-columns: repeat(2, 1fr); gap: 2rem;}
  }
 /* Clubs & Societies Page css End */
 /* Alumni-Overview Page css start */
@@ -2279,7 +2287,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .affiliations-sec { padding-block: 10rem; }
 .clubs-Sec02 .media_grid_Bx span { font: var(--font-16); font-weight: 600; color: var(--color-black); }
 .clubs-Sec02 .media_grid_Bx p { font: var(--font-16); font-weight: normal; color: #333333; }
-.clubs-Sec02 .media_txt .cus-btn { background-color: var(--color-AE); padding: 1.4rem 2rem 1.3rem 2rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 3rem; }
+.clubs-Sec02 .media_txt .cus-btn { background-color: var(--color-AE); padding: 0.7rem 1.5rem 0.7rem; font: var(--font-16); font-weight: 600; color: var(--color-white); display: inline-block; margin-top: 3rem; }
 .navrang_sec .philosophy_left h3 { font: var(--font-24); font-weight: bold; color: #643C24; margin-bottom: 4rem; }
 .philosophy_section.navrang_sec h2 { color:var(--color-92); font: var(--font-36); letter-spacing: -1.8px; margin-bottom: 5rem; font-weight: normal; }
 .navrang_sec .philosophy_right { position: relative; background-color: #F5F5F5; padding: 8.2rem 3rem 10rem; margin-top: 4rem; }

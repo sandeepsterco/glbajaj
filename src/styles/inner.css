@@ -526,7 +526,7 @@
 .about_ins_section .logo_philosophy_grid { padding-block: 10rem 0; }
 .our_inspiration_section { position: relative; padding-block: 10rem 0; }
 .our_inspiration_section::before { background-color: var(--color-64); bottom: 15rem; top: 0; left: 0; right: 0; position: absolute; content: ""; z-index: -1; }
-.our_inspiration_grid { display: grid; grid-template-columns: 57.5% auto; gap: 15rem; }
+.our_inspiration_grid { display: grid; grid-template-columns:70% auto; gap: 15rem; }
 .our_inspiration_left h3 { color: var(--color-white); }
 .our_inspiration_left h4 { margin: 3rem 0; color: var(--color-white); }
 .our_inspiration_left a { margin-top: 4rem; }

@@ -425,8 +425,8 @@
 .home_testimonials .thumb.active img { transform: translateY(-6px) scale(1.28); box-shadow: 0px 16px 40px #00000047; border: 2px solid #FFFFFF; }
 .home_testimonials .thumb .name { font: var(--font-18); color: #000; font-weight: 600; margin-block: 2rem 0.5rem; }
 .home_testimonials .thumb .designation { font: var(--font-16); margin-top: 0rem; }
-
-.acre_slider h3{ margin: 0 0 3rem 29rem;}
+.visionary_message figure > img{ width: 100%;}
+.acre_slider h3{ margin: 0 0 3rem 3rem;}
 /* =========================
    RIGHT SECTION
 ========================= */

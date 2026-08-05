@@ -27,7 +27,7 @@ export default function CompanyLogoSliders({ data }: CompanyLogosProps) {
 
   return (
     <section className="our_recruiters">
-      <div className="container-fluid">
+      <div className="container25">
       <div className="kf_title" data-aos="fade-up" data-aos-delay="800">
                     <h4 className="font24">Our Leading Recruiters</h4>
                 </div>

@@ -1097,7 +1097,7 @@
 .scp-sec .scp-wrap { padding: 2rem; }
 .blog_Bx > figure img { width: 100%; }
 .blog_listing_left {grid-template-columns: repeat(1, 1fr);}
-
+.iqac-event .fac_mainpdf{grid-template-columns: repeat(1, 1fr);}
 /* the-group */ }
 
 @media (max-width: 575px) {

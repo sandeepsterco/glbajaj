@@ -8,7 +8,7 @@ export default async function LeadershipDetail({ data }: { data: any }) {
 
     return (
         <section className="visionary_section">
-            <div className="container-fluid">
+            <div className="container25">
                 <ReactParser html={data?.cms?.leadership_detail} />
                 <div className="message_details bottom">
                         <figure>

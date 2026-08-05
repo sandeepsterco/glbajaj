@@ -6,14 +6,14 @@ import Footer from "../components/layout/footer/Footer";
 import FooterGate from "../components/layout/footer/FooterGate";
 import MainWrapper from "../components/MainWrapper";
 import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
-import "../styles/custom.css";
-import "../styles/globals.css";
-import "../styles/program.css";
-import "../components/ui/pageLoader/page-loader.css";
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
 import { Toaster } from "react-hot-toast";
 import { NonceProvider } from "../lib/NonceProvider";
+import "../styles/custom.css";
+import "../styles/globals.css";
+import "../styles/program.css";
+import "../components/ui/pageLoader/page-loader.css";
 
 const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],

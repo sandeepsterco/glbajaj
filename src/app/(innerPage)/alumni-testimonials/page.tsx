@@ -13,7 +13,7 @@ import "@/src/styles/parser.css";
 export default async function TestimonialPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams;
     const currentPage = Number(page) || 1;
-    const { data, error } = await apiFetch(`testimonial?type=alumni&page=${currentPage}`);
+    const { data, error } = await apiFetch(`testimonial?type=Alumni&page=${currentPage}`);
     const slug = await getSlug();
 
     if (error) {

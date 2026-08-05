@@ -155,10 +155,10 @@
   }
 
   function galleryDetailsPopup() {
-    const items = document.querySelectorAll(".gallery_details:not([data-gallery-init])");
+    const items = document.querySelectorAll(".gallery_details1:not([data-gallery-init])");
     if (!items.length) return true;
   
-    const allItems = Array.from(document.querySelectorAll(".gallery_details"));
+    const allItems = Array.from(document.querySelectorAll(".gallery_details1"));
   
     items.forEach((item) => {
       item.setAttribute("data-gallery-init", "1");

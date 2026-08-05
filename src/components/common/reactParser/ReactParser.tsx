@@ -219,7 +219,7 @@ const options: HTMLReactParserOptions = {
         const classList = (domNode.attribs?.class || "").split(" ");
       
         // Hide read_more_icon anchors with no valid href
-        if (classList.includes("dynamic_btn") && (!href || href === "#")) {
+        if ((classList.includes("dynamic_btn") || classList.includes('strech_link')) && (!href || href === "#")) {
           return <></>;
         }
       

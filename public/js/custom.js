@@ -1293,7 +1293,18 @@ tabButtons.forEach((button) => {
     const policyheaders = document.querySelectorAll(".ppolicy_header:not([data-customjs-init])");
     if (!policyheaders.length) return;
 
-    const firstItem = document.querySelector(".ppolicy_item:not([data-customjs-opened])");
+    // Find the first item whose body actually has content (children)
+    const allItems = document.querySelectorAll(".ppolicy_item:not([data-customjs-opened])");
+    let firstItem = null;
+
+    for (const item of allItems) {
+      const body = item.querySelector(".ppolicy_body");
+      if (body && body.children.length > 0) {
+        firstItem = item;
+        break;
+      }
+    }
+
     if (firstItem) {
       firstItem.setAttribute("data-customjs-opened", "1");
       firstItem.classList.add("active");

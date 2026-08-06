@@ -148,6 +148,7 @@
     .caption_wrap blockquote {
         max-width: 100%;
     }
+   .home_banner:before{ height: 113%; left: -7rem;}
        
 }
 

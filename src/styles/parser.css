@@ -680,6 +680,10 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_testimonials .thumb-group { margin-top: 0; }
 .home_footer .footer_top { gap: 9.5rem; }
 .group_section h2{ letter-spacing: -1px;}
+.sec_title .title48{ letter-spacing: -1px;}
+.home_research_section .research_slider_wrapper { margin-left: 7rem; }
+.home_sessions_section .grid .right_col ul{height: 37rem;}
+
  }
 /* Institute Incubation Center End */
 .anti-ragging-page { padding-top: 10rem; }
@@ -731,7 +735,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
 .home_courses_section .slider_btns { top: 3rem; gap: 1.8rem; }
 .right_col ul li a img { width: 7rem; }
-.home_testimonials .desc_content { padding: 6.4rem 0 11.1rem 19.5rem; }
+.home_testimonials .desc_content { padding: 6.4rem 0 0rem 0rem; }
 /* .home_footer .footer_top { gap: 4.5rem; }
 */ }
 @media (max-width:1280px) {
@@ -978,7 +982,6 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
 .home_courses_section .slider_btns { top: 3rem; gap: 1.8rem; }
 .right_col ul li a img { width: 7rem; }
-.home_testimonials .desc_content { padding: 6.4rem 0 11.1rem 19.5rem; }
  }
 @media (max-width:1280px) {
  .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.5rem; }

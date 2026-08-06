@@ -421,6 +421,8 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .making-right { margin-top: -44rem; }
 @media (max-width: 1920px) {
  .blanket-box, .blanket-list { margin-right: -2rem; }
+ .csr-txt h3{ letter-spacing: -0.5px;}
+
  }
 .research-sec { padding-block: 5rem 10rem; }
 .research-sec .csr-txt { padding-inline: 0 8rem; }

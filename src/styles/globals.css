@@ -147,20 +147,21 @@ a { text-decoration: none; }
   }
 }
 
+/* @media (max-width:1536px){
+  html { font-size: min(0.52083333vw, 10px); scroll-behavior: smooth; }
+
+} */
+
+
 @media (max-width: 991px) {
+   :root { --font-60: normal normal 500 6rem/1.15 var(--font-tasa); --font-48: normal normal 500 4.8rem/1.25 var(--font-tasa); --font-46: normal normal 700 4.6rem/1.25 var(--font-tasa); --font-42: normal normal 500 4.2rem/1.25 var(--font-tasa); --font-36: normal normal bold 3.6rem/1.15 var(--font-tasa); --font-33: normal normal 500 3.3rem/1.33 var(--font-tasa); --font-32: normal normal 300 3.2rem/1.35 var(--font-tasa); --font-30: normal normal 400 3rem/1.2 var(--font-tasa); --font-28: normal normal 500 2.8rem/1.07 var(--font-tasa); --font-24: normal normal 300 2.4rem/1.33 var(--font-tasa); --font-21: normal normal 300 2.1rem/1.62 var(--font-tasa); --font-20: normal normal 300 2rem/1.4 var(--font-tasa); --font-18: normal normal 300 1.8rem/0.88 var(--font-tasa); --font-16: normal normal 400 1.6rem/1.62 var(--font-tasa); --font-15: normal normal 400 1.5rem/1.5 var(--font-tasa); --font-14: normal normal 400 1.4rem/1.4 var(--font-tasa); --font-12: normal normal 400 1.2rem/1.5 var(--font-tasa); --font-11: normal normal 400 1.1rem/1.5 var(--font-tasa); --font-10: normal normal 300 1rem/1.4 var(--font-tasa); --font-8: normal normal 300 0.8/1 var(--font-tasa); }
+
  .container-fluid { max-width: 100%; width: 100%; padding-inline: 1.5rem; }
 .container { max-width: 100%; width: 100%; padding-inline: 1.5rem; }
 .container25 { max-width: 100%!important; width: 100%; padding-inline: 1.5rem; }
 html { font-size: 62.5%; }
  }
-@media (max-width: 991px) {
- :root { --font-60: normal normal 500 6rem/1.15 var(--font-tasa); --font-48: normal normal 500 4.8rem/1.25 var(--font-tasa); --font-46: normal normal 700 4.6rem/1.25 var(--font-tasa); --font-42: normal normal 500 4.2rem/1.25 var(--font-tasa); --font-36: normal normal bold 3.6rem/1.15 var(--font-tasa); --font-33: normal normal 500 3.3rem/1.33 var(--font-tasa); --font-32: normal normal 300 3.2rem/1.35 var(--font-tasa); --font-30: normal normal 400 3rem/1.2 var(--font-tasa); --font-28: normal normal 500 2.8rem/1.07 var(--font-tasa); --font-24: normal normal 300 2.4rem/1.33 var(--font-tasa); --font-21: normal normal 300 2.1rem/1.62 var(--font-tasa); --font-20: normal normal 300 2rem/1.4 var(--font-tasa); --font-18: normal normal 300 1.8rem/0.88 var(--font-tasa); --font-16: normal normal 400 1.6rem/1.62 var(--font-tasa); --font-15: normal normal 400 1.5rem/1.5 var(--font-tasa); --font-14: normal normal 400 1.4rem/1.4 var(--font-tasa); --font-12: normal normal 400 1.2rem/1.5 var(--font-tasa); --font-11: normal normal 400 1.1rem/1.5 var(--font-tasa); --font-10: normal normal 300 1rem/1.4 var(--font-tasa); --font-8: normal normal 300 0.8/1 var(--font-tasa); }
-html { font-size: 62.5%; }
-.container-fluid { max-width: 100%; padding-inline: 1.6rem; }
-.container { max-width: 100%; padding-inline: 1.6rem; }
-.container25 { max-width: 100%; padding-inline: 1.6rem; }
-.container-md{ max-width: 100%; padding-inline: 2.5rem; }
- }
+
 @media (max-width: 330px) {
  html { font-size: 50.5%; }
  }
@@ -312,6 +313,15 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 @media (max-width:1600px) {
  .home_footer .footer_logo img { width: 26.7rem; }
  }
+
+
+
+@media (max-width:1536px) {
+ .container25{max-width: min(1755px, 79.7727273vw);}
+ .container{max-width: min(1755px, 79.7727273vw);}
+ }
+
+
 @media (max-width:1366px) {
  /* .home_footer .footer_logo img { width: 20rem; }
 */ }
@@ -337,6 +347,7 @@ blockquote.title24 { line-height: 1.5; font-weight: 300; letter-spacing: 0.048re
 .home_footer .footer_links ul li { padding-block: 0.5rem; }
 .home_footer .footer_contact h4 { font: var(--font-12); }
 .home_footer .footer_contact a { font: var(--font-12); }
+.container{ max-width: 100%;}
  }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: rgba(210,171,103,0.2); }

@@ -132,8 +132,7 @@
             var(--color-89) 4px,
             /* dash length */
             transparent 3px,
-            transparent 8px
-            /* gap */
+            transparent 8px/* gap */
         ); }
 /* Divider */
 .about_divider { position: relative; }
@@ -169,11 +168,11 @@
 .management_slider { width: 100%; overflow: hidden; /* Flick rokne ke liye */
     visibility: hidden; /* Jab tak load na ho, chhupa kar rakhein */ }
 /* Jab Swiper initialize ho jaye, tab dikhayein */
-.management_slider.swiper-initialized { visibility: visible; }
+.management_slider.swiper-initialized { visibility: visible;}
 .campus_card img { width: 100%; height: 400px; /* XD ke height ke hisaab se adjust karein */
     object-fit: cover; display: block; }
 .campus_card img { width: 100%; height: auto; aspect-ratio: 4 / 3; /* Fixed ratio layout shift rokne ke liye */
-    object-fit: cover; display: block; /* Image load hone tak placeholder color */ }
+    object-fit: cover; display: block; /* Image load hone tak placeholder color */}
 .campus_card p { margin-top: 2rem; }
 /* Buttons ko visibility confirm karein */
 .slider_nav_buttons { display: flex; position: relative; z-index: 10; margin: 20px 0; }
@@ -268,7 +267,6 @@
 .news_details_grid.odd > *:last-child { order: 1; }
 .common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 2rem;}
 
-
 .news_details_grid.odd .news_details_cnt{text-align: left;}
 .news_details_gallery { margin-top:7rem; }
 .news_details_cnt p { font: var(--font-16); color: var(--color-33); margin-bottom: 2rem; }
@@ -300,6 +298,7 @@
 .social_buttons a:nth-child(6) { background-color: #777; }
 .social_buttons a:nth-child(6) img { filter: invert(1); }
 .social_buttons a:nth-child(4) img { filter: brightness(0) invert(1); }
+
 /* ==============media coverage page Start============= */
 .media_coverage { padding-block: 10rem; }
 .media_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
@@ -319,6 +318,7 @@
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; }
 .media_grid_Bx2 a{ margin-top: -3rem;}
 .media_grid_Bx3{ padding: 2rem 2rem; background:#ebebeb;}
+
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -328,6 +328,7 @@
 .notice_list:hover { background-color: var(--color-fa); }
 .fancybox__thumbs { display: none !important; }
 .media_grid_Bx { cursor: pointer; }
+
 /* ==============Gallery page Start============= */
 .media_gallery { padding-block: 10rem 4rem; background-color: var(--color-F4); }
 .gallery_grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.6rem; }
@@ -366,6 +367,7 @@
 .gallery_tab button:first-child { margin-right: -0.1rem; }
 .news_details_cnt h2{ margin-bottom: 3rem;}
 .news_details_cnt h5{ margin-bottom: 3rem;}
+
 /* ==============HOD's Message page Start============= */
 .hod_section { padding-block: 8.2rem 11.6rem; }
 .hod_grid { display: grid; grid-template-columns: 54% auto; gap: 8.6rem; align-items: flex-start; }
@@ -380,14 +382,15 @@
 .hod_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; margin-top: 4rem; }
 .hod_right figure::after { content: ""; position: absolute; right: -2.5rem; bottom: -2.5rem; width: 100%; background: var(--color-AE); z-index: -1; top: 5rem; }
 .hod_right::before { content: ""; position: absolute; right: 0.5rem; bottom: -10rem; left: 10rem; background: var(--color-F4); z-index: -1; top: 0rem; }
-.dean_staemail { font: var(--font-16); margin-bottom: 2rem; }
-.dean_staemail a { color: var(--color-AE); font-weight: 700; }
+.dean_staemail { font: var(--font-16); margin-bottom: 2rem;}
+.dean_staemail a { color: var(--color-AE); font-weight: 700;}
 .dean_staemail a:hover{ color:var(--color-64);}
 
 @media (max-width: 2440px) {
- .hod_right::before { height: auto; }
+.hod_right::before { height: auto;}
 .about_menu_bar{top: 14rem;}
  }
+
 /* ==============Faculty page Start============= */
 .faculty_section { padding-block: 10rem 12.6rem; }
 .faculty_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
@@ -402,6 +405,7 @@
 .faculty_header .sort_by { max-width: 14.6rem; }
 .faculty_section .tabular-list { margin-top:5rem; margin-bottom: 10rem;}
 .affiliations-sec .media_txt p { margin-bottom: 0; font: var(--font-18); }
+
 /* ==============Our Inspiration page Start============= */
 .inspiration_section { padding-block: 5rem 14.2rem; }
 .inspiration_grid { display: grid; grid-template-columns: 49% auto; gap: 15.7rem; }
@@ -415,6 +419,7 @@
 .inspiration_right figure img { width: 100%; }
 .inspiration_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
 .inspiration_details p { margin-bottom: 0; }
+
 /* ==============Logo Philosophy page Start============= */
 .philosophy_section { padding-block: 8.2rem 13rem; }
 .philosophy_grid { display: grid; grid-template-columns: 52% auto; gap: 12.3rem; align-items: flex-start; }
@@ -430,6 +435,7 @@
 .philosophy_right figure img { width: 100%; }
 .philosophy_right figure { position: relative; display: inline-block; z-index: 9; width: 100%; }
 .philosophy_details p { margin-bottom: 0; }
+
 /* ==============Visionary Messages page Start============= */
 .visionary_section { padding-block: 5rem 13rem; }
 .visionary_message h3 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; margin-bottom: 4rem; }
@@ -535,7 +541,6 @@
 .vision_mission_grid h4 { margin-bottom: 3rem; }
 .vision_Bx h4, .mission_Bx h4{ align-items: center; display: flex; }
 .vision_Bx h4 img, .mission_Bx h4 img{ background-color: #c08552; width: 4rem; margin-right: 1.2rem; padding: .9rem; box-shadow: 0 5px 8px #00000014; }
-
 .vision_Bx p { font: var(--font-30); color: var(--color-33); }
 .leadership_section { padding-block: 14.7rem 16rem; position: relative; background-color: var(--color-F4); margin-top: -1.1rem; z-index: 0; }
 .leadership_section::before { background-image: url(/images/pattern/leadership_patch.webp); position: absolute; top: 0; bottom: 0; left: 0; width: 20.6rem; content: ""; }
@@ -1026,10 +1031,11 @@
 .accreditaion_media_wrapper .accreditaion_media_grid ul { grid-template-columns: repeat(2, 1fr); margin-top: 7rem;}
 .accreditaion_media_wrapper .accreditaion_media_grid ul li img{ border: 1px solid #eee;}
 .accreditaion_media_wrapper .accreditaion_media_grid2 ul li img{ border: 1px solid #eee;}
-.head_grid{ display: grid; grid-template-columns: 50% auto; gap: 4rem; background-color:#f6f6f6; padding: 2rem; margin-top:7rem;}
-.cont_sc h5{ font: var(--font-16); margin-bottom: 1.5rem;}
+.head_grid{ display: grid; grid-template-columns: 50% auto; gap: 4rem; background-color:#f6f6f6; padding: 2rem; margin-top:7rem; align-items: center;}
+.cont_sc h5{ font: var(--font-16); margin-bottom: 1.5rem; font-weight: 400;}
 .cont_sc a { align-items: center; gap: 1rem; display: flex; font: var(--font-16); }
 .cont_sc a img{ max-width: 2rem;}
+.cont_sc h4{ font-weight: 600;}
 
 @media (max-width: 768px) {
  .careerTabsX_nav { display: none; }
@@ -1041,6 +1047,7 @@
 .inspiration_details .apply_btn{margin-top: 2rem; display:inline-block;}
 .news_pagination{margin-bottom:3rem;}
 .head_grid{grid-template-columns:100%;}
+
  }
 .career_empo_sec2 { padding-block: 10rem 11.6rem; }
 .tocr_grid { display: grid; grid-template-columns: 39.3% 56.4%; gap: 6.5rem; align-items: end; }
@@ -2460,3 +2467,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .download_btn img{ filter: brightness(0) invert(1);}
 .download_btn:hover{ background-color: var(--color-64);}
 .award-detail-img1 figure img{ width: 100%;}
+
+.training-and-placement-policy .fac_mainpdf{ max-width:50rem;}
+.training-and-placement-policy .fac_mainpdf .fac_policy_list{ align-items: center;}
+.training-and-placement-policy .fac_mainpdf .fac_policy_list .fac_policy_right p{ display: none;}
+.training-and-placement-policy .ppolicy_sec{ padding-block: 5rem 5rem;}
+.dean-student-welfare .facilities_policy h2{ color: var(--color-64); font-size: 2.4rem; font-weight: 700; line-height: 2.6rem; font-family: var(--font-tasa);}

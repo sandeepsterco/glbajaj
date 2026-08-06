@@ -325,7 +325,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-heading { margin-bottom: 7rem; }
 .award-detail-heading h4 { color: var(--color-64); font-weight: 700; }
 .award-detail-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-.award-detail-text { padding-inline: 24rem 0; }
+/* .award-detail-text { padding-inline: 24rem 0; } */
 .award-detail-text p { color: var(--color-33); }
 .award-detail-text p span { color: var(--color-64); font-weight: 600; }
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
@@ -337,7 +337,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-text1 ul.insta_icons li a { margin-top: 3.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 0rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
 .award-detail-text1 ul.insta_icons li a img { width: 3rem; display: inline; }
-.award-detail-text1 { padding: 1rem 14rem; }
+/* .award-detail-text1 { padding: 1rem 14rem; } */
 .award-detail-text1 figure { margin-top: 3rem; }
 .award_second_withoutimg .award-detail-list1 { grid-template-columns: repeat(1, 1fr); }
 .tabular-sec { padding-block: 10rem; border-top: 1px solid #c0855280; margin-top: 8rem; }

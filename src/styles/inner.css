@@ -44,6 +44,9 @@
 .pbacc-toggle-btn:hover .pbacc-icon{color:var(--color-white)}
 
 
+.placement_wrapper .placement_batch_section:not(:first-child){margin-top:10rem;}
+
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -1047,6 +1050,10 @@
 .inspiration_details .apply_btn{margin-top: 2rem; display:inline-block;}
 .news_pagination{margin-bottom:3rem;}
 .head_grid{grid-template-columns:100%;}
+
+.placement_wrapper .placement_batch_section:not(:first-child){
+    margin-top: 5rem;
+}
 
  }
 .career_empo_sec2 { padding-block: 10rem 11.6rem; }

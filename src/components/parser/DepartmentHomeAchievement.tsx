@@ -23,7 +23,7 @@ export default function DepartmentHomeAchievement() {
     queryFn: () => fetchDepartmentAchievementData(slug),
   });
 
-  const DepartmentHomeAchievementData = data?.modular?.["achivements"] ?? [];
+  const DepartmentHomeAchievementData = data?.modular?.["achivements"]?.slice(0, 3) ?? [];
 
   if (isLoading || DepartmentHomeAchievementData.length === 0) return null;
 

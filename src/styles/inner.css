@@ -2468,6 +2468,8 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .detail_section ul.custom_bullet:last-child{ padding-bottom: 0;}
 .custom_bullet li{ position: relative;}
 .custom_bullet li:before{ background-color: var(--color-31); height: 0.7rem; width: 0.7rem; position: absolute; content: ""; left: 0; top: 1.1rem;}
+.nss-ncc-aim div h4{ margin-bottom: 4rem; font-weight: 600;}
+.nss-ncc-aim div ul{ padding-bottom: 3rem;}
 .code-space-obj ul{ padding-bottom: 4rem;}
 .code-space-obj h3{ margin-bottom: 2rem;}
 .download_btn{ background-color: var(--color-92); width: max-content; color: var(--color-white); font: var(--font-16); align-items: center; gap: 1rem; margin-top: 4rem; display: flex; padding: 0.8rem 2rem; border-radius: 0.5rem;}

@@ -10,6 +10,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 
 interface SearchParams {
   page?: string;
@@ -38,9 +39,10 @@ export default async function FacultyPage({
     filter,
   }).toString();
 
-  const [{ data, error }, { data: deptData }] = await Promise.all([
+  const [{ data, error }, { data: deptData }, {data:CMSData}] = await Promise.all([
     apiFetch(`faculty?${facultyQuery}`),
     apiFetch("department-faculty-list"),
+    apiFetch(`cms/${slug}`),
   ]);
 
   if (error) {
@@ -54,6 +56,8 @@ export default async function FacultyPage({
 
   const facultyType = data?.type;
 
+  const combinedHtml = Object.values(CMSData?.data?.sections ?? {}).join("");
+
   return (
     <InnerPageLayoutWrapper
       slug={slug}
@@ -61,6 +65,8 @@ export default async function FacultyPage({
       mainClass="happenings_page"
       showTabs={false}
     >
+      <ReactParserDynamic html={combinedHtml} />
+
       <section className="faculty_section">
         <div className="container25">
           {/* Filters — client component handles URL updates */}

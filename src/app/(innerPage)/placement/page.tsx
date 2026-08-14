@@ -20,7 +20,7 @@ export default async function PlacementPage() {
     const modularData = data?.data?.modular || {};
 
     return (
-        <>
+        <div className="happenings_page">
             <PageHeader data={data?.data} slug={slug} />
             <ReactParserDynamic html={combinedHtml} />
 
@@ -28,6 +28,6 @@ export default async function PlacementPage() {
                 <CompanyLogoSliders data={modularData?.['company-logo']} />
             )}
 
-        </>
+        </div>
     )
 }

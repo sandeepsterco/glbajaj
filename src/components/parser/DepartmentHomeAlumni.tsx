@@ -24,6 +24,7 @@ interface AlumniItem {
   branch: string;
   message: string;
   type: string;
+  designation:string;
 }
 
 const getDepartmentAlumni = async (slug: string): Promise<AlumniItem[]> => {
@@ -127,6 +128,7 @@ export default function DepartmentHomeAlumni() {
                 <div className="thu_info">
                   <p className="name">{item.name}</p>
                   <p className="designation">{item.branch}</p>
+                  <p className="designation1">{item.designation}</p>
                 </div>
               </div>
             </SwiperSlide>

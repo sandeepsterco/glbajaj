@@ -102,6 +102,7 @@ export default function HomeAlumni() {
                       <p className="name">{item.name}</p>
                       <span className="designation">{item.branch}</span>
                       <p className="designation">{item.course}</p>
+                      <p className="designation1">{item.designation}</p>
                     </div>
                   </div>
                 ))}

@@ -801,10 +801,9 @@
     });
 
     createSwiper(".alumni_achievement_slider", {
-      // 3 slides poori aur 4th slide thodi si dikhegi
-      slidesPerView: 1, // Mobile ke liye
+      slidesPerView: 1,
       spaceBetween: 15,
-      centeredSlides: false, // Left se start karne ke liye false rakhein
+      centeredSlides: false,
       loop: false,
       autoplay: {
         delay:5000

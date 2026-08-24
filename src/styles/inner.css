@@ -47,6 +47,11 @@
 .placement_wrapper .placement_batch_section:not(:first-child){margin-top:10rem;}
 
 
+.achievements_grid{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }

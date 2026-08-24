@@ -19,16 +19,20 @@ interface Achievement {
   image?: string;
   designation?: string;
   description?: string;
+  name?:string;
+  mapping_items?:{
+    paragraph:{para:string}[]
+  }
 }
 
 const fetchAlumniAchievements = async (page: number) => {
-  const { data, error } = await apiFetch(`award-recognitions?page=${page}`);
+  const { data, error } = await apiFetch(`alumni-achivement?page=${page}`);
 
   if (error) {
     throw new Error(error);
   }
 
-  return data?.awards;
+  return data;
 };
 
 export default function AlumniAchievementList() {
@@ -38,100 +42,113 @@ export default function AlumniAchievementList() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
 
-  // Slider: ALWAYS from page 1, fetched once, never refetched on pagination changes
   const {
-    data: sliderData,
-    isLoading: isSliderLoading,
-    isError: isSliderError,
-  } = useQuery({
-    queryKey: ["alumni-achievement-slider"],
-    queryFn: () => fetchAlumniAchievements(1),
-    staleTime: Infinity, // don't refetch this in the background
-  });
-
-  // Grid: follows the current page
-  const {
-    data: achievementData,
-    isLoading: isGridLoading,
-    isError: isGridError,
+    data,
+    isLoading,
+    isError,
   } = useQuery({
     queryKey: ["alumni-achievement-list", page],
     queryFn: () => fetchAlumniAchievements(page),
   });
 
-  if (isSliderLoading || isGridLoading || isSliderError || isGridError) {
+  if (isLoading || isError || !data) {
     return null;
   }
 
-  const sliderItems = sliderData?.data?.slice(0, 5) ?? [];
+  const sliderItems = data?.featured ?? [];
 
   // On page 1, the grid should exclude the 5 items already shown in the slider.
   // On any other page, show all of that page's items.
-  const gridItems =
-    page === 1
-      ? achievementData?.data?.slice(5) ?? []
-      : achievementData?.data ?? [];
+
+  const gridItems = data?.alumni_achivement?.data ?? [];
+
+
+    // page === 1
+    //   ? achievementData?.data?.slice(5) ?? []
+    //   : achievementData?.data ?? [];
 
   if (sliderItems.length === 0 && gridItems.length === 0) {
     return null;
   }
 
+  const achievementData = data?.alumni_achivement;
+
   return (
     <>
       {sliderItems.length > 0 && (
-        <Swiper
-          className="alumni_achievement_slider"
-          modules={[Navigation]}
-          slidesPerView={1}
-          spaceBetween={15}
-          navigation={{
-            nextEl: ".alumni_achievement_right",
-            prevEl: ".alumni_achievement_left",
-          }}
-          loop={false}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-        >
-          {sliderItems.map((item: Achievement, idx: number) => (
-            <SwiperSlide key={item.id ?? idx}>
-              <div
-                className="alumni-achivement-grid"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <div className="alumni-achivement-cnt">
-                  <figure>
-                    <Image
-                      src="https://glbitm.project-demo.in/assets/img/pages/61/section_1778655580_6a04215c39f92.webp"
-                      alt="Pattern"
-                      width={800}
-                      height={600}
-                      className="img-fluid w-100"
-                    />
-                  </figure>
-                </div>
-
-                <div className="alumni-achivement-img">
-                  <div className="image_col">
-                    <figure className="flash-effect-2">
-                      {item.image && (
-                        <Image
-                          src={item.image}
-                          alt="Achievement"
-                          width={800}
-                          height={600}
-                          className="img-fluid w-100"
-                        />
-                      )}
+        <div className="common_image_slider">
+          <Swiper
+            className="alumni_achievement_slider"
+            modules={[Navigation]}
+            slidesPerView={1}
+            spaceBetween={15}
+            navigation={{
+              nextEl: ".alumni_achievement_right",
+              prevEl: ".alumni_achievement_left",
+            }}
+            loop={false}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+          >
+            {sliderItems.map((item: Achievement, idx: number) => (
+              <SwiperSlide key={item.id ?? idx}>
+                <div
+                  className="alumni-achivement-grid"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
+                  <div className="alumni-achivement-cnt">
+                    {item?.name && (
+                      <h5 className="designation">{item.name}</h5>
+                    )}
+                    {item?.description && (
+                      <blockquote>
+                        <p dangerouslySetInnerHTML={{__html:item.description}} />
+                      </blockquote>
+                    )}
+                    {item?.mapping_items?.paragraph && (
+                      <div>
+                        {item.mapping_items.paragraph.map((item, idx)=>(
+                          <p key={idx} dangerouslySetInnerHTML={{__html:item.para}} />
+                        ))}
+                      </div>
+                    )}
+                    
+                    <figure>
+                      <Image
+                        src="/images/pattern/alumni_achievement.webp"
+                        alt="Pattern"
+                        width={612}
+                        height={119}
+                        loading="lazy"
+                        className="img-fluid w-100"
+                      />
                     </figure>
                   </div>
+
+                  <div className="alumni-achivement-img">
+                    <div className="image_col">
+                      <figure className="flash-effect-2">
+                        {item.image && (
+                          <Image
+                            src={item.image}
+                            alt="Achievement"
+                            width={800}
+                            height={600}
+                            className="img-fluid w-100"
+                          />
+                        )}
+                      </figure>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        
       )}
 
       {gridItems.length > 0 && (
@@ -151,7 +168,7 @@ export default function AlumniAchievementList() {
                   />
                 </figure>
                 <p data-aos="fade-up" data-aos-delay="400" className="">
-                  {item?.title}
+                  {item?.name}
                 </p>
                 <Link
                   className="strech_link"

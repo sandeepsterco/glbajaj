@@ -1,10 +1,13 @@
+import Image from "next/image";
 import ReactParser from "../common/reactParser/ReactParser";
 
 export default function AlumniAchievementDetail({ data }: { data: any }) {
+  const pageData = data?.data ?? null;
+
   return (
     <div className="alumni-achivement">
       <div className="container25">
-      <div className="award-detail-heading"><h4>GL Bajaj CEO Kartikay Agarwal Honoured as the Most Influential Young Leader 2025</h4></div>
+      <div className="award-detail-heading"><h4 dangerouslySetInnerHTML={{__html:pageData?.name}} /></div>
         <div className="col-lg-12">
           <div
             className="alumni-achivement-grid aos-init aos-animate"
@@ -12,39 +15,26 @@ export default function AlumniAchievementDetail({ data }: { data: any }) {
             data-aos-delay="400"
           >
             <div className="alumni-achivement-cnt">
-              <h5 className="designation">
-                Vinay Chaturvedi, EEE, Batch 2012, Chief Executive Officer,
-                MindZvue
-              </h5>
               <blockquote>
-                <p>
-                  Salesforce MVP Hall of Fame and tech entrepreneur will guide
-                  mindZvue's evolution into a Salesforce and AI powered
-                  enterprise technology leader.
-                </p>
+                <p dangerouslySetInnerHTML={{__html:pageData?.description}} />
               </blockquote>
-              <div>
-                <p>
-                  mindZvue, a Salesforce Summit Partner has appointed Vinay
-                  Chaturvedi as Chief Executive Officer, underscoring the
-                  convergence of artificial intelligence and Salesforce. His
-                  appointment signals the company's intent to evolve beyond its
-                  role as a Salesforce Summit Partner into a global innovation
-                  leader, blending AI, automation, and Salesforce expertise into
-                  what it calls Innovation-as-a-Service.
-                  <br />
-                  GL Bajaj Family Congratulate Mr. Chaturvedi for being a
-                  successful Entrepreneur. Leader. Trailblazer. and bringing
-                  pride to us.
-                </p>
-              </div>
+
+              {pageData?.mapping_items && pageData?.mapping_items?.paragraph?.length > 0 && (
+                <div>
+                  {pageData?.mapping_items?.paragraph.map((item:any, idx:number)=>(
+                    <p key={idx} dangerouslySetInnerHTML={{__html:item.para}} />
+                  ))}
+                </div>
+              )}
+              
               <figure>
-                <img
+                <Image
                   alt="pattern"
                   className="img-fluid w-100"
                   loading="lazy"
-                  decoding="async"
-                  src="https://glbitm.project-demo.in/assets/img/pages/61/section_1778655580_6a04215c39f92.webp"
+                  width={612}
+                  height={119}
+                  src="/images/pattern/alumni_achievement.webp"
                 />
               </figure>
             </div>
@@ -52,12 +42,13 @@ export default function AlumniAchievementDetail({ data }: { data: any }) {
             <div className="alumni-achivement-img">
               <div className="image_col">
                 <figure className="flash-effect-2">
-                  <img
+                  <Image
                     alt="Achievement"
+                    width={475}
+                    height={550}
                     className="img-fluid w-100"
                     loading="lazy"
-                    decoding="async"
-                    src="https://glbitm.project-demo.in/assets/img/pages/61/section_1785999428_6a743044d3ada.webp"
+                    src={pageData?.image || ''}
                   />
                 </figure>
               </div>

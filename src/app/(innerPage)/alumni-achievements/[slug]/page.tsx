@@ -6,7 +6,7 @@ import { apiFetch } from "@/src/lib/api";
 export default async function FacultyDetailPage({params}:{params:any}){
     const {slug} = await params;
 
-    const {data, error} = await apiFetch(`award-recognitions/${slug}`);
+    const {data, error} = await apiFetch(`alumni-achivement/${slug}`);
 
     if(error){
         return (
@@ -16,8 +16,8 @@ export default async function FacultyDetailPage({params}:{params:any}){
 
     return(
         <>
-            <AlumniAchievementDetail data={data?.award_details} />
-            <AwardDetail data={data?.award_details} />
+            <AlumniAchievementDetail data={data?.alumni_achivement_details} />
+            {/* <AwardDetail data={data?.award_details} /> */}
         </>
     )
 }

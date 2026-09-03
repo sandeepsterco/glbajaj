@@ -316,17 +316,21 @@
 */
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
 .media_txt p { font: var(--font-16); }
-.media_txt { padding: 2rem 0 0 2.7rem; position: relative; }
-.media_txt::before { background-color: var(--color-92); top: -1rem; bottom: 0; width: 1px; content: ""; position: absolute; left: 1rem; height: 8rem; }
+.media_txt { padding: 1rem 0 1rem 2.7rem; position: relative; }
+.media_txt::before { background-color: var(--color-92); content: ""; width: 1px; height: auto; position: absolute; top: 0; bottom: 0; left: 1rem;}
 .media_grid1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
 .media_grid_Bx1,
 .media_grid_Bx2 { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
 .media_grid_Bx1 figure,
-.media_grid_Bx2 figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
+.media_grid_Bx2 figure { text-align: center; height: 26.3rem; display: flex; align-items: center; }
+.media_grid_Bx1{ position: relative;}
+.media_grid_Bx1:before { content: ""; background-color: var(--color-FE); width: 24.6rem; height: 1rem; position: absolute; top: 0; left: 3rem; }
+
+
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; }
 .media_grid_Bx2 a{ margin-top: -3rem;}
 .media_grid_Bx3{ padding: 2rem 2rem; background:#ebebeb;}
-
+.media_txt p a:hover{ color: var(--color-64);}
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -684,6 +688,11 @@
 .sterco_tab_btn { position: relative; display: block; padding: 0.5rem 2rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
 .sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; /* filter: brightness(0) invert(1); */ }
 .sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
+.sterco_tab_btn::after {
+    filter: brightness(0) invert();
+}
+
+
 /* =========================
    TAB CONTENT
 ========================= */
@@ -794,6 +803,7 @@
 .cse_vision .hod_profile_bx  .hod_info h4 { color: var(--color-white); margin-top: 0; color: var(--color-64); font: var(--font-22); font-weight: bold;}
 .cse_vision .hod_profile_bx  .hod_info p,
 .cse_vision .hod_profile_bx  .hod_info a {}
+.common_image_slider .industry_bx p{ padding-top: 0; font-weight: 400; line-height: 1;}
 /* .cse_vision .hod_profile_bx  .hod_info a img{    filter: brightness(0) invert();} */
 .cse_vision .hod_profile_bx:before{bottom: 18.5rem;}
 /* .hod_profile::before { background-image: url(/images/pattern/patch.png); width: 34rem; height: 21.4rem; position: absolute; right: -26rem; bottom: 1rem; content: ""; background-repeat: no-repeat; z-index: 1; }
@@ -2201,9 +2211,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .entrepreneurship_section_grid h4 { margin-bottom: 4rem; }
 .entrepreneurship_section { padding-block: 8rem 3rem; }
 .innovation_tabs { padding-block: 7rem 10rem; border-bottom: 0.1rem solid #C0855280; }
-.innovation_tabs_bx { background-color: var(--color-white); padding: 7rem 10rem 8rem 10rem; z-index: 99; position: relative; margin-top: -2rem; min-height: 46rem; }
-.innovation_tabs_bx blockquote { font: var(--font-30); color: var(--color-33); margin-bottom: 3rem; }
-.innovation_tabs_bx ul li { font: var(--font-18); color: var(--color-black); padding: 1.4rem 0; font-weight: 600; }
+.innovation_tabs_bx { background-color: var(--color-white); padding: 7rem 10rem 8rem 10rem; z-index: 99; position: relative; margin-top: 2rem; min-height: 46rem; }
+.innovation_tabs_bx blockquote { font: var(--font-30); color: var(--color-33); margin-bottom: 3rem; font-weight: 600; }
+.innovation_tabs_bx ul li { font: var(--font-18); color: var(--color-black); padding: 1.4rem 0; font-weight: 400; }
 .innovation_tabs .tabs_section { display: grid; gap: 6.2rem; grid-template-columns: 48% auto; justify-content: center; padding-inline: 18rem 18rem; padding-block: 8rem 0rem; position: relative; }
 .innovation_tabs .tab_content .acc-body { display: inherit; margin: 0; padding: 0; }
 .innovation_tabs .tabs_section .tab-buttons { padding-left: 0; }
@@ -2211,7 +2221,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .innovation_tabs .tabs_section .tab-btn.active { color: var(--color-white) }
 .innovation_tabs .tabs_section .tab-btn { padding-left: 0; }
 .innovation_tabs .tabs_section .tab-btn { color:#FFFFFF80; }
-.innovation_tabs .sterco_tab_main:before { background-color: var(--color-AE); max-height: 42.1rem; bottom: 0; right: 0; }
+.innovation_tabs .sterco_tab_main:before { background-color: var(--color-64); max-height: 42.1rem; bottom: 0; right: 0; }
 .innovation_tabs .sterco_accordion_content:before { background-color: transparent; }
 .innovation_tabs .sterco_accordion_content { grid-template-columns: 1fr; max-width: 67.6rem; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-top: -38rem; padding-block: 13rem 0rem; display: grid; position: relative; margin-right: 10rem; margin-left: auto; }
 .innovation_tabs .sterco_tab_main { padding-bottom: 0; }

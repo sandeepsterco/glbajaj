@@ -39,13 +39,20 @@ export default function WhyClubsGrid() {
               <Image src={item?.image ?? '/images/default/clubs_society.webp'} width={221} height={163} className="img-fluid" alt={item?.title ?? 'clubs & society image'} loading="lazy" />
             </figure>
             <div className="media_txt">
-              {item?.title && (
-                <p>{item.title}</p>
-              )}
-              {item?.slug && (
-                <Link className="cus-btn btn" href={`${BASE_URL}${slug}/${item.slug}`}>View Club Detail</Link>
-              )}
-            </div>
+  {item?.title && (
+    <p>
+      <Link href={`${BASE_URL}${slug}/${item.slug}`}>
+        {item.title}
+      </Link>
+    </p>
+  )}
+
+  {/* {item?.slug && (
+    <Link className="cus-btn btn" href={`${BASE_URL}${slug}/${item.slug}`}>
+      View Club Detail
+    </Link>
+  )} */}
+</div>
           </div>
         ))}
         

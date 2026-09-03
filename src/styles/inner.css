@@ -1181,6 +1181,7 @@
 .ats_imgbx .ats_authinfo .ats_auname { font: var(--font-18); color: #000; font-weight: 600; }
 .ats_imgbx .ats_authinfo .ats_auth_dis { margin-top: 2rem; font: var(--font-16); }
 .ats_imgbx .ats_authinfo { margin-top: 3rem; position: relative; padding-bottom: 7.2rem; }
+.ats_imgbx .ats_authinfo .batch{margin-top: 0.5rem;}
 .ats_authinfo:after { position: absolute; left: 0; bottom: 0; content: ""; background-color: var(--color-FE); height: 1rem; width: 14.9rem; }
 .ats_header .title48 { color: var(--color-92); }
 .ats_thumbsec .swiper-slide { position: relative; cursor: pointer; }

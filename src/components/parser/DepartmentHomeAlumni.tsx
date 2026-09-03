@@ -99,7 +99,9 @@ export default function DepartmentHomeAlumni() {
                   <img src={item.image} className="img-fluid w-100" alt={item.name} data-aos="fade-up" data-aos-delay="600" />
                   <div className="ats_authinfo">
                     <div className="ats_auname" data-aos="fade-up" data-aos-delay="800">{item.name}</div>
-                    <div className="ats_auth_dis" data-aos="fade-up" data-aos-delay="1000">{item.branch}</div>
+                    <div className="ats_auth_dis" data-aos="fade-up" data-aos-delay="1000">{item.designation}</div>
+                    <div className="ats_auth_dis mt-0 batch" data-aos="fade-up" data-aos-delay="1000">{item.branch}</div>
+                    
                   </div>
                 </div>
               </div>
@@ -127,8 +129,8 @@ export default function DepartmentHomeAlumni() {
                 </div>
                 <div className="thu_info">
                   <p className="name">{item.name}</p>
+                  <p className="designation1 !mb-0">{item.designation}</p>
                   <p className="designation">{item.branch}</p>
-                  <p className="designation1">{item.designation}</p>
                 </div>
               </div>
             </SwiperSlide>

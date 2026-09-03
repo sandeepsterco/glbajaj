@@ -294,6 +294,7 @@
       // ".cse_faculties_slider",
       // ".cse_research_slider",
       ".department_home_projects",
+      ".department_home_projects1",
       ".multi_column_slider",
       ".hod_profile_slider",
       ".sport_facilities",
@@ -658,9 +659,25 @@
       centeredSlides: false,
       loop: false,
       autoplay: false,
+      breakpoints:{
+        768: { slidesPerView: 2, spaceBetween: 10 },
+        1200: { slidesPerView: 3, spaceBetween: 20 },
+      },
       navigation: {
         nextEl: ".department_home_projects_next",
         prevEl: ".department_home_projects_prev",
+      },
+    });
+
+    createSwiper(".department_home_projects1", {
+      slidesPerView: 1,
+      spaceBetween: 15,
+      centeredSlides: false,
+      loop: false,
+      autoplay: false,
+      navigation: {
+        nextEl: ".department_home_projects1_next",
+        prevEl: ".department_home_projects1_prev",
       },
     });
 

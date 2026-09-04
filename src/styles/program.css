@@ -401,7 +401,12 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .blanket-text p,
 .blanket-text .activeDesc > * { color: var(--color-white); }
 .blanket-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-right: -10rem; padding-top: 4.3rem; gap: 3.2rem; }
-.blanket-list1{padding-top: 4.3rem;}
+.blanket-list1{padding-top: 4.3rem; position:relative;}
+.blanket-list1 .navigation_btn{top: 50%; bottom: unset; transform: translateY(-50%); width: 100%;margin: 0; padding: 0; left:0; z-index: 1;}
+.blanket-list1 .swiper_prev_custom,
+.blanket-list1 .swiper_next_custom {left:-1.5rem;  position: absolute; top: 50%; transform: translateY(-50%); z-index: 99;}
+.blanket-list1 .swiper_next_custom{right:-1.5rem; transform:unset; left:unset;}
+.blanket-list1 .swiper_prev_custom{transform: rotate(180deg);}
 .csr-sec4 { padding-block: 0 15rem; }
 .clothes { display: grid; grid-template-columns: repeat(2, 1fr); position: relative; }
 .clothes-text { padding: 6rem 27rem 0 0rem; }
@@ -624,6 +629,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .award-detail-img { padding-inline: 0; }
     .award-detail-text1{ display: none;}
     .award-detail-text p{ margin-bottom: 0;}
+
+    #project .blanket-box .blanket-img{
+        display:none;
+    }
 }
 
 

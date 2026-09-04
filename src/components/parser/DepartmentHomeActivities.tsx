@@ -13,21 +13,23 @@ import { SkeletonGroup } from "../ui/Skeleton";
 import NoData from "../ui/NoData";
 
 const fetchDepartmentActivitiesData = async (slug: string) => {
-  const { data, error } = await apiFetch(`department/${slug}/home`);
+  
+  const { data, error } = await apiFetch(`department-activities/${slug}`);
   if (error) throw new Error(error);
-  return data?.data;
+  return data;
 };
 
 export default function DepartmentHomeActivities() {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
-
   const { data, isLoading } = useQuery({
-    queryKey: ["department_home_activities", slug],
+    queryKey: ["department_home_activity", slug],
     queryFn: () => fetchDepartmentActivitiesData(slug),
   });
 
-  const activitiesData = data?.modular?.["department-activities"] ?? [];
+  console.log('department home activyty ',data);
+
+  const activitiesData = data?.department_activities_news ?? [];
 
   const slideCount = activitiesData.length;
   const maxSlidesPerView = 3;
@@ -76,7 +78,7 @@ export default function DepartmentHomeActivities() {
             {(item?.pdf || item?.slug) && (
               <Link
                 className="strech_link"
-                href={item?.pdf ? item.pdf : `${slug}/activity/${item.slug}`}
+                href={item?.pdf ? item.pdf : `${BASE_URL}news-events/${item.slug}`}
                 target={item?.pdf ? '_blank' : '_self'}
               />
             )}

@@ -162,7 +162,7 @@
 .research_card { position: relative; }
 .research_card .res_caption { padding: 0 5.1rem 3.3rem 3.4rem; position: absolute; bottom: 0; z-index: 2; }
 .research_card .res_caption span { font: var(--font-16); color: var(--color-white); display: block; padding-bottom: 0.5rem; }
-.research_card .res_caption p { font: var(--font-24); color: var(--color-white); font-weight: var(--font-medium); line-height: 1.4; }
+.research_card .res_caption p { font: var(--font-24); color: var(--color-white); font-weight: var(--font-medium); line-height: 1.2; }
 .research_slider_wrapper .navigation_btn { position: relative; bottom: 0; right: 0; }
 .research_slider_wrapper .navigation_btn .swiper_next_custom,
 .research_slider_wrapper .navigation_btn .swiper_prev_custom { box-shadow: none; }

@@ -126,6 +126,56 @@
     return true;
   }
 
+  function initBlanketList() {
+    document.querySelectorAll(".blanket-list1:not([data-blanket-init])").forEach((wrapper) => {
+      wrapper.setAttribute("data-blanket-init", "1");
+  
+      const scope = wrapper.closest(".container") || wrapper.parentElement;
+      const blanketBox = scope?.querySelector(".blanket-box");
+      if (!blanketBox) return;
+  
+      const titleEl = blanketBox.querySelector(".blanket-text .activeTitle");
+      const descEl  = blanketBox.querySelector(".blanket-text .activeDesc");
+      const imgEl   = blanketBox.querySelector(".blanket-img .activeImg");
+  
+      function readSlideData(slide) {
+        const h3  = slide.querySelector("h3");
+        const p   = slide.querySelector(".blanket-desc");
+        const img = slide.querySelector("img");
+        return {
+          title: h3 ? h3.innerHTML : "",
+          description: p ? p.innerHTML : "",
+          image: img ? img.getAttribute("src") : "",
+          alt: img ? img.getAttribute("alt") || "" : "",
+        };
+      }
+  
+      function applyContent(slide) {
+        if (!slide) return;
+        const data = readSlideData(slide);
+  
+        if (titleEl) titleEl.innerHTML = data.title;
+        if (descEl)  descEl.innerHTML = data.description;
+        if (imgEl) {
+          imgEl.setAttribute("src", data.image);
+          if (data.alt) imgEl.setAttribute("alt", data.alt);
+        }
+  
+        wrapper.querySelectorAll(".swiper-slide").forEach((s) => s.classList.remove("blanket-active"));
+        slide.classList.add("blanket-active");
+      }
+  
+      // Click any slide -> that slide's content wins, regardless of scroll position
+      wrapper.addEventListener("click", (e) => {
+        const slide = e.target.closest(".swiper-slide");
+        if (slide && wrapper.contains(slide)) applyContent(slide);
+      });
+  
+      // Let the swiper's slideChange handler (below) call this
+      wrapper.__applyBlanketContent = applyContent;
+    });
+  }
+
   function gridPopup() {
     const items = document.querySelectorAll(".media_grid_Bx");
     if (!items.length) return true;
@@ -659,10 +709,7 @@
       centeredSlides: false,
       loop: false,
       autoplay: false,
-      breakpoints:{
-        768: { slidesPerView: 2, spaceBetween: 10 },
-        1200: { slidesPerView: 3, spaceBetween: 20 },
-      },
+      
       navigation: {
         nextEl: ".department_home_projects_next",
         prevEl: ".department_home_projects_prev",
@@ -673,11 +720,27 @@
       slidesPerView: 1,
       spaceBetween: 15,
       centeredSlides: false,
-      loop: false,
-      autoplay: false,
+      loop: true,
+      autoplay: true,
+      breakpoints: {
+        768: { slidesPerView: 2, spaceBetween: 20 },
+        1200: { slidesPerView: 3, spaceBetween: 32 },
+      },
       navigation: {
         nextEl: ".department_home_projects1_next",
         prevEl: ".department_home_projects1_prev",
+      },
+      on: {
+        init(swiper) {
+          const wrapper = swiper.el.closest(".blanket-list1");
+          const slide = swiper.slides[swiper.activeIndex];
+          wrapper?.__applyBlanketContent?.(slide);
+        },
+        slideChange(swiper) {
+          const wrapper = swiper.el.closest(".blanket-list1");
+          const slide = swiper.slides[swiper.activeIndex];
+          wrapper?.__applyBlanketContent?.(slide);
+        },
       },
     });
 
@@ -1440,6 +1503,7 @@ tabButtons.forEach((button) => {
     // initFooterModals();
     initDropMenus();
     initXTabs();
+    initBlanketList();
 
     if (!initSwipers()) {
       window.addEventListener("load", initSwipers, { once: true });

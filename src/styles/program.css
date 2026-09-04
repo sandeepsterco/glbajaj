@@ -398,8 +398,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .blanket-text { padding: 7rem 25rem 0 0rem; }
 .blanket-text h4 { color: var(--color-white); margin-bottom: 3rem; }
 .blanket-text h3 { color: var(--color-white); margin-bottom: 4rem; }
-.blanket-text p { color: var(--color-white); }
+.blanket-text p,
+.blanket-text .activeDesc > * { color: var(--color-white); }
 .blanket-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-right: -10rem; padding-top: 4.3rem; gap: 3.2rem; }
+.blanket-list1{padding-top: 4.3rem;}
 .csr-sec4 { padding-block: 0 15rem; }
 .clothes { display: grid; grid-template-columns: repeat(2, 1fr); position: relative; }
 .clothes-text { padding: 6rem 27rem 0 0rem; }

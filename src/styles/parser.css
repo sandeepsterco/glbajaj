@@ -162,7 +162,7 @@
 .research_card { position: relative; }
 .research_card .res_caption { padding: 0 5.1rem 3.3rem 3.4rem; position: absolute; bottom: 0; z-index: 2; }
 .research_card .res_caption span { font: var(--font-16); color: var(--color-white); display: block; padding-bottom: 0.5rem; }
-.research_card .res_caption p { font: var(--font-24); color: var(--color-white); font-weight: var(--font-medium); line-height: 1.4; }
+.research_card .res_caption p { font: var(--font-24); color: var(--color-white); font-weight: var(--font-medium); line-height: 1.2; }
 .research_slider_wrapper .navigation_btn { position: relative; bottom: 0; right: 0; }
 .research_slider_wrapper .navigation_btn .swiper_next_custom,
 .research_slider_wrapper .navigation_btn .swiper_prev_custom { box-shadow: none; }
@@ -270,6 +270,7 @@
 .home_about_glb_section .grid { display: grid; gap: 3rem; grid-template-columns: 28% auto; }
 /* .home_about_glb_section .left_col { padding-left: 2.5rem; } */
 .home_about_glb_section .left_col figure { position: relative; /* padding-left: 2.5rem;*/ }
+.home_about_glb_section .left_col figure:empty{ display: none;}
 .home_about_glb_section .left_col figure:before { position: absolute; content: ''; top: 3.5rem; left: 1.5rem; width: 100%; height: 45.4rem; object-fit: cover; background: var(--color-F4); z-index: -1; }
 .home_about_glb_section .grid .flash-effect-2{overflow:visible}
 .home_about_glb_section .left_col .pattern { padding-left: 2.5rem; }

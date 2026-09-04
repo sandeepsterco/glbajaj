@@ -1335,6 +1335,7 @@
 .acx_sec .acx_ttl { padding-block: 5rem 8.4rem; }
 .acx_grid { display: grid; gap: 12.5rem; grid-template-columns: 34.25% auto; margin-bottom: 8.4rem; }
 .acx_lft h4 { margin-bottom: 4rem; }
+.acx_rgt2 h4{margin-bottom: 4rem;}
 .acx_lft p { margin-bottom: 4rem; padding-right: 4rem; }
 .acx_list { max-width: 39.75rem; display: flex; gap: 2rem; margin-bottom: 7.2rem; }
 .acx_list li { padding-bottom: 3rem; border-bottom: 0.1rem solid var(--color-D2); }
@@ -1387,6 +1388,9 @@
 .aktu_grid .aktu_siwpr { position: relative; }
 .aktu_grid .aktu_siwpr .navigation_btn { position: absolute; bottom: -3rem; left: 2rem; z-index: 9; }
 .amatra_gym { padding-block: 12rem 10rem; border-bottom: 1px solid #c085524d; }
+
+.institute-innovation-cell-iic .amatra_gym { padding-block:0rem 10rem; margin-bottom: 10rem;}
+.institute-innovation-cell-iic .amatra_gym h4{ padding-top: 3rem; height: auto;}
 .amatra_title { margin-bottom: 4.2rem; max-width: 100%; }
 .amatra_title h4 { height: 4rem; }
 .amatra_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -1860,11 +1864,14 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .iic-achivement-img p { font: var(--font-24); font-weight: 700; margin-bottom: 3rem; color: var(--color-white); }
 .mentor-institute { margin-bottom: 10rem; }
 .mentor-institute h2 { margin-block: 5rem 4.1rem; font: var(--font-30); color: var(--color-00); }
+.mentor-institute h2 span{ display: block; color: var(--color-92); font: var(--font-36); letter-spacing: -.18rem; font-weight: 400; margin-bottom: 2rem; padding-top: 5rem;}
 .mentor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
 .mentor-bx { background-color: var(--color-F5); padding: 3.3rem 3.7rem; }
 .mentor-bx p { font: var(--font-16); display: flex; justify-content: space-between; }
-.mentor-bx p:first-child { color: var(--color-33); margin-bottom: 1rem; }
-.mentor-bx p:last-child { color: var(--color-00); font-weight: 600; margin-bottom: 0rem; }
+.mentor-bx p:first-child { color: var(--color-00);  margin-bottom: 1rem; }
+.mentor-bx p:last-child { color: var(--color-00);  font-weight: 600; margin-bottom: 0rem; }
+.mentor-bx p:last-child span{ color: var(--color-00);}
+
 .nss-ncc-aim { margin-top: 5rem; }
 .nss-ncc-aim-grid { display: grid; grid-template-columns: 42.5% 57.6%; margin-bottom: 9rem; }
 .nss-ncc-aim-Cnt { padding-right: 11rem; }
@@ -2145,7 +2152,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .admission_process .tp_ov_pattern { padding-block:4rem 0; }
 .admission_process h4 { margin-bottom: 4rem; }
 .admission_process p { padding-right:8rem; }
-.course_grid { display: grid; grid-template-columns:55.2% auto; gap: 7.4rem; }
+.course_grid { display: grid; grid-template-columns:100%; gap: 6rem; }
 .courses_admission_section { padding-block:0rem 10rem; border-bottom: 1px solid rgba(174, 127, 44, 0.5); }
 .courses_admission_section h4 { margin-bottom: 4rem; }
 .course_grid_Bx .item-content { padding-top: 3rem; }
@@ -2203,7 +2210,35 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .glbcri_section .tp_ov_pattern { padding-block: 4rem 0; }
 .glbcri_section ul { color: var(--color-33); padding-right: 3rem; }
 .clbcri_grid_bx { display: grid; grid-template-columns:43% auto; background-color: var(--color-F4); padding-block: 9rem 8rem; position: relative; gap: 11.6rem; }
-.clbcri_grid_bx h4 { margin-block: 4rem; }
+
+
+
+.clb_grid_list{background-color: var(--color-F4); padding-block:0rem 8rem; position: relative; }
+.clb_grid_list::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+.clb_grid_list::before { background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+
+.clb_grid_list h4{ margin-bottom: 5rem;}
+.clb_grid_list ul{ display: grid; grid-template-columns: repeat(2, 1fr); margin: 0;}
+.clb_bottom_list{background-color: var(--color-F4); padding-block:0rem 8rem; position: relative; }
+.clb_bottom_list::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+.clb_bottom_list::before { background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+.clb_bottom_list ul li{ margin-top: 0;}
+
+
+
+.heighlight_section{background-color: var(--color-F4); padding-block:0rem 8rem; position: relative; }
+.heighlight_section::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+.heighlight_section::before { background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
+.heighlight_section p{ font: var(--font-20); font-weight: 600;}
+.heighlight_section a{ background-color: var(--color-92); font: var(--font-18); color: var(--color-white); padding: 0.7rem 2rem; border-radius: 0.5rem; margin-left: 1rem;}
+
+.heighlight_section a:hover{background-color: var(--color-64);}
+.institute-innovation-cell-iic .media_grid{ margin-top: 6rem;}
+.institute-innovation-cell-iic .media_grid_Bx figure{ margin: 0; height: auto; margin-bottom: 2rem;}
+.ipr-patents .media_grid{ margin-top: 6rem;}
+.ipr-patents .media_grid_Bx figure{ margin: 0; height: auto; margin-bottom: 2rem;}
+
+.clbcri_grid_bx h4 { margin-block:0 4rem; }
 .clbcri_bx ul { color: var(--color-33); padding-right:2rem; }
 .clbcri_grid_bx::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
 .clbcri_grid_bx::before { background-color: var(--color-F4); right: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }
@@ -2272,7 +2307,8 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .horizontal_tab .xtabs_nav .xtab_btn { margin-right: 3rem; cursor: pointer; font-weight: 500; padding-bottom: 4.3rem; }
 .horizontal_tab .xtabs_nav .xtab_btn.active { border-bottom: 0.3rem solid var(--color-92); font-weight: 600; }
 .horizontal_tab .xtabs_nav { border-bottom: 0.1rem solid var(--color-70); margin-bottom: 3rem; }
-.course_grid_Bx .horizontal_tab .xtabs_nav .xtab_btn { margin-right: 8rem; }
+.course_grid_Bx .horizontal_tab .xtabs_nav .xtab_btn { margin-right: 4rem; }
+.course_grid_Bx .horizontal_tab .xtabs_nav .xtab_btn:last-child{ margin-right: 0;}
 .cr-sec { padding-block: 10rem 10rem; margin-top: 10rem; border-top: .1rem solid #c0855280; }
 .cr-item { display: grid; grid-template-columns: auto 17%; align-items: center; padding: 1.5rem; background-color: var(--color-F4); justify-content: space-between; margin-bottom: 2.5rem; }
 .cr-left h5 { font-weight: 600; }
@@ -2498,3 +2534,5 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .training-and-placement-policy .fac_mainpdf .fac_policy_list .fac_policy_right p{ display: none;}
 .training-and-placement-policy .ppolicy_sec{ padding-block: 5rem 5rem;}
 .dean-student-welfare .facilities_policy h2{ color: var(--color-64); font-size: 2.4rem; font-weight: 700; line-height: 2.6rem; font-family: var(--font-tasa);}
+.entrepreneurship .home_about_glb_section .row{ justify-content: center;}
+.entrepreneurship .home_about_glb_section .grid{ display: none;}

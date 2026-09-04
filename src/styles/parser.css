@@ -270,6 +270,7 @@
 .home_about_glb_section .grid { display: grid; gap: 3rem; grid-template-columns: 28% auto; }
 /* .home_about_glb_section .left_col { padding-left: 2.5rem; } */
 .home_about_glb_section .left_col figure { position: relative; /* padding-left: 2.5rem;*/ }
+.home_about_glb_section .left_col figure:empty{ display: none;}
 .home_about_glb_section .left_col figure:before { position: absolute; content: ''; top: 3.5rem; left: 1.5rem; width: 100%; height: 45.4rem; object-fit: cover; background: var(--color-F4); z-index: -1; }
 .home_about_glb_section .grid .flash-effect-2{overflow:visible}
 .home_about_glb_section .left_col .pattern { padding-left: 2.5rem; }

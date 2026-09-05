@@ -16,7 +16,7 @@ type MenuItem = {
 
 function groupMenuItemsIntoColumns(menuItems: MenuItem[]): MenuItem[][] {
   // Fixed 1-2-2-1 distribution across 4 columns
-  const distributions = [1, 2, 1, 1];
+  const distributions = [1, 1, 1, 1];
   const columns: MenuItem[][] = [];
   let i = 0;
 
@@ -32,8 +32,8 @@ function groupMenuItemsIntoColumns(menuItems: MenuItem[]): MenuItem[][] {
 const COL_CLASSES: Record<number, string> = {
   0: "why_col",
   1: "facilities_col",
-  2: "happenings_col",
-  3: "alumni_col",
+  2: "alumni_col",
+  3: "happenings_col",
 };
 
 const SOCIALS = [

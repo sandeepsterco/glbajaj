@@ -35,11 +35,12 @@
 .menu_bars .search_open { position: relative; padding-right: 1.5rem; margin-right: 1.5rem;}
 .menu_bars .search_open img,
 .menu_bars .hamb_open img { width: 2.2rem; }
-.inner_header.active .menu_bars .search_open img,
-.inner_header.active .menu_bars .hamb_open img{filter:invert(1)}
 
-.main_header.active .menu_bars .search_open img,
-.main_header.active .menu_bars .hamb_open img{filter:invert(1)}
+.inner_header.active.scrolled .menu_bars .search_open img,
+.inner_header.active.scrolled .menu_bars .hamb_open img{filter:invert(1);}
+
+.main_header.active.scrolled .menu_bars .search_open img,
+.main_header.active.scrolled .menu_bars .hamb_open img{filter:invert(1);}
 
 .site_nav>ul>li>a { display: inline-block; position: relative; font: var(--font-21); color: var(--color-white); letter-spacing: -0.19px; 
     font-weight: var(--font-medium); z-index: 1; text-decoration: none; transition: all .5s ease; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; 

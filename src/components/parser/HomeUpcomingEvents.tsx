@@ -79,14 +79,31 @@ export default function HomeUpcomingEvents() {
     <>
       <div className="grid">
         <div className="left_col">
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop={events.newsAndEvents.length > 1}
-            slidesPerView={2}
-            speed={800}
-            spaceBetween={20}
-          >
+         <Swiper
+  modules={[Autoplay]}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false
+  }}
+  loop={events.newsAndEvents.length > 1}
+  slidesPerView={1}
+  spaceBetween={15}
+  speed={800}
+  breakpoints={{
+    576: {
+      slidesPerView: 1,
+      spaceBetween: 15
+    },
+    992: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    1200: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
+  }}
+>
             {events.mediaCoverage.map((event: MediaCoverageItem) => {
               const d = formatDateParts(event.date);
               return (

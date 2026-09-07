@@ -51,6 +51,14 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+/* department home projects */
+
+.department_projects1 .blanket-list1.single_slide{display:none;}
+.department_projects1.no_slide:before{display:none;}
+.department_home_projects1.center-slides .swiper-wrapper{justify-content: center;}
+.department_home_projects1 .swiper-slide figure{cursor: pointer;}
+.department_home_projects1 .blanket-active figure{border: 4px solid #fff;}
+
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {

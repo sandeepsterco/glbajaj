@@ -524,7 +524,7 @@
 .home_research_incubation .contents .image_title small{ font:var(--font-24); text-transform: none; }
 .home_research_incubation .contents p{ color:#fff; margin:0; line-height: 2.2rem; min-height: 7rem; }
 .home_research_incubation_section .right_data{ top: 50%; position: relative; transform: translateY(-50%); width: 100%; padding: 0 5rem; text-align: center; z-index: 1; }
-.home_research_incubation_section .right_data .logo{ margin:auto; max-width: 20rem; }
+.home_research_incubation_section .right_data .logo{ margin:auto; max-width: 35rem; }
 .home_research_incubation_section .right_data .logo_content{ margin-top: 3rem; }
 .internship-page .hod_right:before{ display: none;}
 .internship-page .hod_right figure+p{ margin-top: 7rem;}

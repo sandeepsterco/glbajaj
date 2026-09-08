@@ -1272,9 +1272,7 @@
 .transport-tabs .item-content { display: none; }
 .transport-tabs .item.active .item-content { display: block; }
 .about_breadcrumb.menus { display: none; }
-.about_menu_bar {
-        top: 0rem;
-    }
+.about_menu_bar { top: 0rem; }
     
  }
 /* =============Transport Facilities  End============= */

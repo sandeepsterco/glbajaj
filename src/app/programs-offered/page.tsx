@@ -7,17 +7,35 @@ import { Suspense } from "react";
 import "@/src/styles/inner.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { getPageSEO } from "@/src/lib/seo";
 
-export default async function ProgramsOffered(){
-    const slug = await getSlug();
-    const {data, error} = await apiFetch(`cms/${slug}`);
+export async function generateMetadata() {
+  return await getPageSEO(`programs-offered`);
+}
 
-    return(
-        <main>
-            <PageHeader data={data?.data} slug={slug} />
-            <Suspense fallback={<PageLoader variant="home" />}>
-                <ProgramList />
-            </Suspense>
-        </main>
-    )
-} 
+export default async function ProgramsOffered() {
+  const slug = await getSlug();
+  const [{ data }, seoData] = await Promise.all([
+    apiFetch(`cms/${slug}`),
+    getPageSEO(`programs-offered`),
+  ]);
+
+  return (
+    <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      <main>
+        <PageHeader data={data?.data} slug={slug} />
+        <Suspense fallback={<PageLoader variant="home" />}>
+          <ProgramList />
+        </Suspense>
+      </main>
+    </>
+  );
+}

@@ -1,30 +1,54 @@
 import NotFound from "@/src/app/not-found";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import NoData from "@/src/components/ui/NoData";
-import { apiFetch } from "@/src/lib/api"
-import { getSlug } from "@/src/lib/getSlug"
+import { apiFetch } from "@/src/lib/api";
+import { getSlug } from "@/src/lib/getSlug";
+import { getPageSEO } from "@/src/lib/seo";
 
-export default async function DepartmentLabsDetail(){
-    const slug = await getSlug();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; innerslug: string }>;
+}) {
+  const { slug, innerslug } = await params;
+  return await getPageSEO(`department/${slug}/research/${innerslug}`);
+}
 
-    const {data, error} = await apiFetch(`research/${slug}`)
-    const researchData = data?.research_details?.cms
+export default async function DepartmentLabsDetail({
+  params,
+}: {
+  params: Promise<{ slug: string; innerslug: string }>;
+}) {
+  // const slug = await getSlug();
+  const { slug, innerslug } = await params;
 
-    if(error){
-        return <NotFound />;
-    }
+  const [{ data, error }, seoData] = await Promise.all([
+    apiFetch(`research/${innerslug}`),
+    getPageSEO(`department/${slug}/research/${innerslug}`),
+  ]);
+  const researchData = data?.research_details?.cms;
 
-    if(Object.keys(researchData).length == 0){
-        return <NoData />;
-    }
+  if (error) {
+    return <NotFound />;
+  }
 
-    return(
-        <>
-            {Object.keys(researchData).map((key) => {
-                return (
-                    <ReactParser key={key} html={researchData[key]} />
-                );
-            })}
-        </>
-    )
+  if (Object.keys(researchData).length == 0) {
+    return <NoData />;
+  }
+
+  return (
+    <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      {Object.keys(researchData).map((key) => {
+        return <ReactParser key={key} html={researchData[key]} />;
+      })}
+    </>
+  );
 }

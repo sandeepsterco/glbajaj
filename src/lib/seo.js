@@ -16,7 +16,12 @@ async function fetchPageSEO(slug) {
       slug = `${SEO_URL}${pathname}`;
     }
 
-    const res = await fetch(`${SEO_URL}seo/${encodeURIComponent(slug)}`, {
+    const encodedSlug = slug
+      .split("/")
+      .map(encodeURIComponent)
+      .join("/");
+
+    const res = await fetch(`${SEO_URL}seo/${encodedSlug}`, {
       cache: "force-cache",
       next: { revalidate: 360 },
     });

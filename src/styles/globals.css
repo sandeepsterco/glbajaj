@@ -110,7 +110,6 @@ a { text-decoration: none; }
 .form-feedback--error { background: #fff5f5; border: 1px solid #fc8181; color: #c53030; }
 .feedback-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
 
-
 /* custom btns */
 .arrow_btn{
   background:#fff;

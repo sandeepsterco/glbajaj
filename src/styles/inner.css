@@ -1,3 +1,8 @@
+
+
+.pb-0{padding-bottom:0!important;}
+.pt-0{padding-top:0!important;}
+
 .xtab_panel { display: none; }
 .xtab_btn { font:var(--font-16); }
 .xtab_btn.active { color: var(--color-black); }
@@ -58,6 +63,9 @@
 .department_home_projects1.center-slides .swiper-wrapper{justify-content: center;}
 .department_home_projects1 .swiper-slide figure{cursor: pointer;}
 .department_home_projects1 .blanket-active figure{border: 4px solid #fff;}
+
+
+.alumni-events-meets .csr-sec3{margin-top: 7rem;}
 
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
@@ -1080,6 +1088,8 @@
 .placement_wrapper .placement_batch_section:not(:first-child){
     margin-top: 5rem;
 }
+
+.alumni-events-meets .csr-sec3{margin-top: 4rem;}
 
  }
 .career_empo_sec2 { padding-block: 10rem 11.6rem; }

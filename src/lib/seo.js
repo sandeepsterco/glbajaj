@@ -4,7 +4,6 @@ import { cache } from "react";
 
 async function fetchPageSEO(slug) {
   try {
-    // If no slug passed, auto-detect full URL from request headers
     if (!slug) {
       const headersList = await headers();
       const host = headersList.get("host");
@@ -36,7 +35,9 @@ async function fetchPageSEO(slug) {
       openGraph: {
         title: data.data.openGraph?.title || data.data.title,
         description: data.data.openGraph?.description || data.data.description,
+        type: data.data.openGraph?.type || "website",
         images: data.data.openGraph?.images || [],
+        url: data.data.openGraph?.url || data.data.alternates?.canonical || slug,
       },
       schema: data.data.schema || {
         "@context": "https://schema.org",

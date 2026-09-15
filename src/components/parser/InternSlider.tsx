@@ -93,7 +93,7 @@ export default function InternSlider() {
                 data-aos-delay="400"
               >
                 <figure className="flash-effect-2">
-                  <img src={item.image ?? ""} alt={item.name ?? ""} />
+                  <Image src={item.image ?? ""} alt={item.name ?? "internship image"} width={600} height={732} loading="lazy" />
                 </figure>
                 {item.logo_image && (
                   <div className="place_complog">

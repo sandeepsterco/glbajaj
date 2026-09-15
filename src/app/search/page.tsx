@@ -1,7 +1,6 @@
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import PageLoader from "@/src/components/ui/pageLoader/PageLoader";
 import "@/src/styles/inner.css";
 import SearchPageListing from "./SearchPageListing";
@@ -17,9 +16,8 @@ export default async function SearchPage({
   searchParams: Promise<{ q?: string }>;
 }) {
   const { q } = await searchParams;
-  const slug = await getSlug();
   const [{ data }, seoData] = await Promise.all([
-    apiFetch(`cms/${slug}`),
+    apiFetch(`cms/search`),
     getPageSEO(`search`),
   ]);
 
@@ -34,7 +32,7 @@ export default async function SearchPage({
         />
       )}
       <main>
-        <PageHeader data={data.data} slug={slug} />
+        <PageHeader data={data.data} slug="search" />
         <SearchPageListing searchQuery={q} />
       </main>
     </>

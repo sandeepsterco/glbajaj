@@ -1,7 +1,6 @@
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import PageLoader from "@/src/components/ui/pageLoader/PageLoader";
 import { Suspense } from "react";
 import "@/src/styles/inner.css";
@@ -14,9 +13,8 @@ export async function generateMetadata() {
 }
 
 export default async function ProgramsOffered() {
-  const slug = await getSlug();
   const [{ data }, seoData] = await Promise.all([
-    apiFetch(`cms/${slug}`),
+    apiFetch(`cms/programs-offered`),
     getPageSEO(`programs-offered`),
   ]);
 
@@ -31,7 +29,7 @@ export default async function ProgramsOffered() {
         />
       )}
       <main>
-        <PageHeader data={data?.data} slug={slug} />
+        <PageHeader data={data?.data} slug="programs-offered" />
         <Suspense fallback={<PageLoader variant="home" />}>
           <ProgramList />
         </Suspense>

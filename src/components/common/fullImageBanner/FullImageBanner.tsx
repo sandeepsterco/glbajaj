@@ -8,6 +8,19 @@ import { Pagination, Autoplay } from "swiper/modules";
 import NotificationBar from "../../ui/notificationBar/NotificationBar";
 import "./banner.css";
 
+function getYouTubeId(url: string): string {
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes("youtu.be")) return u.pathname.slice(1);
+    if (u.pathname.startsWith("/embed/")) return u.pathname.split("/embed/")[1];
+    return u.searchParams.get("v") || "";
+  } catch {
+    return "";
+  }
+}
+
+
+
 function getVideoUrl(url: string): string {
   if (!url) return "";
 
@@ -15,8 +28,7 @@ function getVideoUrl(url: string): string {
     const videoUrl = new URL(url);
 
     if (
-      videoUrl.hostname.includes("vimeo.com") ||
-      videoUrl.hostname.includes("player.vimeo.com")
+      videoUrl.hostname.includes("vimeo.com")
     ) {
       videoUrl.searchParams.set("autoplay", "1");
       videoUrl.searchParams.set("muted", "1");
@@ -30,19 +42,18 @@ function getVideoUrl(url: string): string {
       videoUrl.hostname.includes("youtube.com") ||
       videoUrl.hostname.includes("youtu.be")
     ) {
-      videoUrl.searchParams.set("autoplay", "1");
-      videoUrl.searchParams.set("mute", "1");
-      videoUrl.searchParams.set("controls", "0");
-      videoUrl.searchParams.set("loop", "1");
-      videoUrl.searchParams.set("playsinline", "1");
-      videoUrl.searchParams.set("rel", "0");
-      videoUrl.searchParams.set("modestbranding", "1");
-      const videoId =
-        videoUrl.searchParams.get("v") ||
-        videoUrl.pathname.split("/").pop() ||
-        "";
-      if (videoId) videoUrl.searchParams.set("playlist", videoId);
-      return videoUrl.toString();
+      const id = getYouTubeId(url);
+      const params = new URLSearchParams({
+        autoplay: "1",
+        mute: "1",
+        controls: "0",
+        loop: "1",
+        playsinline: "1",
+        rel: "0",
+        modestbranding: "1",
+        ...(id ? { playlist: id } : {}),
+      });
+      return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
     }
 
     return url;
@@ -50,6 +61,27 @@ function getVideoUrl(url: string): string {
     return url;
   }
 }
+
+// Fires the callback only after the whole page (images, fonts, scripts)
+// has finished loading — this is the key change requested.
+function usePageFullyLoaded(): boolean {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setLoaded(true);
+      return;
+    }
+    const onLoad = () => setLoaded(true);
+    window.addEventListener("load", onLoad);
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
+  return loaded;
+}
+
+
+
 
 function SliderCaption({ slide }: { slide: any }) {
   return (
@@ -83,35 +115,28 @@ function SliderCaption({ slide }: { slide: any }) {
 function HeroVideoSlide({
   slide,
   index,
+  isActive,
+  pageLoaded,
+
 }: {
   slide: any;
   index: number;
-}) {
-  const [loadVideo, setLoadVideo] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); 
+  isActive: boolean;
+  pageLoaded: boolean;
 
-  useEffect(()=>{
-    const updateWidth = ()=>{
-      setIsMobile(window.innerWidth < 768)
-    }
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return()=>window.removeEventListener('resize',updateWidth)
-  }, [])
+}) {
+  const [userTriggered, setUserTriggered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (index !== 0 || loadVideo) return;
+    const updateWidth = () => setIsMobile(window.innerWidth < 768);
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
-    const activate = () => setLoadVideo(true);
-
-    if (typeof window.requestIdleCallback === "function") {
-      const idleId = window.requestIdleCallback(activate, { timeout: 4000 });
-      return () => window.cancelIdleCallback(idleId);
-    }
-
-    const timeoutId = window.setTimeout(activate, 4000);
-    return () => window.clearTimeout(timeoutId);
-  }, [index, loadVideo]);
+  const autoLoad = index === 0 && pageLoaded && isActive;
+  const shouldRenderIframe = autoLoad || userTriggered;
 
   return (
     <div className="home_banner_video_facade">
@@ -122,26 +147,27 @@ function HeroVideoSlide({
           fill
           priority={index === 0}
           sizes="100vw"
-          className={`object-cover ${loadVideo ? "home_banner_video_poster--hidden" : ""}`}
+          className={`object-cover ${shouldRenderIframe ? "home_banner_video_poster--hidden" : ""}`}
         />
       ) : (
         <div className="home_banner_video_placeholder" aria-hidden="true" />
       )}
 
-      {loadVideo ? (
+      {shouldRenderIframe && isActive ? (
         <iframe
           src={getVideoUrl((isMobile && slide?.mobile_video_link) || slide?.video_link)}
           title={slide?.title || "Banner video"}
           className="home_banner_video_iframe"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
+          loading="lazy"
         />
       ) : (
         <button
           type="button"
           className="home_banner_video_play"
           aria-label="Play banner video"
-          onClick={() => setLoadVideo(true)}
+          onClick={() => setUserTriggered(true)}
         />
       )}
 
@@ -151,6 +177,11 @@ function HeroVideoSlide({
 }
 
 export default function HeroBanner({ data }: { data: any }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const pageLoaded = usePageFullyLoaded();
+
+
+
   return (
     <section className="home_banner">
       <Swiper
@@ -160,6 +191,8 @@ export default function HeroBanner({ data }: { data: any }) {
         onBeforeInit={(sw) => {
           sw.el.style.setProperty("--swiper-duration", "4000ms");
         }}
+        onSlideChange={(sw) => setActiveIndex(sw.activeIndex)}
+
       >
         {data?.map((slide: any, index: number) => (
           <SwiperSlide key={index}>
@@ -183,7 +216,13 @@ export default function HeroBanner({ data }: { data: any }) {
                 )}
               </>
             ) : (
-              <HeroVideoSlide slide={slide} index={index} />
+              <HeroVideoSlide
+              slide={slide}
+              index={index}
+              isActive={index === activeIndex}
+              pageLoaded={pageLoaded}
+            />
+
             )}
           </SwiperSlide>
         ))}

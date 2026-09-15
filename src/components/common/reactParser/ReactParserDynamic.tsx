@@ -1,18 +1,19 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { markAwaitingParser } from "@/src/lib/mainContentReady";
 
 const ReactParser = dynamic(() => import("./ReactParser"), { ssr: false });
 
 export default function ReactParserDynamic({ html }: { html: string }) {
-  if (typeof window !== "undefined" && html) {
-    markAwaitingParser();
-  }
+  const markedHtmlRef = useRef<string | null>(null);
 
   useLayoutEffect(() => {
-    if (html) markAwaitingParser();
+    if (html && markedHtmlRef.current !== html) {
+      markedHtmlRef.current = html;
+      markAwaitingParser();
+    }
   }, [html]);
 
   return (

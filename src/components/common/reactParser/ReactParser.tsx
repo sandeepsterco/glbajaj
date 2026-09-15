@@ -25,6 +25,7 @@ import "@/src/styles/parser.css";
 import DepartmentHomeResearch from "../../parser/DepartmentHomeResearch";
 import HomeCourseRight from "../../parser/HomeCourseRight";
 import AlumniAchievementList from "../../parser/AlumniAchievementList";
+import InternSlider from "../../parser/InternSlider";
 
 function ParserWidgetFallback() {
   return (
@@ -450,6 +451,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "department_home_research") return <DepartmentHomeResearch />;
       if (domNode.attribs.id === "home_course_right") return <HomeCourseRight />;
       if (domNode.attribs.id === "alumni_achievement_list") return <AlumniAchievementList />;
+      if (domNode.attribs.id === "intern_slider") return <InternSlider />;
       
       
     }

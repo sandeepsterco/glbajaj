@@ -530,6 +530,16 @@
 .internship-page .hod_right figure+p{ margin-top: 7rem;}
 /* end of home_research_incubation */
 
+
+/* ========= START HOME INTERN SLIDER =============*/
+
+.intern_slider_section{padding:10rem 0 0;}
+.intern_slider_section .title24{margin-bottom:1rem;}
+.intern_slider_section .title48{color: var(--color-92); letter-spacing: -2.4px; margin-bottom: 2rem;}
+
+/* ========= END HOME INTERN SLIDER =============*/
+
+
 @media (max-width:2440px) {
  .hod_right::before { height: auto; }
  }

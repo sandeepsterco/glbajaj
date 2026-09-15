@@ -30,7 +30,7 @@ export default function IntershipRecord() {
         );
     }
 
-    const placement_data = data?.intern?.data;
+    const placement_data = data?.intern;
 
     return (
         <div className="placement_grid">

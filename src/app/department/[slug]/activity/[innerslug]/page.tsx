@@ -1,25 +1,48 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import NoData from "@/src/components/ui/NoData";
-import { apiFetch } from "@/src/lib/api"
-import { getSlug } from "@/src/lib/getSlug"
+import { apiFetch } from "@/src/lib/api";
+import { getSlug } from "@/src/lib/getSlug";
+import { getPageSEO } from "@/src/lib/seo";
 
-export default async function DepartmentActivityDetail(){
-    const slug = await getSlug();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; innerslug: string }>;
+}) {
+  const { slug, innerslug } = await params;
+  return await getPageSEO(`department/${slug}/activity/${innerslug}`);
+}
 
-    const {data, error} = await apiFetch(`department-activities/${slug}`)
-    const CoEsData = data?.department_activities_details?.cms
+export default async function DepartmentActivityDetail({
+  params,
+}: {
+  params: Promise<{ slug: string; innerslug: string }>;
+}) {
+  const { slug, innerslug } = await params;
 
-    if(CoEsData == ''){
-        return <NoData />
-    }
+  const [{ data }, seoData] = await Promise.all([
+    apiFetch(`department-activities/${innerslug}`),
+    getPageSEO(`department/${slug}/activity/${innerslug}`),
+  ]);
+  const CoEsData = data?.department_activities_details?.cms;
 
-    return(
-        <>
-            {Object.keys(CoEsData).map((key) => {
-                return (
-                    <ReactParser key={key} html={CoEsData[key]} />
-                );
-            })}
-        </>
-    )
+  if (CoEsData == "") {
+    return <NoData />;
+  }
+
+  return (
+    <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      {Object.keys(CoEsData).map((key) => {
+        return <ReactParser key={key} html={CoEsData[key]} />;
+      })}
+    </>
+  );
 }

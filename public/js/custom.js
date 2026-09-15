@@ -256,7 +256,7 @@
 
   function createSwiperOnElement(el, options, label) {
     if (!el || el.nodeType !== 1) return null;
-
+  
     if (
       el.hasAttribute("data-swiper-react") ||
       el.closest("[data-swiper-react]") ||
@@ -266,12 +266,83 @@
     ) {
       return null;
     }
-
+  
     if (el.swiper) {
       el.swiper.destroy(true, true);
     }
-
+  
     const opts = Object.assign({}, options);
+    const wrapper = el.closest(".blanket-list1") || el.parentElement;
+    const slideCount = el.querySelectorAll(".swiper-slide").length;
+  
+    // ─── Single-slide: skip Swiper entirely ─────────────────────────────────
+    if (slideCount <= 1) {
+      wrapper?.classList.add("single_slide");
+      el.parentElement.closest('section').classList.add('no_slide');
+      // wrapper?.closest('section').classList.add('no_slide');
+      wrapper?.classList.remove("center-slides");
+      // wrapper?.closest('.department_projects1').classList.remove('no_slide');
+  
+      const onlySlide = el.querySelector(".swiper-slide");
+      if (onlySlide && wrapper?.__applyBlanketContent) {
+        wrapper.__applyBlanketContent(onlySlide);
+      }
+  
+      // Hide nav buttons since there's nothing to navigate
+      if (opts.navigation && typeof opts.navigation === "object") {
+        const nextEl = resolveNavEl(el, opts.navigation.nextEl);
+        const prevEl = resolveNavEl(el, opts.navigation.prevEl);
+        [nextEl, prevEl].forEach((btn) => {
+          if (btn) btn.style.display = "none";
+        });
+      }
+  
+      return null;
+    } else {
+      wrapper?.classList.remove("single_slide");
+      // el.parentElement.closest('section').classList.remvoe('no_slide');
+    }
+  
+    // ─── Adaptive centering: opt-in via options.adaptiveCentering ───────────
+    if (opts.adaptiveCentering) {
+      const threshold = opts.adaptiveCenteringThreshold || 3;
+      const isFewSlides = slideCount <= threshold;
+  
+      el.classList.toggle("center-slides", isFewSlides);
+      wrapper?.classList.toggle("center-slides", isFewSlides);
+  
+      opts.loop = !isFewSlides;
+      opts.centeredSlides = false; // CSS handles centering via justify-content
+  
+      if (isFewSlides) {
+        opts.autoplay = false;
+        opts.allowTouchMove = false;
+        opts.simulateTouch = false;
+        opts.grabCursor = false;
+  
+        if (opts.navigation && typeof opts.navigation === "object") {
+          const nextEl = resolveNavEl(el, opts.navigation.nextEl);
+          const prevEl = resolveNavEl(el, opts.navigation.prevEl);
+          [nextEl, prevEl].forEach((btn) => {
+            if (btn) btn.style.display = "none";
+          });
+          delete opts.navigation;
+        }
+      } else {
+        if (opts.navigation && typeof opts.navigation === "object") {
+          const nextEl = resolveNavEl(el, opts.navigation.nextEl);
+          const prevEl = resolveNavEl(el, opts.navigation.prevEl);
+          [nextEl, prevEl].forEach((btn) => {
+            if (btn) btn.style.display = "";
+          });
+        }
+      }
+  
+      delete opts.adaptiveCentering;
+      delete opts.adaptiveCenteringThreshold;
+    }
+    // ──────────────────────────────────────────────────────────────────────
+  
     if (opts.navigation && typeof opts.navigation === "object") {
       const nextEl = resolveNavEl(el, opts.navigation.nextEl);
       const prevEl = resolveNavEl(el, opts.navigation.prevEl);
@@ -284,7 +355,7 @@
         delete opts.navigation;
       }
     }
-
+  
     try {
       return new Swiper(el, opts);
     } catch (err) {
@@ -446,27 +517,6 @@
     }
 });
 
-    createSwiper(".home_recruiters_slider", {
-      slidesPerView: 1,
-      spaceBetween: 15,
-      loop: true,
-      autoplay: false,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        992: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-      },
-    });
-
     createSwiper(".home_research_incubation", {
       slidesPerView: 3,
       spaceBetween: 15,
@@ -523,7 +573,7 @@
       },
     });
 
-    createSwiper(".home_recruiters_slider", {
+    createSwipers(".home_recruiters_slider", {
       slidesPerView: 1,
       spaceBetween: 15,
       loop: true,
@@ -716,11 +766,11 @@
       },
     });
 
-    createSwiper(".department_home_projects1", {
+    createSwipers(".department_home_projects1", {
       slidesPerView: 1,
       spaceBetween: 15,
-      centeredSlides: false,
-      loop: true,
+      adaptiveCentering: true,
+      adaptiveCenteringThreshold: 2,
       autoplay: true,
       breakpoints: {
         768: { slidesPerView: 2, spaceBetween: 20 },

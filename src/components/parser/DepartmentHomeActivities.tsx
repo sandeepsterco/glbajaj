@@ -73,7 +73,7 @@ export default function DepartmentHomeActivities() {
                data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             <div className="activities_caption">
-              <p  data-aos="fade-up" data-aos-delay="400">{item.title}</p>
+              <p  data-aos="fade-up" data-aos-delay="400">{item.heading || item.title}</p>
             </div>
             {(item?.pdf || item?.slug) && (
               <Link

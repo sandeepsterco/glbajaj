@@ -7,7 +7,7 @@ import HomeContent from "./HomeContent";
 
 const getHomeData = async () => {
   const [seoData, homeRes] = await Promise.all([
-    getPageSEO(),
+    getPageSEO('home'),
     apiFetch("modular/home", { revalidate: 300 }),
   ]);
   return { seoData, homeData: homeRes?.data?.data };

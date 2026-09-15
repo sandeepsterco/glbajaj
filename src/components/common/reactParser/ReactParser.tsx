@@ -313,20 +313,45 @@ const options: HTMLReactParserOptions = {
       }
 
       if (domNode.name === 'div') {
-        const classList = (domNode.attribs?.class || '').split(/\s+/);
-        if (classList.includes('tcex_btm_des')) {
-          const isEmptyNode = (node: any): boolean => {
-            if (node.type === 'text') return !node.data?.trim();
-            if (node.type === 'tag') {
-              if (node.name === 'br' || node.name === 'hr') return true;
-              return (node.children || []).every(isEmptyNode);
-            }
-            return true; // comments, etc.
-          };
-          const isEmpty = domNode.children.every(isEmptyNode);
-          if (isEmpty) {
-            return <></>;
+
+        const hasMeaningfulContent = (node: any): boolean => {
+      
+          if (node.type === 'text') {
+            return node.data?.trim().length > 0;
           }
+      
+          // Element / tag
+          if (node.type === 'tag') {
+      
+            if (node.attribs?.id) {
+              return true;
+            }
+      
+            if (
+              ['img', 'video', 'iframe', 'input', 'textarea', 'select'].includes(node.name)
+            ) {
+              return true;
+            }
+      
+            if (node.children?.length) {
+              return node.children.some(hasMeaningfulContent);
+            }
+      
+            return false;
+          }
+      
+          return false;
+        };
+      
+      
+        const hasId = !!domNode.attribs?.id;
+      
+        const hasContent = (domNode.children || []).some(hasMeaningfulContent);
+      
+      
+        // Remove ONLY truly empty div
+        if (!hasId && !hasContent) {
+          return <></>;
         }
       }
 

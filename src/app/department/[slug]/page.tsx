@@ -11,32 +11,55 @@ import "@/src/styles/inner.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
+import { getPageSEO } from "@/src/lib/seo";
 // import "@/src/styles/parser.css";
 
-export default async function DepartmentPage(){
-    const slug = await getSlug();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return await getPageSEO(`department/${slug}`);
+}
 
-    const {data, error} = await apiFetch(`department/${slug}/home`);
+export default async function DepartmentPage() {
+  const slug = await getSlug();
 
-    if(error){
-        return <NotFound />;
-    }
+  const [{ data, error }, seoData] = await Promise.all([
+    apiFetch(`department/${slug}/home`),
+    getPageSEO(`department/${slug}`),
+  ]);
 
-    const combinedHtml = data?.data?.cms
+  if (error) {
+    return <NotFound />;
+  }
+
+  const combinedHtml = data?.data?.cms
     ? Object.values(data?.data?.cms).join("")
     : "";
 
-    return(
-        <div className="happenings_page">
-            {data?.data?.tabs && (
-                <PageHeader data={data.data} slug={slug} />
-            )}
+    console.log('seoData',seoData);
 
-            {data.data.cms.length == 0 ? <ComingSoon /> : (
-                <ReactParserDynamic html={combinedHtml} />
-            )}
+  return (
+    <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      <div className="happenings_page">
+        {data?.data?.tabs && <PageHeader data={data.data} slug={slug} />}
 
-            
-        </div>
-    )
+        {data.data.cms.length == 0 ? (
+          <ComingSoon />
+        ) : (
+          <ReactParserDynamic html={combinedHtml} />
+        )}
+      </div>
+    </>
+  );
 }

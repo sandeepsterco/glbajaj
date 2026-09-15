@@ -318,7 +318,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-sec { padding-block: 5rem 10rem; }
 .award-heading h3 { letter-spacing: -1.8px; color: var(--color-92); }
 .award-heading h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
-.award-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; margin-top: 7.7rem; }
+.award-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-top: 7.7rem; }
 .award-list .award-box { position: relative; }
 .award-box p { font: var(--font-18); color: var(--color-black); font-weight: 600; padding: 2rem; margin-bottom: 0; }
 .award-detail-sec { padding-block: 5rem 10rem; }
@@ -408,6 +408,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .blanket-list1 .swiper_next_custom {left:-1.5rem;  position: absolute; top: 50%; transform: translateY(-50%); z-index: 99;}
 .blanket-list1 .swiper_next_custom{right:-1.5rem; transform:unset; left:unset;}
 .blanket-list1 .swiper_prev_custom{transform: rotate(180deg);}
+.blanket-list-img{position: relative; overflow: hidden;}
+.blanket-list-img .name{position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 20px; background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.85));}
+.blanket-list-img .event_name{font: var(--font-18); color:var(--color-white); text-transform: uppercase; font-weight: 500; letter-spacing: 0.1rem;}
 .csr-sec4 { padding-block: 0 15rem; }
 .clothes { display: grid; grid-template-columns: repeat(2, 1fr); position: relative; }
 .clothes-text { padding: 6rem 27rem 0 0rem; }

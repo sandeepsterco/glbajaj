@@ -1121,6 +1121,9 @@
 .blog_Bx > figure img { width: 100%; }
 .blog_listing_left {grid-template-columns: repeat(1, 1fr);}
 .iqac-event .fac_mainpdf{grid-template-columns: repeat(1, 1fr);}
+.recent_post{ margin-top: 0;}
+
+
 /* the-group */ }
 
 @media (max-width: 575px) {

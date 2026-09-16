@@ -35,7 +35,7 @@ export default function DepartmentHomeAchievement() {
           <div className="achiv_caption">
             <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{__html:item.title}} />
           </div>
-          <Link className="strech_link" href={`${BASE_URL}achievements/${item.slug}`} ></Link>
+          <Link className="strech_link" href={`${BASE_URL}why-glbitm/achievements/${item.slug}`} ></Link>
         </div>
       ))}
     </div>

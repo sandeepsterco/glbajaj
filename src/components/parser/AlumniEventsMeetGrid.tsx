@@ -18,7 +18,9 @@ export default function AlumniEventsMeetGrid() {
   const [page, setPage] = useState(1);
   const [allItems, setAllItems] = useState<any[]>([]);
   const pathname = usePathname();
-  const slug = pathname.split('/').filter(Boolean).pop();
+  const slug = pathname.split('/').filter(Boolean);
+  const parentSlug = slug[0]
+  const childSlug = slug[1];
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["glb_pathshala", page],
@@ -53,7 +55,7 @@ export default function AlumniEventsMeetGrid() {
             {item?.title && (
               <p>{item.title}</p>
             )}
-            <Link href={`${BASE_URL}${slug}/${item.slug}`} className="strech_link" />
+            <Link href={`${BASE_URL}${parentSlug}/${childSlug}/${item.slug}`} className="strech_link" />
           </div>
         ))}
 

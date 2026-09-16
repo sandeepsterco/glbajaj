@@ -21,7 +21,7 @@ export default function AchievementList() {
     const searchParams = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
 
-    const slug = pathname.split('/').filter(Boolean).pop();
+    const slug = pathname.split('/').filter(Boolean);
 
     const { data, isLoading, isError, isFetching } = useQuery({
         queryKey: ["achievement-list", page],
@@ -49,7 +49,7 @@ export default function AchievementList() {
                             <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
                         )}
                         {item?.slug && (
-                            <Link href={`${BASE_URL}achievements/${item.slug}`} className="strech_link" />
+                            <Link href={`${BASE_URL}${slug[0]}/achievements/${item.slug}`} className="strech_link" />
                         )}
                     </div>
                 ))}

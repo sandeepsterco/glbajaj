@@ -37,7 +37,9 @@ const fetchAlumniAchievements = async (page: number) => {
 
 export default function AlumniAchievementList() {
   const pathname = usePathname();
-  const currentSlug = pathname.split("/").pop();
+  const pageslug = pathname.split("/").filter(Boolean);
+  const parentSlug = pageslug[0];
+  const currentSlug = pageslug[1];
 
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
@@ -172,7 +174,7 @@ export default function AlumniAchievementList() {
                 </p>
                 <Link
                   className="strech_link"
-                  href={`${BASE_URL}${currentSlug}/${item.slug}`}
+                  href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`}
                 />
               </div>
             ))}

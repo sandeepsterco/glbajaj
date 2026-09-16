@@ -1,6 +1,5 @@
 "use client"
 
-import ThankYouPage from "@/src/app/(innerPage)/thank-you/page";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { useRouter } from "next/navigation";

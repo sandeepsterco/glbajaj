@@ -275,7 +275,7 @@
 .home_about_glb_section .grid .flash-effect-2{overflow:visible}
 .home_about_glb_section .left_col .pattern { padding-left: 2.5rem; }
 .home_about_glb_section .about_top { display: flex; justify-content: space-between; align-items: start; gap: 6.6rem; padding-left: 2.5rem; margin-bottom: 3.8rem; background: transparent; padding-block: 0; }
-.home_about_glb_section .about_top .heading { margin-top: 2rem; color: #000;}
+.home_about_glb_section .about_top .heading { margin-top: 2rem;}
 .home_about_glb_section .about_top .desc { padding-right: 6.6rem; }
 .home_about_glb_section .about_top .more_btn { cursor: pointer; background-color: var(--color-white); width: 4rem; height: 4rem; box-shadow: 0 4px 12px #00000026; display: flex; align-items: center; justify-content: center; }
 .home_about_glb_section .about_top .more_btn:hover { background-color: var(--color-92); }

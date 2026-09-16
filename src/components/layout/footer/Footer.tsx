@@ -38,13 +38,13 @@ const Footer = async () => {
             target="_blank" className="vertical-floating-btn CTA_applynow_btn">           
             Apply Now
           </Link>
-          <Link
+          {/* <Link
             href="https://www.glbitm.org/virtual-tour/GLB-AVT04062025"
             target="_blank"
             className="vertical-floating-btn CTA_Applynow">
             <img src={getValue('360_view')?.image} className="icon" alt="360 icon" />
             View
-          </Link>
+          </Link> */}
         </div>
       )}
 

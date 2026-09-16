@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import "./header.css";
 import { BASE_URL } from "@/src/config/config";
 import { usePathname, useRouter } from "next/navigation";
+import { generateSlug } from "@/src/lib/generateSlug";
 
 type MenuItem = {
   title: string;
@@ -44,6 +45,12 @@ const SOCIALS = [
   { icon: "linkedin.png", label: "LinkedIn", href:"https://www.linkedin.com/school/g-l-bajaj-institute-of-technology-and-management/" },
 ];
 
+
+
+const isSlugContains = (slug: string) => {
+  return !slug.includes('program') && !slug.includes('department');
+};
+
 // Resolves label for any child type:
 // - child_menu entries have `title`
 // - module entries have `data.name`
@@ -58,14 +65,17 @@ function MenuColumn({
   child,
   setMegaMenuOpen,
   setActiveMegaMenu,
+  parent
 }: {
   child: any;
   setMegaMenuOpen: (v: boolean) => void;
   setActiveMegaMenu: (v: number | null) => void;
+  parent:any
 }) {
+
   const hasSubChildren =
     child.has_children === true && child.children?.length > 0;
-  const childSlug = child?.slug ? BASE_URL + child.slug : child?.target_blank_url ? child.target_blank_url : "#";
+  const childSlug = child?.slug ? `${BASE_URL}${ isSlugContains(child.slug) ? generateSlug(parent.title) + '/' : ''}${child.slug}` : child?.target_blank_url ? child.target_blank_url : "#";
   const childTarget = child?.target_blank_url ? "_blank" : "_self";
   const isNavigable = child?.slug && child.slug !== "#";
 
@@ -95,7 +105,7 @@ function MenuColumn({
         <ul>
           {child.children.map((sub: any, subIdx: number) => {
             const label = getChildLabel(sub);
-            const subSlug = sub?.slug ? BASE_URL + sub.slug : sub?.target_blank_url ? sub.target_blank_url : "#";
+            const subSlug = sub?.slug ? `${BASE_URL}${isSlugContains(sub.slug) ? generateSlug(parent.title)+'/' : ''}${sub.slug}` : sub?.target_blank_url ? sub.target_blank_url : "#";
             const subTarget = sub?.target_blank_url ? "_blank" : "_self";
             const subNavigable = sub?.slug && sub.slug !== "#";
 
@@ -281,7 +291,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                               }}
                             >
                               <Link
-                                href={item?.slug ? BASE_URL + item.slug : ""}
+                                href={item?.slug ? `${BASE_URL}${item.slug}` : ""}
                               >
                                 {item.title}
                               </Link>
@@ -306,6 +316,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                                           <MenuColumn
                                             key={cIdx}
                                             child={child}
+                                            parent={item}
                                             setMegaMenuOpen={setMegaMenuOpen}
                                             setActiveMegaMenu={
                                               setActiveMegaMenu
@@ -327,6 +338,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                                         <MenuColumn
                                           key={cIdx}
                                           child={child}
+                                          parent={item}
                                           setMegaMenuOpen={setMegaMenuOpen}
                                           setActiveMegaMenu={setActiveMegaMenu}
                                         />
@@ -535,12 +547,12 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                     {menuData.children.map((item:any, itemIdx:number) => (
                       <li key={itemIdx}>
                         <Link
-                        href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : ""}
-                        target={item?.target_blank_url ? "_blank" : "_self"}
-                        onClick={() => setSidebarOpen(false)}
-                      >
-                        {item.title}
-                      </Link>
+                          href={item?.slug ? `${BASE_URL}${isSlugContains(item?.slug) ? generateSlug(menuData.title)+'/' : ''}${item.slug}` : item?.target_blank_url ? item.target_blank_url : ""}
+                          target={item?.target_blank_url ? "_blank" : "_self"}
+                          onClick={() => setSidebarOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
                       </li>
                     ))}
                   </ul>

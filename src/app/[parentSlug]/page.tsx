@@ -1,30 +1,35 @@
 import { apiFetch } from "@/src/lib/api";
-import NotFound from "@/src/app/not-found";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
+import { notFound } from "next/navigation";
+import PageHeader from "@/src/components/layout/header/PageHeader";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ parentSlug: string }>;
 }) {
-  const { slug } = await params;
-  return await getPageSEO(slug);
+  const { parentSlug } = await params;
+  return await getPageSEO(parentSlug);
 }
 
 export default async function DynamicSlugPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ parentSlug: string }>;
 }) {
-  const { slug } = await params;
-  const [data, seoData] = await Promise.all([
-    apiFetch(`cms/${slug}`),
-    getPageSEO(slug),
+  const { parentSlug } = await params;
+  const [{data, error}, seoData] = await Promise.all([
+    apiFetch(`cms/${parentSlug}`),
+    getPageSEO(parentSlug),
   ]);
 
-  const combinedHtml = Object.values(data?.data?.data?.sections ?? {}).join("");
+  if (error || !data?.status || !data?.data) {
+    notFound();
+  }
+
+  const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
 
   return (
     <>
@@ -36,6 +41,7 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
+      <PageHeader data={data?.data} slug={parentSlug} />
       <ReactParserDynamic html={combinedHtml} />
     </>
   );

@@ -1,0 +1,16 @@
+.thank_you{
+    padding: 25rem 0 25rem;
+    text-align: center;
+}
+
+.thank_you .heading{
+    font: var(--font-48);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-92);
+}
+
+.thank_you p{
+    font: var(--font-21);
+    padding-top: 1rem;
+}

@@ -1,6 +1,4 @@
-"use client";
 
-import dynamic from "next/dynamic";
 import parse, {
   attributesToProps,
   Element,
@@ -10,12 +8,10 @@ import parse, {
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
-import { scheduleRefreshAOSSequence } from "@/src/lib/aos";
-import { markRouteContentReady } from "@/src/lib/mainContentReady";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+// import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
+// import { scheduleRefreshAOSSequence } from "@/src/lib/aos";
+// import { markRouteContentReady } from "@/src/lib/mainContentReady";
+// import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import '@/src/styles/fancybox.css'
 import "@/src/styles/inner.css";
@@ -36,166 +32,48 @@ function ParserWidgetFallback() {
   );
 }
 
-const HomePlacements = dynamic(() => import("../../parser/HomePlacements"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-
-const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const HomeUpcomingEvents = dynamic(() => import("../../parser/HomeUpcomingEvents"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const CourseSearch = dynamic(() => import("../../parser/CourseSearch"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCourses"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const ContactForm = dynamic(() => import("../../parser/ContactForm"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const AboutLeadership = dynamic(() => import("../../parser/AboutLeadership"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const AwardsList = dynamic(() => import("../../parser/AwardsList"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const ConferenceLists = dynamic(() => import("../../parser/ConferenceLists"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const DepartmentHomeFaculties = dynamic(
-  () => import("../../parser/DepartmentHomeFaculties"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const DepartmentHomeLaboratories = dynamic(
-  () => import("../../parser/DepartmentHomeLaboratories"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const DepartmentHomeAlumni = dynamic(
-  () => import("../../parser/DepartmentHomeAlumni"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const ProgramDetailAlumni = dynamic(
-  () => import("../../parser/ProgramDetailAlumni"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const DepartmentHomeCourses = dynamic(
-  () => import("../../parser/DepartmentHomeCourses"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const ResearchInnovation = dynamic(
-  () => import("../../parser/ResearchInnovation"),
-  { loading: ParserWidgetFallback,  ssr:false, }
-);
-const HomeFacilities = dynamic(() => import("../../parser/HomeFacilities"), {
-  loading: ParserWidgetFallback,
-});
-const PoliciesDisclosures = dynamic(
-  () => import("../../parser/PoliciesDisclosures"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const AchievementList = dynamic(() => import("../../parser/AchievementList"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const DepartmentHomeHappenings = dynamic(
-  () => import("../../parser/DepartmentHomeHappenings"),
-  { loading: ParserWidgetFallback, ssr:false,  }
-);
-const DepartmentHomeActivities = dynamic(
-  () => import("../../parser/DepartmentHomeActivities"),
-  { loading: ParserWidgetFallback, ssr:false,  }
-);
-const DigitalPathshalaVideoGrid = dynamic(
-  () => import("../../parser/DigitalPathshalaVideoGrid"),
-  { loading: ParserWidgetFallback, ssr:false,  }
-);
-const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"), {
-  loading: ParserWidgetFallback,
-  ssr:false,
-});
-const AlumniEventsMeetGrid = dynamic(
-  () => import("../../parser/AlumniEventsMeetGrid"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const AdmissionPrograms = dynamic(
-  () => import("../../parser/AdmissionPrograms"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentNotificationBar = dynamic(
-  () => import("../../parser/DepartmentNotificationBar"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentHomeClubs = dynamic(
-  () => import("../../parser/DepartmentHomeClubs"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentHomeMou = dynamic(
-  () => import("../../parser/DepartmentHomeMou"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentHomeCEO = dynamic(
-  () => import("../../parser/DepartmentHomeCEO"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentHomeAchievement = dynamic(
-  () => import("../../parser/DepartmentHomeAchievement"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentLabsGrids = dynamic(
-  () => import("../../parser/DepartmentLabsGrids"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
-const DepartmentFacultyGrid = dynamic(
-  () => import("../../parser/DepartmentFacultyGrid"),
-  { loading: ParserWidgetFallback, ssr:false, }
-);
+import HomePlacements from "../../parser/HomePlacements";
+import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
+import ProgramDetailPlacements from "../../parser/ProgramDetailPlacements";
+import CareerJobListing from "../../parser/CareerJobListing";
+import HomeUpcomingEvents from "../../parser/HomeUpcomingEvents";
+import ProgramDetailForm from "../../parser/ProgramDetailForm";
+import CourseSearch from "../../parser/CourseSearch";
+import HomeCoursesTabs from "../../parser/HomeCoursesTabs";
+import AddOnCourses from "../../parser/AddOnCourses";
+import ProgramAddOnCourses from "../../parser/ProgramAddOnCourses";
+import HomeHappenings from "../../parser/HomeHappenings";
+import HomeAlumni from "../../parser/HomeAlumni";
+import ContactForm from "../../parser/ContactForm";
+import AboutLeadership from "../../parser/AboutLeadership";
+import AwardsList from "../../parser/AwardsList";
+import ConferenceLists from "../../parser/ConferenceLists";
+import DepartmentHomeFaculties from "../../parser/DepartmentHomeFaculties";
+import DepartmentHomeLaboratories from "../../parser/DepartmentHomeLaboratories";
+import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
+import ProgramDetailAlumni from "../../parser/ProgramDetailAlumni";
+import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
+import ResearchInnovation from "../../parser/ResearchInnovation";
+import HomeFacilities from "../../parser/HomeFacilities";
+import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
+import PlacementRecord from "../../parser/PlacementRecord";
+import IntershipRecord from "../../parser/IntershipRecord";
+import AchievementList from "../../parser/AchievementList";
+import DepartmentHomeHappenings from "../../parser/DepartmentHomeHappenings";
+import DepartmentHomeActivities from "../../parser/DepartmentHomeActivities";
+import DigitalPathshalaVideoGrid from "../../parser/DigitalPathshalaVideoGrid";
+import WhyClubsGrid from "../../parser/WhyClubsGrid";
+import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
+import AdmissionPrograms from "../../parser/AdmissionPrograms";
+import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
+import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
+import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
+import DepartmentHomeCEO from "../../parser/DepartmentHomeCEO";
+import DepartmentHomeAchievement from "../../parser/DepartmentHomeAchievement";
+import DepartmentLabsGrids from "../../parser/DepartmentLabsGrids";
+import DepartmentFacultyGrid from "../../parser/DepartmentFacultyGrid";
+import HashLinkAnchor from "./HashLinkAnchor";
+import CmsEnhancer from "@/src/lib/CmsEnhancer";
 
 const options: HTMLReactParserOptions = {
   replace(domNode) {
@@ -232,17 +110,9 @@ const options: HTMLReactParserOptions = {
         // 'hashchange' event, so our ReactParser listener never sees these.
         if (href && href.startsWith("#")) {
           return (
-            <a
-              {...rest}
-              href={href}
-              onClick={(e) => {
-                e.preventDefault();
-                window.history.pushState(null, "", href);
-                scrollToHashWhenReady(href, { behavior: "smooth" });
-              }}
-            >
+            <HashLinkAnchor {...rest} href={href}>
               {domToReact(domNode.children as any, options)}
-            </a>
+            </HashLinkAnchor>
           );
         }
       
@@ -462,53 +332,17 @@ const options: HTMLReactParserOptions = {
 // ReactParser
 // ---------------------------------------------------------------------------
 
-export default function ReactParser({ html }: { html: any }) {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    markRouteContentReady();
-
-    const cancelAosRefresh = scheduleRefreshAOSSequence();
-
-    const schedule = (window as Window & { __scheduleInitCustomJS?: () => void }).__scheduleInitCustomJS;
-    const init = (window as Window & { __initCustomJS?: () => void }).__initCustomJS;
-
-    if (typeof schedule === "function") {
-      schedule();
-    } else if (typeof init === "function") {
-      init();
-    }
-
-    let cancelHashScroll = () => {};
-
-    const runHashScroll = () => {
-      cancelHashScroll();
-      cancelHashScroll = scrollToHashWhenReady(undefined, { behavior: "smooth" });
-    };
-
-    // Delay so parsed HTML and nested dynamic widgets can mount first.
-    const hashScrollTimer = window.setTimeout(runHashScroll, 150);
-
-    const onHashChange = () => runHashScroll();
-    window.addEventListener("hashchange", onHashChange);
-
-    return () => {
-      cancelAosRefresh();
-      window.clearTimeout(hashScrollTimer);
-      window.removeEventListener("hashchange", onHashChange);
-      cancelHashScroll();
-    };
-  }, [pathname, html]);
-
-  if (!html) {
-    if (typeof window !== "undefined") {
-      markRouteContentReady();
-    }
-    return null;
+function hashString(str: string): string {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+      hash = (hash * 33) ^ str.charCodeAt(i);
   }
+  return (hash >>> 0).toString(36);
+}
 
+export default function ReactParser({ html }: { html: any }) {
+  // const pathname = usePathname();
+  
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR: [
       "target",
@@ -547,10 +381,58 @@ export default function ReactParser({ html }: { html: any }) {
     ADD_DATA_URI_TAGS: ["img"],
     ALLOW_DATA_ATTR: true,
   });
+  
+  const containerId = `cms-block-${hashString(sanitizedHtml)}`;
+
+  // useEffect(() => {
+  //   if (typeof window === "undefined") return;
+
+  //   markRouteContentReady();
+
+  //   const cancelAosRefresh = scheduleRefreshAOSSequence();
+
+  //   const schedule = (window as Window & { __scheduleInitCustomJS?: () => void }).__scheduleInitCustomJS;
+  //   const init = (window as Window & { __initCustomJS?: () => void }).__initCustomJS;
+
+  //   if (typeof schedule === "function") {
+  //     schedule();
+  //   } else if (typeof init === "function") {
+  //     init();
+  //   }
+
+  //   let cancelHashScroll = () => {};
+
+  //   const runHashScroll = () => {
+  //     cancelHashScroll();
+  //     cancelHashScroll = scrollToHashWhenReady(undefined, { behavior: "smooth" });
+  //   };
+
+  //   // Delay so parsed HTML and nested dynamic widgets can mount first.
+  //   const hashScrollTimer = window.setTimeout(runHashScroll, 150);
+
+  //   const onHashChange = () => runHashScroll();
+  //   window.addEventListener("hashchange", onHashChange);
+
+  //   return () => {
+  //     cancelAosRefresh();
+  //     window.clearTimeout(hashScrollTimer);
+  //     window.removeEventListener("hashchange", onHashChange);
+  //     cancelHashScroll();
+  //   };
+  // }, [pathname, html]);
+
+  // if (!html) {
+  //   if (typeof window !== "undefined") {
+  //     markRouteContentReady();
+  //   }
+  //   return null;
+  // }
+
 
   return (
-    <>
+    <div id={containerId}>
       {parse(sanitizedHtml, options)}
-    </>
+      <CmsEnhancer containerId={containerId} />
+    </div>
   );
 }

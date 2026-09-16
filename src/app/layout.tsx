@@ -1,10 +1,10 @@
 import { Lexend, TASA_Orbiter } from "next/font/google";
 import Header from "../components/layout/header/Header";
-import ScriptLoader from "../components/ScriptLoader";
+// import ScriptLoader from "../components/ScriptLoader";
 import Footer from "../components/layout/footer/Footer";
 import FooterGate from "../components/layout/footer/FooterGate";
 import MainWrapper from "../components/MainWrapper";
-import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
+// import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
 import { Toaster } from "react-hot-toast";
@@ -43,7 +43,7 @@ export default async function RootLayout({
               <Toaster />
             </AOSProvider>
           </Providers>
-          <ScriptLoader />
+          {/* <ScriptLoader /> */}
       </body>
     </html>
   );

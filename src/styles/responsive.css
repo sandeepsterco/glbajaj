@@ -816,7 +816,13 @@
 .objective_clubs{ padding-top: 5rem;}
 .botttom-sec .bottom_content .dark_bg p{ max-width: 100%;}
 .botttom-sec .bottom_content .dark_bg{ padding: 3rem;}
-
+.student_corner_overview { padding-block: 5rem; }
+.student_corner_overview h2 { padding-bottom: 2rem; }
+.tp_acc_box { padding-left: 0; padding-top: 5rem;}
+.tp_acc_box .accordion-header .icon{width: 4.2rem; padding: 0rem 1.4rem;}
+.tp_acc_box .accordion-header{padding: 1.5rem 1.5rem;}
+.tp_acc_box .accordion-item.active .accordion-body { padding: 0 1.5rem 2rem; }
+.student_corner_overview .row { margin: 0; display: block; }
 }
 
 @media (max-width: 820px) {

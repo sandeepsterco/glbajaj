@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api"
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";

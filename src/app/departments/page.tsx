@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { BASE_URL } from "@/src/config/config";

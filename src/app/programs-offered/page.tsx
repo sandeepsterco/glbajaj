@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";

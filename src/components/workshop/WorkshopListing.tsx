@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 
-export default function WorkshopListing({data, slug}:{data:any, slug:string}) {
+export default function WorkshopListing({data, slug, parentSlug}:{data:any, slug:string, parentSlug:string}) {
     return (
         <section className="news_listing">
             <div className="container25">
@@ -28,7 +28,7 @@ export default function WorkshopListing({data, slug}:{data:any, slug:string}) {
                             
                         </div>
                         {item?.slug && (
-                            <Link href={BASE_URL + slug +'/'+ item.slug} className="strech_link" />
+                            <Link href={BASE_URL + parentSlug + '/' + slug +'/'+ item.slug} className="strech_link" />
                         )}
                     </div>
                 ))}

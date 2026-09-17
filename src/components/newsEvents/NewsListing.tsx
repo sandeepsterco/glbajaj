@@ -28,7 +28,7 @@ export default function NewsListing({data, slug}:{data:any, slug:string}) {
                             
                         </div>
                         {item?.slug && (
-                            <Link href={BASE_URL + slug +'/'+ item.slug} className="strech_link" />
+                            <Link href={BASE_URL + 'happenings/' + slug +'/'+ item.slug} className="strech_link" />
                         )}
                     </div>
                 ))}

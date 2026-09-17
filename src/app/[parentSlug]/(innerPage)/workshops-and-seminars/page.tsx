@@ -15,6 +15,7 @@ export default async function GalleryPage({ searchParams }: { searchParams: Prom
     const currentPage = Number(page) || 1;
     const {data, error} = await apiFetch(`workshops-seminars?page=${currentPage}`);
     const slug = await getSlug();
+    const parentSlug = await getSlug(0);
 
     if(error){
         return (
@@ -25,8 +26,8 @@ export default async function GalleryPage({ searchParams }: { searchParams: Prom
     return(
         <>
         <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
-            <MainGallery data={data?.featured}  currentPage="workshops-and-seminars" />
-            <GalleryList data={data?.others} currentPage="workshops-and-seminars" customClass="workshops-and-seminars-list" />
+            <MainGallery data={data?.featured}  currentPage="workshops-and-seminars" parentSlug={parentSlug} slug={slug} />
+            <GalleryList data={data?.others} currentPage="workshops-and-seminars" customClass="workshops-and-seminars-list" parentSlug={parentSlug} slug={slug} />
             </InnerPageLayoutWrapper>
         </>
     )

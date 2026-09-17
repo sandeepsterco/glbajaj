@@ -4,7 +4,8 @@ import Link from "next/link";
 import DepartmentFilter from "../newsEvents/DepartmentFilter";
 import NoData from "../ui/NoData";
 
-export default function MainWorkshop({data, slug, departments, currentDepartment}:{data:any, slug:string, departments:any, currentDepartment:any}){
+export default async function MainWorkshop({data, slug, parentSlug, departments, currentDepartment}:{data:any, slug:string, parentSlug:string, departments:any, currentDepartment:any}){
+
     if (!data) {
         return (
             <section className="news_section">
@@ -51,7 +52,7 @@ export default function MainWorkshop({data, slug, departments, currentDepartment
                         )}
 
                         {data?.slug && (
-                            <Link href={BASE_URL + slug + "/" + data.slug}>
+                            <Link href={BASE_URL + parentSlug + '/' + slug + "/" + data.slug}>
                                 <img src="/images/home/slide_arrow_right.svg" alt="arrow" className="img-fluid" />
                             </Link>
                         )}

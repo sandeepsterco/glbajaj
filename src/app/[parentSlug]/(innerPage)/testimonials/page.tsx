@@ -16,6 +16,7 @@ export default async function TestimonialPage({ searchParams }: { searchParams: 
     const activeType = type || "student";
     const { data, error } = await apiFetch(`testimonial?type=${activeType}&page=${currentPage}`);
     const slug = await getSlug();
+    
 
     if (error) {
         return (

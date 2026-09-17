@@ -9,6 +9,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { getSlug } from "@/src/lib/getSlug";
 
 interface SearchParams {
   page?: string;
@@ -46,18 +47,21 @@ export default async function Workshop({
   const otherListing = allItems.slice(1);
 
   const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
-  const slug = "workshops";
+  // const slug = "workshops";
+  const slug = await getSlug();
+  const parentSlug = await getSlug(0);
 
   return (
     <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
       <MainWorkshop
         data={mainData}
         slug={slug}
+        parentSlug={parentSlug}
         departments={departments}
         currentDepartment={department}
       />
       {otherListing.length > 0 && (
-        <WorkshopListing data={otherListing} slug={slug} />
+        <WorkshopListing data={otherListing} slug={slug} parentSlug={parentSlug} />
       )}
       {allItems.length > 0 && (
         <PaginationWrapper

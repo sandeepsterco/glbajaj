@@ -66,7 +66,7 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
                 {data?.heading && <h3>{data.heading}</h3>}
                 {data?.description && <p>{data.description}</p>}
                 {data?.slug && (
-                  <Link href={BASE_URL + slug + "/" + data.slug}>
+                  <Link href={BASE_URL + 'happenings/' + slug + "/" + data.slug}>
                     <img
                       src="/images/home/slide_arrow_right.svg"
                       alt="arrow"

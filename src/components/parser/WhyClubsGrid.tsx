@@ -21,7 +21,9 @@ export default function WhyClubsGrid() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   
-  const slug = pathname.split('/').filter(Boolean).pop();
+  const slug = pathname.split('/').filter(Boolean);
+  const parentSlug = slug[0];
+  const childSlug = slug[1];
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["glb_pathshala", page],
@@ -41,7 +43,7 @@ export default function WhyClubsGrid() {
             <div className="media_txt">
   {item?.title && (
     <p>
-      <Link href={`${BASE_URL}${slug}/${item.slug}`}>
+      <Link href={`${BASE_URL}${parentSlug}/${childSlug}/${item.slug}`}>
         {item.title}
       </Link>
     </p>

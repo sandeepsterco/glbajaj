@@ -2,7 +2,7 @@ import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MainGallery({data, currentPage='gallery'}:{data:any, currentPage?:string}){
+export default function MainGallery({data, currentPage='gallery', parentSlug, slug}:{data:any, currentPage?:string, parentSlug?:string, slug?:string}){
     if(data?.length === 0) return null;
     return(
         <section className="media_gallery">
@@ -36,7 +36,7 @@ export default function MainGallery({data, currentPage='gallery'}:{data:any, cur
                                 <h5>{item.title}</h5>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}happenings/${currentPage}/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}${parentSlug}/${currentPage}/${item.slug}`} className="strech_link" />
                             )}
                         </div> 
                     ))}

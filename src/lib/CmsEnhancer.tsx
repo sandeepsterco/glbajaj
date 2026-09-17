@@ -110,12 +110,16 @@ export default function CmsEnhancer({ containerId }: { containerId: string }) {
       for (const [selector, run] of tasks) {
         if (cancelled) return;
         if (!root.querySelector(selector)) continue;
-        const cleanup = await run();
-        if (cancelled) {
-          cleanup();
-          return;
+        try {
+            const cleanup = await run();
+            if (cancelled) {
+                cleanup();
+                return;
+            }
+            cleanupFns.push(cleanup);
+        } catch (err) {
+            console.error(`CmsEnhancer: failed to init "${selector}"`, err);
         }
-        cleanupFns.push(cleanup);
       }
     }
 

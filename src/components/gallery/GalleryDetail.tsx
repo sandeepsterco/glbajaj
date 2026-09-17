@@ -3,7 +3,7 @@ import { apiFetch } from '@/src/lib/api';
 import { useMemo, useState } from 'react'
 import { SkeletonGroup } from '../ui/Skeleton';
 import Image from 'next/image';
-import { Fancybox } from '@fancyapps/ui'
+import { Fancybox, FancyboxOptions } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import '@/src/styles/fancybox.css'
 
@@ -100,8 +100,10 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
 
         Fancybox.show(items, {
             startIndex: index,
-            Thumbs: false,
-        });
+            Thumbs: {
+                autoStart: false,
+            },
+        } as Partial<FancyboxOptions> & { Thumbs?: { autoStart?: boolean } });
     };
 
     const applyFilter = async (type: 'all' | 'images' | 'videos') => {

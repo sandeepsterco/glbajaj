@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationWrapper from "../common/pagination/PaginationWrapper"; // adjust import path
 
-export default function GalleryList({data, currentPage='gallery', customClass}:{data:any, currentPage?:string, customClass?:string}){
+export default function GalleryList({data, currentPage='gallery', customClass, parentSlug, slug}:{data:any, currentPage?:string, customClass?:string, parentSlug?:string, slug?:string}){
     const pagination = data; // current_page, last_page are at data level (data.others)
 
     return(
@@ -35,7 +35,7 @@ export default function GalleryList({data, currentPage='gallery', customClass}:{
                                 <p>{item.title}</p>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}happenings/${currentPage}/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}${parentSlug}/${currentPage}/${item.slug}`} className="strech_link" />
                             )}
                         </div>
                     ))}

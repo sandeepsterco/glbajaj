@@ -2567,7 +2567,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .dean-student-welfare .facilities_policy h2{ color: var(--color-64); font-size: 2.4rem; font-weight: 700; line-height: 2.6rem; font-family: var(--font-tasa);}
 .entrepreneurship .home_about_glb_section .row{ justify-content: center;}
 .entrepreneurship .home_about_glb_section .grid{ display: none;}
-.student_corner_overview{ padding-block: 12rem;}
+.student_corner_overview{ padding-block: 7rem;}
 .student_corner_overview .row{ margin: 0;}
 .student_corner_overview h2{ padding-bottom: 5rem;}
 .tp_acc_box{ padding-left: 5rem;}

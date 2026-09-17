@@ -55,7 +55,7 @@ export default function TestimonialList({ data, slug, activeType = "student", cu
                                 <p>{item.course}</p>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}testimonials/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}why-glbitm/testimonials/${item.slug}`} className="strech_link" />
                             )}
 
                         </div>

@@ -36,7 +36,7 @@ export default function MainGallery({data, currentPage='gallery'}:{data:any, cur
                                 <h5>{item.title}</h5>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}${currentPage}/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}happenings/${currentPage}/${item.slug}`} className="strech_link" />
                             )}
                         </div> 
                     ))}

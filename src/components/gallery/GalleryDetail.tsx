@@ -3,10 +3,9 @@ import { apiFetch } from '@/src/lib/api';
 import { useMemo, useState } from 'react'
 import { SkeletonGroup } from '../ui/Skeleton';
 import Image from 'next/image';
-
+import { Fancybox } from '@fancyapps/ui'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import '@/src/styles/fancybox.css'
-
-declare const Fancybox: any
 
 function getYoutubeThumbnail(url: string): string {
     const match = url.match(

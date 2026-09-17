@@ -1,0 +1,15 @@
+.award-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-top: 7.7rem; }
+.award-list .award-box { position: relative; }
+.award-box p { font: var(--font-18); color: var(--color-black); font-weight: 600; padding: 2rem; margin-bottom: 0; }
+
+/* ======= START RESPONSIVE======== */
+
+@media (max-width:991px){
+    .award-list{ margin-top: 5rem;}
+    .award-box p{ line-height: 1.4;}
+    .award-box p{ padding: 2rem 0;}
+}
+
+@media (max-width:640px){
+    .award-list{grid-template-columns: repeat(1, 1fr);}
+}

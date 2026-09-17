@@ -5,9 +5,10 @@ import { apiFetch } from "@/src/lib/api"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
+import { SkeletonGroup } from "../../ui/Skeleton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Pagination from "../common/pagination/Pagination";
+import Pagination from "../../common/pagination/Pagination";
+import './conferenceList.css'
 
 const getConferenceLists = async (page: number) => {
     const { data, error } = await apiFetch(`research-conferences?page=${page}`);
@@ -27,7 +28,9 @@ export default function ConferenceLists() {
     })
 
     const pathname = usePathname();
-    const slug = pathname.split('/').filter(Boolean).pop();
+    const slug = pathname.split('/').filter(Boolean);
+    const parentSlug = slug[0];
+    const childSlug = slug[1];
     const conferenceData = data?.research_conferences;
 
     const handlePageChange = (page: number) => {
@@ -63,7 +66,7 @@ export default function ConferenceLists() {
                         )}
                         <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" />
                         {item?.slug && (
-                            <Link href={`${BASE_URL}${slug}/${item.slug}`} className="strech_link"></Link>
+                            <Link href={`${BASE_URL}${parentSlug}/${childSlug}/${item.slug}`} className="strech_link"></Link>
                         )}
                     </div>
                 ))}

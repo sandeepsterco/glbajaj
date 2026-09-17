@@ -318,9 +318,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-sec { padding-block: 5rem 10rem; }
 .award-heading h3 { letter-spacing: -1.8px; color: var(--color-92); }
 .award-heading h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
-.award-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-top: 7.7rem; }
-.award-list .award-box { position: relative; }
-.award-box p { font: var(--font-18); color: var(--color-black); font-weight: 600; padding: 2rem; margin-bottom: 0; }
+
 .award-detail-sec { padding-block: 5rem 10rem; }
 .award-detail-heading { margin-bottom: 7rem; }
 .award-detail-heading h4 { color: var(--color-64); font-weight: 700; }
@@ -465,10 +463,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 @media (max-width:991px){
     .award-heading h3 span{ display: inline; letter-spacing: 0;}
     .award-heading h3 {font: var(--font-28); letter-spacing: 0;}
-    .award-list{ margin-top: 5rem;}
-    .award-box p{ line-height: 1.4;}
+    
     .award-sec{ padding-block: 5rem;}
-    .award-box p{ padding: 2rem 0;}
+    
     .csr-txt h3 {font: var(--font-28); letter-spacing: 0;}
     .csr-sec { padding-block: 5rem; }
     .csr-list{ display: flex; flex-wrap: wrap; padding-block: 0 5rem;}
@@ -642,7 +639,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 
 
 @media (max-width:640px){
-    .award-list{grid-template-columns: repeat(1, 1fr);}
+    
     .cus-tab .tabs ul li a { padding: 0 0 1rem; margin-bottom: 1rem; }
     .testimonials .cus-tab .tabs ul li a { margin-bottom: 0rem; }
     .examinar_grid { gap: 6rem; display: flex; flex-wrap: wrap;}

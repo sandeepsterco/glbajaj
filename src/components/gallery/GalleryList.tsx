@@ -35,7 +35,7 @@ export default function GalleryList({data, currentPage='gallery', customClass}:{
                                 <p>{item.title}</p>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}${currentPage}/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}happenings/${currentPage}/${item.slug}`} className="strech_link" />
                             )}
                         </div>
                     ))}

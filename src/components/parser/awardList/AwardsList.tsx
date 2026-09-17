@@ -5,9 +5,10 @@ import { apiFetch } from "@/src/lib/api"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
+import { SkeletonGroup } from "../../ui/Skeleton";
 import { usePathname, useSearchParams } from "next/navigation";
-import PaginationWrapper from "../common/pagination/PaginationWrapper";
+import PaginationWrapper from "../../common/pagination/PaginationWrapper";
+import './awardList.css'
 
 const getAwards = async (page:number) => {
     
@@ -48,7 +49,7 @@ export default function AwardsList() {
                             <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
                         )}
                         {item?.slug && (
-                            <Link href={`${BASE_URL}${slug}/${item.slug}`} className="strech_link" />
+                            <Link href={`${BASE_URL}about-us/${slug}/${item.slug}`} className="strech_link" />
                         )}
                     </div>
                 ))}

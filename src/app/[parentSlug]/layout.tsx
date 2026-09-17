@@ -16,6 +16,8 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     const {data, error} = await apiFetch(`cms/${parentSlug}`);
 
+    console.log('cms data',data);
+
     if(data?.data?.parent_menus?.length > 0){
         return notFound();
     }

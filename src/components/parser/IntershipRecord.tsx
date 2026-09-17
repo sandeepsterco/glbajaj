@@ -22,7 +22,9 @@ export default function IntershipRecord() {
     })
 
     const pathname = usePathname();
-    const slug = pathname.split('/').filter(Boolean).pop();
+    const slug = pathname.split('/').filter(Boolean);
+    const childSlug = slug[0];
+    const parentSlug = slug[1];
 
     if (isLoading) {
         return (
@@ -60,7 +62,7 @@ export default function IntershipRecord() {
                         )}
                         
                     </div>
-                    <Link className="strech_link" href={`${BASE_URL}internship/${item?.slug ?? '#'}`} />
+                    <Link className="strech_link" href={`${BASE_URL}${childSlug}/${parentSlug}/${item?.slug ?? '#'}`} />
                 </div>
             ))}
             

@@ -51,6 +51,7 @@ function getVideoUrl(url: string): string {
         playsinline: "1",
         rel: "0",
         modestbranding: "1",
+        cc_load_policy: "0",
         ...(id ? { playlist: id } : {}),
       });
       return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
@@ -161,6 +162,7 @@ function HeroVideoSlide({
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
           loading="lazy"
+          tabIndex={-1}
         />
       ) : (
         <button

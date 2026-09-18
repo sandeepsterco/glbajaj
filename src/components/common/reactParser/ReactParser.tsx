@@ -22,7 +22,7 @@ const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHo
 const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"));
 const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"));
 const HomeUpcomingEvents = dynamic(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents"));
-const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm"));
+const ProgramDetailForm = dynamic(() => import("../../parser/programDetailForm/ProgramDetailForm"));
 const CourseSearch = dynamic(() => import("../../parser/CourseSearch"));
 const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"));
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"));

@@ -34,7 +34,7 @@ const Footer = async () => {
       {getValue('360_view') && (
         <div className="fixButtons">
           <Link
-            href={APPLY_NOW ?? '/apply-now'}
+            href={APPLY_NOW ?? '/admission/apply-now'}
             target="_blank" className="vertical-floating-btn CTA_applynow_btn">           
             Apply Now
           </Link>

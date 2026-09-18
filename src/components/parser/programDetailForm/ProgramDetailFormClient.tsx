@@ -1,17 +1,10 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
 import { State, City } from "country-state-city";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
-import RecaptchaField from "./RecaptchaField";
-
-interface Department {
-  name: string;
-  image: string;
-  slug: string;
-}
+import RecaptchaField from "../RecaptchaField";
+import type { Department } from "./ProgramDetailForm";
 
 interface FormData {
   name: string;
@@ -19,10 +12,10 @@ interface FormData {
   countryCode: string;
   phone: string;
   dob: string;
-  state: string;      
-  stateLabel: string;  
+  state: string;
+  stateLabel: string;
   city: string;
-  department: string; 
+  department: string;
 }
 
 interface FormErrors {
@@ -49,15 +42,7 @@ interface SubmitState {
   message: string;
 }
 
-const fetchDepartments = async (): Promise<Department[]> => {
-  const { data, error } = await apiFetch("departments");
-  if (error) throw new Error(error);
-  return data?.data ?? [];
-};
-
-
 const INDIA_STATES = State.getStatesOfCountry("IN"); // sorted A–Z
-
 
 function validate(fd: FormData): FormErrors {
   const e: FormErrors = {};
@@ -84,25 +69,21 @@ function normalizeApiErrors(errors?: ApiFieldErrors): FormErrors {
   return normalized;
 }
 
-export interface ProgramDetailFormProps {
+export interface ProgramDetailFormClientProps {
+  departments: Department[];
   /** Pre-select department when opened from program list modal */
-  defaultDepartmentSlug?: string;
+  defaultDepartmentSlugProp?: string;
 }
 
-export default function ProgramDetailForm({
-  defaultDepartmentSlug: defaultDepartmentSlugProp,
-}: ProgramDetailFormProps = {}) {
+export default function ProgramDetailFormClient({
+  departments,
+  defaultDepartmentSlugProp,
+}: ProgramDetailFormClientProps) {
   const pathname = usePathname();
   const pathDepartmentSlug =
     pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";
   const defaultDepartmentSlug =
     defaultDepartmentSlugProp ?? pathDepartmentSlug;
-
-  // Fetch departments from API
-  const { data: departments = [], isLoading: deptLoading } = useQuery<Department[]>({
-    queryKey: ["departments"],
-    queryFn: fetchDepartments,
-  });
 
   // Form state
   const [formData, setFormData] = useState<FormData>({
@@ -291,18 +272,7 @@ export default function ProgramDetailForm({
 
           {/* Phone */}
           <div className={`form-group phone-group ${touched.phone && errors.phone ? "has-error" : ""}`}>
-            {/* <select
-              name="countryCode"
-              value={formData.countryCode}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              aria-label="Country code"
-              defaultValue={'+91'}
-              className="countryCode"
-            >
-              <option value="+91" disabled>+91</option>
-            </select> */}
-            <input name="countryCode" value="+91" disabled aria-label="Country code" 
+            <input name="countryCode" value="+91" disabled aria-label="Country code"
               className="countryCode" />
             <input
               type="tel"
@@ -314,9 +284,8 @@ export default function ProgramDetailForm({
               disabled={isSubmitting}
             />
           </div>
-          
+
           {fieldError("phone") && <div className="form-group">{fieldError("phone")}</div>}
-          
 
           {/* Date of Birth */}
           <div className={`form-group ${touched.dob && errors.dob ? "has-error" : ""}`}>
@@ -376,19 +345,17 @@ export default function ProgramDetailForm({
             </div>
           </div>
 
-          {/* Department — from API */}
+          {/* Department — from server-fetched prop */}
           <div className={`form-group ${touched.department && errors.department ? "has-error" : ""}`}>
             <select
               name="department"
               value={formData.department}
               onChange={handleChange}
               onBlur={handleBlur}
-              disabled={isSubmitting || deptLoading}
+              disabled={isSubmitting}
               aria-label="Department"
             >
-              <option value="">
-                {deptLoading ? "Loading departments…" : "Select Department"}
-              </option>
+              <option value="">Select Department</option>
               {departments.map(d => (
                 <option key={d.slug} value={d.slug}>{d.name}</option>
               ))}
@@ -439,7 +406,6 @@ export default function ProgramDetailForm({
 
         </form>
       </div>
-
     </div>
   );
 }

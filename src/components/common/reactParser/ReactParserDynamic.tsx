@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-
 import ReactParser from "./ReactParser";
 
 export default function ReactParserDynamic({ html }: { html: string }) {

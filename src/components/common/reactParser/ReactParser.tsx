@@ -344,7 +344,7 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-export default function ReactParser({ html, homeData }: { html: any, homeData:any }) {
+export default function ReactParser({ html, homeData }: { html: any, homeData?:any }) {
   // const pathname = usePathname();
   const options = getParserOptions(homeData);
   const sanitizedHtml = DOMPurify.sanitize(html, {

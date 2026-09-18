@@ -1,6 +1,6 @@
 import ReactParser from "./ReactParser";
 
-export default function ReactParserDynamic({ html, homeData }: { html: string, homeData:any }) {
+export default function ReactParserDynamic({ html, homeData }: { html: string, homeData?:any }) {
 
   return (
     <div data-react-parser-dynamic="" style={{ display: "contents" }}>

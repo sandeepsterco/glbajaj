@@ -237,6 +237,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                       width={415}
                       height={112}
                       priority
+                      fetchPriority="high"
                     />
                   ) : (
                     <Image
@@ -246,6 +247,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                       width={415}
                       height={112}
                       priority
+                      fetchPriority="high"
                     />
                   )}
                 </Link>

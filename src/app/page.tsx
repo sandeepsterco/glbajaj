@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import FullImageBanner from "../components/common/fullImageBanner/FullImageBanner";
 import { getPageSEO } from "../lib/seo";
 import { apiFetch } from "../lib/api";

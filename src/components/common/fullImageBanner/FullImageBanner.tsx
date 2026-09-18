@@ -148,6 +148,7 @@ function HeroVideoSlide({
           priority={index === 0}
           sizes="100vw"
           className={`object-cover ${shouldRenderIframe ? "home_banner_video_poster--hidden" : ""}`}
+          fetchPriority="high"
         />
       ) : (
         <div className="home_banner_video_placeholder" aria-hidden="true" />

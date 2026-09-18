@@ -19,6 +19,7 @@
     .container .col-lg-10{ width: 100%;}
     /* .place_imgbox > figure { height: 50rem; } */
     .happenings_page:before{width: 13.6rem;}
+    .student_corner_overview .col-lg-4{ width: 50%;}
 
  }
 @media (max-width: 1399px) {
@@ -56,6 +57,7 @@
 .navigation_btn { bottom: 0; }
 .leadership_slider .swiper-wrapper { padding-bottom: 2rem; }
 .leadership_section:before { display: none; }
+.student_corner_overview .col-lg-4{ width: 100%;}
 /* ========== */
  .happenings_page::before { display: none; }
 .the_institute_grid { grid-template-columns: 100%; }

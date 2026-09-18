@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import NotificationBar from "../../ui/notificationBar/NotificationBar";
 import "./banner.css";
 
 function getYouTubeId(url: string): string {
@@ -229,7 +228,7 @@ export default function HeroBanner({ data }: { data: any }) {
         ))}
       </Swiper>
 
-      <NotificationBar />
+      
     </section>
   );
 }

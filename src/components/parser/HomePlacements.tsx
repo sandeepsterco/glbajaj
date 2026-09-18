@@ -1,10 +1,5 @@
 "use client";
-import { BASE_URL } from "@/src/config/config";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -12,31 +7,12 @@ import "swiper/css/navigation";
 
 const SLIDES_PER_VIEW = 3;
 
-const fetchHomePlacements = async () => {
-  const { data, error } = await apiFetch(`modular/home`);
-  if (error) throw new Error(error);
-  return data?.data?.modular?.["intern-placement"];
-};
 
-export default function HomePlacements() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["home_placements"],
-    queryFn: fetchHomePlacements,
-  });
+export default function HomePlacements({homeData}:{homeData:any}) {
 
-  const placementData: any[] = data ?? [];
+  const placementData: any[] = homeData?.modular?.["intern-placement"] ?? [];
 
-  if (isLoading) {
-    return (
-      <SkeletonGroup
-        wrapperClassName="!mt-[3rem] !block"
-        count={1}
-        className="bg-gray-300 h-[50rem] w-full"
-      />
-    );
-  }
-
-  if (isError || !placementData?.length) return null;
+  if (!placementData?.length) return null;
 
   // Loop requires more slides than slidesPerView; hide nav entirely when not enough
   const canLoop = placementData.length > SLIDES_PER_VIEW;

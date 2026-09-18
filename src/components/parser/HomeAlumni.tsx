@@ -1,7 +1,5 @@
 "use client";
 
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState, useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,19 +8,9 @@ import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 
-const fetchAlumniData = async () => {
-  const { data, error } = await apiFetch(`modular/home`);
-  if (error) throw new Error(error);
-  return data;
-};
+export default function HomeAlumni({homeData}:{homeData:any}) {
 
-export default function HomeAlumni() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["home_alumni"],
-    queryFn: fetchAlumniData,
-  });
-
-  const rawData = data?.data?.modular?.["testimonials"] ?? [];
+  const rawData = homeData?.modular?.["testimonials"] ?? [];
 
   const grouped: any = useMemo(() => ({
     students: rawData.filter((i: any) => i.type === "Student"),
@@ -55,8 +43,6 @@ export default function HomeAlumni() {
 
   const currentItems = grouped[activeTab] ?? [];
   const activeItem = currentItems[activeIndex];
-
-  if (isLoading) return null;
 
   return (
     <div className="home_testimonials">

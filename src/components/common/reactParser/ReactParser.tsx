@@ -21,7 +21,7 @@ import "@/src/styles/parser.css";
 import DepartmentHomeResearch from "../../parser/DepartmentHomeResearch";
 import HomeCourseRight from "../../parser/HomeCourseRight";
 import AlumniAchievementList from "../../parser/AlumniAchievementList";
-import InternSlider from "../../parser/InternSlider";
+import InternSlider from "../../parser/internSlider/InternSlider";
 
 function ParserWidgetFallback() {
   return (
@@ -36,7 +36,7 @@ import HomePlacements from "../../parser/HomePlacements";
 import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
 import ProgramDetailPlacements from "../../parser/ProgramDetailPlacements";
 import CareerJobListing from "../../parser/CareerJobListing";
-import HomeUpcomingEvents from "../../parser/HomeUpcomingEvents";
+import HomeUpcomingEvents from "../../parser/homeUpcomingEvents/HomeUpcomingEvents";
 import ProgramDetailForm from "../../parser/ProgramDetailForm";
 import CourseSearch from "../../parser/CourseSearch";
 import HomeCoursesTabs from "../../parser/HomeCoursesTabs";
@@ -54,7 +54,7 @@ import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
 import ProgramDetailAlumni from "../../parser/ProgramDetailAlumni";
 import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
 import ResearchInnovation from "../../parser/ResearchInnovation";
-import HomeFacilities from "../../parser/HomeFacilities";
+import HomeFacilities from "../../parser/homeFacilities/HomeFacilities";
 import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
 import PlacementRecord from "../../parser/PlacementRecord";
 import IntershipRecord from "../../parser/IntershipRecord";
@@ -75,7 +75,8 @@ import DepartmentFacultyGrid from "../../parser/DepartmentFacultyGrid";
 import HashLinkAnchor from "./HashLinkAnchor";
 import CmsEnhancer from "@/src/lib/CmsEnhancer";
 
-const options: HTMLReactParserOptions = {
+const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
+  const options: HTMLReactParserOptions = {
   replace(domNode) {
     if (domNode instanceof Element && domNode.attribs) {
 
@@ -252,13 +253,13 @@ const options: HTMLReactParserOptions = {
 
       if (domNode.attribs.id === "course-search") return <CourseSearch />;
       if (domNode.attribs.id === "home_course_tabs") return <HomeCoursesTabs />;
-      if (domNode.attribs.id === "add-on-courses") return <AddOnCourses />;
+      if (domNode.attribs.id === "add-on-courses") return <AddOnCourses homeData={homeData} />;
       if (domNode.attribs.id === "program-add-on-courses") return <ProgramAddOnCourses />;
       if (domNode.attribs.id === "research_innovation")
-        return <ResearchInnovation />;
+        return <ResearchInnovation homeData={homeData} />;
       if (domNode.attribs.id === "home_facilities") return <HomeFacilities />;
-      if (domNode.attribs.id === "home_happenings") return <HomeHappenings />;
-      if (domNode.attribs.id === "home_alumni") return <HomeAlumni />;
+      if (domNode.attribs.id === "home_happenings") return <HomeHappenings homeData={homeData} />;
+      if (domNode.attribs.id === "home_alumni") return <HomeAlumni homeData={homeData} />;
       if (domNode.attribs.id === "contact_form") return <ContactForm />;
       if (domNode.attribs.id === "about_leadership")
         return <AboutLeadership />;
@@ -313,7 +314,7 @@ const options: HTMLReactParserOptions = {
       if (domNode.attribs.id === "department_home_placements")
         return <DepartmentHomePlacements />;
       if (domNode.attribs.id === "home_placements")
-        return <HomePlacements />;
+        return <HomePlacements homeData={homeData} />;
       if (domNode.attribs.id === "career_job_listing")
         return <CareerJobListing />;
       if (domNode.attribs.id === "home_upcoming_events") return <HomeUpcomingEvents />;
@@ -326,6 +327,9 @@ const options: HTMLReactParserOptions = {
       
     }
   },
+}
+
+return options;
 };
 
 // ---------------------------------------------------------------------------
@@ -340,9 +344,9 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-export default function ReactParser({ html }: { html: any }) {
+export default function ReactParser({ html, homeData }: { html: any, homeData:any }) {
   // const pathname = usePathname();
-  
+  const options = getParserOptions(homeData);
   const sanitizedHtml = DOMPurify.sanitize(html, {
     ADD_ATTR: [
       "target",

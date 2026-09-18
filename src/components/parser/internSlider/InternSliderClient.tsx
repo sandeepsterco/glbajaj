@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -6,10 +7,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
-
-interface Achievement {
+export interface Achievement {
   id?: number | string;
   slug?: string;
   image?: string;
@@ -24,32 +22,11 @@ interface Achievement {
   };
 }
 
-const fetchInternSlider = async () => {
-  const { data, error } = await apiFetch(`intern`);
+interface InternSliderClientProps {
+  sliderItems: Achievement[];
+}
 
-  if (error) {
-    throw new Error(error);
-  }
-
-  return data;
-};
-
-export default function InternSlider() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["intern-list"],
-    queryFn: () => fetchInternSlider(),
-  });
-
-  if (isLoading || isError || !data) {
-    return null;
-  }
-
-  const sliderItems: Achievement[] = data?.intern ?? [];
-
-  if (sliderItems.length === 0) {
-    return null;
-  }
-
+export default function InternSliderClient({ sliderItems }: InternSliderClientProps) {
   return (
     <div className="common_image_slider">
       <Swiper
@@ -57,10 +34,6 @@ export default function InternSlider() {
         modules={[Navigation, Autoplay]}
         slidesPerView={4}
         spaceBetween={15}
-        // navigation={{
-        //   nextEl: ".alumni_achievement_right",
-        //   prevEl: ".alumni_achievement_left",
-        // }}
         loop={true}
         autoplay={{
           delay: 5000,
@@ -94,7 +67,13 @@ export default function InternSlider() {
                 data-aos-delay="400"
               >
                 <figure className="flash-effect-2">
-                  <Image src={item.image ?? ""} alt={item.name ?? "internship image"} width={600} height={732} loading="lazy" />
+                  <Image
+                    src={item.image ?? ""}
+                    alt={item.name ?? "internship image"}
+                    width={600}
+                    height={732}
+                    loading="lazy"
+                  />
                 </figure>
                 {item.logo_image && (
                   <div className="place_complog">
@@ -129,15 +108,11 @@ export default function InternSlider() {
                   )}
                 </p>
               </div>
-              <a
-                className="strech_link"
-                href={`/internship/${item.slug ?? "#"}`}
-              ></a>
+              <a className="strech_link" href={`/internship/${item.slug ?? "#"}`}></a>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-
     </div>
   );
 }

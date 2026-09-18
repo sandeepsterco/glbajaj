@@ -4,6 +4,7 @@ import { apiFetch } from "../lib/api";
 import { cache, Suspense } from "react";
 import { SkeletonGroup } from "../components/ui/Skeleton";
 import HomeContent from "./HomeContent";
+import NotificationBar from "../components/ui/notificationBar/NotificationBar";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes] = await Promise.all([
@@ -39,7 +40,7 @@ export default async function Home() {
       )}
       <main>
         <FullImageBanner data={homeData?.modular?.banner ?? []} />
-
+        <NotificationBar />
         <Suspense
           fallback={
             <SkeletonGroup

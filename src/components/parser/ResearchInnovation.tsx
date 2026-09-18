@@ -3,34 +3,13 @@
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
-import { SkeletonGroup } from "../ui/Skeleton";
 
-const fetchCourses = async () => {
-  const { data, error } = await apiFetch("modular/home");
-  if (error) throw new Error(error);
-  return data;
-};
-
-export default function ResearchInnovation() {
+export default function ResearchInnovation({homeData}:{homeData:any}) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["add_on_courses"],
-    queryFn: fetchCourses,
-  });
-
-  if(isError) return null;
-
-  if(isLoading){
-    return <SkeletonGroup count={3} wrapperClassName="!flex gap-[3rem]" className="w-full h-[45rem]" />
-  }
-
-
-  const slides = data?.data?.modular?.["research-innovation"];
+  const slides = homeData?.modular?.["research-innovation"];
 
   return (
     <div className="research_slider_wrapper">

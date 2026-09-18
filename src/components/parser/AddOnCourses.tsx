@@ -1,27 +1,15 @@
 "use client";
 
 import "swiper/css";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 
-const fetchCourses = async () => {
-  const { data, error } = await apiFetch("modular/home");
-  if (error) throw new Error(error);
-  return data;
-};
+export default function AddOnCourses({homeData}:{homeData:any}) {
 
-export default function AddOnCourses() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["add_on_courses"],
-    queryFn: fetchCourses,
-  });
-
-  const sliderData = data?.data?.modular?.["facts-and-figure"];
+  const sliderData = homeData?.modular?.["facts-and-figure"];
 
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);

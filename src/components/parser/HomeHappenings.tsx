@@ -1,26 +1,11 @@
 "use client"
 import { BASE_URL } from "@/src/config/config";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
-import ApiError from "../ui/ApiError";
 import { useEffect, useState } from "react";
 
-const fetchHappeningsData=async()=>{
-  const {data, error} = await apiFetch(`modular/home`);
-
-  if (error) throw new Error(error);
-  return data;
-}
-
-export default function HomeHappenings() {
+export default function HomeHappenings({homeData}:{homeData:any}) {
   const [isMobile, setIsMobile] = useState(false);
-  const {data, isLoading, isError} = useQuery({
-    queryKey:['home_happenings'],
-    queryFn:fetchHappeningsData,
-  })
 
   useEffect(()=>{
     if(window.innerWidth < 768){
@@ -28,15 +13,7 @@ export default function HomeHappenings() {
     }
   }, [])
 
-  if(isLoading){
-    return isMobile ? <SkeletonGroup count={2} wrapperClassName="!block" className="w-full h-[25rem] !mb-[1rem]" /> : <SkeletonGroup count={8} wrapperClassName="grid-cols-4" className="w-full h-[38rem]" />
-  }
-
-  if(isError){
-    return <ApiError />
-  }
-
-  const happeningsData = data?.data?.modular?.["news-events"] ?? [];
+  const happeningsData = homeData?.modular?.["news-events"] ?? [];
   const updatedData = isMobile ? happeningsData.filter((item:any, idx:number)=>idx < 2) : happeningsData
 
   return (

@@ -15,7 +15,7 @@ export default async function HomeContent({data}:{data:any}) {
 
   return (
     <>
-      <ReactParserDynamic html={combinedHtml} />
+      <ReactParserDynamic html={combinedHtml} homeData={data} />
     </>
   );
 }

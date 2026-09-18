@@ -131,7 +131,7 @@ export default function InternSlider() {
               </div>
               <a
                 className="strech_link"
-                href={`/internship/${item.slug ?? "#"}`}
+                href={`/placements/internship/${item.slug ?? "#"}`}
               ></a>
             </div>
           </SwiperSlide>

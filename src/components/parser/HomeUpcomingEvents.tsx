@@ -147,14 +147,14 @@ export default function HomeUpcomingEvents() {
           </Swiper>
         </div>
 
-        <div className="right_col">
-          <ul>
+        <div className="right_col" >
+          <ul  data-aos="fade-up" data-aos-delay="800">
             {events.newsAndEvents.map((event: NewsEventItem) => {
               const d = formatDateParts(event.date);
               return (
-                <li key={event.id} data-aos="fade-up" data-aos-delay="200">
+                <li key={event.id}>
                   <Link href={`/news-events/${event.slug}`}>
-                    <div className="text" data-aos="fade-up" data-aos-delay="400">
+                    <div className="text">
                       <span className="date">{d.full}</span>
                       <p>{event.heading}</p>
                     </div>
@@ -162,9 +162,7 @@ export default function HomeUpcomingEvents() {
                       src="/images/home/see_more_icon.svg"
                       alt="right chevron icon"
                       width="60"
-                      height="60"
-                      data-aos="fade-up"
-                      data-aos-delay="600"
+                      height="60"                      
                     />
                   </Link>
                 </li>

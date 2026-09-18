@@ -124,7 +124,7 @@
 
 
 /* responsive */
-
+.home_banner .swiper-backface-hidden .swiper-slide{  max-height: 110rem;}
 @media (min-width:1921px) {
     .caption_wrap .title48{font: var(--font-48); letter-spacing: -2.4px; line-height: 4.8rem; font-weight: var(--font-normal);}
     .caption_wrap .cap_desc img { height: 6.4rem; width: 6.4rem; }

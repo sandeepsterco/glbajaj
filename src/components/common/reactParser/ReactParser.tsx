@@ -1,4 +1,4 @@
-
+import { useMemo } from "react";
 import parse, {
   attributesToProps,
   Element,
@@ -8,20 +8,102 @@ import parse, {
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-// import { scrollToHashWhenReady } from "@/src/lib/scrollToHash";
-// import { scheduleRefreshAOSSequence } from "@/src/lib/aos";
-// import { markRouteContentReady } from "@/src/lib/mainContentReady";
-// import 'bootstrap-icons/font/bootstrap-icons.css';
+import dynamic from "next/dynamic";
 
-import '@/src/styles/fancybox.css'
+import HashLinkAnchor from "./HashLinkAnchor";
+import CmsEnhancer from "@/src/lib/CmsEnhancer";
+
+const DepartmentHomeResearch = dynamic(() => import("../../parser/DepartmentHomeResearch"));
+const HomeCourseRight = dynamic(() => import("../../parser/HomeCourseRight"));
+const AlumniAchievementList = dynamic(() => import("../../parser/AlumniAchievementList"));
+const InternSlider = dynamic(() => import("../../parser/internSlider/InternSlider"));
+const HomePlacements = dynamic(() => import("../../parser/HomePlacements"));
+const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"));
+const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"));
+const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"));
+const HomeUpcomingEvents = dynamic(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents"));
+const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm"));
+const CourseSearch = dynamic(() => import("../../parser/CourseSearch"));
+const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"));
+const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"));
+const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCourses"));
+const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"));
+const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"));
+const ContactForm = dynamic(() => import("../../parser/ContactForm"));
+const AboutLeadership = dynamic(() => import("../../parser/AboutLeadership"));
+const AwardsList = dynamic(() => import("../../parser/awardList/AwardsList"));
+const ConferenceLists = dynamic(() => import("../../parser/conferenceLists/ConferenceLists"));
+const DepartmentHomeFaculties = dynamic(() => import("../../parser/DepartmentHomeFaculties"));
+const DepartmentHomeLaboratories = dynamic(() => import("../../parser/DepartmentHomeLaboratories"));
+const DepartmentHomeAlumni = dynamic(() => import("../../parser/DepartmentHomeAlumni"));
+const ProgramDetailAlumni = dynamic(() => import("../../parser/ProgramDetailAlumni"));
+const DepartmentHomeCourses = dynamic(() => import("../../parser/DepartmentHomeCourses"));
+const ResearchInnovation = dynamic(() => import("../../parser/ResearchInnovation"));
+const HomeFacilities = dynamic(() => import("../../parser/homeFacilities/HomeFacilities"));
+const PoliciesDisclosures = dynamic(() => import("../../parser/PoliciesDisclosures"));
+const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"));
+const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"));
+const AchievementList = dynamic(() => import("../../parser/AchievementList"));
+const DepartmentHomeHappenings = dynamic(() => import("../../parser/DepartmentHomeHappenings"));
+const DepartmentHomeActivities = dynamic(() => import("../../parser/DepartmentHomeActivities"));
+const DigitalPathshalaVideoGrid = dynamic(() => import("../../parser/DigitalPathshalaVideoGrid"));
+const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"));
+const AlumniEventsMeetGrid = dynamic(() => import("../../parser/AlumniEventsMeetGrid"));
+const AdmissionPrograms = dynamic(() => import("../../parser/AdmissionPrograms"));
+const DepartmentNotificationBar = dynamic(() => import("../../parser/DepartmentNotificationBar"));
+const DepartmentHomeClubs = dynamic(() => import("../../parser/DepartmentHomeClubs"));
+const DepartmentHomeMou = dynamic(() => import("../../parser/DepartmentHomeMou"));
+const DepartmentHomeCEO = dynamic(() => import("../../parser/DepartmentHomeCEO"));
+const DepartmentHomeAchievement = dynamic(() => import("../../parser/DepartmentHomeAchievement"));
+const DepartmentLabsGrids = dynamic(() => import("../../parser/DepartmentLabsGrids"));
+const DepartmentFacultyGrid = dynamic(() => import("../../parser/DepartmentFacultyGrid"));
+
+import "@/src/styles/fancybox.css";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
-import DepartmentHomeResearch from "../../parser/DepartmentHomeResearch";
-import HomeCourseRight from "../../parser/HomeCourseRight";
-import AlumniAchievementList from "../../parser/AlumniAchievementList";
-import InternSlider from "../../parser/internSlider/InternSlider";
+
+
+const EMPTY_TAGS = new Set(["h1", "h2", "h3", "h4", "h5", "h6", "p"]);
+const MEDIA_TAGS = new Set(["img", "video", "iframe", "input", "textarea", "select"]);
+
+const DOMPURIFY_ADD_ATTR = [
+  "target",
+  "data-aos",
+  "data-aos-delay",
+  "data-aos-duration",
+  "data-aos-offset",
+  "data-aos-easing",
+  "data-aos-once",
+  "data-aos-mirror",
+  "data-aos-anchor",
+  "data-aos-anchor-placement",
+];
+
+const DOMPURIFY_ALLOWED_TAGS = [
+  "a", "b", "i", "em", "strong", "span", "div", "p",
+  "h1", "h2", "h3", "h4", "h5", "h6",
+  "ul", "ol", "li", "br", "hr",
+  "img", "table", "thead", "tbody", "tr", "th", "td",
+  "section", "article", "aside", "header", "footer",
+  "figure", "figcaption", "blockquote", "pre", "code",
+  "sup", "sub", "button", "iframe", "nav", "main",
+  "picture", "source", "video", "audio",
+  "svg", "path", "circle", "rect", "line", "polyline", "polygon", "g", "use",
+  "label", "form", "input", "textarea", "select", "option",
+  "dl", "dt", "dd", "small", "mark", "details", "summary",
+];
+
+const DOMPURIFY_ALLOWED_ATTR = [
+  "class", "id", "src", "alt", "href", "target",
+  "width", "height", "style", "rel", "type",
+  "data-src", "data-tab",
+  "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
+  "data-aos", "data-aos-delay", "data-aos-duration", "data-aos-offset",
+  "data-aos-easing", "data-aos-once", "data-aos-mirror",
+  "data-aos-anchor", "data-aos-anchor-placement",
+];
 
 function ParserWidgetFallback() {
   return (
@@ -32,83 +114,109 @@ function ParserWidgetFallback() {
   );
 }
 
-import HomePlacements from "../../parser/HomePlacements";
-import DepartmentHomePlacements from "../../parser/DepartmentHomePlacements";
-import ProgramDetailPlacements from "../../parser/ProgramDetailPlacements";
-import CareerJobListing from "../../parser/CareerJobListing";
-import HomeUpcomingEvents from "../../parser/homeUpcomingEvents/HomeUpcomingEvents";
-import ProgramDetailForm from "../../parser/ProgramDetailForm";
-import CourseSearch from "../../parser/CourseSearch";
-import HomeCoursesTabs from "../../parser/HomeCoursesTabs";
-import AddOnCourses from "../../parser/AddOnCourses";
-import ProgramAddOnCourses from "../../parser/ProgramAddOnCourses";
-import HomeHappenings from "../../parser/HomeHappenings";
-import HomeAlumni from "../../parser/HomeAlumni";
-import ContactForm from "../../parser/ContactForm";
-import AboutLeadership from "../../parser/AboutLeadership";
-import AwardsList from "../../parser/awardList/AwardsList";
-import ConferenceLists from "../../parser/conferenceLists/ConferenceLists";
-import DepartmentHomeFaculties from "../../parser/DepartmentHomeFaculties";
-import DepartmentHomeLaboratories from "../../parser/DepartmentHomeLaboratories";
-import DepartmentHomeAlumni from "../../parser/DepartmentHomeAlumni";
-import ProgramDetailAlumni from "../../parser/ProgramDetailAlumni";
-import DepartmentHomeCourses from "../../parser/DepartmentHomeCourses";
-import ResearchInnovation from "../../parser/ResearchInnovation";
-import HomeFacilities from "../../parser/homeFacilities/HomeFacilities";
-import PoliciesDisclosures from "../../parser/PoliciesDisclosures";
-import PlacementRecord from "../../parser/PlacementRecord";
-import IntershipRecord from "../../parser/IntershipRecord";
-import AchievementList from "../../parser/AchievementList";
-import DepartmentHomeHappenings from "../../parser/DepartmentHomeHappenings";
-import DepartmentHomeActivities from "../../parser/DepartmentHomeActivities";
-import DigitalPathshalaVideoGrid from "../../parser/DigitalPathshalaVideoGrid";
-import WhyClubsGrid from "../../parser/WhyClubsGrid";
-import AlumniEventsMeetGrid from "../../parser/AlumniEventsMeetGrid";
-import AdmissionPrograms from "../../parser/AdmissionPrograms";
-import DepartmentNotificationBar from "../../parser/DepartmentNotificationBar";
-import DepartmentHomeClubs from "../../parser/DepartmentHomeClubs";
-import DepartmentHomeMou from "../../parser/DepartmentHomeMou";
-import DepartmentHomeCEO from "../../parser/DepartmentHomeCEO";
-import DepartmentHomeAchievement from "../../parser/DepartmentHomeAchievement";
-import DepartmentLabsGrids from "../../parser/DepartmentLabsGrids";
-import DepartmentFacultyGrid from "../../parser/DepartmentFacultyGrid";
-import HashLinkAnchor from "./HashLinkAnchor";
-import CmsEnhancer from "@/src/lib/CmsEnhancer";
+function hasMeaningfulContent(node: any): boolean {
+  if (node.type === "text") {
+    return node.data?.trim().length > 0;
+  }
 
-const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
+  if (node.type === "tag") {
+    if (node.attribs?.id) return true;
+    if (MEDIA_TAGS.has(node.name)) return true;
+    if (node.children?.length) {
+      return node.children.some(hasMeaningfulContent);
+    }
+    return false;
+  }
+
+  return false;
+}
+
+function hashString(str: string): string {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 33) ^ str.charCodeAt(i);
+  }
+  return (hash >>> 0).toString(36);
+}
+
+const getParserOptions = (homeData: any): HTMLReactParserOptions => {
+  // Lazily-invoked map: O(1) lookup instead of ~40 sequential string checks
+  // per node. Only touched when domNode.attribs.id is present.
+  const idComponentMap: Record<string, () => React.ReactElement> = {
+    "course-search": () => <CourseSearch />,
+    home_course_tabs: () => <HomeCoursesTabs />,
+    "add-on-courses": () => <AddOnCourses homeData={homeData} />,
+    "program-add-on-courses": () => <ProgramAddOnCourses />,
+    research_innovation: () => <ResearchInnovation homeData={homeData} />,
+    home_facilities: () => <HomeFacilities />,
+    home_happenings: () => <HomeHappenings homeData={homeData} />,
+    home_alumni: () => <HomeAlumni homeData={homeData} />,
+    contact_form: () => <ContactForm />,
+    about_leadership: () => <AboutLeadership />,
+    awards_list: () => <AwardsList />,
+    achievement_list: () => <AchievementList />,
+    conference_lists: () => <ConferenceLists />,
+    department_home_faculties: () => <DepartmentHomeFaculties />,
+    department_home_laboratories: () => <DepartmentHomeLaboratories />,
+    department_home_alumni: () => <DepartmentHomeAlumni />,
+    program_detail_alumni: () => <ProgramDetailAlumni />,
+    department_home_courses: () => <DepartmentHomeCourses />,
+    department_home_happenings: () => <DepartmentHomeHappenings />,
+    policies_disclosures: () => <PoliciesDisclosures />,
+    placement_record: () => <PlacementRecord />,
+    intership_record: () => <IntershipRecord />,
+    department_home_activities: () => <DepartmentHomeActivities />,
+    digital_pathshala_videos: () => <DigitalPathshalaVideoGrid />,
+    why_clubs_grid: () => <WhyClubsGrid />,
+    alumni_events_meet: () => <AlumniEventsMeetGrid />,
+    admission_programs: () => <AdmissionPrograms />,
+    department_notifications: () => <DepartmentNotificationBar />,
+    department_home_clubs: () => <DepartmentHomeClubs />,
+    department_home_ceo: () => <DepartmentHomeCEO />,
+    department_home_collaborations: () => <DepartmentHomeMou />,
+    department_home_achievement: () => <DepartmentHomeAchievement />,
+    coe_labs_grid_section: () => <DepartmentLabsGrids />,
+    department_faculty_grid: () => <DepartmentFacultyGrid />,
+    program_detail_form: () => <ProgramDetailForm />,
+    department_home_placements: () => <DepartmentHomePlacements />,
+    home_placements: () => <HomePlacements homeData={homeData} />,
+    career_job_listing: () => <CareerJobListing />,
+    home_upcoming_events: () => <HomeUpcomingEvents />,
+    program_detail_placements: () => <ProgramDetailPlacements />,
+    department_home_research: () => <DepartmentHomeResearch />,
+    home_course_right: () => <HomeCourseRight />,
+    alumni_achievement_list: () => <AlumniAchievementList />,
+    intern_slider: () => <InternSlider />,
+  };
+
   const options: HTMLReactParserOptions = {
-  replace(domNode) {
-    if (domNode instanceof Element && domNode.attribs) {
+    replace(domNode) {
+      if (!(domNode instanceof Element && domNode.attribs)) return;
 
-      // ✅ Hide empty block/inline elements (no visible text or child elements)
-      const emptyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
-      if (emptyTags.includes(domNode.name)) {
+      // Hide empty block/inline elements (no visible text or child elements)
+      if (EMPTY_TAGS.has(domNode.name)) {
         const hasText = domNode.children.some(
-          (child) => child.type === 'text' && (child as any).data?.trim() !== ''
+          (child) => child.type === "text" && (child as any).data?.trim() !== ""
         );
-        const hasElement = domNode.children.some(
-          (child) => child.type === 'tag'
-        );
-        if (!hasText && !hasElement) {
-          return <></>;  // ✅ renders nothing
-        }
+        const hasElement = domNode.children.some((child) => child.type === "tag");
+        if (!hasText && !hasElement) return <></>;
       }
 
       if (domNode.name === "a") {
         const props = attributesToProps(domNode.attribs) as any;
         const href = props.href?.trim();
         const classList = (domNode.attribs?.class || "").split(" ");
-      
-        // Hide read_more_icon anchors with no valid href
-        if ((classList.includes("dynamic_btn") || classList.includes('strech_link')) && (!href || href === "#")) {
+
+        // Hide dynamic/stretch-link anchors with no valid href
+        if (
+          (classList.includes("dynamic_btn") || classList.includes("strech_link")) &&
+          (!href || href === "#")
+        ) {
           return <></>;
         }
-      
+
         const { href: _href, ...rest } = props;
-      
-        // In-page hash links: handle manually. next/link's client-side
-        // navigation uses history.pushState, which does NOT fire a native
-        // 'hashchange' event, so our ReactParser listener never sees these.
+
         if (href && href.startsWith("#")) {
           return (
             <HashLinkAnchor {...rest} href={href}>
@@ -116,7 +224,7 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
             </HashLinkAnchor>
           );
         }
-      
+
         return (
           <Link href={href || "#"} {...rest}>
             {domToReact(domNode.children as any, options)}
@@ -128,14 +236,8 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
         const props = attributesToProps(domNode.attribs) as any;
         const resolvedSrc = (() => {
           const s = props.src || "";
-          if (!s)
-            return "";
-          if (
-            s.startsWith("http") ||
-            s.startsWith("/") ||
-            s.startsWith("data:")
-          )
-            return s;
+          if (!s) return "";
+          if (s.startsWith("http") || s.startsWith("/") || s.startsWith("data:")) return s;
           return "/" + s;
         })();
 
@@ -176,68 +278,21 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
         );
       }
 
-      if(domNode.name == 'iframe'){
+      if (domNode.name === "iframe") {
         const classList = (domNode.attribs?.class || "").split(/\s+/);
         const src = (domNode.attribs?.src || "").trim();
-        if (classList.includes("parser_common") && !src) {
-          return <></>;
-        }
+        if (classList.includes("parser_common") && !src) return <></>;
       }
 
-      if (domNode.name === 'div') {
-
-        const hasMeaningfulContent = (node: any): boolean => {
-      
-          if (node.type === 'text') {
-            return node.data?.trim().length > 0;
-          }
-      
-          // Element / tag
-          if (node.type === 'tag') {
-      
-            if (node.attribs?.id) {
-              return true;
-            }
-      
-            if (
-              ['img', 'video', 'iframe', 'input', 'textarea', 'select'].includes(node.name)
-            ) {
-              return true;
-            }
-      
-            if (node.children?.length) {
-              return node.children.some(hasMeaningfulContent);
-            }
-      
-            return false;
-          }
-      
-          return false;
-        };
-      
-      
+      if (domNode.name === "div") {
         const hasId = !!domNode.attribs?.id;
-      
         const hasContent = (domNode.children || []).some(hasMeaningfulContent);
-      
-      
+
         // Remove ONLY truly empty div
-        if (!hasId && !hasContent) {
-          return <></>;
-        }
+        if (!hasId && !hasContent) return <></>;
       }
 
-      if (domNode.name === "a") {
-        const props = attributesToProps(domNode.attribs) as any;
-        const href = props.href || "#";
-        const { href: _href, ...rest } = props;
-        return (
-          <Link href={href} {...rest}>
-            {domToReact(domNode.children as any, options)}
-          </Link>
-        );
-      }
-
+      // Clean AOS runtime classes so SSR/CSR markup stays stable
       if (domNode.attribs?.class) {
         const cleanedClass = domNode.attribs.class
           .replace(/\baos-init\b/g, "")
@@ -251,191 +306,43 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions=>{
         }
       }
 
-      if (domNode.attribs.id === "course-search") return <CourseSearch />;
-      if (domNode.attribs.id === "home_course_tabs") return <HomeCoursesTabs />;
-      if (domNode.attribs.id === "add-on-courses") return <AddOnCourses homeData={homeData} />;
-      if (domNode.attribs.id === "program-add-on-courses") return <ProgramAddOnCourses />;
-      if (domNode.attribs.id === "research_innovation")
-        return <ResearchInnovation homeData={homeData} />;
-      if (domNode.attribs.id === "home_facilities") return <HomeFacilities />;
-      if (domNode.attribs.id === "home_happenings") return <HomeHappenings homeData={homeData} />;
-      if (domNode.attribs.id === "home_alumni") return <HomeAlumni homeData={homeData} />;
-      if (domNode.attribs.id === "contact_form") return <ContactForm />;
-      if (domNode.attribs.id === "about_leadership")
-        return <AboutLeadership />;
-      if (domNode.attribs.id === "awards_list") return <AwardsList />;
-      if (domNode.attribs.id === "achievement_list")
-        return <AchievementList />;
-      if (domNode.attribs.id === "conference_lists")
-        return <ConferenceLists />;
-      if (domNode.attribs.id === "department_home_faculties")
-        return <DepartmentHomeFaculties />;
-      if (domNode.attribs.id === "department_home_laboratories")
-        return <DepartmentHomeLaboratories />;
-      if (domNode.attribs.id === "department_home_alumni")
-        return <DepartmentHomeAlumni />;
-      if (domNode.attribs.id === "program_detail_alumni")
-        return <ProgramDetailAlumni />;
-      if (domNode.attribs.id === "department_home_courses")
-        return <DepartmentHomeCourses />;
-      if (domNode.attribs.id === "department_home_happenings")
-        return <DepartmentHomeHappenings />;
-      if (domNode.attribs.id === "policies_disclosures")
-        return <PoliciesDisclosures />;
-      if (domNode.attribs.id === "placement_record")
-        return <PlacementRecord />;
-      if (domNode.attribs.id === "intership_record")
-        return <IntershipRecord />;
-      if (domNode.attribs.id === "department_home_activities")
-        return <DepartmentHomeActivities />;
-      if (domNode.attribs.id === "digital_pathshala_videos")
-        return <DigitalPathshalaVideoGrid />;
-      if (domNode.attribs.id === "why_clubs_grid") return <WhyClubsGrid />;
-      if (domNode.attribs.id === "alumni_events_meet")
-        return <AlumniEventsMeetGrid />;
-      if (domNode.attribs.id === "admission_programs")
-        return <AdmissionPrograms />;
-      if (domNode.attribs.id === "department_notifications")
-        return <DepartmentNotificationBar />;
-      if (domNode.attribs.id === "department_home_clubs")
-        return <DepartmentHomeClubs />;
-      if (domNode.attribs.id === "department_home_ceo")
-        return <DepartmentHomeCEO />;
-      if (domNode.attribs.id === "department_home_collaborations")
-        return <DepartmentHomeMou />;
-      if (domNode.attribs.id === "department_home_achievement")
-        return <DepartmentHomeAchievement />;
-      if (domNode.attribs.id === "coe_labs_grid_section")
-        return <DepartmentLabsGrids />;
-      if (domNode.attribs.id === "department_faculty_grid")
-        return <DepartmentFacultyGrid />;
-      if (domNode.attribs.id === "program_detail_form")
-        return <ProgramDetailForm />;
-      if (domNode.attribs.id === "department_home_placements")
-        return <DepartmentHomePlacements />;
-      if (domNode.attribs.id === "home_placements")
-        return <HomePlacements homeData={homeData} />;
-      if (domNode.attribs.id === "career_job_listing")
-        return <CareerJobListing />;
-      if (domNode.attribs.id === "home_upcoming_events") return <HomeUpcomingEvents />;
-      if (domNode.attribs.id === "program_detail_placements") return <ProgramDetailPlacements />;
-      if (domNode.attribs.id === "department_home_research") return <DepartmentHomeResearch />;
-      if (domNode.attribs.id === "home_course_right") return <HomeCourseRight />;
-      if (domNode.attribs.id === "alumni_achievement_list") return <AlumniAchievementList />;
-      if (domNode.attribs.id === "intern_slider") return <InternSlider />;
-      
-      
-    }
-  },
-}
+      // Single O(1) lookup replaces the ~40-branch if/else chain
+      if (domNode.attribs.id) {
+        const factory = idComponentMap[domNode.attribs.id];
+        if (factory) return factory();
+      }
+    },
+  };
 
-return options;
+  return options;
 };
 
 // ---------------------------------------------------------------------------
 // ReactParser
 // ---------------------------------------------------------------------------
 
-function hashString(str: string): string {
-  let hash = 5381;
-  for (let i = 0; i < str.length; i++) {
-      hash = (hash * 33) ^ str.charCodeAt(i);
-  }
-  return (hash >>> 0).toString(36);
-}
+export default function ReactParser({ html, homeData }: { html: any; homeData?: any }) {
+  const sanitizedHtml = useMemo(
+    () =>
+      DOMPurify.sanitize(html, {
+        ADD_ATTR: DOMPURIFY_ADD_ATTR,
+        ALLOWED_TAGS: DOMPURIFY_ALLOWED_TAGS,
+        ALLOWED_ATTR: DOMPURIFY_ALLOWED_ATTR,
+        ADD_DATA_URI_TAGS: ["img"],
+        ALLOW_DATA_ATTR: true,
+      }),
+    [html]
+  );
 
-export default function ReactParser({ html, homeData }: { html: any, homeData?:any }) {
-  // const pathname = usePathname();
-  const options = getParserOptions(homeData);
-  const sanitizedHtml = DOMPurify.sanitize(html, {
-    ADD_ATTR: [
-      "target",
-      "data-aos",
-      "data-aos-delay",
-      "data-aos-duration",
-      "data-aos-offset",
-      "data-aos-easing",
-      "data-aos-once",
-      "data-aos-mirror",
-      "data-aos-anchor",
-      "data-aos-anchor-placement",
-    ],
-    ALLOWED_TAGS: [
-      "a", "b", "i", "em", "strong", "span", "div", "p",
-      "h1", "h2", "h3", "h4", "h5", "h6",
-      "ul", "ol", "li", "br", "hr",
-      "img", "table", "thead", "tbody", "tr", "th", "td",
-      "section", "article", "aside", "header", "footer",
-      "figure", "figcaption", "blockquote", "pre", "code",
-      "sup", "sub", "button", "iframe", "nav", "main",
-      "picture", "source", "video", "audio",
-      "svg", "path", "circle", "rect", "line", "polyline", "polygon", "g", "use",
-      "label", "form", "input", "textarea", "select", "option",
-      "dl", "dt", "dd", "small", "mark", "details", "summary",
-    ],
-    ALLOWED_ATTR: [
-      "class", "id", "src", "alt", "href", "target",
-      "width", "height", "style", "rel", "type",
-      "data-src", "data-tab",
-      "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
-      "data-aos", "data-aos-delay", "data-aos-duration", "data-aos-offset",
-      "data-aos-easing", "data-aos-once", "data-aos-mirror",
-      "data-aos-anchor", "data-aos-anchor-placement",
-    ],
-    ADD_DATA_URI_TAGS: ["img"],
-    ALLOW_DATA_ATTR: true,
-  });
-  
-  const containerId = `cms-block-${hashString(sanitizedHtml)}`;
+  const containerId = useMemo(() => `cms-block-${hashString(sanitizedHtml)}`, [sanitizedHtml]);
 
-  // useEffect(() => {
-  //   if (typeof window === "undefined") return;
+  const options = useMemo(() => getParserOptions(homeData), [homeData]);
 
-  //   markRouteContentReady();
-
-  //   const cancelAosRefresh = scheduleRefreshAOSSequence();
-
-  //   const schedule = (window as Window & { __scheduleInitCustomJS?: () => void }).__scheduleInitCustomJS;
-  //   const init = (window as Window & { __initCustomJS?: () => void }).__initCustomJS;
-
-  //   if (typeof schedule === "function") {
-  //     schedule();
-  //   } else if (typeof init === "function") {
-  //     init();
-  //   }
-
-  //   let cancelHashScroll = () => {};
-
-  //   const runHashScroll = () => {
-  //     cancelHashScroll();
-  //     cancelHashScroll = scrollToHashWhenReady(undefined, { behavior: "smooth" });
-  //   };
-
-  //   // Delay so parsed HTML and nested dynamic widgets can mount first.
-  //   const hashScrollTimer = window.setTimeout(runHashScroll, 150);
-
-  //   const onHashChange = () => runHashScroll();
-  //   window.addEventListener("hashchange", onHashChange);
-
-  //   return () => {
-  //     cancelAosRefresh();
-  //     window.clearTimeout(hashScrollTimer);
-  //     window.removeEventListener("hashchange", onHashChange);
-  //     cancelHashScroll();
-  //   };
-  // }, [pathname, html]);
-
-  // if (!html) {
-  //   if (typeof window !== "undefined") {
-  //     markRouteContentReady();
-  //   }
-  //   return null;
-  // }
-
+  const parsedContent = useMemo(() => parse(sanitizedHtml, options), [sanitizedHtml, options]);
 
   return (
     <div id={containerId}>
-      {parse(sanitizedHtml, options)}
+      {parsedContent}
       <CmsEnhancer containerId={containerId} />
     </div>
   );

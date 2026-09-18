@@ -7,7 +7,6 @@ import MainWrapper from "../components/MainWrapper";
 // import InitialLoadOverlay from "../components/ui/pageLoader/InitialLoadOverlay";
 import Providers from "../lib/providers";
 import AOSProvider from "../lib/AOSProvider";
-import { Toaster } from "react-hot-toast";
 import "../styles/custom.css";
 import "../styles/globals.css";
 import "../styles/program.css";
@@ -40,7 +39,7 @@ export default function RootLayout({
               <FooterGate>
                 <Footer />
               </FooterGate>
-              <Toaster />
+              {/* <Toaster /> */}
             </AOSProvider>
           </Providers>
           {/* <ScriptLoader /> */}

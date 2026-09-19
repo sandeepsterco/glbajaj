@@ -1,12 +1,10 @@
-import dynamic from "next/dynamic";
-
 import ReactParser from "./ReactParser";
 
-export default function ReactParserDynamic({ html }: { html: string }) {
+export default function ReactParserDynamic({ html, homeData }: { html: string, homeData?:any }) {
 
   return (
     <div data-react-parser-dynamic="" style={{ display: "contents" }}>
-      <ReactParser html={html} />
+      <ReactParser html={html} homeData={homeData} />
     </div>
   );
 }

@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import NotificationBar from "../../ui/notificationBar/NotificationBar";
 import "./banner.css";
 
 function getYouTubeId(url: string): string {
@@ -148,6 +147,7 @@ function HeroVideoSlide({
           priority={index === 0}
           sizes="100vw"
           className={`object-cover ${shouldRenderIframe ? "home_banner_video_poster--hidden" : ""}`}
+          fetchPriority="high"
         />
       ) : (
         <div className="home_banner_video_placeholder" aria-hidden="true" />
@@ -228,7 +228,7 @@ export default function HeroBanner({ data }: { data: any }) {
         ))}
       </Swiper>
 
-      <NotificationBar />
+      
     </section>
   );
 }

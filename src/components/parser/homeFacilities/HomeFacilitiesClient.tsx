@@ -3,36 +3,36 @@
 import { useRef, useState, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
 import type { Swiper as SwiperType } from "swiper";
 import { useContainer25MaxWidth } from "@/src/hooks/useContainer25MaxWidth";
 import Image from "next/image";
-
-import "swiper/css";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 
-const fetchFacilities = async () => {
-  const { data, error } = await apiFetch("home-facilities-slides");
-  if (error) throw new Error(error);
-  return data;
+import "swiper/css";
+
+type Slide = {
+  image?: string;
+  title?: string;
+  slug?: string;
 };
 
-export default function HomeFacilities() {
+type Tab = {
+  tab_title?: string;
+  mapping_items?: { slides?: Slide[] };
+};
+
+interface HomeFacilitiesClientProps {
+  tabsData: Tab[];
+}
+
+export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRefs = useRef<Record<number, SwiperType>>({});
   const containerRef = useContainer25MaxWidth();
-
-  const { data } = useQuery({
-    queryKey: ["home_facilities"],
-    queryFn: fetchFacilities,
-  });
-
-  const tabsData = data?.homeFacilitiesSlides?.data;
 
   const VISIBLE_SLIDES = 2.25;
 
@@ -52,10 +52,8 @@ export default function HomeFacilities() {
     const swiper = swiperRefs.current[idx];
     if (!swiper || !prevRef.current || !nextRef.current) return;
 
-    // Detach from old elements first
     swiper.navigation.destroy();
 
-    // Point to the (now stable) DOM refs
     (swiper.params.navigation as any).prevEl = prevRef.current;
     (swiper.params.navigation as any).nextEl = nextRef.current;
     (swiper.navigation as any).prevEl = prevRef.current;
@@ -99,7 +97,7 @@ export default function HomeFacilities() {
                     </h3>
 
                     <div className="homeFac_btns">
-                      {tabsData?.map((item: any, idx: number) => (
+                      {tabsData?.map((item, idx) => (
                         <div
                           key={idx}
                           className={`homeFac_btn ${activeTab === idx ? "active" : ""}`}
@@ -110,7 +108,6 @@ export default function HomeFacilities() {
                       ))}
                     </div>
 
-                    {/* Always in DOM — hidden via CSS when not needed */}
                     <div
                       className="navigation_btn"
                       style={{ visibility: showNav(activeTab) ? "visible" : "hidden" }}
@@ -142,7 +139,7 @@ export default function HomeFacilities() {
 
                   {/* ── Content panes ── */}
                   <div className="homeFac_content">
-                    {tabsData?.map((item: any, idx: number) => (
+                    {tabsData?.map((item, idx) => (
                       <div
                         className={`homeFac_pane ${activeTab === idx ? "active" : ""}`}
                         key={`tabContent${idx}`}
@@ -166,7 +163,7 @@ export default function HomeFacilities() {
 
                         <div className="homeFac_accBody">
                           <div className="homeFac_swiper_wrap">
-                            {item?.mapping_items?.slides?.length > 0 && (
+                            {item?.mapping_items?.slides && item.mapping_items.slides.length > 0 && (
                               <Swiper
                                 modules={[Navigation]}
                                 spaceBetween={20}
@@ -203,7 +200,7 @@ export default function HomeFacilities() {
                                 }}
                                 className="homeFac_swiper"
                               >
-                                {item.mapping_items.slides?.map((slide: any, slideIdx: number) => (
+                                {item.mapping_items.slides.map((slide, slideIdx) => (
                                   <SwiperSlide key={slideIdx}>
                                     <figure className="flash-effect">
                                       <Image

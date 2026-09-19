@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**" },
       { protocol: "http", hostname: "**" },
     ],
-    unoptimized: true,
+    // unoptimized: true,
     // domains is deprecated, remotePatterns above covers it
   },
 

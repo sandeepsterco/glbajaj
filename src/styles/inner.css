@@ -1977,19 +1977,19 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .placement_main { padding-block: 8rem 10rem; }
 .placement_main .row { margin: 0; }
 .placement_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
-.place_box { background-color: #f3e9dced; border-radius: 1.5rem; margin-top: 3rem;}
+.place_box { background-color: #f3e9dced; margin-top: 3rem;}
 .place_infobox h3 { font: var(--font-24); color: #633d27; margin-bottom: 1.5rem; font-weight: bold; }
 .place_infobox p { font: var(--font-16); color: var(--color-black); margin-bottom:0rem; padding-top:0;}
-.place_infobox p strong { font-weight: bold; }
+.place_infobox p strong { font-weight: 400; }
 .place_infobox { text-align: center; padding:2.5rem 1.5rem; }
-.place_complog { text-align: center; position: absolute; top: 1rem; right: .5rem; }
+.place_complog { text-align: center; position: absolute; top: 1rem; right: 2rem; }
 .place_complog img { margin: auto; object-fit: cover; width: 10.2rem; }
 .place_pkg h3 { font-weight: 600; letter-spacing: 0; color: var(--color-33); }
 .place_imgbox { background-color: #e0e3e9; border-radius: 1.5rem; position: relative; }
 .place_imgbox::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1rem; background-color: var(--color-64); }
 .dept_gridmain { padding-block: 5rem 10rem; }
 .place_imgbox > figure { height: 37rem; }
-.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top; border-radius: 1.5rem; }
+.place_imgbox > figure img { height: 100%; width: 100%; object-fit: cover; object-position: top;}
 .dept_maingrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }

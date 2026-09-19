@@ -27,84 +27,16 @@ interface HomeUpcomingEventsClientProps {
 
 export default function HomeUpcomingEventsClient({ events }: HomeUpcomingEventsClientProps) {
   return (
-    <div className="grid">
-      <div className="left_col">
-        <Swiper
-          modules={[Autoplay]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          loop={events.newsAndEvents.length > 1}
-          slidesPerView={1}
-          spaceBetween={15}
-          speed={800}
-          breakpoints={{
-            576: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-            },
-            992: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1200: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-          }}
-        >
-          {events.mediaCoverage.map((event: MediaCoverageItem) => {
-            const d = formatDateParts(event.date);
-            return (
-              <SwiperSlide key={event.id}>
-                <div className="content_col">
-                  <figure>
-                    <img
-                      src={event.image ?? ""}
-                      alt={event.title}
-                      data-aos="fade-up"
-                      data-aos-delay="800"
-                      loading="lazy"
-                      width="723"
-                      height="568"
-                      className="img-fluid w-100"
-                    />
-                  </figure>
-
-                  <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
-                    <div className="left">
-                      <p className="date text-white" data-aos="fade-up" data-aos-delay="800">
-                        {d.full}
-                      </p>
-                      <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
-                        {event.title}
-                      </h4>
-                    </div>
-
-                    <div className="right">
-                      <Link href={`/media-coverage`} data-aos="fade-up" data-aos-delay="800">
-                        <div className="arrow_btn1">
-                          <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
+  
 
       <div className="right_col">
         <ul>
           {events.newsAndEvents.map((event: NewsEventItem) => {
             const d = formatDateParts(event.date);
             return (
-              <li key={event.id} data-aos="fade-up" data-aos-delay="200">
+              <li key={event.id}>
                 <Link href={`/news-events/${event.slug}`}>
-                  <div className="text" data-aos="fade-up" data-aos-delay="400">
+                  <div className="text">
                     <span className="date">{d.full}</span>
                     <p>{event.heading}</p>
                   </div>
@@ -113,8 +45,6 @@ export default function HomeUpcomingEventsClient({ events }: HomeUpcomingEventsC
                     alt="right chevron icon"
                     width="60"
                     height="60"
-                    data-aos="fade-up"
-                    data-aos-delay="600"
                   />
                 </Link>
               </li>
@@ -122,6 +52,5 @@ export default function HomeUpcomingEventsClient({ events }: HomeUpcomingEventsC
           })}
         </ul>
       </div>
-    </div>
   );
 }

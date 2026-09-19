@@ -63,6 +63,7 @@ import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
+import HomeHighlights from "../../parser/homeHighlights/HomeHighlights";
 
 
 const EMPTY_TAGS = new Set(["h1", "h2", "h3", "h4", "h5", "h6", "p"]);
@@ -182,6 +183,7 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     home_placements: () => <HomePlacements homeData={homeData} />,
     career_job_listing: () => <CareerJobListing />,
     home_upcoming_events: () => <HomeUpcomingEvents />,
+    home_highlights: () => <HomeHighlights />,
     program_detail_placements: () => <ProgramDetailPlacements />,
     department_home_research: () => <DepartmentHomeResearch />,
     home_course_right: () => <HomeCourseRight />,

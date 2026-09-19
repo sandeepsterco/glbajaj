@@ -300,7 +300,17 @@
 .home_about_glb_section .video_grid{ margin-top: 12rem;}
 .video_grid h5{ margin-block: 2rem 1rem;}
 .video_grid h3 { color: var(--color-92); letter-spacing: -0.24rem; margin-bottom: 3.5rem; }
-.right_col{ padding-right: 10rem;}
+.right_col{ padding-right: 0rem;}
+
+
+.home_session_titl .more_btn { cursor: pointer; background-color: var(--color-white); justify-content: center; align-items: center; width: 4rem; height: 4rem; display: flex; box-shadow: 0 4px 12px #00000026; margin-bottom: 8rem;}
+.home_session_titl .more_btn:hover {
+  background-color: var(--color-92);
+}
+.home_session_titl .more_btn:hover img {
+  filter: brightness(0) invert();
+}
+
 
 
 /* Pulse wave */
@@ -340,7 +350,7 @@
 .corporate_board { display: none; }
 /************  end of home_about_glb_section ************/
 /************  start of home_sessions_section ************/
-.home_sessions_section .grid { display: grid; grid-template-columns: 60% auto; margin-inline: 0rem; gap: 3rem; }
+.home_sessions_section .grid { display: grid; grid-template-columns: 63% auto; margin-inline: 0rem; gap:5rem; }
 .home_sessions_section .grid .left_col { position: relative; }
 .home_sessions_section .grid .right_col ul { display: flex; /* justify-content: space-between; */
   height: 100%; flex-direction: column; height: 42rem; overflow: auto; }
@@ -358,20 +368,20 @@
 .home_sessions_section .left_col .sec_data:before { position: absolute; content: ''; left: 0; top: 0; width: 100%; height: 100%; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); background: var(--color-64); z-index: -1; }
 .home_sessions_section .left_col .left { flex: 1; max-width: 40.4rem; }
 .home_sessions_section .left_col .date { font: var(--font-16); font-weight: normal; margin-bottom: 1rem; }
-.home_sessions_section .left_col .title { font: var(--font-24); line-height: 3rem; margin-top: 1.5rem; font-weight: 700; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 5rem;}
+.home_sessions_section .left_col .title { font: var(--font-24); line-height: 3rem; margin-top: 1.5rem; font-weight: 700; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 6rem;}
 .home_sessions_section .left_col .right { display: flex; align-items: center; top: 0.5rem; position: relative; }
-.home_sessions_section .right_col a { padding: 3.2rem 2.5rem 3.2rem 3.4rem; background: var(--color-F5); display: flex; align-items: center; transition: 0.3s; }
+.home_sessions_section .right_col a { padding:3.1rem 2.5rem 3.1rem 3.4rem; background: var(--color-F5); display: flex; align-items: center; transition: 0.3s; }
 .home_sessions_section .right_col a:hover { background-color: var(--color-92); }
 .home_sessions_section .right_col a:hover span,
 .home_sessions_section .right_col a:hover p { color: var(--color-white); }
 .home_sessions_section .right_col .text { flex: 1; }
-.home_sessions_section .right_col .date { font: var(--font-16); line-height: 2.4rem; }
+.home_sessions_section .right_col .date { font: var(--font-14); line-height: 2.4rem; }
 .home_sessions_section .right_col img{ max-width: 6rem;}
 .home_sessions_section .text p { font: var(--font-21); margin-top: 1rem; font-weight: 500; line-height: 2.5rem; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden;}
 /* .home_sessions_section .right_col li:not(:last-child) { margin-bottom:2.1rem; }
 */
 .home_sessions_section .home_session_titl>h4 { margin-bottom: 2rem; }
-.home_sessions_section .home_session_titl>h3 { margin-bottom: 8rem; font-size: 4.8rem; }
+.home_sessions_section .home_session_titl>h3 { margin-bottom: 6rem; font-size: 4.8rem; }
 /************  end of home_sessions_section ************/
 /************  start of home_happenings_section ************/
 .home_happenings_section { padding-top: 12rem; }
@@ -420,7 +430,7 @@
 /* .single_grid.no_image:nth-child(5) { background-color: var(--color-FE); } */
 .single_grid.no_image:nth-child(5) .content .bottom_data .date,
 .single_grid.no_image:nth-child(5) .content .bottom_data .sub_title { color: var(--color-black); }
-.single_grid.no_image .content { height: 100%; position: relative; left: 0; bottom: 0; right: 0; padding: 5.9rem 7.8rem 5.4rem 5rem; }
+.single_grid.no_image .content { height: 100%; position: relative; left: 0; bottom: 0; right: 0; padding:0rem 7.8rem 5.9rem 5rem; }
 .single_grid.no_image .content .bottom_data { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
 .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-30); color: var(--color-white); }
 .single_grid figure { position: relative; }
@@ -560,7 +570,7 @@
 .home_research_incubation .contents .image_title{ color:#fff; font:var(--font-40); text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
 .home_research_incubation .contents .image_title small{ font:var(--font-24); text-transform: none; }
 .home_research_incubation .contents p{ color:#fff; margin:0; line-height: 2.2rem; min-height: 7rem; }
-.home_research_incubation_section .right_data{ top: 50%; position: relative; transform: translateY(-50%); width: 100%; padding: 0 5rem; text-align: center; z-index: 1; }
+.home_research_incubation_section .right_data{ top: 50%; position: relative; transform: translateY(-50%); width: 100%; padding: 0rem; text-align: center; z-index: 1; }
 .home_research_incubation_section .right_data .logo{ margin:auto; max-width: 30rem;}
 .home_research_incubation_section .right_data .logo_content{ margin-top: 3rem;}
 .internship-page .hod_right:before{ display: none;}
@@ -599,11 +609,15 @@
 .why_glb_section .tabs li .arrow { background-size: contain; }
 .sec_title.left { padding-block: 2rem 0; }
 .home_research_section .research_top{ padding-inline: 15rem;}
-.home_testimonials .heading { margin-top: 1rem; }
-    .home_testimonials .desc_content{margin: 6rem 0 8rem 19.5rem;}
-    .recruiters h5{ margin-top: 1.5rem;}
+/*.home_testimonials .heading { margin-top: 1rem; }
+  .home_testimonials .desc_content{margin: 6rem 0 8rem 19.5rem;}
+  .recruiters h5{ margin-top: 1.5rem;}
+   .home_courses_section .courses_links{ margin-top: 5.5rem;}
+  .homepage .program-box .program_link{ padding: 1.4rem 1rem;}
+  .why_glb_section .tab_content .yrs br{ display: none;} */
 
-
+.home_testimonials .desc_content{ margin: 8rem 0 13rem 19.5rem;}
+.single_grid:not(:has(figure)) .content .bottom_data .desc{ max-width: 90%;}
  }
 /* ==============HOD's Message page Start============= */
 /* ==============The Group page Start============= */
@@ -727,13 +741,13 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .iicenter_bottom_content p a:hover{ color:var(--color-64);}
 
 @media (max-width:1536px) {
- .homeFac_tabs { grid-template-columns: 21% 72%; }
+ /* .homeFac_tabs { grid-template-columns: 21% 72%; } */
 .home_testimonials .grid { gap: 11rem; }
 .home_testimonials .thumbs { margin-right: 0; }
-.home_sessions_section .right_col a { padding: 2.3rem 2.5rem 2.3rem 3.4rem; }
+/* .home_sessions_section .right_col a { padding: 2.3rem 2.5rem 2.3rem 3.4rem; } */
 .single_grid.no_image .content .bottom_data .sub_title { font: var(--font-21); }
-.home_footer .footer_links { margin: 2.6rem 0 2rem 36.3rem; }
-.home_footer .footer_bottom { margin-left: 36.3rem; }
+.home_footer .footer_links { margin: 2.6rem 0 2rem 30.3rem; }
+.home_footer .footer_bottom { margin-left: 30.3rem; }
 .single_grid.no_image .content { padding: 3rem 7.8rem 5.4rem 5rem }
 .single_grid .content { left: 4rem; }
 .home_placement_company_header .slider_btns { gap: 2rem; }
@@ -742,11 +756,12 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .homeFac_content:after { width: 7%; height: 38%; left: -8.8rem; }
 .home_testimonials .desc_content .desc { max-height: 32rem; }
 .home_testimonials .thumb-group { margin-top: 0; }
-.home_footer .footer_top { gap: 9.5rem; }
+/* .home_footer .footer_top { gap: 9.5rem; } */
 .group_section h2{ letter-spacing: -1px;}
-.sec_title .title48{ letter-spacing: -1px;}
 .home_research_section .research_slider_wrapper { margin-left: 7rem; }
-.home_sessions_section .grid .right_col ul{height: 37rem;}
+/* .home_sessions_section .grid .right_col ul{height: 37rem;} */
+.home_footer .footer_bottom_left{ gap: 3rem;}
+
 
  }
 /* Institute Incubation Center End */
@@ -799,7 +814,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
 .home_courses_section .slider_btns { top: 3rem; gap: 1.8rem; }
 .right_col ul li a img { width: 7rem; }
-.home_testimonials .desc_content { padding: 6.4rem 0 0rem 0rem; }
+/* .home_testimonials .desc_content { padding: 6.4rem 0 0rem 0rem; } */
 /* .home_footer .footer_top { gap: 4.5rem; }
 */ }
 @media (max-width:1280px) {

@@ -22,7 +22,7 @@
 
  }
 @media (max-width: 1399px) {
- .home .home_testimonials .desc { min-height: 25rem; }
+ /* .home .home_testimonials .desc { min-height: 25rem; } */
 .our_inspiration_left a { max-width: 7rem; }
 .logo_philosophy_grid a { max-width: 7rem; }
 .our_inspiration_section:before{inset: 0 0 15rem;}

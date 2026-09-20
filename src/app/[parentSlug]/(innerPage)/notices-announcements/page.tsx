@@ -3,7 +3,6 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import { getSlug } from "@/src/lib/getSlug";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
@@ -19,12 +18,19 @@ interface SearchParams {
     month?: string;
 }
 
-export default async function NoticesAnnouncement({searchParams}:{searchParams:Promise<SearchParams>}) {
-    const params = await searchParams;
-    const currentPage = Number(params.page) || 1;
+export default async function NoticesAnnouncement({
+    params,
+    searchParams,
+  }: {
+    params: Promise<{ parentSlug: string }>;
+    searchParams: Promise<SearchParams>;
+  }) {
+    const { parentSlug } = await params;
+    const sp = await searchParams;
+    const currentPage = Number(sp.page) || 1;
 
     const { data, error } = await apiFetch(`notice-and-announcements?page=${currentPage}`);
-    const slug = await getSlug();
+    const slug = "notices-announcements";
 
     if (error) {
         return (
@@ -36,7 +42,7 @@ export default async function NoticesAnnouncement({searchParams}:{searchParams:P
 
     return (
         <>
-            <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={false}>
+            <InnerPageLayoutWrapper slug={slug} pathname={`/${parentSlug}/notices-announcements`} tabs={null} mainClass="happenings_page" showTabs={false}>
                 <section className="notice_announcement">
                     <div className="container25">
                         <div className="notice_grid">

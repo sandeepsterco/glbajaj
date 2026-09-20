@@ -1,6 +1,5 @@
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,8 +13,12 @@ export async function generateMetadata({
   return await getPageSEO(`department/${slug}/achievements`);
 }
 
-export default async function DepartmentAboutPage() {
-  const slug = await getSlug(-2);
+export default async function DepartmentAboutPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/achievements`),
     getPageSEO(`department/${slug}/achievements`),

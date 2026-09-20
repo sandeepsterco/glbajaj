@@ -1,9 +1,6 @@
-import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import ProgramTabs from "@/src/components/departments/programs/ProgramTabs";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -16,7 +13,6 @@ export async function generateMetadata({
 
 export default async function DepartmentAboutPage({params}:{params:Promise<{ slug: string }>}) {
     const { slug } = await params;
-//   const slug = await getSlug(-2);
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/programs`),
     getPageSEO(`department/${slug}/programs`),

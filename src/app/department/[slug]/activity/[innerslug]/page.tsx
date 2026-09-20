@@ -1,7 +1,6 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 
 export async function generateMetadata({

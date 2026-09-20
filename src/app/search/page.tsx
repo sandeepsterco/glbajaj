@@ -1,8 +1,5 @@
-export const dynamic = "force-dynamic";
 import PageHeader from "@/src/components/layout/header/PageHeader";
-import ProgramList from "@/src/components/programs/ProgramList";
 import { apiFetch } from "@/src/lib/api";
-import PageLoader from "@/src/components/ui/pageLoader/PageLoader";
 import "@/src/styles/inner.css";
 import SearchPageListing from "./SearchPageListing";
 import { getPageSEO } from "@/src/lib/seo";
@@ -33,7 +30,7 @@ export default async function SearchPage({
         />
       )}
       <main>
-        <PageHeader data={data.data} slug="search" />
+        <PageHeader pathname={`/search`} data={data.data} slug="search" />
         <SearchPageListing searchQuery={q} />
       </main>
     </>

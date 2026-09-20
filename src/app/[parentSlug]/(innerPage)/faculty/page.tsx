@@ -2,7 +2,6 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import FacultyList from "@/src/components/faculty/FacultyList";
 import { apiFetch } from "@/src/lib/api";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import { getSlug } from "@/src/lib/getSlug";
 import FacultyTabular from "@/src/components/faculty/FacultyTabular";
 import FacultyFilters from "@/src/components/faculty/FacultyFilters";
 import "@/src/styles/inner.css";
@@ -21,17 +20,17 @@ interface SearchParams {
 }
 
 export default async function FacultyPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ parentSlug: string }>;
   searchParams: Promise<SearchParams>;
 }) {
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
-  const department = params.department || "";
-  const filter = params.filter || "a-z";
-
-  const slug = await getSlug();
-
+  const { parentSlug } = await params;
+  const sp = await searchParams;
+  const currentPage = Number(sp.page) || 1;
+  const department = sp.department || "";
+  const filter = sp.filter || "a-z";
   // Build query string for faculty API
   const facultyQuery = new URLSearchParams({
     page: String(currentPage),
@@ -42,7 +41,7 @@ export default async function FacultyPage({
   const [{ data, error }, { data: deptData }, {data:CMSData}] = await Promise.all([
     apiFetch(`faculty?${facultyQuery}`),
     apiFetch("department-faculty-list"),
-    apiFetch(`cms/${slug}`),
+    apiFetch(`cms/${parentSlug}`),
   ]);
 
   if (error) {
@@ -60,7 +59,8 @@ export default async function FacultyPage({
 
   return (
     <InnerPageLayoutWrapper
-      slug={slug}
+      slug={parentSlug}
+      pathname={`/${parentSlug}/faculty`}
       tabs={null}
       mainClass="happenings_page"
       showTabs={false}

@@ -1,10 +1,8 @@
 import { BASE_URL } from "@/src/config/config";
-import { getSlug } from "@/src/lib/getSlug";
 import Image from "next/image";
 import Link from "next/link";
 
-const MessageComponent = async ({ data }: { data: any }) => {
-    const slug = await getSlug();
+const MessageComponent = async ({ data, slug }: { data: any;slug: string }) => {
     return (
         <section className="administration_section messages_section">
             <div className="container25">

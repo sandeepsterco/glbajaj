@@ -22,7 +22,7 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     return(
         <div className="happenings_page">
-            <PageHeader data={data.data} slug={slug}  />
+            <PageHeader pathname={`/department/${slug}/achievements`} data={data.data} slug={slug}  />
             {pageData?.length == 0 ? <ComingSoon /> : children}
         </div>
     )

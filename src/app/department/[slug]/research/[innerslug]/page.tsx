@@ -2,7 +2,6 @@ import NotFound from "@/src/app/not-found";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 
 export async function generateMetadata({
@@ -19,7 +18,6 @@ export default async function DepartmentLabsDetail({
 }: {
   params: Promise<{ slug: string; innerslug: string }>;
 }) {
-  // const slug = await getSlug();
   const { slug, innerslug } = await params;
 
   const [{ data, error }, seoData] = await Promise.all([

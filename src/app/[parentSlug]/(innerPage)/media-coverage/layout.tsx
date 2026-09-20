@@ -1,4 +1,3 @@
-import { getSlug } from "@/src/lib/getSlug";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 import "@/src/styles/fancybox.css";
 import "@/src/styles/inner.css";
@@ -7,10 +6,26 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 
-export default async function NewsEventsLayout({ children }: { children: React.ReactNode }) {
-    const slug = await getSlug();
+export default async function NewsEventsLayout({
+    children,
+    params,
+}: {
+    children: React.ReactNode;
+    params: Promise<{ parentSlug: string }>;
+}) {
+    const { parentSlug } = await params;
 
-    if (!slug) return <>{children}</>;
+    if (!parentSlug) return <>{children}</>;
 
-    return <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
+    return (
+        <InnerPageLayoutWrapper
+            slug={parentSlug}
+            pathname={`/${parentSlug}/media-coverage`}
+            tabs={null}
+            mainClass="happenings_page"
+            showTabs={true}
+        >
+            {children}
+        </InnerPageLayoutWrapper>
+    );
 }

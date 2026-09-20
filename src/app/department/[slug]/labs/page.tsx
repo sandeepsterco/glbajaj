@@ -1,6 +1,5 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 
 export async function generateMetadata({
@@ -12,8 +11,12 @@ export async function generateMetadata({
   return await getPageSEO(`department/${slug}/labs`);
 }
 
-export default async function DepartmentAboutPage() {
-  const slug = await getSlug(-2);
+export default async function DepartmentAboutPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/labs`),
     getPageSEO(`department/${slug}/labs`),

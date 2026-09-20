@@ -1,9 +1,7 @@
-export const dynamic = "force-dynamic";
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import Image from "next/image";
 import Link from "next/link";
 import "@/src/styles/inner.css";
@@ -14,28 +12,32 @@ export async function generateMetadata() {
 }
 
 export default async function DepartmentsPage() {
-  const slug = await getSlug();
-  const [data, seoData] = await Promise.all([
+  const slug = "departments";
+  const [cmsResult, seoData, departmentsResult] = await Promise.all([
     apiFetch(`cms/${slug}`),
-    getPageSEO("departments"),
+    getPageSEO(slug),
+    apiFetch(`departments`),
   ]);
 
-  const { data: departmentData, error: departmentError } =
-    await apiFetch(`departments`);
+  const { data: departmentData, error: departmentError } = departmentsResult;
 
   return (
     <>
       {seoData?.schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(seoData.schema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
         />
       )}
 
       <main>
-        {data?.data?.data && <PageHeader data={data.data.data} slug={slug} />}
+        {cmsResult?.data?.data?.data && (
+          <PageHeader
+            data={cmsResult.data.data.data}
+            slug={slug}
+            pathname="/departments"
+          />
+        )}
 
         {departmentError && (
           <ApiErrorFallback
@@ -46,18 +48,13 @@ export default async function DepartmentsPage() {
 
         <section className="dept_gridmain">
           <div className="container25">
-            {/* <h1>testing</h1> */}
-
             <div className="dept_maingrid">
               {departmentData?.data &&
                 departmentData.data.map((item: any, idx: number) => (
                   <div key={idx} className="dept_gbox relative">
                     <figure>
                       <Image
-                        src={
-                          item?.image ??
-                          "/images/default/department-project.webp"
-                        }
+                        src={item?.image ?? "/images/default/department-project.webp"}
                         className="img-fluid w-100"
                         alt={item.name}
                         height={600}
@@ -66,10 +63,7 @@ export default async function DepartmentsPage() {
                       />
                     </figure>
                     <h3 className="font24">{item.name}</h3>
-                    <Link
-                      className="strech_link"
-                      href={`${BASE_URL}department/${item.slug}`}
-                    />
+                    <Link className="strech_link" href={`${BASE_URL}department/${item.slug}`} />
                   </div>
                 ))}
             </div>

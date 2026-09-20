@@ -1,5 +1,4 @@
 import { apiFetch } from "@/src/lib/api";
-import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
@@ -41,7 +40,7 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
-      <PageHeader data={data?.data} slug={parentSlug} />
+      <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
       <ReactParserDynamic html={combinedHtml} />
     </>
   );

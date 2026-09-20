@@ -3,7 +3,6 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 
 export async function generateMetadata({
@@ -20,7 +19,6 @@ export default async function DepartmentResearchPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // const slug = await getSlug(-2);
   const { slug } = await params;
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/research`),
@@ -47,7 +45,7 @@ export default async function DepartmentResearchPage({
           }}
         />
       )}
-      <PageHeader data={data?.data} slug={slug} />
+      <PageHeader data={data?.data} slug={slug} pathname={`/department/${slug}/research`} />
       {cmsSections?.map((item: any) => {
         return <ReactParser key={item.id} html={item.cms} />;
       })}

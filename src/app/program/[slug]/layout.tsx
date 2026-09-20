@@ -1,8 +1,8 @@
 import { apiFetch } from "@/src/lib/api"
-import NotFound from "../../not-found";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import "@/src/styles/inner.css";
 import "@/src/styles/program.css";
+import { notFound } from "next/navigation";
 
 
 
@@ -11,7 +11,7 @@ export default async function ProgramDetailLayout({children, params}:Readonly<{c
     const {data, error} = await apiFetch(`program/${slug}`)
 
     if(error){
-        return <NotFound />;
+        return notFound();
     }
 
     const programDetailData = data?.program_details
@@ -31,7 +31,7 @@ export default async function ProgramDetailLayout({children, params}:Readonly<{c
 
     return(
         <>
-            <PageHeader data={programDetailTab} slug={slug}/>
+            <PageHeader pathname={`/program/${slug}`} data={programDetailTab} slug={slug}/>
             {children}
         </>
     )

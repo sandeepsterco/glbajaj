@@ -1,7 +1,6 @@
 import NotFound from "@/src/app/not-found";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
-import { getSlug } from "@/src/lib/getSlug";
 import { getPageSEO } from "@/src/lib/seo";
 
 export async function generateMetadata({
@@ -13,8 +12,12 @@ export async function generateMetadata({
   return await getPageSEO(`department/${slug}/activity`);
 }
 
-export default async function DepartmentActivityPage() {
-  const slug = await getSlug(-2);
+export default async function DepartmentActivityPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/activity`),
     getPageSEO(`department/${slug}/activity`),

@@ -16,6 +16,7 @@ const tasaOrbiter = TASA_Orbiter({
   subsets: ["latin"],
   variable: "--font-tasa",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const fontLexend = Lexend({

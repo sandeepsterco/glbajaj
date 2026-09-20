@@ -84,16 +84,14 @@ const Footer = async () => {
                     <a href={`tel:${getValue('helpline')?.value.split('-').join('')}`}>{getValue('helpline')?.value}</a>
                   </div>
                 )}
-                <div>
-
-                </div>
+              
 
                 {getValue('phone')?.value && (
                   <div>
                     <h4>Phone</h4>
                     <p>
-                      <a href={`tel:${getValue('phone')?.value}`}>{getValue('phone')?.value}</a>,
-                      <a href={`tel:${getValue('phone1')?.value}`}>{getValue('phone1')?.value}</a>
+                      <a href={`tel:${getValue('phone')?.value}`}>{getValue('phone')?.value}</a>, 
+                      <a href={`tel:${getValue('phone1')?.value}`}> {getValue('phone1')?.value}</a>
                     </p>
                   </div>
                 )}
@@ -117,9 +115,9 @@ const Footer = async () => {
                       {item.title}
                     </Link>
                   </li>
-                  <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
+                  {/* <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
                     •
-                  </li>
+                  </li> */}
                 </React.Fragment>
               ))}
             </ul>

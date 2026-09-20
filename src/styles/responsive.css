@@ -18,11 +18,11 @@
     .inspiration_grid { grid-template-columns: 60% auto; }
     .container .col-lg-10{ width: 100%;}
     /* .place_imgbox > figure { height: 50rem; } */
-    .happenings_page:before{width: 13.6rem;}
+    .happenings_page:before{width: 13.6rem;}    
 
  }
 @media (max-width: 1399px) {
- .home .home_testimonials .desc { min-height: 25rem; }
+ /* .home .home_testimonials .desc { min-height: 25rem; } */
 .our_inspiration_left a { max-width: 7rem; }
 .logo_philosophy_grid a { max-width: 7rem; }
 .our_inspiration_section:before{inset: 0 0 15rem;}

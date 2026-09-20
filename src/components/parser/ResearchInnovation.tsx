@@ -39,7 +39,7 @@ export default function ResearchInnovation({homeData}:{homeData:any}) {
             spaceBetween: 15,
           },
           1200: {
-            slidesPerView: 3.35,
+            slidesPerView: 2.75,
             spaceBetween: 20,
           },
         }}

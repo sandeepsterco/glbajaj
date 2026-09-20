@@ -50,7 +50,7 @@ export default function AddOnCourses({homeData}:{homeData:any}) {
             768:  { slidesPerView: 4, spaceBetween: 15 },
             992:  { slidesPerView: 5, spaceBetween: 18 },
             1200: { slidesPerView: 6, spaceBetween: 20 },
-            1400: { slidesPerView: 7, spaceBetween: 20 },
+            1400: { slidesPerView: 6, spaceBetween: 20 },
           }}
         >
           {sliderData?.length > 0 &&

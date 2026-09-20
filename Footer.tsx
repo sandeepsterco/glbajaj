@@ -28,8 +28,7 @@ const Footer = async () => {
                 GL Bajaj Institute of Technology and Management
               </h3>
               <p className="text-white text-sm md:text-[1.6rem] leading-[2.4rem] mt-[1.2rem]">
-                Plot No.2 , APJ Abdul Kalam Road, Knowledge Park 3, Greater
-                Noida, Uttar Pradesh, India, 201306
+                Plot No.2 , APJ Abdul Kalam Road, Knowledge Park 3, Greater Noida, Uttar Pradesh, India, 201306
               </p>
             </div>
 
@@ -91,10 +90,7 @@ const Footer = async () => {
               </Link>
             </li>
             {footerData?.menuItems?.map((item: any, idx: number) => (
-              <React.Fragment key={idx}>
-                <li className="text-white w-[5px] h-[5px] rounded-full flex items-center">
-                  •
-                </li>
+              <React.Fragment key={idx}>               
                 <li>
                   <Link
                     href={item?.slug ? item.slug : ''}

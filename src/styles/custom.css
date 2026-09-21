@@ -112,6 +112,23 @@
   background-color: var(--color-64);
 }
 
+@media (min-width:2500px){
+      .max-content-bx {
+        width: 100%;
+        max-width:185rem;
+        margin-inline: auto 0;
+    }
+}
+@media (max-width:2400px){      
+    .max-content-bx { max-width:180rem; margin-inline: auto 0;}
+}
+@media (max-width:2300px){      
+    .max-content-bx { max-width:170rem; }
+}
+@media (max-width:1536px){      
+    .max-content-bx { max-width:196rem; }
+}
+
 @media (min-width: 768px) {
   .d-md-none {
     display: none !important;

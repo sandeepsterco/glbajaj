@@ -17,6 +17,7 @@
   
     let width = windowWidth - leftGap;
   
+    // if (windowWidth >= 2550) {
     if (windowWidth >= 2550) {
       if (!frozenWidth) {
         frozenWidth = width;

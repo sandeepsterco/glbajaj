@@ -93,7 +93,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-duration h3, .program-intake h3, .program-approvals h3 { letter-spacing: -1.8px; color: var(--color-64); }
 .program-duration p { color: var(--color-33); font: var(--font-16); font-weight: 500; }
 .program-img { margin-left: -17rem; }
-.program-form{ margin-top: 4rem;}
+.program-form{ margin-top: 0rem;}
 .form-container { background: var(--color-white); box-shadow: 0px 13px 34px #0000000D; opacity: 1; backdrop-filter: blur(3px); padding: 3.5rem; height: 100%; }
 .form-container .form-group { margin-bottom: 1.5rem; }
 .form-container input, .form-container select, .form-container textarea { width: 100%; padding: 1.2rem; border: 1px solid #E1E1E1; font: var(--font-16); outline: none; color: var(--color-black); background:#fff; }
@@ -105,7 +105,7 @@ textarea::placeholder { color: var(--color-black); }
 .form-container .phone-group select,
 .form-container .phone-group .countryCode { width: 6.2rem; flex:unset; }
 .phone-group input { flex: 1; }
-.form-container .note { font: var(--font-14); text-align: center; color: var(--color-black); letter-spacing: -0.33px; margin: 2.8rem 0; }
+.form-container .note { font: var(--font-12); text-align: center; color: var(--color-black); letter-spacing: -0.33px; margin: 2.8rem 0; line-height: 1.4; }
 .form-container .btn { width: 100%; padding: 1.1rem; background:var(--color-AE); color: var(--color-white); border: none; font:var(--font-16); font-weight: 600; cursor: pointer; }
 .form-container .btn:hover { background-color: var(--color-64); }
 .form-container .login-text { text-align: center; margin-top: 2.5rem; font:var(--font-16); }
@@ -328,7 +328,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-text p span { color: var(--color-64); font-weight: 600; }
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
 .award-detail-text h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
-.award-detail-img { padding-inline: 5rem 0; }
+.award-detail-img { padding-inline: 0; order: 1; }
 .award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
 .award-detail-text1 figure { max-width: 60rem; }
@@ -344,6 +344,14 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .ltm .award-sec .award-list { grid-template-columns: repeat(3, 1fr); }
 .ltm .award-sec .award-list .award-box figure img { max-width: 100%; }
 .ltm .award-sec .award-list .award-box { padding: 0; }
+.award-detail-list1 .award-detail-text1{ padding-left: 0rem;}
+.award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 {
+    padding-left: 10rem;
+}
+
+
+
+
 @media (min-width: 2300px) {
  .award-detail-text { padding-inline: 29rem 0; }
 .award-detail-text1 figure { margin-top: 13rem; }
@@ -361,7 +369,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .csr-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; }
 .csr-design { position: absolute; right: 14rem; margin-top: -12rem; }
 .csr-list-new { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; margin-top: 6rem; padding-bottom: 15rem; }
-.csr-text-list1 { padding: 9rem 13rem 0 26rem; }
+.csr-text-list1 { padding: 9rem 13rem 0 29rem; }
 .csr-design1 { position: absolute; bottom: 0rem; left: 14rem; }
 .csr-list2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; padding-block: 10rem; }
 .csr-list2 .csr-text-list { padding: 3rem 23rem 0 12rem; }
@@ -597,15 +605,20 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .institute_faq_section .col-lg-9{ width: 100%;}
     .institute_faq_section { padding:5rem 0; }
     .bottom_menus{ display: none;}
-    .award-detail-text { padding-inline: 0; }
+    .award-detail-text { padding-inline: 0; order: 2; }
     .award-detail-heading { margin-bottom: 4rem; }
-    .award-detail-list1{ display: none;}
+    /* .award-detail-list1{ display: none;} */
     .award-detail-sec { padding-block: 5rem; }
     .program-text h6{ padding: 0 0 1.5rem 0;}
     .program-box .program-right img{ min-width: 0.7rem;}
     .cus-btn{padding: 1rem 2.5rem;}
-.department-page .blanket-text { padding:0rem; }
-.department-page .csr-sec3:before{ height: auto;}
+    .department-page .blanket-text { padding:0rem; }
+    .department-page .csr-sec3:before{ height: auto;}
+    .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
+    .award-detail-list1 .award-detail-text1 { padding-left: 0; }
+    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 4rem; gap: 4rem; }
+    .award-detail-list1 .award-detail-text1{ padding-left:  0rem;}
+    .award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 { padding-left: 0rem; }
 
 }
 
@@ -627,14 +640,16 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .faculties_main .fac_rgt_arrow{ margin-left: -1rem; margin-top: 2rem;}
     .lab_rgtswiper{ margin-top:3rem;}
     .program-text h6{ padding: 0 0 1rem;}
-    .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2rem; display: flex; flex-direction: column-reverse; }
+    /* .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2rem; display: flex; flex-direction: column-reverse; } */
     .award-detail-img { padding-inline: 0; }
-    .award-detail-text1{ display: none;}
+    /* .award-detail-text1{ display: none;} */
     .award-detail-text p{ margin-bottom: 0;}
 
     #project .blanket-box .blanket-img{
         display:none;
     }
+    .award-detail-text h3{ font: var(--font-24); font-weight: 700; letter-spacing: 0;}
+    .award-detail-text h3 span{ letter-spacing: 0;}
 }
 
 

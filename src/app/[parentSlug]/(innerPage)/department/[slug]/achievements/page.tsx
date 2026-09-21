@@ -63,7 +63,7 @@ export default async function DepartmentAboutPage({
 
                     <Link
                       className="strech_link"
-                      href={`${BASE_URL}achievements/${item.slug}`}
+                      href={`${BASE_URL}why-glbitm/achievements/${item.slug}`}
                     />
                   </div>
                 ))

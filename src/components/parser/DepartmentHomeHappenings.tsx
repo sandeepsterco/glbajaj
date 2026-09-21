@@ -1,7 +1,4 @@
-"use client"
 import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
-import { usePathname } from "next/navigation";
 import RelatedStories from "../newsEvents/RelatedStories";
 
 const fetchHappeningsData = async (slug: string) => {
@@ -11,14 +8,9 @@ const fetchHappeningsData = async (slug: string) => {
   return data?.data;
 }
 
-export default function DepartmentHomeHappenings() {
-  const pathname = usePathname();
-  const slug = pathname.split('/').filter(Boolean).pop() ?? '';
-
-  const { data, isLoading } = useQuery({
-    queryKey: ['department_home_happenings'],
-    queryFn: () => fetchHappeningsData(slug),
-  })
+export default async function DepartmentHomeHappenings({params}:{params:{slug:string; parentSlug:string}}) {
+  const slug = params.slug;
+  const data = await fetchHappeningsData(slug);
 
   const happeningsData = data?.modular?.["news-events"];
 

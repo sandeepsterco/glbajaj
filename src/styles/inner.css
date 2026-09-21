@@ -785,6 +785,10 @@
 .our_cse .view_more_btn { display: inline-block; margin-top: 2rem; }
 .view_more_btn { width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0; }
 .view_more_btn i { font:var(--font-16) }
+.view_more_btn .read_less{display:none;}
+.view_more_btn .read_more{display:block;}
+.view_more_btn.expanded .read_less{display:block;}
+.view_more_btn.expanded .read_more{display:none;}
 .view_more_btn.white { background-color: var(--color-white); display: flex; box-shadow: 0 4px 12px #00000026; }
 .view_more_btn:hover { background-color: var(--color-92); }
 .view_more_btn:hover img { filter: brightness(0) invert(); }

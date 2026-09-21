@@ -13,10 +13,9 @@ export function InitViewMore(root: HTMLElement): () => void {
       description.style.maxHeight = "240px";
   
       const handler = function (this: HTMLElement) {
-        const icon = this.querySelector("i");
         description.classList.toggle("expanded");
-        icon?.classList.toggle("bi-plus-lg");
-        icon?.classList.toggle("bi-dash-lg");
+        this.classList.toggle("expanded");
+        
       };
       btn.addEventListener("click", handler);
       listeners.push([btn, handler]);

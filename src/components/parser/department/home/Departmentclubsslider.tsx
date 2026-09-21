@@ -1,39 +1,29 @@
-"use client"
-import { BASE_URL } from "@/src/config/config";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { BASE_URL } from "@/src/config/config";
+
 import "swiper/css";
 import "swiper/css/navigation";
 
-const fetchDepartmentActivitiesData = async (slug: string) => {
-  const { data, error } = await apiFetch(`department/${slug}/home`);
-  if (error) throw new Error(error);
-  return data?.data;
+export interface ClubItem {
+  id?: string | number;
+  title?: string;
+  image: string;
+  short_description?: string;
+  slug?: string;
+}
+
+type Props = {
+  clubs: ClubItem[];
 };
 
-export default function DepartmentHomeClubs() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean).pop() ?? "";
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["department_home_activities", slug],
-    queryFn: () => fetchDepartmentActivitiesData(slug),
-  });
-
-  const clubsData = data?.modular?.["clubs-and-society"] ?? [];
-
-
-  const slideCount = clubsData.length;
-  const maxSlidesPerView = 1;
-  const shouldLoop = slideCount > maxSlidesPerView;
+export default function DepartmentClubsSlider({ clubs }: Props) {
+  const shouldLoop = clubs.length > 1;
   const showNavigation = shouldLoop;
-
-  if (isLoading || clubsData.length === 0) return null;
 
   return (
     <Swiper
@@ -42,7 +32,7 @@ export default function DepartmentHomeClubs() {
       spaceBetween={20}
       loop={shouldLoop}
       autoplay={{
-        delay:3000,
+        delay: 3000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       }}
@@ -56,7 +46,7 @@ export default function DepartmentHomeClubs() {
       }}
       className="activities_swiper"
     >
-      {clubsData.map((item: any, idx: number) => (
+      {clubs.map((item, idx) => (
         <SwiperSlide key={item?.id || idx}>
           <div className="dep_clubs_card">
             <figure>
@@ -64,22 +54,34 @@ export default function DepartmentHomeClubs() {
                 src={item.image}
                 width={380}
                 height={275}
-                alt={item.title}
-              data-aos="fade-up" data-aos-delay="200"/>
+                alt={item.title || "club"}
+                data-aos="fade-up"
+                data-aos-delay="200"
+              />
             </figure>
             {item?.title && (
               <div className="dep_club_contents">
-                <h3 className="font36 " data-aos="fade-up" data-aos-delay="200">{item.title}</h3>
-                <div className="content" dangerouslySetInnerHTML={{__html:item.short_description}} data-aos="fade-up" data-aos-delay="200" />
+                <h3 className="font36 " data-aos="fade-up" data-aos-delay="200">
+                  {item.title}
+                </h3>
+                <div
+                  className="content"
+                  dangerouslySetInnerHTML={{ __html: item.short_description ?? "" }}
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                />
                 {item?.slug && (
-                  <Link href={BASE_URL + "why-clubs-societies/" + item.slug} className="cus-btn " data-aos="fade-up" data-aos-delay="200">
-                      View More
+                  <Link
+                    href={BASE_URL + "student-corner/clubs/" + item.slug}
+                    className="cus-btn "
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    View More
                   </Link>
                 )}
-                
               </div>
             )}
-            
           </div>
         </SwiperSlide>
       ))}

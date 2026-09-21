@@ -1,22 +1,20 @@
 "use client";
 
+// Client component: tab/sub-nav state and Swiper need the browser.
 import { useState, useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 interface MouImage {
   images: string;
 }
 
-interface MouItem {
+export interface MouItem {
   type: string;
   title: string;
   description: string;
@@ -27,49 +25,24 @@ interface MouItem {
   slug: string;
 }
 
-const fetchDepartmentMouData = async (slug: string) => {
-  const { data, error } = await apiFetch(`department/${slug}/home`);
-  if (error) throw new Error(error);
-  return data?.data;
+type Props = {
+  items: MouItem[];
 };
 
-export default function DepartmentHomeMou() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean).pop() ?? "";
+export default function DepartmentMouTabs({ items }: Props) {
+  // Unique, ordered tab names derived from the data
+  const tabs = useMemo(() => Array.from(new Set(items.map((item) => item.type))), [items]);
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["department_home_collaboration_mou", slug],
-    queryFn: () => fetchDepartmentMouData(slug),
-  });
-
-  const mouData: MouItem[] = data?.modular?.["collaboration-mou"] ?? [];
-
-  // Derive unique ordered tabs from the data
-  const tabs = useMemo(() => {
-    const seen = new Set<string>();
-    return mouData
-      .map((item) => item.type)
-      .filter((type) => {
-        if (seen.has(type)) return false;
-        seen.add(type);
-        return true;
-      });
-  }, [mouData]);
-
-  const [activeTab, setActiveTab] = useState<string>("");
+  const [activeTab, setActiveTab] = useState<string>(tabs[0] ?? "");
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
-
-  // Set first tab once data loads
-  const resolvedTab = activeTab || tabs[0] || "";
 
   // All items for the active tab
   const tabItems = useMemo(
-    () => mouData.filter((item) => item.type === resolvedTab),
-    [mouData, resolvedTab]
+    () => items.filter((item) => item.type === activeTab),
+    [items, activeTab]
   );
 
-  // Active item index within the tab
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
   const activeItem: MouItem | undefined = tabItems[activeItemIndex];
 
   const images = activeItem?.mapping_items?.images ?? [];
@@ -86,7 +59,7 @@ export default function DepartmentHomeMou() {
     setTimeout(() => swiperRef.current?.slideTo(0), 0);
   };
 
-  if (isLoading || !activeItem) return null;
+  if (!activeItem) return null;
 
   return (
     <>
@@ -97,7 +70,7 @@ export default function DepartmentHomeMou() {
           {tabs.map((type) => (
             <div
               key={type}
-              className={`tab ${resolvedTab === type ? "active" : ""}`}
+              className={`tab ${activeTab === type ? "active" : ""}`}
               onClick={() => handleTabClick(type)}
             >
               {type}
@@ -107,13 +80,15 @@ export default function DepartmentHomeMou() {
       </div>
 
       {tabItems.length > 1 && (
-        <div className="tab_subnav" >
+        <div className="tab_subnav">
           {tabItems.map((item, idx) => (
             <button
               key={item.slug}
               className={`subnav_btn ${activeItemIndex === idx ? "active" : ""}`}
               onClick={() => handleItemClick(idx)}
-            data-aos="fade-up" data-aos-delay="600">
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
               {item.title}
             </button>
           ))}
@@ -122,31 +97,38 @@ export default function DepartmentHomeMou() {
 
       {/* Main Grid */}
       <div className="dep_project_grid reverse">
-
         {/* Content Section */}
         <div className="project_contentsec">
-          {/* <h4 className="font24">Collaborations & MOUs</h4> */}
           <h3 className="font36" data-aos="fade-up" data-aos-delay="200">{activeItem.title}</h3>
-          <p dangerouslySetInnerHTML={{__html:activeItem.description}} data-aos="fade-up" data-aos-delay="400"></p>
-          {activeItem?.pdf && (
+          <p
+            dangerouslySetInnerHTML={{ __html: activeItem.description }}
+            data-aos="fade-up"
+            data-aos-delay="400"
+          ></p>
+          {activeItem.pdf && (
             <a href={activeItem.pdf} target="_blank" rel="noopener noreferrer" className="cus-btn">
               PDF
             </a>
           )}
-          
         </div>
 
         {/* Image Slider Section */}
         <div className="proj_imgsec">
           <Swiper
-            key={`${resolvedTab}-${activeItemIndex}`}
+            key={`${activeTab}-${activeItemIndex}`}
             modules={[Navigation]}
             slidesPerView={1}
-            navigation={hasMultiple ? {
-              prevEl: ".collaboration_mou_prev",
-              nextEl: ".collaboration_mou_next",
-            } : false}
-            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            navigation={
+              hasMultiple
+                ? {
+                    prevEl: ".collaboration_mou_prev",
+                    nextEl: ".collaboration_mou_next",
+                  }
+                : false
+            }
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
           >
             {images.map((imgObj, i) => (
               <SwiperSlide key={i}>
@@ -158,7 +140,9 @@ export default function DepartmentHomeMou() {
                     width={850}
                     height={600}
                     loading="lazy"
-                  data-aos="fade-up" data-aos-delay="600"/>
+                    data-aos="fade-up"
+                    data-aos-delay="600"
+                  />
                 </figure>
               </SwiperSlide>
             ))}
@@ -176,7 +160,6 @@ export default function DepartmentHomeMou() {
             </div>
           )}
         </div>
-
       </div>
     </>
   );

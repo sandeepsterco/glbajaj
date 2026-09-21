@@ -24,9 +24,9 @@ export async function generateMetadata({
 export default async function DepartmentPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; parentSlug:string; }>;
 }) {
-  const { slug } = await params;
+  const { slug, parentSlug } = await params;
 
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/home`),
@@ -38,8 +38,6 @@ export default async function DepartmentPage({
   const combinedHtml = data?.data?.cms
     ? Object.values(data?.data?.cms).join("")
     : "";
-
-    console.log('seoData',seoData);
 
   return (
     <>
@@ -54,10 +52,10 @@ export default async function DepartmentPage({
       <div className="happenings_page">
         {data?.data?.tabs && <PageHeader data={data.data} slug={slug} pathname={`/department/${slug}`} />}
 
-        {data.data.cms.length == 0 ? (
+        {data?.data?.cms?.length == 0 ? (
           <ComingSoon />
         ) : (
-          <ReactParserDynamic html={combinedHtml} />
+          <ReactParserDynamic html={combinedHtml} params={{ slug, parentSlug }} data={data?.data} />
         )}
       </div>
     </>

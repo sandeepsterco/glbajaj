@@ -19,6 +19,6 @@ export default async function MessageDetailLayout({
 
     const currentPageTitle = data?.achivement_details?.data?.title;
 
-    return <InnerPageLayoutWrapper slug={slug} pathname={`/\${parentSlug}/achievements/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'achievements'} pathname={`/\${parentSlug}/achievements/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

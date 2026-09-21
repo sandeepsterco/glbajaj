@@ -40,7 +40,6 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
-      <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
       <ReactParserDynamic html={combinedHtml} />
     </>
   );

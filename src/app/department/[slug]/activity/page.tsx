@@ -1,7 +1,7 @@
-import NotFound from "@/src/app/not-found";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -25,9 +25,7 @@ export default async function DepartmentActivityPage({
 
   const cmsSections = data?.data?.cms;
 
-  if (cmsSections?.length == 0) {
-    return <NotFound />;
-  }
+  if (cmsSections?.length == 0) notFound();
 
   return (
     <>

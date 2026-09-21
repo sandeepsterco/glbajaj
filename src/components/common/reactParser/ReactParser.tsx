@@ -43,7 +43,7 @@ const HomeFacilities = dynamic(() => import("../../parser/homeFacilities/HomeFac
 const PoliciesDisclosures = dynamic(() => import("../../parser/PoliciesDisclosures"));
 const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"));
 const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"));
-const AchievementList = dynamic(() => import("../../parser/AchievementList"));
+const AchievementList = dynamic(() => import("../../parser/achievementList/AchievementList"));
 const DepartmentHomeHappenings = dynamic(() => import("../../parser/DepartmentHomeHappenings"));
 const DepartmentHomeActivities = dynamic(() => import("../../parser/DepartmentHomeActivities"));
 const DigitalPathshalaVideoGrid = dynamic(() => import("../../parser/DigitalPathshalaVideoGrid"));
@@ -140,9 +140,8 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-const getParserOptions = (homeData: any): HTMLReactParserOptions => {
-  // Lazily-invoked map: O(1) lookup instead of ~40 sequential string checks
-  // per node. Only touched when domNode.attribs.id is present.
+const getParserOptions = (homeData: any, params?:any, searchParams?:any): HTMLReactParserOptions => {
+  
   const idComponentMap: Record<string, () => React.ReactElement> = {
     "course-search": () => <CourseSearch />,
     home_course_tabs: () => <HomeCoursesTabs />,
@@ -155,7 +154,7 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     contact_form: () => <ContactForm />,
     about_leadership: () => <AboutLeadership />,
     awards_list: () => <AwardsList />,
-    achievement_list: () => <AchievementList />,
+    achievement_list: () => <AchievementList searchParams={searchParams} />,
     conference_lists: () => <ConferenceLists />,
     department_home_faculties: () => <DepartmentHomeFaculties />,
     department_home_laboratories: () => <DepartmentHomeLaboratories />,
@@ -195,7 +194,6 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     replace(domNode) {
       if (!(domNode instanceof Element && domNode.attribs)) return;
 
-      // Hide empty block/inline elements (no visible text or child elements)
       if (EMPTY_TAGS.has(domNode.name)) {
         const hasText = domNode.children.some(
           (child) => child.type === "text" && (child as any).data?.trim() !== ""
@@ -209,7 +207,6 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
         const href = props.href?.trim();
         const classList = (domNode.attribs?.class || "").split(" ");
 
-        // Hide dynamic/stretch-link anchors with no valid href
         if (
           (classList.includes("dynamic_btn") || classList.includes("strech_link")) &&
           (!href || href === "#")
@@ -323,7 +320,7 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
 // ReactParser
 // ---------------------------------------------------------------------------
 
-export default function ReactParser({ html, homeData }: { html: any; homeData?: any }) {
+export default function ReactParser({ html, homeData, params, searchParams }: { html: any; homeData?: any; params?:any; searchParams?:any }) {
   const sanitizedHtml = useMemo(
     () =>
       DOMPurify.sanitize(html, {
@@ -338,7 +335,10 @@ export default function ReactParser({ html, homeData }: { html: any; homeData?: 
 
   const containerId = useMemo(() => `cms-block-${hashString(sanitizedHtml)}`, [sanitizedHtml]);
 
-  const options = useMemo(() => getParserOptions(homeData), [homeData]);
+  const options = useMemo(
+    () => getParserOptions(homeData, params, searchParams ),
+    [homeData, params, searchParams]
+  );
 
   const parsedContent = useMemo(() => parse(sanitizedHtml, options), [sanitizedHtml, options]);
 

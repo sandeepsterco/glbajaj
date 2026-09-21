@@ -1,9 +1,9 @@
-import NotFound from "@/src/app/not-found";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -27,9 +27,7 @@ export default async function DepartmentResearchPage({
 
   const cmsSections = data?.data?.cms;
 
-  if (error) {
-    return <NotFound />;
-  }
+  if (error) notFound();
 
   if (cmsSections?.length == 0) {
     return <NoData />;

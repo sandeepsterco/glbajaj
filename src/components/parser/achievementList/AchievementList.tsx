@@ -1,13 +1,9 @@
-"use client"
-
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api"
-import { useQuery } from "@tanstack/react-query"
 import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
-import { usePathname, useSearchParams } from "next/navigation";
-import PaginationWrapper from "../common/pagination/PaginationWrapper";
+import { SkeletonGroup } from "../../ui/Skeleton";
+import PaginationWrapper from "../../common/pagination/PaginationWrapper";
 
 const getAchievement = async (page: number) => {
     const { data, error } = await apiFetch(`achivements?page=${page}`);
@@ -16,26 +12,13 @@ const getAchievement = async (page: number) => {
     return data;
 }
 
-export default function AchievementList() {
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-    const page = Number(searchParams.get("page")) || 1;
+export default async function AchievementList({searchParams}:{searchParams:any}) {
+    const page = Number(searchParams?.page) || 1;
 
-    const slug = pathname.split('/').filter(Boolean);
 
-    const { data, isLoading, isError, isFetching } = useQuery({
-        queryKey: ["achievement-list", page],
-        queryFn: () => getAchievement(page)
-    })
+    const data = await getAchievement(page);
 
     const achievementData = data?.achivements;
-
-
-    if (isLoading) {
-        return (
-            <SkeletonGroup wrapperClassName="mt-[7.7rem]" count={6} className="bg-gray-300 h-[40rem] w-[100%]" />
-        );
-    }
 
     return (
         <>
@@ -49,7 +32,7 @@ export default function AchievementList() {
                             <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>
                         )}
                         {item?.slug && (
-                            <Link href={`${BASE_URL}${slug[0]}/achievements/${item.slug}`} className="strech_link" />
+                            <Link href={`${BASE_URL}why-glbitm/achievements/${item.slug}`} className="strech_link" />
                         )}
                     </div>
                 ))}

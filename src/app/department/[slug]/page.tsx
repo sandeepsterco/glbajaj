@@ -1,6 +1,4 @@
-import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
-import NotFound from "../../not-found";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 
@@ -11,6 +9,7 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
+import { notFound } from "next/navigation";
 // import "@/src/styles/parser.css";
 
 export async function generateMetadata({
@@ -34,9 +33,7 @@ export default async function DepartmentPage({
     getPageSEO(`department/${slug}`),
   ]);
 
-  if (error) {
-    return <NotFound />;
-  }
+  if (error) notFound();
 
   const combinedHtml = data?.data?.cms
     ? Object.values(data?.data?.cms).join("")

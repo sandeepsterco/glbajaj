@@ -58,33 +58,42 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
             return (
               <SwiperSlide key={event.id}>
                 <div className="content_col">
-                  <figure>
-                    <img
-                      src={event.image ?? ""}
-                      alt={event.title}
-                      data-aos="fade-up"
-                      data-aos-delay="800"
-                      loading="lazy"
-                      width="723"
-                      height="568"
-                      className="img-fluid w-100"
-                    />
-                  </figure>
+                  <Link
+                    href="/happenings/media-coverage"
+                    data-aos="fade-up"
+                    data-aos-delay="800"
+                  >
+                    <figure>
+                      <img
+                        src={event.image ?? ""}
+                        alt={event.title}
+                        loading="lazy"
+                        width="723"
+                        height="568"
+                        className="img-fluid w-100"
+                      />
+                    </figure>
+                  </Link>
 
                   <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
                     <div className="left">
-                      <p className="date text-white" data-aos="fade-up" data-aos-delay="800">
+                      <p className="date text-white">
                         {d.full}
                       </p>
-                      <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
+
+                      <h4 className="title text-white">
                         {event.title}
                       </h4>
                     </div>
 
                     <div className="right">
-                      <Link href={`/media-coverage`} data-aos="fade-up" data-aos-delay="800">
+                      <Link href="/happenings/media-coverage">
                         <div className="arrow_btn1">
-                          <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                          <img
+                            alt="see more icon"
+                            src="/images/home/slide_arrow_right.svg"
+                            loading="lazy"
+                          />
                         </div>
                       </Link>
                     </div>

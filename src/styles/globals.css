@@ -113,8 +113,8 @@ a { text-decoration: none; }
 /* custom btns */
 .arrow_btn{
   background:#fff;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   transition: all .3s;
   display: flex;
   box-shadow: 0 4px 12px #00000026;
@@ -132,8 +132,8 @@ a { text-decoration: none; }
 
 .arrow_btn1{
   background:#fff;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   transition: all .3s;
   display: flex;
   box-shadow: 0 4px 12px #00000026;

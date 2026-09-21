@@ -222,6 +222,11 @@ span { margin-bottom: 0; color: #333; }
 ul { padding: 0; margin: 0; }
 li { font: var(--font-16); font-weight: normal; }
 li:last-child { margin-bottom: 0; }
+
+
+
+
+
 @media (max-width: 1549px) {
  p { margin-bottom: 2rem; }
  }
@@ -349,7 +354,7 @@ html { font-size: 62.5%; }
 .home_footer .footer_address p { font: var(--font-14); line-height: 2.4rem; margin-top: 0.7rem; color: var(--color-white); }
 .home_footer .footer_contact { display: flex; gap: 4.5rem;}
 .home_footer .footer_contact h4 { font: var(--font-16); font-weight: 600; color: var(--color-white); }
-.home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font: var(--font-16); color: var(--color-white); text-decoration: none; }
+.home_footer .footer_contact a { display: inline-block; margin-top: 1rem; font: var(--font-14); color: var(--color-white); text-decoration: none; }
 .home_footer .footer_contact a:hover { color: #d2ab67 }
 .home_footer .footer_contact p { color: var(--color-white); }
 

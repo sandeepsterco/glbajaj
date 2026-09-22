@@ -87,7 +87,10 @@
 .recruiters { padding: 2rem; text-align: center; }
 .slider_top { position: relative; }
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5rem; }
-.slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn { top: 1rem; }
+.slider_btns .prev_swiper_btn, .slider_btns .next_swiper_btn {  top: 1rem;}
+
+.home_placement_students .slider_btns .next_swiper_btn, .home_placement_students .slider_btns .prev_swiper_btn{ display: flex;}
+
 .recruiters h5 { font: var(--font-60); letter-spacing: -1.5px; font-weight: 600; color:var(--color-5A); margin-top:5rem;}
 .recruiters p { font: var(--font-22); font-weight: 400; }
 .home_recruiters_slider { overflow: hidden; max-width: 40rem; margin-right: 10rem; }
@@ -300,7 +303,7 @@
 .home_about_glb_section .video_grid{ margin-top: 12rem;}
 .video_grid h5{ margin-block: 2rem 1rem;}
 .video_grid h3 { color: var(--color-92); letter-spacing: -0.24rem; margin-bottom: 3.5rem; }
-.right_col{ padding-right: 0rem;}
+.right_col{ padding-right: 10rem;}
 
 
 .home_session_titl .more_btn { cursor: pointer; background-color: var(--color-white); justify-content: center; align-items: center; width: 4rem; height: 4rem; display: flex; box-shadow: 0 4px 12px #00000026; margin-bottom: 8rem;}
@@ -474,7 +477,7 @@
 .home_testimonials .thumb .name { font: var(--font-18); color: #000; font-weight: 600; margin-block: 2rem 0.5rem; }
 .home_testimonials .thumb .designation { font: var(--font-16); margin-top: 0rem; }
 .visionary_message figure > img{ width: 100%;}
-.acre_slider h3{ margin: 0 0 3rem 29rem;}
+.acre_slider h3{ margin: 0 0 3rem 0rem;}
 /* =========================
    RIGHT SECTION
 ========================= */
@@ -983,9 +986,8 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .bottom_data p { font: var(--font-12); font-weight: 600; margin-bottom: 1.5rem; }
 .single_grid .content { left: 2.5rem; bottom: 1.5rem; min-height: auto; }
 .single_grid .content .bottom_data .desc { font-weight: 400; font:var(--font-12); }
-.home_footer .footer_links { margin: 3rem; padding-top: 4rem; }
 .home_footer .footer_bottom { margin: 0 3rem; justify-content: center; }
-.home_footer .footer_bottom p { font: var(--font-10); }
+
 .home_footer .footer_bottom_left { justify-content: center; gap: 1rem; }
 .home_footer .footer_bottom_right { justify-content: center; }
 .home_footer .subscribe_box { position: relative; }
@@ -1063,7 +1065,9 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .achivecard:hover figure.flash-effect-2::before { -webkit-animation: shine .75s; animation: shine .75s; }
 .activies_col:hover figure.flash-effect-2::before { -webkit-animation: shine .75s; animation: shine .75s; }
 
-
+@media (min-width:2500px){
+    .acre_slider h3 { margin: 0 0 3rem 0rem; }
+}
 @media (max-width:1399px) {
  .home_sessions_section .right_col a { padding:2.9rem 2.5rem 2.9rem 3.4rem; }
 .research_centre_section .centre_lists a { gap: 1.4rem; }
@@ -1071,6 +1075,10 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.3rem; }
 .home_courses_section .slider_btns { top: 3rem; gap: 1.8rem; }
 .right_col ul li a img { width: 7rem; }
+.right_col { padding-right: 2rem; }
+.home_about_glb_section .about_top {
+        gap: 8.6rem;
+    }
  }
 @media (max-width:1280px) {
  .right_slider .slider_btns .swiper-button-prev { left: auto; right: 5.5rem; }
@@ -1410,7 +1418,7 @@ main { overflow: hidden; }
   .iicenter_section:after{background-size: cover; width: 100%; height: 5.3rem;}
   .iicenter_bottom_content { padding-top: 2rem; }
   .res_publication table th:first-child{ white-space: nowrap;}
-  .res_publi_list{ display: block;}
+  .res_publi_list{ display: block; margin-bottom: 2rem;}
   .res_publi_list li a{ padding-block: 1.5rem;}
   .institute_cnt ul{grid-template-columns: repeat(1, 1fr);}
   .home_sessions_section .left_col .title{ min-height: 4rem;}

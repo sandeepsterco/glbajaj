@@ -2,16 +2,13 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { NewsDetail } from "@/src/components/newsEvents/NewsDetail";
 import RelatedStories from "@/src/components/newsEvents/RelatedStories";
 import { apiFetch } from "@/src/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function NewsDetailPage({params}:{params:any}){
     const {slug} = await params;
     const { data, error } = await apiFetch(`news-and-events/${slug}`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load news" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const newsData = data?.news_and_events_details;
     const relatedData = data?.related_news_and_events;

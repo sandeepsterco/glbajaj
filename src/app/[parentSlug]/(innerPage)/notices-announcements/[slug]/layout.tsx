@@ -14,6 +14,7 @@ export default async function NoticeAnnouncementDetailLayout({
     params: Promise<{ parentSlug: string; slug: string }>;
   }) {
     const { parentSlug, slug } = await params;
+    const currentSlug = "notices-announcements";
 
     // if (!slug) return <>{children}</>;
     const {data, error} = await apiFetch(`notice-and-announcements/${slug}`);
@@ -21,7 +22,7 @@ export default async function NoticeAnnouncementDetailLayout({
     const currentPageTitle = data?.notice_and_announcement_details?.data?.title;
     // return <h1>testing</h1>
 
-    return <InnerPageLayoutWrapper slug={parentSlug}
-    pathname={`/\${parentSlug}/notices-announcements/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={currentSlug}
+    pathname={`/${parentSlug}/${currentSlug}/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

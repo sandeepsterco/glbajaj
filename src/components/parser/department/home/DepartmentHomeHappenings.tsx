@@ -1,5 +1,5 @@
 import { apiFetch } from "@/src/lib/api";
-import RelatedStories from "../newsEvents/RelatedStories";
+import RelatedStories from "../../../newsEvents/RelatedStories";
 
 const fetchHappeningsData = async (slug: string) => {
   const { data, error } = await apiFetch(`department/${slug}/home`);

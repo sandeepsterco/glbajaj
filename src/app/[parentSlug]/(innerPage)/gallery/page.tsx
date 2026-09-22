@@ -29,7 +29,7 @@ export default async function GalleryPage({
 
     return (
         <InnerPageLayoutWrapper
-            slug={parentSlug}
+            slug={'gallery'}
             pathname={`/${parentSlug}/gallery`}
             tabs={null}
             mainClass="happenings_page"

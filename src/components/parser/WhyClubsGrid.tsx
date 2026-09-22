@@ -1,11 +1,6 @@
-"use client"
 import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { SkeletonGroup } from "../ui/Skeleton";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
 import { BASE_URL } from "@/src/config/config";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
@@ -16,21 +11,13 @@ const fetchDigitalPathshalaData = async (page: number) => {
   return data?.clubs_and_societies;
 };
 
-export default function WhyClubsGrid() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get("page")) || 1;
+export default async function WhyClubsGrid({params, searchParams}:{params:any; searchParams:any}) {
+  const page = Number(searchParams.page) || 1;
   
-  const slug = pathname.split('/').filter(Boolean);
-  const parentSlug = slug[0];
-  const childSlug = slug[1];
+  const {parentSlug} = await params;
+  const currentSlug = 'clubs';
 
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["glb_pathshala", page],
-    queryFn: () => fetchDigitalPathshalaData(page),
-  });
-
-  if (isLoading) return <SkeletonGroup count={6} wrapperClassName="grid gap-[3rem]" className="w-full h-[50rem]" />;
+  const data = await fetchDigitalPathshalaData(page);
 
   return (
     <>
@@ -43,17 +30,12 @@ export default function WhyClubsGrid() {
             <div className="media_txt">
   {item?.title && (
     <p>
-      <Link href={`${BASE_URL}${parentSlug}/${childSlug}/${item.slug}`}>
+      <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`}>
         {item.title}
       </Link>
     </p>
   )}
 
-  {/* {item?.slug && (
-    <Link className="cus-btn btn" href={`${BASE_URL}${slug}/${item.slug}`}>
-      View Club Detail
-    </Link>
-  )} */}
 </div>
           </div>
         ))}

@@ -1,13 +1,9 @@
-"use client"
 
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api"
-import { useQuery } from "@tanstack/react-query"
 import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../../ui/Skeleton";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Pagination from "../../common/pagination/Pagination";
+import PaginationWrapper from "../../common/pagination/PaginationWrapper";
 import './conferenceList.css'
 
 const getConferenceLists = async (page: number) => {
@@ -17,20 +13,13 @@ const getConferenceLists = async (page: number) => {
     return data;
 }
 
-export default function ConferenceLists() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const currentPage = Number(searchParams.get("page")) || 1;
+export default async function ConferenceLists({params, searchParams}:{params:any; searchParams:any}) {
+    const currentPage = Number(searchParams.page) || 1;
 
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ["conferences-symposium", currentPage],
-        queryFn: () => getConferenceLists(currentPage)
-    })
+    const data = await getConferenceLists(currentPage);
 
-    const pathname = usePathname();
-    const slug = pathname.split('/').filter(Boolean);
-    const parentSlug = slug[0];
-    const childSlug = slug[1];
+    const {parentSlug} = await params;
+    const currentSlug = 'conferences';
     const conferenceData = data?.research_conferences;
 
     const handlePageChange = (page: number) => {
@@ -40,18 +29,7 @@ export default function ConferenceLists() {
 
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(page));
-        router.push(`${pathname}?${params.toString()}`);
     };
-
-    if (isLoading) {
-        return (
-            <SkeletonGroup wrapperClassName="mt-[7.7rem] grid-cols-3 gap-[4rem]" count={6} className="bg-gray-300 h-[40rem] w-[100%]" />
-        );
-    }
-
-    if (isError) {
-        return null;
-    }
 
     return (
         <>
@@ -66,17 +44,15 @@ export default function ConferenceLists() {
                         )}
                         <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" />
                         {item?.slug && (
-                            <Link href={`${BASE_URL}${parentSlug}/${childSlug}/${item.slug}`} className="strech_link"></Link>
+                            <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`} className="strech_link"></Link>
                         )}
                     </div>
                 ))}
             </div>
 
-            <Pagination
+            <PaginationWrapper
                 currentPage={conferenceData?.current_page || 1}
                 totalPages={conferenceData?.last_page || 1}
-                onPageChange={handlePageChange}
-                maxVisiblePages={5}
             />
         </>
     )

@@ -1,37 +1,29 @@
 "use client";
 
-import { BASE_URL } from "@/src/config/config";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
+// Client component: Swiper with external nav buttons needs refs and the browser.
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-// Swiper React components & modules
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { useRef } from "react";
+import { BASE_URL } from "@/src/config/config";
 
 // Swiper core styles
 import "swiper/css";
 
-const getLeadership = async () => {
-  const { data, error } = await apiFetch(`leadership`);
-  if (error) throw new Error(error);
-  return data;
+export interface LeaderItem {
+  name: string;
+  about_image: string;
+  designation?: string;
+  slug?: string;
+}
+
+type Props = {
+  leaders: LeaderItem[];
 };
 
-export default function AboutLeadership() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["about-leadership"],
-    queryFn: getLeadership,
-  });
-
-  const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean).pop();
-  const sliderData = data?.leadership;
-
+export default function AboutLeadershipSlider({ leaders }: Props) {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
@@ -67,31 +59,30 @@ export default function AboutLeadership() {
             1200: { slidesPerView: 3.5, spaceBetween: 23 },
           }}
         >
-          {sliderData?.length > 0 &&
-            sliderData.map((item: any, idx: number) => (
-              <SwiperSlide key={idx}>
-                <div className="leader_card relative">
-                  <figure className="flash-effect">
-                    <Image
-                      src={item.about_image}
-                      alt={item.name}
-                      className="img-fluid w-100"
-                      width={475}
-                      height={512}
-                      loading="lazy"
-                    />
-                  </figure>
-                  {item?.name && <h4>{item.name}</h4>}
-                  {item?.designation && <p>{item.designation}</p>}
-                  {item?.slug && (
-                    <Link
-                      className="strech_link"
-                      href={`${BASE_URL}messages-and-administration/${item.slug}`}
-                    />
-                  )}
-                </div>
-              </SwiperSlide>
-            ))}
+          {leaders.map((item, idx) => (
+            <SwiperSlide key={idx}>
+              <div className="leader_card relative">
+                <figure className="flash-effect">
+                  <Image
+                    src={item.about_image}
+                    alt={item.name}
+                    className="img-fluid w-100"
+                    width={475}
+                    height={512}
+                    loading="lazy"
+                  />
+                </figure>
+                {item?.name && <h4>{item.name}</h4>}
+                {item?.designation && <p>{item.designation}</p>}
+                {item?.slug && (
+                  <Link
+                    className="strech_link"
+                    href={`${BASE_URL}messages-and-administration/${item.slug}`}
+                  />
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 

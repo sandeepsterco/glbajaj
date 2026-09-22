@@ -16,5 +16,5 @@ export default async function NewsEventsLayout({
     const { parentSlug, slug } = await params;
     if (!slug) return <>{children}</>;
 
-    return <InnerPageLayoutWrapper slug={slug} pathname={`/${parentSlug}/conferences-symposium/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'conferences'} pathname={`/${parentSlug}/conferences/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
 }

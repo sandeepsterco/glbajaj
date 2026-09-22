@@ -1,12 +1,6 @@
-"use client"
-
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api"
-import { useQuery } from "@tanstack/react-query"
-import Image from "next/image";
 import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
-import { usePathname } from "next/navigation";
 
 const getConferenceLists = async () => {
     const { data, error } = await apiFetch(`intern`);
@@ -15,22 +9,9 @@ const getConferenceLists = async () => {
     return data;
 }
 
-export default function IntershipRecord() {
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ["placement-record"],
-        queryFn: getConferenceLists
-    })
-
-    const pathname = usePathname();
-    const slug = pathname.split('/').filter(Boolean);
-    const childSlug = slug[0];
-    const parentSlug = slug[1];
-
-    if (isLoading) {
-        return (
-            <SkeletonGroup wrapperClassName="mt-[7.7rem] grid-cols-3 gap-[4rem]" count={6} className="bg-gray-300 h-[40rem] w-[100%]" />
-        );
-    }
+export default async function IntershipRecord({params}:{params:any}) {
+    const data = await getConferenceLists();
+    const {parentSlug, innerSlug} = await params; 
 
     const placement_data = data?.intern;
 
@@ -62,7 +43,7 @@ export default function IntershipRecord() {
                         )}
                         
                     </div>
-                    <Link className="strech_link" href={`${BASE_URL}${childSlug}/${parentSlug}/${item?.slug ?? '#'}`} />
+                    <Link className="strech_link" href={`${BASE_URL}${parentSlug}/${innerSlug}/${item?.slug ?? '#'}`} />
                 </div>
             ))}
             

@@ -15,6 +15,7 @@ export default async function TestimonialPage({
     params: Promise<{ parentSlug: string }>;
     searchParams: Promise<{ page?: string; type?: string }>;
 }) {
+    const currentSlug = 'testimonials';
     const { parentSlug } = await params;
     const { page, type } = await searchParams;
     const currentPage = Number(page) || 1;
@@ -32,7 +33,7 @@ export default async function TestimonialPage({
 
     return (
         <>
-            <InnerPageLayoutWrapper slug={parentSlug}
+            <InnerPageLayoutWrapper slug={currentSlug}
                 pathname={`/${parentSlug}/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 
                 <TestimonialList data={pagination} slug={parentSlug}

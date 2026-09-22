@@ -252,7 +252,7 @@ export default function MobileMenu() {
                             </div>
 
                             <div className="m-view">
-                                <a href={`${BASE_URL}apply-now`} className="apply_online_btn">Apply Online</a>
+                                <a href={`${BASE_URL}admission/apply`} className="apply_online_btn">Apply Online</a>
                                 <a href={getValue('prospectus').image ?? ''} target="_blank" className="download_prospectus_btn">{getValue('prospectus').value}</a>
                             </div>
                         </>

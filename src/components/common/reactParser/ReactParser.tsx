@@ -30,11 +30,11 @@ const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCours
 const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"));
 const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"));
 const ContactForm = dynamic(() => import("../../parser/ContactForm"));
-const AboutLeadership = dynamic(() => import("../../parser/AboutLeadership"));
+const AboutLeadership = dynamic(() => import("../../parser/about/AboutLeadership"));
 const AwardsList = dynamic(() => import("../../parser/awardList/AwardsList"));
 const ConferenceLists = dynamic(() => import("../../parser/conferenceLists/ConferenceLists"));
 const DepartmentHomeFaculties = dynamic(() => import("../../parser/DepartmentHomeFaculties"));
-const DepartmentHomeLaboratories = dynamic(() => import("../../parser/DepartmentHomeLaboratories"));
+const DepartmentHomeLaboratories = dynamic(() => import("../../parser/department/home/DepartmentHomeLaboratories"));
 const DepartmentHomeAlumni = dynamic(() => import("../../parser/department/home/DepartmentHomeAlumni"));
 const ProgramDetailAlumni = dynamic(() => import("../../parser/ProgramDetailAlumni"));
 const DepartmentHomeCourses = dynamic(() => import("../../parser/DepartmentHomeCourses"));
@@ -44,7 +44,7 @@ const PoliciesDisclosures = dynamic(() => import("../../parser/PoliciesDisclosur
 const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"));
 const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"));
 const AchievementList = dynamic(() => import("../../parser/achievementList/AchievementList"));
-const DepartmentHomeHappenings = dynamic(() => import("../../parser/DepartmentHomeHappenings"));
+const DepartmentHomeHappenings = dynamic(() => import("../../parser/department/home/DepartmentHomeHappenings"));
 const DepartmentHomeActivities = dynamic(() => import("../../parser/DepartmentHomeActivities"));
 const DigitalPathshalaVideoGrid = dynamic(() => import("../../parser/DigitalPathshalaVideoGrid"));
 const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"));
@@ -153,21 +153,21 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     home_alumni: () => <HomeAlumni homeData={homeData} />,
     contact_form: () => <ContactForm />,
     about_leadership: () => <AboutLeadership />,
-    awards_list: () => <AwardsList />,
+    awards_list: () => <AwardsList params={params} searchParams={searchParams} />,
     achievement_list: () => <AchievementList searchParams={searchParams} />,
-    conference_lists: () => <ConferenceLists />,
+    conference_lists: () => <ConferenceLists params={params} searchParams={searchParams} />,
     department_home_faculties: () => <DepartmentHomeFaculties />,
-    department_home_laboratories: () => <DepartmentHomeLaboratories />,
+    department_home_laboratories: () => <DepartmentHomeLaboratories params={params} data={data} />,
     department_home_alumni: () => <DepartmentHomeAlumni params={params} data={data} />,
     program_detail_alumni: () => <ProgramDetailAlumni />,
     department_home_courses: () => <DepartmentHomeCourses params={params} />,
     department_home_happenings: () => <DepartmentHomeHappenings params={params} />,
     policies_disclosures: () => <PoliciesDisclosures />,
     placement_record: () => <PlacementRecord />,
-    intership_record: () => <IntershipRecord />,
+    intership_record: () => <IntershipRecord params={params} />,
     department_home_activities: () => <DepartmentHomeActivities />,
     digital_pathshala_videos: () => <DigitalPathshalaVideoGrid />,
-    why_clubs_grid: () => <WhyClubsGrid />,
+    why_clubs_grid: () => <WhyClubsGrid params={params} searchParams={searchParams} />,
     alumni_events_meet: () => <AlumniEventsMeetGrid />,
     admission_programs: () => <AdmissionPrograms />,
     department_notifications: () => <DepartmentNotificationBar />,

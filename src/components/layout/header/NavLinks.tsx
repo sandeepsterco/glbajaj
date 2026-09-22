@@ -15,6 +15,7 @@ interface NavLinksProps {
   activeSlug: string;
   tabTitle: string;
   pathname: string;
+  parentSlug?:string;
 }
 
 const scrollToSection = (id: string) => {
@@ -22,10 +23,10 @@ const scrollToSection = (id: string) => {
   window.history.replaceState(null, "", window.location.pathname);
 };
 
-export default function NavLinks({ tabs, activeSlug, tabTitle, pathname }: NavLinksProps) {
+export default function NavLinks({ tabs, activeSlug, tabTitle, pathname, parentSlug }: NavLinksProps) {
   const buildHref = (item: Tab) => {
     return pathname.includes("department")
-      ? BASE_URL + "department/" + item.slug
+      ? `${BASE_URL}${parentSlug}/department/${item.slug}`
       : BASE_URL + item.slug;
   };
 

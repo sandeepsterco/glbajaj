@@ -4,7 +4,7 @@ import React from 'react';
 import { buildBreadcrumbs } from '@/src/lib/buildBreadcrumbs';
 import TruncatedBreadcrumbs from './TruncatedBreadcrumbs';
 
-export default function PageHeader({ data, slug, pathname, currentPageTitle }: { data: any; slug: string; pathname: string; currentPageTitle?: string }) {
+export default function PageHeader({ data, slug, pathname, currentPageTitle, parentSlug }: { data: any; slug: string; pathname: string; currentPageTitle?: string; parentSlug?:string }) {
   const currentPage = data?.tabs?.find((tab: any) => tab.slug === data?.active_tab_slug);
   const activeSlug = data?.active_tab_slug;
   const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle);
@@ -34,6 +34,7 @@ export default function PageHeader({ data, slug, pathname, currentPageTitle }: {
             <div className="container-fluid">
               <NavLinks
                 tabs={data.tabs}
+                parentSlug={parentSlug}
                 activeSlug={activeSlug}
                 tabTitle={data?.tab_title}
                 pathname={pathname}

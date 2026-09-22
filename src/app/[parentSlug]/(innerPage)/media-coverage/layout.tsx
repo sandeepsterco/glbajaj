@@ -14,13 +14,13 @@ export default async function NewsEventsLayout({
     params: Promise<{ parentSlug: string }>;
 }) {
     const { parentSlug } = await params;
-
+    const currentSlug = "media-coverage";
     if (!parentSlug) return <>{children}</>;
 
     return (
         <InnerPageLayoutWrapper
-            slug={parentSlug}
-            pathname={`/${parentSlug}/media-coverage`}
+            slug={currentSlug}
+            pathname={`/${parentSlug}/${currentSlug}`}
             tabs={null}
             mainClass="happenings_page"
             showTabs={true}

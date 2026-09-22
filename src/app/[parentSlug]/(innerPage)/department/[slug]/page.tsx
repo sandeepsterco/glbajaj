@@ -50,7 +50,7 @@ export default async function DepartmentPage({
         />
       )}
       <div className="happenings_page">
-        {data?.data?.tabs && <PageHeader data={data.data} slug={slug} pathname={`/department/${slug}`} />}
+        {data?.data?.tabs && <PageHeader data={data.data} parentSlug={parentSlug} slug={slug} pathname={`${parentSlug}/department/${slug}`} />}
 
         {data?.data?.cms?.length == 0 ? (
           <ComingSoon />

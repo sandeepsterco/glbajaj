@@ -3,7 +3,6 @@ import { apiFetch } from "@/src/lib/api";
 import ApplyNowForm from "./ApplyNowForm";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default async function CareerFormPage({ params }: { params: any }) {
     const { slug } = await params;

@@ -16,5 +16,5 @@ export default async function NewsEventsLayout({
     const {data, error} = await apiFetch(`workshops/${slug}`);
     const currentPageTitle = data?.workshops_details?.data?.heading;
 
-    return <InnerPageLayoutWrapper slug={slug} pathname={`/${parentSlug}/workshops/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'workshops'} pathname={`/${parentSlug}/workshops/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 }

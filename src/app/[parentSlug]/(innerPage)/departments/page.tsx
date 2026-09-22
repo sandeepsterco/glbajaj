@@ -11,7 +11,8 @@ export async function generateMetadata() {
   return await getPageSEO("departments");
 }
 
-export default async function DepartmentsPage() {
+export default async function DepartmentsPage({params}:{params:Promise<{parentSlug:string}>}) {
+  const {parentSlug} = await params;
   const slug = "departments";
   const [cmsResult, seoData, departmentsResult] = await Promise.all([
     apiFetch(`cms/${slug}`),
@@ -31,9 +32,9 @@ export default async function DepartmentsPage() {
       )}
 
       <main>
-        {cmsResult?.data?.data?.data && (
+        {cmsResult?.data?.data && (
           <PageHeader
-            data={cmsResult.data.data.data}
+            data={cmsResult.data.data}
             slug={slug}
             pathname="/departments"
           />
@@ -63,7 +64,7 @@ export default async function DepartmentsPage() {
                       />
                     </figure>
                     <h3 className="font24">{item.name}</h3>
-                    <Link className="strech_link" href={`${BASE_URL}department/${item.slug}`} />
+                    <Link className="strech_link" href={`${BASE_URL}${parentSlug}/department/${item.slug}`} />
                   </div>
                 ))}
             </div>

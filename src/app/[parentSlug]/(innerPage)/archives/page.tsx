@@ -19,6 +19,7 @@ export default async function ArchivePage({
     const { parentSlug } = await params;
   const { page } = await searchParams;
   const currentPage = Number(page) || 1;
+  const currentSlug = 'archives'
 
   const { data, error } = await apiFetch(`archive?page=${currentPage}`);
 
@@ -28,14 +29,14 @@ export default async function ArchivePage({
 
   return (
     <InnerPageLayoutWrapper
-      slug={parentSlug}
-      pathname={`/${parentSlug}/archives`}
+      slug={currentSlug}
+      pathname={`/${parentSlug}/${currentSlug}`}
       tabs={null}
       mainClass="happenings_page"
       showTabs={true}
     >
-      <MainGallery data={data?.featured} currentPage="workshops-and-seminars" />
-      <GalleryList data={data?.others} currentPage="workshops-and-seminars" />
+      <MainGallery data={data?.featured} currentPage="workshops" parentSlug={parentSlug} />
+      <GalleryList data={data?.others} currentPage="workshops" parentSlug={parentSlug} />
     </InnerPageLayoutWrapper>
   );
 }

@@ -366,7 +366,8 @@
 .gallery_grid_Bx span figcaption { display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400; }
 .gallery_grid h5 { font: var(--font-24); color: var(--color-64); font-weight: 700; padding-inline: 4.4rem; margin-block: 2rem; }
 .gallery_list_section { padding-block: 4rem 11.6rem; }
-.archives .gallery_list_section { padding-block: 10rem; }
+.archives .gallery_list_section,
+.happenings-archives .gallery_list_section{ padding-block: 10rem; }
 .gallery_list_section.workshops-and-seminars-list { padding-block: 10rem 11.6rem; }
 .glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
 .gallery_list { column-count: 3; gap: 3rem; margin-inline: -2rem; }

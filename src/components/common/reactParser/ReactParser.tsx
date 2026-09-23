@@ -58,7 +58,7 @@ const DepartmentHomeAchievement = dynamic(() => import("../../parser/DepartmentH
 const DepartmentLabsGrids = dynamic(() => import("../../parser/DepartmentLabsGrids"));
 const DepartmentFacultyGrid = dynamic(() => import("../../parser/DepartmentFacultyGrid"));
 
-import "@/src/styles/fancybox.css";
+// import "@/src/styles/fancybox.css";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";

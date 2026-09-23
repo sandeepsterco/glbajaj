@@ -289,7 +289,7 @@
 
 .news_details_grid.odd > *:first-child { order: 2; }
 .news_details_grid.odd > *:last-child { order: 1; }
-.common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 0rem;}
+.common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 2rem; line-height: 1.4;}
 
 .news_details_grid.odd .news_details_cnt{text-align: left;}
 .news_details_gallery { margin-top:7rem; }
@@ -1018,7 +1018,11 @@
 .teamX_titlesec .font24 { margin-bottom: 4rem; }
 .teamX_titlesec .font36 { margin-bottom: 4rem; }
 .teamX_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; row-gap: 7rem; position: relative; justify-items: center;}
+.placements-training-placement-team .alumni_team{ margin-top: 8rem;}
 .our-team-list .teamX_grid > :first-child { grid-column: span 4; display: flex; gap: 4rem; align-items: center; padding-inline: 1.6rem 10rem; }
+
+
+
 .alumni_objsec .custom_bullet li:before{ background-color: var(--color-white);}
 .teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .teamX_card { background-color: var(--color-F5); padding: 1.3rem; position: relative; }

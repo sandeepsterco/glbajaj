@@ -23,6 +23,7 @@
     .container .col-lg-10{ width: 100%;}
     /* .place_imgbox > figure { height: 50rem; } */
     .happenings_page:before{width: 13.6rem;}    
+    .placements-training-placement-team .alumni_team .teamX_card:first-child .teamX_img{ width: 50%;}
 
  }
 @media (max-width: 1399px) {
@@ -821,6 +822,8 @@
 .objective_clubs{ padding-top: 5rem;}
 .botttom-sec .bottom_content .dark_bg p{ max-width: 100%;}
 .botttom-sec .bottom_content .dark_bg{ padding: 3rem;}
+.our-team-list .teamX_grid > :first-child{grid-column: span 2;}
+
 
 }
 
@@ -944,7 +947,7 @@
 .xacc_header .xacc_btn{ font: var(--font-18); display: flex; justify-content: space-between; background-color:var(--color-92); padding:2rem 2rem; width: 100%; text-align: left; margin-bottom: 1rem; color: var(--color-white);}
 .school_ai_grid{ grid-template-columns: repeat(2, 1fr);}
 .industrial_visit_section h3, .careerg_title h3{ font: var(--font-24); font-weight: 600;}
-.career_sec_tabmain .xacc_header .xacc_btn{ background-color: var(--color-white);}
+.career_sec_tabmain .xacc_header .xacc_btn{ background-color: var(--color-white); color: var(--color-33);}
 .confrence_grid { grid-template-columns: repeat(2, 1fr);}
 .speakers-grid-2 { grid-template-columns: 100%; }
 .speakers-grid-2 .speakers-card.wide { padding-inline: 0; padding-block: 0; }
@@ -1051,6 +1054,14 @@
 .how-it-works-sec .inner-iqac-function-Cnt h4{margin-bottom: 2rem;}
 .in_essence_section blockquote{ font: var(--font-30); line-height: 1.3;}
 .botttom-sec .bottom_content .dark_bg h3{font: var(--font-30); letter-spacing: -0.5px;}
+.our-team-list .teamX_grid > :first-child { grid-column: 1; display: block; padding-inline: 1.5rem; }
+.placements-training-placement-team .alumni_team .teamX_card:first-child .teamX_img { width: 100%; }
+.about_top{padding: 1rem 0;}
+.placements-industry-academia .tp_overview{padding-block:5rem 0rem;}
+.inner-iqac-function-Cnt h2 { margin-block: 0rem 2rem; }
+.careerg_title h4 { margin-bottom: 2rem; }
+
+.career_emptitle:before{ top: -5rem;}
 
  }
 

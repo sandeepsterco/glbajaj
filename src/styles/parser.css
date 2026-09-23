@@ -368,6 +368,7 @@
 .department_related_story_section { background: #F4F7F4; padding-block: 6.6rem 0; }
 .home_happenings_section .sec_title { margin-bottom: 8.9rem; }
 .home_happenings_section .sec_title .title { margin-top: 2rem; }
+
 /* .home_happenings_section .grid_data { grid-template-columns: repeat(4, 1fr); gap: 0; display: grid; grid-auto-rows: 44.2rem; }
 .home_happenings_section .single_grid { position:relative; }
 .home_happenings_section .single_grid figure { position:absolute; left:0; top:0; width:100%; height:100%; }

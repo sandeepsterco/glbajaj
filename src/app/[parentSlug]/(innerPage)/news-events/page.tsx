@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import MainNews from "@/src/components/newsEvents/MainNews";
 import NewsListing from "@/src/components/newsEvents/NewsListing";
@@ -9,6 +8,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 interface SearchParams {
   page?: string;
@@ -37,9 +37,7 @@ export default async function NewsEvent({
     apiFetch("department-news-list"),
   ]);
 
-  if (error) {
-    return <ApiErrorFallback heading="Couldn't load news" message={error} />;
-  }
+  if (error) notFound();
 
   const pagination = data?.news_and_events;
   const allItems: any[] = pagination?.data ?? [];

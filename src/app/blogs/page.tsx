@@ -1,5 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
-
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 
 import { apiFetch } from "@/src/lib/api";
@@ -16,6 +14,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 
 
@@ -119,11 +118,7 @@ export default async function BlogsPage({
 
 
 
-  if (error) {
-
-    return <ApiErrorFallback heading="Couldn't load blogs" message={error} />;
-
-  }
+  if (error) notFound();
 
 
 

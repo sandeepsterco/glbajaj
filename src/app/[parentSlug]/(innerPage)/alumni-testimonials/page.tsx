@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import { apiFetch } from "@/src/lib/api"
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
@@ -8,6 +7,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 export default async function TestimonialPage({
     params,
@@ -22,11 +22,7 @@ export default async function TestimonialPage({
     const { data, error } = await apiFetch(`testimonial?type=Alumni&page=${currentPage}`);
     const slug = "alumni-testimonials";
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const pagination = data?.testimonials;
 

@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import FacultyList from "@/src/components/faculty/FacultyList";
 import { apiFetch } from "@/src/lib/api";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
@@ -10,6 +9,7 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
+import { notFound } from "next/navigation";
 
 interface SearchParams {
   page?: string;
@@ -27,6 +27,7 @@ export default async function FacultyPage({
   searchParams: Promise<SearchParams>;
 }) {
   const { parentSlug } = await params;
+  const currentSlug = 'faculty'
   const sp = await searchParams;
   const currentPage = Number(sp.page) || 1;
   const department = sp.department || "";
@@ -39,16 +40,12 @@ export default async function FacultyPage({
   }).toString();
 
   const [{ data, error }, { data: deptData }, {data:CMSData}] = await Promise.all([
-    apiFetch(`faculty?${facultyQuery}`),
+    apiFetch(`${currentSlug}?${facultyQuery}`),
     apiFetch("department-faculty-list"),
     apiFetch(`cms/${parentSlug}`),
   ]);
 
-  if (error) {
-    return (
-      <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
-    );
-  }
+  if (error) notFound();
 
   const departments: { name: string; slug: string; image: string }[] =
     deptData?.departments || [];
@@ -59,8 +56,8 @@ export default async function FacultyPage({
 
   return (
     <InnerPageLayoutWrapper
-      slug={parentSlug}
-      pathname={`/${parentSlug}/faculty`}
+      slug={currentSlug}
+      pathname={`/${parentSlug}/${currentSlug}`}
       tabs={null}
       mainClass="happenings_page"
       showTabs={false}

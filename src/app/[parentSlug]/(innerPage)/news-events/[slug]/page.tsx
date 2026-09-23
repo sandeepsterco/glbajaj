@@ -5,7 +5,8 @@ import { apiFetch } from "@/src/lib/api";
 import { notFound } from "next/navigation";
 
 export default async function NewsDetailPage({params}:{params:any}){
-    const {slug} = await params;
+    const {slug, parentSlug} = await params;
+    const currentSlug = 'news-events';
     const { data, error } = await apiFetch(`news-and-events/${slug}`);
 
     if (error) notFound();
@@ -17,7 +18,7 @@ export default async function NewsDetailPage({params}:{params:any}){
         <>
             <NewsDetail data={newsData} />
             {relatedData?.length > 0 && (
-                <RelatedStories data={relatedData} />
+                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={parentSlug}  />
             )}
         </>
     )

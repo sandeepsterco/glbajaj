@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import GalleryList from "@/src/components/gallery/GalleryList";
 import MainGallery from "@/src/components/gallery/MainGallery";
 import { apiFetch } from "@/src/lib/api"
@@ -8,6 +7,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 export default async function ArchivePage({
     params,
@@ -23,9 +23,7 @@ export default async function ArchivePage({
 
   const { data, error } = await apiFetch(`archive?page=${currentPage}`);
 
-  if (error) {
-    return <ApiErrorFallback heading="Couldn't load Archive" message={error} />;
-  }
+  if (error)  notFound();
 
   return (
     <InnerPageLayoutWrapper

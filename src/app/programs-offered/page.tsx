@@ -31,7 +31,7 @@ export default async function ProgramsOffered() {
       <main>
         <PageHeader pathname={`/programs-offered`} data={data?.data} slug="programs-offered" />
         <Suspense fallback={<PageLoader variant="home" />}>
-          <ProgramList />
+          <ProgramList parentSlug='' currentSlug="" />
         </Suspense>
       </main>
     </>

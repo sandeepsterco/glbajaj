@@ -6,9 +6,10 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
+import { BASE_URL } from "@/src/config/config";
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
-    const {slug, page} = await params;
+    const {parentSlug, slug, page} = await params;
 
     const {data, error} = await apiFetch(`department/${slug}/achievements`);
 
@@ -20,7 +21,7 @@ export default async function InnerPageLayout({children, params}:Readonly<{child
 
     return(
         <div className="happenings_page">
-            <PageHeader pathname={`/department/${slug}/achievements`} data={data.data} slug={slug}  />
+            <PageHeader pathname={`${BASE_URL}${parentSlug}/department/${slug}/achievements`} data={data.data} slug={slug} parentSlug={parentSlug}  />
             {pageData?.length == 0 ? <ComingSoon /> : children}
         </div>
     )

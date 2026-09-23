@@ -10,14 +10,14 @@ import { notFound } from "next/navigation";
 
 export default async function InnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {parentSlug, slug, page} = await params;
-
+    
     const {data, error} = await apiFetch(`department/${slug}/${page}`);
 
     if(error) notFound();
 
     return(
         <div className="happenings_page">
-            <PageHeader data={data.data} slug={slug} pathname={`/department/${slug}/${page}`} parentSlug={parentSlug} />
+            <PageHeader data={data.data} slug={slug} pathname={`${parentSlug}/department/${slug}/${page}`} parentSlug={parentSlug} />
             {data.data.cms.length == 0 ? <ComingSoon /> : children}
         </div>
     )

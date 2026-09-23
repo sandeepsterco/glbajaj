@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
+import { notFound } from "next/navigation";
 
 interface SearchParams {
     page?: string;
@@ -32,11 +32,7 @@ export default async function NoticesAnnouncement({
     const { data, error } = await apiFetch(`notice-and-announcements?page=${currentPage}`);
     const slug = "notices-announcements";
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load news" message={error} />
-        )
-    }
+    if (error) notFound();
     const pagination = data?.notice_and_announcements;
     const updatedData = data?.notice_and_announcements?.data;
 

@@ -41,10 +41,14 @@ async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", p
 }
 
 function ProgramBox({
+  parentSlug,
+  currentSlug,
   program,
   departmentSlug,
   onApply,
 }: {
+  parentSlug:string;
+  currentSlug:string;
   program: Program;
   departmentSlug: string;
   onApply: (departmentSlug: string) => void;
@@ -55,7 +59,7 @@ function ProgramBox({
     <div className="program-box">
       <div className="program-text">
         <h6>
-          <Link href={`/program/${program.slug}`}>{cleanName}</Link>
+          <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>{cleanName}</Link>
         </h6>
       </div>
       <div className="program-right">
@@ -73,7 +77,7 @@ function ProgramBox({
           </Link>
         </div>
         <div className="program-btn">
-          <Link href={`/program/${program.slug}`}>
+          <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>
             <span>
               <img src="/images/icons/right-arrow.svg" alt="arrow" />
             </span>
@@ -92,9 +96,13 @@ function buildUrl(type: string, page: number) {
 }
 
 function ProgramGroupSection({
+  parentSlug,
+  currentSlug,
   group,
   onApply,
 }: {
+  parentSlug:string;
+  currentSlug:string;
   group: ProgramGroup;
   onApply: (departmentSlug: string) => void;
 }) {
@@ -104,6 +112,8 @@ function ProgramGroupSection({
       {group.programs && group.programs.length > 0 ? (
         group.programs.map((program) => (
           <ProgramBox
+          parentSlug={parentSlug}
+          currentSlug={currentSlug}
             key={program.slug}
             program={program}
             departmentSlug={group.slug}
@@ -119,7 +129,7 @@ function ProgramGroupSection({
   );
 }
 
-export default function ProgramList() {
+export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string; currentSlug:string;}) {
   const searchParams = useSearchParams();
   const paramsType = (searchParams.get("type") as "under-graduate" | "post-graduate" | "all") || "all";
   const page = Number(searchParams.get("page")) || 1;
@@ -162,7 +172,7 @@ export default function ProgramList() {
                   ].map(({ label, type }) => (
                     <li key={type}>
                       <Link
-                        href={`${BASE_URL}programs-offered?type=${type}&page=1`}
+                        href={`${BASE_URL}${parentSlug}/${currentSlug}?type=${type}&page=1`}
                         className={paramsType === type ? "active" : ""}
                       >
                         {label}
@@ -179,6 +189,8 @@ export default function ProgramList() {
                   ) : programsData &&  programsData.data.length > 0 ? (
                     programsData.data.map((group) => {
                       return <ProgramGroupSection
+                      parentSlug={parentSlug}
+                      currentSlug={currentSlug}
                         key={group.slug}
                         group={group}
                         onApply={openApplyModal}

@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import LeadershipList from "@/src/components/leadership/LeadershipList";
 import { apiFetch } from "@/src/lib/api"
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper"
@@ -7,6 +6,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 export default async function MessagesAdministrationPage({
     params,
@@ -16,11 +16,7 @@ export default async function MessagesAdministrationPage({
     const { parentSlug } = await params;
     const { data, error } = await apiFetch(`leadership`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
-        )
-    }
+    if (error) notFound();
 
     return (
         <>

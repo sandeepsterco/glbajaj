@@ -7,7 +7,7 @@ import TruncatedBreadcrumbs from './TruncatedBreadcrumbs';
 export default function PageHeader({ data, slug, pathname, currentPageTitle, parentSlug }: { data: any; slug: string; pathname: string; currentPageTitle?: string; parentSlug?:string }) {
   const currentPage = data?.tabs?.find((tab: any) => tab.slug === data?.active_tab_slug);
   const activeSlug = data?.active_tab_slug;
-  const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle);
+  const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle, parentSlug);
 
   const totalLength = currentPageTitle ? breadcrumbs?.length - 1 : breadcrumbs?.length - 2;
 

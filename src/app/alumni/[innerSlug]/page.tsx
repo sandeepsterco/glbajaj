@@ -23,6 +23,7 @@ export default async function DynamicSlugPage({
   searchParams?:any
 }) {
   const {parentSlug, innerSlug } = await params;
+  const currentSlug = 'alumni'
   const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/${innerSlug}`),
@@ -45,7 +46,7 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
-      <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />
+      <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={currentSlug} />
       {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams} />}
     </>
   );

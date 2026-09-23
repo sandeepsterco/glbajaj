@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 
-export default function RelatedStories({data}:{data:any}){
+export default function RelatedStories({data, currentSlug, parentSlug}:{data:any; currentSlug?:string; parentSlug?:string}){
     return(
         <section className="related_stories" id="news-announcement">
             <div className="container25">
@@ -21,7 +21,7 @@ export default function RelatedStories({data}:{data:any}){
                                 )}
                             </figcaption>
                             {item?.slug && (
-                                <Link href={BASE_URL + 'news-events/'+ item.slug} className="strech_link"></Link>
+                                <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`} className="strech_link"></Link>
                             )}
                         </div>
                     ))}

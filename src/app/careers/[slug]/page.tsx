@@ -1,20 +1,16 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import CopyUrlButton from "@/src/components/common/CopyUrlButton";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function CareerDetailPage({ params }: { params: any }) {
     const { slug } = await params;
 
     const { data, error } = await apiFetch(`job-openings/${slug}`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Career Detail Page" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const careerData = data?.job_opening_details
 

@@ -1,19 +1,15 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api";
 import ApplyNowForm from "./ApplyNowForm";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
+import { notFound } from "next/navigation";
 
 export default async function CareerFormPage({ params }: { params: any }) {
     const { slug } = await params;
 
     const { data, error } = await apiFetch(`job-openings/${slug}`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Career Form Page" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const careerData = data?.job_opening_details
 

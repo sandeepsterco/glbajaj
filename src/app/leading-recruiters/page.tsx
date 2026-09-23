@@ -1,19 +1,15 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api"
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import CompanyLogoGrid from "@/src/components/company_logo/CompanyLogoGrid";
+import { notFound } from "next/navigation";
 
 const slug = "leading-recruiters";
 
 export default async function PlacementPage() {
     const { data, error } = await apiFetch(`modular/leading-recruiters`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Recruiters" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const combinedHtml = Object.values(data?.data?.cms ?? {}).join("");
     const modularData = data?.data?.modular || {};

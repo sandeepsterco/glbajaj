@@ -1,6 +1,6 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import LeadershipDetail from "@/src/components/leadership/LeadershipDetail";
 import { apiFetch } from "@/src/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function FacultyDetailPage({
     params,
@@ -12,11 +12,7 @@ export default async function FacultyDetailPage({
     const { data, error } = await apiFetch(`leadership/${slug}`);
 
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Faculty Detail Page" message={error} />
-        )
-    }
+    if (error) notFound();
 
     return (
         <LeadershipDetail data={data?.leadership_details} slug={'leadership-messages'} parentSlug={parentSlug} />

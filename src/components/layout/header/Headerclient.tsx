@@ -48,7 +48,7 @@ const SOCIALS = [
 
 
 const isSlugContains = (slug: string) => {
-  return !slug.includes('programs');
+  return !slug.includes('sdfsdfsdfsdfsdfsdfsdfsdfsd');
 };
 
 const isDepartment = (slug: string) => {

@@ -1,6 +1,6 @@
 import { BASE_URL } from "../config/config";
 
-export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?: string) {
+export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?: string, parentSlug?:string) {
   const parent_menus = data?.parent_menus;
 
   const isProgramsOffered = pathname.includes("programs-offered");
@@ -21,7 +21,7 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
       ? [
           data?.tab_title
             ? { label: data?.tab_title }
-            : { label: data?.department_name, slug: `${BASE_URL}department/${data?.department_slug}` },
+            : { label: data?.department_name, slug: `${BASE_URL}${parentSlug}/department/${data?.department_slug}` },
         ]
       : []),
     { label: data?.menu_title ?? data?.page_title ?? "" },

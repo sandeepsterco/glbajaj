@@ -2,7 +2,6 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import GalleryList from "@/src/components/gallery/GalleryList";
 import MainGallery from "@/src/components/gallery/MainGallery";
 import { apiFetch } from "@/src/lib/api"
-import { getSlug } from "@/src/lib/getSlug";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
@@ -10,24 +9,34 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 
-export default async function ArchivePage({ searchParams }: { searchParams: Promise<{ page?: string }> }){
-    const { page } = await searchParams;
-    const currentPage = Number(page) || 1;
-    const {data, error} = await apiFetch(`archive?page=${currentPage}`);
-    const slug = await getSlug();
+export default async function ArchivePage({
+    params,
+    searchParams,
+  }: {
+    params: Promise<{ parentSlug: string }>;
+    searchParams: Promise<{ page?: string }>;
+  }){
+    const { parentSlug } = await params;
+  const { page } = await searchParams;
+  const currentPage = Number(page) || 1;
+  const currentSlug = 'archives'
 
-    if(error){
-        return (
-            <ApiErrorFallback heading="Couldn't load Archive" message={error} />
-        )
-    }
+  const { data, error } = await apiFetch(`archive?page=${currentPage}`);
 
-    return(
-        <>
-        <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
-            <MainGallery data={data?.featured} currentPage="workshops-and-seminars" />
-            <GalleryList data={data?.others} currentPage="workshops-and-seminars" />
-            </InnerPageLayoutWrapper>
-        </>
-    )
+  if (error) {
+    return <ApiErrorFallback heading="Couldn't load Archive" message={error} />;
+  }
+
+  return (
+    <InnerPageLayoutWrapper
+      slug={currentSlug}
+      pathname={`/${parentSlug}/${currentSlug}`}
+      tabs={null}
+      mainClass="happenings_page"
+      showTabs={true}
+    >
+      <MainGallery data={data?.featured} currentPage="workshops" parentSlug={parentSlug} />
+      <GalleryList data={data?.others} currentPage="workshops" parentSlug={parentSlug} />
+    </InnerPageLayoutWrapper>
+  );
 }

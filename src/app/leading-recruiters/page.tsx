@@ -1,16 +1,13 @@
-export const dynamic = "force-dynamic";
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api"
-import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import { getSlug } from "@/src/lib/getSlug";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import PageHeader from "@/src/components/layout/header/PageHeader";
-import CompanyLogoSliders from "@/src/components/company_logo/CompanyLogoSliders";
 import CompanyLogoGrid from "@/src/components/company_logo/CompanyLogoGrid";
+
+const slug = "leading-recruiters";
 
 export default async function PlacementPage() {
     const { data, error } = await apiFetch(`modular/leading-recruiters`);
-    const slug = await getSlug();
 
     if (error) {
         return (
@@ -23,7 +20,7 @@ export default async function PlacementPage() {
 
     return (
         <>
-            <PageHeader data={data?.data} slug={slug} />
+            <PageHeader data={data?.data} slug={slug} pathname={`/${slug}`} />
             <ReactParserDynamic html={combinedHtml} />
 
             {modularData?.['company-logo'] && (

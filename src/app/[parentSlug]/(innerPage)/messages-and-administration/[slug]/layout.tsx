@@ -1,5 +1,3 @@
-// (innerPage)/news-events/layout.tsx
-import { getSlug } from "@/src/lib/getSlug";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
@@ -8,15 +6,19 @@ import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { apiFetch } from "@/src/lib/api";
 
-export default async function MessageDetailLayout({ children }: { children: React.ReactNode }) {
-    const slug = await getSlug(-2);
-    const currentSlug = await getSlug();
-
-    if (!slug) return <>{children}</>;
-    const {data, error} = await apiFetch(`leadership/${currentSlug}`);
+export default async function MessageDetailLayout({
+    children,
+    params,
+  }: {
+    children: React.ReactNode;
+    params: Promise<{ parentSlug: string; slug: string }>;
+  }) {
+    const { parentSlug, slug } = await params;
+    if (!parentSlug) return <>{children}</>;
+    const {data, error} = await apiFetch(`leadership/${slug}`);
 
     const currentPageTitle = data?.leadership_details?.data?.name;
 
-    return <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={parentSlug} pathname={`/\${parentSlug}/messages-and-administration/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

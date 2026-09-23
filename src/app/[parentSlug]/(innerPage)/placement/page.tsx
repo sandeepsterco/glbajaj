@@ -1,15 +1,16 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api"
-import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import { getSlug } from "@/src/lib/getSlug";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import CompanyLogoSliders from "@/src/components/company_logo/CompanyLogoSliders";
 
-export default async function PlacementPage() {
+export default async function PlacementPage({
+    params,
+  }: {
+    params: Promise<{ parentSlug: string }>;
+  }) {
+    const { parentSlug } = await params;
     const { data, error } = await apiFetch(`modular/placement`);
-    const slug = await getSlug();
-
     if (error) {
         return (
             <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
@@ -21,7 +22,7 @@ export default async function PlacementPage() {
 
     return (
         <div className="happenings_page">
-            <PageHeader data={data?.data} slug={slug} />
+            <PageHeader data={data?.data} slug={parentSlug} pathname={`/${parentSlug}/placement`} />
             <ReactParserDynamic html={combinedHtml} />
 
             {modularData?.['company-logo'] && (

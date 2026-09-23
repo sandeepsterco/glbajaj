@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import ProgramDetailForm from "@/src/components/parser/ProgramDetailForm";
+import ProgramDetailForm from "@/src/components/parser/programDetailForm/ProgramDetailForm";
 
 interface ProgramApplyModalProps {
   open: boolean;

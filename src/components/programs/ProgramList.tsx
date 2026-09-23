@@ -68,7 +68,7 @@ function ProgramBox({
           <span>{program.affiliation || "-"}</span>
         </div>
         <div className="apply-btn">
-          <Link href={APPLY_NOW ?? '/apply-now'}>
+          <Link href={APPLY_NOW ?? '/admission/apply-now'}>
             Apply Now
           </Link>
         </div>

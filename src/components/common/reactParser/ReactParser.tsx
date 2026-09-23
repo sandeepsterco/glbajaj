@@ -13,16 +13,16 @@ import dynamic from "next/dynamic";
 import HashLinkAnchor from "./HashLinkAnchor";
 import CmsEnhancer from "@/src/lib/CmsEnhancer";
 
-const DepartmentHomeResearch = dynamic(() => import("../../parser/DepartmentHomeResearch"));
+const DepartmentHomeResearch = dynamic(() => import("../../parser/department/home/DepartmentHomeResearch"));
 const HomeCourseRight = dynamic(() => import("../../parser/HomeCourseRight"));
 const AlumniAchievementList = dynamic(() => import("../../parser/AlumniAchievementList"));
 const InternSlider = dynamic(() => import("../../parser/internSlider/InternSlider"));
 const HomePlacements = dynamic(() => import("../../parser/HomePlacements"));
-const DepartmentHomePlacements = dynamic(() => import("../../parser/DepartmentHomePlacements"));
+const DepartmentHomePlacements = dynamic(() => import("../../parser/department/home/DepartmentHomePlacements"));
 const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"));
 const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"));
 const HomeUpcomingEvents = dynamic(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents"));
-const ProgramDetailForm = dynamic(() => import("../../parser/ProgramDetailForm"));
+const ProgramDetailForm = dynamic(() => import("../../parser/programDetailForm/ProgramDetailForm"));
 const CourseSearch = dynamic(() => import("../../parser/CourseSearch"));
 const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"));
 const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"));
@@ -35,7 +35,7 @@ const AwardsList = dynamic(() => import("../../parser/awardList/AwardsList"));
 const ConferenceLists = dynamic(() => import("../../parser/conferenceLists/ConferenceLists"));
 const DepartmentHomeFaculties = dynamic(() => import("../../parser/DepartmentHomeFaculties"));
 const DepartmentHomeLaboratories = dynamic(() => import("../../parser/DepartmentHomeLaboratories"));
-const DepartmentHomeAlumni = dynamic(() => import("../../parser/DepartmentHomeAlumni"));
+const DepartmentHomeAlumni = dynamic(() => import("../../parser/department/home/DepartmentHomeAlumni"));
 const ProgramDetailAlumni = dynamic(() => import("../../parser/ProgramDetailAlumni"));
 const DepartmentHomeCourses = dynamic(() => import("../../parser/DepartmentHomeCourses"));
 const ResearchInnovation = dynamic(() => import("../../parser/ResearchInnovation"));
@@ -43,7 +43,7 @@ const HomeFacilities = dynamic(() => import("../../parser/homeFacilities/HomeFac
 const PoliciesDisclosures = dynamic(() => import("../../parser/PoliciesDisclosures"));
 const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"));
 const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"));
-const AchievementList = dynamic(() => import("../../parser/AchievementList"));
+const AchievementList = dynamic(() => import("../../parser/achievementList/AchievementList"));
 const DepartmentHomeHappenings = dynamic(() => import("../../parser/DepartmentHomeHappenings"));
 const DepartmentHomeActivities = dynamic(() => import("../../parser/DepartmentHomeActivities"));
 const DigitalPathshalaVideoGrid = dynamic(() => import("../../parser/DigitalPathshalaVideoGrid"));
@@ -51,8 +51,8 @@ const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"));
 const AlumniEventsMeetGrid = dynamic(() => import("../../parser/AlumniEventsMeetGrid"));
 const AdmissionPrograms = dynamic(() => import("../../parser/AdmissionPrograms"));
 const DepartmentNotificationBar = dynamic(() => import("../../parser/DepartmentNotificationBar"));
-const DepartmentHomeClubs = dynamic(() => import("../../parser/DepartmentHomeClubs"));
-const DepartmentHomeMou = dynamic(() => import("../../parser/DepartmentHomeMou"));
+const DepartmentHomeClubs = dynamic(() => import("../../parser/department/home/DepartmentHomeClubs"));
+const DepartmentHomeMou = dynamic(() => import("../../parser/department/home/DepartmentHomeMou"));
 const DepartmentHomeCEO = dynamic(() => import("../../parser/DepartmentHomeCEO"));
 const DepartmentHomeAchievement = dynamic(() => import("../../parser/DepartmentHomeAchievement"));
 const DepartmentLabsGrids = dynamic(() => import("../../parser/DepartmentLabsGrids"));
@@ -140,9 +140,8 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-const getParserOptions = (homeData: any): HTMLReactParserOptions => {
-  // Lazily-invoked map: O(1) lookup instead of ~40 sequential string checks
-  // per node. Only touched when domNode.attribs.id is present.
+const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any): HTMLReactParserOptions => {
+  
   const idComponentMap: Record<string, () => React.ReactElement> = {
     "course-search": () => <CourseSearch />,
     home_course_tabs: () => <HomeCoursesTabs />,
@@ -155,14 +154,14 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     contact_form: () => <ContactForm />,
     about_leadership: () => <AboutLeadership />,
     awards_list: () => <AwardsList />,
-    achievement_list: () => <AchievementList />,
+    achievement_list: () => <AchievementList searchParams={searchParams} />,
     conference_lists: () => <ConferenceLists />,
     department_home_faculties: () => <DepartmentHomeFaculties />,
     department_home_laboratories: () => <DepartmentHomeLaboratories />,
-    department_home_alumni: () => <DepartmentHomeAlumni />,
+    department_home_alumni: () => <DepartmentHomeAlumni params={params} data={data} />,
     program_detail_alumni: () => <ProgramDetailAlumni />,
-    department_home_courses: () => <DepartmentHomeCourses />,
-    department_home_happenings: () => <DepartmentHomeHappenings />,
+    department_home_courses: () => <DepartmentHomeCourses params={params} />,
+    department_home_happenings: () => <DepartmentHomeHappenings params={params} />,
     policies_disclosures: () => <PoliciesDisclosures />,
     placement_record: () => <PlacementRecord />,
     intership_record: () => <IntershipRecord />,
@@ -172,20 +171,20 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     alumni_events_meet: () => <AlumniEventsMeetGrid />,
     admission_programs: () => <AdmissionPrograms />,
     department_notifications: () => <DepartmentNotificationBar />,
-    department_home_clubs: () => <DepartmentHomeClubs />,
+    department_home_clubs: () => <DepartmentHomeClubs params={params} data={data} />,
     department_home_ceo: () => <DepartmentHomeCEO />,
-    department_home_collaborations: () => <DepartmentHomeMou />,
-    department_home_achievement: () => <DepartmentHomeAchievement />,
+    department_home_collaborations: () => <DepartmentHomeMou params={params} data={data} />,
+    department_home_achievement: () => <DepartmentHomeAchievement data={data} />,
     coe_labs_grid_section: () => <DepartmentLabsGrids />,
     department_faculty_grid: () => <DepartmentFacultyGrid />,
     program_detail_form: () => <ProgramDetailForm />,
-    department_home_placements: () => <DepartmentHomePlacements />,
+    department_home_placements: () => <DepartmentHomePlacements data={data} />,
     home_placements: () => <HomePlacements homeData={homeData} />,
     career_job_listing: () => <CareerJobListing />,
     home_upcoming_events: () => <HomeUpcomingEvents />,
     home_highlights: () => <HomeHighlights />,
     program_detail_placements: () => <ProgramDetailPlacements />,
-    department_home_research: () => <DepartmentHomeResearch />,
+    department_home_research: () => <DepartmentHomeResearch params={params} data={data} />,
     home_course_right: () => <HomeCourseRight />,
     alumni_achievement_list: () => <AlumniAchievementList />,
     intern_slider: () => <InternSlider />,
@@ -195,7 +194,6 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
     replace(domNode) {
       if (!(domNode instanceof Element && domNode.attribs)) return;
 
-      // Hide empty block/inline elements (no visible text or child elements)
       if (EMPTY_TAGS.has(domNode.name)) {
         const hasText = domNode.children.some(
           (child) => child.type === "text" && (child as any).data?.trim() !== ""
@@ -209,7 +207,6 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
         const href = props.href?.trim();
         const classList = (domNode.attribs?.class || "").split(" ");
 
-        // Hide dynamic/stretch-link anchors with no valid href
         if (
           (classList.includes("dynamic_btn") || classList.includes("strech_link")) &&
           (!href || href === "#")
@@ -323,7 +320,7 @@ const getParserOptions = (homeData: any): HTMLReactParserOptions => {
 // ReactParser
 // ---------------------------------------------------------------------------
 
-export default function ReactParser({ html, homeData }: { html: any; homeData?: any }) {
+export default function ReactParser({ html, homeData, params, searchParams, data }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any }) {
   const sanitizedHtml = useMemo(
     () =>
       DOMPurify.sanitize(html, {
@@ -338,7 +335,10 @@ export default function ReactParser({ html, homeData }: { html: any; homeData?: 
 
   const containerId = useMemo(() => `cms-block-${hashString(sanitizedHtml)}`, [sanitizedHtml]);
 
-  const options = useMemo(() => getParserOptions(homeData), [homeData]);
+  const options = useMemo(
+    () => getParserOptions(homeData, params, searchParams, data ),
+    [homeData, params, searchParams, data]
+  );
 
   const parsedContent = useMemo(() => parse(sanitizedHtml, options), [sanitizedHtml, options]);
 

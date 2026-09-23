@@ -9,7 +9,6 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
-import { getSlug } from "@/src/lib/getSlug";
 
 interface SearchParams {
   page?: string;
@@ -17,13 +16,16 @@ interface SearchParams {
 }
 
 export default async function Workshop({
+  params,
   searchParams,
 }: {
+  params: Promise<{ parentSlug: string }>;
   searchParams: Promise<SearchParams>;
 }) {
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
-  const department = params.department || "";
+  const { parentSlug } = await params;
+  const sp = await searchParams;
+  const currentPage = Number(sp.page) || 1;
+  const department = sp.department || "";
 
   const query = new URLSearchParams({
     page: String(currentPage),
@@ -48,11 +50,11 @@ export default async function Workshop({
 
   const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
   // const slug = "workshops";
-  const slug = await getSlug();
-  const parentSlug = await getSlug(0);
+  const slug = "workshops";
 
   return (
-    <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
+    <InnerPageLayoutWrapper slug={slug}
+    pathname={`/${parentSlug}/workshops`} tabs={null} mainClass="happenings_page" showTabs={true}>
       <MainWorkshop
         data={mainData}
         slug={slug}

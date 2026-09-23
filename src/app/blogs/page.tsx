@@ -147,7 +147,7 @@ export default async function BlogsPage({
 
   return (
 
-    <InnerPageLayoutWrapper slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
+    <InnerPageLayoutWrapper pathname={`/${slug}`} slug={slug} tabs={null} mainClass="happenings_page" showTabs={true}>
 
       {mainBlog && <BlogMain data={mainBlog} slug={slug} />}
 

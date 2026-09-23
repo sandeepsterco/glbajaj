@@ -366,7 +366,8 @@
 .gallery_grid_Bx span figcaption { display: flex; color: var(--color-white); gap: 0.5rem; align-items: center; font: var(--font-14); font-weight: 400; }
 .gallery_grid h5 { font: var(--font-24); color: var(--color-64); font-weight: 700; padding-inline: 4.4rem; margin-block: 2rem; }
 .gallery_list_section { padding-block: 4rem 11.6rem; }
-.archives .gallery_list_section { padding-block: 10rem; }
+.archives .gallery_list_section,
+.happenings-archives .gallery_list_section{ padding-block: 10rem; }
 .gallery_list_section.workshops-and-seminars-list { padding-block: 10rem 11.6rem; }
 .glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
 .gallery_list { column-count: 3; gap: 3rem; margin-inline: -2rem; }
@@ -793,6 +794,10 @@
 .our_cse .view_more_btn { display: inline-block; margin-top: 2rem; }
 .view_more_btn { width: 4rem; height: 4rem; justify-content: center; align-items: center; display: flex; cursor: pointer; margin:0; }
 .view_more_btn i { font:var(--font-16) }
+.view_more_btn .read_less{display:none;}
+.view_more_btn .read_more{display:block;}
+.view_more_btn.expanded .read_less{display:block;}
+.view_more_btn.expanded .read_more{display:none;}
 .view_more_btn.white { background-color: var(--color-white); display: flex; box-shadow: 0 4px 12px #00000026; }
 .view_more_btn:hover { background-color: var(--color-92); }
 .view_more_btn:hover img { filter: brightness(0) invert(); }

@@ -1,9 +1,4 @@
-"use client"
-
 import { apiFetch } from "@/src/lib/api"
-import { useQuery } from "@tanstack/react-query"
-import { SkeletonGroup } from "../ui/Skeleton";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 
@@ -22,9 +17,6 @@ const getDepartmentCourse = async (slug: string): Promise<Program[]> => {
     return data?.data?.programs ?? [];
 }
 
-interface CourseCardProps {
-    program: Program;
-}
 
 function CourseCard({ program }: any) {
     return (
@@ -46,7 +38,6 @@ interface CourseSectionProps {
 }
 
 function CourseSection({ label, programs }: CourseSectionProps) {
-    // if (!programs.length) return null;
 
     return (
         <div className="cse_cou_list">
@@ -59,36 +50,13 @@ function CourseSection({ label, programs }: CourseSectionProps) {
     );
 }
 
-export default function DepartmentHomeCourses() {
-    const pathname = usePathname();
-    const slug = pathname.split('/').filter(Boolean).pop() ?? '';
+export default async function DepartmentHomeCourses({params}:{params:{slug:string}}) {
+    const {slug} = params;
 
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ["department-home-courses", slug], // ✅ slug included so it refetches on route change
-        queryFn: () => getDepartmentCourse(slug),
-        enabled: !!slug,
-    });
+    const data = await getDepartmentCourse(slug);
 
     const underGraduateData = data?.filter((item) => item.type === 'under-graduate') ?? [];
     const postGraduateData = data?.filter((item) => item.type === 'post-graduate') ?? [];
-
-    if (isLoading) {
-        return (
-            <SkeletonGroup
-                wrapperClassName="flex mt-[7.7rem] gap-[4rem]"
-                count={1}
-                className="bg-gray-300 h-[51.1rem] w-full"
-            />
-        );
-    }
-
-    if (isError) {
-        return <p className="text-red-500">Failed to load courses. Please try again.</p>;
-    }
-
-    // if (!underGraduateData.length && !postGraduateData.length) {
-    //     return <p>No courses available for this department.</p>;
-    // }
 
     return (
         <div className="cou_off_box">

@@ -17,10 +17,13 @@ export async function generateMetadata({
 
 export default async function DynamicSlugPage({
   params,
+  searchParams
 }: {
   params: Promise<{ parentSlug: string, innerSlug:string }>;
+  searchParams?:any
 }) {
-  const {innerSlug } = await params;
+  const {parentSlug, innerSlug } = await params;
+  const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/${innerSlug}`),
     getPageSEO(innerSlug),
@@ -42,8 +45,8 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
-      <PageHeader data={data?.data} slug={innerSlug} />
-      <ReactParserDynamic html={combinedHtml} />
+      <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />
+      <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams} />
     </>
   );
 }

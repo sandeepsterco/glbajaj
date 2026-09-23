@@ -48,7 +48,11 @@ const SOCIALS = [
 
 
 const isSlugContains = (slug: string) => {
-  return !slug.includes('program') && !slug.includes('department');
+  return !slug.includes('program');
+};
+
+const isDepartment = (slug: string) => {
+  return slug.includes('department');
 };
 
 // Resolves label for any child type:
@@ -105,7 +109,7 @@ function MenuColumn({
         <ul>
           {child.children.map((sub: any, subIdx: number) => {
             const label = getChildLabel(sub);
-            const subSlug = sub?.slug ? `${BASE_URL}${isSlugContains(sub.slug) ? generateSlug(parent.title)+'/' : ''}${sub.slug}` : sub?.target_blank_url ? sub.target_blank_url : "#";
+            const subSlug = sub?.slug ? `${BASE_URL}${isSlugContains(sub.slug) ? generateSlug(parent.title)+'/' : ''}${isNavigable ? isDepartment(child.slug) ? '' : child.slug + '/' : ''}${sub.slug}` : sub?.target_blank_url ? sub.target_blank_url : "#";
             const subTarget = sub?.target_blank_url ? "_blank" : "_self";
             const subNavigable = sub?.slug && sub.slug !== "#";
 

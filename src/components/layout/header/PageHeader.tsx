@@ -1,16 +1,13 @@
 import Link from 'next/link';
-import { getPathname, getSlug } from '@/src/lib/getSlug';
 import NavLinks from './NavLinks';
 import React from 'react';
 import { buildBreadcrumbs } from '@/src/lib/buildBreadcrumbs';
 import TruncatedBreadcrumbs from './TruncatedBreadcrumbs';
 
-export default async function PageHeader({ data, slug, currentPageTitle }: { data: any; slug: string; currentPageTitle?: string }) {
-  const currentPageSlug = await getSlug(-2);
+export default function PageHeader({ data, slug, pathname, currentPageTitle }: { data: any; slug: string; pathname: string; currentPageTitle?: string }) {
   const currentPage = data?.tabs?.find((tab: any) => tab.slug === data?.active_tab_slug);
   const activeSlug = data?.active_tab_slug;
-  const breadcrumbs = await buildBreadcrumbs(data, currentPageTitle);
-  const pathname = await getPathname();
+  const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle);
 
   const totalLength = currentPageTitle ? breadcrumbs?.length - 1 : breadcrumbs?.length - 2;
 
@@ -27,7 +24,6 @@ export default async function PageHeader({ data, slug, currentPageTitle }: { dat
                   <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
                 </div>
 
-                {/* ↓ Replaced the old map with the smart truncating component */}
                 <TruncatedBreadcrumbs breadcrumbs={cleanBreadcrumbs} totalLength={totalLength} />
               </div>
           </div>

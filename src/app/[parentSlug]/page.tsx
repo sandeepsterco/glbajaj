@@ -1,9 +1,9 @@
 import { apiFetch } from "@/src/lib/api";
-import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 import PageHeader from "@/src/components/layout/header/PageHeader";
+import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 
 export async function generateMetadata({
   params,
@@ -41,8 +41,9 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
-      <PageHeader data={data?.data} slug={parentSlug} />
-      <ReactParserDynamic html={combinedHtml} />
+      <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} />}
+      
     </>
   );
 }

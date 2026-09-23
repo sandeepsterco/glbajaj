@@ -2,7 +2,6 @@ import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
-import { getSlug } from "@/src/lib/getSlug";
 
 const TESTIMONIAL_TABS = [
     { label: "Students", type: "student" },
@@ -11,9 +10,8 @@ const TESTIMONIAL_TABS = [
     { label: "Alumni", type: "alumni" },
 ] as const;
 
-export default async function TestimonialList({ data, slug, activeType = "student", currentPage }: { data: any; slug: string; activeType?: string; currentPage?: string }) {
+export default async function TestimonialList({ data, slug, parentSlug, activeType = "student", currentPage }: { data: any; slug: string; parentSlug: string; activeType?: string; currentPage?: string }) {
     const showTabs = activeType;
-    const parentSlug = await getSlug(0);
 
     return (
         <section className="faculty_section">

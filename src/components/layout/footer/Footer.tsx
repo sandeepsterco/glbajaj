@@ -110,6 +110,7 @@ const Footer = async () => {
                   <li>
                     <Link
                       href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : '#'}
+                      prefetch={false}
                       target={item?.target_blank_url ? '_blank' : '_self'}
                     >
                       {item.title}

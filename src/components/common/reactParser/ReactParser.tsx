@@ -191,7 +191,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
         }
 
         return (
-          <Link href={href || "#"} {...rest}>
+          <Link href={href || "#"} prefetch={false} {...rest}>
             {domToReact(domNode.children as any, options)}
           </Link>
         );

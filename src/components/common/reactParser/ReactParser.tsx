@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import parse, {
   attributesToProps,
   Element,
@@ -8,62 +8,28 @@ import parse, {
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-import dynamic from "next/dynamic";
 
 import HashLinkAnchor from "./HashLinkAnchor";
 import CmsEnhancer from "@/src/lib/CmsEnhancer";
-
-const DepartmentHomeResearch = dynamic(() => import("../../parser/department/home/DepartmentHomeResearch"));
-const HomeCourseRight = dynamic(() => import("../../parser/HomeCourseRight"));
-const AlumniAchievementList = dynamic(() => import("../../parser/AlumniAchievementList"));
-const InternSlider = dynamic(() => import("../../parser/internSlider/InternSlider"));
-const HomePlacements = dynamic(() => import("../../parser/HomePlacements"));
-const DepartmentHomePlacements = dynamic(() => import("../../parser/department/home/DepartmentHomePlacements"));
-const ProgramDetailPlacements = dynamic(() => import("../../parser/ProgramDetailPlacements"));
-const CareerJobListing = dynamic(() => import("../../parser/CareerJobListing"));
-const HomeUpcomingEvents = dynamic(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents"));
-const ProgramDetailForm = dynamic(() => import("../../parser/programDetailForm/ProgramDetailForm"));
-const CourseSearch = dynamic(() => import("../../parser/CourseSearch"));
-const HomeCoursesTabs = dynamic(() => import("../../parser/HomeCoursesTabs"));
-const AddOnCourses = dynamic(() => import("../../parser/AddOnCourses"));
-const ProgramAddOnCourses = dynamic(() => import("../../parser/ProgramAddOnCourses"));
-const HomeHappenings = dynamic(() => import("../../parser/HomeHappenings"));
-const HomeAlumni = dynamic(() => import("../../parser/HomeAlumni"));
-const ContactForm = dynamic(() => import("../../parser/ContactForm"));
-const AboutLeadership = dynamic(() => import("../../parser/about/AboutLeadership"));
-const AwardsList = dynamic(() => import("../../parser/awardList/AwardsList"));
-const ConferenceLists = dynamic(() => import("../../parser/conferenceLists/ConferenceLists"));
-const DepartmentHomeFaculties = dynamic(() => import("../../parser/DepartmentHomeFaculties"));
-const DepartmentHomeLaboratories = dynamic(() => import("../../parser/department/home/DepartmentHomeLaboratories"));
-const DepartmentHomeAlumni = dynamic(() => import("../../parser/department/home/DepartmentHomeAlumni"));
-const ProgramDetailAlumni = dynamic(() => import("../../parser/ProgramDetailAlumni"));
-const DepartmentHomeCourses = dynamic(() => import("../../parser/DepartmentHomeCourses"));
-const ResearchInnovation = dynamic(() => import("../../parser/ResearchInnovation"));
-const HomeFacilities = dynamic(() => import("../../parser/homeFacilities/HomeFacilities"));
-const PoliciesDisclosures = dynamic(() => import("../../parser/PoliciesDisclosures"));
-const PlacementRecord = dynamic(() => import("../../parser/PlacementRecord"));
-const IntershipRecord = dynamic(() => import("../../parser/IntershipRecord"));
-const AchievementList = dynamic(() => import("../../parser/achievementList/AchievementList"));
-const DepartmentHomeHappenings = dynamic(() => import("../../parser/department/home/DepartmentHomeHappenings"));
-const DepartmentHomeActivities = dynamic(() => import("../../parser/DepartmentHomeActivities"));
-const DigitalPathshalaVideoGrid = dynamic(() => import("../../parser/DigitalPathshalaVideoGrid"));
-const WhyClubsGrid = dynamic(() => import("../../parser/WhyClubsGrid"));
-const AlumniEventsMeetGrid = dynamic(() => import("../../parser/AlumniEventsMeetGrid"));
-const AdmissionPrograms = dynamic(() => import("../../parser/AdmissionPrograms"));
-const DepartmentNotificationBar = dynamic(() => import("../../parser/DepartmentNotificationBar"));
-const DepartmentHomeClubs = dynamic(() => import("../../parser/department/home/DepartmentHomeClubs"));
-const DepartmentHomeMou = dynamic(() => import("../../parser/department/home/DepartmentHomeMou"));
-const DepartmentHomeCEO = dynamic(() => import("../../parser/DepartmentHomeCEO"));
-const DepartmentHomeAchievement = dynamic(() => import("../../parser/DepartmentHomeAchievement"));
-const DepartmentLabsGrids = dynamic(() => import("../../parser/DepartmentLabsGrids"));
-const DepartmentFacultyGrid = dynamic(() => import("../../parser/DepartmentFacultyGrid"));
 
 // import "@/src/styles/fancybox.css";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/parser.css";
-import HomeHighlights from "../../parser/homeHighlights/HomeHighlights";
+
+const withLazyComponent = (
+  loader: () => Promise<{ default: React.ComponentType<any> }>,
+  props?: Record<string, any>
+) => {
+  const Component = lazy(loader);
+
+  return (
+    <Suspense fallback={<ParserWidgetFallback />}>
+      <Component {...props} />
+    </Suspense>
+  );
+};
 
 
 const EMPTY_TAGS = new Set(["h1", "h2", "h3", "h4", "h5", "h6", "p"]);
@@ -143,51 +109,51 @@ function hashString(str: string): string {
 const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any): HTMLReactParserOptions => {
   
   const idComponentMap: Record<string, () => React.ReactElement> = {
-    "course-search": () => <CourseSearch />,
-    home_course_tabs: () => <HomeCoursesTabs />,
-    "add-on-courses": () => <AddOnCourses homeData={homeData} />,
-    "program-add-on-courses": () => <ProgramAddOnCourses />,
-    research_innovation: () => <ResearchInnovation homeData={homeData} />,
-    home_facilities: () => <HomeFacilities />,
-    home_happenings: () => <HomeHappenings homeData={homeData} />,
-    home_alumni: () => <HomeAlumni homeData={homeData} />,
-    contact_form: () => <ContactForm />,
-    about_leadership: () => <AboutLeadership />,
-    awards_list: () => <AwardsList params={params} searchParams={searchParams} />,
-    achievement_list: () => <AchievementList searchParams={searchParams} />,
-    conference_lists: () => <ConferenceLists params={params} searchParams={searchParams} />,
-    department_home_faculties: () => <DepartmentHomeFaculties />,
-    department_home_laboratories: () => <DepartmentHomeLaboratories params={params} data={data} />,
-    department_home_alumni: () => <DepartmentHomeAlumni params={params} data={data} />,
-    program_detail_alumni: () => <ProgramDetailAlumni />,
-    department_home_courses: () => <DepartmentHomeCourses params={params} />,
-    department_home_happenings: () => <DepartmentHomeHappenings params={params} />,
-    policies_disclosures: () => <PoliciesDisclosures />,
-    placement_record: () => <PlacementRecord />,
-    intership_record: () => <IntershipRecord params={params} />,
-    department_home_activities: () => <DepartmentHomeActivities />,
-    digital_pathshala_videos: () => <DigitalPathshalaVideoGrid />,
-    why_clubs_grid: () => <WhyClubsGrid params={params} searchParams={searchParams} />,
-    alumni_events_meet: () => <AlumniEventsMeetGrid />,
-    admission_programs: () => <AdmissionPrograms />,
-    department_notifications: () => <DepartmentNotificationBar />,
-    department_home_clubs: () => <DepartmentHomeClubs params={params} data={data} />,
-    department_home_ceo: () => <DepartmentHomeCEO />,
-    department_home_collaborations: () => <DepartmentHomeMou params={params} data={data} />,
-    department_home_achievement: () => <DepartmentHomeAchievement data={data} />,
-    coe_labs_grid_section: () => <DepartmentLabsGrids />,
-    department_faculty_grid: () => <DepartmentFacultyGrid />,
-    program_detail_form: () => <ProgramDetailForm />,
-    department_home_placements: () => <DepartmentHomePlacements data={data} />,
-    home_placements: () => <HomePlacements homeData={homeData} />,
-    career_job_listing: () => <CareerJobListing />,
-    home_upcoming_events: () => <HomeUpcomingEvents />,
-    home_highlights: () => <HomeHighlights />,
-    program_detail_placements: () => <ProgramDetailPlacements />,
-    department_home_research: () => <DepartmentHomeResearch params={params} data={data} />,
-    home_course_right: () => <HomeCourseRight />,
-    alumni_achievement_list: () => <AlumniAchievementList />,
-    intern_slider: () => <InternSlider />,
+    "course-search": () => withLazyComponent(() => import("../../parser/CourseSearch")),
+    home_course_tabs: () => withLazyComponent(() => import("../../parser/HomeCoursesTabs")),
+    "add-on-courses": () => withLazyComponent(() => import("../../parser/AddOnCourses"), { homeData }),
+    "program-add-on-courses": () => withLazyComponent(() => import("../../parser/ProgramAddOnCourses")),
+    research_innovation: () => withLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData }),
+    home_facilities: () => withLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities")),
+    home_happenings: () => withLazyComponent(() => import("../../parser/HomeHappenings"), { homeData }),
+    home_alumni: () => withLazyComponent(() => import("../../parser/HomeAlumni"), { homeData }),
+    contact_form: () => withLazyComponent(() => import("../../parser/ContactForm")),
+    about_leadership: () => withLazyComponent(() => import("../../parser/about/AboutLeadership")),
+    awards_list: () => withLazyComponent(() => import("../../parser/awardList/AwardsList"), { params, searchParams }),
+    achievement_list: () => withLazyComponent(() => import("../../parser/achievementList/AchievementList"), { searchParams }),
+    conference_lists: () => withLazyComponent(() => import("../../parser/conferenceLists/ConferenceLists"), { params, searchParams }),
+    department_home_faculties: () => withLazyComponent(() => import("../../parser/DepartmentHomeFaculties")),
+    department_home_laboratories: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeLaboratories"), { params, data }),
+    department_home_alumni: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeAlumni"), { params, data }),
+    program_detail_alumni: () => withLazyComponent(() => import("../../parser/ProgramDetailAlumni")),
+    department_home_courses: () => withLazyComponent(() => import("../../parser/DepartmentHomeCourses"), { params }),
+    department_home_happenings: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeHappenings"), { params }),
+    policies_disclosures: () => withLazyComponent(() => import("../../parser/PoliciesDisclosures")),
+    placement_record: () => withLazyComponent(() => import("../../parser/PlacementRecord")),
+    intership_record: () => withLazyComponent(() => import("../../parser/IntershipRecord"), { params }),
+    department_home_activities: () => withLazyComponent(() => import("../../parser/DepartmentHomeActivities")),
+    digital_pathshala_videos: () => withLazyComponent(() => import("../../parser/DigitalPathshalaVideoGrid")),
+    why_clubs_grid: () => withLazyComponent(() => import("../../parser/WhyClubsGrid"), { params, searchParams }),
+    alumni_events_meet: () => withLazyComponent(() => import("../../parser/AlumniEventsMeetGrid")),
+    admission_programs: () => withLazyComponent(() => import("../../parser/AdmissionPrograms")),
+    department_notifications: () => withLazyComponent(() => import("../../parser/DepartmentNotificationBar")),
+    department_home_clubs: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeClubs"), { params, data }),
+    department_home_ceo: () => withLazyComponent(() => import("../../parser/DepartmentHomeCEO")),
+    department_home_collaborations: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeMou"), { params, data }),
+    department_home_achievement: () => withLazyComponent(() => import("../../parser/DepartmentHomeAchievement"), { data }),
+    coe_labs_grid_section: () => withLazyComponent(() => import("../../parser/DepartmentLabsGrids")),
+    department_faculty_grid: () => withLazyComponent(() => import("../../parser/DepartmentFacultyGrid")),
+    program_detail_form: () => withLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
+    department_home_placements: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
+    home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
+    career_job_listing: () => withLazyComponent(() => import("../../parser/CareerJobListing")),
+    home_upcoming_events: () => withLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
+    home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
+    program_detail_placements: () => withLazyComponent(() => import("../../parser/ProgramDetailPlacements")),
+    department_home_research: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
+    home_course_right: () => withLazyComponent(() => import("../../parser/HomeCourseRight")),
+    alumni_achievement_list: () => withLazyComponent(() => import("../../parser/AlumniAchievementList")),
+    intern_slider: () => withLazyComponent(() => import("../../parser/internSlider/InternSlider")),
   };
 
   const options: HTMLReactParserOptions = {

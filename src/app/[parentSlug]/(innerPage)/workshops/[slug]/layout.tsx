@@ -1,9 +1,5 @@
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import "@/src/styles/inner.css";
-import "@/src/styles/responsive1.css";
-import "@/src/styles/responsive.css";
-import "@/src/styles/program.css";
-import "@/src/styles/parser.css";
+import { apiFetch } from "@/src/lib/api";
 
 export default async function NewsEventsLayout({
     children,
@@ -12,20 +8,13 @@ export default async function NewsEventsLayout({
     children: React.ReactNode;
     params: Promise<{ parentSlug: string; slug: string }>;
   }) {
+    
     const { parentSlug, slug } = await params;
-    const currentSlug = 'workshops';
 
-  if (!parentSlug) return <>{children}</>;
+    if (!parentSlug) return <>{children}</>;
 
-  return (
-    <InnerPageLayoutWrapper
-      slug={currentSlug}
-      pathname={`/${parentSlug}/${currentSlug}/${slug}`}
-      tabs={null}
-      mainClass="happenings_page"
-      showTabs={true}
-    >
-      {children}
-    </InnerPageLayoutWrapper>
-  );
+    const {data, error} = await apiFetch(`workshops/${slug}`);
+    const currentPageTitle = data?.workshops_details?.data?.heading;
+
+    return <InnerPageLayoutWrapper slug={'workshops'} pathname={`/${parentSlug}/workshops/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 }

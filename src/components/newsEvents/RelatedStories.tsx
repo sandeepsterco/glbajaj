@@ -21,7 +21,7 @@ export default function RelatedStories({data, currentSlug, parentSlug}:{data:any
                                 )}
                             </figcaption>
                             {item?.slug && (
-                                <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`} className="strech_link"></Link>
+                                <Link href={`${BASE_URL}happenings/news-events/${item.slug}`} className="strech_link"></Link>
                             )}
                         </div>
                     ))}

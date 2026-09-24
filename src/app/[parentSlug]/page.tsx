@@ -7,6 +7,7 @@ import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 import { buildHomepageSchema } from "@/src/lib/schema/homepageSchema";
 import getValue from "@/src/lib/getValue";
 import { BASE_URL } from "@/src/config/config";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata({
   params,
@@ -32,6 +33,8 @@ export default async function DynamicSlugPage({
   if (error || !data?.status || !data?.data) {
     notFound();
   }
+
+  const pageData = data?.data;
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
 
@@ -69,7 +72,19 @@ export default async function DynamicSlugPage({
     defaultLanguage:"en",
   }
 
+  const globalSchemaArgs = {
+    canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
+    pageTitle:seoData?.title || '',
+    metaDescription:seoData?.description || '',
+    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    datePublishedIso:pageData?.created_at || '',
+    dateModifiedIso:pageData?.updated_at || '',
+    languageTag:'en-IN',
+    currentPageName:pageData?.page_title || ''
+  };
+
   const pageSchema = buildHomepageSchema(schemaArgs);
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
   return (
     <>
@@ -79,6 +94,12 @@ export default async function DynamicSlugPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       {parentSlug == 'about-us' && pageSchema && (

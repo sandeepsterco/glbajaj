@@ -10,6 +10,7 @@ const fetchHappeningsData = async (slug: string) => {
 
 export default async function DepartmentHomeHappenings({params}:{params:{slug:string; parentSlug:string}}) {
   const slug = params.slug;
+  const {parentSlug} = params;
   const data = await fetchHappeningsData(slug);
 
   const happeningsData = data?.modular?.["news-events"];
@@ -17,7 +18,7 @@ export default async function DepartmentHomeHappenings({params}:{params:{slug:st
   return (
     <>
       {happeningsData?.length > 0 && (
-        <RelatedStories data={happeningsData} />
+        <RelatedStories data={happeningsData} parentSlug={parentSlug} currentSlug={'departments'} />
       )}
     </>
   );

@@ -46,7 +46,7 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
         publisher: { "@id": `${BASE_URL}#organization` },
         breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
         primaryImageOfPage: { "@id": `${primaryImageUrl}#image` },
-        datePublished: datePublishedIso, // omitted from JSON if undefined
+        datePublished: datePublishedIso,
         dateModified: dateModifiedIso, // omitted from JSON if undefined
         inLanguage: languageTag,
       },

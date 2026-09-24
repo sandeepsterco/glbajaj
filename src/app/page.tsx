@@ -8,6 +8,7 @@ import NotificationBar from "../components/ui/notificationBar/NotificationBar";
 import { buildHomepageSchema } from "../lib/schema/homepageSchema";
 import getValue from "../lib/getValue";
 import { BASE_URL } from "../config/config";
+import { buildGlobalSchema } from "../lib/schema/globalSchema";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes, infoRes] = await Promise.all([
@@ -66,7 +67,19 @@ export default async function Home() {
     defaultLanguage:"en",
   }
 
+  const globalSchemaArgs = {
+    canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
+    pageTitle:seoData?.title || '',
+    metaDescription:seoData?.description || '',
+    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    datePublishedIso:homeData?.created_at || '',
+    dateModifiedIso:homeData?.updated_at || '',
+    languageTag:'en-IN',
+    currentPageName:homeData?.page_title || ''
+  };
+
   const pageSchema = buildHomepageSchema(schemaArgs);
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
   return (
     <>
@@ -76,6 +89,12 @@ export default async function Home() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       {pageSchema && (

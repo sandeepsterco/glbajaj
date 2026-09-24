@@ -26,7 +26,7 @@ const scrollToSection = (id: string) => {
 export default function NavLinks({ tabs, activeSlug, tabTitle, pathname, parentSlug }: NavLinksProps) {
   const buildHref = (item: Tab) => {
     return pathname.includes("department")
-      ? `${BASE_URL}${parentSlug}/department/${item.slug}`
+      ? `${BASE_URL}${parentSlug}/departments/${item.slug}`
       : BASE_URL + item.slug;
   };
 

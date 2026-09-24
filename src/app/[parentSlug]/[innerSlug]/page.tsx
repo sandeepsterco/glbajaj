@@ -5,6 +5,8 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import { getPageSEO } from "@/src/lib/seo";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { notFound } from "next/navigation";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import { BASE_URL } from "@/src/config/config";
 
 export async function generateMetadata({
   params,
@@ -33,7 +35,22 @@ export default async function DynamicSlugPage({
     notFound();
   }
 
+  const pageData = data?.data;
+
+  const globalSchemaArgs = {
+    canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
+    pageTitle:seoData?.title || '',
+    metaDescription:seoData?.description || '',
+    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    datePublishedIso:pageData?.created_at || '',
+    dateModifiedIso:pageData?.updated_at || '',
+    languageTag:'en-IN',
+    currentPageName:pageData?.page_title || ''
+  };
+
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
+
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
   return (
     <>
@@ -43,6 +60,12 @@ export default async function DynamicSlugPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />

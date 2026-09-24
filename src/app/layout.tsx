@@ -11,10 +11,6 @@ import AOSInit from '@/src/lib/AOSInit'
 import "../styles/private/custom.css";
 import "../styles/private/globals.css";
 import "../styles/program.css";
-import { buildGlobalSchema } from "../lib/schema/globalSchema";
-import getValue from "../lib/getValue";
-import { apiFetch } from "../lib/api";
-import { cache } from "react";
 // import "../components/ui/pageLoader/page-loader.css";
 
 const tasaOrbiter = TASA_Orbiter({
@@ -30,44 +26,13 @@ const fontLexend = Lexend({
   variable: "--font-lexend",
 });
 
-const getInfoData = cache(async () => {
-  const {data, error} = await apiFetch("info");
-
-  return data;
-  // return { seoData, homeData: homeRes?.data?.data, infoRes:infoRes?.data };
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
 
-  const infoRes = await getInfoData();
-
-  const schemaArgs = {
-    canonicalUrl:getValue(infoRes, 'facebook')?.value,
-    pageTitle:'',
-    metaDescription:'',
-    primaryImageUrl:'',
-    datePublishedIso:'',
-    dateModifiedIso:'',
-    languageTag:'',
-    parentName:'',
-    parentUrl:'',
-    currentPageName:'',
-
-  };
-
-  const pageSchema = buildGlobalSchema(schemaArgs);
-
   return (
     <html lang="en" className={`${tasaOrbiter.variable} ${fontLexend.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {pageSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-          />
-        )}
           <Providers>
             {/* <AOSProvider> */}
               {/* <InitialLoadOverlay /> */}

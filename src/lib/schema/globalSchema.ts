@@ -7,7 +7,6 @@ export type ParentMenu = {
 };
 
 export type GlobalSchemaArgs = {
-  canonicalUrl: string; // full URL built from the current path
   pageTitle: string;
   metaDescription: string;
   primaryImageUrl: string;
@@ -17,27 +16,29 @@ export type GlobalSchemaArgs = {
 
   // Straight from the API
   parentMenus?: ParentMenu[]; // data.parent_menus
+  currentPageSlug: string; // data.current_page_slug (top-level, NOT inside parent_menus)
   currentPageName: string; // data.menu_title ?? data.page_title
 };
 
-// Build full URL from a path, e.g. "/about-us/our-inspiration"
-export function buildCanonicalUrl(pathname: string) {
-  const clean = pathname.replace(/\/+$/, ""); // strip trailing slash
-  return `${BASE_URL}${clean.startsWith("/") ? clean : `/${clean}`}`;
+// Joins any number of path segments onto BASE_URL with exactly one "/" between each,
+// regardless of whether BASE_URL or the segments already have leading/trailing slashes.
+function joinUrl(...segments: string[]): string {
+  const base = BASE_URL?.replace(/\/+$/, ""); // strip trailing slash from BASE_URL
+  const cleanSegments = segments
+    .map((s) => s?.trim().replace(/^\/+|\/+$/g, "")) // strip leading/trailing slashes
+    .filter((s) => s && s !== "#"); // drop empty/hash segments
+  return cleanSegments.length ? `${base}/${cleanSegments.join("/")}` : `${base}/`;
 }
 
-// Returns absolute URL, or undefined if the menu has no real page
-function resolveMenuUrl(url: string | null): string | undefined {
-  if (!url) return undefined;
-  const trimmed = url.trim();
-  if (trimmed === "" || trimmed === "#") return undefined; // "/" = Home, not a real parent
-  if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  return `${trimmed.startsWith("/") ? `${BASE_URL}` : `/${trimmed}`}`;
+// A menu url counts as a real page only if it's non-empty and not "/" or "#"
+function isRealMenuUrl(url: string | null): url is string {
+  if (!url) return false;
+  const trimmed = url.trim().replace(/^\/+|\/+$/g, "");
+  return trimmed !== "" && trimmed !== "#";
 }
 
 export function buildGlobalSchema(args: GlobalSchemaArgs) {
   const {
-    canonicalUrl,
     pageTitle,
     metaDescription,
     primaryImageUrl,
@@ -45,16 +46,27 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
     dateModifiedIso,
     languageTag,
     parentMenus = [],
+    currentPageSlug,
     currentPageName,
   } = args;
 
-  const breadcrumbItems: { name: string; item?: string }[] = [
-    { name: "Home", item: `${BASE_URL}` }, // mandatory, base URL
-    ...parentMenus.map((menu) => ({
+  const realParents = parentMenus.filter((menu) => isRealMenuUrl(menu.url)); // drops "About GLBITM" entirely
+
+  // baseurl + each real parent's url, in order + current_page_slug last
+  // e.g. joinUrl("about-us", "our-inspiration") -> "http://localhost:3000/about-us/our-inspiration"
+  const canonicalUrl = joinUrl(
+    ...realParents.map((m) => m.url as string),
+    currentPageSlug
+  );
+
+  const breadcrumbItems: { name: string; item: string }[] = [
+    { name: "Home", item: joinUrl() }, // "http://localhost:3000/"
+    ...realParents.map((menu, index) => ({
       name: menu.title,
-      item: resolveMenuUrl(menu.url), // undefined if null or "/"
+      // each parent crumb accumulates only the parents up to itself
+      item: joinUrl(...realParents.slice(0, index + 1).map((m) => m.url as string)),
     })),
-    { name: currentPageName, item: canonicalUrl }, // always the real page URL
+    { name: currentPageName, item: canonicalUrl }, // full nested path, last crumb
   ];
 
   return {
@@ -66,8 +78,8 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
         url: canonicalUrl,
         name: pageTitle,
         description: metaDescription,
-        isPartOf: { "@id": `${BASE_URL}#website` },
-        publisher: { "@id": `${BASE_URL}#organization` },
+        isPartOf: { "@id": joinUrl("#website") }, // careful, see note below
+        publisher: { "@id": joinUrl("#organization") },
         breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
         primaryImageOfPage: { "@id": `${primaryImageUrl}#image` },
         datePublished: datePublishedIso,
@@ -81,7 +93,7 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
           "@type": "ListItem",
           position: index + 1,
           name: crumb.name,
-          item: crumb.item, // omitted from JSON when undefined
+          item: crumb.item,
         })),
       },
     ],

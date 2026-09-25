@@ -47,6 +47,7 @@ export default async function DynamicSlugPage({
     languageTag:'en-IN',
     currentPageName:pageData?.page_title || '',
     parentMenus:pageData?.parent_menus || [],
+    currentPageSlug:pageData?.current_page_slug
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");

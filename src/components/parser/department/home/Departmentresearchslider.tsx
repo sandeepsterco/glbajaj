@@ -67,7 +67,7 @@ export default function DepartmentResearchSlider({ items, slug, parentSlug }: Pr
             {item?.slug && !item?.no_detail && (
               <Link
                 className="strech_link"
-                href={`${BASE_URL}${parentSlug}/department/${slug}/research/${item.slug}`}
+                href={`${BASE_URL}${parentSlug}/departments/${slug}/research/${item.slug}`}
               />
             )}
           </div>

@@ -3,7 +3,7 @@ import { apiFetch } from "@/src/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { SkeletonGroup } from "../ui/Skeleton";
 import Link from "next/link";
-import { APPLY_NOW } from "@/src/config/config";
+import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import { useState } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
@@ -47,7 +47,7 @@ export default function DepartmentNotificationBar() {
               {/* ✅ Animation lives on the TRACK, not individual items */}
               <div className="ticker-track">
                 {loopItems?.map((n, i) => (
-                  <Link key={i} href={n.url ?? '#'} className="ticker-item" target="_blank">
+                  <Link key={i} href={`${BASE_URL}happenings${n.url}` || '#'} className="ticker-item" target="_blank">
                     <span>{n.title}</span>
                     <FaChevronRight fontSize={10} />
                   </Link>

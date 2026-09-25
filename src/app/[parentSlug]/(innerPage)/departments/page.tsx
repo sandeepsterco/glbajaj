@@ -64,7 +64,7 @@ export default async function DepartmentsPage({params}:{params:Promise<{parentSl
                       />
                     </figure>
                     <h3 className="font24">{item.name}</h3>
-                    <Link className="strech_link" href={`${BASE_URL}${parentSlug}/department/${item.slug}`} />
+                    <Link className="strech_link" href={`${BASE_URL}${parentSlug}/departments/${item.slug}`} />
                   </div>
                 ))}
             </div>

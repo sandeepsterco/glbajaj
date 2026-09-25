@@ -80,6 +80,7 @@ export default async function DynamicSlugPage({
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
+    currentPageSlug:'',
     currentPageName:pageData?.page_title || ''
   };
 

@@ -10,6 +10,8 @@ import "@/src/styles/program.css";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
+import { buildDepartmentSchema } from "@/src/lib/schema/departmentSchema";
+import { BASE_URL } from "@/src/config/config";
 // import "@/src/styles/parser.css";
 
 export async function generateMetadata({
@@ -39,6 +41,29 @@ export default async function DepartmentPage({
     ? Object.values(data?.data?.cms).join("")
     : "";
 
+    const pageData = data?.data;
+
+    const departmentSchemaArgs = {
+      departmentUrl:`${BASE_URL}${parentSlug}/departments/${slug}` || '',
+      departmentPageTitle:seoData.title || '',
+      metaDescription:seoData.description || '',
+      visibleDepartmentDescription:seoData.description || '',
+      departmentName:pageData.department_name || '',
+      staticSegments:[
+        {
+          name:"Academics",
+          slug:parentSlug
+        },
+        {
+          name:"Departments",
+          slug:'departments',
+        },
+      ],
+      departmentSlug:pageData.department_slug || '',
+    };
+
+  const departmentSchema = buildDepartmentSchema(departmentSchemaArgs);
+
   return (
     <>
       {seoData?.schema && (
@@ -47,6 +72,12 @@ export default async function DepartmentPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {departmentSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(departmentSchema) }}
         />
       )}
       <div className="happenings_page">

@@ -2,6 +2,7 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
+import { buildProgrammeSchema } from "@/src/lib/schema/ProgrammeSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import Link from "next/link";
 
@@ -17,9 +18,9 @@ export async function generateMetadata({
 export default async function ProgramDetail({
     params,
   }: {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string, parentSlug:string }>;
   }) {
-    const { slug } = await params;
+    const { slug, parentSlug } = await params;
 
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`program/${slug}`),
@@ -29,6 +30,32 @@ export default async function ProgramDetail({
   const combinedHtml = Object.values(data?.program_details?.cms ?? {}).join("");
 
   if (!combinedHtml) return <h1>Loading...</h1>;
+
+  const pageData = data?.program_details?.data;
+
+  const programmeSchemaArgs = {
+    programmeUrl:`${BASE_URL}${parentSlug}/programs/${slug}` || '',
+    programmePageTitle:seoData.title || '',
+    metaDescription:seoData.description || '',
+    programmeName:pageData.name || '',
+    visibleProgrammeSummary:seoData.description || '',
+    educationalProgramMode:pageData.duration || '0',
+    timeToCompleteIso:pageData.duration + ' Years' || '0 Years',
+    programmeSlug:slug || '',
+    staticSegments:[
+      {
+        name:"Academics",
+        slug:parentSlug
+      },
+      {
+        name:"Programs",
+        slug:'programs',
+      },
+    ],
+    departmentSlug: '',
+  };
+
+  const programmeSchema = buildProgrammeSchema(programmeSchemaArgs);
 
   return (
     <>
@@ -40,6 +67,13 @@ export default async function ProgramDetail({
           }}
         />
       )}
+      {programmeSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(programmeSchema) }}
+        />
+      )}
+
       <ReactParserDynamic html={combinedHtml} />
       {data?.department && (
         <div className="program_strip">

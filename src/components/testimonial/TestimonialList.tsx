@@ -55,7 +55,7 @@ export default async function TestimonialList({ data, slug, parentSlug, activeTy
                                 <p>{item.course}</p>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}why-glbitm/testimonials/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}${parentSlug}/testimonials/${item.slug}`} className="strech_link" />
                             )}
 
                         </div>

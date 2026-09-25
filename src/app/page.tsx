@@ -75,6 +75,7 @@ export default async function Home() {
     datePublishedIso:homeData?.created_at || '',
     dateModifiedIso:homeData?.updated_at || '',
     languageTag:'en-IN',
+    currentPageSlug:'',
     currentPageName:homeData?.page_title || ''
   };
 

@@ -21,7 +21,7 @@ export default function PageHeader({ data, slug, pathname, currentPageTitle, par
           <div className="container-fluid">
               <div className="about_breadcrumb">
                 <div>
-                  <p className="about_glbim_p">{data?.tab_title ?? data?.page_title}</p>
+                  <p className="about_glbim_p">{data?.tab_title || data?.page_title}</p>
                 </div>
 
                 <TruncatedBreadcrumbs breadcrumbs={cleanBreadcrumbs} totalLength={totalLength} />

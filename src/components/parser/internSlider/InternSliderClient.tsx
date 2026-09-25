@@ -110,7 +110,7 @@ export default function InternSliderClient({ sliderItems }: InternSliderClientPr
               </div>
               <a
                 className="strech_link"
-                href={`/placements/internship/${item.slug ?? "#"}`}
+                href={`/placements/internships/${item.slug ?? "#"}`}
               ></a>
             </div>
           </SwiperSlide>

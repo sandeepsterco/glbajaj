@@ -39,7 +39,7 @@ export default function HomeHappenings({homeData}:{homeData:any}) {
                 )}
               </div>
           </div>
-          <Link href={`${BASE_URL}news-events/${item.slug}`} className="strech_link" />
+          <Link href={`${BASE_URL}happenings/news-events/${item.slug}`} className="strech_link" />
       </div>
       ))}
   </div>

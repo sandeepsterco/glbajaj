@@ -13,13 +13,14 @@ export default async function MessageDetailLayout({
     params: Promise<{ parentSlug: string; slug: string }>;
 }) {
     const { parentSlug, slug } = await params;
+    const currentSlug = 'internships'
 
     if (!parentSlug) return <>{children}</>;
 
     return (
         <InnerPageLayoutWrapper
-            slug={parentSlug}
-            pathname={`/${parentSlug}/internship/${slug}`}
+            slug={currentSlug}
+            pathname={`/${parentSlug}/${currentSlug}/${slug}`}
             tabs={null}
             mainClass="happenings_page"
             showTabs={true}

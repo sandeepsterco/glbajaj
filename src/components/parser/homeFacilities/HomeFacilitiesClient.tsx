@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -27,12 +27,21 @@ interface HomeFacilitiesClientProps {
 }
 
 export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientProps) {
+  const [mounted, setMounted] = useState(false)
   const [activeTab, setActiveTab] = useState(0);
   const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRefs = useRef<Record<number, SwiperType>>({});
   const containerRef = useContainer25MaxWidth();
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const aos = (delay = "200") => mounted
+    ? { "data-aos": "fade-up", "data-aos-delay": delay }
+    : {}
 
   const VISIBLE_SLIDES = 2.25;
 
@@ -89,10 +98,10 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
 
                   {/* ── Desktop nav side ── */}
                   <div className="homeFac_nav_side">
-                    <h4 className="font24" data-aos="fade-up" data-aos-delay="200">
+                    <h4 className="font24" {...aos("200")}>
                       Facilities
                     </h4>
-                    <h3 className="title48" data-aos="fade-up" data-aos-delay="400">
+                    <h3 className="title48" {...aos("200")}>
                       The Best Environment for the Best Minds
                     </h3>
 
@@ -111,8 +120,7 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
                     <div
                       className="navigation_btn"
                       style={{ visibility: showNav(activeTab) ? "visible" : "hidden" }}
-                      data-aos="fade-up"
-                      data-aos-delay="600"
+                      {...aos("200")}
                     >
                       <div
                         ref={prevRef}
@@ -169,6 +177,7 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
                                 spaceBetween={20}
                                 slidesPerView={1.2}
                                 loop={false}
+                                {...aos("200")}
                                 navigation={{
                                   prevEl: prevRef.current,
                                   nextEl: nextRef.current,
@@ -206,15 +215,13 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
                                       <Image
                                         src={slide?.image || ""}
                                         className="w-100 img-fluid"
-                                        data-aos="fade-up"
-                                        data-aos-delay="200"
                                         width={600}
                                         height={841}
                                         alt={slide?.title ?? "facilities"}
                                         loading="lazy"
                                       />
                                       {slide?.title && (
-                                        <h4 className="font36" data-aos="fade-up" data-aos-delay="400">
+                                        <h4 className="font36" >
                                           {slide.title}
                                         </h4>
                                       )}

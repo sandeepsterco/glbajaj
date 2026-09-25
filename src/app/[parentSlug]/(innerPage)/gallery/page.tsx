@@ -31,8 +31,8 @@ export default async function GalleryPage({
             mainClass="happenings_page"
             showTabs={true}
         >
-            <MainGallery data={data?.featured} />
-            <GalleryList data={data?.others} />
+            <MainGallery data={data?.featured} parentSlug={parentSlug} />
+            <GalleryList data={data?.others} parentSlug={parentSlug} />
         </InnerPageLayoutWrapper>
     );
 }

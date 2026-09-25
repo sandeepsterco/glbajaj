@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import type { UpcomingEventsResponse, MediaCoverageItem, NewsEventItem } from "./HomeHighlights";
+import { useEffect, useState } from "react";
 
 function formatDateParts(dateStr: string) {
   const date = new Date(dateStr);
@@ -26,6 +27,16 @@ interface HomeUpcomingEventsClientProps {
 }
 
 export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClientProps) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const aos = (delay = "200") => mounted
+    ? { "data-aos": "fade-up", "data-aos-delay": delay }
+    : {}
+
   return (
       <div className="left_col">
         <Swiper
@@ -62,8 +73,7 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                     <img
                       src={event.image ?? ""}
                       alt={event.title}
-                      data-aos="fade-up"
-                      data-aos-delay="800"
+                      {...aos("200")}
                       loading="lazy"
                       width="723"
                       height="568"
@@ -71,18 +81,18 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                     />
                   </figure>
 
-                  <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
+                  <div className="sec_data" {...aos("200")}>
                     <div className="left">
-                      <p className="date text-white" data-aos="fade-up" data-aos-delay="800">
+                      <p className="date text-white">
                         {d.full}
                       </p>
-                      <h4 className="title text-white" data-aos="fade-up" data-aos-delay="800">
+                      <h4 className="title text-white">
                         {event.title}
                       </h4>
                     </div>
 
                     <div className="right">
-                      <Link href={`/media-coverage`} data-aos="fade-up" data-aos-delay="800">
+                      <Link href={`/media-coverage`}>
                         <div className="arrow_btn1">
                           <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
                         </div>

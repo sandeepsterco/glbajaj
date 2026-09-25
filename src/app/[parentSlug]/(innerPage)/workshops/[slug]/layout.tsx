@@ -35,7 +35,7 @@ export default async function NewsEventsLayout({
         
       ],
       eventName:currentPageTitle,
-      visibleEventDescription:pageData.description || '',
+      visibleEventDescription:pageData?.description || '',
     };
 
     const eventSchema = buildEventDetailSchema(eventDetailSchema);

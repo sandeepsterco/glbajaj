@@ -37,15 +37,15 @@ const MEDIA_TAGS = new Set(["img", "video", "iframe", "input", "textarea", "sele
 
 const DOMPURIFY_ADD_ATTR = [
   "target",
-  "data-aos",
-  "data-aos-delay",
-  "data-aos-duration",
-  "data-aos-offset",
-  "data-aos-easing",
-  "data-aos-once",
-  "data-aos-mirror",
-  "data-aos-anchor",
-  "data-aos-anchor-placement",
+  // "data-aos",
+  // "data-aos-delay",
+  // "data-aos-duration",
+  // "data-aos-offset",
+  // "data-aos-easing",
+  // "data-aos-once",
+  // "data-aos-mirror",
+  // "data-aos-anchor",
+  // "data-aos-anchor-placement",
 ];
 
 const DOMPURIFY_ALLOWED_TAGS = [

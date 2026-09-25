@@ -92,6 +92,7 @@ function MenuColumn({
       >
         <Link
           href={childSlug}
+          prefetch={false}
           className="menu_title_link"
           target={childTarget}
           onClick={() => {
@@ -119,6 +120,7 @@ function MenuColumn({
               <li key={subIdx}>
                 <Link
                   href={subSlug}
+                  prefetch={false}
                   target={subTarget}
                   onClick={() => {
                     if (subNavigable) {

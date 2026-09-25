@@ -54,6 +54,7 @@ export default function NavLinks({ tabs, activeSlug, tabTitle, pathname, parentS
             <li key={itemIdx}>
               <Link
                 href={href}
+                prefetch={false}
                 className={`paragraph ${item.slug === activeSlug ? "active" : ""}`}
                 onClick={(e) => handleClick(e, href)}
               >

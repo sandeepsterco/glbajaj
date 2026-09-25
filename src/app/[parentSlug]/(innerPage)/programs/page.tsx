@@ -7,6 +7,8 @@ import "@/src/styles/inner.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildProgrammeListSchema } from "@/src/lib/schema/ProgrammeListSchema";
+import { BASE_URL } from "@/src/config/config";
 
 export async function generateMetadata() {
   return await getPageSEO(`programs-offered`);
@@ -20,6 +22,17 @@ export default async function ProgramsOffered({params}:{params:Promise<{parentSl
     getPageSEO(`programs-offered`),
   ]);
 
+  const programmeListSchemaArgs = {
+    items:[
+      {
+        url:`${BASE_URL}${parentSlug}/programs` || '',
+      }
+    ],
+    listingUrl:`${BASE_URL}${parentSlug}/programs` || ''
+  }
+
+  const programmeListSchema = buildProgrammeListSchema(programmeListSchemaArgs);
+
   return (
     <>
       {seoData?.schema && (
@@ -28,6 +41,12 @@ export default async function ProgramsOffered({params}:{params:Promise<{parentSl
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {programmeListSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(programmeListSchema) }}
         />
       )}
       <main>

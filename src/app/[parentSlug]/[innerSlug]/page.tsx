@@ -7,6 +7,7 @@ import PageHeader from "@/src/components/layout/header/PageHeader";
 import { notFound } from "next/navigation";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
+import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
 
 export async function generateMetadata({
   params,
@@ -54,6 +55,27 @@ export default async function DynamicSlugPage({
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
+  let eventSchema;
+
+  if(innerSlug == 'hackathons'){
+    const eventDetailSchema = {
+      staticSegments:[
+        {
+          name:'Student Corner',
+          slug:parentSlug,
+        },
+        {
+          name:pageData.page_title,
+          slug:innerSlug,
+        },
+      ],
+      eventName:pageData.page_title,
+      visibleEventDescription:'',
+    };
+
+    eventSchema = buildEventDetailSchema(eventDetailSchema);
+  }
+
   return (
     <>
       {seoData?.schema && (
@@ -62,6 +84,12 @@ export default async function DynamicSlugPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {eventSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
         />
       )}
       {globalSchema && (

@@ -13,10 +13,10 @@ import HashLinkAnchor from "./HashLinkAnchor";
 import CmsEnhancer from "@/src/lib/CmsEnhancer";
 
 // import "@/src/styles/fancybox.css";
-import "@/src/styles/inner.css";
-import "@/src/styles/responsive1.css";
-import "@/src/styles/responsive.css";
-import "@/src/styles/parser.css";
+// import "@/src/styles/inner.css";
+// import "@/src/styles/responsive1.css";
+// import "@/src/styles/responsive.css";
+// import "@/src/styles/parser.css";
 
 const withLazyComponent = (
   loader: () => Promise<{ default: React.ComponentType<any> }>,

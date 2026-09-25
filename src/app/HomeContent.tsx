@@ -1,6 +1,7 @@
-import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
+// HomeContent.tsx
+import HomeReactParser from "../components/common/reactParser/HomeReactParser";
 
-export default async function HomeContent({data}:{data:any}) {
+export default async function HomeContent({ data }: { data: any }) {
   if (!data?.modular && !data?.cms) {
     return (
       <div className="min-h-[100vh] flex items-center justify-center">
@@ -9,13 +10,7 @@ export default async function HomeContent({data}:{data:any}) {
     );
   }
 
-  const combinedHtml = data?.cms
-    ? Object.values(data.cms).join("")
-    : "";
+  const combinedHtml = data?.cms ? Object.values(data.cms).join("") : "";
 
-  return (
-    <>
-      <ReactParserDynamic html={combinedHtml} homeData={data} />
-    </>
-  );
+  return <HomeReactParser html={combinedHtml} homeData={data} />;
 }

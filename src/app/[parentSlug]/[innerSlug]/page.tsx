@@ -45,7 +45,8 @@ export default async function DynamicSlugPage({
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageName:pageData?.page_title || ''
+    currentPageName:pageData?.page_title || '',
+    parentMenus:pageData?.parent_menus || [],
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");

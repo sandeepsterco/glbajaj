@@ -85,6 +85,7 @@
 .mega_container ul>li>a { color: var(--color-white); padding-bottom: 1rem; border-bottom: 0.1rem solid rgba(210, 171, 103, 0.3); display: block; }
 .megg_lft_top { padding-bottom: 10rem; }
 .dropdown_grid_placement .mega_left h4{margin-bottom: 0;}
+.dropdown_grid_placements .mega_left h4{margin-bottom: 0;}
 /************  Bottom header CSS End ************/
 
 /************  Hamburger CSS Start ************/
@@ -130,7 +131,9 @@
 
 .dropdown_grid_research-overview .dropdown_col.no-children .menu_title_link,
 .dropdown_placement .dropdown_col.no-children .menu_title_link,
+.dropdown_placements .dropdown_col.no-children .menu_title_link,
 .dropdown_admission-overview .dropdown_col.no-children .menu_title_link,
+.dropdown_null .dropdown_col.no-children .menu_title_link,
 .dropdown_grid_academics .mega_right .menu_title_link,
 .dropdown_grid_alumni-overview .mega_right .menu_title_link{
     color: var(--color-white);
@@ -139,7 +142,8 @@
     display: block;
     font:var(--font-16)
 }
-.dropdown_grid_admission-overview .mega_left h4{margin-bottom: 0;}
+.dropdown_grid_admission-overview .mega_left h4,
+.dropdown_grid_null .mega_left h4{margin-bottom: 0;}
 .hmburger_grid ul{ padding-bottom: 5rem;}
 
 /* ==========global_search_dialog =============== */

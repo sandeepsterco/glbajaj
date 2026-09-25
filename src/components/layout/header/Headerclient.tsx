@@ -312,7 +312,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                                 }}
                               >
                                 <div
-                                  className={`mega_container dropdown_grid_${slugKey}`}
+                                  className={`mega_container dropdown_grid_${slugKey ? slugKey : 'null'}`}
                                 >
                                   {/* LEFT COLUMN */}
                                   {leftItems.length > 0 && (

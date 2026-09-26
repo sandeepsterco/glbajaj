@@ -1,4 +1,3 @@
-export const dynamic = 'force-dynamic';
 import { apiFetch } from "@/src/lib/api";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";

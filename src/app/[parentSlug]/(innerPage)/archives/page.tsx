@@ -33,8 +33,8 @@ export default async function ArchivePage({
       mainClass="happenings_page"
       showTabs={true}
     >
-      <MainGallery data={data?.featured} currentPage="workshops" parentSlug={parentSlug} />
-      <GalleryList data={data?.others} currentPage="workshops" parentSlug={parentSlug} />
+      <MainGallery data={data?.featured} currentPage={currentSlug} parentSlug={parentSlug} />
+      <GalleryList data={data?.others} currentPage={currentSlug} parentSlug={parentSlug} />
     </InnerPageLayoutWrapper>
   );
 }

@@ -135,7 +135,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     digital_pathshala_videos: () => withLazyComponent(() => import("../../parser/DigitalPathshalaVideoGrid")),
     why_clubs_grid: () => withLazyComponent(() => import("../../parser/WhyClubsGrid"), { params, searchParams }),
     alumni_events_meet: () => withLazyComponent(() => import("../../parser/AlumniEventsMeetGrid")),
-    admission_programs: () => withLazyComponent(() => import("../../parser/AdmissionPrograms")),
+    admission_programs: () => withLazyComponent(() => import("../../parser/admissions/AdmissionPrograms")),
     department_notifications: () => withLazyComponent(() => import("../../parser/DepartmentNotificationBar")),
     department_home_clubs: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeClubs"), { params, data }),
     department_home_ceo: () => withLazyComponent(() => import("../../parser/DepartmentHomeCEO")),

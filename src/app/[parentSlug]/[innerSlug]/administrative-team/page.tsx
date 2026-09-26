@@ -20,8 +20,8 @@ export default async function MessagesAdministrationPage({
 
     return (
         <>
-            <InnerPageLayoutWrapper slug={parentSlug}
-                pathname={`/${parentSlug}/messages-and-administration`} tabs={null} mainClass="happenings_page" showTabs={true}>
+            <InnerPageLayoutWrapper slug={'administrative-team'}
+                pathname={`/${parentSlug}/messages-and-administration`}  tabs={null} mainClass="happenings_page" showTabs={true}>
                 <LeadershipList data={data} />
             </InnerPageLayoutWrapper>
         </>

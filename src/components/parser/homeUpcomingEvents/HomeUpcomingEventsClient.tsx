@@ -35,7 +35,7 @@ export default function HomeUpcomingEventsClient({ events }: HomeUpcomingEventsC
             const d = formatDateParts(event.date);
             return (
               <li key={event.id}>
-                <Link href={`/news-events/${event.slug}`}>
+                <Link href={`/happenings/news-events/${event.slug}`}>
                   <div className="text">
                     <span className="date">{d.full}</span>
                     <p>{event.heading}</p>

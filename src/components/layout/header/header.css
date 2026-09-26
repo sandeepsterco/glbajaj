@@ -133,7 +133,7 @@
 .dropdown_placement .dropdown_col.no-children .menu_title_link,
 .dropdown_placements .dropdown_col.no-children .menu_title_link,
 .dropdown_admission-overview .dropdown_col.no-children .menu_title_link,
-.dropdown_admission .dropdown_col.no-children .menu_title_link,
+.dropdown_admissions .dropdown_col.no-children .menu_title_link,
 .dropdown_null .dropdown_col.no-children .menu_title_link,
 .dropdown_grid_academics .mega_right .menu_title_link,
 .dropdown_grid_alumni .mega_right .menu_title_link{
@@ -144,7 +144,7 @@
     font:var(--font-16)
 }
 .dropdown_grid_admission-overview .mega_left h4,
-.dropdown_grid_admission .mega_left h4,
+.dropdown_grid_admissions .mega_left h4,
 .dropdown_grid_null .mega_left h4{margin-bottom: 0;}
 .hmburger_grid ul{ padding-bottom: 5rem;}
 

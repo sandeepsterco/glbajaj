@@ -13,10 +13,25 @@ export async function InitHodProfileSlider(root: HTMLElement): Promise<() => voi
   await Promise.all([import("swiper/css"), import("swiper/css/navigation")]);
 
   const instances: Swiper[] = [];
+
+  const toggleNavBtn = (slider: HTMLElement, hide: boolean) => {
+    const navBtn = slider
+      .closest(".hod_profile_bx")
+      ?.querySelector<HTMLElement>(".navigation_btn");
+    if (navBtn) {
+      navBtn.style.display = hide ? "none" : "";
+    }
+  };
+
   sliders.forEach((slider) => {
     if (slider.dataset.swiperInit) return;
     slider.dataset.swiperInit = "true";
-    if (slider.querySelectorAll(".swiper-slide").length <= 1) return;
+    const slideCount = slider.querySelectorAll(".swiper-slide").length;
+
+    if (slideCount <= 1) {
+      toggleNavBtn(slider, true);
+      return;
+    }
 
     const nextEl = slider.querySelector<HTMLElement>(".vision_hod_next");
     const prevEl = slider.querySelector<HTMLElement>(".vision_hod_prev");
@@ -36,13 +51,7 @@ export async function InitHodProfileSlider(root: HTMLElement): Promise<() => voi
         },
         on: {
           init(swiper) {
-            const navBtn = slider
-              .closest(".hod_profile_bx")
-              ?.querySelector<HTMLElement>(".navigation_btn");
-            if (navBtn) {
-              navBtn.style.visibility = swiper.isLocked ? "hidden" : "";
-              navBtn.style.pointerEvents = swiper.isLocked ? "none" : "";
-            }
+            toggleNavBtn(slider, swiper.isLocked);
           },
         },
       })

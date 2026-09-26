@@ -6,6 +6,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import type { UpcomingEventsResponse, MediaCoverageItem, NewsEventItem } from "./HomeHighlights";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "@/src/config/config";
 
 function formatDateParts(dateStr: string) {
   const date = new Date(dateStr);
@@ -92,7 +93,7 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                     </div>
 
                     <div className="right">
-                      <Link href={`/media-coverage`}>
+                      <Link href={`${BASE_URL}happenings/media-coverage`}>
                         <div className="arrow_btn1">
                           <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
                         </div>

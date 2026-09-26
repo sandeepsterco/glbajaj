@@ -9,7 +9,7 @@ import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
 
 export default async function MessagesAdministrationPage({
-    params,
+    params, 
 }: {
     params: Promise<{ parentSlug: string }>;
 }) {

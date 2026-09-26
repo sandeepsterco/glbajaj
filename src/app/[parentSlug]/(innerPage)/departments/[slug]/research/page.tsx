@@ -1,6 +1,5 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import PageHeader from "@/src/components/layout/header/PageHeader";
-import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
@@ -29,9 +28,11 @@ export default async function DepartmentResearchPage({
 
   if (error) notFound();
 
-  if (cmsSections?.length == 0) {
-    return <NoData />;
-  }
+  if (cmsSections?.length == 0) return notFound();
+
+  const combinedHtml = data?.data?.cms
+    ? Object.values(data?.data?.cms).join("")
+    : "";
 
   return (
     <>
@@ -43,10 +44,7 @@ export default async function DepartmentResearchPage({
           }}
         />
       )}
-      <PageHeader data={data?.data} slug={slug} pathname={`/department/${slug}/research`} />
-      {cmsSections?.map((item: any) => {
-        return <ReactParser key={item.id} html={item.cms} />;
-      })}
+      <ReactParser html={combinedHtml} />
     </>
     // <ReactParser html={section1} />
   );

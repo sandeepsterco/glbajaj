@@ -1,18 +1,40 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { API_URL } from './config/config';
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Redirect /department/[slug]/home → /department/[slug]
-  const match = pathname.match(/^\/department\/([^/]+)\/home$/);
-  if (match) {
-    const slug = match[1];
-    return NextResponse.redirect(new URL(`/department/${slug}`, request.url));
+  const slug = pathname.replace(/^\/+/, '');
+
+  if(!slug){
+    return NextResponse.next();
   }
 
-  // ✅ DO NOT set x-pathname header — it causes dynamic rendering on every page
-  // Use usePathname() in client components instead
+  try{
+    const apiUrl = `${API_URL}redirect/${slug}`;
+
+    const res = await fetch(apiUrl, {
+      cache: 'no-store',
+    });
+    
+    if (res.ok) {
+      const json = await res.json();
+
+      if (json?.success && json?.data?.new_url) {
+        const newUrl = json.data.new_url as string;
+
+        const redirectUrl = new URL(`/${newUrl.replace(/^\/+/, '')}`, request.url);
+
+        if (redirectUrl.pathname !== pathname) {
+          return NextResponse.redirect(redirectUrl, 301);
+        }
+      }
+    }
+
+  } catch (err) {
+    console.error('Redirect API error:', err);
+  }
 
   return NextResponse.next();
 }

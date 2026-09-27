@@ -47,7 +47,7 @@ export default async function ProgramDetail({
             <div className="content">
               <p>Learn More About the {data.department.name}</p>
               <Link
-                href={`${BASE_URL}department/${data.department.slug}`}
+                href={`${BASE_URL}academics/departments/${data.department.slug}`}
                 className="arrow_btn button_strip"
               >
                 <img src="/images/home/slide_arrow_right.svg" />

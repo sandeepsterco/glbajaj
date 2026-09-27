@@ -1,29 +1,52 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 export function NavigationProgress() {
   const [loading, setLoading] = useState(false)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    setLoading(false)   // hide when page loads
-  }, [pathname])
+    setLoading(false)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+  }, [pathname, searchParams])
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('a')
       if (!target) return
+
       const href = target.getAttribute('href')
       if (!href) return
+      if (target.target === '_blank') return
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+
       const isInternal = href.startsWith('/') || href.startsWith(window.location.origin)
-      if (isInternal && target.target !== '_blank') {
-        setLoading(true)   // show on click
-      }
+      if (!isInternal) return
+
+      const resolved = new URL(href, window.location.href)
+      const current = new URL(window.location.href)
+
+      const isSameDestination =
+        resolved.pathname.replace(/\/+$/, '') === current.pathname.replace(/\/+$/, '') &&
+        resolved.search === current.search
+
+      if (isSameDestination) return
+
+      setLoading(true)
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => setLoading(false), 6000)
     }
+
     document.addEventListener('click', handleClick)
-    return () => document.removeEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [])
 
   if (!loading) return null

@@ -4,7 +4,7 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
   const parent_menus = data?.parent_menus;
 
   const isProgramsOffered = pathname.includes("programs-offered");
-  const isProgram = pathname.includes("program") && !pathname.includes("programs-offered");
+  const isProgram = pathname.includes("program") && !pathname.includes("programs");
   const isDepartments = pathname.includes("department");
   const isDepartmentDetail = pathname.includes("department") && !pathname.includes("departments");
 
@@ -21,7 +21,7 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
       ? [
           data?.tab_title
             ? { label: data?.tab_title }
-            : { label: data?.department_name, slug: `${BASE_URL}${parentSlug}/department/${data?.department_slug}` },
+            : { label: data?.department_name, slug: `${BASE_URL}${parentSlug}/departments/${data?.department_slug}` },
         ]
       : []),
     { label: data?.menu_title ?? data?.page_title ?? "" },

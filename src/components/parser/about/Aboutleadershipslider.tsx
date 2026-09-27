@@ -77,7 +77,7 @@ export default function AboutLeadershipSlider({ leaders }: Props) {
                 {item?.slug && (
                   <Link
                     className="strech_link"
-                    href={`${BASE_URL}messages-and-administration/${item.slug}`}
+                    href={`${BASE_URL}about-us/leadership-messages/${item.slug}`}
                   />
                 )}
               </div>

@@ -79,7 +79,7 @@ function MenuColumn({
 
   const hasSubChildren =
     child.has_children === true && child.children?.length > 0;
-  const childSlug = child?.slug ? `${BASE_URL}${ isSlugContains(child.slug) ? generateSlug(parent.title) + '/' : ''}${child.slug}` : child?.target_blank_url ? child.target_blank_url : "#";
+  const childSlug = child?.slug ? `${BASE_URL}${ isSlugContains(child.slug) ? parent.slug + '/' : ''}${child.slug}` : child?.target_blank_url ? child.target_blank_url : "#";
   const childTarget = child?.target_blank_url ? "_blank" : "_self";
   const isNavigable = child?.slug && child.slug !== "#";
 

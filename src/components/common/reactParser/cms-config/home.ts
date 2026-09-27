@@ -1,4 +1,3 @@
-// components/common/reactParser/cms-config/home.ts
 import { SyncInit, GatedTask } from "../core/createCmsEnhancer";
 import { sharedSyncInits, sharedGatedTasks } from "./shared";
 import { InitWhyGlbSection } from "@/src/lib/cms/initWhyGlbSection";
@@ -6,9 +5,9 @@ import { InitWhyGlbSection } from "@/src/lib/cms/initWhyGlbSection";
 export const homeSyncInits: SyncInit[] = [...sharedSyncInits, InitWhyGlbSection];
 
 export const homeGatedTasks: GatedTask[] = [
-  [".award_ranking", (root) => import('@/src/lib/cms/initStudentsSwiper').then((m)=>m.InitAwardRanking(root))],
   // ...sharedGatedTasks,
-  [".studentsSwiper", (root) => import("@/src/lib/cms/initStudentsSwiper").then((m) => m.InitStudentsSwiper(root))],
+  [".award_ranking", (root) => import('@/src/lib/cms/initAwardRanking').then((m)=>m.InitAwardRanking(root))],
+  // [".studentsSwiper", (root) => import("@/src/lib/cms/initStudentsSwiper").then((m) => m.InitStudentsSwiper(root))],
   // [".companySwiper", (root) => import("@/src/lib/cms/initCompanySwiper").then((m) => m.InitCompanySwiper(root))],
   // [".home_research_incubation", (root) => import("@/src/lib/cms/initHomeResearchIncubation").then((m) => m.InitHomeResearchIncubation(root))],
   // [".home_about_video", (root) => import("@/src/lib/cms/initHomeAboutVideo").then((m) => m.InitHomeAboutVideo(root))],

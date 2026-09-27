@@ -15,21 +15,13 @@
 */
 .swiper-button-prev,
 .swiper-button-next { width: 4rem!important; height: 4rem!important; cursor: pointer; background-color: var(--color-white); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.sec_title.center { text-align: center; }
-.sec_title.left { text-align: left; padding-block: 0rem 0; }
-.sec_title .title48 { color: var(--color-92); margin-top: 1rem; line-height: 4.8rem; letter-spacing: -0.24rem; font-weight: normal; }
-.sec_title figure { width: 100%; height: 100%; }
-.sec_title figure img { margin: auto; }
-.sec_title .desc { font: var(--font-14); line-height: 2.4rem; margin-top: 3rem; margin-bottom: 3rem;}
+
+
 .award_swipr_main { position: relative; margin-top: 8rem; }
-.home_rank_award { padding-block: 13rem 14.4rem; }
-.home_rank_award .more_btn { margin-top:2rem; display:none; justify-content: center; }
-.home_rank_award .more_btn figure:hover { background-color: var(--color-92); }
-.home_rank_award .more_btn figure:hover img { filter: brightness(0) invert() ; }
-.home_rank_award .more_btn figure { transition: 0.3s; justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; display: flex; box-shadow: 0 4px 12px #00000026; }
+
 .h_r_award_Card { text-align: center; padding-inline:2rem; position: relative; }
 .h_r_award_Card::after { content: ''; position: absolute; left: 0; height: 19.2rem; width: 0.1rem; background-color: var(--color-64); top: 0; opacity: 0.3; }
-.home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
+
 .h_r_award_Card figure img { width: auto; height: 7.7rem; margin: auto; margin-bottom: 2rem; }
 .h_r_award_Card h6 { font:var(--font-12); font-weight: var(--font-bold); line-height: 1.2rem; margin-bottom: 0.5rem; font-family: var(--font-tasa); }
 .h_r_award_Card p { font:var(--font-10); font-weight: var(--font-bold); line-height: 1.2; font-family: var(--font-tasa); margin-bottom: 1rem; }
@@ -43,8 +35,7 @@
 .next_swiper_btn::after { content: ""; left: 0; top: 0; background-image: url("/images/home/slide_arrow_right.svg"); position: absolute; height: 100%; width: 100%; background-repeat: no-repeat; background-position: center; }
 .prev_swiper_btn:hover, .next_swiper_btn:hover { background-color: var(--color-92); transition: all 0.5s; }
 .prev_swiper_btn:hover::after, .next_swiper_btn:hover::after { filter: brightness(0) invert(1); }
-.home_rank_award .swiper-button-prev { position: absolute; left: 0; top: 50%; left: 0; transform: translateY(-50%); }
-.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 50%; right: 0; transform: translateY(-50%); }
+
 /************  Award and Ranking  CSS End ************/
 /************  start home placement  CSS End ************/
 .home_placement_section { background: var(--color-64); padding: 5.5rem 0 12rem; }
@@ -831,7 +822,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_research_section .research_group:after { z-index: 0; background-size: cover; width: 23.6rem; height: 35.6rem; top: auto; bottom: 0; left: -12rem; }
 .top_header { display: none; }
 .home_banner:before { display: none; }
-.home_rank_award { padding-block: 5rem; }
+
 .home_placement_top { margin: 0; }
 .home_placement_top { margin: 0; display: block; }
 .home_placement_stats .single_placement h3 { letter-spacing: -1.8px; color: var(--color-33); font: var(--font-36); font-weight: 400; }
@@ -866,7 +857,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .research_slider_wrapper { position: relative; margin-left: 0; }
 .research_slider_wrapper .navigation_btn { position: absolute; bottom: 41%; top: auto; height: 8rem; margin: auto; z-index: 9; left: 0; right: 0; display: flex; justify-content: space-between; }
 .sec_title .title48 { margin-top:1.5rem }
-.home_rank_award .more_btn figure { width: 3rem; height: 3rem; margin-top: 0.9rem; }
+
 .sec_title.left { padding-block: 0; }
 .home_placement_stats .single_placement:first-child { padding-left: 0; border-left: 0; }
 .home_placement_stats { display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -881,7 +872,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .award_swipr_main { margin-top: 5rem; }
 .award_ranking .swiper-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 4rem; }
 .award_ranking .swiper-wrapper .swiper-slide { margin: 0 auto; }
-.home_rank_award .container { padding-inline: 0; }
+
 .home_placement_student_slider .swiper-slide { display: grid; grid-template-columns: repeat(2, 1fr); }
 .home_placement_student_slider .placement_img { width: 11rem; right:0; top: 0; }
 .placem_cnt { background-color: var(--color-F5); display: flex; flex-direction: column; justify-content: space-between; padding-block: 3rem; padding-inline: 2.6rem; }
@@ -1091,7 +1082,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_research_section .research_group:after { z-index: 0; background-size: cover; width: 23.6rem; height: 35.6rem; top: auto; bottom: 0; left: -12rem; }
 .top_header { display: none; }
 .home_banner:before { display: none; }
-.home_rank_award { padding-block: 5rem; }
+
 .home_placement_top { margin: 0; }
 .home_placement_top { margin: 0; display: block; }
 .home_placement_stats .single_placement h3 { letter-spacing: -1.8px; color: var(--color-white); font: var(--font-36); font-weight: 400; }
@@ -1126,7 +1117,6 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .research_slider_wrapper { position: relative; margin-left: 0; }
 .research_slider_wrapper .navigation_btn { position: absolute; bottom: 41%; top: auto; height: 8rem; margin: auto; z-index: 9; left: 0; right: 0; display: flex; justify-content: space-between; }
 .sec_title .title48 { margin-top:1.5rem }
-.home_rank_award .more_btn figure { width: 3rem; height: 3rem; margin-top: 0.9rem; }
 .sec_title.left { padding-block: 0; }
 .home_placement_stats .single_placement:first-child { padding-left: 0; border-left: 0; }
 .home_placement_stats { display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -1141,7 +1131,6 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .award_swipr_main { margin-top: 5rem; }
 .award_ranking .swiper-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 4rem; }
 .award_ranking .swiper-wrapper .swiper-slide { margin: 0 auto; }
-.home_rank_award .container { padding-inline: 0; }
 .home_placement_student_slider .swiper-slide { display: grid; grid-template-columns: repeat(2, 1fr); }
 .home_placement_student_slider .placement_img { width: 11rem; right:0; top: 0; }
 .placem_cnt { background-color: var(--color-F5); display: flex; flex-direction: column; justify-content: space-between; padding-block: 3rem; padding-inline: 2.6rem; }
@@ -1465,7 +1454,7 @@ main { overflow: hidden; }
 .home_research_section .single_stat:first-child { border-right: .1rem solid var(--color-C0); }
 .home_research_section .single_stat:nth-child(2) { border-left: 0; }
 .h_r_award_Card figure img { height: 5rem; }
-.home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev { display: none; }
+
 .group_counter ul { grid-template-columns: repeat(2, 1fr); }
 .shaping_future_grid{grid-template-columns: repeat(1, 1fr);}
 .shaping_future_Bx figcaption { padding: 2rem 1rem 0; }

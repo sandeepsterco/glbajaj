@@ -1,4 +1,3 @@
-// HomeContent.tsx
 import HomeReactParser from "../components/common/reactParser/HomeReactParser";
 
 export default async function HomeContent({ data }: { data: any }) {

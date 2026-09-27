@@ -1,0 +1,24 @@
+/* =========.home_rank_award================ */
+
+.home_rank_award { padding-block: 13rem 14.4rem; }
+.home_rank_award .more_btn { margin-top:2rem; display:none; justify-content: center; }
+.home_rank_award .more_btn figure:hover { background-color: var(--color-92); }
+.home_rank_award .more_btn figure:hover img { filter: brightness(0) invert() ; }
+.home_rank_award .more_btn figure { transition: 0.3s; justify-content: center; align-items: center; width: 4rem; height: 4rem; margin-top: 2.1rem; display: flex; box-shadow: 0 4px 12px #00000026; }
+.home_rank_award .swiper-slide-active .h_r_award_Card::after { display: none; }
+.home_rank_award .swiper-button-prev { position: absolute; left: 0; top: 50%; left: 0; transform: translateY(-50%); }
+.home_rank_award .swiper-button-next { position: absolute; right: 0; top: 50%; right: 0; transform: translateY(-50%); }
+
+/* =========.home_rank_award================ */
+
+/* ======START RESPONSIVE====== */
+
+@media (max-width:991px) {
+    .home_rank_award { padding-block: 5rem; }
+    .home_rank_award .more_btn figure { width: 3rem; height: 3rem; margin-top: 0.9rem; }
+    .home_rank_award .container { padding-inline: 0; }
+}
+
+@media (max-width:640px) {
+    .home_rank_award .swiper-button-next, .home_rank_award .swiper-button-prev { display: none; }
+}

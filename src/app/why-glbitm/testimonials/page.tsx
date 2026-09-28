@@ -9,18 +9,18 @@ import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
 
 export default async function TestimonialPage({
-    params,
     searchParams,
 }: {
-    params: Promise<{ parentSlug: string }>;
     searchParams: Promise<{ page?: string; type?: string }>;
 }) {
     const currentSlug = 'testimonials';
-    const { parentSlug } = await params;
     const { page, type } = await searchParams;
-    const currentPage = Number(page) || 1;
-    const activeType = type || "student";
-    const { data, error } = await apiFetch(`testimonial?type=${activeType}&page=${currentPage}`);
+    const activeType = type || "Student";
+    const params = new URLSearchParams();
+    if (type) params.set("type", type);
+    if (page && Number(page) > 1) params.set("page", String(page));
+
+    const { data, error } = await apiFetch(`testimonial?${params.toString()}`);
 
 
     if (error) notFound();
@@ -30,10 +30,10 @@ export default async function TestimonialPage({
     return (
         <>
             <InnerPageLayoutWrapper slug={currentSlug}
-                pathname={`/${parentSlug}/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
+                pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 
-                <TestimonialList data={pagination} slug={parentSlug}
-                    parentSlug={parentSlug} activeType={activeType} />
+                <TestimonialList data={pagination} slug={'testimonials'}
+                    parentSlug={'why-glbitm'} activeType={activeType} />
 
 
             </InnerPageLayoutWrapper>

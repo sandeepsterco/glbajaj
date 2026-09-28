@@ -7,6 +7,7 @@ import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 import { notFound } from "next/navigation";
+import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 
 interface SearchParams {
   search?: string;
@@ -86,8 +87,25 @@ export default async function BlogDetailPage({
   const comments: any[] = data?.comments ?? [];
   const listingPath = `${BASE_URL}${listSlug}`;
 
+  const blogDetailSchemaArgs = {
+    blogUrl:`${BASE_URL}blogs/${blogSlug}` || '',
+    headline:details?.title || '',
+    summary:details?.description || '',
+    images:[details?.image],
+    datePublishedIso:details?.date || '',
+    dateModifiedIso:details?.date || '',
+  }
+
+  const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);
+
   return (
     <>
+      {blogDetailSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html:JSON.stringify(blogDetailSchema)}}
+        />
+      )}
       <section className="blog_details_banner">
         <div className="container-lg">
           <div className="txdcx_banner_img">

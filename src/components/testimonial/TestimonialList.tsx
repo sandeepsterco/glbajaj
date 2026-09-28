@@ -4,10 +4,10 @@ import Link from "next/link";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
 const TESTIMONIAL_TABS = [
-    { label: "Students", type: "student" },
-    { label: "Recruiters", type: "recruiter" },
-    { label: "Faculties", type: "faculties" },
-    { label: "Alumni", type: "alumni" },
+    { label: "Students", type: "Student" },
+    { label: "Recruiters", type: "Recruiter" },
+    { label: "Faculties", type: "Faculties" },
+    { label: "Alumni", type: "Alumni" },
 ] as const;
 
 export default async function TestimonialList({ data, slug, parentSlug, activeType = "student", currentPage }: { data: any; slug: string; parentSlug: string; activeType?: string; currentPage?: string }) {
@@ -24,7 +24,7 @@ export default async function TestimonialList({ data, slug, parentSlug, activeTy
                                     {TESTIMONIAL_TABS.map(({ label, type }) => (
                                         <li key={type}>
                                             <Link
-                                                href={`${BASE_URL}${parentSlug}/testimonials?type=${type}&page=1`}
+                                                href={`${BASE_URL}${parentSlug}/testimonials?type=${type}`}
                                                 className={activeType === type ? "active" : ""}
                                             >
                                                 {label}

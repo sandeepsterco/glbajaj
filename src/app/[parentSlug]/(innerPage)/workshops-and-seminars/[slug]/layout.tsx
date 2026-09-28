@@ -13,7 +13,7 @@ export default async function NewsEventsLayout({
     params: Promise<{ parentSlug: string; slug: string }>;
   }) {
     const { parentSlug, slug } = await params;
-    const currentSlug = 'workshops';
+    const currentSlug = 'workshops-and-seminars';
 
   if (!parentSlug) return <>{children}</>;
 

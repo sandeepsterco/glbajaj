@@ -42,7 +42,7 @@ export default async function FacultyPage({
   const [{ data, error }, { data: deptData }, {data:CMSData}] = await Promise.all([
     apiFetch(`${currentSlug}?${facultyQuery}`),
     apiFetch("department-faculty-list"),
-    apiFetch(`cms/${parentSlug}`),
+    apiFetch(`cms/faculty`),
   ]);
 
   if (error) notFound();

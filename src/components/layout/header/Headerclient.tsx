@@ -48,7 +48,7 @@ const SOCIALS = [
 
 
 const isSlugContains = (slug: string) => {
-  return !slug.includes('program');
+  return !slug.includes('sdfsdfsdfsdfsdfsdfsdfsdfsd');
 };
 
 const isDepartment = (slug: string) => {
@@ -79,7 +79,7 @@ function MenuColumn({
 
   const hasSubChildren =
     child.has_children === true && child.children?.length > 0;
-  const childSlug = child?.slug ? `${BASE_URL}${ isSlugContains(child.slug) ? generateSlug(parent.title) + '/' : ''}${child.slug}` : child?.target_blank_url ? child.target_blank_url : "#";
+  const childSlug = child?.slug ? `${BASE_URL}${ isSlugContains(child.slug) ? parent.slug + '/' : ''}${child.slug}` : child?.target_blank_url ? child.target_blank_url : "#";
   const childTarget = child?.target_blank_url ? "_blank" : "_self";
   const isNavigable = child?.slug && child.slug !== "#";
 
@@ -92,6 +92,7 @@ function MenuColumn({
       >
         <Link
           href={childSlug}
+          prefetch={false}
           className="menu_title_link"
           target={childTarget}
           onClick={() => {
@@ -119,6 +120,7 @@ function MenuColumn({
               <li key={subIdx}>
                 <Link
                   href={subSlug}
+                  prefetch={false}
                   target={subTarget}
                   onClick={() => {
                     if (subNavigable) {
@@ -312,7 +314,7 @@ export default function HeaderClient({ headerData }: { headerData?: any }) {
                                 }}
                               >
                                 <div
-                                  className={`mega_container dropdown_grid_${slugKey}`}
+                                  className={`mega_container dropdown_grid_${slugKey ? slugKey : 'null'}`}
                                 >
                                   {/* LEFT COLUMN */}
                                   {leftItems.length > 0 && (

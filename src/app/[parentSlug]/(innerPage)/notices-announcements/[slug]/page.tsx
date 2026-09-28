@@ -3,17 +3,14 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function NoticeAnnouncementPage({ params }: { params: any }) {
     const { slug } = await params;
 
     const { data, error } = await apiFetch(`notice-and-announcements/${slug}`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Notice Announcement Detail Page" message={error} />
-        )
-    }
+    if (error) notFound();
 
     if (Object.keys(data?.notice_and_announcement_details?.cms).length == 0) {
         return (

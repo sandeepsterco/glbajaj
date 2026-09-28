@@ -13,8 +13,9 @@ export default async function NewsEventsLayout({
     params: Promise<{ parentSlug: string; slug: string }>;
 }) {
     const { parentSlug, slug } = await params;
+    const currentSlug = 'gallery'
 
     if (!parentSlug) return <>{children}</>;
 
-    return <InnerPageLayoutWrapper slug={slug} pathname={`/${parentSlug}/gallery/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/${parentSlug}/${currentSlug}/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
 }

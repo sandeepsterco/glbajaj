@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { FaChevronRight } from "react-icons/fa6";
 import Link from "next/link";
 import "./notificationBar.css";
+import { BASE_URL } from "@/src/config/config";
 
 type Notification = {
   title: string;
@@ -33,7 +34,7 @@ export default function NotificationBarClient({ notifications }: NotificationBar
             <div className="notifi_text">
               <div className="ticker-track">
                 {loopItems.map((n, i) => (
-                  <Link key={i} href={n.url ?? "#"} className="ticker-item">
+                  <Link key={i} href={`${BASE_URL}happenings${n.url}` || "#"} className="ticker-item">
                     <span>{n.title}</span>
                     <FaChevronRight fontSize={10} />
                   </Link>

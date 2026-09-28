@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { apiFetch } from "@/src/lib/api"
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 import TestimonialList from "@/src/components/testimonial/TestimonialList";
@@ -7,6 +6,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 export default async function TestimonialPage({
     params,
@@ -15,6 +15,7 @@ export default async function TestimonialPage({
     params: Promise<{ parentSlug: string }>;
     searchParams: Promise<{ page?: string; type?: string }>;
 }) {
+    const currentSlug = 'testimonials';
     const { parentSlug } = await params;
     const { page, type } = await searchParams;
     const currentPage = Number(page) || 1;
@@ -22,17 +23,13 @@ export default async function TestimonialPage({
     const { data, error } = await apiFetch(`testimonial?type=${activeType}&page=${currentPage}`);
 
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load Faculty" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const pagination = data?.testimonials;
 
     return (
         <>
-            <InnerPageLayoutWrapper slug={parentSlug}
+            <InnerPageLayoutWrapper slug={currentSlug}
                 pathname={`/${parentSlug}/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 
                 <TestimonialList data={pagination} slug={parentSlug}

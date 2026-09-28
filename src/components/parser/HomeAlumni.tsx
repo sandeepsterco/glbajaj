@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -9,6 +9,15 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
 export default function HomeAlumni({homeData}:{homeData:any}) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const aos = (delay = "200") => mounted
+    ? { "data-aos": "fade-up", "data-aos-delay": delay }
+    : {}
 
   const rawData = homeData?.modular?.["testimonials"] ?? [];
 
@@ -29,7 +38,6 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
   const [activeTab, setActiveTab] = useState("alumnies");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Refs for mobile swiper custom nav arrows
   const mobilePrevRef = useRef<HTMLDivElement>(null);
   const mobileNextRef = useRef<HTMLDivElement>(null);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
@@ -37,7 +45,6 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
   const handleTabClick = (tabKey: any) => {
     setActiveTab(tabKey);
     setActiveIndex(0);
-    // Reset mobile swiper to first slide
     mobileSwiperRef.current?.slideTo(0);
   };
 
@@ -49,14 +56,12 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
       <div className="container">
         <div className="grid">
 
-          {/* ── LEFT col (desktop) ── */}
           <div className="left_col">
-            <img className="pattern_img" src="/images/pattern/pattern2.png" alt="" />
+            <img className="pattern_img" src="/images/pattern/pattern2.png" alt="pattern image" />
 
-            {/* sec_title — desktop only (hidden on mobile, rendered again below in mobile order) */}
             <div className="sec_title d-none d-lg-block">
-              <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
-              <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
+              <h5 className="title24" {...aos("200")}>GLBian Speaks</h5>
+              <h2 className="heading title48"  {...aos("200")}>
                 Our Success Stories
                  {/* from our Students and Alumni */}
               </h2>
@@ -64,11 +69,11 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
 
             {/* desc_content — desktop only */}
             <div className="desc_content d-none d-lg-block">
-              <div className="quote-icon" data-aos="fade-up" data-aos-delay="600">
+              <div className="quote-icon"  {...aos("200")}>
                 <img src="/images/icons/quote.png" alt="quote icon" />
               </div>
               {activeItem && (
-                <div className="desc active" data-aos="fade-up" data-aos-delay="800" dangerouslySetInnerHTML={{__html:activeItem?.message}} />
+                <div className="desc active" {...aos("200")} dangerouslySetInnerHTML={{__html:activeItem?.message}} />
                   // {activeItem.message}
                 // </div>
               )}
@@ -76,7 +81,7 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
 
             {/* Thumbs — desktop only */}
             <div className="thumbs d-none d-lg-block">
-              <div className="thumb-group active" data-aos="fade-up" data-aos-delay="800">
+              <div className="thumb-group active" {...aos("200")}>
                 {currentItems.map((item: any, index: number) => (
                   <div
                     key={index}
@@ -101,8 +106,8 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
 
             {/* Mobile-only: sec_title at top */}
             <div className="sec_title d-block d-lg-none">
-              <h5 className="title24" data-aos="fade-up" data-aos-delay="200">GLBian Speaks</h5>
-              <h2 className="heading title48" data-aos="fade-up" data-aos-delay="400">
+              <h5 className="title24" {...aos("200")}>GLBian Speaks</h5>
+              <h2 className="heading title48" {...aos("200")}>
                 Success Stories from our Students and Alumni
               </h2>
             </div>
@@ -133,8 +138,7 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
             {/* ── Desktop: static main image ── */}
             <div
               className="main-images d-none d-lg-block"
-              data-aos="fade-up"
-              data-aos-delay="200"
+              {...aos("200")}
             >
               {activeItem && (
                 <figure className="flash-effect">
@@ -226,10 +230,10 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
             {/* Person info — desktop only (below static image) */}
             <div className="tab_image_content d-none d-lg-block">
               {activeItem && (
-                <div className="person-info active">
-                  <div className="name" data-aos="fade-up" data-aos-delay="400">{activeItem.name}</div>
-                  <div className="role" data-aos="fade-up" data-aos-delay="800">{activeItem.branch}</div>
-                  <p className="course" data-aos="fade-up" data-aos-delay="800">{activeItem.course}</p>
+                <div className="person-info active" {...aos("200")}>
+                  <div className="name">{activeItem.name}</div>
+                  <div className="role" >{activeItem.branch}</div>
+                  <p className="course">{activeItem.course}</p>
                 </div>
               )}
             </div>

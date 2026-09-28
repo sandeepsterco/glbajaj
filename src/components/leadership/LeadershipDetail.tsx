@@ -26,9 +26,9 @@ export default async function LeadershipDetail({ data, slug,
                                     <p data-aos="fade-up" data-aos-delay="400">{data.data.designation}</p>
                                 )}
                             </div>
-                            <div className="right">
+                            {/* <div className="right">
                                 <Link className="apply_btn" href={`${BASE_URL}${parentSlug}/${slug}`}><i className="bi bi-arrow-left" style={{ marginRight: '1rem' }}></i>Back</Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

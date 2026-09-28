@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import type { UpcomingEventsResponse, MediaCoverageItem, NewsEventItem } from "./HomeHighlights";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "@/src/config/config";
 
 function formatDateParts(dateStr: string) {
   const date = new Date(dateStr);
@@ -26,6 +28,16 @@ interface HomeUpcomingEventsClientProps {
 }
 
 export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClientProps) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const aos = (delay = "200") => mounted
+    ? { "data-aos": "fade-up", "data-aos-delay": delay }
+    : {}
+
   return (
       <div className="left_col">
         <Swiper
@@ -75,12 +87,11 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                     </figure>
                   </Link>
 
-                  <div className="sec_data" data-aos="fade-up" data-aos-delay="800">
+                  <div className="sec_data" {...aos("200")}>
                     <div className="left">
                       <p className="date text-white">
                         {d.full}
                       </p>
-
                       <h4 className="title text-white">
                         {event.title}
                       </h4>

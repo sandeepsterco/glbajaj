@@ -1,4 +1,3 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import GalleryList from "@/src/components/gallery/GalleryList";
 import MainGallery from "@/src/components/gallery/MainGallery";
 import { apiFetch } from "@/src/lib/api"
@@ -8,6 +7,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
+import { notFound } from "next/navigation";
 
 export default async function GalleryPage({
     params,
@@ -24,11 +24,7 @@ export default async function GalleryPage({
     const {data, error} = await apiFetch(`workshops-seminars?page=${currentPage}`);
     
 
-    if(error){
-        return (
-            <ApiErrorFallback heading="Couldn't load Workshops and Seminars" message={error} />
-        )
-    }
+    if(error) notFound()
 
     return(
         <>

@@ -1,17 +1,21 @@
 "use client";
 
 import { useEffect } from "react";
-import ProgramDetailForm from "@/src/components/parser/programDetailForm/ProgramDetailForm";
+import ProgramDetailFormClient from "@/src/components/parser/programDetailForm/ProgramDetailFormClient";
+import type { Department } from "@/src/components/parser/programDetailForm/ProgramDetailForm";
 
 interface ProgramApplyModalProps {
   open: boolean;
   departmentSlug?: string;
+  /** Plain data, fetched server-side by ProgramApplyProvider and passed down. */
+  departments: Department[];
   onClose: () => void;
 }
 
 export default function ProgramApplyModal({
   open,
   departmentSlug,
+  departments,
   onClose,
 }: ProgramApplyModalProps) {
   useEffect(() => {
@@ -42,9 +46,10 @@ export default function ProgramApplyModal({
         &times;
       </button>
       <div className="yt-modal-box yt-modal-box--form">
-        <ProgramDetailForm
+        <ProgramDetailFormClient
           key={departmentSlug ?? "apply"}
-          defaultDepartmentSlug={departmentSlug}
+          departments={departments}
+          defaultDepartmentSlugProp={departmentSlug}
         />
       </div>
     </div>

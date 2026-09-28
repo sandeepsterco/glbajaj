@@ -34,7 +34,7 @@ const Footer = async () => {
       {getValue('360_view') && (
         <div className="fixButtons">
           <Link
-            href={APPLY_NOW ?? '/admission/apply-now'}
+            href={APPLY_NOW ?? '/admissions/apply'}
             target="_blank" className="vertical-floating-btn CTA_applynow_btn">           
             Apply Now
           </Link>
@@ -110,6 +110,7 @@ const Footer = async () => {
                   <li>
                     <Link
                       href={item?.slug ? BASE_URL + item.slug : item?.target_blank_url ? item.target_blank_url : '#'}
+                      prefetch={false}
                       target={item?.target_blank_url ? '_blank' : '_self'}
                     >
                       {item.title}

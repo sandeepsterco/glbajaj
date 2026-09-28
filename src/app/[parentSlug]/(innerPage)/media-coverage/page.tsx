@@ -1,18 +1,14 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import { apiFetch } from "@/src/lib/api";
 import MediaGrid from "./Mediagrid";
+import { notFound } from "next/navigation";
 
 export default async function MediaGridPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams;
     const currentPage = Number(page) || 1;
     const { data, error } = await apiFetch(`media-coverage?page=${currentPage}`);
 
-    if (error) {
-        return (
-            <ApiErrorFallback heading="Couldn't load news" message={error} />
-        )
-    }
+    if (error) notFound();
 
     const updatedData = data?.media_coverage?.data;
 

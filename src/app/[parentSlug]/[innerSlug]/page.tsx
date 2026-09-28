@@ -5,6 +5,9 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import { getPageSEO } from "@/src/lib/seo";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { notFound } from "next/navigation";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import { BASE_URL } from "@/src/config/config";
+import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
 
 export async function generateMetadata({
   params,
@@ -33,7 +36,45 @@ export default async function DynamicSlugPage({
     notFound();
   }
 
+  const pageData = data?.data;
+
+  const globalSchemaArgs = {
+    canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
+    pageTitle:seoData?.title || '',
+    metaDescription:seoData?.description || '',
+    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    datePublishedIso:pageData?.created_at || '',
+    dateModifiedIso:pageData?.updated_at || '',
+    languageTag:'en-IN',
+    currentPageName:pageData?.page_title || '',
+    parentMenus:pageData?.parent_menus || [],
+    currentPageSlug:pageData?.current_page_slug
+  };
+
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
+
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
+  let eventSchema;
+
+  if(innerSlug == 'hackathons'){
+    const eventDetailSchema = {
+      staticSegments:[
+        {
+          name:'Student Corner',
+          slug:parentSlug,
+        },
+        {
+          name:pageData.page_title,
+          slug:innerSlug,
+        },
+      ],
+      eventName:pageData.page_title,
+      visibleEventDescription:'',
+    };
+
+    eventSchema = buildEventDetailSchema(eventDetailSchema);
+  }
 
   return (
     <>
@@ -45,8 +86,20 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
+      {eventSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
       <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />
-      <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams} />
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams} />}
     </>
   );
 }

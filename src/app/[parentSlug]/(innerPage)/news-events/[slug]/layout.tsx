@@ -21,5 +21,5 @@ export default async function NewsEventsLayout({
 
     const currentPageTitle = data?.news_and_events_details?.data?.heading;
 
-    return <InnerPageLayoutWrapper slug={slug} pathname={`/\${parentSlug}/news-events/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'news-events'} pathname={`/\${parentSlug}/news-events/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 }

@@ -18,7 +18,7 @@ export default function HomePlacements({homeData}:{homeData:any}) {
   const canLoop = placementData.length > SLIDES_PER_VIEW;
 
   return (
-    <div className="right_slider">
+    <div className="right_slider" suppressHydrationWarning>
       {/* <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
         <h4 className="top_placed">Top Placed GLBian</h4>
@@ -31,16 +31,16 @@ export default function HomePlacements({homeData}:{homeData:any}) {
         <img src="/images/pattern/pattern1.png" className="pattern" />
       </div> */}
 
-      <div className="slider_top">
-        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="200">Top Placed GLBian</h4> 
+      <div className="slider_top" suppressHydrationWarning>
+        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="200" suppressHydrationWarning>Top Placed GLBian</h4> 
 
-        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`} data-aos="fade-up" data-aos-delay="200">
+        <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`} data-aos="fade-up" data-aos-delay="200" suppressHydrationWarning>
           <div className="swiper-button-prev prev_swiper_btn"></div>
           <div className="swiper-button-next next_swiper_btn"></div>
         </div>
       </div>
       <Swiper
-        className="home_placement_student_slider"
+        className="home_placement_student_slider suppressHydrationWarning"
         modules={[Navigation]}
         slidesPerView={SLIDES_PER_VIEW}
         spaceBetween={20}

@@ -1,12 +1,4 @@
-"use client";
-
-import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import { SkeletonGroup } from "../ui/Skeleton";
-import { usePathname } from "next/navigation";
 
 const getConferenceLists = async () => {
   const { data, error } = await apiFetch(`placement`);
@@ -15,26 +7,9 @@ const getConferenceLists = async () => {
   return data;
 };
 
-export default function PlacementRecord() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["placement-record"],
-    queryFn: getConferenceLists,
-  });
+export default async function PlacementRecord() {
+  const data = await getConferenceLists();
 
-  const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean).pop();
-
-  if (isLoading) {
-    return (
-      <SkeletonGroup
-        wrapperClassName="mt-[7.7rem] grid-cols-3 gap-[4rem]"
-        count={6}
-        className="bg-gray-300 h-[40rem] w-[100%]"
-      />
-    );
-  }
-
-  // data.placement.data = [{ batch, placements: [...] }, ...]
   const batch_groups = data?.placement;
 
   return (

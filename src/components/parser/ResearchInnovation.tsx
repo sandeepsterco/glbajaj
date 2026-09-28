@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
@@ -8,8 +8,17 @@ import Image from "next/image";
 export default function ResearchInnovation({homeData}:{homeData:any}) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [mounted, setMounted] = useState(false)
 
   const slides = homeData?.modular?.["research-innovation"];
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const aos = (delay = "200") => mounted
+    ? { "data-aos": "fade-up", "data-aos-delay": delay }
+    : {}
 
   return (
     <div className="research_slider_wrapper">
@@ -46,7 +55,7 @@ export default function ResearchInnovation({homeData}:{homeData:any}) {
       >
         {slides?.map((slide: any, index: number) => (
           <SwiperSlide key={index}>
-            <div className="research_card">
+            <div className="research_card" {...aos("200")}>
               <figure className="flash-effect">
                 <Image
                   src={slide?.image || ""}
@@ -55,26 +64,25 @@ export default function ResearchInnovation({homeData}:{homeData:any}) {
                   height={429}
                   loading="lazy"
                   className="img-fluid w-100"
-                  data-aos="fade-up" data-aos-delay="200"
                 />
               </figure>
               <div className="res_caption">
                 {slide?.names && (
-                  <span data-aos="fade-up" data-aos-delay="400">{slide.names}</span>
+                  <span >{slide.names}</span>
                 )}
                 {slide?.title && (
-                  <p data-aos="fade-up" data-aos-delay="600">{slide.title}</p>
+                  <p>{slide.title}</p>
                 )}
               </div>
               {slide?.url && (
-                <a className="strech_link" href={slide.url} data-aos="fade-up" data-aos-delay="800"></a>
+                <a className="strech_link" href={slide.url} ></a>
               )}
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="navigation_btn" data-aos="fade-up" data-aos-delay="1000">
+      <div className="navigation_btn" {...aos("200")}>
         <div ref={prevRef} className="swiper_prev_custom research_innovation_left">
           <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
         </div>

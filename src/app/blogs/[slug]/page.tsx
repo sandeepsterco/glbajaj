@@ -6,6 +6,7 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
+import { notFound } from "next/navigation";
 
 interface SearchParams {
   search?: string;
@@ -76,19 +77,10 @@ export default async function BlogDetailPage({
     apiFetch(`blogs/${blogSlug}${filterQuery}`, fetchOptions),
   ]);
 
-  if (error) {
-    return <ApiErrorFallback heading="Couldn't load blog" message={error} />;
-  }
+  if (error) notFound();
 
   const details = data?.details;
-  if (!details) {
-    return (
-      <ApiErrorFallback
-        heading="Couldn't load blog"
-        message="Blog details were not found."
-      />
-    );
-  }
+  if (!details) notFound();
 
   const featuredBlogs: any[] = data?.featuredBlogs ?? [];
   const comments: any[] = data?.comments ?? [];

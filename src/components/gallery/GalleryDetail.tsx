@@ -7,14 +7,23 @@ import { Fancybox, FancyboxOptions } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import '@/src/styles/fancybox.css'
 
-function getYoutubeThumbnail(url: string): string {
+function getYoutubeId(url: string): string | null {
     const match = url.match(
-        /(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([^&?/]+)/
+        /(?:youtube\.com\/(?:embed\/|watch\?v=|shorts\/|live\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
     );
-    if (match?.[1]) {
-        return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-    }
-    return '/images/icons/video-placeholder.svg';
+    return match?.[1] ?? null;
+}
+
+function getYoutubeThumbnail(url: string): string {
+    const id = getYoutubeId(url);
+    return id
+        ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+        : '/images/icons/video-placeholder.svg';
+}
+
+function getYoutubeEmbedUrl(url: string): string {
+    const id = getYoutubeId(url);
+    return id ? `https://www.youtube.com/embed/${id}` : url;
 }
 
 interface GalleryItem {
@@ -73,10 +82,13 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
 
         const items = galleryItems.map((item) => {
             if (item.type === 'iframe') {
+                const isShort = /youtube\.com\/shorts\//.test(item.embedUrl!);
                 return {
-                    src: item.embedUrl,
+                    src: getYoutubeEmbedUrl(item.embedUrl!),
                     type: 'iframe',
                     caption: item.caption,
+                    width: isShort ? 405 : 960,
+                    height: isShort ? 720 : 540,
                 };
             }
 

@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "**" },
       { protocol: "http", hostname: "**" },
+      { protocol: 'https', hostname: 'img.youtube.com' },
     ],
     unoptimized: true,
     // domains is deprecated, remotePatterns above covers it

@@ -8,6 +8,8 @@ import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 import { notFound } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 interface SearchParams {
   search?: string;
@@ -24,7 +26,8 @@ function buildFilterQuery(params: {
 }) {
   const parts: string[] = [];
   if (params.search) parts.push(`search=${encodeURIComponent(params.search)}`);
-  if (params.category) parts.push(`category=${encodeURIComponent(params.category)}`);
+  if (params.category)
+    parts.push(`category=${encodeURIComponent(params.category)}`);
   if (params.year) parts.push(`year=${encodeURIComponent(params.year)}`);
   if (params.month) parts.push(`month=${encodeURIComponent(params.month)}`);
   return parts.length ? `?${parts.join("&")}` : "";
@@ -43,14 +46,15 @@ function BlogSections({ sections }: { sections: any }) {
   if (typeof sections === "string") {
     return <ReactParser html={sections} />;
   }
-  return sections?.map((item:any, idx:number) => (
+  return sections?.map((item: any, idx: number) => (
     <>
       {/* {item?.title && (
         <h3>{item.title}</h3>
       )} */}
-      {item?.editors?.length > 0 && item.editors.map((editorItem:any, editorIdx:number)=>(
-        <ReactParser key={editorIdx + idx} html={editorItem?.content} />
-      ))}
+      {item?.editors?.length > 0 &&
+        item.editors.map((editorItem: any, editorIdx: number) => (
+          <ReactParser key={editorIdx + idx} html={editorItem?.content} />
+        ))}
     </>
   ));
 }
@@ -74,8 +78,9 @@ export default async function BlogDetailPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
   const listSlug = "blogs";
 
-  const [{ data, error }] = await Promise.all([
+  const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`blogs/${blogSlug}${filterQuery}`, fetchOptions),
+    getPageSEO(`blogs/${blogSlug}`),
   ]);
 
   if (error) notFound();
@@ -88,22 +93,56 @@ export default async function BlogDetailPage({
   const listingPath = `${BASE_URL}${listSlug}`;
 
   const blogDetailSchemaArgs = {
-    blogUrl:`${BASE_URL}blogs/${blogSlug}` || '',
-    headline:details?.title || '',
-    summary:details?.description || '',
-    images:[details?.image],
-    datePublishedIso:details?.date || '',
-    dateModifiedIso:details?.date || '',
-  }
+    blogUrl: `${BASE_URL}blogs/${blogSlug}` || "",
+    headline: details?.title || "",
+    summary: details?.description || "",
+    images: [details?.image],
+    datePublishedIso: details?.date || "",
+    dateModifiedIso: details?.date || "",
+  };
 
   const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);
 
+  const globalSchemaArgs = {
+    canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
+    pageTitle: seoData?.title || "",
+    metaDescription: seoData?.description || "",
+    primaryImageUrl: details?.image || "",
+    datePublishedIso: details?.date || "",
+    dateModifiedIso: details?.date || "",
+    languageTag: "en-IN",
+    currentPageName: details?.title || "",
+    currentPageSlug: `${BASE_URL}blogs/${blogSlug}`,
+    parentMenus: [
+      {
+        title: "Blogs",
+        url: "blogs",
+      },
+    ],
+  };
+
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
   return (
     <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
       {blogDetailSchema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{__html:JSON.stringify(blogDetailSchema)}}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetailSchema) }}
         />
       )}
       <section className="blog_details_banner">
@@ -120,7 +159,9 @@ export default async function BlogDetailPage({
               />
             </figure>
             <figcaption>
-              {details.date && <div className="date">{formatBlogDate(details.date)}</div>}
+              {details.date && (
+                <div className="date">{formatBlogDate(details.date)}</div>
+              )}
               {details.title && <h3>{details.title}</h3>}
               {details.description && <p>{details.description}</p>}
             </figcaption>

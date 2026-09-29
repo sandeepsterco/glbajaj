@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
+import { buildFacilitySchema } from "@/src/lib/schema/facilitiesSchema";
 
 export async function generateMetadata({
   params,
@@ -42,13 +43,18 @@ export default async function DynamicSlugPage({
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
     currentPageName:pageData?.page_title || '',
-    parentMenus:pageData?.parent_menus || [],
-    currentPageSlug:pageData?.current_page_slug
+    currentPageSlug:`${BASE_URL}${parentSlug}/${innerSlug}`,
+    parentMenus: [
+      {
+        title: "Alumni",
+        url: parentSlug,
+      },
+    ],
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
@@ -76,6 +82,20 @@ export default async function DynamicSlugPage({
     eventSchema = buildEventDetailSchema(eventDetailSchema);
   }
 
+  const isFacilitiesPage = (slug:string)=>{
+    return slug == 'academic' || slug == 'campus' || slug == 'other' || slug == 'transport';
+  }
+
+  const facilitiesSchemaArgs = {
+    facilityType:pageData?.page_title || '',
+    facilityUrl:`${BASE_URL}${parentSlug}/${innerSlug}` || '/',
+    facilityName:pageData?.page_title || '',
+    visibleFacilityDescription:'',
+
+  };
+
+  const facilitiesSchema = buildFacilitySchema(facilitiesSchemaArgs);
+
   return (
     <>
       {seoData?.schema && (
@@ -96,6 +116,12 @@ export default async function DynamicSlugPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
+      {isFacilitiesPage(innerSlug) && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(facilitiesSchema) }}
         />
       )}
       <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />

@@ -39,13 +39,19 @@ export default async function DynamicSlugPage({
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
     currentPageName:pageData?.page_title || '',
-    parentMenus:pageData?.parent_menus || [],
-    currentPageSlug:pageData?.current_page_slug
+    // parentMenus:pageData?.parent_menus || [],
+    currentPageSlug: `${BASE_URL}alumni/events`,
+    parentMenus: [
+      {
+        title: "Alumni",
+        url: "alumni",
+      },
+    ],
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");

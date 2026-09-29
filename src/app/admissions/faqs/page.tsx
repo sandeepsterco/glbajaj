@@ -41,8 +41,14 @@ export default async function AdmissionOverviewPage() {
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
-    currentPageName:pageData?.page_title || ''
+    currentPageSlug:`${BASE_URL}admissions/faqs`,
+    currentPageName:pageData?.page_title || '',
+    parentMenus:[
+      {
+        title:'Admissions',
+        url:"admissions"
+      },
+    ],
   };
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);

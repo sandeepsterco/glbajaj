@@ -76,11 +76,11 @@ export default async function DynamicSlugPage({
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
+    currentPageSlug:`${BASE_URL}${parentSlug}`,
     currentPageName:pageData?.page_title || ''
   };
 

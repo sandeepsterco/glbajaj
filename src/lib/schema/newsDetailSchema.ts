@@ -6,7 +6,7 @@ export type NewsArticleSchemaArgs = {
   articleSummary: string;
   datePublishedIso: string;
   dateModifiedIso?: string; 
-
+  images?: string[];
   image1x1Url?: string;
   image4x3Url?: string;
   image16x9Url?: string;
@@ -38,12 +38,12 @@ export function buildNewsArticleSchema(args: NewsArticleSchemaArgs) {
     keywords,
     primaryRelatedEntityId,
     secondaryRelatedEntityIds,
-    articleUrl
+    articleUrl,
+    images,
   } = args;
 
   const baseUrl = getBaseUrl();
 
-  const images = [image1x1Url, image4x3Url, image16x9Url].filter((url): url is string => Boolean(url));
 
   const author = authorProfileUrls?.length
     ? authorProfileUrls.map((url) => ({ "@id": `${url}#person` }))
@@ -63,7 +63,7 @@ export function buildNewsArticleSchema(args: NewsArticleSchemaArgs) {
     mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
     headline,
     description: articleSummary,
-    image: images.length ? images : undefined,
+    image: images?.length ? images : undefined,
     datePublished: datePublishedIso,
     dateModified: dateModifiedIso,
     author,

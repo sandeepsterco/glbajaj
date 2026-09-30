@@ -24,6 +24,7 @@ export default async function NewsDetailPage({params}:{params:any}){
         articleSummary:newsData?.data?.description || '',
         datePublishedIso:newsData?.data?.date || '',
         dateModifiedIso:newsData?.data?.date || '',
+        images:newsData?.data?.image ? [newsData?.data?.image] : [],
         category:'',
         keywords:seoData?.keywords ? String(seoData.keywords).split(',').map(k=>k.trim()).filter(Boolean) : [],
         primaryRelatedEntityId:'',

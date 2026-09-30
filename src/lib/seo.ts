@@ -123,11 +123,11 @@ async function fetchPageSEO(slug: string): Promise<SEOResult> {
         canonical: data.data.alternates?.canonical || slug,
       },
       openGraph: {
-        title: data.data.openGraph?.title || data.data.title,
-        description: data.data.openGraph?.description || data.data.description,
+        title: data.data.openGraph?.title || data.data.title || "GL Bajaj",
+        description: data.data.openGraph?.description || data.data.description || "GL Bajaj",
         type: data.data.openGraph?.type || "website",
         images: data.data.openGraph?.images || [],
-        url: data.data.openGraph?.url || data.data.alternates?.canonical || slug,
+        url: data.data.openGraph?.url || data.data.alternates?.canonical || slug || "GL Bajaj",
       },
       schema: data.data.schema || defaultSchema(),
     };

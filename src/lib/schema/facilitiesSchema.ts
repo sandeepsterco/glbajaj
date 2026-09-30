@@ -63,7 +63,7 @@ export function buildFacilitySchema(args: FacilitySchemaArgs) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": facilityType,
+        "@type": 'Library',
         "@id": `${facilityUrl}#library`,
         name: facilityName,
         url: facilityUrl,

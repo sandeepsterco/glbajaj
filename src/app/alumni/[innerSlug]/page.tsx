@@ -11,10 +11,10 @@ import { BASE_URL } from "@/src/config/config";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string, innerSlug:string }>;
+  params: Promise<{ innerSlug:string }>;
 }) {
   const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+  return await getPageSEO(`alumni/${innerSlug}`);
 }
 
 export default async function DynamicSlugPage({
@@ -29,7 +29,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/${innerSlug}`),
-    getPageSEO(innerSlug),
+    getPageSEO(`alumni/${innerSlug}`),
   ]);
 
   if (error || !data?.status) {

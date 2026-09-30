@@ -100,6 +100,7 @@ export default async function BlogDetailPage({
     images: [details?.image],
     datePublishedIso: details?.date || "",
     dateModifiedIso: details?.date || "",
+    category: details?.category || "",
   };
 
   const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);

@@ -159,7 +159,7 @@ export function buildProgrammeSchema(args: ProgrammeSchemaArgs) {
       name: programmeName,
       url: programmeUrl,
       description: visibleProgrammeSummary,
-      provider: { "@id": `${departmentUrl}#department` },
+      provider: departmentUrl ? {"@id": `${departmentUrl}#department`} : undefined ,
       educationalProgramMode,
       timeToComplete: timeToCompleteIso,
       programPrerequisites,

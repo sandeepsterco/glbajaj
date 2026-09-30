@@ -52,17 +52,17 @@ export default async function DynamicSlugPage({
     languageTag: "en-IN",
     currentPageName: pageData?.page_title || "",
     currentPageSlug: `${BASE_URL}${parentSlug}/${innerSlug}/${innerChildSlug}`,
-    parentMenus:pageData?.parent_menus || [],
-    // parentMenus: [
-    //   {
-    //     title: "Alumni",
-    //     url: innerSlug,
-    //   },
-    //   {
-    //     title: "Achievements",
-    //     url: "achievements",
-    //   },
-    // ],
+    // parentMenus:pageData?.parent_menus || [],
+    parentMenus: [
+      {
+        title: parentSlug,
+        url: parentSlug,
+      },
+      {
+        title: innerSlug,
+        url: innerSlug,
+      },
+    ],
 };
 
 const globalSchema = buildGlobalSchema(globalSchemaArgs);

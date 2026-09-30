@@ -8,13 +8,17 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
   const isDepartments = pathname.includes("department");
   const isDepartmentDetail = pathname.includes("department") && !pathname.includes("departments");
 
+  let accumulated = "";
+  const parentCrumbs = parent_menus.map((item:any) => {
+    if (!item.url) return { label: item.title };
+    const cleanUrl = String(item.url).replace(/^\/+|\/+$/g, "");
+    accumulated = accumulated ? `${accumulated}/${cleanUrl}` : cleanUrl;
+    return { label: item.title, slug: `${BASE_URL}${accumulated}` };
+  });
+
   return [
     ...(isProgramsOffered || isProgram || isDepartments ? [{ label: "Academics" }] : []),
-    ...(parent_menus
-      ? parent_menus.map((item: any) =>
-          item.url ? { label: item.title, slug: BASE_URL + item.url } : { label: item.title }
-        )
-      : []),
+    ...parentCrumbs,
     ...(isProgram ? [{ label: "Programs Offered", slug: BASE_URL + "programs-offered" }] : []),
     ...(isDepartmentDetail ? [{ label: "Departments", slug: BASE_URL + "departments" }] : []),
     ...(isDepartmentDetail

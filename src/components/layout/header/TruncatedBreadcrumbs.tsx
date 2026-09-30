@@ -24,7 +24,8 @@ export default function TruncatedBreadcrumbs({ breadcrumbs, totalLength }: Props
     const maxWidth = containerWidth * 0.4;
     const itemCount = breadcrumbs.length;
 
-    // Collapse if more than 3 items OR container is too narrow (will be verified by width below)
+    console.log('breadcrumbs',breadcrumbs);
+
     const shouldCollapse = itemCount > 3;
 
     if (!shouldCollapse) {
@@ -56,7 +57,7 @@ export default function TruncatedBreadcrumbs({ breadcrumbs, totalLength }: Props
   const renderItem = (item: BreadcrumbItem) =>
     item.slug ? (
       <Link href={item.slug}>
-        <p className="breadcrumb_main about_breadcrump_text">{item.label}</p>
+        <p className="breadcrumb_main about_breadcrump_text 11">{item.label}</p>
       </Link>
     ) : (
       <p className="breadcrumb_main about_breadcrump_text">{item.label}</p>

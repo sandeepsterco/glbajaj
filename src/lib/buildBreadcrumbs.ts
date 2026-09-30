@@ -1,7 +1,7 @@
 import { BASE_URL } from "../config/config";
 
 export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?: string, parentSlug?:string) {
-  const parent_menus = data?.parent_menus;
+  const parent_menus = data?.parent_menus ?? [];
 
   const isProgramsOffered = pathname.includes("programs-offered");
   const isProgram = pathname.includes("program") && !pathname.includes("programs");

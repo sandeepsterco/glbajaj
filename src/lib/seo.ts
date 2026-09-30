@@ -7,6 +7,14 @@ type SEOResult = {
   description: string;
   keywords: string;
   alternates: { canonical: string };
+  robots: {
+    index: boolean;
+    follow: boolean;
+    googleBot: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
   openGraph?: {
     title: string;
     description: string;
@@ -35,13 +43,55 @@ function defaultSEO(): SEOResult {
     description: "GL Bajaj",
     keywords: "GL Bajaj",
     alternates: { canonical: "/" },
-    schema: null, // ✅ always present — no more union type mismatch
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    schema: null,
   };
 }
 
-async function fetchPageSEO(slug: string): Promise<SEOResult> {
+async function fetchGlobalRobots(): Promise<SEOResult["robots"] | null> {
   try {
-    if (!slug) return defaultSEO();
+    const res = await fetch(`${SEO_URL}seo/global`, {
+      cache: "force-cache",
+      next: { revalidate: 360 },
+    });
+
+    if (!res.ok) return null;
+
+    const data = await res.json();
+    const robots = data?.data?.robots;
+
+    if (typeof robots?.index !== "boolean" && typeof robots?.follow !== "boolean") {
+      return null;
+    }
+
+    const index = robots.index ?? true;
+    const follow = robots.follow ?? true;
+
+    return {
+      index,
+      follow,
+      googleBot: { index, follow },
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function fetchPageSEO(slug: string): Promise<SEOResult> {
+  const globalRobotsPromise = fetchGlobalRobots();
+
+  try {
+    const globalRobots = await globalRobotsPromise;
+    if (!slug) {
+      return { ...defaultSEO(), robots: globalRobots ?? defaultSEO().robots };
+    }
 
     const encodedSlug = slug
       .split("/")
@@ -56,11 +106,19 @@ async function fetchPageSEO(slug: string): Promise<SEOResult> {
     if (!res.ok) throw new Error("SEO data not found");
 
     const data = await res.json();
+    const pageRobots = data.data.robots;
+    const index = pageRobots?.index ?? globalRobots?.index ?? true;
+    const follow = pageRobots?.follow ?? globalRobots?.follow ?? true;
 
     return {
       title: data.data.title,
       description: data.data.description,
       keywords: data.data.keywords?.length > 0 ? data.data.keywords : "GL Bajaj",
+      robots: {
+        index,
+        follow,
+        googleBot: { index, follow },
+      },
       alternates: {
         canonical: data.data.alternates?.canonical || slug,
       },
@@ -74,7 +132,8 @@ async function fetchPageSEO(slug: string): Promise<SEOResult> {
       schema: data.data.schema || defaultSchema(),
     };
   } catch {
-    return defaultSEO();
+    const globalRobots = await globalRobotsPromise;
+    return { ...defaultSEO(), robots: globalRobots ?? defaultSEO().robots };
   }
 }
 

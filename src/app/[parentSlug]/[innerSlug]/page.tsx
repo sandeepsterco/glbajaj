@@ -13,10 +13,10 @@ import { buildFacilitySchema } from "@/src/lib/schema/facilitiesSchema";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string, innerSlug:string }>;
+  params: Promise<{ slug: string, parentSlug: string, innerSlug:string }>;
 }) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+  const { innerSlug, parentSlug } = await params;
+  return await getPageSEO(`${parentSlug}/${innerSlug}`);
 }
 
 export default async function DynamicSlugPage({
@@ -30,7 +30,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/${innerSlug}`),
-    getPageSEO(innerSlug),
+    getPageSEO(`${parentSlug}/${innerSlug}`),
   ]);
 
   if (error || !data?.status) {

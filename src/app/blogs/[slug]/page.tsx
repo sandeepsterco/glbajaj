@@ -5,6 +5,7 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
+import Link from "next/link";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 import { notFound } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
@@ -189,9 +190,9 @@ export default async function BlogDetailPage({
                   <ul>
                     {details.tags.map((tag: any) => (
                       <li key={tag.id}>
-                        <a href={`/${listSlug}?tag_id=${encodeURIComponent(String(tag.id))}`}>
+                        <Link href={`${listingPath}?tag_id=${encodeURIComponent(String(tag.id))}`}>
                           {tag.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

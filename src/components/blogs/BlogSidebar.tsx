@@ -27,6 +27,8 @@ interface Props {
   currentYear: string;
   currentMonth: string;
   currentSearch: string;
+  currentTagId?: string;
+  currentTagName?: string;
   slug: string;
   /** When set, archive/search/category filters link here (e.g. blog listing on detail pages). */
   listingPath?: string;
@@ -56,6 +58,8 @@ export default function BlogSidebar({
   currentYear,
   currentMonth,
   currentSearch,
+  currentTagId = "",
+  currentTagName = "",
   slug,
   listingPath,
   showSearch = true,
@@ -226,6 +230,18 @@ export default function BlogSidebar({
           })}
         </ul>
       </div>
+
+      {currentTagId && (
+        <div className="categories_section">
+          <h5 className="font21">Tag:</h5>
+          <div className="blog_active_filters">
+            <FilterChip
+              label={currentTagName || `Tag ${currentTagId}`}
+              href={buildHref({ tag_id: null })}
+            />
+          </div>
+        </div>
+      )}
 
       {categories.length > 0 && (
         <div className="categories_section">

@@ -183,6 +183,21 @@ export default async function BlogDetailPage({
 
               <BlogCommentForm blogSlug={blogSlug} />
 
+              {Array.isArray(details.tags) && details.tags.length > 0 && (
+                <div className="blog_detail_tags" aria-label="Blog tags">
+                  <h4>Tags:</h4>
+                  <ul>
+                    {details.tags.map((tag: any) => (
+                      <li key={tag.id}>
+                        <a href={`/${listSlug}?tag_id=${encodeURIComponent(String(tag.id))}`}>
+                          {tag.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* <div className="admin_form">
                 <div className="admin_header">
                   <figure>

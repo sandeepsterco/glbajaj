@@ -29,6 +29,8 @@ interface SearchParams {
   year?: string;
 
   month?: string;
+
+  tag_id?: string;
 }
 
 function buildBlogsQuery(params: {
@@ -73,7 +75,9 @@ export default async function BlogsPage({
 
   const month = params.month || "";
 
-  const hasFilters = Boolean(search || category || year || month);
+  const tagId = params.tag_id || "";
+
+  const hasFilters = Boolean(search || category || year || month || tagId);
 
   const query = buildBlogsQuery({
     page: currentPage,
@@ -90,20 +94,29 @@ export default async function BlogsPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
 
   const [{ data: blogsData, error }, seoData] = await Promise.all([
-    apiFetch(`blogs?${query}`, fetchOptions),
+    tagId
+      ? apiFetch(`blogs/tags/${encodeURIComponent(tagId)}`, fetchOptions)
+      : apiFetch(`blogs?${query}`, fetchOptions),
     getPageSEO(`blogs`),
   ]);
 
   if (error) notFound();
 
+  const tagBlogs: any[] | null = tagId && Array.isArray(blogsData?.blogs)
+    ? blogsData.blogs
+    : null;
   const pageData = blogsData?.blogs;
 
-  const pagination = blogsData?.blogs;
-  const allItems: any[] = pagination?.data ?? [];
+  const pagination = tagBlogs ? null : blogsData?.blogs;
+  const allItems: any[] = tagBlogs ?? pagination?.data ?? [];
   const featuredBlogs: any[] = blogsData?.featuredBlogs ?? [];
   const comments: any[] = blogsData?.comments ?? [];
   const mainBlog = allItems[0] ?? null;
   const gridBlogs = allItems.slice(1);
+  const currentTagName =
+    tagBlogs
+      ?.flatMap((blog) => (Array.isArray(blog.tags) ? blog.tags : []))
+      .find((tag: any) => String(tag.id) === tagId)?.name ?? "";
   const slug = "blogs";
 
   const globalSchemaArgs = {
@@ -165,10 +178,12 @@ export default async function BlogsPage({
                     ))
                   : !mainBlog && <p>No blogs found.</p>}
 
-                <PaginationWrapper
-                  currentPage={pagination?.current_page || 1}
-                  totalPages={pagination?.last_page || 1}
-                />
+                {!tagId && (
+                  <PaginationWrapper
+                    currentPage={pagination?.current_page || 1}
+                    totalPages={pagination?.last_page || 1}
+                  />
+                )}
               </div>
 
               <BlogSidebar
@@ -178,6 +193,8 @@ export default async function BlogsPage({
                 currentYear={year}
                 currentMonth={month}
                 currentSearch={search}
+                currentTagId={tagId}
+                currentTagName={currentTagName}
                 slug={slug}
               />
             </div>

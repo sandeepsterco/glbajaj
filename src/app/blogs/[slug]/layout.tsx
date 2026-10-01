@@ -18,9 +18,14 @@ export default async function NewsEventsLayout({
     
     if (!parentSlug) return <>{children}</>;
 
-    const {data, error} = await apiFetch(`blogs/${slug}`);
+    const {data} = await apiFetch(`blogs/${slug}`);
 
-    const currentPageTitle = data?.details?.title;
+    const currentPageTitle =
+      data?.details?.title ??
+      slug
+        .split("-")
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(" ");
 
     return <InnerPageLayoutWrapper slug={parentSlug} pathname={`${parentSlug}/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 }

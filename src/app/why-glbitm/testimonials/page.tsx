@@ -6,7 +6,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 export default async function TestimonialPage({
     searchParams,
@@ -22,10 +22,17 @@ export default async function TestimonialPage({
 
     const { data, error } = await apiFetch(`testimonial?${params.toString()}`);
 
-
     if (error) notFound();
 
     const pagination = data?.testimonials;
+
+    const hasNoData = !pagination?.data || pagination.data.length === 0;
+
+    if(hasNoData && (type || page)){
+        params.delete("type");
+        params.delete("page");
+        redirect("/why-glbitm/testimonials");
+    }
 
     return (
         <>

@@ -47,7 +47,7 @@ export default async function Home() {
     logoUrl:`${BASE_URL}images/logo/logo.png`,
     logoWidthPx:415,
     logoHeightPx:112,
-    representativeCampusImageUrl:``,
+    representativeCampusImageUrl:homeData?.modular?.banner[0]?.thumbnail_image || '',
     streetAddress:getValue(infoRes, 'street_address')?.value,
     cityLocality:getValue(infoRes, 'locality_address')?.value,
     state:getValue(infoRes, 'region_address')?.value,

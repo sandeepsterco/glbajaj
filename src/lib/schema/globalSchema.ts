@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 
 export type ParentMenu = {
-  id: number;
+  id?: number;
   title: string;
   url: string | null;
 };
@@ -18,6 +18,7 @@ export type GlobalSchemaArgs = {
   parentMenus?: ParentMenu[]; // data.parent_menus
   currentPageSlug: string; // data.current_page_slug (top-level, NOT inside parent_menus)
   currentPageName: string; // data.menu_title ?? data.page_title
+  canonicalUrl?:string;
 };
 
 // Joins any number of path segments onto BASE_URL with exactly one "/" between each,
@@ -48,25 +49,18 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
     parentMenus = [],
     currentPageSlug,
     currentPageName,
+    canonicalUrl
   } = args;
 
-  const realParents = parentMenus.filter((menu) => isRealMenuUrl(menu.url)); // drops "About GLBITM" entirely
-
-  // baseurl + each real parent's url, in order + current_page_slug last
-  // e.g. joinUrl("about-us", "our-inspiration") -> "http://localhost:3000/about-us/our-inspiration"
-  const canonicalUrl = joinUrl(
-    ...realParents.map((m) => m.url as string),
-    currentPageSlug
-  );
+  const realParents = parentMenus.filter((menu) => isRealMenuUrl(menu.url)); 
 
   const breadcrumbItems: { name: string; item: string }[] = [
-    { name: "Home", item: joinUrl() }, // "http://localhost:3000/"
+    { name: "Home", item: joinUrl() },
     ...realParents.map((menu, index) => ({
       name: menu.title,
-      // each parent crumb accumulates only the parents up to itself
       item: joinUrl(...realParents.slice(0, index + 1).map((m) => m.url as string)),
     })),
-    { name: currentPageName, item: canonicalUrl }, // full nested path, last crumb
+    { name: currentPageName, item: currentPageSlug },
   ];
 
   return {

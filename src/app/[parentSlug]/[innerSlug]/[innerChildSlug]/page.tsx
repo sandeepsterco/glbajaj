@@ -4,6 +4,8 @@ import { getPageSEO } from "@/src/lib/seo";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { notFound } from "next/navigation";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
+import { BASE_URL } from "@/src/config/config";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata({
   params,
@@ -38,6 +40,33 @@ export default async function DynamicSlugPage({
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
 
+  const pageData = data?.data;
+
+  const globalSchemaArgs = {
+    canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
+    pageTitle: seoData?.title || "",
+    metaDescription: seoData?.description || "",
+    primaryImageUrl:'',
+    datePublishedIso: pageData?.created_at || "",
+    dateModifiedIso: pageData?.updated_at || "",
+    languageTag: "en-IN",
+    currentPageName: pageData?.page_title || "",
+    currentPageSlug: `${BASE_URL}${parentSlug}/${innerSlug}/${innerChildSlug}`,
+    // parentMenus:pageData?.parent_menus || [],
+    parentMenus: [
+      {
+        title: parentSlug,
+        url: parentSlug,
+      },
+      {
+        title: innerSlug,
+        url: innerSlug,
+      },
+    ],
+};
+
+const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
   return (
     <>
       {seoData?.schema && (
@@ -48,6 +77,12 @@ export default async function DynamicSlugPage({
           }}
         />
       )}
+      {globalSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+                    />
+                )}
       <PageHeader
         pathname={`/${parentSlug}/${innerSlug}/${innerChildSlug}`}
         data={data?.data}

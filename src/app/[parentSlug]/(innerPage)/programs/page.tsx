@@ -11,25 +11,27 @@ import { buildProgrammeListSchema } from "@/src/lib/schema/ProgrammeListSchema";
 import { BASE_URL } from "@/src/config/config";
 
 export async function generateMetadata() {
-  return await getPageSEO(`programs-offered`);
+  return await getPageSEO(`academics/programs`);
 }
 
 export default async function ProgramsOffered({params}:{params:Promise<{parentSlug:string}>}) {
   const {parentSlug} = await params;
   const currentSlug = 'programs'
-  const [{ data }, seoData] = await Promise.all([
+  const [{ data }, {data:ProgramsData}, seoData] = await Promise.all([
     apiFetch(`cms/programs-offered`),
-    getPageSEO(`programs-offered`),
+    apiFetch(`programs`),
+    getPageSEO(`academics/programs`),
   ]);
 
+  const programsData = ProgramsData?.programs?.data || [];
   const programmeListSchemaArgs = {
-    items:[
-      {
-        url:`${BASE_URL}${parentSlug}/programs` || '',
-      }
-    ],
-    listingUrl:`${BASE_URL}${parentSlug}/programs` || ''
-  }
+    items: programsData.flatMap((group:any) =>
+      (group.programs || []).map((program:any) => ({
+        url: `${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`,
+      }))
+    ),
+    listingUrl: `${BASE_URL}${parentSlug}/${currentSlug}`,
+  };
 
   const programmeListSchema = buildProgrammeListSchema(programmeListSchemaArgs);
 

@@ -1,20 +1,37 @@
 import LeadershipDetail from "@/src/components/leadership/LeadershipDetail";
 import { apiFetch } from "@/src/lib/api";
+import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
 export default async function FacultyDetailPage({
-    params,
+  params,
 }: {
-    params: Promise<{ parentSlug: string; slug: string }>;
+  params: Promise<{ parentSlug: string; slug: string; innerSlug: string }>;
 }) {
-    const { parentSlug, slug } = await params;
+  const { parentSlug, innerSlug, slug } = await params;
 
-    const { data, error } = await apiFetch(`leadership/${slug}`);
+  const [{ data, error }, seoData] = await Promise.all([
+    apiFetch(`leadership/${slug}`),
+    getPageSEO(`${parentSlug}/${innerSlug}/administrative-team/${slug}`),
+  ]);
 
+  if (error) notFound();
 
-    if (error) notFound();
-
-    return (
-        <LeadershipDetail data={data?.leadership_details} slug={slug} parentSlug={parentSlug} />
-    )
+  return (
+    <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      <LeadershipDetail
+        data={data?.leadership_details}
+        slug={slug}
+        parentSlug={parentSlug}
+      />
+    </>
+  );
 }

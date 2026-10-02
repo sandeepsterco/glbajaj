@@ -15,7 +15,8 @@ const Footer = async () => {
 
 
   const getValue = (key: string) => {
-    const found = infoData?.data.find((item: any) => item.key == key) ?? null;
+    const items = Array.isArray(infoData?.data) ? infoData.data : [];
+    const found = items.find((item: any) => item.key == key) ?? null;
     if (found?.value || found?.image || found?.url) {
       return {
         value: found?.value ?? null,

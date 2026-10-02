@@ -1,11 +1,11 @@
-import TestimonialDetail from "@/src/components/testimonial/TestimonialDetail";
+import AlumniEventsDetail from "@/src/components/alumni-events/detail";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
-export default async function TestimonialDetailPage({
+export default async function AlumniEventsDetailPage({
   params,
 }: {
   params: any;
@@ -13,15 +13,15 @@ export default async function TestimonialDetailPage({
   const { slug } = await params;
 
   const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
-    apiFetch(`testimonial/${slug}`),
-    apiFetch(`cms/testimonials`),
-    getPageSEO(`alumni/testimonials/${slug}`),
+    apiFetch(`alumni-events/${slug}`),
+    apiFetch(`cms/alumni-events-meets`),
+    getPageSEO(slug),
   ]);
 
   if (error) notFound();
 
   const pageData = CmsData?.data;
-  const modularData = data?.testimonial_details?.data;
+  const modularData = data?.alumni_event_details?.data;
 
   const globalSchemaArgs = {
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
@@ -31,16 +31,16 @@ export default async function TestimonialDetailPage({
     datePublishedIso: pageData?.created_at || "",
     dateModifiedIso: pageData?.updated_at || "",
     languageTag: "en-IN",
-    currentPageName: modularData?.name || "",
-    currentPageSlug: `${BASE_URL}alumni/testimonials/${slug}`,
+    currentPageSlug: `${BASE_URL}alumni/events/${slug}`,
+    currentPageName: modularData?.title || "",
     parentMenus: [
       {
         title: "Alumni",
         url: "alumni",
       },
       {
-        title: "Testimonials",
-        url: "testimonials",
+        title: "Events",
+        url: "events",
       },
     ],
   };
@@ -63,7 +63,7 @@ export default async function TestimonialDetailPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
-      <TestimonialDetail data={data?.testimonial_details} />
+      <AlumniEventsDetail data={data?.alumni_event_details} />
     </>
   );
 }

@@ -20,6 +20,12 @@ function getLast12Months(): { label: string; year: string; month: string }[] {
   return months;
 }
 
+interface BlogTag {
+  id?: number | string;
+  name: string;
+  slug: string;
+}
+
 interface Props {
   featuredBlogs: any[];
   comments: any[];
@@ -27,6 +33,8 @@ interface Props {
   currentYear: string;
   currentMonth: string;
   currentSearch: string;
+  tags?: BlogTag[];
+  currentTagSlug?: string;
   slug: string;
   /** When set, archive/search/category filters link here (e.g. blog listing on detail pages). */
   listingPath?: string;
@@ -56,6 +64,8 @@ export default function BlogSidebar({
   currentYear,
   currentMonth,
   currentSearch,
+  tags = [],
+  currentTagSlug = "",
   slug,
   listingPath,
   showSearch = true,
@@ -226,6 +236,24 @@ export default function BlogSidebar({
           })}
         </ul>
       </div>
+
+      {tags.length > 0 && (
+        <div className="categories_section">
+          <h5 className="font21">Tags:</h5>
+          <ul>
+            {tags.map((tag, idx) => (
+              <li key={tag.slug ?? tag.id ?? idx}>
+                <Link
+                  href={`${BASE_URL}${slug}/${encodeURIComponent(tag.slug)}`}
+                  className={tag.slug === currentTagSlug ? "active" : ""}
+                >
+                  {tag.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {categories.length > 0 && (
         <div className="categories_section">

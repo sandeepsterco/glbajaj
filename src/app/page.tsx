@@ -9,6 +9,7 @@ import { buildHomepageSchema } from "../lib/schema/homepageSchema";
 import getValue from "../lib/getValue";
 import { BASE_URL } from "../config/config";
 import { buildGlobalSchema } from "../lib/schema/globalSchema";
+import { buildYoutubeVideoSchema } from "../lib/schema/YTSchema";
 
 const getHomeData = cache(async () => {
   const [seoData, homeRes, infoRes] = await Promise.all([
@@ -46,7 +47,7 @@ export default async function Home() {
     logoUrl:`${BASE_URL}images/logo/logo.png`,
     logoWidthPx:415,
     logoHeightPx:112,
-    representativeCampusImageUrl:``,
+    representativeCampusImageUrl:homeData?.modular?.banner[0]?.thumbnail_image || '',
     streetAddress:getValue(infoRes, 'street_address')?.value,
     cityLocality:getValue(infoRes, 'locality_address')?.value,
     state:getValue(infoRes, 'region_address')?.value,
@@ -78,9 +79,24 @@ export default async function Home() {
     currentPageSlug:'',
     currentPageName:homeData?.page_title || ''
   };
+  const ytVideo = homeData?.modular?.banner[0];
+  const videoLink = ytVideo?.video_link;
+  const videoId = videoLink.replace(/\[|\]\(.*\)/g, "").match(/(?:embed\/|v=|youtu\.be\/)([^?&/]+)/)?.[1];
+
+  const ytSchemaArgs = {
+    pageUrl:BASE_URL || '/',
+    videoId:videoId,
+    videoTitle:ytVideo?.title || 'Homepage Video',
+    videoDescription:ytVideo?.description || '',
+    thumbnailUrl:ytVideo?.thumbnail_image || '',
+    uploadDateIso:ytVideo?.created_at || '',
+    durationIso:'',
+    youtubeVideoId:videoId,
+  };
 
   const pageSchema = buildHomepageSchema(schemaArgs);
   const globalSchema = buildGlobalSchema(globalSchemaArgs);
+  const ytSchema = buildYoutubeVideoSchema(ytSchemaArgs);
 
   return (
     <>
@@ -102,6 +118,12 @@ export default async function Home() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        />
+      )}
+      {ytSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ytSchema) }}
         />
       )}
       <main>

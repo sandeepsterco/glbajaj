@@ -8,19 +8,14 @@ import getValue from "@/src/lib/getValue";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ parentSlug: string }>;
-}) {
-  const { parentSlug } = await params;
-  return await getPageSEO(parentSlug);
+export async function generateMetadata() {
+  return await getPageSEO(`admissions/faqs`);
 }
 
 export default async function AdmissionOverviewPage() {
   const [{data, error}, seoData, {data:infoRes}] = await Promise.all([
     apiFetch(`cms/admissions-faqs`),
-    getPageSEO('admissions-faqs'),
+    getPageSEO(`admissions/faqs`),
     apiFetch("info"),
   ]);
 
@@ -41,8 +36,14 @@ export default async function AdmissionOverviewPage() {
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
-    currentPageName:pageData?.page_title || ''
+    currentPageSlug:`${BASE_URL}admissions/faqs`,
+    currentPageName:pageData?.page_title || '',
+    parentMenus:[
+      {
+        title:'Admissions',
+        url:"admissions"
+      },
+    ],
   };
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);

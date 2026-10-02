@@ -37,12 +37,18 @@ export default async function AdmissionOverviewPage() {
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
-    currentPageName:pageData?.page_title || ''
+    currentPageSlug:`${BASE_URL}facilities/faqs`,
+    currentPageName:pageData?.page_title || '',
+    parentMenus:[
+      {
+        title:'Facilities',
+        url:"facilities"
+      },
+    ],
   };
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);

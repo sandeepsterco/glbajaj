@@ -8,13 +8,8 @@ import { notFound } from "next/navigation";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string; innerSlug: string }>;
-}) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+export async function generateMetadata() {
+  return await getPageSEO(`alumni/achievements`);
 }
 
 export default async function DynamicSlugPage({
@@ -25,7 +20,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`cms/achievements`),
-    getPageSEO("achievements"),
+    getPageSEO(`alumni/achievements`),
   ]);
 
   if (error || !data?.status) {
@@ -38,14 +33,18 @@ export default async function DynamicSlugPage({
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
     pageTitle: seoData?.title || "",
     metaDescription: seoData?.description || "",
-    primaryImageUrl:
-      "https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso: pageData?.created_at || "",
     dateModifiedIso: pageData?.updated_at || "",
     languageTag: "en-IN",
     currentPageName: pageData?.page_title || "",
-    parentMenus: pageData?.parent_menus || [],
-    currentPageSlug: pageData?.current_page_slug,
+    currentPageSlug: `${BASE_URL}alumni/achievements`,
+    parentMenus: [
+      {
+        title: "Alumni",
+        url: "alumni",
+      },
+    ],
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");

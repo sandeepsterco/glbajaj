@@ -3,6 +3,7 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import CompanyLogoSliders from "@/src/components/company_logo/CompanyLogoSliders";
 import { notFound } from "next/navigation";
+import { buildImageSchema } from "@/src/lib/schema/imageSchema";
 
 export default async function PlacementPage({
     params,
@@ -15,6 +16,13 @@ export default async function PlacementPage({
 
     const combinedHtml = Object.values(data?.data?.cms ?? {}).join("");
     const modularData = data?.data?.modular || {};
+
+    const imageSchemaArgs = {
+      imageUrl:'',
+      imageTitle:'',
+    };
+
+    buildImageSchema(imageSchemaArgs);
 
     return (
         <div className="happenings_page">

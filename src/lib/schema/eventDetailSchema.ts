@@ -24,7 +24,7 @@ export type EventSchemaArgs = {
   // Passed via props, since there's no parent_menus for modular pages
   staticSegments: StaticSegment[]; // e.g. [{name:"Events", slug:"events"}]
   eventSlug?: string;
-
+images?:string[];
   // Images — pass whichever aspect ratios you actually have; only non-empty ones are included
   image1x1Url?: string;
   image4x3Url?: string;
@@ -60,6 +60,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
     endDateIso,
     staticSegments,
     eventSlug,
+    images,
     image1x1Url,
     image4x3Url,
     image16x9Url,
@@ -86,7 +87,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
     { name: eventName, item: eventUrl },
   ];
 
-  const images = [image1x1Url, image4x3Url, image16x9Url].filter((url): url is string => Boolean(url));
+  // const images = [image1x1Url, image4x3Url, image16x9Url].filter((url): url is string => Boolean(url));
 
   const resolvedMode = attendanceMode ?? (location ? "Offline" : undefined);
 
@@ -135,7 +136,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
         eventStatus: "https://schema.org/EventScheduled",
         // eventAttendanceMode: resolvedMode ? ATTENDANCE_MODE_MAP[resolvedMode] : undefined,
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        image: images.length ? images : undefined,
+        image: images?.length ? images : undefined,
         location: place,
         organizer: { "@id": `${baseUrl}#organization` },
         performer,

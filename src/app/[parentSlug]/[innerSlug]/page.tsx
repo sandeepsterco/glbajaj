@@ -8,14 +8,17 @@ import { notFound } from "next/navigation";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
+import { buildFacilitySchema } from "@/src/lib/schema/facilitiesSchema";
+import { buildHomepageSchema } from "@/src/lib/schema/homepageSchema";
+import getValue from "@/src/lib/getValue";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string, innerSlug:string }>;
+  params: Promise<{ slug: string, parentSlug: string, innerSlug:string }>;
 }) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+  const { innerSlug, parentSlug } = await params;
+  return await getPageSEO(`${parentSlug}/${innerSlug}`);
 }
 
 export default async function DynamicSlugPage({
@@ -27,9 +30,10 @@ export default async function DynamicSlugPage({
 }) {
   const {parentSlug, innerSlug } = await params;
   const resolvedSearchParams = await searchParams;
-  const [{data, error}, seoData] = await Promise.all([
+  const [{data, error}, seoData, infoRes] = await Promise.all([
     apiFetch(`cms/${innerSlug}`),
-    getPageSEO(innerSlug),
+    getPageSEO(`${parentSlug}/${innerSlug}`),
+    apiFetch("info"),
   ]);
 
   if (error || !data?.status) {
@@ -42,13 +46,18 @@ export default async function DynamicSlugPage({
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
     currentPageName:pageData?.page_title || '',
-    parentMenus:pageData?.parent_menus || [],
-    currentPageSlug:pageData?.current_page_slug
+    currentPageSlug:`${BASE_URL}${parentSlug}/${innerSlug}`,
+    parentMenus: [
+      {
+        title: "Alumni",
+        url: parentSlug,
+      },
+    ],
   };
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
@@ -76,6 +85,59 @@ export default async function DynamicSlugPage({
     eventSchema = buildEventDetailSchema(eventDetailSchema);
   }
 
+  const isFacilitiesPage = (slug:string)=>{
+    return slug == 'academic' || slug == 'campus' || slug == 'other' || slug == 'transport';
+  }
+
+  const isAboutPage = (parentSlug:string, slug:string)=>{
+    return parentSlug === 'about-us' && slug === 'overview';
+  }
+
+  const facilitiesSchemaArgs = {
+    facilityType:pageData?.page_title || '',
+    facilityUrl:`${BASE_URL}${parentSlug}/${innerSlug}` || '/',
+    facilityName:pageData?.page_title || '',
+    visibleFacilityDescription:'',
+
+  };
+
+  const schemaArgs = {
+    officialFacebookUrl:getValue(infoRes, 'facebook')?.value,
+    officialInstagramUrl:getValue(infoRes, 'instagram')?.value,
+    officialLinkedinUrl:getValue(infoRes, 'linkedin')?.value,
+    officialYoutubeUrl:getValue(infoRes, 'youtube')?.value,
+    officialXUrl:getValue(infoRes, 'twitter')?.value,
+    officialInstitutionName:getValue(infoRes, 'institute_name')?.value,
+    commonNameOrAcronym:getValue(infoRes, 'institute_name')?.value,
+    legalName:getValue(infoRes, 'institute_name')?.value,
+    approvedInstitutionDescription:seoData.description || '',
+    logoUrl:`${BASE_URL}images/logo/logo.png`,
+    logoWidthPx:415,
+    logoHeightPx:112,
+    representativeCampusImageUrl:'',
+    streetAddress:getValue(infoRes, 'street_address')?.value,
+    cityLocality:getValue(infoRes, 'locality_address')?.value,
+    state:getValue(infoRes, 'region_address')?.value,
+    pinCode:getValue(infoRes, 'postal_code')?.value,
+    latitude:getValue(infoRes, 'latitude')?.value,
+    longitude:getValue(infoRes, 'longitude')?.value,
+    primaryPhoneWithCountryCode:getValue(infoRes, 'phone')?.value,
+    primaryEmail:getValue(infoRes, 'email')?.value,
+    admissionsPhone:getValue(infoRes, 'admission_helpline')?.value,
+    admissionsEmail:getValue(infoRes, 'email')?.value,
+    generalPhone:getValue(infoRes, 'phone')?.value,
+    generalEmail:getValue(infoRes, 'email')?.value,
+    foundingDateOrYear:'',
+    identifierAuthority:"",
+    identifierValue:"",
+    websiteName:"GL Bajaj",
+    websiteAlternateName:"GL Bajaj",
+    defaultLanguage:"en",
+  }
+
+  const facilitiesSchema = buildFacilitySchema(facilitiesSchemaArgs);
+  const pageSchema = buildHomepageSchema(schemaArgs);
+
   return (
     <>
       {seoData?.schema && (
@@ -84,6 +146,12 @@ export default async function DynamicSlugPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {isAboutPage(parentSlug, innerSlug) && pageSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
         />
       )}
       {eventSchema && (
@@ -96,6 +164,12 @@ export default async function DynamicSlugPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
+      {isFacilitiesPage(innerSlug) && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(facilitiesSchema) }}
         />
       )}
       <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />

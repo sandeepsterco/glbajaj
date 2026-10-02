@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "@/src/styles/inner.css";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata() {
   return await getPageSEO("departments");
@@ -17,10 +18,34 @@ export default async function DepartmentsPage({params}:{params:Promise<{parentSl
   const [cmsResult, seoData, departmentsResult] = await Promise.all([
     apiFetch(`cms/${slug}`),
     getPageSEO(slug),
-    apiFetch(`departments`),
+    apiFetch(slug),
   ]);
 
   const { data: departmentData, error: departmentError } = departmentsResult;
+
+  const pageData = cmsResult?.data?.data;
+
+  const globalSchemaArgs = {
+    canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
+    pageTitle: seoData?.title || "",
+    metaDescription: seoData?.description || "",
+    primaryImageUrl:'',
+    datePublishedIso: pageData?.created_at || "",
+    dateModifiedIso: pageData?.updated_at || "",
+    languageTag: "en-IN",
+    currentPageName: pageData?.page_title || "",
+    currentPageSlug: `${BASE_URL}${parentSlug}/${pageData?.current_page_slug}`,
+    parentMenus: [
+      ...pageData?.parent_menus,
+      {
+        title: 'Academics',
+        url: `academics`,
+      },
+      
+    ],
+};
+
+const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
   return (
     <>
@@ -39,6 +64,13 @@ export default async function DepartmentsPage({params}:{params:Promise<{parentSl
             pathname="/departments"
           />
         )}
+
+        {globalSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+                    />
+                )}
 
         {departmentError && (
           <ApiErrorFallback

@@ -67,6 +67,7 @@
 
 .alumni-events .csr-sec3{margin-top: 7rem;}
 
+.why-glbitm-committees-cells .head_commttesec .font36{margin-bottom:7.2rem;}
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
@@ -2489,6 +2490,11 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .blog_details date { font: var(--font-16); color: var(--color-white); margin-bottom: 2rem; display: block; }
 .blog_details { padding-block: 10rem 10rem; background-color: var(--color-white); }
 .blog_details_grid { display: grid; grid-template-columns: 68.7% auto; gap: 3rem; align-items: flex-start; }
+.blog_detail_tags { margin-top: 3rem; }
+.blog_detail_tags h4 { font: var(--font-21); font-weight: 700; margin-bottom: 1.2rem; }
+.blog_detail_tags ul { display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0; list-style: none; }
+.blog_detail_tags a { display: inline-block; padding: 0.7rem 1.2rem; border: 1px solid #E1E1E1; color: var(--color-33); text-decoration: none; }
+.blog_detail_tags a:hover { color: var(--color-white); background-color: var(--color-92); border-color: var(--color-92); }
 .blog_details_left blockquote { font: var(--font-30); margin-bottom: 4rem; }
 .blog_details_left h3 { font: var(--font-36); color: var(--color-92); letter-spacing: -1.8px; padding-block:3rem 2.5rem; }
 .blog_details_left ul { padding-block:0.7rem 4rem; color: var(--color-33); }

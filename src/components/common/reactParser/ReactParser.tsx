@@ -111,7 +111,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
   const idComponentMap: Record<string, () => React.ReactElement> = {
     "course-search": () => withLazyComponent(() => import("../../parser/CourseSearch")),
     home_course_tabs: () => withLazyComponent(() => import("../../parser/HomeCoursesTabs")),
-    "add-on-courses": () => withLazyComponent(() => import("../../parser/AddOnCourses"), { homeData }),
+    "add-on-courses": () => withLazyComponent(() => import("../../parser/homeparser/homeCourses/AddOnCourses"), { homeData }),
     "program-add-on-courses": () => withLazyComponent(() => import("../../parser/ProgramAddOnCourses")),
     research_innovation: () => withLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData }),
     home_facilities: () => withLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities")),
@@ -145,7 +145,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     department_faculty_grid: () => withLazyComponent(() => import("../../parser/DepartmentFacultyGrid")),
     program_detail_form: () => withLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
     department_home_placements: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
-    home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
+    home_placements: () => withLazyComponent(() => import("../../parser/homeparser/homePlacement/HomePlacements"), { homeData }),
     career_job_listing: () => withLazyComponent(() => import("../../parser/CareerJobListing")),
     home_upcoming_events: () => withLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
     home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
@@ -153,7 +153,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     department_home_research: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
     home_course_right: () => withLazyComponent(() => import("../../parser/HomeCourseRight")),
     alumni_achievement_list: () => withLazyComponent(() => import("../../parser/AlumniAchievementList")),
-    intern_slider: () => withLazyComponent(() => import("../../parser/internSlider/InternSlider")),
+    intern_slider: () => withLazyComponent(() => import("../../parser/homeparser/internSlider/InternSlider")),
   };
 
   const options: HTMLReactParserOptions = {

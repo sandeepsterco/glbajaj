@@ -3,12 +3,9 @@
 .pb-0{padding-bottom:0!important;}
 .pt-0{padding-top:0!important;}
 
-.xtab_panel { display: none; }
-.xtab_btn { font:var(--font-16); }
-.xtab_btn.active { color: var(--color-black); }
-.xtab_panel.active { display: block; }
+
 /* accordion header hidden on desktop */
-  .xacc_header { display: none; }
+
 /* ========= search page ================= */
 .search_listing_section { padding:10rem 0; }
 .search_listing_section .search-heading { color: var(--color-92); letter-spacing: -.2px; margin-bottom: 40px; font-size: 22px; font-weight: 400; }
@@ -70,15 +67,7 @@
 .why-glbitm-committees-cells .head_commttesec .font36{margin-bottom:7.2rem;}
 
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
-  @media (max-width: 768px) {
- .xtabs_nav { display: none; /* hide tab buttons */ }
-.xtab_panel { display: block; /* show all panels */ }
-.xacc_header { display: block; }
-.xacc_btn::after { content: "+"; }
-.xtab_panel.active .xacc_btn::after { content: "−"; }
-.xacc_body { display: none; }
-.xtab_panel.active .xacc_body { display: block; }
- }
+
 .custom_pages_lists { font: var(--font-18); gap: 3rem; margin-bottom: 5.5rem; font-weight: 600; display: flex; }
 .custom_pages_lists .tab_btn { cursor: pointer; color: #000; padding-bottom: 1.5rem; position: relative; font: var(--font-20); }
 .custom_pages_lists .active .tab_btn { color: var(--color-92); font-weight: 500; }
@@ -576,11 +565,7 @@
 .leadership_section::before { background-image: url(/images/pattern/leadership_patch.webp); position: absolute; top: 0; bottom: 0; left: 0; width: 20.6rem; content: ""; }
 .leader_card h4 { font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block: 2rem 0.5rem; }
 .navigation_btn { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; padding-bottom: 1rem; }
-.swiper_prev_custom,
-.swiper_next_custom { background-color: var(--color-white); height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow:
-        2px 2px 16px rgba(0, 0, 0, 0.1),
-        6px 17px 36px rgba(255, 255, 255, 0.8); }
-.swiper_prev_custom { transform: rotate(180deg); }
+
 .leadership_section h3 { padding-bottom: 4rem; }
 .leadership_slider .swiper-wrapper { padding-bottom: 5rem; }
 .leadership_slider .navigation_btn { bottom: 0; z-index: 999; }
@@ -883,10 +868,7 @@
 .faculties_main { padding-block: 10rem; }
 .cse_faculties_slider .navigation_btn { bottom: 0; left: 0; right: unset; position: relative; }
 .faculties_main .faculties_title,
-.custom_heading_grid { margin-bottom: 3.8rem; display: flex; justify-content: space-between; gap: 2rem; align-items: center;}
-.custom_heading_grid .left { flex:1; }
-.custom_heading_grid .sub_title2 {margin-bottom: 2rem;}
-.custom_heading_grid .title2 {color: var(--color-92); letter-spacing: -2.4px;}
+
 .department-page .custom_heading_grid .right,
 .inner .custom_heading_grid .right { flex:unset; }
 .faculties_main .faculties_title .font24 { margin-bottom: 1rem; }
@@ -1213,9 +1195,7 @@
 .tp_place_main.home_placement_section { background-color: transparent; margin-bottom: 10rem; }
 .tp_place_main .font24 { margin-bottom: 1rem; }
 .tp_place_main .home_placement_students { margin-top: 5rem; }
-.home_placement_students .slider_btns {    position: absolute;
-    top: 1.3rem;
-    right: -0.3rem;}
+
 .alumni_testimonial_section { padding-block: 16.8rem 2.6rem; background-color: var(--color-F4); }
 .ats_textbox { display: grid; gap: 8.2rem; padding-top: 11rem; grid-template-columns: 14% auto; }
 .ats_textbox p { font: var(--font-21); }

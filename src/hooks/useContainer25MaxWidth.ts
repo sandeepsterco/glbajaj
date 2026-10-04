@@ -1,7 +1,6 @@
-// hooks/useContainer25MaxWidth.ts
 import { useEffect } from "react";
 
-export function useContainer25MaxWidth() {
+export function UseContainer25MaxWidth() {
   useEffect(() => {
     let frozenWidth: number | null = null;
 
@@ -15,7 +14,6 @@ export function useContainer25MaxWidth() {
         (el as HTMLElement).style.maxWidth = "";
       });
 
-      // Use rAF to let browser reflow after clearing
       requestAnimationFrame(() => {
         const container = document.querySelector(".container25") as HTMLElement;
         if (!container) return;

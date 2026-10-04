@@ -10,7 +10,7 @@ import Providers from "../lib/providers";
 import AOSInit from '@/src/lib/AOSInit'
 import "../styles/private/custom.css";
 import "../styles/private/globals.css";
-import "../styles/program.css";
+// import "../styles/program.css";
 import AOSProvider from "../lib/AOSProvider";
 import { Suspense } from "react";
 import { NavigationProgress } from "../components/NavigationProgress";

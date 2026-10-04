@@ -4,7 +4,6 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { useContainer25MaxWidth } from "@/src/hooks/useContainer25MaxWidth";
 import Image from "next/image";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
@@ -33,7 +32,6 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRefs = useRef<Record<number, SwiperType>>({});
-  const containerRef = useContainer25MaxWidth();
   
   useEffect(() => {
     setMounted(true)

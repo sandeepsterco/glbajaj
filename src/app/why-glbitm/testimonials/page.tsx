@@ -7,6 +7,13 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { notFound, redirect } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import { BASE_URL } from "@/src/config/config";
+
+export async function generateMetadata() {
+  return await getPageSEO('why-glbitm/testimonials');
+}
 
 export default async function TestimonialPage({
     searchParams,
@@ -20,7 +27,11 @@ export default async function TestimonialPage({
     if (type) params.set("type", type);
     if (page && Number(page) > 1) params.set("page", String(page));
 
-    const { data, error } = await apiFetch(`testimonial?${params.toString()}`);
+    const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
+        apiFetch(`testimonial?${params.toString()}`),
+        apiFetch(`cms/testimonials`),
+        getPageSEO('why-glbitm/testimonials'),
+    ]);
 
     if (error) notFound();
 
@@ -34,8 +45,41 @@ export default async function TestimonialPage({
         redirect("/why-glbitm/testimonials");
     }
 
+    const pageData = CmsData?.data;
+
+    const globalSchemaArgs = {
+        canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
+        pageTitle:seoData?.title || '',
+        metaDescription:seoData?.description || '',
+        primaryImageUrl:'',
+        datePublishedIso:pageData?.created_at || '',
+        dateModifiedIso:pageData?.updated_at || '',
+        languageTag:'en-IN',
+        currentPageName:pageData?.page_title || '',
+        currentPageSlug: `${BASE_URL}why-glbitm/testimonials`,
+        parentMenus: [
+            ...pageData?.parent_menus,
+        ],
+      };
+
+    const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
     return (
         <>
+        {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
             <InnerPageLayoutWrapper slug={currentSlug}
                 pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 

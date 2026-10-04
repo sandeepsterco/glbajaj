@@ -4,23 +4,17 @@ import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
-import getValue from "@/src/lib/getValue";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ parentSlug: string }>;
-}) {
-  const { parentSlug } = await params;
-  return await getPageSEO(parentSlug);
+export async function generateMetadata() {
+  return await   getPageSEO('research-innovation/overview')
 }
 
 export default async function AdmissionOverviewPage() {
   const [{data, error}, seoData, {data:infoRes}] = await Promise.all([
     apiFetch(`cms/research-innovation-overview`),
-    getPageSEO('research-innovation-overview'),
+    getPageSEO('research-innovation/overview'),
     apiFetch("info"),
   ]);
 
@@ -37,12 +31,12 @@ export default async function AdmissionOverviewPage() {
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
-    currentPageName:pageData?.page_title || ''
+    currentPageSlug:`${BASE_URL}research-innovation/overview`,
+    currentPageName:pageData?.page_title || '',
   };
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);

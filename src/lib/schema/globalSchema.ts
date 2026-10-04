@@ -14,24 +14,20 @@ export type GlobalSchemaArgs = {
   dateModifiedIso?: string;
   languageTag: string;
 
-  // Straight from the API
-  parentMenus?: ParentMenu[]; // data.parent_menus
-  currentPageSlug: string; // data.current_page_slug (top-level, NOT inside parent_menus)
-  currentPageName: string; // data.menu_title ?? data.page_title
+  parentMenus?: ParentMenu[]; 
+  currentPageSlug: string; 
+  currentPageName: string; 
   canonicalUrl?:string;
 };
 
-// Joins any number of path segments onto BASE_URL with exactly one "/" between each,
-// regardless of whether BASE_URL or the segments already have leading/trailing slashes.
 function joinUrl(...segments: string[]): string {
-  const base = BASE_URL?.replace(/\/+$/, ""); // strip trailing slash from BASE_URL
+  const base = BASE_URL?.replace(/\/+$/, "");
   const cleanSegments = segments
-    .map((s) => s?.trim().replace(/^\/+|\/+$/g, "")) // strip leading/trailing slashes
-    .filter((s) => s && s !== "#"); // drop empty/hash segments
+    .map((s) => s?.trim().replace(/^\/+|\/+$/g, ""))
+    .filter((s) => s && s !== "#"); 
   return cleanSegments.length ? `${base}/${cleanSegments.join("/")}` : `${base}/`;
 }
 
-// A menu url counts as a real page only if it's non-empty and not "/" or "#"
 function isRealMenuUrl(url: string | null): url is string {
   if (!url) return false;
   const trimmed = url.trim().replace(/^\/+|\/+$/g, "");
@@ -72,7 +68,7 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
         url: canonicalUrl,
         name: pageTitle,
         description: metaDescription,
-        isPartOf: { "@id": joinUrl("#website") }, // careful, see note below
+        isPartOf: { "@id": joinUrl("#website") },
         publisher: { "@id": joinUrl("#organization") },
         breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
         primaryImageOfPage: { "@id": `${primaryImageUrl}#image` },

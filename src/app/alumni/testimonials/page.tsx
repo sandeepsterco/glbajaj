@@ -12,6 +12,10 @@ import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
+export async function generateMetadata() {
+  return await getPageSEO('alumni/testimonials');
+}
+
 export default async function TestimonialPage({
   searchParams,
 }: {

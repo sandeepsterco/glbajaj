@@ -56,6 +56,10 @@ function buildBlogsQuery(params: {
   return parts.join("&");
 }
 
+export async function generateMetadata() {
+  return await getPageSEO(`blogs`);
+}
+
 export default async function BlogsPage({
   searchParams,
 }: {
@@ -180,10 +184,12 @@ export default async function BlogsPage({
                 tags={Array.from(
                   new Map(
                     allItems
-                      .flatMap((blog) => (Array.isArray(blog.tags) ? blog.tags : []))
+                      .flatMap((blog) =>
+                        Array.isArray(blog.tags) ? blog.tags : [],
+                      )
                       .filter((tag) => tag.slug)
-                      .map((tag) => [tag.slug, tag])
-                  ).values()
+                      .map((tag) => [tag.slug, tag]),
+                  ).values(),
                 )}
                 slug={slug}
               />

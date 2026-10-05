@@ -11,7 +11,7 @@ import { BASE_URL } from "@/src/config/config";
 
 
 export async function generateMetadata() {
-  return await getPageSEO(`${BASE_URL}student-corner/overview`);
+  return await getPageSEO(`student-corner/overview`);
 }
 
 
@@ -23,7 +23,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`cms/student-corner-overview`),
-    getPageSEO('student-corner-overview'),
+    getPageSEO('student-corner/overview'),
   ]);
 
   if (error || !data?.status) {

@@ -5,6 +5,12 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
+  return await getPageSEO(`happenings/archives/${slug}`);
+}
+
+
 export default async function GalleryDetail({params}:{params:any}){
     const {slug} = await params;
 

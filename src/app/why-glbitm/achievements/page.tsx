@@ -8,13 +8,8 @@ import { notFound } from "next/navigation";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string, innerSlug:string }>;
-}) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+export async function generateMetadata() {
+  return await getPageSEO('why-glbitm/achievements');
 }
 
 export default async function DynamicSlugPage({
@@ -25,7 +20,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/glb-achievements`),
-    getPageSEO('glb-achievements'),
+    getPageSEO('why-glbitm/achievements'),
   ]);
 
   if (error || !data?.status) {

@@ -9,13 +9,8 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string, innerSlug:string }>;
-}) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+export async function generateMetadata() {
+  return await getPageSEO('alumni/events');
 }
 
 export default async function DynamicSlugPage({
@@ -26,7 +21,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/alumni-events-meets`),
-    getPageSEO('alumni-events-meets'),
+    getPageSEO('alumni/events'),
   ]);
 
   if (error || !data?.status) {

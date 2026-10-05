@@ -30,8 +30,8 @@ export default async function GalleryPage({
         <>
         <InnerPageLayoutWrapper slug={slug}
       pathname={`/${parentSlug}/workshops-and-seminars`} tabs={null} mainClass="happenings_page" showTabs={true}>
-            <MainGallery data={data?.featured}  currentPage="workshops-and-seminars" parentSlug={parentSlug} slug={slug} />
-            <GalleryList data={data?.others} currentPage="workshops-and-seminars" customClass="workshops-and-seminars-list" parentSlug={parentSlug} slug={slug} />
+            <MainGallery data={data?.featured}  currentPage="workshops" parentSlug='happenings' slug={slug} />
+            <GalleryList data={data?.others} currentPage="workshops" customClass="workshops-and-seminars-list" parentSlug={`happenings`} slug={slug} />
             </InnerPageLayoutWrapper>
         </>
     )

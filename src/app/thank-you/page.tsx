@@ -28,10 +28,10 @@ export default async function ThankYouPage() {
         dateModifiedIso: pageData?.updated_at || '',
         languageTag: 'en-IN',
         currentPageName: pageData?.page_title || '',
-        currentPageSlug: `${BASE_URL}thank-you`,
-        parentMenus: [
-            ...pageData?.parent_menus,
-        ],
+        currentPageSlug: `${BASE_URL}thank-you` || '',
+        parentMenus: Array.isArray(pageData?.parent_menus)
+            ? pageData.parent_menus
+            : [],
     };
 
     const globalSchema = buildGlobalSchema(globalSchemaArgs);

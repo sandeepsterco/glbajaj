@@ -3,8 +3,9 @@
 .cus-tab .tabbed-content { }
 .cus-tab .tabs ul { margin: 0; border-bottom: .1rem solid var(--color-70); }
 .cus-tab .tabs ul li { margin-right: 8rem; }
-.cus-tab .tabs ul li a { font: var(--font-36); letter-spacing: -1.8px; color: var(--color-64); padding: 0 0 3.5rem 0; }
-.cus-tab .tabs ul li a:hover, .tabs ul li a.active { color: var(--color-64); border-bottom: .1rem solid var(--color-92); }
+.cus-tab .tabs ul li a, .cus-tab .tabs ul li button { font: var(--font-36); letter-spacing: -1.8px; color: var(--color-64); padding: 0 0 3.5rem 0; }
+.cus-tab .tabs ul li button { background: none; border: 0; cursor: pointer; }
+.cus-tab .tabs ul li a:hover, .cus-tab .tabs ul li a.active, .cus-tab .tabs ul li button:hover, .cus-tab .tabs ul li button.active { color: var(--color-64); border-bottom: .1rem solid var(--color-92); }
 .cus-tab .item { margin-bottom: 2px; }
 .cus-tab .item::before { cursor: pointer; font-weight: bold; background: #eee; padding: 0.5em; display: block; }
 .cus-tab .item.active::before { background: #444; color: #eee; }

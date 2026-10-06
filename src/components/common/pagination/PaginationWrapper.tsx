@@ -2,16 +2,21 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Pagination from "./Pagination";
 
-export default function PaginationWrapper({ currentPage, totalPages, pageKey = "page" }: {
+export default function PaginationWrapper({ currentPage, totalPages, pageKey = "page", onPageChange }: {
     currentPage: number;
     totalPages: number;
     pageKey?: string; // ← optional, defaults to "page" so all existing usages are unaffected
+    onPageChange?: (page: number) => void;
 }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();    
 
     const handlePageChange = (page: number) => {
+        if (onPageChange) {
+            onPageChange(page);
+            return;
+        }
         const params = new URLSearchParams(searchParams.toString());
         params.set(pageKey, String(page)); // ← uses pageKey instead of hardcoded "page"
         router.push(`${pathname}?${params.toString()}`);

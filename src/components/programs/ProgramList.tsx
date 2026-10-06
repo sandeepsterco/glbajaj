@@ -4,9 +4,10 @@ import { apiFetch } from "@/src/lib/api";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 import { APPLY_NOW, BASE_URL } from "@/src/config/config";
 import { useEffect, useState, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
 import ProgramApplyModal from "./ProgramApplyModal";
 import { SkeletonGroup } from "../ui/Skeleton";
+
+type ProgramType = "under-graduate" | "post-graduate" | "all";
 
 interface Program {
   name: string;
@@ -32,9 +33,14 @@ interface ProgramsData {
   links: unknown[];
 }
 
-async function fetchPrograms(type: "under-graduate" | "post-graduate" | "all", page = 1) {
+async function fetchPrograms(type: ProgramType, page = 1) {
+  const params = new URLSearchParams({
+    type: type === "all" ? "" : type,
+    page: String(page),
+  });
   const { data, error } = await apiFetch(
-    `programs?type=${type === "all" ? "" : type}&page=${page}`
+    `programs?${params.toString()}`,
+    { method: "GET" }
   );
   if (error || !data) return null;
   return data as { programs: ProgramsData };
@@ -88,13 +94,6 @@ function ProgramBox({
   );
 }
 
-function buildUrl(type: string, page: number) {
-  const params = new URLSearchParams();
-  params.set("type", type);
-  params.set("page", String(page));
-  return `${BASE_URL}programs-offered?${params.toString()}`;
-}
-
 function ProgramGroupSection({
   parentSlug,
   currentSlug,
@@ -130,10 +129,8 @@ function ProgramGroupSection({
 }
 
 export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string; currentSlug:string;}) {
-  const searchParams = useSearchParams();
-  const paramsType = (searchParams.get("type") as "under-graduate" | "post-graduate" | "all") || "all";
-  const page = Number(searchParams.get("page")) || 1;
-
+  const [paramsType, setParamsType] = useState<ProgramType>("all");
+  const [page, setPage] = useState(1);
   const [programsData, setProgramsData] = useState<ProgramsData | null>(null);
   const [loading, setLoading] = useState(false);
   const [applyModal, setApplyModal] = useState<{
@@ -148,6 +145,12 @@ export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string
   const closeApplyModal = useCallback(() => {
     setApplyModal({ open: false });
   }, []);
+
+  const tabs: { label: string; type: ProgramType }[] = [
+    { label: "All Courses", type: "all" },
+    { label: "Undergraduate Courses", type: "under-graduate" },
+    { label: "Postgraduate Courses", type: "post-graduate" },
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -165,18 +168,18 @@ export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string
             <div className="tabbed-content">
               <nav className="tabs">
                 <ul>
-                  {[
-                    { label: "All Courses", type: "all" },
-                    { label: "Undergraduate Courses", type: "under-graduate" },
-                    { label: "Postgraduate Courses", type: "post-graduate" },
-                  ].map(({ label, type }) => (
+                  {tabs.map(({ label, type }) => (
                     <li key={type}>
-                      <Link
-                        href={`${BASE_URL}${parentSlug}/${currentSlug}?type=${type}&page=1`}
+                      <button
+                        type="button"
                         className={paramsType === type ? "active" : ""}
+                        onClick={() => {
+                          setParamsType(type);
+                          setPage(1);
+                        }}
                       >
                         {label}
-                      </Link>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -204,6 +207,7 @@ export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string
                     <PaginationWrapper
                     currentPage={programsData.current_page || 1}
                     totalPages={programsData.last_page || 1}
+                    onPageChange={setPage}
                   />
                   )}
                 </div>

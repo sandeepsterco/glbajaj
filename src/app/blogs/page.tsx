@@ -1,14 +1,8 @@
-import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
-
 import { apiFetch } from "@/src/lib/api";
 
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 
-import BlogMain from "@/src/components/blogs/BlogMain";
-
-import BlogGrid from "@/src/components/blogs/BlogGrid";
-
-import BlogSidebar from "@/src/components/blogs/BlogSidebar";
+import BlogListingClient from "../../components/blogs/BlogListingClient";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
@@ -101,12 +95,6 @@ export default async function BlogsPage({
   if (error) notFound();
 
   const pageData = blogsData?.blogs;
-  const pagination = blogsData?.blogs;
-  const allItems: any[] = pagination?.data ?? [];
-  const featuredBlogs: any[] = blogsData?.featuredBlogs ?? [];
-  const comments: any[] = blogsData?.comments ?? [];
-  const mainBlog = allItems[0] ?? null;
-  const gridBlogs = allItems.slice(1);
   const slug = "blogs";
 
   const globalSchemaArgs = {
@@ -152,50 +140,10 @@ export default async function BlogsPage({
         mainClass="happenings_page"
         showTabs={true}
       >
-        {mainBlog && <BlogMain data={mainBlog} slug={slug} />}
-
-        <section className="blog_listing">
-          <div className="container25">
-            <div className="blog_listing_grid">
-              <div className="blog_listing_left">
-                {gridBlogs.length > 0
-                  ? gridBlogs.map((blog: any, idx: number) => (
-                      <BlogGrid
-                        key={blog.slug ?? idx}
-                        data={blog}
-                        slug={slug}
-                      />
-                    ))
-                  : !mainBlog && <p>No blogs found.</p>}
-
-                <PaginationWrapper
-                  currentPage={pagination?.current_page || 1}
-                  totalPages={pagination?.last_page || 1}
-                />
-              </div>
-
-              <BlogSidebar
-                featuredBlogs={featuredBlogs}
-                comments={comments}
-                currentCategory={category}
-                currentYear={year}
-                currentMonth={month}
-                currentSearch={search}
-                tags={Array.from(
-                  new Map(
-                    allItems
-                      .flatMap((blog) =>
-                        Array.isArray(blog.tags) ? blog.tags : [],
-                      )
-                      .filter((tag) => tag.slug)
-                      .map((tag) => [tag.slug, tag]),
-                  ).values(),
-                )}
-                slug={slug}
-              />
-            </div>
-          </div>
-        </section>
+        <BlogListingClient
+          initialBlogsData={blogsData}
+          initialFilters={{ search, category, year, month }}
+        />
       </InnerPageLayoutWrapper>
     </>
   );

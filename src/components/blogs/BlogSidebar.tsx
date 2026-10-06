@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
@@ -26,6 +27,15 @@ interface BlogTag {
   slug: string;
 }
 
+export interface BlogFilterValues {
+  search: string;
+  category: string;
+  year: string;
+  month: string;
+}
+
+export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
+
 interface Props {
   featuredBlogs: any[];
   comments: any[];
@@ -39,6 +49,7 @@ interface Props {
   /** When set, archive/search/category filters link here (e.g. blog listing on detail pages). */
   listingPath?: string;
   showSearch?: boolean;
+  onFiltersChange?: (filters: BlogFilterValues) => void;
 }
 
 function normalizeComment(comment: unknown) {
@@ -46,11 +57,15 @@ function normalizeComment(comment: unknown) {
   return comment as Record<string, unknown>;
 }
 
-function FilterChip({ label, href }: { label: string; href: string }) {
+function FilterChip({ label, href, onRemove }: {
+  label: string;
+  href: string;
+  onRemove?: (event: MouseEvent<HTMLAnchorElement>) => void;
+}) {
   return (
     <div className="blog_filter_chip">
       <span>{label}</span>
-      <Link href={href} className="blog_filter_chip_remove" aria-label={`Remove ${label} filter`}>
+      <Link href={href} onClick={onRemove} className="blog_filter_chip_remove" aria-label={`Remove ${label} filter`}>
         ×
       </Link>
     </div>
@@ -69,6 +84,7 @@ export default function BlogSidebar({
   slug,
   listingPath,
   showSearch = true,
+  onFiltersChange,
 }: Props) {
   const router = useRouter();
   const pathname = usePathname();
@@ -76,7 +92,9 @@ export default function BlogSidebar({
   const [searchInput, setSearchInput] = useState(currentSearch);
   const [categories, setCategories] = useState<any[]>([]);
   const filterBase = listingPath ?? pathname;
-  const selectedCategoryParam = searchParams.get("category") ?? currentCategory;
+  const selectedCategoryParam = onFiltersChange
+    ? currentCategory
+    : searchParams.get("category") ?? currentCategory;
 
   useEffect(() => {
     setSearchInput(currentSearch);
@@ -96,6 +114,7 @@ export default function BlogSidebar({
   }, []);
 
   const buildHref = (updates: Record<string, string | null | undefined>) => {
+    if (onFiltersChange || listingPath) return filterBase;
     const params = new URLSearchParams(searchParams.toString());
     Object.entries(updates).forEach(([key, value]) => {
       if (value) params.set(key, value);
@@ -106,8 +125,39 @@ export default function BlogSidebar({
     return query ? `${filterBase}?${query}` : filterBase;
   };
 
+  const applyFilterUpdates = (updates: Record<string, string | null | undefined>) => {
+    const nextFilters = {
+      search: updates.search === undefined ? currentSearch : updates.search ?? "",
+      category: updates.category === undefined ? currentCategory : updates.category ?? "",
+      year: updates.year === undefined ? currentYear : updates.year ?? "",
+      month: updates.month === undefined ? currentMonth : updates.month ?? "",
+    };
+
+    if (onFiltersChange) {
+      onFiltersChange(nextFilters);
+      return;
+    }
+
+    if (listingPath) {
+      sessionStorage.setItem(PENDING_BLOG_FILTERS_KEY, JSON.stringify(nextFilters));
+      router.push(filterBase);
+      return;
+    }
+
+    router.push(buildHref(updates));
+  };
+
+  const handleFilterClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    updates: Record<string, string | null | undefined>,
+  ) => {
+    if (!onFiltersChange && !listingPath) return;
+    event.preventDefault();
+    applyFilterUpdates(updates);
+  };
+
   const handleSearch = () => {
-    router.push(buildHref({ search: searchInput.trim() || null }));
+    applyFilterUpdates({ search: searchInput.trim() || null });
   };
 
   const archives = getLast12Months();
@@ -218,6 +268,7 @@ export default function BlogSidebar({
             <FilterChip
               label={archiveFilterLabel}
               href={buildHref({ year: null })}
+              onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { year: null, month: null }) : undefined}
             />
           </div>
         )}
@@ -228,7 +279,7 @@ export default function BlogSidebar({
             const href = buildHref({ year: arc.year });
             return (
               <li key={`${arc.year}-${arc.month}-${idx}`}>
-                <Link href={href} className={isActive ? "active" : ""}>
+                <Link href={href} onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} className={isActive ? "active" : ""}>
                   {arc.label}
                 </Link>
               </li>
@@ -263,6 +314,7 @@ export default function BlogSidebar({
               <FilterChip
                 label={selectedCategory.name}
                 href={buildHref({ category: null })}
+                onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { category: null }) : undefined}
               />
             </div>
           )}
@@ -276,7 +328,7 @@ export default function BlogSidebar({
               const href = buildHref({ category: catId });
               return (
                 <li key={catId}>
-                  <Link href={href} className={isActive ? "active" : ""}>
+                  <Link href={href} onClick={(event) => handleFilterClick(event, { category: catId })} className={isActive ? "active" : ""}>
                     {cat.name}
                   </Link>
                 </li>

@@ -5,9 +5,7 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
-import BlogMain from "@/src/components/blogs/BlogMain";
-import BlogGrid from "@/src/components/blogs/BlogGrid";
-import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
+import BlogListingClient from "@/src/components/blogs/BlogListingClient";
 import { notFound } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
@@ -59,6 +57,11 @@ function BlogSections({ sections }: { sections: any }) {
   ));
 }
 
+export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
+  return await getPageSEO(`blogs/${slug}`);
+}
+
 export default async function BlogDetailPage({
   params,
   searchParams,
@@ -98,13 +101,10 @@ export default async function BlogDetailPage({
       tagOptions
     );
     const tagBlogsResponse = tagData?.blogs;
-    const tagPagination = Array.isArray(tagBlogsResponse)
-      ? null
-      : tagBlogsResponse;
     const tagBlogs: TagListingBlog[] = Array.isArray(tagBlogsResponse)
       ? (tagBlogsResponse as TagListingBlog[])
-      : Array.isArray(tagPagination?.data)
-        ? (tagPagination.data as TagListingBlog[])
+      : Array.isArray(tagBlogsResponse?.data)
+        ? (tagBlogsResponse.data as TagListingBlog[])
         : [];
 
     if (tagError || !tagBlogsResponse) notFound();
@@ -134,8 +134,6 @@ export default async function BlogDetailPage({
       currentPageName: `${tagName} Blogs`,
       parentMenus: [{ title: "Blogs", url: "blogs" }],
     });
-    const mainBlog = tagBlogs[0] ?? null;
-
     return (
       <>
         {tagGlobalSchema && (
@@ -144,36 +142,13 @@ export default async function BlogDetailPage({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(tagGlobalSchema) }}
           />
         )}
-        {mainBlog && <BlogMain data={mainBlog} slug={listSlug} />}
-        <section className="blog_listing">
-          <div className="container25">
-            <div className="blog_listing_grid">
-              <div className="blog_listing_left">
-                {tagBlogs.slice(1).map((blog, idx: number) => (
-                  <BlogGrid key={blog.slug ?? idx} data={blog} slug={listSlug} />
-                ))}
-                {!mainBlog && <p>No blogs found.</p>}
-                {tagPagination && (
-                  <PaginationWrapper
-                    currentPage={tagPagination.current_page || page}
-                    totalPages={tagPagination.last_page || 1}
-                  />
-                )}
-              </div>
-              <BlogSidebar
-                featuredBlogs={tagData?.featuredBlogs ?? []}
-                comments={tagData?.comments ?? []}
-                currentCategory={category}
-                currentYear={year}
-                currentMonth={month}
-                currentSearch={search}
-                tags={tagList}
-                currentTagSlug={blogSlug}
-                slug={listSlug}
-              />
-            </div>
-          </div>
-        </section>
+        <BlogListingClient
+          initialBlogsData={tagData}
+          initialFilters={{ search, category, year, month }}
+          initialPage={page}
+          tagSlug={blogSlug}
+          tags={tagList}
+        />
       </>
     );
   }

@@ -7,7 +7,7 @@ export default async function GalleryDetail({params}:{params:any}){
 
     const {data, error} = await apiFetch(`workshops-seminars/${slug}`);
 
-    if(error) notFound();
+    if(error || data.workshop_details?.length  === 0) notFound();
 
     return(
         <GalleryDetailPage gallery_data={data.workshop_details} slug={slug} />

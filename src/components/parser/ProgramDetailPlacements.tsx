@@ -41,21 +41,15 @@ export default function ProgramDetailPlacements() {
     );
   }
 
-  if (isError) {
-    return (
-      <div className="home_placement_students deparment_page_placemen">
-        <ApiError />
-      </div>
-    );
-  }
+  // if (isError) {
+  //   return (
+  //     <div className="home_placement_students deparment_page_placemen">
+  //       <ApiError />
+  //     </div>
+  //   );
+  // }
 
-  if (!placementData?.length) {
-    return (
-      <div className="home_placement_students deparment_page_placemen">
-        <NoData />
-      </div>
-    );
-  }
+  if (isError || !placementData?.length) return null;
 
   const canLoop = placementData.length > SLIDES_PER_VIEW;
 

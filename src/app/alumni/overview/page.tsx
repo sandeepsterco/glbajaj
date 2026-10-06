@@ -8,19 +8,14 @@ import getValue from "@/src/lib/getValue";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ parentSlug: string }>;
-}) {
-  const { parentSlug } = await params;
-  return await getPageSEO(parentSlug);
+export async function generateMetadata() {
+  return await getPageSEO('alumni/overview');
 }
 
 export default async function AdmissionOverviewPage() {
   const [{data, error}, seoData, {data:infoRes}] = await Promise.all([
     apiFetch(`cms/alumni-overview`),
-    getPageSEO('alumni-overview'),
+    getPageSEO('alumni/overview'),
     apiFetch("info"),
   ]);
 

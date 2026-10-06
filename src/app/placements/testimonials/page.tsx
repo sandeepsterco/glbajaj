@@ -9,13 +9,8 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string, innerSlug:string }>;
-}) {
-  const { innerSlug } = await params;
-  return await getPageSEO(innerSlug);
+export async function generateMetadata() {
+  return await getPageSEO('placements/testimonials');
 }
 
 export default async function PlacementTestimonialPage({
@@ -28,7 +23,7 @@ export default async function PlacementTestimonialPage({
 
   const [{data, error}, seoData] = await Promise.all([
     apiFetch(`cms/${currentSlug}`),
-    getPageSEO(currentSlug),
+    getPageSEO('placements/testimonials'),
   ]);
 
   if (error || !data?.status) {

@@ -3,6 +3,11 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import CompanyLogoSliders from "@/src/components/company_logo/CompanyLogoSliders";
 import { notFound } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+
+export async function generateMetadata() {
+  return await   getPageSEO('placements')
+}
 
 export default async function PlacementPage({
     params,

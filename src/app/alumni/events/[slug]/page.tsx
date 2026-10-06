@@ -5,6 +5,12 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
+  return await getPageSEO(`alumni/events/${slug}`);
+}
+
+
 export default async function AlumniEventsDetailPage({
   params,
 }: {
@@ -15,7 +21,7 @@ export default async function AlumniEventsDetailPage({
   const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
     apiFetch(`alumni-events/${slug}`),
     apiFetch(`cms/alumni-events-meets`),
-    getPageSEO(slug),
+    getPageSEO(`alumni/events/${slug}`),
   ]);
 
   if (error) notFound();

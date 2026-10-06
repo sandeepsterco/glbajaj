@@ -1,7 +1,6 @@
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 import { apiFetch } from "@/src/lib/api";
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import TestimonialList from "@/src/components/testimonial/TestimonialList";
 import "@/src/styles/inner.css";
 import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
@@ -11,12 +10,14 @@ import { notFound } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
+import FaqList from "@/src/components/faqs/FaqList";
+import { buildFaqSchema } from "@/src/lib/schema/faqSchema";
 
 export async function generateMetadata() {
-  return await getPageSEO('alumni/testimonials');
+  return await getPageSEO('faqs');
 }
 
-export default async function TestimonialPage({
+export default async function FaqPage({
   searchParams,
 }: {
   searchParams: Promise<{ page?: string }>;
@@ -24,15 +25,15 @@ export default async function TestimonialPage({
   const { page } = await searchParams;
   const currentPage = Number(page) || 1;
   const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
-    apiFetch(`testimonial?type=Alumni&page=${currentPage}`),
-    apiFetch(`cms/testimonials`),
-    getPageSEO(`alumni/testimonials`),
+    apiFetch(`faqs?page=${currentPage}`),
+    apiFetch(`cms/faqs`),
+    getPageSEO(`faqs`),
   ]);
-  const slug = "alumni-testimonials";
+  const slug = "faqs";
 
   if (error) notFound();
 
-  const pagination = data?.testimonials;
+  const pagination = data?.faqs;
 
   const pageData = CmsData?.data;
 
@@ -45,16 +46,20 @@ export default async function TestimonialPage({
     dateModifiedIso: pageData?.updated_at || "",
     languageTag: "en-IN",
     currentPageName: pageData?.page_title || "",
-    currentPageSlug: `${BASE_URL}alumni/testimonials`,
-    parentMenus: [
-      {
-        title: "Alumni",
-        url: "alumni",
-      },
-    ],
+    currentPageSlug: `${BASE_URL}faqs`,
+    
   };
 
-  const globalSchema = buildGlobalSchema(globalSchemaArgs);
+  const faqSchemaArgs = {
+    pageUrl: `${BASE_URL}faqs`,
+    faqs: pagination?.data?.map((item: any) => ({
+      question: item.question,
+      answer: item.answer,
+    })) || [],
+  };
+
+  const globalSchema = buildGlobalSchema(globalSchemaArgs); 
+  const faqSchema = buildFaqSchema(faqSchemaArgs);
 
   return (
     <>
@@ -72,6 +77,12 @@ export default async function TestimonialPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <InnerPageLayoutWrapper
         slug={slug}
         pathname={`/alumni/testimonials`}
@@ -79,12 +90,8 @@ export default async function TestimonialPage({
         mainClass="happenings_page"
         showTabs={false}
       >
-        <TestimonialList
+        <FaqList
           data={pagination}
-          parentSlug={"alumni"}
-          slug={slug}
-          activeType="alumni"
-          currentPage="alumni-testimonials"
         />
         {/* <PaginationWrapper
                     currentPage={pagination?.current_page || 1}

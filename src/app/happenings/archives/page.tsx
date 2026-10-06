@@ -12,6 +12,10 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { BASE_URL } from "@/src/config/config";
 
+export async function generateMetadata() {
+  return await getPageSEO('happenings/archives');
+}
+
 export default async function ArchivePage({
     searchParams,
   }: {

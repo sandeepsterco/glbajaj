@@ -1,18 +1,15 @@
-import { WorkshopDetail } from "@/src/components/workshop/WorkshopDetail";
-import { apiFetch } from "@/src/lib/api";
+import GalleryDetailPage from "@/src/components/gallery/GalleryDetail";
+import { apiFetch } from "@/src/lib/api"
 import { notFound } from "next/navigation";
 
-export default async function WorkshopDetailPage({params}:{params:any}){
+export default async function GalleryDetail({params}:{params:any}){
     const {slug} = await params;
-    const { data, error } = await apiFetch(`workshops/${slug}`);
 
-    if (error) notFound();
+    const {data, error} = await apiFetch(`workshops-seminars/${slug}`);
 
-    const newsData = data?.workshops_details;
+    if(error || data.workshop_details?.length  === 0) notFound();
 
     return(
-        <>
-            <WorkshopDetail data={newsData} />
-        </>
+        <GalleryDetailPage gallery_data={data.workshop_details} slug={slug} />
     )
 }

@@ -63,9 +63,12 @@ export default async function DynamicSlugPage({
         url: innerSlug,
       },
     ],
-};
+  };
+
+  
 
 const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
 
   return (
     <>
@@ -78,11 +81,12 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
         />
       )}
       {globalSchema && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
-                    />
-                )}
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+            />
+        )}
+        
       <PageHeader
         pathname={`/${parentSlug}/${innerSlug}/${innerChildSlug}`}
         data={data?.data}

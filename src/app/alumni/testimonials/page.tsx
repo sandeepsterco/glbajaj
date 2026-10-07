@@ -81,9 +81,6 @@ export default async function TestimonialPage({
       >
         <TestimonialList
           data={pagination}
-          parentSlug={"alumni"}
-          slug={slug}
-          activeType="alumni"
           currentPage="alumni-testimonials"
         />
         {/* <PaginationWrapper

@@ -6,7 +6,7 @@ import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 import BlogListingClient from "@/src/components/blogs/BlogListingClient";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
@@ -57,7 +57,11 @@ function BlogSections({ sections }: { sections: any }) {
   ));
 }
 
-export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   return await getPageSEO(`blogs/${slug}`);
 }
@@ -70,6 +74,17 @@ export default async function BlogDetailPage({
   searchParams: Promise<SearchParams>;
 }) {
   const { slug: blogSlug } = await params;
+
+  const queryParams = await searchParams;
+  const page = Number(queryParams.page) || 1;
+  const search = queryParams.search || "";
+  const category = queryParams.category || "";
+  const year = queryParams.year || "";
+  const month = queryParams.month || "";
+  const tagQuery = new URLSearchParams();
+
+  if (category || year || month || search) redirect(`/blogs/${blogSlug}`);
+
   const listSlug = "blogs";
 
   const [{ data }, seoData] = await Promise.all([
@@ -80,25 +95,16 @@ export default async function BlogDetailPage({
   const details = data?.details;
 
   if (!details) {
-    const queryParams = await searchParams;
-    const page = Number(queryParams.page) || 1;
-    const search = queryParams.search || "";
-    const category = queryParams.category || "";
-    const year = queryParams.year || "";
-    const month = queryParams.month || "";
-    const tagQuery = new URLSearchParams();
     if (page > 1) tagQuery.set("page", String(page));
     if (search) tagQuery.set("search", search);
     if (category) tagQuery.set("category", category);
     if (year) tagQuery.set("year", year);
     if (month) tagQuery.set("month", month);
     const queryString = tagQuery.toString();
-    const tagOptions = queryString
-      ? { cache: "no-store" as const }
-      : undefined;
+    const tagOptions = queryString ? { cache: "no-store" as const } : undefined;
     const { data: tagData, error: tagError } = await apiFetch(
       `blogs/tags/${encodeURIComponent(blogSlug)}${queryString ? `?${queryString}` : ""}`,
-      tagOptions
+      tagOptions,
     );
     const tagBlogsResponse = tagData?.blogs;
     const tagBlogs: TagListingBlog[] = Array.isArray(tagBlogsResponse)
@@ -119,11 +125,12 @@ export default async function BlogDetailPage({
         tagBlogs
           .flatMap((blog) => (Array.isArray(blog.tags) ? blog.tags : []))
           .filter((tag) => tag.slug)
-          .map((tag) => [tag.slug, tag])
-      ).values()
+          .map((tag) => [tag.slug, tag]),
+      ).values(),
     );
     const tagGlobalSchema = buildGlobalSchema({
-      canonicalUrl: seoData?.alternates?.canonical || `${BASE_URL}blogs/${blogSlug}`,
+      canonicalUrl:
+        seoData?.alternates?.canonical || `${BASE_URL}blogs/${blogSlug}`,
       pageTitle: seoData?.title || `${tagName} Blogs`,
       metaDescription: seoData?.description || "",
       primaryImageUrl: "",
@@ -139,7 +146,9 @@ export default async function BlogDetailPage({
         {tagGlobalSchema && (
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(tagGlobalSchema) }}
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(tagGlobalSchema),
+            }}
           />
         )}
         <BlogListingClient
@@ -156,12 +165,12 @@ export default async function BlogDetailPage({
   const featuredBlogs: any[] = data?.featuredBlogs ?? [];
   const comments: any[] = data?.comments ?? [];
   const featuredTags = featuredBlogs.flatMap((blog) =>
-    Array.isArray(blog.tags) ? blog.tags : []
+    Array.isArray(blog.tags) ? blog.tags : [],
   );
   const detailTags = (Array.isArray(details.tags) ? details.tags : [])
     .map((tag: any) => {
       const matchingTag = featuredTags.find(
-        (featuredTag: any) => String(featuredTag.id) === String(tag.id)
+        (featuredTag: any) => String(featuredTag.id) === String(tag.id),
       );
       return { ...tag, slug: tag.slug || matchingTag?.slug };
     })

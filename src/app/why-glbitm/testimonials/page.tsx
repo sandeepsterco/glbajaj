@@ -16,19 +16,17 @@ export async function generateMetadata() {
 }
 
 export default async function TestimonialPage({
-    searchParams,
+  searchParams,
 }: {
-    searchParams: Promise<{ page?: string; type?: string }>;
+  searchParams: Promise<{ type?: string }>;
 }) {
+  const { type } = await searchParams;
+  if (type) redirect("/why-glbitm/testimonials");
+
     const currentSlug = 'testimonials';
-    const { page, type } = await searchParams;
-    const activeType = type || "Student";
-    const params = new URLSearchParams();
-    if (type) params.set("type", type);
-    if (page && Number(page) > 1) params.set("page", String(page));
 
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
-        apiFetch(`testimonial?${params.toString()}`),
+    apiFetch("testimonial?type=Student&page=1"),
         apiFetch(`cms/testimonials`),
         getPageSEO('why-glbitm/testimonials'),
     ]);
@@ -36,14 +34,6 @@ export default async function TestimonialPage({
     if (error) notFound();
 
     const pagination = data?.testimonials;
-
-    const hasNoData = !pagination?.data || pagination.data.length === 0;
-
-    if(hasNoData && (type || page)){
-        params.delete("type");
-        params.delete("page");
-        redirect("/why-glbitm/testimonials");
-    }
 
     const pageData = CmsData?.data;
 
@@ -83,8 +73,7 @@ export default async function TestimonialPage({
             <InnerPageLayoutWrapper slug={currentSlug}
                 pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 
-                <TestimonialList data={pagination} slug={'testimonials'}
-                    parentSlug={'why-glbitm'} activeType={activeType} />
+                <TestimonialList data={pagination} />
 
 
             </InnerPageLayoutWrapper>

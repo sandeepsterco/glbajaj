@@ -1,6 +1,9 @@
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
-import { apiFetch } from "@/src/lib/api";
-import { buildEventDetailSchema } from "@/src/lib/schema/eventDetailSchema";
+import "@/src/styles/inner.css";
+import "@/src/styles/responsive1.css";
+import "@/src/styles/responsive.css";
+import "@/src/styles/program.css";
+import "@/src/styles/parser.css";
 
 export default async function NewsEventsLayout({
     children,
@@ -9,47 +12,20 @@ export default async function NewsEventsLayout({
     children: React.ReactNode;
     params: Promise<{ parentSlug: string; slug: string }>;
   }) {
-    
     const { parentSlug, slug } = await params;
+    const currentSlug = 'workshops';
 
-    if (!parentSlug) return <>{children}</>;
+  if (!parentSlug) return <>{children}</>;
 
-    const {data, error} = await apiFetch(`workshops/${slug}`);
-    const currentPageTitle = data?.workshops_details?.data?.heading;
-    const pageData = data?.workshops_details?.data;
-
-    const eventDetailSchema = {
-      staticSegments:[
-        {
-          name:'Happenings',
-          slug:parentSlug,
-        },
-        {
-          name:'Workshops',
-          slug:'workshops',
-        },
-        {
-          name:currentPageTitle,
-          slug:slug,
-        },
-        
-      ],
-      eventName:currentPageTitle,
-      visibleEventDescription:pageData?.description || '',
-      images:pageData?.image ? [pageData?.image] : [],
-    };
-
-    const eventSchema = buildEventDetailSchema(eventDetailSchema);
-
-    return (
-      <>
-      {eventSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
-        />
-      )}
-        <InnerPageLayoutWrapper slug={'workshops'} pathname={`/${parentSlug}/workshops/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>
-      </>
-    );
+  return (
+    <InnerPageLayoutWrapper
+    slug={currentSlug}
+    pathname={`/${parentSlug}/${currentSlug}/${slug}`}
+    tabs={null}
+    mainClass="happenings_page"
+    showTabs={true}
+    >
+      {children}
+    </InnerPageLayoutWrapper>
+  );
 }

@@ -44,9 +44,9 @@ export default async function RootLayout({
               {/* <InitialLoadOverlay /> */}
               <Header />
               <MainWrapper>{children}</MainWrapper>
-              <FooterGate>
+              {/* <FooterGate> */}
                 <Footer />
-              </FooterGate>
+              {/* </FooterGate> */}
               {/* <Toaster /> */}
             </AOSProvider>
             {/* <AOSInit /> */}

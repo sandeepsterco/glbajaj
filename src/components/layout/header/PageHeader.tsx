@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import NavLinks from './NavLinks';
-import React from 'react';
 import { buildBreadcrumbs } from '@/src/lib/buildBreadcrumbs';
 import TruncatedBreadcrumbs from './TruncatedBreadcrumbs';
 
@@ -11,7 +9,6 @@ export default function PageHeader({ data, slug, pathname, currentPageTitle, par
 
   const totalLength = currentPageTitle ? breadcrumbs?.length - 1 : breadcrumbs?.length - 2;
 
-  // Filter out falsy entries (buildBreadcrumbs can push `false` when currentPageTitle is absent)
   const cleanBreadcrumbs = (breadcrumbs ?? []).filter(Boolean);
 
   return (

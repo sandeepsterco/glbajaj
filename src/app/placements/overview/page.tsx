@@ -12,12 +12,7 @@ export async function generateMetadata() {
   return await getPageSEO('placements/overview');
 }
 
-export default async function PlacementPage({
-    params,
-  }: {
-    params: Promise<{ parentSlug: string }>;
-  }) {
-    const { parentSlug } = await params;
+export default async function PlacementPage() {
     const [{ data, error }, seoData] = await Promise.all([
       apiFetch(`modular/placements`),
       getPageSEO('placements/overview'),
@@ -73,7 +68,7 @@ export default async function PlacementPage({
           />
         )}
         <div className="happenings_page">
-            <PageHeader data={data?.data} slug={parentSlug} pathname={`/${parentSlug}/placement`} />
+            <PageHeader data={data?.data} slug={'placements'} pathname={`/placements/overview`} />
             <ReactParserDynamic html={combinedHtml} />
 
             {modularData?.['company-logo'] && (

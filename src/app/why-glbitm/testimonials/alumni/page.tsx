@@ -73,7 +73,7 @@ export default async function TestimonialAlumniPage({
             <InnerPageLayoutWrapper slug={currentSlug}
                 pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
 
-                <TestimonialList data={pagination} type="Alumni" />
+                <TestimonialList data={pagination} type="Alumni"  slug="alumni" />
 
 
             </InnerPageLayoutWrapper>

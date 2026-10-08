@@ -28,10 +28,10 @@ interface BlogTag {
 }
 
 export interface BlogFilterValues {
-  search: string;
-  category: string;
-  year: string;
-  month: string;
+  search?: string;
+  category?: string;
+  year?: string;
+  month?: string;
 }
 
 export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
@@ -39,10 +39,10 @@ export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
 interface Props {
   featuredBlogs: any[];
   comments: any[];
-  currentCategory: string;
-  currentYear: string;
-  currentMonth: string;
-  currentSearch: string;
+  currentCategory?: string;
+  currentYear?: string;
+  currentMonth?: string;
+  currentSearch?: string;
   tags?: BlogTag[];
   currentTagSlug?: string;
   slug: string;
@@ -92,6 +92,7 @@ export default function BlogSidebar({
   const [searchInput, setSearchInput] = useState(currentSearch);
   const [categories, setCategories] = useState<any[]>([]);
   const filterBase = listingPath ?? pathname;
+  const listingHref = `${BASE_URL}${slug}`;
   const selectedCategoryParam = onFiltersChange
     ? currentCategory
     : searchParams.get("category") ?? currentCategory;
@@ -157,7 +158,7 @@ export default function BlogSidebar({
   };
 
   const handleSearch = () => {
-    applyFilterUpdates({ search: searchInput.trim() || null });
+    applyFilterUpdates({ search: searchInput?.trim() || null });
   };
 
   const archives = getLast12Months();
@@ -267,8 +268,8 @@ export default function BlogSidebar({
           <div className="blog_active_filters">
             <FilterChip
               label={archiveFilterLabel}
-              href={buildHref({ year: null })}
-              onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { year: null, month: null }) : undefined}
+              href={listingHref}
+              onRemove={listingPath ? (event) => handleFilterClick(event, { year: null, month: null }) : undefined}
             />
           </div>
         )}
@@ -279,7 +280,9 @@ export default function BlogSidebar({
             const href = buildHref({ year: arc.year });
             return (
               <li key={`${arc.year}-${arc.month}-${idx}`}>
-                <Link href={href} onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} className={isActive ? "active" : ""}>
+                <Link href={`${BASE_URL}${slug}/year/${arc.year}`} 
+                // onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} 
+                className={isActive ? "active" : ""}>
                   {arc.label}
                 </Link>
               </li>
@@ -291,6 +294,14 @@ export default function BlogSidebar({
       {tags.length > 0 && (
         <div className="categories_section">
           <h5 className="font21">Tags:</h5>
+          {currentTagSlug && (
+            <div className="blog_active_filters">
+              <FilterChip
+                label={tags.find((tag) => tag.slug === currentTagSlug)?.name ?? currentTagSlug.replace(/-/g, " ")}
+                href={listingHref}
+              />
+            </div>
+          )}
           <ul>
             {tags.map((tag, idx) => (
               <li key={tag.slug ?? tag.id ?? idx}>
@@ -313,22 +324,23 @@ export default function BlogSidebar({
             <div className="blog_active_filters">
               <FilterChip
                 label={selectedCategory.name}
-                href={buildHref({ category: null })}
-                onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { category: null }) : undefined}
+                href={listingHref}
+                onRemove={listingPath ? (event) => handleFilterClick(event, { category: null }) : undefined}
               />
             </div>
           )}
           <ul>
             {categories.map((cat: any) => {
               const catId = String(cat.id);
+              const catName = String(cat.name ?? "").trim().toLowerCase();
               const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
               const isActive =
                 selectedValue === catId ||
-                selectedValue === String(cat.name ?? "").trim().toLowerCase();
-              const href = buildHref({ category: catId });
+                selectedValue === catName;
+              const href = `${BASE_URL}${slug}/categories/${encodeURIComponent(catName)}`;
               return (
                 <li key={catId}>
-                  <Link href={href} onClick={(event) => handleFilterClick(event, { category: catId })} className={isActive ? "active" : ""}>
+                  <Link href={href} className={isActive ? "active" : ""}>
                     {cat.name}
                   </Link>
                 </li>

@@ -11,16 +11,18 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
         <div className="col-xl-10">
           <div className="front_news">
             <div className="news_left">
-              <figure className="flash-effect-2">
-                <Image
-                  src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
-                  alt={data?.title || "GL Bajaj"}
-                  className="img-fluid w-100"
-                  width={850}
-                  height={520}
-                  loading="lazy"
-                />
-              </figure>
+              <Link href={`${BASE_URL}${slug}/${data.slug}`}>
+                <figure className="flash-effect-2">
+                  <Image
+                    src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
+                    alt={data?.title || "GL Bajaj"}
+                    className="img-fluid w-100"
+                    width={850}
+                    height={520}
+                    loading="lazy"
+                  />
+                </figure>
+              </Link>
             </div>
             <div className="blog_right">
               <div className="blog_cnt">

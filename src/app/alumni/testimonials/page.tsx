@@ -82,6 +82,7 @@ export default async function TestimonialPage({
         <TestimonialList
           data={pagination}
           currentPage="alumni-testimonials"
+           slug="alumni"
         />
         {/* <PaginationWrapper
                     currentPage={pagination?.current_page || 1}

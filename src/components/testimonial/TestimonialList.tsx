@@ -14,7 +14,7 @@ const TESTIMONIAL_TABS = [
     { label: "Alumni", type: "alumni", filter: "Alumni" },
 ] as const;
 
-export default function TestimonialList({ data, currentPage, type }: { data: any; currentPage?: string; type?: string }) {
+export default function TestimonialList({ data, currentPage, type, slug }: { data: any; currentPage?: string; type?: string; slug?:string; }) {
     const [testimonials, setTestimonials] = useState(data);
     const [activeType, setActiveType] = useState(type || "Student");
     const [page, setPage] = useState(Number(data?.current_page) || 1);
@@ -101,7 +101,7 @@ export default function TestimonialList({ data, currentPage, type }: { data: any
                                 <p>{item.course}</p>
                             )}
                             {item?.slug && (
-                                <Link href={`${BASE_URL}why-glbitm/testimonials/${item.slug}`} className="strech_link" />
+                                <Link href={`${BASE_URL}why-glbitm/testimonials/${slug}/${item.slug}`} className="strech_link" />
                             )}
 
                         </div>

@@ -71,7 +71,7 @@ export default async function TestimonialRecruitersPage({
         />
       )}
             <InnerPageLayoutWrapper slug={currentSlug}
-                pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false}>
+                pathname={`/why-glbitm/testimonials`} tabs={null} mainClass="happenings_page" showTabs={false} parentSlug="why-glbitm">
 
                 <TestimonialList data={pagination} type="Recruiter"  slug="recruiters" />
 

@@ -16,5 +16,5 @@ export default async function NewsEventsLayout({
     const currentPageTitle = data?.testimonial_details?.data?.name;
 
     return <InnerPageLayoutWrapper slug={currentSlug}
-    pathname={`/why-glbitm/${currentSlug}/${slug}`} tabs={null} mainClass="happenings_page" showTabs={false} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    pathname={`/why-glbitm/${currentSlug}/students/${slug}`} tabs={null} mainClass="happenings_page" showTabs={false} currentPageTitle={currentPageTitle} parentSlug="why-glbitm">{children}</InnerPageLayoutWrapper>;
 }

@@ -316,7 +316,7 @@ export default function BlogSidebar({
             ))}
           </ul>
         </div>
-      )}
+      )} 
 
       {categories.length > 0 && (
         <div className="categories_section">

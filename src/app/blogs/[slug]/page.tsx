@@ -10,6 +10,7 @@ import { notFound, redirect } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 
 interface SearchParams {
   page?: string;
@@ -85,12 +86,19 @@ export default async function BlogDetailPage({
 
   if (category || year || month || search) redirect(`/blogs/${blogSlug}`);
 
-  const listSlug = "blogs";
+  const parentSlug = "blogs";
 
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`blogs/${blogSlug}`),
     getPageSEO(`blogs/${blogSlug}`),
   ]);
+
+  const currentPageTitle =
+  data?.details?.title ??
+  blogSlug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
 
   const details = data?.details;
 
@@ -175,7 +183,7 @@ export default async function BlogDetailPage({
       return { ...tag, slug: tag.slug || matchingTag?.slug };
     })
     .filter((tag: any) => tag.slug);
-  const listingPath = `${BASE_URL}${listSlug}`;
+  const listingPath = `${BASE_URL}${parentSlug}`;
 
   const blogDetailSchemaArgs = {
     blogUrl: `${BASE_URL}blogs/${blogSlug}` || "",
@@ -231,6 +239,7 @@ export default async function BlogDetailPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetailSchema) }}
         />
       )}
+      <InnerPageLayoutWrapper slug={parentSlug} pathname={`${parentSlug}/${blogSlug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>
       <section className="blog_details_banner">
         <div className="container-lg">
           <div className="txdcx_banner_img">
@@ -265,7 +274,7 @@ export default async function BlogDetailPage({
 
               <BlogSections sections={details.sections} />
 
-              <BlogFeaturedSlider blogs={featuredBlogs} listSlug={listSlug} />
+              <BlogFeaturedSlider blogs={featuredBlogs} listSlug={parentSlug} />
 
               <BlogCommentForm blogSlug={blogSlug} />
 
@@ -349,13 +358,14 @@ export default async function BlogDetailPage({
               currentMonth=""
               currentSearch=""
               tags={detailTags}
-              slug={listSlug}
+              slug={parentSlug}
               listingPath={listingPath}
               showSearch={false}
             />
           </div>
         </div>
       </section>
+      </InnerPageLayoutWrapper>
     </>
   );
 }

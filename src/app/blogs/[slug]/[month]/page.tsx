@@ -42,24 +42,25 @@ function buildBlogsQuery(params: {
   return parts.join("&");
 }
 
-export async function generateMetadata() {
-  return await getPageSEO(`blogs`);
+export async function generateMetadata({params}:{params:Promise<{slug:string; month:string;}>}) {
+  const {slug, month} = await params;
+  return await getPageSEO(`blogs/${slug}/${month}`);
 }
 
-export default async function BlogsYearPage({
+export default async function BlogsYearMonthPage({
+  params,
   searchParams,
-  params: yearParams,
 }: {
+  params: Promise<{ slug: string; month:string }>;
   searchParams: Promise<SearchParams>;
-  params: Promise<{ year: string }>;
 }) {
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
-  const search = params.search || "";
+  const searchParam = await searchParams;
+  const currentPage = Number(searchParam.page) || 1;
+  const search = searchParam.search || "";
   // const category = params.category || "";
   // const year = params.year || "";
   // const month = params.month || "";
-  const { year } = await yearParams;
+  const { slug: yearSlug, month } = await params;
 
   // if (category || year || month) redirect("/blogs");
   const hasFilters = Boolean(search);
@@ -75,7 +76,7 @@ export default async function BlogsYearPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
 
   const [{ data: blogsData, error }, seoData] = await Promise.all([
-    apiFetch(`blogs?year=${year}&${params}`, fetchOptions),
+    apiFetch(`blogs?year=${yearSlug}&month=${month}&${query}`, fetchOptions),
     getPageSEO(`blogs`),
   ]);
 
@@ -129,7 +130,7 @@ export default async function BlogsYearPage({
       >
         <BlogListingClient
           initialBlogsData={blogsData}
-          initialFilters={{ search, year }}
+          initialFilters={{ search, year:yearSlug, month }}
         />
       </InnerPageLayoutWrapper>
     </>

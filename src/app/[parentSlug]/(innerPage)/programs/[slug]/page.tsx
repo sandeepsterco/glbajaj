@@ -38,6 +38,7 @@ export default async function ProgramDetail({
     programmePageTitle:seoData.title || '',
     metaDescription:seoData.description || '',
     programmeName:pageData.name || '',
+    departmentUrl:`${data?.department?.slug ? `${BASE_URL}academics/departments/${data.department.slug}` : ''}` || '',
     visibleProgrammeSummary:seoData.description || '',
     educationalProgramMode:pageData.duration || '0',
     timeToCompleteIso:pageData.duration + ' Years' || '0 Years',

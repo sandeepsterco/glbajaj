@@ -128,8 +128,8 @@ function ProgramGroupSection({
   );
 }
 
-export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string; currentSlug:string;}) {
-  const [paramsType, setParamsType] = useState<ProgramType>("all");
+export default function ProgramList({parentSlug, currentSlug, activeType="all"}:{parentSlug:string; currentSlug:string; activeType?:ProgramType;}) {
+  const [paramsType, setParamsType] = useState<ProgramType>(activeType);
   const [page, setPage] = useState(1);
   const [programsData, setProgramsData] = useState<ProgramsData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -170,16 +170,16 @@ export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string
                 <ul>
                   {tabs.map(({ label, type }) => (
                     <li key={type}>
-                      <button
-                        type="button"
+                      <Link
                         className={paramsType === type ? "active" : ""}
-                        onClick={() => {
-                          setParamsType(type);
-                          setPage(1);
-                        }}
+                        href={`${BASE_URL}${parentSlug}/${currentSlug}/${type === "all" ? "" : type}`}
+                        // onClick={() => {
+                        //   setParamsType(type);
+                        //   setPage(1);
+                        // }}
                       >
                         {label}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>

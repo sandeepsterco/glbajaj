@@ -8,15 +8,15 @@ import PaginationWrapper from "../common/pagination/PaginationWrapper";
 import { BASE_URL } from "@/src/config/config";
 
 const TESTIMONIAL_TABS = [
-    { label: "Students", type: "Student" },
-    { label: "Recruiters", type: "Recruiter" },
-    { label: "Faculties", type: "Faculties" },
-    { label: "Alumni", type: "Alumni" },
+    { label: "Students", type: "students", filter: "Student" },
+    { label: "Recruiters", type: "recruiters", filter: "Recruiter" },
+    { label: "Faculties", type: "faculties", filter: "Faculty" },
+    { label: "Alumni", type: "alumni", filter: "Alumni" },
 ] as const;
 
-export default function TestimonialList({ data, currentPage }: { data: any; currentPage?: string }) {
+export default function TestimonialList({ data, currentPage, type }: { data: any; currentPage?: string; type?: string }) {
     const [testimonials, setTestimonials] = useState(data);
-    const [activeType, setActiveType] = useState("Student");
+    const [activeType, setActiveType] = useState(type || "Student");
     const [page, setPage] = useState(Number(data?.current_page) || 1);
     const [loading, setLoading] = useState(false);
     const requestId = useRef(0);
@@ -66,16 +66,15 @@ export default function TestimonialList({ data, currentPage }: { data: any; curr
                         <div className="tabbed-content">
                             <nav className="tabs">
                                 <ul>
-                                    {TESTIMONIAL_TABS.map(({ label, type }) => (
+                                    {TESTIMONIAL_TABS.map(({ label, type, filter }) => (
                                         <li key={type}>
-                                            <button
-                                                type="button"
-                                                className={activeType === type ? "active" : ""}
+                                            <Link
+                                                href={`${BASE_URL}why-glbitm/testimonials/${type}`}
+                                                className={activeType === filter ? "active" : ""}
                                                 aria-pressed={activeType === type}
-                                                onClick={() => handleTypeChange(type)}
                                             >
                                                 {label}
-                                            </button>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>

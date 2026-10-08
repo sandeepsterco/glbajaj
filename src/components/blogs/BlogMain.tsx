@@ -35,7 +35,9 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
                 )}
                 {data?.category && <h3 className="font24">{data.category}</h3>}
                 {data?.title && (
-                  <blockquote className="title36">{data.title}</blockquote>
+                  <Link href={`${BASE_URL}${slug}/${data.slug}`}>
+                    <blockquote className="title36">{data.title}</blockquote>
+                  </Link>
                 )}
                 {data?.description && <p>{data.description}</p>}
                 {data?.slug && (

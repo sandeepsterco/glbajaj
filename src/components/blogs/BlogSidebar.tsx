@@ -227,7 +227,7 @@ export default function BlogSidebar({
         </div>
       )}
 
-      {comments.length > 0 && (
+      {/* {comments.length > 0 && (
         <div className="recent_comments">
           <h5 className="font21">Recent Comments</h5>
           {comments.map((raw: unknown, idx: number) => {
@@ -261,7 +261,7 @@ export default function BlogSidebar({
             );
           })}
         </div>
-      )}
+      )} */}
 
       <div className="archive_section">
         <h5 className="font21">Archives:</h5>

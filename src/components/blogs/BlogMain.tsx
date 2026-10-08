@@ -11,16 +11,18 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
         <div className="col-xl-10">
           <div className="front_news">
             <div className="news_left">
-              <figure className="flash-effect-2">
-                <Image
-                  src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
-                  alt={data?.title || "GL Bajaj"}
-                  className="img-fluid w-100"
-                  width={850}
-                  height={520}
-                  loading="lazy"
-                />
-              </figure>
+              <Link href={`${BASE_URL}${slug}/${data.slug}`}>
+                <figure className="flash-effect-2">
+                  <Image
+                    src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
+                    alt={data?.title || "GL Bajaj"}
+                    className="img-fluid w-100"
+                    width={850}
+                    height={520}
+                    loading="lazy"
+                  />
+                </figure>
+              </Link>
             </div>
             <div className="blog_right">
               <div className="blog_cnt">
@@ -35,7 +37,9 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
                 )}
                 {data?.category && <h3 className="font24">{data.category}</h3>}
                 {data?.title && (
-                  <blockquote className="title36">{data.title}</blockquote>
+                  <Link href={`${BASE_URL}${slug}/${data.slug}`}>
+                    <blockquote className="title36">{data.title}</blockquote>
+                  </Link>
                 )}
                 {data?.description && <p>{data.description}</p>}
                 {data?.slug && (

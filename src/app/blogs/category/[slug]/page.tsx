@@ -8,7 +8,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
@@ -42,24 +42,25 @@ function buildBlogsQuery(params: {
   return parts.join("&");
 }
 
-export async function generateMetadata() {
-  return await getPageSEO(`blogs`);
+export async function generateMetadata({params}:{params:Promise<{slug:String}>}) {
+  const {slug} = await params;
+  return await getPageSEO(`blogs/category/${slug}`);
 }
 
-export default async function BlogsYearPage({
+export default async function BlogsCategoryPage({
   searchParams,
-  params: yearParams,
+  params,
 }: {
   searchParams: Promise<SearchParams>;
-  params: Promise<{ year: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
-  const search = params.search || "";
+  const SearchParam = await searchParams;
+  const currentPage = Number(SearchParam.page) || 1;
+  const search = SearchParam.search || "";
   // const category = params.category || "";
   // const year = params.year || "";
   // const month = params.month || "";
-  const { year } = await yearParams;
+  const { slug } = await params;
 
   // if (category || year || month) redirect("/blogs");
   const hasFilters = Boolean(search);
@@ -75,14 +76,13 @@ export default async function BlogsYearPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
 
   const [{ data: blogsData, error }, seoData] = await Promise.all([
-    apiFetch(`blogs?year=${year}&${params}`, fetchOptions),
+    apiFetch(`blogs?category=${encodeURIComponent(slug)}&${query}`, fetchOptions),
     getPageSEO(`blogs`),
   ]);
 
-  if (error) notFound();
+  // if (error) notFound();
 
   const pageData = blogsData?.blogs;
-  const slug = "blogs";
 
   const globalSchemaArgs = {
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
@@ -121,15 +121,15 @@ export default async function BlogsYearPage({
         />
       )}
       <InnerPageLayoutWrapper
-        pathname={`/${slug}`}
-        slug={slug}
+        pathname={`/blogs/category/${slug}`}
+        slug={'blogs'}
         tabs={null}
         mainClass="happenings_page"
         showTabs={true}
       >
         <BlogListingClient
           initialBlogsData={blogsData}
-          initialFilters={{ search, year }}
+          initialFilters={{ search, category:slug }}
         />
       </InnerPageLayoutWrapper>
     </>

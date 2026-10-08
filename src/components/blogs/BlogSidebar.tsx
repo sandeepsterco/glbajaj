@@ -169,9 +169,10 @@ export default function BlogSidebar({
   const hasArchiveFilter = Boolean(currentYear);
   const selectedCategory = categories.find((cat) => {
     const catId = String(cat.id);
+    const catSlug = String(cat.slug ?? "").trim().toLowerCase();
     const catName = String(cat.name ?? "").trim().toLowerCase();
     const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
-    return selectedValue === catId || (catName && selectedValue === catName);
+    return selectedValue === catId || selectedValue === catSlug || (catName && selectedValue === catName);
   });
 
   return (
@@ -280,7 +281,7 @@ export default function BlogSidebar({
             const href = buildHref({ year: arc.year });
             return (
               <li key={`${arc.year}-${arc.month}-${idx}`}>
-                <Link href={`${BASE_URL}${slug}/year/${arc.year}`} 
+                <Link href={`${BASE_URL}${slug}/${arc.year}/${arc.month}`} 
                 // onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} 
                 className={isActive ? "active" : ""}>
                   {arc.label}
@@ -332,12 +333,14 @@ export default function BlogSidebar({
           <ul>
             {categories.map((cat: any) => {
               const catId = String(cat.id);
+              const catSlug = String(cat.slug);
               const catName = String(cat.name ?? "").trim().toLowerCase();
               const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
               const isActive =
                 selectedValue === catId ||
+                selectedValue === catSlug.toLowerCase() ||
                 selectedValue === catName;
-              const href = `${BASE_URL}${slug}/categories/${encodeURIComponent(catName)}`;
+              const href = `${BASE_URL}${slug}/category/${encodeURIComponent(catSlug)}`;
               return (
                 <li key={catId}>
                   <Link href={href} className={isActive ? "active" : ""}>

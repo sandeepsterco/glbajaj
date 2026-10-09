@@ -38,7 +38,7 @@ export interface BlogFilterValues {
 export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
 
 interface Props {
-  shareTitle:string;
+  shareTitle?:string;
   featuredBlogs: any[];
   comments: any[];
   currentCategory?: string;
@@ -180,9 +180,12 @@ export default function BlogSidebar({
 
   return (
     <div className="blog_listing_right">
-      <div className="newst_details_header">
-                <SocialShare title={shareTitle || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} showMenu={true} />
-              </div>
+      {shareTitle && (
+        <div className="newst_details_header">
+          <SocialShare title={shareTitle || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} showMenu={true} />
+        </div>
+      )}
+      
       {showSearch && (
         <div className="input-group mb-3">
           <input

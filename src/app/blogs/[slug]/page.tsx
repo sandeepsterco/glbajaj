@@ -168,6 +168,7 @@ export default async function BlogDetailPage({
           initialPage={page}
           tagSlug={blogSlug}
           tags={tagList}
+          shareTitle={details.title}
         />
       </>
     );

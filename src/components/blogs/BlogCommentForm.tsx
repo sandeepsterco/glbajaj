@@ -84,7 +84,7 @@ export default function BlogCommentForm({
           />
         </figure>
         <div className="admin_details">
-          <h5>Admin</h5>
+          <h5>GL Bajaj Institute of Technology and Management</h5>
           <p>Author</p>
         </div>
       </div>

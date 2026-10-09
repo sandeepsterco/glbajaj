@@ -23,9 +23,9 @@ function updateNavVisibility(
   const hidePrev = hideAll || swiper.isBeginning;
   const hideNext = hideAll || swiper.isEnd;
 
-  if (prevEl) prevEl.style.display = hidePrev ? "none" : "";
-  if (nextEl) nextEl.style.display = hideNext ? "none" : "";
-  if (buttonsEl) buttonsEl.style.display = hidePrev && hideNext ? "none" : "";
+  // if (prevEl) prevEl.style.display = hidePrev ? "none" : "";
+  // if (nextEl) nextEl.style.display = hideNext ? "none" : "";
+  // if (buttonsEl) buttonsEl.style.display = hidePrev && hideNext ? "none" : "";
 }
 
 export default function BlogFeaturedSlider({
@@ -38,8 +38,12 @@ export default function BlogFeaturedSlider({
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  let totalSlidesPerView = 2;
 
   if (blogs.length === 0) return null;
+  if(blogs.length === 1){
+    totalSlidesPerView = 1;
+  }
 
   const syncNav = (swiper: SwiperType) => {
     updateNavVisibility(swiper, prevRef.current, nextRef.current, buttonsRef.current);
@@ -62,7 +66,8 @@ export default function BlogFeaturedSlider({
         </div>
         <Swiper
           modules={[Navigation]}
-          slidesPerView={1}
+          slidesPerView={totalSlidesPerView}
+          loop={true}
           spaceBetween={0}
           onBeforeInit={(swiper) => {
             if (typeof swiper.params.navigation === "object" && swiper.params.navigation) {

@@ -11,6 +11,7 @@ import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
+import SocialShare from "@/src/components/common/SocialShare";
 
 interface SearchParams {
   page?: string;
@@ -271,6 +272,10 @@ export default async function BlogDetailPage({
               {details.description && !details.sections && (
                 <blockquote>{details.description}</blockquote>
               )}
+
+              <div className="newst_details_header">
+                <SocialShare title={details.title || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} />
+              </div>
 
               <BlogSections sections={details.sections} />
 

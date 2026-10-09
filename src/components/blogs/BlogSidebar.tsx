@@ -6,6 +6,7 @@ import type { MouseEvent } from "react";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
+import SocialShare from "../common/SocialShare";
 
 function getLast12Months(): { label: string; year: string; month: string }[] {
   const months = [];
@@ -37,6 +38,7 @@ export interface BlogFilterValues {
 export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
 
 interface Props {
+  shareTitle:string;
   featuredBlogs: any[];
   comments: any[];
   currentCategory?: string;
@@ -73,6 +75,7 @@ function FilterChip({ label, href, onRemove }: {
 }
 
 export default function BlogSidebar({
+  shareTitle,
   featuredBlogs,
   comments,
   currentCategory,
@@ -177,6 +180,9 @@ export default function BlogSidebar({
 
   return (
     <div className="blog_listing_right">
+      <div className="newst_details_header">
+                <SocialShare title={shareTitle || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} showMenu={true} />
+              </div>
       {showSearch && (
         <div className="input-group mb-3">
           <input
@@ -227,7 +233,7 @@ export default function BlogSidebar({
         </div>
       )}
 
-      {/* {comments.length > 0 && (
+      {comments.length > 0 && (
         <div className="recent_comments">
           <h5 className="font21">Recent Comments</h5>
           {comments.map((raw: unknown, idx: number) => {
@@ -261,7 +267,7 @@ export default function BlogSidebar({
             );
           })}
         </div>
-      )} */}
+      )}
 
       <div className="archive_section">
         <h5 className="font21">Archives:</h5>

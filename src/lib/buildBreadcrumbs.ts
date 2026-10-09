@@ -45,7 +45,8 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
       : []),
     {
       label: data?.menu_title ?? data?.page_title ?? "",
-      ...(currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${data?.current_page_slug}` } : {}),
+      ...(parentSlug && currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${data?.current_page_slug}` } : currentPageTitle ? { slug: `${BASE_URL}${data?.current_page_slug}` } : {}),
+      // ...(currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${data?.current_page_slug}` } : {}),
     },
     ...(currentPageTitle ? [{ label: currentPageTitle }] : []),
   ].filter(Boolean);

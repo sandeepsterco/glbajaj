@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type Platform = "facebook" | "whatsapp" | "x" | "instagram" | "linkedin" | "email";
 
@@ -15,18 +15,22 @@ const ICONS: Record<Platform, { src: string; alt: string }> = {
 
 export default function SocialShare({
   title,
+  showMenu,
   options = ["facebook", "whatsapp", "x", "instagram", "linkedin", "email"],
 }: {
   title: string;
+  showMenu?:boolean;
   options?: Platform[];
 }) {
-  const [showSocialMenus, setShowSocialMenus] = useState(false);
+  const [showSocialMenus, setShowSocialMenus] = useState(showMenu || false);
   const [currentUrl, setCurrentUrl] = useState("");
   const [pageTitle, setPageTitle] = useState(title);
 
   const shareTitle = title || pageTitle;
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(shareTitle);
+
+  
 
   const shareLinks: Record<Platform, string> = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
@@ -37,6 +41,10 @@ export default function SocialShare({
     email: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
   };
 
+  useEffect(()=>{
+    setCurrentUrl(window.location.href);
+  }, [])
+
   return (
     <figure>
       <button
@@ -46,6 +54,7 @@ export default function SocialShare({
         className="share_btn cursor-pointer"
         onClick={() => {
           setCurrentUrl(window.location.href);
+          if (showMenu) return;
           if (!title) setPageTitle(document.title || "");
           setShowSocialMenus((state) => !state);
         }}

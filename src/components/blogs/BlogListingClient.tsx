@@ -11,6 +11,7 @@ import BlogSidebar, {
 } from "./BlogSidebar";
 
 interface Props {
+  shareTitle?:string;
   initialBlogsData: any;
   initialFilters: BlogFilterValues;
   initialPage?: number;
@@ -38,6 +39,7 @@ async function fetchBlogs(filters: BlogFilterValues, page: number, tagSlug?: str
 }
 
 export default function BlogListingClient({
+  shareTitle,
   initialBlogsData,
   initialFilters,
   initialPage = 1,

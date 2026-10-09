@@ -94,6 +94,8 @@ export default async function BlogDetailPage({
     getPageSEO(`blogs/${blogSlug}`),
   ]);
 
+  console.log('blogs data',data);
+
   const currentPageTitle =
   data?.details?.title ??
   blogSlug
@@ -166,6 +168,7 @@ export default async function BlogDetailPage({
           initialPage={page}
           tagSlug={blogSlug}
           tags={tagList}
+          shareTitle={details.title}
         />
       </>
     );
@@ -273,9 +276,9 @@ export default async function BlogDetailPage({
                 <blockquote>{details.description}</blockquote>
               )}
 
-              <div className="newst_details_header">
+              {/* <div className="newst_details_header">
                 <SocialShare title={details.title || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} />
-              </div>
+              </div> */}
 
               <BlogSections sections={details.sections} />
 
@@ -366,6 +369,7 @@ export default async function BlogDetailPage({
               slug={parentSlug}
               listingPath={listingPath}
               showSearch={false}
+              shareTitle={details.title}
             />
           </div>
         </div>

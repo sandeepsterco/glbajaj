@@ -39,8 +39,12 @@ export default async function DynamicSlugPage({
   }
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
-
+  const currentSlug = `${parentSlug}/${innerSlug}/${innerChildSlug}`;
   const pageData = data?.data;
+  const expectedPath = pageData?.full_url.replace(/^\/+|\/+$/g, "");
+  if(expectedPath !== currentSlug){
+    notFound();
+  }
 
   const globalSchemaArgs = {
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",

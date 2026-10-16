@@ -11,6 +11,15 @@ import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ parentSlug: string; innerSlug: string; }>;
+}) {
+  const { parentSlug, innerSlug } = await params;
+  return await getPageSEO(`${parentSlug}/${innerSlug}/administrative-team`);
+}
+
 export default async function MessagesAdministrationPage({
     params, 
 }: {

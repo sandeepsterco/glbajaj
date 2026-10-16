@@ -59,7 +59,7 @@ export default async function ThankYouPage() {
                         Thank You!
                     </h1>
                     <p className="mt-6 text-[2rem] md:text-[3rem] leading-[4rem] text-gray-600 max-w-[80rem] mx-auto">
-                        Thank you for your submissions. We will contact you soon!
+                        Thank you! Your application has been submitted successfully. Our HR team will get in touch with you shortly.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <Link

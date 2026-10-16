@@ -12,6 +12,7 @@ import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import InnerPageLayoutWrapper from "../../layout/InnerPageLayoutWrapper";
 import SocialShare from "@/src/components/common/SocialShare";
+import Link from "next/link";
 
 interface SearchParams {
   page?: string;
@@ -93,8 +94,6 @@ export default async function BlogDetailPage({
     apiFetch(`blogs/${blogSlug}`),
     getPageSEO(`blogs/${blogSlug}`),
   ]);
-
-  console.log('blogs data',data);
 
   const currentPageTitle =
   data?.details?.title ??
@@ -281,6 +280,8 @@ export default async function BlogDetailPage({
               </div> */}
 
               <BlogSections sections={details.sections} />
+
+            <Link href={details?.button_link ?? ''} className="btn read_more_btn" target={details.button_target_blank ? '_blank' : '_self'}>{details.button_text}</Link>
 
               <BlogFeaturedSlider blogs={featuredBlogs} listSlug={parentSlug} />
 

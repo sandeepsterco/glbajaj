@@ -86,6 +86,14 @@ export default function BlogFeaturedSlider({
           onReachBeginning={syncNav}
           onReachEnd={syncNav}
           className="blog_featured_swiper"
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+            },
+            768:{
+              slidesPerView:totalSlidesPerView
+            }
+          }}
         >
           {blogs.map((blog, idx) => (
             <SwiperSlide key={blog.slug ?? idx}>

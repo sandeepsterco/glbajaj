@@ -65,7 +65,8 @@ function ProgramBox({
     <div className="program-box">
       <div className="program-text">
         <h6>
-          <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>{cleanName}</Link>
+        {cleanName}
+          {/* <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}></Link> */}
         </h6>
       </div>
       <div className="program-right">
@@ -82,13 +83,13 @@ function ProgramBox({
             Apply Now
           </Link>
         </div>
-        <div className="program-btn">
+        {/* <div className="program-btn">
           <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>
             <span>
               <img src="/images/icons/right-arrow.svg" alt="arrow" />
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

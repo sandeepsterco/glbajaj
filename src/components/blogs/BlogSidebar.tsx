@@ -236,7 +236,7 @@ export default function BlogSidebar({
         </div>
       )}
 
-      {comments.length > 0 && (
+      {comments && comments.length > 0 && (
         <div className="recent_comments">
           <h5 className="font21">Recent Comments</h5>
           {comments.map((raw: unknown, idx: number) => {

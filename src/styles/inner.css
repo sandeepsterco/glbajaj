@@ -2506,6 +2506,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .blog_details_left h5 { font-weight: 700; margin-block: 3rem 1rem; }
 .blog_details_left ul li strong { display: block; padding-bottom: 1rem; }
 .grid_listing ul.custom_bullet { display: grid; grid-template-columns: repeat(2, 1fr); }
+.blog_details_left .read_more_btn{margin-block:3rem}
 .blog_left_bottom p { font: var(--font-21); font-weight: 700; }
 .blog_left_bottom figure { padding: 1.5rem 2rem; display: inline-block; box-shadow: 0px 2px 4px #0000001a; margin-block:2rem; cursor: pointer; border: 1px solid #f1f1f1; }
 .blog_left_bottom figure:hover { background-color: var(--color-92); border-color: var(--color-92); }

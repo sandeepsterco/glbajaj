@@ -16,7 +16,7 @@ export default async function LabsInnerPageLayout({children, params}:Readonly<{c
 
     return(
         <div className="happenings_page">
-            <PageHeader pathname={`/department/${slug}/labs`} data={data.data} slug={slug} />
+            <PageHeader pathname={`/academics/departments/${slug}/labs`} data={data.data} slug={slug} />
             {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children}
         </div>
     )

@@ -10,11 +10,11 @@ export default async function NewsEventsLayout({
     params,
   }: {
     children: React.ReactNode;
-    params: Promise<{ parentSlug: string; slug: string }>;
+    params: Promise<{slug: string }>;
   }) {
     
-    const { parentSlug, slug } = await params;
+    const {slug } = await params;
     if (!slug) return <>{children}</>;
 
-    return <InnerPageLayoutWrapper slug={'conferences'} pathname={`/${parentSlug}/conferences/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'conferences'} pathname={`/research-innovation/conferences/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
 }

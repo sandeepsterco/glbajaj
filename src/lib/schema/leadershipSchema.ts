@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@/src/lib/schema/schema-utils";
+﻿import { getBaseUrl } from "@/src/lib/schema/schema-utils";
 
 export type StaticSegment = {
   name: string;
@@ -48,7 +48,7 @@ export function buildLeadershipSchema(args: LeadershipSchemaArgs) {
 
   const breadcrumbItems: { name: string; item: string }[] = [
     { name: "Home", item: `${baseUrl}/` },
-    ...staticSegments?.map((seg, index) => ({
+    ...(staticSegments ?? []).map((seg, index) => ({
       name: seg.name,
       item: `${baseUrl}/${staticSegments
         .slice(0, index + 1)
@@ -69,7 +69,7 @@ export function buildLeadershipSchema(args: LeadershipSchemaArgs) {
         "@type": "ProfilePage",
         "@id": `${leaderUrl}#webpage`,
         url: leaderUrl,
-        name: `${leaderName} – ${designation}`,
+        name: `${leaderName} â€“ ${designation}`,
         description: profileSummary,
         mainEntity: { "@id": `${leaderUrl}#person` },
         isPartOf: { "@id": `${baseUrl}#website` },

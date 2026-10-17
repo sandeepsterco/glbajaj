@@ -1,4 +1,4 @@
-import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
+﻿import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
@@ -9,15 +9,14 @@ import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata() {
-  return await getPageSEO("departments");
+  return await getPageSEO("academics/departments");
 }
 
-export default async function DepartmentsPage({params}:{params:Promise<{parentSlug:string}>}) {
-  const {parentSlug} = await params;
+export default async function DepartmentsPage() {
   const slug = "departments";
   const [cmsResult, seoData, departmentsResult] = await Promise.all([
     apiFetch(`cms/${slug}`),
-    getPageSEO(slug),
+    getPageSEO('academics/departments'),
     apiFetch(slug),
   ]);
 
@@ -34,9 +33,9 @@ export default async function DepartmentsPage({params}:{params:Promise<{parentSl
     dateModifiedIso: pageData?.updated_at || "",
     languageTag: "en-IN",
     currentPageName: pageData?.page_title || "",
-    currentPageSlug: `${BASE_URL}${parentSlug}/${pageData?.current_page_slug}`,
+    currentPageSlug: `${BASE_URL}academics/${pageData?.current_page_slug}`,
     parentMenus: [
-      ...pageData?.parent_menus,
+      ...(pageData?.parent_menus ?? []),
       {
         title: 'Academics',
         url: `academics`,
@@ -96,7 +95,7 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
                       />
                     </figure>
                     <h3 className="font24">{item.name}</h3>
-                    <Link className="strech_link" href={`${BASE_URL}${parentSlug}/departments/${item.slug}`} />
+                    <Link className="strech_link" href={`${BASE_URL}academics/departments/${item.slug}`} />
                   </div>
                 ))}
             </div>
@@ -106,3 +105,4 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
     </>
   );
 }
+

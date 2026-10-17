@@ -23,7 +23,7 @@ export type DepartmentSchemaArgs = {
 };
 
 function cleanSlug(slug: string) {
-  return slug.trim().replace(/^\/+|\/+$/g, "");
+  return slug?.trim().replace(/^\/+|\/+$/g, "");
 }
 
 // Strips "department-slug/" prefix and drops a trailing "home" segment

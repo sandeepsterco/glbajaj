@@ -11,16 +11,14 @@ export default async function MessageDetailLayout({
     params,
   }: {
     children: React.ReactNode;
-    params: Promise<{ parentSlug: string; slug: string }>;
+    params: Promise<{ slug: string }>;
   }) {
-    const { parentSlug, slug } = await params;
+    const { slug } = await params;
     const currentSlug = 'awards-recognitions'
-
-    if (!parentSlug) return <>{children}</>;
 
     const {data, error} = await apiFetch(`award-recognitions/${slug}`)
     const currentPageTitle = data?.award_details?.data?.title;
 
-    return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/${parentSlug}/${currentSlug}/${slug}`} parentSlug={parentSlug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/about-us/${currentSlug}/${slug}`} parentSlug={'about-us'} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

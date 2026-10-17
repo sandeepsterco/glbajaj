@@ -35,7 +35,7 @@ export default async function AchievementDetailPage({params}:{params:any}){
         currentPageName:modularData?.title || '',
         currentPageSlug: `${BASE_URL}why-glbitm/achievements/${slug}`,
         parentMenus: [
-            ...pageData?.parent_menus,
+            ...(pageData?.parent_menus ?? []),
           {
             title: pageData?.page_title,
             url: pageData?.current_page_slug,

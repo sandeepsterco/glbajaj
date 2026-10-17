@@ -10,16 +10,16 @@ export default async function MessageDetailLayout({
     params,
   }: {
     children: React.ReactNode;
-    params: Promise<{ parentSlug: string; slug: string }>;
+    params: Promise<{ slug: string }>;
   }) {
-    const { parentSlug, slug } = await params;
+    const {slug } = await params;
 
     if (!slug) return <>{children}</>;
 
     return (
       <InnerPageLayoutWrapper
         slug={'clubs'}
-        pathname={`/${parentSlug}/clubs/${slug}`}
+        pathname={`/student-corner/clubs/${slug}`}
         tabs={null}
         mainClass="happenings_page"
         showTabs={true}

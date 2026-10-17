@@ -8,7 +8,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
@@ -47,7 +47,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:String}>})
   return await getPageSEO(`blogs/category/${slug}`);
 }
 
-export default async function BlogsCategoryPage({
+export default async function BlogsYearPage({
   searchParams,
   params,
 }: {
@@ -76,11 +76,11 @@ export default async function BlogsCategoryPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
 
   const [{ data: blogsData, error }, seoData] = await Promise.all([
-    apiFetch(`blogs?category=${encodeURIComponent(slug)}&${query}`, fetchOptions),
+    apiFetch(`blogs?category=${slug}&${params}`, fetchOptions),
     getPageSEO(`blogs`),
   ]);
 
-  // if (error) notFound();
+  if (error) notFound();
 
   const pageData = blogsData?.blogs;
 
@@ -122,7 +122,7 @@ export default async function BlogsCategoryPage({
       )}
       <InnerPageLayoutWrapper
         pathname={`/blogs/category/${slug}`}
-        slug={'blogs'}
+        slug={slug}
         tabs={null}
         mainClass="happenings_page"
         showTabs={true}

@@ -33,7 +33,7 @@ export default function PageHeader({ data, slug, pathname, currentPageTitle, par
                 tabs={data.tabs}
                 parentSlug={parentSlug}
                 activeSlug={activeSlug}
-                tabTitle={data?.tab_title}
+                tabTitle={data?.tab_title || data?.page_title}
                 pathname={pathname}
               />
             </div>

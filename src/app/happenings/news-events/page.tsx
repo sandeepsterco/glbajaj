@@ -16,13 +16,10 @@ interface SearchParams {
 }
 
 export default async function NewsEvent({
-  params,
   searchParams,
 }: {
-  params: Promise<{ parentSlug: string }>;
   searchParams: Promise<SearchParams>;
 }) {
-  const { parentSlug } = await params;
   const sp = await searchParams;
   const currentPage = Number(sp.page) || 1;
   const department = sp.department || "";
@@ -50,7 +47,7 @@ export default async function NewsEvent({
   const slug = "news-events";
 
   return (
-    <InnerPageLayoutWrapper slug={slug} pathname={`/${parentSlug}/news-events`} tabs={null} mainClass="happenings_page" showTabs={true}>
+    <InnerPageLayoutWrapper slug={slug} pathname={`/happenings/news-events`} tabs={null} mainClass="happenings_page" showTabs={true}>
       <MainNews
         data={mainData}
         slug={slug}

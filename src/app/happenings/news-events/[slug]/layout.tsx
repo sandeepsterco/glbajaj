@@ -11,15 +11,13 @@ export default async function NewsEventsLayout({
     params,
   }: {
     children: React.ReactNode;
-    params: Promise<{ parentSlug: string; slug: string }>;
+    params: Promise<{slug: string }>;
   }) {
-    const { parentSlug, slug } = await params;
-
-    if (!parentSlug) return <>{children}</>;
+    const { slug } = await params;
 
     const {data, error} = await apiFetch(`news-and-events/${slug}`);
 
     const currentPageTitle = data?.news_and_events_details?.data?.heading;
 
-    return <InnerPageLayoutWrapper slug={'news-events'} pathname={`/${parentSlug}/news-events/${slug}`} parentSlug={parentSlug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={'news-events'} pathname={`/happenings/news-events/${slug}`} parentSlug={'happenings'} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 }

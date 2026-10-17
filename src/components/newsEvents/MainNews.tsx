@@ -43,7 +43,11 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
                   className="img-fluid"
                   width={850}
                   height={519}
+                  loading="lazy"
                 />
+                {data?.slug && (
+                  <Link className="strech_link" href={BASE_URL + 'happenings/' + slug + "/" + data.slug} />
+                )}
               </figure>
             </div>
             <div className="news_right">
@@ -63,7 +67,9 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
                     })}
                   </p>
                 )}
-                {data?.heading && <h3>{data.heading}</h3>}
+                {data?.heading && 
+                  <h3>{data.heading}</h3>
+                }
                 {data?.description && <p>{data.description}</p>}
                 {data?.slug && (
                   <Link href={BASE_URL + 'happenings/' + slug + "/" + data.slug}>

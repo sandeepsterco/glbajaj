@@ -11,14 +11,23 @@ export default async function MessageDetailLayout({
     params,
   }: {
     children: React.ReactNode;
-    params: Promise<{ parentSlug: string; slug: string }>;
+    params: Promise<{ slug: string }>;
   }) {
-    const { parentSlug, slug } = await params;
+    const { slug } = await params;
     if (!slug) return <>{children}</>;
     const {data, error} = await apiFetch(`achivements/${slug}`);
 
     const currentPageTitle = data?.achivement_details?.data?.title;
 
-    return <InnerPageLayoutWrapper slug={'achievements'} pathname={`/\${parentSlug}/achievements/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    const customTabs = {
+      tabs:[
+        {
+        "title": "Alumni1",
+        "slug": "alumni1"
+        }
+      ]
+    }
+
+    return <InnerPageLayoutWrapper slug={'achievements'} pathname={`/why-glbitm/achievements/${slug}`} parentSlug="why-glbitm" tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

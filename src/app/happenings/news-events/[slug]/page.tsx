@@ -7,7 +7,7 @@ import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
 export default async function NewsDetailPage({params}:{params:any}){
-    const {slug, parentSlug} = await params;
+    const {slug} = await params;
     const currentSlug = 'news-events';
     const [{ data, error }, seoData] = await Promise.all([
         apiFetch(`news-and-events/${slug}`),
@@ -19,7 +19,7 @@ export default async function NewsDetailPage({params}:{params:any}){
     const relatedData = data?.related_news_and_events;
 
     const NewsDetailSchemaArgs = {
-        articleUrl:`${BASE_URL}${parentSlug}/news-events/${slug}` || '',
+        articleUrl:`${BASE_URL}happenings/news-events/${slug}` || '',
         headline:newsData?.data?.heading || '',
         articleSummary:newsData?.data?.description || '',
         datePublishedIso:newsData?.data?.date || '',
@@ -51,7 +51,7 @@ export default async function NewsDetailPage({params}:{params:any}){
             )}
             <NewsDetail data={newsData} />
             {relatedData?.length > 0 && (
-                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={parentSlug}  />
+                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={'happenings'}  />
             )}
         </>
     )

@@ -237,6 +237,10 @@ export default function ProgramDetailFormClient({
       <p className="field-error" role="alert">{errors[field]}</p>
     ) : null;
 
+  const defaultDOB = new Date();
+  defaultDOB.setFullYear(defaultDOB.getFullYear() - 18);
+  const maxDate = defaultDOB.toISOString().split("T")[0];
+
   return (
     <div className="program-form">
       <div className="form-container">
@@ -289,11 +293,12 @@ export default function ProgramDetailFormClient({
 
           {/* Date of Birth */}
           <div className={`form-group ${touched.dob && errors.dob ? "has-error" : ""}`}>
+            {/* <label className="dob-label" htmlFor="dob">Date of Birth</label> */}
             <input
               type="date"
+              id="dob"
               name="dob"
-              placeholder="Date of Birth"
-              value={formData.dob}
+              value={formData.dob || maxDate}
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isSubmitting}
@@ -395,7 +400,7 @@ export default function ProgramDetailFormClient({
           {/* Feedback */}
           {submitState.status === "success" && (
             <div className="form-feedback form-feedback--success" role="alert">
-              {submitState.message}
+              Thank you! Your details have been submitted successfully. Our admissions team will contact you shortly.
             </div>
           )}
           {submitState.status === "error" && (

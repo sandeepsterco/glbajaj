@@ -127,7 +127,7 @@ export default function ContactForm() {
 
         <form onSubmit={submitHandler} noValidate>
           <div className="form-group">
-            <input type="text" placeholder="Student Name" name="name" value={fieldsData.name} onChange={changeHandler} />
+            <input type="text" placeholder="Full Name*" name="name" value={fieldsData.name} onChange={changeHandler} />
             {getFieldError("name") ? <p className="field-error" role="alert">{getFieldError("name")}</p> : null}
           </div>
 
@@ -137,12 +137,12 @@ export default function ContactForm() {
           </div>
 
           <div className="form-group">
-            <input type="text" placeholder="Phone" name="phone" value={fieldsData.phone} onChange={changeHandler} />
+            <input type="number" placeholder="Phone*" name="phone" value={fieldsData.phone} onChange={changeHandler} />
             {getFieldError("phone") ? <p className="field-error" role="alert">{getFieldError("phone")}</p> : null}
           </div>
 
           <div className="form-group">
-            <input type="email" placeholder="Email" name="email" value={fieldsData.email} onChange={changeHandler} />
+            <input type="email" placeholder="Email*" name="email" value={fieldsData.email} onChange={changeHandler} />
             {getFieldError("email") ? <p className="field-error" role="alert">{getFieldError("email")}</p> : null}
           </div>
 
@@ -180,7 +180,7 @@ export default function ContactForm() {
           ) : null}
 
           <button className="btn" type="submit" disabled={isLoading}>
-            {isLoading ? "Submitting..." : "Apply Now"}
+            {isLoading ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>

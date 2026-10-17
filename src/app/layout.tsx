@@ -14,6 +14,7 @@ import "../styles/program.css";
 import AOSProvider from "../lib/AOSProvider";
 import { Suspense } from "react";
 import { NavigationProgress } from "../components/NavigationProgress";
+import RouteBodyClass from "../components/common/RouteBodyClass";
 // import "../components/ui/pageLoader/page-loader.css";
 
 const tasaOrbiter = TASA_Orbiter({
@@ -37,6 +38,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${tasaOrbiter.variable} ${fontLexend.variable} h-full antialiased`}>
       <body suppressHydrationWarning className="min-h-full flex flex-col">
           <Providers>
+            <RouteBodyClass />
             <AOSProvider>
             <Suspense>
               <NavigationProgress /> 

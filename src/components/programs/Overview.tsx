@@ -25,7 +25,7 @@ function ToggleContent({ text, wordLimit = 50 }: ToggleContentProps) {
           className={`toggle-btn ${isExpanded ? "active" : ""}`}
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          <i className={`bi ${isExpanded ? "bi-dash-lg" : "bi-plus-lg"}`}></i>
+          {isExpanded ? "-" : "+"}
         </button>
       )}
     </div>

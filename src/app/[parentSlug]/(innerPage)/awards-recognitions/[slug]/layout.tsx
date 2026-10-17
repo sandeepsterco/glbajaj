@@ -21,6 +21,6 @@ export default async function MessageDetailLayout({
     const {data, error} = await apiFetch(`award-recognitions/${slug}`)
     const currentPageTitle = data?.award_details?.data?.title;
 
-    return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/${parentSlug}/${currentSlug}/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/${parentSlug}/${currentSlug}/${slug}`} parentSlug={parentSlug} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
 
 }

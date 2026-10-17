@@ -35,6 +35,7 @@ export default function FacultyFilters({
       // Reset both paginations on filter change
       params.delete("grid_page");
       params.delete("table_page");
+      params.delete("page");
       router.push(`${pathname}?${params.toString()}`);
     },
     [router, pathname, searchParams]

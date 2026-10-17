@@ -124,9 +124,7 @@ textarea::placeholder { color: var(--color-black); }
 .content { margin-top: 2rem; }
 .more-text { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .more-text.show { max-height: 1000px; }
-.toggle-btn i { transition: transform 0.3s ease; font:var(--font-16)}
-.toggle-btn.active i { transform: rotate(180deg); }
-button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); cursor: pointer; }
+button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); font: var(--font-16); cursor: pointer; }
 /* Curriculum */
 .program-detailsec1 { padding-block: 10rem 10rem; position: relative; }
 .curriculum-img { position: absolute; top: 0; margin-left: -30rem; }
@@ -330,10 +328,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
 .award-detail-text h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
 .award-detail-img { padding-inline: 0; order: 1; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
+.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 10rem; }
 .award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
 .award-detail-text1 figure { max-width: 60rem; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-text1 ul.insta_icons li a { margin-top: 3.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 0rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
 .award-detail-text1 ul.insta_icons li a img { width: 3rem; display: inline; }
 /* .award-detail-text1 { padding: 1rem 14rem; } */
@@ -617,7 +614,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .department-page .csr-sec3:before{ height: auto;}
     .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
     .award-detail-list1 .award-detail-text1 { padding-left: 0; }
-    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 4rem; gap: 4rem; }
+    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 7rem; gap: 4rem; }
     .award-detail-list1 .award-detail-text1{ padding-left:  0rem;}
     .award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 { padding-left: 0rem; }
 
@@ -727,4 +724,3 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
     .education-cell-grid { grid-template-columns: repeat(1, 1fr); }
 }
-

@@ -1,7 +1,29 @@
 import { BASE_URL } from "../config/config";
 
-export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?: string, parentSlug?:string) {
-  const parent_menus = data?.parent_menus ?? [];
+type BreadcrumbData = {
+  parent_menus?: Array<{ title: string; url?: string; slug?: string }>;
+  tab_title?: string;
+  department_slug?: string;
+  department_name?: string;
+  menu_title?: string;
+  page_title?: string;
+  current_page_slug?: string;
+};
+
+export type CustomTabs = Partial<BreadcrumbData> & {
+  tabs?: Array<{ title: string; slug?: string; url?: string }>;
+  [key: string]: unknown;
+};
+
+export function buildBreadcrumbs(
+  data: BreadcrumbData,
+  pathname: string,
+  currentPageTitle?: string,
+  parentSlug?: string,
+  customTabs?: CustomTabs
+) {
+  const breadcrumbData: BreadcrumbData = { ...data, ...customTabs };
+  const parent_menus = customTabs?.tabs ?? breadcrumbData.parent_menus ?? [];
 
   const isProgramsOffered = pathname.includes("programs");
   const isProgram = pathname.includes("program") && !pathname.includes("programs");
@@ -11,9 +33,10 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
   const isAboutUsSubpage = pathname.startsWith("/about-us/");
 
   let accumulated = "";
-  const parentCrumbs = parent_menus.map((item:any) => {
-    if (!item.url) return { label: item.title };
-    const cleanUrl = String(item.url).replace(/^\/+|\/+$/g, "");
+  const parentCrumbs = parent_menus.map((item) => {
+    const itemUrl = item.url ?? item.slug;
+    if (!itemUrl) return { label: item.title };
+    const cleanUrl = String(itemUrl).replace(/^\/+|\/+$/g, "");
     accumulated = accumulated ? `${accumulated}/${cleanUrl}` : cleanUrl;
     return { label: item.title, slug: `${BASE_URL}${accumulated}` };
   });
@@ -38,14 +61,14 @@ export function buildBreadcrumbs(data: any, pathname: string, currentPageTitle?:
     ...(isDepartmentDetail ? [{ label: "Departments", slug: BASE_URL + "academics/"+ "departments" }] : []),
     ...(isDepartmentDetail
       ? [
-          data?.tab_title
-            ? { label: data?.tab_title, slug: `${BASE_URL}${parentSlug}/departments/${data?.department_slug}` }
-            : { label: data?.department_name, slug: `${BASE_URL}${parentSlug}/departments/${data?.department_slug}` },
+          breadcrumbData.tab_title
+            ? { label: breadcrumbData.tab_title, slug: `${BASE_URL}${parentSlug}/departments/${breadcrumbData.department_slug}` }
+            : { label: breadcrumbData.department_name ?? "", slug: `${BASE_URL}${parentSlug}/departments/${breadcrumbData.department_slug}` },
         ]
       : []),
     {
-      label: data?.menu_title ?? data?.page_title ?? "",
-      ...(parentSlug && currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${data?.current_page_slug}` } : currentPageTitle ? { slug: `${BASE_URL}${data?.current_page_slug}` } : {}),
+      label: breadcrumbData.menu_title ?? breadcrumbData.page_title ?? "",
+      ...(parentSlug && currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${breadcrumbData.current_page_slug}` } : currentPageTitle ? { slug: `${BASE_URL}${breadcrumbData.current_page_slug}` } : {}),
       // ...(currentPageTitle ? { slug: `${BASE_URL}${parentSlug}/${data?.current_page_slug}` } : {}),
     },
     ...(currentPageTitle ? [{ label: currentPageTitle }] : []),

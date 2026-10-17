@@ -21,20 +21,20 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return await getPageSEO(`department/${slug}`);
+  return await getPageSEO(`academics/departments/${slug}`);
 }
 
 export default async function DepartmentPage({
   params,
 }: {
-  params: Promise<{ slug: string; parentSlug:string; }>;
+  params: Promise<{ slug: string; }>;
 }) {
-  const { slug, parentSlug } = await params;
+  const { slug } = await params;
 
   const [{ data, error },{ data: CmsData }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/home`),
     apiFetch(`cms/departments`),
-    getPageSEO(`${parentSlug}/departments/${slug}`),
+    getPageSEO(`academics/departments/${slug}`),
   ]);
 
   if (error) notFound();
@@ -47,7 +47,7 @@ export default async function DepartmentPage({
     const modularData = data?.data;
 
     const departmentSchemaArgs = {
-      departmentUrl:`${BASE_URL}${parentSlug}/departments/${slug}` || '',
+      departmentUrl:`${BASE_URL}academics/departments/${slug}` || '',
       departmentPageTitle:seoData.title || '',
       metaDescription:seoData.description || '',
       visibleDepartmentDescription:seoData.description || '',
@@ -55,7 +55,7 @@ export default async function DepartmentPage({
       staticSegments:[
         {
           name:"Academics",
-          slug:parentSlug
+          slug:'academics'
         },
         {
           name:"Departments",
@@ -76,9 +76,9 @@ export default async function DepartmentPage({
     dateModifiedIso: pageData?.updated_at || "",
     languageTag: "en-IN",
     currentPageName: modularData?.department_name || "",
-    currentPageSlug: `${BASE_URL}${parentSlug}/departments/${modularData?.department_slug}`,
+    currentPageSlug: `${BASE_URL}academics/departments/${modularData?.department_slug}`,
     parentMenus: [
-        ...pageData?.parent_menus,
+        ...(pageData?.parent_menus ?? []),
         {
           title: 'Academics',
           url: `academics`,
@@ -115,12 +115,12 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
         />
       )}
       <div className="happenings_page">
-        {data?.data?.tabs && <PageHeader data={data.data} parentSlug={parentSlug} slug={slug} pathname={`${parentSlug}/department/${slug}`} />}
+        {data?.data?.tabs && <PageHeader data={data.data} parentSlug={'academics'} slug={slug} pathname={`academics/department/${slug}`} />}
 
         {data?.data?.cms?.length == 0 ? (
           <ComingSoon />
         ) : (
-          <ReactParserDynamic html={combinedHtml} params={{ slug, parentSlug }} data={data?.data} />
+          <ReactParserDynamic html={combinedHtml} params={{ slug, parentSlug:'academics' }} data={data?.data} />
         )}
       </div>
     </>

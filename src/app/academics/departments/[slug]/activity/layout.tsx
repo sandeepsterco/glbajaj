@@ -15,7 +15,7 @@ export default async function DepartmentActivityLayout({children, params}:Readon
 
     return(
         <div className="happenings_page">
-            <PageHeader pathname={`/department/${slug}/activity`} data={data.data} slug={slug} />
+            <PageHeader pathname={`/academics/departments/${slug}/activity`} data={data.data} slug={slug} />
             {children}
             {/* {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children} */}
         </div>

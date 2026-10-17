@@ -4,15 +4,24 @@ import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; page:string }>;
+}) {
+  const { slug, page } = await params;
+  return await getPageSEO(`academics/departments/${slug}/${page}`);
+}
+
 export default async function DepartmentInnerPage({
     params,
   }: {
-    params: Promise<{ slug: string; page: string; parentSlug:string; }>;
+    params: Promise<{ slug: string; page: string; }>;
   }){
-    const { slug, page, parentSlug } = await params;
+    const { slug, page } = await params;
     const [{ data, error }, seoData] = await Promise.all([
       apiFetch(`department/${slug}/${page}`),
-      getPageSEO(`${parentSlug}/departments/${slug}/${page}`),
+      getPageSEO(`academics/departments/${slug}/${page}`),
     ]) ;
 
     const combinedHtml = data?.data?.cms
@@ -30,7 +39,7 @@ export default async function DepartmentInnerPage({
       dateModifiedIso: pageData?.updated_at || "",
       languageTag: "en-IN",
       currentPageName: pageData?.page_title || "",
-      currentPageSlug: `${BASE_URL}${parentSlug}/departments/${pageData?.current_page_slug}`,
+      currentPageSlug: `${BASE_URL}academics/departments/${pageData?.current_page_slug}`,
       parentMenus: [
           {
             title: 'Academics',

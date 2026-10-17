@@ -35,7 +35,7 @@ export default async function TestimonialDetailPage({ params }: { params: any })
         currentPageName: modularData?.name || '',
         currentPageSlug: `${BASE_URL}why-glbitm/testimonials/${slug}`,
         parentMenus: [
-            ...pageData?.parent_menus,
+            ...(pageData?.parent_menus ?? []),
             {
             title: pageData?.page_title,
             url: pageData?.current_page_slug,

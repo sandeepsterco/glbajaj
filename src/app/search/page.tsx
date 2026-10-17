@@ -1,4 +1,4 @@
-import PageHeader from "@/src/components/layout/header/PageHeader";
+﻿import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
 import "@/src/styles/inner.css";
 import SearchPageListing from "./SearchPageListing";
@@ -35,7 +35,7 @@ export default async function SearchPage({
     currentPageName:pageData?.page_title || '',
     currentPageSlug: `${BASE_URL}search`,
     parentMenus: [
-        ...pageData?.parent_menus,
+        ...(pageData?.parent_menus ?? []),
     ],
   };
 
@@ -64,3 +64,4 @@ export default async function SearchPage({
     </>
   );
 }
+

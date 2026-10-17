@@ -1,4 +1,4 @@
-import { apiFetch } from "@/src/lib/api"
+﻿import { apiFetch } from "@/src/lib/api"
 import InnerPageLayoutWrapper from "@/src/app/layout/InnerPageLayoutWrapper";
 import TestimonialList from "@/src/components/testimonial/TestimonialList";
 import "@/src/styles/inner.css";
@@ -48,7 +48,7 @@ export default async function TestimonialPage({
         currentPageName:pageData?.page_title || '',
         currentPageSlug: `${BASE_URL}why-glbitm/testimonials`,
         parentMenus: [
-            ...pageData?.parent_menus,
+            ...(pageData?.parent_menus ?? []),
         ],
       };
 

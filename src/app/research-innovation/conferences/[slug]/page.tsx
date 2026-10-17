@@ -6,12 +6,12 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
-export default async function NewsDetailPage({params}:{params:Promise<{slug:string; parentSlug:string;}>}){
-    const {slug, parentSlug} = await params;
+export default async function NewsDetailPage({params}:{params:Promise<{slug:string;}>}){
+    const {slug} = await params;
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`research-conferences/${slug}`),
         apiFetch(`cms/conferences`),
-        getPageSEO(`${parentSlug}/conferences/${slug}`),
+        getPageSEO(`research-innovation/conferences/${slug}`),
     ]);
 
     if (error) notFound();
@@ -30,9 +30,9 @@ export default async function NewsDetailPage({params}:{params:Promise<{slug:stri
         dateModifiedIso: pageData?.updated_at || "",
         languageTag: "en-IN",
         currentPageName: modularData?.title || "",
-        currentPageSlug: `${BASE_URL}${parentSlug}/${pageData?.current_page_slug}/${slug}`,
+        currentPageSlug: `${BASE_URL}research-innovation/${pageData?.current_page_slug}/${slug}`,
         parentMenus: [
-            ...pageData?.parent_menus,
+            ...(pageData?.parent_menus ?? []),
           {
             title: pageData?.page_title,
             url: pageData?.current_page_slug,

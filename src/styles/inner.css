@@ -371,7 +371,7 @@
 .happenings-archives .gallery_list_section{ padding-block: 10rem; }
 .gallery_list_section.workshops-and-seminars-list { padding-block: 10rem 11.6rem; }
 .glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
-.gallery_list { column-count: 3; gap: 3rem; margin-inline: -2rem; }
+.gallery_list {display: grid; grid-template-columns: repeat(3, 1fr);gap: 3rem;}
 .gallery_list_bx { position: relative; background-color: var(--color-F5); break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem; }
 .gallery_list_bx figure { position: relative; }
 .gallery_list_bx span { position: absolute; bottom: 0; left: 2.5rem; display: flex; background-color: rgba(0, 0, 0, 0.7); padding: 0.8rem 1rem; gap: 1rem; }
@@ -385,7 +385,7 @@
 .fancybox__nav .carousel__button.is-next svg { width: 1.3rem; }
 .gallery_list_header { padding-block: 6rem 5rem; display: flex; justify-content: space-between; }
 .gallery_list_section h1 { color: var(--color-64); font: var(--font-36); letter-spacing: -0.18rem; }
-.gallery_details { position: relative; background-color: var(--color-F5); break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem; }
+.gallery_details { position: relative; background-color: var(--color-F5); break-inside: avoid; }
 .gallery_details figure { position: relative; cursor: pointer; }
 .gallery_details figure:has(span)::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.37); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 0; }
 .gallery_details figure span { position: absolute; top: 0; left: 0; right: 0; bottom: 0; content: ""; height: 2.8rem; width: 2.7rem; margin: auto; z-index: 2; }

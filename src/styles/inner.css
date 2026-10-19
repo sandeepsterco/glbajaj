@@ -1023,7 +1023,7 @@
 .alumni_objsec .custom_bullet li:before{ background-color: var(--color-white);}
 .teamX_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 14.7rem; bottom: 0; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .teamX_card { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
-.teamX_card figure { margin-top: -5rem; }
+.teamX_card figure { margin-top: 5rem; }
 .teamX_card .teamX_img img { width: 100%; }
 .teamX_info { padding-block: 1.6rem 1rem; }
 .teamX_info .teamX_name { font: var(--font-18); font-weight: 600; margin-bottom: 0.5rem; }

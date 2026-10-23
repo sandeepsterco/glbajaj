@@ -20,7 +20,8 @@
 .results-list .result-title { font: var(--font-20); color: #1a1a1a; letter-spacing: 0; flex: 1; font-weight: 400; }
 /* ========= search page ================= */
 /* ==== career page========== */
-.career_headings { display:flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
+.career_headings { display:flex; align-items: center;  margin-bottom: 2.5rem; gap: 3rem;}
+.career_headings figure{position: relative;}
 .career_headings h4 { margin-bottom: 0; }
 /* ==== career page========== */
 /* =========department home mou ===============*/
@@ -2056,9 +2057,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
-.privacy_policy { padding-block: 8rem 10rem; }
-.privacy-policy h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
-.privacy-policy ul { padding-bottom: 3rem; }
+.privacy_policy, .terms-and-condition-page { padding-block: 8rem 10rem; }
+.privacy-policy h3, .terms-and-condition-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
+.privacy-policy ul, .terms-and-condition-page ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
 .research_and_incubation .center_icu_logosec { display: flex; padding-top: 3rem; flex-wrap: wrap;}
 .center_icu_logosec { display: flex; gap: 3rem; display: none; }
@@ -2481,6 +2482,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .blog_detail_tags ul { display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0; list-style: none; }
 .blog_detail_tags a { display: inline-block; padding: 0.7rem 1.2rem; border: 1px solid #E1E1E1; color: var(--color-33); text-decoration: none; }
 .blog_detail_tags a:hover { color: var(--color-white); background-color: var(--color-92); border-color: var(--color-92); }
+.blog_details_left figure{position: relative;margin-bottom: 3rem;}
 .blog_details_left blockquote { font: var(--font-30); margin-bottom: 4rem; }
 .blog_details_left h3 { font: var(--font-36); color: var(--color-92); letter-spacing: -1.8px; padding-block:3rem 2.5rem; }
 .blog_details_left ul { padding-block:0.7rem 4rem; color: var(--color-33); }

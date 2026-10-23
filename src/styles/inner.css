@@ -2491,6 +2491,8 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .blog_table .item-content { padding-top: 0; }
 .blog_table .table-wrapper { box-shadow: none; }
 .blog_details_left h5 { font-weight: 700; margin-block: 3rem 1rem; }
+
+
 .blog_details_left ul li strong { display: block; padding-bottom: 1rem; }
 .grid_listing ul.custom_bullet { display: grid; grid-template-columns: repeat(2, 1fr); }
 .blog_details_left .read_more_btn{margin-block:3rem}

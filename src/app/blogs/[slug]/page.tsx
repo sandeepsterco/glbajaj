@@ -2,6 +2,7 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import BlogFeaturedSlider from "@/src/components/blogs/BlogFeaturedSlider";
 import BlogSidebar from "@/src/components/blogs/BlogSidebar";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import SocialShare from "@/src/components/common/SocialShare";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
@@ -159,9 +160,12 @@ export default async function BlogDetailPage({
               />
             </figure>
             <figcaption>
-              {details.date && (
-                <div className="date">{formatBlogDate(details.date)}</div>
-              )}
+              <div className="newst_details_header">
+                {details.date && (
+                  <div className="date">{formatBlogDate(details.date)}</div>
+                )}
+                
+              </div>
               {details.title && <h3>{details.title}</h3>}
               {details.description && <p>{details.description}</p>}
             </figcaption>
@@ -176,6 +180,7 @@ export default async function BlogDetailPage({
               {details.description && !details.sections && (
                 <blockquote>{details.description}</blockquote>
               )}
+              <SocialShare title={details.title || ""} />
 
               <BlogSections sections={details.sections} />
 

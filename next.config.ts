@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     // domains is deprecated, remotePatterns above covers it
   },
 
-  async headers() {
+  async headers() { 
     return [
       {
         source: "/(.*)",

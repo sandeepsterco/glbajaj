@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { State, City } from "country-state-city";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "../RecaptchaField";
@@ -98,8 +98,16 @@ export default function ProgramDetailFormClient({
   const [submitState, setSubmitState] = useState<SubmitState>({ status: "idle", message: "" });
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
 
-  // Pre-select department when slug is available (detail page or list modal)
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
+
   useEffect(() => {
     if (!defaultDepartmentSlug || departments.length === 0) return;
     const match = departments.some((d) => d.slug === defaultDepartmentSlug);
@@ -187,6 +195,7 @@ export default function ProgramDetailFormClient({
         state: formData.stateLabel,
         city: formData.city,
         department_name: selectedDept?.name ?? formData.department,
+        ...utm,
         ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       };
 

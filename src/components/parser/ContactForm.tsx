@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
+import { useSearchParams } from "next/navigation";
 
 type FieldErrors = Record<string, string[] | string>;
 
@@ -37,6 +38,15 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
+
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
 
   const resetFields = () => {
     setFieldsData(INITIAL_FORM);
@@ -92,6 +102,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           ...fieldsData,
+          ...utm,
           ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
         }),
       });

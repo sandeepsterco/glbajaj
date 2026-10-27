@@ -3,7 +3,7 @@ import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
-import React from "react";
+import React, { Suspense } from "react";
 import Subscribe from "./Subscribe";
 
 const Footer = async () => {
@@ -192,7 +192,9 @@ const Footer = async () => {
 
               </div>
 
-              <Subscribe />
+                <Suspense fallback={null}>
+                  <Subscribe />
+                </Suspense>
 
             </div>
           </div>

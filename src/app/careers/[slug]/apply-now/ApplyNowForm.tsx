@@ -4,7 +4,7 @@ import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { City, Country, ICity, ICountry, IState, State } from "country-state-city";
 import { BASE_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type FieldErrors = Record<string, string[]>;
 
@@ -80,7 +80,16 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const searchParams = useSearchParams();
   const router = useRouter();
+
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
 
   const resetRecaptcha = () => {
     setRecaptchaToken(null);
@@ -200,6 +209,10 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
       const payload = new FormData();
 
       Object.entries(form).forEach(([key, value]) => {
+        payload.append(key, value);
+      });
+
+      Object.entries(utm).forEach(([key, value]) => {
         payload.append(key, value);
       });
 

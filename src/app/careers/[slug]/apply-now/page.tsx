@@ -5,6 +5,7 @@ import { BASE_URL } from "@/src/config/config";
 import { notFound } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import { Suspense } from "react";
 
 export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
   const { slug } = await params;
@@ -72,7 +73,9 @@ export default async function CareerFormPage({ params }: { params: any }) {
                         )}
                         <Link className="apply_btn" href={`${BASE_URL}careers`}><i className="bi bi-arrow-left" style={{marginRight: '1rem'}}></i>Back</Link>
                     </div>
-                    <ApplyNowForm openingName={careerData?.data?.title ?? ""} />
+                    <Suspense fallback={null}>
+                        <ApplyNowForm openingName={careerData?.data?.title ?? ""} />
+                    </Suspense>
                 </div>
             </section>
         </>

@@ -77,7 +77,7 @@ export default async function BlogsYearPage({
 
   const [{ data: blogsData, error }, seoData] = await Promise.all([
     apiFetch(`blogs?category=${slug}&${params}`, fetchOptions),
-    getPageSEO(`blogs`),
+    getPageSEO(`blogs/category/${slug}`),
   ]);
 
   if (error) notFound();
@@ -122,7 +122,7 @@ export default async function BlogsYearPage({
       )}
       <InnerPageLayoutWrapper
         pathname={`/blogs/category/${slug}`}
-        slug={slug}
+        slug={'blogs'}
         tabs={null}
         mainClass="happenings_page"
         showTabs={true}

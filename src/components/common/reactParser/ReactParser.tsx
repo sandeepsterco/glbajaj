@@ -118,7 +118,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     home_happenings: () => withLazyComponent(() => import("../../parser/HomeHappenings"), { homeData, pageName }),
     home_alumni: () => withLazyComponent(() => import("../../parser/HomeAlumni"), { homeData, pageName }),
     contact_form: () => withLazyComponent(() => import("../../parser/ContactForm")),
-    about_leadership: () => withLazyComponent(() => import("../../parser/about/AboutLeadership")),
+    about_leadership: () => withLazyComponent(() => import("../../parser/about/AboutLeadership"),{pageName}),
     awards_list: () => withLazyComponent(() => import("../../parser/awardList/AwardsList"), { params, searchParams }),
     achievement_list: () => withLazyComponent(() => import("../../parser/achievementList/AchievementList"), { searchParams }),
     conference_lists: () => withLazyComponent(() => import("../../parser/conferenceLists/ConferenceLists"), { params, searchParams }),

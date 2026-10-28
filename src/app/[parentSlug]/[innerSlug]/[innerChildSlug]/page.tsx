@@ -68,11 +68,11 @@ export default async function DynamicSlugPage({
       },
     ],
   };
-
   
 
 const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
+  console.log('seoData',seoData);
 
   return (
     <>
@@ -103,6 +103,7 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
           html={combinedHtml}
           params={params}
           searchParams={resolvedSearchParams}
+          pageName={seoData.title}
         />
       )}
     </>

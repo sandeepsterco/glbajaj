@@ -2057,9 +2057,9 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
-.privacy_policy, .terms-and-condition-page { padding-block: 8rem 10rem; }
-.privacy-policy h3, .terms-and-condition-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
-.privacy-policy ul, .terms-and-condition-page ul { padding-bottom: 3rem; }
+.privacy_policy, .terms-and-conditions-page { padding-block: 8rem 10rem; }
+.privacy-policy h3, .terms-and-conditions-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
+.privacy-policy ul, .terms-and-conditions-page ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
 .research_and_incubation .center_icu_logosec { display: flex; padding-top: 3rem; flex-wrap: wrap;}
 .center_icu_logosec { display: flex; gap: 3rem; display: none; }

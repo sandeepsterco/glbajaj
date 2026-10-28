@@ -18,8 +18,8 @@ export async function InitMultiColumnSlider(root: HTMLElement): Promise<() => vo
     slider.dataset.swiperInit = "true";
     if (slider.querySelectorAll(".swiper-slide").length <= 1) return;
 
-    const nextEl = slider.querySelector<HTMLElement>(".multi_column_slider_next");
-    const prevEl = slider.querySelector<HTMLElement>(".multi_column_slider_prev");
+    const nextEl = slider.querySelector<HTMLElement>(".swiper_next_custom");
+    const prevEl = slider.querySelector<HTMLElement>(".swiper_prev_custom");
 
     instances.push(
       new SwiperCore(slider, {

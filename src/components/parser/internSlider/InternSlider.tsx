@@ -7,10 +7,10 @@ async function fetchInternSlider(): Promise<Achievement[]> {
   return data?.intern ?? [];
 }
 
-export default async function InternSlider() {
+export default async function InternSlider({pageName}:{pageName:string}) {
   const sliderItems = await fetchInternSlider();
 
   if (sliderItems.length === 0) return null;
 
-  return <InternSliderClient sliderItems={sliderItems} />;
+  return <InternSliderClient sliderItems={sliderItems} pageName={pageName} />;
 }

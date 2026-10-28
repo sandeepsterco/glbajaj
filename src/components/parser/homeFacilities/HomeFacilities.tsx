@@ -7,9 +7,9 @@ async function fetchFacilities() {
   return data;
 }
 
-export default async function HomeFacilities() {
+export default async function HomeFacilities({pageName}:{pageName:string;}) {
   const data = await fetchFacilities();
   const tabsData = data?.homeFacilitiesSlides?.data ?? [];
 
-  return <HomeFacilitiesClient tabsData={tabsData} />;
+  return <HomeFacilitiesClient tabsData={tabsData} pageName={pageName} />;
 }

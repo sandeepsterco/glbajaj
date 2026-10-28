@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { SkeletonGroup } from "../../ui/Skeleton";
-import { API_URL, BASE_URL } from "@/src/config/config";
+import { API_URL, APPLY_NOW, BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 import CourseSearch from "../../parser/CourseSearch";
 import { generateSlug } from "@/src/lib/generateSlug";
@@ -246,7 +246,7 @@ export default function MobileMenu() {
                                                     <figcaption dangerouslySetInnerHTML={{__html:getValue('under_graduate')?.value ?? ''}} />
                                                     <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
                                                 </div>
-                                                <a href={getValue('under_graduate')?.url ?? ''} className="strech_link"></a>
+                                                <a href={`${BASE_URL}${getValue('under_graduate')?.url ?? ''}`} className="strech_link"></a>
                                             </li>
                                             <li>
                                                 <figure>
@@ -256,7 +256,7 @@ export default function MobileMenu() {
                                                     <figcaption dangerouslySetInnerHTML={{__html:getValue('post_graduate')?.value ?? ''}} />
                                                     <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
                                                 </div>
-                                                <a href={getValue('post_graduate')?.url ?? ''} className="strech_link"></a>
+                                                <a href={`${BASE_URL}${getValue('post_graduate')?.url ?? ''}`} className="strech_link"></a>
                                             </li>
                                         </ul>
                                     )}
@@ -302,7 +302,7 @@ export default function MobileMenu() {
                             </div>
 
                             <div className="m-view">
-                                <a href={`${BASE_URL}admission/apply`} className="apply_online_btn">Apply Online</a>
+                                <a href={`${APPLY_NOW}`} className="apply_online_btn">Apply Online</a>
                                 <a href={getValue('prospectus').image ?? ''} target="_blank" className="download_prospectus_btn">{getValue('prospectus').value}</a>
                             </div>
                         </>

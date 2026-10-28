@@ -145,7 +145,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     department_faculty_grid: () => withLazyComponent(() => import("../../parser/DepartmentFacultyGrid")),
     program_detail_form: () => withLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
     department_home_placements: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
-    home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
+    home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData, pageName }),
     career_job_listing: () => withLazyComponent(() => import("../../parser/CareerJobListing")),
     home_upcoming_events: () => withLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
     home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights"), {pageName}),

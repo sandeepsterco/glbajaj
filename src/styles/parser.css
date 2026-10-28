@@ -1422,6 +1422,11 @@ main { overflow: hidden; }
   .res_publi_list li a{ padding-block: 1.5rem;}
   .institute_cnt ul{grid-template-columns: repeat(1, 1fr);}
   .home_sessions_section .left_col .title{ min-height: 4rem;}
+
+  .home_placement_student_slider .placement_img{height: auto;}
+  .home_placement_info .placement,
+  .home_placement_info .placement sup{color:var(--color-black)};
+  .home_placement_info{margin:0;}
   
 }
 

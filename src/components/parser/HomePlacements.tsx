@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 const SLIDES_PER_VIEW = 3;
 
 
-export default function HomePlacements({homeData}:{homeData:any}) {
+export default function HomePlacements({homeData, pageName}:{homeData:any; pageName:string}) {
 
   const placementData: any[] = homeData?.modular?.["intern-placement"] ?? [];
 
@@ -86,7 +86,7 @@ export default function HomePlacements({homeData}:{homeData:any}) {
             <figure className="flash-effect-2">
               <Image
                 src={item.image}
-                alt={item.name}
+                alt={item.alt || pageName}
                 width={349}
                 height={409}
                 loading="lazy"

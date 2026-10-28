@@ -2,6 +2,7 @@ import LeadershipDetail from "@/src/components/leadership/LeadershipDetail";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildLeadershipSchema } from "@/src/lib/schema/leadershipSchema";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
@@ -45,9 +46,26 @@ export default async function LeadershipDetailPage({
   };
 
   const leadershipSchema = buildLeadershipSchema(leadershipSchemaArgs);
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `${parentSlug}/leadership-messages/${slug}`,
+    pageData?.name || seoData.title,
+  );
 
   return (
     <>
+      {seoData.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
       {leadershipSchema && (
         <script
           type="application/ld+json"

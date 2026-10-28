@@ -9,6 +9,17 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ parentSlug: string }>;
+}) {
+    const { parentSlug } = await params;
+    return getPageSEO(`${parentSlug}/workshops`);
+}
 
 interface SearchParams {
   page?: string;
@@ -32,9 +43,10 @@ export default async function Workshop({
     ...(department && { department }),
   }).toString();
 
-  const [{ data, error }, { data: deptData }] = await Promise.all([
+  const [{ data, error }, { data: deptData }, seoData] = await Promise.all([
     apiFetch(`workshops?${query}`),
     apiFetch("department-workshop-list"),
+    getPageSEO(`${parentSlug}/workshops`),
   ]);
 
   if (error) notFound();
@@ -49,8 +61,22 @@ export default async function Workshop({
   const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
   // const slug = "workshops";
   const slug = "workshops";
+  const globalSchema = buildPageGlobalSchema(seoData, `${parentSlug}/workshops`);
 
   return (
+    <>
+    {seoData.schema && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
+      />
+    )}
+    {globalSchema && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+      />
+    )}
     <InnerPageLayoutWrapper slug={slug}
     pathname={`/${parentSlug}/workshops`} tabs={null} mainClass="happenings_page" showTabs={true}>
       <MainWorkshop
@@ -70,5 +96,6 @@ export default async function Workshop({
         />
       )}
     </InnerPageLayoutWrapper>
+    </>
   );
 }

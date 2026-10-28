@@ -1,6 +1,7 @@
 import ProgramTabs from "@/src/components/departments/programs/ProgramTabs";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,7 @@ export default async function DepartmentAboutPage({params}:{params:Promise<{ slu
 
   const undergraduate = pageData.filter((p: any) => p.type == "under-graduate");
   const postgraduate = pageData.filter((p: any) => p.type == "post-graduate");
+  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/programs`);
 
   return (
     <>
@@ -30,6 +32,12 @@ export default async function DepartmentAboutPage({params}:{params:Promise<{ slu
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       <ProgramTabs undergraduate={undergraduate} postgraduate={postgraduate} />

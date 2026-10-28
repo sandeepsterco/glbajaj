@@ -2,6 +2,7 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import PageHeader from "@/src/components/layout/header/PageHeader";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -33,6 +34,10 @@ export default async function DepartmentResearchPage({
   const combinedHtml = data?.data?.cms
     ? Object.values(data?.data?.cms).join("")
     : "";
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `department/${slug}/research`,
+  );
 
   return (
     <>
@@ -42,6 +47,12 @@ export default async function DepartmentResearchPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       <ReactParser html={combinedHtml} />

@@ -108,9 +108,7 @@ export default async function FacultyPage({
       >
         <ReactParserDynamic
           html={combinedHtml}
-          pageName={
-            seoData?.title
-          }
+          pageName={seoData.title}
         />
 
         <section className="faculty_section">

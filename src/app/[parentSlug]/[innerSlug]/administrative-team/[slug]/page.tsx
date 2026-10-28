@@ -1,7 +1,17 @@
 import LeadershipDetail from "@/src/components/leadership/LeadershipDetail";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ parentSlug: string; innerSlug: string; slug: string }>;
+}) {
+  const { parentSlug, innerSlug, slug } = await params;
+  return getPageSEO(`${parentSlug}/${innerSlug}/administrative-team/${slug}`);
+}
 
 export default async function FacultyDetailPage({
   params,
@@ -16,6 +26,11 @@ export default async function FacultyDetailPage({
   ]);
 
   if (error) notFound();
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `${parentSlug}/${innerSlug}/administrative-team/${slug}`,
+    data?.leadership_details?.data?.name || seoData.title,
+  );
 
   return (
     <>
@@ -25,6 +40,12 @@ export default async function FacultyDetailPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       <LeadershipDetail

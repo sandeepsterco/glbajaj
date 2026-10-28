@@ -89,3 +89,25 @@ export function buildGlobalSchema(args: GlobalSchemaArgs) {
     ],
   };
 }
+
+export function buildPageGlobalSchema(
+  seoData: {
+    title?: string;
+    description?: string;
+    alternates?: { canonical?: string };
+  },
+  pagePath: string,
+  currentPageName = seoData.title || "",
+) {
+  const canonicalUrl = seoData.alternates?.canonical || `${BASE_URL}${pagePath}`;
+
+  return buildGlobalSchema({
+    canonicalUrl,
+    pageTitle: seoData.title || "",
+    metaDescription: seoData.description || "",
+    primaryImageUrl: "",
+    languageTag: "en-IN",
+    currentPageSlug: `${BASE_URL}${pagePath}`,
+    currentPageName,
+  });
+}

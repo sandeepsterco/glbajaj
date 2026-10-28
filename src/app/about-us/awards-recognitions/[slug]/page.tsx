@@ -5,6 +5,15 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    return getPageSEO(`about-us/awards-recognitions/${slug}`);
+}
+
 export default async function FacultyDetailPage({params}:{params:Promise<{slug:string;}>}){
     const {slug} = await params;
 

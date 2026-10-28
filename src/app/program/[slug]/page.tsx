@@ -3,6 +3,7 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import Link from "next/link";
 
 export async function generateMetadata({
@@ -29,6 +30,7 @@ export default async function ProgramDetail({
   const combinedHtml = Object.values(data?.program_details?.cms ?? {}).join("");
 
   if (!combinedHtml) return <h1>Loading...</h1>;
+  const globalSchema = buildPageGlobalSchema(seoData, `program/${slug}`);
 
   return (
     <>
@@ -38,6 +40,12 @@ export default async function ProgramDetail({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>

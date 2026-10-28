@@ -1,6 +1,7 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata({
   params,
@@ -23,6 +24,7 @@ export default async function DepartmentAboutPage({
   ]);
 
   const cmsSections = data?.data?.cms;
+  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/labs`);
 
   return (
     <>
@@ -32,6 +34,12 @@ export default async function DepartmentAboutPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       {Object.keys(cmsSections || {}).map((key: any) => {

@@ -195,6 +195,7 @@ export default function ProgramDetailFormClient({
         state: formData.stateLabel,
         city: formData.city,
         department_name: selectedDept?.name ?? formData.department,
+        source_url:window.location.href,
         ...utm,
         ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       };

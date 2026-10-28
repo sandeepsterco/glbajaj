@@ -46,6 +46,7 @@ export default function ContactForm() {
     utm_campaign: searchParams.get("utm_campaign") ?? "",
     utm_term: searchParams.get("utm_term") ?? "",
     utm_content: searchParams.get("utm_content") ?? "",
+    source_url:window.location.href
   };
 
   const resetFields = () => {

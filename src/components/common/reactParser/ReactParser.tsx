@@ -106,17 +106,17 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any): HTMLReactParserOptions => {
+const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any, pageName?:string): HTMLReactParserOptions => {
   
   const idComponentMap: Record<string, () => React.ReactElement> = {
     "course-search": () => withLazyComponent(() => import("../../parser/CourseSearch")),
     home_course_tabs: () => withLazyComponent(() => import("../../parser/HomeCoursesTabs")),
-    "add-on-courses": () => withLazyComponent(() => import("../../parser/AddOnCourses"), { homeData }),
+    "add-on-courses": () => withLazyComponent(() => import("../../parser/AddOnCourses"), { homeData, pageName }),
     "program-add-on-courses": () => withLazyComponent(() => import("../../parser/ProgramAddOnCourses")),
-    research_innovation: () => withLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData }),
-    home_facilities: () => withLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities")),
-    home_happenings: () => withLazyComponent(() => import("../../parser/HomeHappenings"), { homeData }),
-    home_alumni: () => withLazyComponent(() => import("../../parser/HomeAlumni"), { homeData }),
+    research_innovation: () => withLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData, pageName }),
+    home_facilities: () => withLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities"), {pageName}),
+    home_happenings: () => withLazyComponent(() => import("../../parser/HomeHappenings"), { homeData, pageName }),
+    home_alumni: () => withLazyComponent(() => import("../../parser/HomeAlumni"), { homeData, pageName }),
     contact_form: () => withLazyComponent(() => import("../../parser/ContactForm")),
     about_leadership: () => withLazyComponent(() => import("../../parser/about/AboutLeadership")),
     awards_list: () => withLazyComponent(() => import("../../parser/awardList/AwardsList"), { params, searchParams }),
@@ -148,12 +148,12 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
     career_job_listing: () => withLazyComponent(() => import("../../parser/CareerJobListing")),
     home_upcoming_events: () => withLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
-    home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
+    home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights"), {pageName}),
     program_detail_placements: () => withLazyComponent(() => import("../../parser/ProgramDetailPlacements")),
     department_home_research: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
     home_course_right: () => withLazyComponent(() => import("../../parser/HomeCourseRight")),
     alumni_achievement_list: () => withLazyComponent(() => import("../../parser/AlumniAchievementList")),
-    intern_slider: () => withLazyComponent(() => import("../../parser/internSlider/InternSlider")),
+    intern_slider: () => withLazyComponent(() => import("../../parser/internSlider/InternSlider"), {pageName}),
   };
 
   const options: HTMLReactParserOptions = {
@@ -208,6 +208,8 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
 
         if (!resolvedSrc) return <></>;
 
+        const altText = props.alt?.trim() || `${pageName}`
+
         const parsedWidth =
           props.width && !isNaN(parseInt(props.width as string, 10))
             ? parseInt(props.width as string, 10)
@@ -223,7 +225,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
             <img
               {...rest}
               src={resolvedSrc}
-              alt={props.alt || ""}
+              alt={altText}
               loading="lazy"
               decoding="async"
               style={{ ...(props.style || {}) }}
@@ -234,7 +236,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
           <Image
             {...props}
             src={resolvedSrc}
-            alt={props.alt || ""}
+            alt={altText}
             width={parsedWidth}
             height={parsedHeight}
             loading="lazy"
@@ -286,7 +288,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
 // ReactParser
 // ---------------------------------------------------------------------------
 
-export default function ReactParser({ html, homeData, params, searchParams, data }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any }) {
+export default function ReactParser({ html, homeData, params, searchParams, data, pageName }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any; pageName?:string }) {
   const sanitizedHtml = useMemo(
     () =>
       DOMPurify.sanitize(html, {
@@ -302,8 +304,8 @@ export default function ReactParser({ html, homeData, params, searchParams, data
   const containerId = useMemo(() => `cms-block-${hashString(sanitizedHtml)}`, [sanitizedHtml]);
 
   const options = useMemo(
-    () => getParserOptions(homeData, params, searchParams, data ),
-    [homeData, params, searchParams, data]
+    () => getParserOptions(homeData, params, searchParams, data, pageName ),
+    [homeData, params, searchParams, data, pageName]
   );
 
   const parsedContent = useMemo(() => parse(sanitizedHtml, options), [sanitizedHtml, options]);

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 
-export default function AddOnCourses({homeData}:{homeData:any}) {
+export default function AddOnCourses({homeData, pageName}:{homeData:any; pageName:string}) {
 
   const sliderData = homeData?.modular?.["facts-and-figure"];
 
@@ -60,7 +60,7 @@ export default function AddOnCourses({homeData}:{homeData:any}) {
                   <span className="icon">
                     <Image
                       src={singleSlide.image}
-                      alt="internet logo"
+                      alt={singleSlide?.alt || pageName}
                       width={24}
                       height={24}
                     />

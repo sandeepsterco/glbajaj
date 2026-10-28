@@ -25,9 +25,10 @@ function formatDateParts(dateStr: string) {
 
 interface HomeUpcomingEventsClientProps {
   events: UpcomingEventsResponse;
+  pageName:string;
 }
 
-export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClientProps) {
+export default function HomeHighlightsClient({ events, pageName }: HomeUpcomingEventsClientProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -73,7 +74,7 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                   <figure>
                     <img
                       src={event.image ?? ""}
-                      alt={event.title}
+                      alt={event.alt || pageName}
                       {...aos("200")}
                       loading="lazy"
                       width="723"

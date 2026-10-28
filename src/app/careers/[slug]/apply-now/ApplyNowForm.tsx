@@ -216,6 +216,8 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         payload.append(key, value);
       });
 
+      payload.append('source_url', window.location.href);
+
       if (selectedFile) {
         payload.append("file", selectedFile);
       }

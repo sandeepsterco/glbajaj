@@ -17,6 +17,8 @@ export interface Achievement {
   name?: string;
   course?: string;
   batch?: string;
+  alt?:string;
+  logo_alt?:string;
   mapping_items?: {
     paragraph: { para: string }[];
   };
@@ -24,9 +26,10 @@ export interface Achievement {
 
 interface InternSliderClientProps {
   sliderItems: Achievement[];
+  pageName:string;
 }
 
-export default function InternSliderClient({ sliderItems }: InternSliderClientProps) {
+export default function InternSliderClient({ sliderItems, pageName }: InternSliderClientProps) {
   return (
     <div className="common_image_slider">
       <Swiper
@@ -69,7 +72,7 @@ export default function InternSliderClient({ sliderItems }: InternSliderClientPr
                 <figure className="flash-effect-2">
                   <Image
                     src={item.image ?? ""}
-                    alt={item.name ?? "internship image"}
+                    alt={item?.alt || pageName}
                     width={600}
                     height={732}
                     loading="lazy"
@@ -78,7 +81,7 @@ export default function InternSliderClient({ sliderItems }: InternSliderClientPr
                 {item.logo_image && (
                   <div className="place_complog">
                     <figure>
-                      <img src={item.logo_image} alt="company logo" />
+                      <img src={item.logo_image} alt={item.logo_alt || pageName} />
                     </figure>
                   </div>
                 )}

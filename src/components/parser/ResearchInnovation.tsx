@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
-export default function ResearchInnovation({homeData}:{homeData:any}) {
+export default function ResearchInnovation({homeData, pageName}:{homeData:any; pageName:string}) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [mounted, setMounted] = useState(false)
@@ -59,7 +59,7 @@ export default function ResearchInnovation({homeData}:{homeData:any}) {
               <figure className="flash-effect">
                 <Image
                   src={slide?.image || ""}
-                  alt="leader"
+                  alt={slide?.alt || pageName}
                   width={575}
                   height={429}
                   loading="lazy"

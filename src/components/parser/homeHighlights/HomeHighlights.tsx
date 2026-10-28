@@ -9,6 +9,7 @@ interface MediaCoverageItem {
   featured: string | null;
   slug: string;
   image: string | null;
+  alt?:string;
 }
 
 interface NewsEventItem {
@@ -23,6 +24,7 @@ interface NewsEventItem {
   display_order: number | null;
   featured: string | null;
   slug: string;
+  alt?:string;
 }
 
 interface UpcomingEventsResponse {
@@ -37,7 +39,7 @@ async function fetchUpcomingEvents(): Promise<UpcomingEventsResponse> {
   return data ?? { status: false, mediaCoverage: [], newsAndEvents: [] };
 }
 
-export default async function HomeHighlights() {
+export default async function HomeHighlights({pageName}:{pageName:string}) {
   const events = await fetchUpcomingEvents();
 
   const hasMediaCoverage = !!events?.mediaCoverage?.length;
@@ -45,7 +47,7 @@ export default async function HomeHighlights() {
 
   if (!events || (!hasMediaCoverage && !hasNewsAndEvents)) return null;
 
-  return <HomeHighlightsClient events={events} />;
+  return <HomeHighlightsClient events={events} pageName={pageName} />;
 }
 
 export type { UpcomingEventsResponse, MediaCoverageItem, NewsEventItem };

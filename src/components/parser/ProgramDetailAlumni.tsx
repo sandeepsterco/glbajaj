@@ -25,7 +25,7 @@ const getProgramAlumni = async (slug: string) => {
   return data?.program_details?.data?.testimonials ?? [];
 };
 
-export default function ProgramDetailAlumni() {
+export default function ProgramDetailAlumni({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split('/').filter(Boolean).pop() ?? '';
 
@@ -87,7 +87,7 @@ export default function ProgramDetailAlumni() {
                   <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{ __html: item?.message }} />
                 </div>
                 <div className="ats_imgbx">
-                  <img src={item.image} className="img-fluid" alt={item.name} data-aos="fade-up" data-aos-delay="600" />
+                  <img src={item.image} className="img-fluid" alt={item.alt || pageName} data-aos="fade-up" data-aos-delay="600" />
                   <div className="ats_authinfo">
                     <div className="ats_auname" data-aos="fade-up" data-aos-delay="800">{item.name}</div>
                     <div className="ats_auth_dis" data-aos="fade-up" data-aos-delay="1000">{item.branch}</div>
@@ -114,7 +114,7 @@ export default function ProgramDetailAlumni() {
             <SwiperSlide key={index}>
               <div className="swiper_thumbox">
                 <div className="pt_thumb_img">
-                  <Image src={item.image} className="img-fluid w-100" alt={item.name} width={166} height={186} loading="lazy" />
+                  <Image src={item.image} className="img-fluid w-100" alt={item.alt || pageName} width={166} height={186} loading="lazy" />
                 </div>
                 <div className="thu_info">
                   <p className="name">{item.name}</p>

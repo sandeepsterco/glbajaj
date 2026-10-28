@@ -31,7 +31,7 @@ const getYouTubeEmbedUrl = (url: string): string => {
   }
 };
 
-export default function DigitalPathshalaVideoGrid() {
+export default function DigitalPathshalaVideoGrid({ pageName }: { pageName: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(1);
   const [allItems, setAllItems] = useState<any[]>([]);
@@ -151,7 +151,7 @@ export default function DigitalPathshalaVideoGrid() {
                 className="img-fluid w-100"
                 width={603}
                 height={506}
-                alt={item?.title ?? "digital pathshala"}
+                alt={item?.alt || pageName}
                 loading="lazy"
               />
               <span>

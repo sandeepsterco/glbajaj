@@ -13,13 +13,15 @@ export interface LabItem {
   title?: string;
   image?: string;
   url?: string;
+  alt?: string;
 }
 
 type Props = {
   labs: LabItem[];
+  pageName: string;
 };
 
-export default function DepartmentLaboratoriesSlider({ labs }: Props) {
+export default function DepartmentLaboratoriesSlider({ labs, pageName }: Props) {
   return (
     <Swiper
       modules={[Navigation]}
@@ -44,7 +46,7 @@ export default function DepartmentLaboratoriesSlider({ labs }: Props) {
                 src={item.image || "/images/default/laboratories.webp"}
                 width={600}
                 height={715}
-                alt={item.title || "laboratory image"}
+                alt={item.alt || pageName}
                 className="img-fluid w-100"
                 data-aos="fade-up"
                 data-aos-delay="600"

@@ -16,6 +16,7 @@ interface MediaCoverageItem {
   featured: string | null;
   slug: string;
   image:string | null;
+  alt?: string;
 }
 
 // "newsAndEvents" entries: full card data including image
@@ -54,7 +55,7 @@ function formatDateParts(dateStr: string) {
   return { day, month, year, dayMonth, full: date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) };
 }
 
-export default function HomeUpcomingEvents() {
+export default function HomeUpcomingEvents({ pageName }: { pageName: string }) {
   const { data: events, isLoading, isError } = useQuery({
     queryKey: ["upcoming_events"],
     queryFn: fetchUpcomingEvents,
@@ -112,7 +113,7 @@ export default function HomeUpcomingEvents() {
                     <figure>
                       <img
                         src={event.image ?? ''}
-                        alt={event.title}
+                        alt={event?.alt || pageName}
                         data-aos="fade-up"
                         data-aos-delay="800"
                         loading="lazy"

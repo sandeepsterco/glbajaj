@@ -15,13 +15,15 @@ export interface ClubItem {
   image: string;
   short_description?: string;
   slug?: string;
+  alt?: string;
 }
 
 type Props = {
   clubs: ClubItem[];
+  pageName: string;
 };
 
-export default function DepartmentClubsSlider({ clubs }: Props) {
+export default function DepartmentClubsSlider({ clubs, pageName }: Props) {
   const shouldLoop = clubs.length > 1;
   const showNavigation = shouldLoop;
 
@@ -54,7 +56,7 @@ export default function DepartmentClubsSlider({ clubs }: Props) {
                 src={item.image}
                 width={380}
                 height={275}
-                alt={item.title || "club"}
+                alt={item.alt || pageName}
                 data-aos="fade-up"
                 data-aos-delay="200"
               />

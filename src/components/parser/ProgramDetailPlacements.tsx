@@ -20,7 +20,7 @@ const fetchProgramPlacements = async (slug: string) => {
   return data?.program_details?.data?.['intern-placement'];
 };
 
-export default function ProgramDetailPlacements() {
+export default function ProgramDetailPlacements({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
@@ -81,7 +81,7 @@ export default function ProgramDetailPlacements() {
         >
           {placementData.map((item: any, index: number) => (
             <SwiperSlide key={index}>
-              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+              <figure><Image src={item.image} alt={item?.alt || pageName} width={349} height={409} loading="lazy" /></figure>
              <div className="placem_cnt"> <img
                 src={item?.logo_image}
                 className="placement_img"

@@ -72,7 +72,7 @@ export default async function NewsDetailPage({params}:{params:any}){
             )}
             <NewsDetail data={newsData} />
             {relatedData?.length > 0 && (
-                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={'happenings'}  />
+                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={'happenings'} pageName={seoData.title} />
             )}
         </>
     )

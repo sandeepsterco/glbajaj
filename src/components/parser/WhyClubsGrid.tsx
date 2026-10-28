@@ -11,7 +11,7 @@ const fetchDigitalPathshalaData = async (page: number) => {
   return data?.clubs_and_societies;
 };
 
-export default async function WhyClubsGrid({params, searchParams}:{params:any; searchParams:any}) {
+export default async function WhyClubsGrid({params, searchParams, pageName}:{params:any; searchParams:any; pageName:string}) {
   const page = Number(searchParams.page) || 1;
   
   const {parentSlug} = await params;
@@ -25,7 +25,7 @@ export default async function WhyClubsGrid({params, searchParams}:{params:any; s
         {data?.data && data.data?.length > 0 && data.data.map((item:any, idx:number)=>(
           <div key={idx} className="media_grid_Bx1">
             <figure className="flash-effect-2">
-              <Image src={item?.image ?? '/images/default/clubs_society.webp'} width={221} height={163} className="img-fluid" alt={item?.title ?? 'clubs & society image'} loading="lazy" />
+              <Image src={item?.image ?? '/images/default/clubs_society.webp'} width={221} height={163} className="img-fluid" alt={item?.alt || pageName} loading="lazy" />
             </figure>
             <div className="media_txt">
   {item?.title && (

@@ -9,7 +9,7 @@ const getConferenceLists = async () => {
     return data;
 }
 
-export default async function IntershipRecord({params}:{params:any}) {
+export default async function IntershipRecord({params, pageName}:{params:any; pageName:string}) {
     const data = await getConferenceLists();
     const {parentSlug, innerSlug} = await params; 
 
@@ -21,7 +21,7 @@ export default async function IntershipRecord({params}:{params:any}) {
                 <div key={idx} className="place_box relative">
                     <div className="place_imgbox" data-aos="fade-up" data-aos-delay="400">
                         <figure className="flash-effect-2">
-                            <img src={item.image ?? ''} alt={item?.name} />
+                            <img src={item.image ?? ''} alt={item?.alt || pageName} />
                         </figure>
                         {item?.logo_image && (
                             <div className="place_complog">

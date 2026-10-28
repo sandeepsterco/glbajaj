@@ -3,9 +3,10 @@ import DepartmentResearchSlider, { type ResearchItem } from "./Departmentresearc
 type Props = {
   data?: any;
   params?: { slug: string; parentSlug: string };
+  pageName: string;
 };
 
-export default function DepartmentHomeResearch({ data, params }: Props) {
+export default function DepartmentHomeResearch({ data, params, pageName }: Props) {
   const researchData: ResearchItem[] = data?.modular?.["research"] ?? [];
 
   if (!researchData.length) return null;
@@ -13,5 +14,5 @@ export default function DepartmentHomeResearch({ data, params }: Props) {
   const slug = params?.slug ?? "";
   const parentSlug = params?.parentSlug ?? "";
 
-  return <DepartmentResearchSlider items={researchData} slug={slug} parentSlug={parentSlug} />;
+  return <DepartmentResearchSlider items={researchData} slug={slug} parentSlug={parentSlug} pageName={pageName} />;
 }

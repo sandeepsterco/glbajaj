@@ -12,7 +12,7 @@ const getAwards = async (page:number) => {
     return data;
 }
 
-export default async function AwardsList({params, searchParams}:{params:any; searchParams:any}) {
+export default async function AwardsList({params, searchParams, pageName}:{params:any; searchParams:any; pageName:string}) {
     const page = Number(searchParams.page) || 1;
 
     const data = await getAwards(page);
@@ -27,7 +27,7 @@ export default async function AwardsList({params, searchParams}:{params:any; sea
                 {awardsData?.data && awardsData.data?.map((item: any, idx: number) => (
                     <div key={idx} className="award-box relative">
                         <figure className="flash-effect">
-                            <Image src={item.image || ''} width={600} height={443} className="w-100" alt="award" data-aos="fade-up" data-aos-delay="200" />
+                            <Image src={item.image || ''} width={600} height={443} className="w-100" alt={item?.alt || pageName} data-aos="fade-up" data-aos-delay="200" />
                         </figure>
                         {item?.title && (
                             <p data-aos="fade-up" data-aos-delay="400">{item.title}</p>

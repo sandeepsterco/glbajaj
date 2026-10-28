@@ -72,7 +72,7 @@ export default async function DynamicSlugPage({
       )}
       <div className="happenings_page">
         <PageHeader pathname={`/why-glbitm/achievements`} data={data?.data} slug={'achievements'} />
-        {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams} />}
+        {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
       </div>
     </>
   );

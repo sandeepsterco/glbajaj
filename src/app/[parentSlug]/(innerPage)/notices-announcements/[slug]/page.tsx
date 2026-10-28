@@ -20,5 +20,9 @@ export default async function NoticeAnnouncementPage({ params }: { params: any }
 
     const combinedHtml = Object.values(data?.notice_and_announcement_details?.cms ?? {}).join("");
 
-    return <ReactParserDynamic html={combinedHtml} />;
+    const pageName = data?.notice_and_announcement_details?.page_title
+      || data?.notice_and_announcement_details?.title
+      || slug;
+
+    return <ReactParserDynamic html={combinedHtml} pageName={pageName} />;
 }

@@ -19,7 +19,10 @@ export default async function PlacementPage({
     return (
         <div className="happenings_page">
             <PageHeader data={data?.data} slug={parentSlug} pathname={`/${parentSlug}/placement`} />
-            <ReactParserDynamic html={combinedHtml} />
+            <ReactParserDynamic
+                html={combinedHtml}
+                pageName={data?.data?.page_title || data?.data?.title || "Placement"}
+            />
 
             {modularData?.['company-logo'] && (
                 <CompanyLogoSliders data={modularData?.['company-logo']} />

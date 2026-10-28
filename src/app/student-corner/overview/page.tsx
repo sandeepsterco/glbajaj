@@ -75,7 +75,7 @@ export default async function DynamicSlugPage({
       )}
       <div className="happenings_page">
         <PageHeader pathname={`/student-corner/overview`} data={data?.data} slug={'student-corner-overview'} />
-        {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams} />}
+        {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
       </div>
     </>
   );

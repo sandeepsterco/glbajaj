@@ -15,7 +15,10 @@ export default async function PlacementPage({
     params: Promise<{ parentSlug: string }>;
   }) {
     const { parentSlug } = await params;
-    const { data, error } = await apiFetch(`modular/placements`);
+    const [{ data, error }, seoData] = await Promise.all([
+      apiFetch(`modular/placements`),
+      getPageSEO('placements'),
+    ]);
     if (error) notFound();
 
     const combinedHtml = Object.values(data?.data?.cms ?? {}).join("");
@@ -24,7 +27,7 @@ export default async function PlacementPage({
     return (
         <div className="happenings_page">
             <PageHeader data={data?.data} slug={parentSlug} pathname={`/${parentSlug}/placement`} />
-            <ReactParserDynamic html={combinedHtml} />
+            <ReactParserDynamic html={combinedHtml} pageName={seoData.title} />
 
             {modularData?.['company-logo'] && (
                 <CompanyLogoSliders data={modularData?.['company-logo']} />

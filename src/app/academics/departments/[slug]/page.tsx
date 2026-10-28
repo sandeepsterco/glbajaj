@@ -120,7 +120,7 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
         {data?.data?.cms?.length == 0 ? (
           <ComingSoon />
         ) : (
-          <ReactParserDynamic html={combinedHtml} params={{ slug, parentSlug:'academics' }} data={data?.data} />
+          <ReactParserDynamic html={combinedHtml} params={{ slug, parentSlug:'academics' }} data={data?.data}  pageName={seoData.title}/>
         )}
       </div>
     </>

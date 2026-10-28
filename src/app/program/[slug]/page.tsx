@@ -40,7 +40,7 @@ export default async function ProgramDetail({
           }}
         />
       )}
-      <ReactParserDynamic html={combinedHtml} />
+      <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>
       {data?.department && (
         <div className="program_strip">
           <div className="container25">

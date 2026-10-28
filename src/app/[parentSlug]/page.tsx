@@ -116,7 +116,7 @@ export default async function DynamicSlugPage({
         />
       )}
       <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>}
       
     </>
   );

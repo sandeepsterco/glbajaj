@@ -208,7 +208,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
 
         if (!resolvedSrc) return <></>;
 
-        const altText = props.alt?.trim() || `${pageName}`
+        const altText = props.alt?.trim() || pageName?.trim()
 
         const parsedWidth =
           props.width && !isNaN(parseInt(props.width as string, 10))

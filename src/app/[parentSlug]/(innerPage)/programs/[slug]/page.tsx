@@ -3,6 +3,7 @@ import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserD
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildProgrammeSchema } from "@/src/lib/schema/ProgrammeSchema";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import Link from "next/link";
 
@@ -57,6 +58,7 @@ export default async function ProgramDetail({
   };
 
   const programmeSchema = buildProgrammeSchema(programmeSchemaArgs);
+  const globalSchema = buildPageGlobalSchema(seoData, `${parentSlug}/programs/${slug}`);
 
   return (
     <>
@@ -68,6 +70,12 @@ export default async function ProgramDetail({
           }}
         />
       )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
       {programmeSchema && (
         <script
           type="application/ld+json"
@@ -75,7 +83,7 @@ export default async function ProgramDetail({
         />
       )}
 
-      <ReactParserDynamic html={combinedHtml} />
+      <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>
       {data?.department && (
         <div className="program_strip">
           <div className="container25">

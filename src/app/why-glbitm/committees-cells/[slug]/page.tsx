@@ -109,7 +109,7 @@ export default async function DynamicSlugPage({
             html={combinedHtml}
             params={params}
             searchParams={resolvedSearchParams}
-          />
+           pageName={seoData.title}/>
         )}
       </div>
     </>

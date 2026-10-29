@@ -6,6 +6,10 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata() {
+    return getPageSEO("research-innovation/conferences/slug");
+}
+
 export default async function NewsDetailPage({params}:{params:Promise<{slug:string;}>}){
     const {slug} = await params;
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([

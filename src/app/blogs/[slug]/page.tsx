@@ -42,6 +42,15 @@ function formatBlogDate(dateStr: string) {
   });
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return getPageSEO(`blogs/${slug}`);
+}
+
 function BlogSections({ sections }: { sections: any }) {
   if (!sections) return null;
   if (typeof sections === "string") {

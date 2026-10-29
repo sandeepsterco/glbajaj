@@ -15,7 +15,7 @@ const fetchDepartmentLabsData = async (slug: string) => {
   return data;
 };
 
-export default function DepartmentLabsGrids() {
+export default function DepartmentLabsGrids({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";;
 
@@ -48,7 +48,7 @@ export default function DepartmentLabsGrids() {
             {labsData?.data?.length > 0 && labsData.data.map((item:any, idx:number)=>(
               <div key={idx} className="media_grid_Bx2 relative">
                 <figure>
-                    <Image src={item.image} className="img-fluid w-100" width="850" height="600" loading="lazy" alt={item.title} />
+                    <Image src={item.image} className="img-fluid w-100" width="850" height="600" loading="lazy" alt={item?.alt || pageName} />
                 </figure>
                 {item?.title && (
                   <div className="media_txt">

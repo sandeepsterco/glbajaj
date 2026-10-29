@@ -2,6 +2,7 @@ import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import NoData from "@/src/components/ui/NoData";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 export async function generateMetadata({
   params,
@@ -24,6 +25,10 @@ export default async function DepartmentActivityDetail({
     getPageSEO(`department/${slug}/activity/${innerslug}`),
   ]);
   const CoEsData = data?.department_activities_details?.cms;
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `department/${slug}/activity/${innerslug}`,
+  );
 
   if (CoEsData == "") {
     return <NoData />;
@@ -37,6 +42,12 @@ export default async function DepartmentActivityDetail({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       {Object.keys(CoEsData).map((key) => {

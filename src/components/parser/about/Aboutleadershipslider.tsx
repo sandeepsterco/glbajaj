@@ -17,13 +17,15 @@ export interface LeaderItem {
   about_image: string;
   designation?: string;
   slug?: string;
+  alt?:string
 }
 
 type Props = {
   leaders: LeaderItem[];
+  pageName:string;
 };
 
-export default function AboutLeadershipSlider({ leaders }: Props) {
+export default function AboutLeadershipSlider({ leaders, pageName }: Props) {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
@@ -65,7 +67,7 @@ export default function AboutLeadershipSlider({ leaders }: Props) {
                 <figure className="flash-effect">
                   <Image
                     src={item.about_image}
-                    alt={item.name}
+                    alt={item.alt || pageName}
                     className="img-fluid w-100"
                     width={475}
                     height={512}

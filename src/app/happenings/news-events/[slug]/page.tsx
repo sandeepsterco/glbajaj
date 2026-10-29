@@ -4,7 +4,17 @@ import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildNewsArticleSchema } from "@/src/lib/schema/newsDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    return getPageSEO(`news-and-events/${slug}`);
+}
 
 export default async function NewsDetailPage({params}:{params:any}){
     const {slug} = await params;
@@ -17,6 +27,11 @@ export default async function NewsDetailPage({params}:{params:any}){
 
     const newsData = data?.news_and_events_details;
     const relatedData = data?.related_news_and_events;
+    const globalSchema = buildPageGlobalSchema(
+        seoData,
+        `happenings/news-events/${slug}`,
+        newsData?.data?.heading || seoData.title,
+    );
 
     const NewsDetailSchemaArgs = {
         articleUrl:`${BASE_URL}happenings/news-events/${slug}` || '',
@@ -43,6 +58,12 @@ export default async function NewsDetailPage({params}:{params:any}){
                     }}
                 />
             )}
+            {globalSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+                />
+            )}
             {newsDetailSchema && (
                 <script
                     type="application/ld+json"
@@ -51,7 +72,7 @@ export default async function NewsDetailPage({params}:{params:any}){
             )}
             <NewsDetail data={newsData} />
             {relatedData?.length > 0 && (
-                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={'happenings'}  />
+                <RelatedStories data={relatedData} currentSlug={currentSlug} parentSlug={'happenings'} pageName={seoData.title} />
             )}
         </>
     )

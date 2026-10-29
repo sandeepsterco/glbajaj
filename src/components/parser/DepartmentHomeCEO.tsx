@@ -16,7 +16,7 @@ const fetchDepartmentCEO = async (slug: string) => {
   return data?.data;
 };
 
-export default function DepartmentHomeCEO() {
+export default function DepartmentHomeCEO({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
@@ -60,7 +60,7 @@ export default function DepartmentHomeCEO() {
                 src={item.image}
                 width={380}
                 height={275}
-                alt={item.title}
+                alt={item?.alt || pageName}
                 loading="lazy"
               data-aos="fade-up" data-aos-delay="200"/>
             </figure>

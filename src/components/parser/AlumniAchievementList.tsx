@@ -20,6 +20,7 @@ interface Achievement {
   designation?: string;
   description?: string;
   name?:string;
+  alt?: string;
   mapping_items?:{
     paragraph:{para:string}[]
   }
@@ -35,7 +36,7 @@ const fetchAlumniAchievements = async (page: number) => {
   return data;
 };
 
-export default function AlumniAchievementList() {
+export default function AlumniAchievementList({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const pageslug = pathname.split("/").filter(Boolean);
   const parentSlug = pageslug[0];
@@ -121,7 +122,7 @@ export default function AlumniAchievementList() {
                     <figure>
                       <Image
                         src="/images/pattern/alumni_achievement.webp"
-                        alt="Pattern"
+                        alt={pageName}
                         width={612}
                         height={119}
                         loading="lazy"
@@ -136,7 +137,7 @@ export default function AlumniAchievementList() {
                         {item.image && (
                           <Image
                             src={item.image}
-                            alt="Achievement"
+                            alt={item.alt || pageName}
                             width={800}
                             height={600}
                             className="img-fluid w-100"
@@ -160,7 +161,7 @@ export default function AlumniAchievementList() {
               <div key={idx} className="award-box relative achievement_box">
                 <figure className="flash-effect">
                   <img
-                    alt="award"
+                    alt={item.alt || pageName}
                     data-aos="fade-up"
                     loading="lazy"
                     width="600"

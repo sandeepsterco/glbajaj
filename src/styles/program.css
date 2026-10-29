@@ -97,6 +97,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-form{ margin-top: 0rem;}
 .form-container { background: var(--color-white); box-shadow: 0px 13px 34px #0000000D; opacity: 1; backdrop-filter: blur(3px); padding: 3.5rem; height: 100%; }
 .form-container .form-group { margin-bottom: 1.5rem; }
+.form-container .dob-label { display: block; margin-bottom: 0.6rem; font: var(--font-16); color: var(--color-black); }
 .form-container input, .form-container select, .form-container textarea { width: 100%; padding: 1.2rem; border: 1px solid #E1E1E1; font: var(--font-16); outline: none; color: var(--color-black); background:#fff; }
 .form-container input::placeholder { color: var(--color-black); }
 textarea::placeholder { color: var(--color-black); }
@@ -215,7 +216,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .table-wrapper thead tr { background-color: var(--color-64); color: var(--color-white); }
 .table-wrapper thead tr th { font: var(--font-18); }
 .table-wrapper tbody tr td { font: var(--font-16); color: var(--color-33); }
-.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal; text-transform: capitalize; }
+.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal;  }
 /* Cell Styling */
 .table-wrapper td { padding: 1.5rem 2.5rem; border-bottom: 0; font-size: var(--font-16); }
 /* Zebra Striping */

@@ -87,7 +87,7 @@ export default async function DynamicSlugPage({
           <ReactParserDynamic
             html={combinedHtml}
             searchParams={resolvedSearchParams}
-          />
+           pageName={seoData.title}/>
         )}
       </div>
     </>

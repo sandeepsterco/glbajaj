@@ -74,7 +74,7 @@ export default async function PlacementTestimonialPage({
         />
       )}
       <PageHeader pathname={`/placements/${currentSlug}`} data={data?.data} slug={currentSlug} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
     </>
   );
 }

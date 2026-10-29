@@ -1,6 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,6 +25,10 @@ export default async function DepartmentAboutPage({
     getPageSEO(`department/${slug}/achievements`),
   ]);
   const pageData = data?.data?.modular?.achivements;
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `department/${slug}/achievements`,
+  );
 
   return (
     <>
@@ -33,6 +38,12 @@ export default async function DepartmentAboutPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
 

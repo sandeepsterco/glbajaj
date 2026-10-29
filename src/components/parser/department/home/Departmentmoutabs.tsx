@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 
 interface MouImage {
   images: string;
+  alt?: string;
 }
 
 export interface MouItem {
@@ -27,9 +28,10 @@ export interface MouItem {
 
 type Props = {
   items: MouItem[];
+  pageName: string;
 };
 
-export default function DepartmentMouTabs({ items }: Props) {
+export default function DepartmentMouTabs({ items, pageName }: Props) {
   // Unique, ordered tab names derived from the data
   const tabs = useMemo(() => Array.from(new Set(items.map((item) => item.type))), [items]);
 
@@ -135,7 +137,7 @@ export default function DepartmentMouTabs({ items }: Props) {
                 <figure className="flash-effect media_grid_Bx3">
                   <Image
                     src={imgObj.images}
-                    alt={`${activeItem.title} image ${i + 1}`}
+                    alt={imgObj.alt || pageName}
                     className="w-100 img-fluid"
                     width={850}
                     height={600}

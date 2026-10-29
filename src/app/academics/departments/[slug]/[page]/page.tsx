@@ -78,7 +78,7 @@ export default async function DepartmentInnerPage({
               dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
               />
           )}
-      <ReactParserDynamic html={combinedHtml} />
+      <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>
       </>
     );
     

@@ -1,6 +1,7 @@
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
 import { apiFetch } from "@/src/lib/api";
 import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -24,6 +25,7 @@ export default async function DepartmentActivityPage({
   ]);
 
   const cmsSections = data?.data?.cms;
+  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/activity`);
 
   if (cmsSections?.length == 0) notFound();
 
@@ -35,6 +37,12 @@ export default async function DepartmentActivityPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
 

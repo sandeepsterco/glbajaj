@@ -69,7 +69,7 @@ export default async function PlacementPage() {
         )}
         <div className="happenings_page">
             <PageHeader data={data?.data} slug={'placements'} pathname={`/placements/overview`} />
-            <ReactParserDynamic html={combinedHtml} />
+            <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>
 
             {modularData?.['company-logo'] && (
                 <CompanyLogoSliders data={modularData?.['company-logo']} />

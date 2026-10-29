@@ -8,6 +8,17 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ parentSlug: string }>;
+}) {
+  const { parentSlug } = await params;
+  return getPageSEO(`${parentSlug}/workshops`);
+}
 
 export default async function GalleryPage({
     params,
@@ -21,13 +32,30 @@ export default async function GalleryPage({
     const currentPage = Number(page) || 1;
     const slug = "workshops";
 
-    const {data, error} = await apiFetch(`workshops-seminars?page=${currentPage}`);
+    const [{data, error}, seoData] = await Promise.all([
+      apiFetch(`workshops-seminars?page=${currentPage}`),
+      getPageSEO(`${parentSlug}/workshops`),
+    ]);
     
 
     if(error) notFound()
 
+    const globalSchema = buildPageGlobalSchema(seoData, `${parentSlug}/workshops`);
+
     return(
         <>
+        {seoData.schema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
+          />
+        )}
+        {globalSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+          />
+        )}
         <InnerPageLayoutWrapper slug={slug}
       pathname={`/${parentSlug}/workshops`} tabs={null} mainClass="happenings_page" showTabs={true}>
             <MainGallery data={data?.featured}  currentPage="workshops" parentSlug='happenings' slug={slug} />

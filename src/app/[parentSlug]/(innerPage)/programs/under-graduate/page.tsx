@@ -8,6 +8,7 @@ import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildProgrammeListSchema } from "@/src/lib/schema/ProgrammeListSchema";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
 export async function generateMetadata() {
@@ -34,6 +35,10 @@ export default async function ProgramsUnderGraduatePage({params}:{params:Promise
   };
 
   const programmeListSchema = buildProgrammeListSchema(programmeListSchemaArgs);
+  const globalSchema = buildPageGlobalSchema(
+    seoData,
+    `${parentSlug}/${currentSlug}/under-graduate`,
+  );
 
   return (
     <>
@@ -43,6 +48,12 @@ export default async function ProgramsUnderGraduatePage({params}:{params:Promise
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seoData.schema),
           }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       )}
       {programmeListSchema && (

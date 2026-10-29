@@ -9,6 +9,13 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { notFound } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+import { BASE_URL } from "@/src/config/config";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+
+export async function generateMetadata() {
+  return getPageSEO("happenings/news-events");
+}
 
 interface SearchParams {
   page?: string;
@@ -29,9 +36,10 @@ export default async function NewsEvent({
     ...(department && { department }),
   }).toString();
 
-  const [{ data, error }, { data: deptData }] = await Promise.all([
+  const [{ data, error }, { data: deptData }, seoData] = await Promise.all([
     apiFetch(`news-and-events?${query}`),
     apiFetch("department-news-list"),
+    getPageSEO("happenings/news-events"),
   ]);
 
   if (error) notFound();
@@ -45,8 +53,31 @@ export default async function NewsEvent({
 
   const departments: { name: string; slug: string }[] = deptData?.departments ?? [];
   const slug = "news-events";
+  const globalSchema = buildGlobalSchema({
+    canonicalUrl: seoData.alternates?.canonical || BASE_URL || "",
+    pageTitle: seoData.title || "",
+    metaDescription: seoData.description || "",
+    primaryImageUrl: "",
+    languageTag: "en-IN",
+    currentPageSlug: `${BASE_URL}happenings/news-events`,
+    currentPageName: seoData.title || "",
+    parentMenus: [{ title: "Happenings", url: "happenings" }],
+  });
 
   return (
+    <>
+    {seoData.schema && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
+      />
+    )}
+    {globalSchema && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+      />
+    )}
     <InnerPageLayoutWrapper slug={slug} pathname={`/happenings/news-events`} tabs={null} mainClass="happenings_page" showTabs={true}>
       <MainNews
         data={mainData}
@@ -66,5 +97,6 @@ export default async function NewsEvent({
         </div>
       )}
     </InnerPageLayoutWrapper>
+    </>
   );
 }

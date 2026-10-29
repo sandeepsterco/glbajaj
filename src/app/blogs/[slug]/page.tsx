@@ -161,7 +161,7 @@ export default async function BlogDetailPage({
             <figure>
               <Image
                 src={details.image || "/images/blog-details-banner.webp"}
-                alt={details.title || "GL Bajaj"}
+                alt={details?.image_alt || details.title || "GL Bajaj"}
                 className="img-fluid w-100"
                 width={1200}
                 height={500}

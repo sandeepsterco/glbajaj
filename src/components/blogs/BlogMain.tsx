@@ -15,7 +15,7 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
                 <figure className="flash-effect-2">
                   <Image
                     src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
-                    alt={data?.title || "GL Bajaj"}
+                    alt={data?.featured_image_alt || data?.listing_image_alt || data?.title || 'Gl Bajaj'}
                     className="img-fluid w-100"
                     width={850}
                     height={520}

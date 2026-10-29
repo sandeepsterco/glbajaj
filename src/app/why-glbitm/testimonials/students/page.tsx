@@ -13,7 +13,7 @@ import { BASE_URL } from "@/src/config/config";
 import PaginationWrapper from "@/src/components/common/pagination/PaginationWrapper";
 
 export async function generateMetadata() {
-  return await getPageSEO('why-glbitm/testimonials');
+  return await getPageSEO('why-glbitm/testimonials/students');
 }
 
 export default async function TestimonialStudentsPage({
@@ -29,7 +29,7 @@ export default async function TestimonialStudentsPage({
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
     apiFetch("testimonial?type=Student&page=1"),
         apiFetch(`cms/testimonials`),
-        getPageSEO('why-glbitm/testimonials'),
+        getPageSEO('why-glbitm/testimonials/students'),
     ]);
 
     if (error) notFound();
@@ -47,7 +47,7 @@ export default async function TestimonialStudentsPage({
         dateModifiedIso:pageData?.updated_at || '',
         languageTag:'en-IN',
         currentPageName:pageData?.page_title || '',
-        currentPageSlug: `${BASE_URL}why-glbitm/testimonials`,
+        currentPageSlug: `${BASE_URL}why-glbitm/testimonials/students`,
         parentMenus: [
             ...(pageData?.parent_menus ?? []),
         ],

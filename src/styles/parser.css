@@ -588,6 +588,9 @@
 .intern_slider_section .title24{margin-bottom:1rem;}
 .intern_slider_section .title48{color: var(--color-92); letter-spacing: -0.24rem; margin-bottom: 2rem;}
 
+.research-innovation-entrepreneurship-cell-page .home_about_glb_section .grid{display:none;}
+.research-innovation-entrepreneurship-cell-page .home_about_glb_section .video_grid{margin-top:0;}
+
 /* ========= END HOME INTERN SLIDER =============*/
 
 
@@ -758,7 +761,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_placement_static_card .slider_btns { gap: 2rem; }
 .home_about_glb_section .about_top { gap: 10.6rem; }
 .homeFac_content:after { width: 7%; height: 38%; left: -8.8rem; }
-.home_testimonials .desc_content .desc { max-height: 32rem; }
+.homepage .home_testimonials .desc_content .desc { max-height: 32rem; }
 .home_testimonials .thumb-group { margin-top: 0; }
 /* .home_footer .footer_top { gap: 9.5rem; } */
 .group_section h2{ letter-spacing: -1px;}

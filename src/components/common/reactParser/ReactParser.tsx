@@ -69,7 +69,7 @@ const DOMPURIFY_ALLOWED_ATTR = [
   "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
   "data-aos", "data-aos-delay", "data-aos-duration", "data-aos-offset",
   "data-aos-easing", "data-aos-once", "data-aos-mirror",
-  "data-aos-anchor", "data-aos-anchor-placement",
+  "data-aos-anchor", "data-aos-anchor-placement", "loading", ""
 ];
 
 function ParserWidgetFallback() {

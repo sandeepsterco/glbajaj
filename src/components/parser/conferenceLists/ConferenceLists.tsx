@@ -42,12 +42,12 @@ export default async function ConferenceLists({params, searchParams, pageName}:{
                         {item?.title && (
                             <p>{item.title}</p>
                         )}
-                        {/* {item?.slug && (
+                        {item?.slug && (
                             <>
-                            <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" />
+                            {/* <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" /> */}
                             <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`} className="strech_link"></Link>
                             </>
-                        )} */}
+                        )}
                     </div>
                 ))}
             </div>

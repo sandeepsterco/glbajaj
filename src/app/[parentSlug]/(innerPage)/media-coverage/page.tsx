@@ -34,7 +34,7 @@ export default async function MediaGridPage({
     const pagePath = `${parentSlug}/media-coverage`;
     const globalSchema = buildPageGlobalSchema(seoData, pagePath);
 
-    const updatedData = data?.media_coverage?.data;
+    const updatedData = data?.media_coverage;
 
     return (
         <>
@@ -52,7 +52,7 @@ export default async function MediaGridPage({
             )}
             <section className="media_coverage">
                 <div className="container25">
-                    {updatedData?.length > 0 && <MediaGrid items={updatedData} />}
+                    {updatedData?.length > 0 && <MediaGrid items={updatedData} pageName={seoData.title} />}
 
                     {updatedData?.length > 0 && (
                         <PaginationWrapper

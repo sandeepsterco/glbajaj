@@ -77,13 +77,9 @@ export default async function BlogsPage({
 
   const query = buildBlogsQuery({
     page: currentPage,
-
     search,
-
     category,
-
     year,
-
     month,
   });
 

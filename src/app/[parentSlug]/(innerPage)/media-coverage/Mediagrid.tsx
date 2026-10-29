@@ -7,6 +7,7 @@ interface MediaItem {
     image?: string | null;
     date?: string | null;
     title?: string | null;
+    alt?:string;
 }
 
 export default function MediaGrid({ items }: { items: MediaItem[] }) {
@@ -43,7 +44,7 @@ export default function MediaGrid({ items }: { items: MediaItem[] }) {
                     style={{ cursor: "pointer" }}
                 >
                     <figure>
-                        <img src={item.image || "#"} className="img-fluid" alt="media logo" />
+                        <img src={item.image || "#"} className="img-fluid" alt={item.alt || 'test'} />
                     </figure>
                     <div className="media_txt">
                         {item?.date && (

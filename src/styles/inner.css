@@ -329,7 +329,7 @@
 .media_coverage { padding-block: 10rem; }
 .media_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; row-gap: 6rem; }
 .media_grid_Bx { background-color: var(--color-F5); padding: 2rem 2rem 3rem; }
-.media_grid_Bx figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; }
+.media_grid_Bx figure { background-color: var(--color-fa); margin: -5rem auto 0; text-align: center; height: 26.3rem; display: flex; align-items: center; overflow:hidden;}
 /* .media_grid_Bx figure img { max-width: 22rem; margin: 0 auto; }
 */
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
@@ -373,6 +373,8 @@
 .gallery_list_section.workshops-and-seminars-list { padding-block: 10rem 11.6rem; }
 .glbitm-glance .gallery_list .gallery_details figure { cursor: auto; }
 .gallery_list {display: grid; grid-template-columns: repeat(3, 1fr);gap: 3rem;}
+.gallery_list.masonry{display:block; column-count: 3;}
+.gallery_list.masonry > div{margin-bottom:3rem;}
 .gallery_list_bx { position: relative; background-color: var(--color-F5); break-inside: avoid; margin-bottom: 3rem; padding-bottom: 0.1rem; }
 .gallery_list_bx figure { position: relative; }
 .gallery_list_bx span { position: absolute; bottom: 0; left: 2.5rem; display: flex; background-color: rgba(0, 0, 0, 0.7); padding: 0.8rem 1rem; gap: 1rem; }

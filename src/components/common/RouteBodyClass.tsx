@@ -6,11 +6,12 @@ export default function RouteBodyClass(){
     const pathname = usePathname();
 
     useEffect(()=>{
-        const routeClass = pathname.split('/').filter(Boolean).join("-")
+        let routeClass = pathname == '/' ? 'homepage' :pathname.split('/').filter(Boolean).join("-")
         .toLowerCase()
         .replace(/[^a-z0-9_-]/g, "-")
         .replace(/-+/g, "-")
         .replace(/^-|-$/g, "") + '-page';
+        
 
         if(!routeClass) return;
         document.body.classList.add(routeClass);

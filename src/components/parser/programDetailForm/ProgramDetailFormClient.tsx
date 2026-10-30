@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { State, City } from "country-state-city";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "../RecaptchaField";
@@ -98,8 +98,16 @@ export default function ProgramDetailFormClient({
   const [submitState, setSubmitState] = useState<SubmitState>({ status: "idle", message: "" });
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
 
-  // Pre-select department when slug is available (detail page or list modal)
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
+
   useEffect(() => {
     if (!defaultDepartmentSlug || departments.length === 0) return;
     const match = departments.some((d) => d.slug === defaultDepartmentSlug);
@@ -187,6 +195,8 @@ export default function ProgramDetailFormClient({
         state: formData.stateLabel,
         city: formData.city,
         department_name: selectedDept?.name ?? formData.department,
+        source_url:window.location.href,
+        ...utm,
         ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       };
 
@@ -236,6 +246,10 @@ export default function ProgramDetailFormClient({
     touched[field as keyof FormData] && errors[field] ? (
       <p className="field-error" role="alert">{errors[field]}</p>
     ) : null;
+
+  const defaultDOB = new Date();
+  defaultDOB.setFullYear(defaultDOB.getFullYear() - 18);
+  const maxDate = defaultDOB.toISOString().split("T")[0];
 
   return (
     <div className="program-form">
@@ -289,11 +303,12 @@ export default function ProgramDetailFormClient({
 
           {/* Date of Birth */}
           <div className={`form-group ${touched.dob && errors.dob ? "has-error" : ""}`}>
+            {/* <label className="dob-label" htmlFor="dob">Date of Birth</label> */}
             <input
               type="date"
+              id="dob"
               name="dob"
-              placeholder="Date of Birth"
-              value={formData.dob}
+              value={formData.dob || maxDate}
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isSubmitting}
@@ -395,7 +410,7 @@ export default function ProgramDetailFormClient({
           {/* Feedback */}
           {submitState.status === "success" && (
             <div className="form-feedback form-feedback--success" role="alert">
-              {submitState.message}
+              Thank you! Your details have been submitted successfully. Our admissions team will contact you shortly.
             </div>
           )}
           {submitState.status === "error" && (

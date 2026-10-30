@@ -1,18 +1,50 @@
-import { WorkshopDetail } from "@/src/components/workshop/WorkshopDetail";
-import { apiFetch } from "@/src/lib/api";
+import GalleryDetailPage from "@/src/components/gallery/GalleryDetail";
+import { apiFetch } from "@/src/lib/api"
 import { notFound } from "next/navigation";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 
-export default async function WorkshopDetailPage({params}:{params:any}){
-    const {slug} = await params;
-    const { data, error } = await apiFetch(`workshops/${slug}`);
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ parentSlug: string; slug: string }>;
+}) {
+    const { parentSlug, slug } = await params;
+    return getPageSEO(`${parentSlug}/workshops/${slug}`);
+}
 
-    if (error) notFound();
+export default async function GalleryDetail({
+    params,
+}: {
+    params: Promise<{ parentSlug: string; slug: string }>;
+}) {
+    const {parentSlug, slug} = await params;
 
-    const newsData = data?.workshops_details;
+    const [{data, error}, seoData] = await Promise.all([
+        apiFetch(`workshops-seminars/${slug}`),
+        getPageSEO(`${parentSlug}/workshops/${slug}`),
+    ]);
+
+    if(error || data.workshop_details?.length  === 0) notFound();
+
+    const pagePath = `${parentSlug}/workshops/${slug}`;
+    const globalSchema = buildPageGlobalSchema(seoData, pagePath);
 
     return(
         <>
-            <WorkshopDetail data={newsData} />
+            {seoData.schema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
+                />
+            )}
+            {globalSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+                />
+            )}
+            <GalleryDetailPage gallery_data={data.workshop_details} slug={slug} />
         </>
     )
 }

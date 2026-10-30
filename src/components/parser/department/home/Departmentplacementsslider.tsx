@@ -14,13 +14,15 @@ export interface PlacementItem {
   image: string;
   logo_image?: string;
   package?: string | number;
+  alt?: string;
 }
 
 type Props = {
   placements: PlacementItem[];
+  pageName: string;
 };
 
-export default function DepartmentPlacementsSlider({ placements }: Props) {
+export default function DepartmentPlacementsSlider({ placements, pageName }: Props) {
   const canLoop = placements.length > SLIDES_PER_VIEW;
 
   return (
@@ -53,7 +55,7 @@ export default function DepartmentPlacementsSlider({ placements }: Props) {
           <figure className="flash-effect-2">
             <Image
               src={item.image}
-              alt={item.name}
+              alt={item.alt || pageName}
               width={349}
               height={409}
               loading="lazy"

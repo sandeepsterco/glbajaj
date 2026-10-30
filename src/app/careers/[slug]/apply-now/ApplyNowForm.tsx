@@ -4,7 +4,7 @@ import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { City, Country, ICity, ICountry, IState, State } from "country-state-city";
 import { BASE_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type FieldErrors = Record<string, string[]>;
 
@@ -80,7 +80,16 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const searchParams = useSearchParams();
   const router = useRouter();
+
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
 
   const resetRecaptcha = () => {
     setRecaptchaToken(null);
@@ -203,6 +212,12 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         payload.append(key, value);
       });
 
+      Object.entries(utm).forEach(([key, value]) => {
+        payload.append(key, value);
+      });
+
+      payload.append('source_url', window.location.href);
+
       if (selectedFile) {
         payload.append("file", selectedFile);
       }
@@ -255,11 +270,11 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
 
         <div className="fm_gr_grid">
           <div className="form-group">
-            <input type="text" placeholder="First Name" className="input_form" value={form.first_name} onChange={handleInputChange("first_name")} />
+            <input type="text" placeholder="First Name*" className="input_form" value={form.first_name} onChange={handleInputChange("first_name")} />
             {getError("first_name") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("first_name")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Last Name" className="input_form" value={form.last_name} onChange={handleInputChange("last_name")} />
+            <input type="text" placeholder="Last Name*" className="input_form" value={form.last_name} onChange={handleInputChange("last_name")} />
             {getError("last_name") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("last_name")}</p> : null}
           </div>
           <div className="form-group">
@@ -267,7 +282,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             {getError("dob") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("dob")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Father's Name" className="input_form" value={form.father_name} onChange={handleInputChange("father_name")} />
+            <input type="text" placeholder="Father's Name*" className="input_form" value={form.father_name} onChange={handleInputChange("father_name")} />
             {getError("father_name") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("father_name")}</p> : null}
           </div>
           <div className="form-group">
@@ -301,12 +316,12 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
 
         <div className="fm_gr_grid">
           <div className="form-group">
-            <input type="text" placeholder="Address" className="input_form" value={form.address} onChange={handleInputChange("address")} />
+            <input type="text" placeholder="Address*" className="input_form" value={form.address} onChange={handleInputChange("address")} />
             {getError("address") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("address")}</p> : null}
           </div>
           <div className="form-group">
             <select value={form.country} onChange={handleCountryChange}>
-              <option value="">Select Country</option>
+              <option value="">Select Country*</option>
               {countries.map((country) => (
                 <option key={country.isoCode} value={country.name}>
                   {country.name}
@@ -317,7 +332,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
           </div>
           <div className="form-group">
             <select value={form.state} onChange={handleStateChange} disabled={!selectedCountryCode}>
-              <option value="">Select State</option>
+              <option value="">Select State*</option>
               {states.map((stateData) => (
                 <option key={stateData.isoCode} value={stateData.name}>
                   {stateData.name}
@@ -328,7 +343,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
           </div>
           <div className="form-group">
             <select value={form.city} onChange={handleCityChange} disabled={!selectedCountryCode || !selectedStateCode}>
-              <option value="">Select City</option>
+              <option value="">Select City*</option>
               {cities.map((cityData) => (
                 <option key={cityData.name} value={cityData.name}>
                   {cityData.name}
@@ -338,15 +353,15 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             {getError("city") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("city")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Zipcode" className="input_form" value={form.zipcode} onChange={handleInputChange("zipcode")} />
+            <input type="text" placeholder="Zipcode*" className="input_form" value={form.zipcode} onChange={handleInputChange("zipcode")} />
             {getError("zipcode") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("zipcode")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Phone Number" className="input_form" value={form.phone} onChange={handleInputChange("phone")} />
+            <input type="number" placeholder="Phone Number*" className="input_form" value={form.phone} onChange={handleInputChange("phone")} />
             {getError("phone") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("phone")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="email" placeholder="Email Address" className="input_form" value={form.email} onChange={handleInputChange("email")} />
+            <input type="email" placeholder="Email Address*" className="input_form" value={form.email} onChange={handleInputChange("email")} />
             {getError("email") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("email")}</p> : null}
           </div>
         </div>
@@ -356,10 +371,7 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         </div>
 
         <div className="fm_gr_grid">
-          <div className="form-group">
-            <input type="text" placeholder="Designation" className="input_form" value={form.designation} onChange={handleInputChange("designation")} />
-            {getError("designation") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("designation")}</p> : null}
-          </div>
+          
           <div className="form-group">
             <input type="text" placeholder="Experience" className="input_form" value={form.experience} onChange={handleInputChange("experience")} />
             {getError("experience") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("experience")}</p> : null}
@@ -372,10 +384,15 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             <input type="text" placeholder="Skills" className="input_form" value={form.skills} onChange={handleInputChange("skills")} />
             {getError("skills") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("skills")}</p> : null}
           </div>
+          
+          <div className="form-group">
+            <input type="text" placeholder="Area of Interest" className="input_form" value={form.area_of_interest} onChange={handleInputChange("area_of_interest")} />
+            {getError("area_of_interest") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("area_of_interest")}</p> : null}
+          </div>
         </div>
 
         <div className="input_sectilt">
-          <h5>Current Employee Details</h5>
+          <h5>Current Employment Details</h5>
         </div>
 
         <div className="fm_gr_grid">
@@ -384,7 +401,11 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             {getError("name_of_organization") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("name_of_organization")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Current Industry" className="input_form" value={form.current_industry} onChange={handleInputChange("current_industry")} />
+            <input type="text" placeholder="Designation" className="input_form" value={form.designation} onChange={handleInputChange("designation")} />
+            {getError("designation") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("designation")}</p> : null}
+          </div>
+          <div className="form-group">
+            <input type="text" placeholder="Industry" className="input_form" value={form.current_industry} onChange={handleInputChange("current_industry")} />
             {getError("current_industry") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("current_industry")}</p> : null}
           </div>
           <div className="form-group">
@@ -392,12 +413,8 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             {getError("functional_area") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("functional_area")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="text" placeholder="Preferred Location" className="input_form" value={form.preferred_location} onChange={handleInputChange("preferred_location")} />
+            <input type="text" placeholder="Location" className="input_form" value={form.preferred_location} onChange={handleInputChange("preferred_location")} />
             {getError("preferred_location") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("preferred_location")}</p> : null}
-          </div>
-          <div className="form-group">
-            <input type="text" placeholder="Area of Interest" className="input_form" value={form.area_of_interest} onChange={handleInputChange("area_of_interest")} />
-            {getError("area_of_interest") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("area_of_interest")}</p> : null}
           </div>
           <div className="form-group">
             <input type="text" placeholder="Current Salary" className="input_form" value={form.current_salary} onChange={handleInputChange("current_salary")} />

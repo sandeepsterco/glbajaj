@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 
-export default function RelatedStories({data, currentSlug, parentSlug}:{data:any; currentSlug?:string; parentSlug?:string}){
+export default function RelatedStories({data, currentSlug, parentSlug, pageName}:{data:any; currentSlug?:string; parentSlug?:string; pageName:string}){
     return(
         <section className="related_stories" id="news-announcement">
             <div className="container25">
@@ -10,7 +10,7 @@ export default function RelatedStories({data, currentSlug, parentSlug}:{data:any
                     {data.map((item:any, idx:number)=>(
                         <div key={idx} className="related_stroty_Bx">
                             <figure>
-                                <img src={item.image || '/images/default/related-news.webp'} className="img-fluid" alt={item.heading || 'news'} />
+                                <img src={item.image || '/images/default/related-news.webp'} className="img-fluid" alt={item.alt || pageName} />
                             </figure>
                             <figcaption>
                                 {item?.date && (

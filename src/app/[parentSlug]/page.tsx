@@ -36,6 +36,12 @@ export default async function DynamicSlugPage({
 
   const pageData = data?.data;
 
+  const currentSlug = `${parentSlug}`;
+  const expectedPath = pageData?.full_url.replace(/^\/+|\/+$/g, "");
+  if(expectedPath !== currentSlug){
+    notFound();
+  }
+
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
 
   const schemaArgs = {
@@ -76,11 +82,11 @@ export default async function DynamicSlugPage({
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
     pageTitle:seoData?.title || '',
     metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
+    primaryImageUrl:"",
     datePublishedIso:pageData?.created_at || '',
     dateModifiedIso:pageData?.updated_at || '',
     languageTag:'en-IN',
-    currentPageSlug:'',
+    currentPageSlug:`${BASE_URL}${parentSlug}`,
     currentPageName:pageData?.page_title || ''
   };
 
@@ -110,7 +116,7 @@ export default async function DynamicSlugPage({
         />
       )}
       <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>}
       
     </>
   );

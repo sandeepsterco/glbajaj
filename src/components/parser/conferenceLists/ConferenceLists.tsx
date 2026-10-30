@@ -13,7 +13,7 @@ const getConferenceLists = async (page: number) => {
     return data;
 }
 
-export default async function ConferenceLists({params, searchParams}:{params:any; searchParams:any}) {
+export default async function ConferenceLists({params, searchParams, pageName}:{params:any; searchParams:any; pageName:string}) {
     const currentPage = Number(searchParams.page) || 1;
 
     const data = await getConferenceLists(currentPage);
@@ -37,14 +37,16 @@ export default async function ConferenceLists({params, searchParams}:{params:any
                 {conferenceData?.data && conferenceData.data?.map((item: any) => (
                     <div className="confrence_grid_Bx" key={item.id}>
                         <figure  className="flash-effect-2">
-                            <Image src={item.image || '/images/default/confrence.webp'} width={380} height={275} className="img-fluid" alt={item.title} />
+                            <Image src={item.image || '/images/default/confrence.webp'} width={380} height={275} className="img-fluid" alt={item?.alt || pageName} />
                         </figure>
                         {item?.title && (
                             <p>{item.title}</p>
                         )}
-                        <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" />
                         {item?.slug && (
+                            <>
+                            {/* <img src="/images/icons/arrow-right.svg" alt="arrow" className="img-fluid arrow_icon" /> */}
                             <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${item.slug}`} className="strech_link"></Link>
+                            </>
                         )}
                     </div>
                 ))}

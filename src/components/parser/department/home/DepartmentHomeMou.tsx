@@ -4,15 +4,16 @@ type Props = {
   params:{
     slug: string;
   };
-  data?:any
+  data?:any;
+  pageName: string;
 };
 
-export default async function DepartmentHomeMou({params, data}: Props) {
+export default async function DepartmentHomeMou({params, data, pageName}: Props) {
   const {slug} = params;
   const mouData: MouItem[] = data?.modular?.["collaboration-mou"] ?? [];
 
   if (!mouData.length) return null;
 
   // key={slug} resets the tab state if the user moves to another department
-  return <DepartmentMouTabs key={slug} items={mouData} />;
+  return <DepartmentMouTabs key={slug} items={mouData} pageName={pageName} />;
 }

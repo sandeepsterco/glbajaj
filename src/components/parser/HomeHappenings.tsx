@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function HomeHappenings({ homeData }: { homeData: any }) {
+export default function HomeHappenings({ homeData, pageName }: { homeData: any; pageName:string }) {
   const [mounted, setMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -31,7 +31,7 @@ export default function HomeHappenings({ homeData }: { homeData: any }) {
             <figure>
               <Image
                 src={item.image}
-                alt="happening image"
+                alt={item?.alt || pageName}
                 className="img-fluid w-100"
                 width={636}
                 height={443}

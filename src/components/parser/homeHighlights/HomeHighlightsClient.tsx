@@ -25,9 +25,10 @@ function formatDateParts(dateStr: string) {
 
 interface HomeUpcomingEventsClientProps {
   events: UpcomingEventsResponse;
+  pageName:string;
 }
 
-export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClientProps) {
+export default function HomeHighlightsClient({ events, pageName }: HomeUpcomingEventsClientProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -70,22 +71,17 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
             return (
               <SwiperSlide key={event.id}>
                 <div className="content_col">
-                  <Link
-                    href="/happenings/media-coverage"
-                    data-aos="fade-up"
-                    data-aos-delay="800"
-                  >
-                    <figure>
-                      <img
-                        src={event.image ?? ""}
-                        alt={event.title}
-                        loading="lazy"
-                        width="723"
-                        height="568"
-                        className="img-fluid w-100"
-                      />
-                    </figure>
-                  </Link>
+                  <figure>
+                    <img
+                      src={event.image ?? ""}
+                      alt={event.alt || pageName}
+                      {...aos("200")}
+                      loading="lazy"
+                      width="723"
+                      height="568"
+                      className="img-fluid w-100"
+                    />
+                  </figure>
 
                   <div className="sec_data" {...aos("200")}>
                     <div className="left">

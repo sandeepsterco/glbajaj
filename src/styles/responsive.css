@@ -429,11 +429,10 @@
 .bottom_pattern{ display: none;}
 .gallery_list_section { padding-block: 0rem 5rem; }
 .gallery_list_header{    padding-block: 3rem 5rem;}
-.gallery_list { column-count: 3; gap:2rem; margin-inline: 0; }
-.gallery_details{ margin-bottom: 2rem;}
+.gallery_list { grid-template-columns:  repeat(3, 1fr); gap:2rem; margin-inline: 0; }
 .alumni-achivement h3{ margin-block: 2rem 3rem;}
 .affiliations-sec { padding-block: 4rem 5rem; }
-.clubs-Sec02 .media_txt .cus-btn{ padding: 1rem 2rem;}
+.clubs-Sec02 .media_txt .cus-btn{ padding: 1rem 2rem;}  
 .alumni_about_vision{ padding-top: 5rem;}
 .al_vision_Bx p{ font: var(--font-24);}
 .res_publication:last-child { padding-bottom: 5rem; }
@@ -989,7 +988,7 @@
 .gallery_grid{grid-template-columns: repeat(1, 1fr);}
 .gallery_grid_Bx img{ width: 100%;}
 .gallery_grid h5{ padding-inline: 0;}
-.gallery_list { column-count: 2;}
+.gallery_list { grid-template-columns: repeat(2 , 1fr);}
 .strategies-grid > :first-child { grid-column: span 1; margin-bottom: 3rem; }
 .iqac-mission-Cnt { padding-right: 0; }
 .iqac-function .inner-iqac-function{ padding: 4rem;}
@@ -1208,7 +1207,7 @@
 .alumni-achivement h3 { margin-block: 2rem 4rem; }
 .distinguished-alumni-grid { grid-template-columns: repeat(2, 1fr); }
 .gl_bajaj_grid .club_textbox > h3{ font: var(--font-24); font-weight: 600;}
-.gallery_list { column-count: 2; }
+.gallery_list { grid-template-columns: repeat(2 , 1fr); }
 .alumni-achivement h3{ font: var(--font-24); font-weight: 600; line-height: 1.2;}
 
 .acx_sec h3 { font: var(--font-24); font-weight: 600; }
@@ -1322,7 +1321,7 @@
 .fac_policy_list{ display: block;}
 .fac_policy_right{ display: flex; padding-top: 2rem; align-items: center; gap: 2rem;}
 .distinguished-alumni-grid { grid-template-columns: repeat(1, 1fr); }
-.gallery_list { column-count: 1; }
+.gallery_list { grid-template-columns: 1fr; }
 .robotics-lab-grid-Cnt ol { padding-right: 0; }
 .center-exle-brand-grid .bg { padding: 1.5rem 3.3rem; }
 .institute_faq_section .tp_accbox .accordion-header{ gap: 3rem;}

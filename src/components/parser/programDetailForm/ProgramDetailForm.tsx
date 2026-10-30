@@ -1,5 +1,6 @@
 import { apiFetch } from "@/src/lib/api";
 import ProgramDetailFormClient from "./ProgramDetailFormClient";
+import { Suspense } from "react";
 
 export interface Department {
   name: string;
@@ -28,9 +29,11 @@ export default async function ProgramDetailForm({
   const departments = await getDepartments();
 
   return (
-    <ProgramDetailFormClient
-      departments={departments}
-      defaultDepartmentSlugProp={defaultDepartmentSlug}
-    />
+    <Suspense fallback={null}>
+      <ProgramDetailFormClient
+        departments={departments}
+        defaultDepartmentSlugProp={defaultDepartmentSlug}
+      />
+    </Suspense>
   );
 }

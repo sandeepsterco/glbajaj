@@ -175,6 +175,7 @@
 .swiper_next_custom { background-color: var(--color-white); height: 3.5rem; width: 3.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1), 6px 17px 36px rgba(255, 255, 255, 0.8); }
 .navigation_btn { display: flex; align-items: center; gap: 0.3rem; margin-top: 3rem; padding-bottom: 1rem; }
 .navigation_btn.relative { position: relative; }
+.navigation_btn.b-0{bottom:0;}
 .swiper-button-disabled { cursor: unset; opacity: 0.5; }
 /* .navigation_btn */
 .swiper_prev_custom:hover,
@@ -567,6 +568,9 @@ h3 .arrow_btn1 img{ margin: 0 auto;}
 .intern_slider_section .title24{margin-bottom:1rem;}
 .intern_slider_section .title48{color: var(--color-92); letter-spacing: -0.24rem; margin-bottom: 2rem;}
 
+.research-innovation-entrepreneurship-cell-page .home_about_glb_section .grid{display:none;}
+.research-innovation-entrepreneurship-cell-page .home_about_glb_section .video_grid{margin-top:0;}
+
 /* ========= END HOME INTERN SLIDER =============*/
 
 
@@ -737,7 +741,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_placement_static_card .slider_btns { gap: 2rem; }
 .home_about_glb_section .about_top { gap: 10.6rem; }
 .homeFac_content:after { width: 7%; height: 38%; left: -8.8rem; }
-.home_testimonials .desc_content .desc { max-height: 32rem; }
+.homepage .home_testimonials .desc_content .desc { max-height: 32rem; }
 .home_testimonials .thumb-group { margin-top: 0; }
 /* .home_footer .footer_top { gap: 9.5rem; } */
 .group_section h2{ letter-spacing: -1px;}
@@ -1402,6 +1406,11 @@ main { overflow: hidden; }
   .res_publi_list li a{ padding-block: 1.5rem;}
   .institute_cnt ul{grid-template-columns: repeat(1, 1fr);}
   .home_sessions_section .left_col .title{ min-height: 4rem;}
+
+  .home_placement_student_slider .placement_img{height: auto;}
+  .home_placement_info .placement,
+  .home_placement_info .placement sup{color:var(--color-black)};
+  .home_placement_info{margin:0;}
   
 }
 

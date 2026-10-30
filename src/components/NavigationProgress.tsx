@@ -39,7 +39,7 @@ export function NavigationProgress() {
       setLoading(true)
 
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      timeoutRef.current = setTimeout(() => setLoading(false), 6000)
+      timeoutRef.current = setTimeout(() => setLoading(false), 10000)
     }
 
     document.addEventListener('click', handleClick)

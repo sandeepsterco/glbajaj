@@ -69,7 +69,7 @@ const DOMPURIFY_ALLOWED_ATTR = [
   "data-wow-delay", "data-wow-duration", "data-wow-offset", "data-wow-iteration",
   "data-aos", "data-aos-delay", "data-aos-duration", "data-aos-offset",
   "data-aos-easing", "data-aos-once", "data-aos-mirror",
-  "data-aos-anchor", "data-aos-anchor-placement",
+  "data-aos-anchor", "data-aos-anchor-placement", "loading", ""
 ];
 
 function ParserWidgetFallback() {
@@ -106,54 +106,58 @@ function hashString(str: string): string {
   return (hash >>> 0).toString(36);
 }
 
-const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any): HTMLReactParserOptions => {
-  
+const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:any, pageName?:string): HTMLReactParserOptions => {
+  const pageAwareLazyComponent = (
+    loader: () => Promise<{ default: React.ComponentType<any> }>,
+    props?: Record<string, any>
+  ) => withLazyComponent(loader, { ...props, pageName });
+
   const idComponentMap: Record<string, () => React.ReactElement> = {
-    "course-search": () => withLazyComponent(() => import("../../parser/CourseSearch")),
-    home_course_tabs: () => withLazyComponent(() => import("../../parser/HomeCoursesTabs")),
-    "add-on-courses": () => withLazyComponent(() => import("../../parser/AddOnCourses"), { homeData }),
-    "program-add-on-courses": () => withLazyComponent(() => import("../../parser/ProgramAddOnCourses")),
-    research_innovation: () => withLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData }),
-    home_facilities: () => withLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities")),
-    home_happenings: () => withLazyComponent(() => import("../../parser/HomeHappenings"), { homeData }),
-    home_alumni: () => withLazyComponent(() => import("../../parser/HomeAlumni"), { homeData }),
-    contact_form: () => withLazyComponent(() => import("../../parser/ContactForm")),
-    about_leadership: () => withLazyComponent(() => import("../../parser/about/AboutLeadership")),
-    awards_list: () => withLazyComponent(() => import("../../parser/awardList/AwardsList"), { params, searchParams }),
-    achievement_list: () => withLazyComponent(() => import("../../parser/achievementList/AchievementList"), { searchParams }),
-    conference_lists: () => withLazyComponent(() => import("../../parser/conferenceLists/ConferenceLists"), { params, searchParams }),
-    department_home_faculties: () => withLazyComponent(() => import("../../parser/DepartmentHomeFaculties")),
-    department_home_laboratories: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeLaboratories"), { params, data }),
-    department_home_alumni: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeAlumni"), { params, data }),
-    program_detail_alumni: () => withLazyComponent(() => import("../../parser/ProgramDetailAlumni")),
-    department_home_courses: () => withLazyComponent(() => import("../../parser/DepartmentHomeCourses"), { params }),
-    department_home_happenings: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeHappenings"), { params }),
-    policies_disclosures: () => withLazyComponent(() => import("../../parser/PoliciesDisclosures")),
-    placement_record: () => withLazyComponent(() => import("../../parser/PlacementRecord")),
-    intership_record: () => withLazyComponent(() => import("../../parser/IntershipRecord"), { params }),
-    department_home_activities: () => withLazyComponent(() => import("../../parser/DepartmentHomeActivities")),
-    digital_pathshala_videos: () => withLazyComponent(() => import("../../parser/DigitalPathshalaVideoGrid")),
-    why_clubs_grid: () => withLazyComponent(() => import("../../parser/WhyClubsGrid"), { params, searchParams }),
-    alumni_events_meet: () => withLazyComponent(() => import("../../parser/AlumniEventsMeetGrid")),
-    admission_programs: () => withLazyComponent(() => import("../../parser/admissions/AdmissionPrograms")),
-    department_notifications: () => withLazyComponent(() => import("../../parser/DepartmentNotificationBar")),
-    department_home_clubs: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeClubs"), { params, data }),
-    department_home_ceo: () => withLazyComponent(() => import("../../parser/DepartmentHomeCEO")),
-    department_home_collaborations: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeMou"), { params, data }),
-    department_home_achievement: () => withLazyComponent(() => import("../../parser/DepartmentHomeAchievement"), { data }),
-    coe_labs_grid_section: () => withLazyComponent(() => import("../../parser/DepartmentLabsGrids")),
-    department_faculty_grid: () => withLazyComponent(() => import("../../parser/DepartmentFacultyGrid")),
-    program_detail_form: () => withLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
-    department_home_placements: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
-    home_placements: () => withLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
-    career_job_listing: () => withLazyComponent(() => import("../../parser/CareerJobListing")),
-    home_upcoming_events: () => withLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
-    home_highlights: () => withLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
-    program_detail_placements: () => withLazyComponent(() => import("../../parser/ProgramDetailPlacements")),
-    department_home_research: () => withLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
-    home_course_right: () => withLazyComponent(() => import("../../parser/HomeCourseRight")),
-    alumni_achievement_list: () => withLazyComponent(() => import("../../parser/AlumniAchievementList")),
-    intern_slider: () => withLazyComponent(() => import("../../parser/internSlider/InternSlider")),
+    "course-search": () => pageAwareLazyComponent(() => import("../../parser/CourseSearch")),
+    home_course_tabs: () => pageAwareLazyComponent(() => import("../../parser/HomeCoursesTabs")),
+    "add-on-courses": () => pageAwareLazyComponent(() => import("../../parser/AddOnCourses"), { homeData }),
+    "program-add-on-courses": () => pageAwareLazyComponent(() => import("../../parser/ProgramAddOnCourses")),
+    research_innovation: () => pageAwareLazyComponent(() => import("../../parser/ResearchInnovation"), { homeData }),
+    home_facilities: () => pageAwareLazyComponent(() => import("../../parser/homeFacilities/HomeFacilities")),
+    home_happenings: () => pageAwareLazyComponent(() => import("../../parser/HomeHappenings"), { homeData }),
+    home_alumni: () => pageAwareLazyComponent(() => import("../../parser/HomeAlumni"), { homeData}),
+    contact_form: () => pageAwareLazyComponent(() => import("../../parser/ContactForm")),
+    about_leadership: () => pageAwareLazyComponent(() => import("../../parser/about/AboutLeadership")),
+    awards_list: () => pageAwareLazyComponent(() => import("../../parser/awardList/AwardsList"), { params, searchParams }),
+    achievement_list: () => pageAwareLazyComponent(() => import("../../parser/achievementList/AchievementList"), { searchParams }),
+    conference_lists: () => pageAwareLazyComponent(() => import("../../parser/conferenceLists/ConferenceLists"), { params, searchParams }),
+    department_home_faculties: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeFaculties")),
+    department_home_laboratories: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeLaboratories"), { params, data }),
+    department_home_alumni: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeAlumni"), { params, data }),
+    program_detail_alumni: () => pageAwareLazyComponent(() => import("../../parser/ProgramDetailAlumni")),
+    department_home_courses: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeCourses"), { params }),
+    department_home_happenings: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeHappenings"), { params }),
+    policies_disclosures: () => pageAwareLazyComponent(() => import("../../parser/PoliciesDisclosures")),
+    placement_record: () => pageAwareLazyComponent(() => import("../../parser/PlacementRecord")),
+    intership_record: () => pageAwareLazyComponent(() => import("../../parser/IntershipRecord"), { params }),
+    department_home_activities: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeActivities")),
+    digital_pathshala_videos: () => pageAwareLazyComponent(() => import("../../parser/DigitalPathshalaVideoGrid")),
+    why_clubs_grid: () => pageAwareLazyComponent(() => import("../../parser/WhyClubsGrid"), { params, searchParams }),
+    alumni_events_meet: () => pageAwareLazyComponent(() => import("../../parser/AlumniEventsMeetGrid")),
+    admission_programs: () => pageAwareLazyComponent(() => import("../../parser/admissions/AdmissionPrograms")),
+    department_notifications: () => pageAwareLazyComponent(() => import("../../parser/DepartmentNotificationBar")),
+    department_home_clubs: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeClubs"), { params, data }),
+    department_home_ceo: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeCEO")),
+    department_home_collaborations: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeMou"), { params, data }),
+    department_home_achievement: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeAchievement"), { data }),
+    coe_labs_grid_section: () => pageAwareLazyComponent(() => import("../../parser/DepartmentLabsGrids")),
+    department_faculty_grid: () => pageAwareLazyComponent(() => import("../../parser/DepartmentFacultyGrid")),
+    program_detail_form: () => pageAwareLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
+    department_home_placements: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
+    home_placements: () => pageAwareLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
+    career_job_listing: () => pageAwareLazyComponent(() => import("../../parser/CareerJobListing")),
+    home_upcoming_events: () => pageAwareLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
+    home_highlights: () => pageAwareLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
+    program_detail_placements: () => pageAwareLazyComponent(() => import("../../parser/ProgramDetailPlacements")),
+    department_home_research: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
+    home_course_right: () => pageAwareLazyComponent(() => import("../../parser/HomeCourseRight")),
+    alumni_achievement_list: () => pageAwareLazyComponent(() => import("../../parser/AlumniAchievementList")),
+    intern_slider: () => pageAwareLazyComponent(() => import("../../parser/internSlider/InternSlider")),
   };
 
   const options: HTMLReactParserOptions = {
@@ -208,6 +212,8 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
 
         if (!resolvedSrc) return <></>;
 
+        const altText = props.alt?.trim() || pageName?.trim()
+
         const parsedWidth =
           props.width && !isNaN(parseInt(props.width as string, 10))
             ? parseInt(props.width as string, 10)
@@ -223,7 +229,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
             <img
               {...rest}
               src={resolvedSrc}
-              alt={props.alt || ""}
+              alt={altText}
               loading="lazy"
               decoding="async"
               style={{ ...(props.style || {}) }}
@@ -234,7 +240,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
           <Image
             {...props}
             src={resolvedSrc}
-            alt={props.alt || ""}
+            alt={altText}
             width={parsedWidth}
             height={parsedHeight}
             loading="lazy"
@@ -286,7 +292,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
 // ReactParser
 // ---------------------------------------------------------------------------
 
-export default function ReactParser({ html, homeData, params, searchParams, data }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any }) {
+export default function ReactParser({ html, homeData, params, searchParams, data, pageName }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any; pageName?:string }) {
   const sanitizedHtml = useMemo(
     () =>
       DOMPurify.sanitize(html, {
@@ -302,8 +308,8 @@ export default function ReactParser({ html, homeData, params, searchParams, data
   const containerId = useMemo(() => `cms-block-${hashString(sanitizedHtml)}`, [sanitizedHtml]);
 
   const options = useMemo(
-    () => getParserOptions(homeData, params, searchParams, data ),
-    [homeData, params, searchParams, data]
+    () => getParserOptions(homeData, params, searchParams, data, pageName ),
+    [homeData, params, searchParams, data, pageName]
   );
 
   const parsedContent = useMemo(() => parse(sanitizedHtml, options), [sanitizedHtml, options]);

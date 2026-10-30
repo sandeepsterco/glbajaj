@@ -18,7 +18,7 @@ const fetchDepartmentFaculty = async (slug: string, page: number) => {
   return data;
 };
 
-export default function DepartmentFacultyGrid() {
+export default function DepartmentFacultyGrid({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const slug = pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";

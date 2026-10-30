@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
+import { useSearchParams } from "next/navigation";
 
 type FieldErrors = Record<string, string[] | string>;
 
@@ -37,6 +38,16 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
+
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+    source_url:window.location.href
+  };
 
   const resetFields = () => {
     setFieldsData(INITIAL_FORM);
@@ -92,6 +103,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           ...fieldsData,
+          ...utm,
           ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
         }),
       });
@@ -127,7 +139,7 @@ export default function ContactForm() {
 
         <form onSubmit={submitHandler} noValidate>
           <div className="form-group">
-            <input type="text" placeholder="Student Name" name="name" value={fieldsData.name} onChange={changeHandler} />
+            <input type="text" placeholder="Full Name*" name="name" value={fieldsData.name} onChange={changeHandler} />
             {getFieldError("name") ? <p className="field-error" role="alert">{getFieldError("name")}</p> : null}
           </div>
 
@@ -137,12 +149,12 @@ export default function ContactForm() {
           </div>
 
           <div className="form-group">
-            <input type="text" placeholder="Phone" name="phone" value={fieldsData.phone} onChange={changeHandler} />
+            <input type="number" placeholder="Phone*" name="phone" value={fieldsData.phone} onChange={changeHandler} />
             {getFieldError("phone") ? <p className="field-error" role="alert">{getFieldError("phone")}</p> : null}
           </div>
 
           <div className="form-group">
-            <input type="email" placeholder="Email" name="email" value={fieldsData.email} onChange={changeHandler} />
+            <input type="email" placeholder="Email*" name="email" value={fieldsData.email} onChange={changeHandler} />
             {getFieldError("email") ? <p className="field-error" role="alert">{getFieldError("email")}</p> : null}
           </div>
 
@@ -180,7 +192,7 @@ export default function ContactForm() {
           ) : null}
 
           <button className="btn" type="submit" disabled={isLoading}>
-            {isLoading ? "Submitting..." : "Apply Now"}
+            {isLoading ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>

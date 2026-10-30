@@ -1,4 +1,4 @@
-// lib/event-schema.ts
+﻿// lib/event-schema.ts
 import { BASE_URL } from "@/src/config/config";
 import { getBaseUrl } from "@/src/lib/schema/schema-utils";
 
@@ -24,8 +24,8 @@ export type EventSchemaArgs = {
   // Passed via props, since there's no parent_menus for modular pages
   staticSegments: StaticSegment[]; // e.g. [{name:"Events", slug:"events"}]
   eventSlug?: string;
-
-  // Images — pass whichever aspect ratios you actually have; only non-empty ones are included
+images?:string[];
+  // Images â€” pass whichever aspect ratios you actually have; only non-empty ones are included
   image1x1Url?: string;
   image4x3Url?: string;
   image16x9Url?: string;
@@ -34,10 +34,10 @@ export type EventSchemaArgs = {
   attendanceMode?: "Offline" | "Online" | "Mixed"; // defaults to "Offline" if location is given
   location?: EventLocation; // omit entirely for a fully online event
 
-  // Optional speaker(s) — url of an existing faculty/person profile page (from buildFacultySchema)
+  // Optional speaker(s) â€” url of an existing faculty/person profile page (from buildFacultySchema)
   speakerProfileUrls?: string[];
 
-  // Optional registration/ticketing — only if publicly published
+  // Optional registration/ticketing â€” only if publicly published
   registrationUrl?: string;
   price?: number; // 0 if truly free
 };
@@ -60,6 +60,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
     endDateIso,
     staticSegments,
     eventSlug,
+    images,
     image1x1Url,
     image4x3Url,
     image16x9Url,
@@ -71,12 +72,12 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
   } = args;
 
   const baseUrl = BASE_URL
-  const pathSegments = [...staticSegments?.map((s) => cleanSlug(s.slug)), cleanSlug(eventSlug)];
+  const pathSegments = [...(staticSegments ?? []).map((s) => cleanSlug(s.slug)), cleanSlug(eventSlug)];
   const eventUrl = `${baseUrl}${pathSegments.join("/")}`;
 
   const breadcrumbItems: { name: string; item: string }[] = [
     { name: "Home", item: `${baseUrl}/` },
-    ...staticSegments.map((seg, index) => ({
+    ...(staticSegments ?? []).map((seg, index) => ({
       name: seg.name,
       item: `${baseUrl}/${staticSegments
         .slice(0, index + 1)
@@ -86,7 +87,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
     { name: eventName, item: eventUrl },
   ];
 
-  const images = [image1x1Url, image4x3Url, image16x9Url].filter((url): url is string => Boolean(url));
+  // const images = [image1x1Url, image4x3Url, image16x9Url].filter((url): url is string => Boolean(url));
 
   const resolvedMode = attendanceMode ?? (location ? "Offline" : undefined);
 
@@ -135,7 +136,7 @@ export function buildEventDetailSchema(args: EventSchemaArgs) {
         eventStatus: "https://schema.org/EventScheduled",
         // eventAttendanceMode: resolvedMode ? ATTENDANCE_MODE_MAP[resolvedMode] : undefined,
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        image: images.length ? images : undefined,
+        image: images?.length ? images : undefined,
         location: place,
         organizer: { "@id": `${baseUrl}#organization` },
         performer,

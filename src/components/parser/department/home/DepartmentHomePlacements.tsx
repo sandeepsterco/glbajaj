@@ -2,10 +2,11 @@ import NoData from "../../../ui/NoData";
 import DepartmentPlacementsSlider, { type PlacementItem } from "./Departmentplacementsslider";
 
 type Props = {
-  data?:any
+  data?:any;
+  pageName: string;
 };
 
-export default async function DepartmentHomePlacements({ data }: Props) {
+export default async function DepartmentHomePlacements({ data, pageName }: Props) {
 
   const placements: PlacementItem[] = data?.modular?.["intern-placement"] ?? [];
 
@@ -17,5 +18,5 @@ export default async function DepartmentHomePlacements({ data }: Props) {
     );
   }
 
-  return <DepartmentPlacementsSlider placements={placements} />;
+  return <DepartmentPlacementsSlider placements={placements} pageName={pageName} />;
 }

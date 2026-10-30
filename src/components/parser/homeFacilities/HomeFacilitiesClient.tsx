@@ -15,6 +15,7 @@ type Slide = {
   image?: string;
   title?: string;
   slug?: string;
+  alt?:string;
 };
 
 type Tab = {
@@ -24,9 +25,10 @@ type Tab = {
 
 interface HomeFacilitiesClientProps {
   tabsData: Tab[];
+  pageName:string;
 }
 
-export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientProps) {
+export default function HomeFacilitiesClient({ tabsData, pageName }: HomeFacilitiesClientProps) {
   const [mounted, setMounted] = useState(false)
   const [activeTab, setActiveTab] = useState(0);
   const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
@@ -217,7 +219,7 @@ export default function HomeFacilitiesClient({ tabsData }: HomeFacilitiesClientP
                                         className="w-100 img-fluid"
                                         width={600}
                                         height={841}
-                                        alt={slide?.title ?? "facilities"}
+                                        alt={slide?.alt || pageName}
                                         loading="lazy"
                                       />
                                       {slide?.title && (

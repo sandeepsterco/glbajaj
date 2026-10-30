@@ -3,7 +3,7 @@ import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
-import React from "react";
+import React, { Suspense } from "react";
 import Subscribe from "./Subscribe";
 
 const Footer = async () => {
@@ -15,7 +15,8 @@ const Footer = async () => {
 
 
   const getValue = (key: string) => {
-    const found = infoData?.data.find((item: any) => item.key == key) ?? null;
+    const items = Array.isArray(infoData?.data) ? infoData.data : [];
+    const found = items.find((item: any) => item.key == key) ?? null;
     if (found?.value || found?.image || found?.url) {
       return {
         value: found?.value ?? null,
@@ -191,7 +192,9 @@ const Footer = async () => {
 
               </div>
 
-              <Subscribe />
+                <Suspense fallback={null}>
+                  <Subscribe />
+                </Suspense>
 
             </div>
           </div>

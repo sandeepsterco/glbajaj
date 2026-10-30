@@ -14,7 +14,7 @@ const fetchAlumniEventsGrid = async (page: number) => {
   return data?.alumni_events;
 };
 
-export default function AlumniEventsMeetGrid() {
+export default function AlumniEventsMeetGrid({ pageName }: { pageName: string }) {
   const [page, setPage] = useState(1);
   const [allItems, setAllItems] = useState<any[]>([]);
   const pathname = usePathname();
@@ -50,7 +50,7 @@ export default function AlumniEventsMeetGrid() {
         {allItems.map((item: any, idx: number) => (
           <div className="award-box" key={idx}>
             <figure className="flash-effect-2">
-              <Image src={item?.image ?? '/images/default/gallery-main.webp'} className="img-fluid w-100" width={600} height={443} loading="lazy" alt={item?.title ?? 'alumni events'} />
+              <Image src={item?.image ?? '/images/default/gallery-main.webp'} className="img-fluid w-100" width={600} height={443} loading="lazy" alt={item?.alt || pageName} />
             </figure>
             {item?.title && (
               <p>{item.title}</p>

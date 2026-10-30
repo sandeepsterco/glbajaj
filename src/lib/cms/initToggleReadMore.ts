@@ -9,14 +9,16 @@ export function InitToggleReadMore(root: HTMLElement): () => void {
   
         if (moreText.classList.contains("show")) {
           moreText.classList.remove("show");
-          this.innerHTML = '<i class="bi bi-plus-lg"></i>';
+          this.textContent = "+";
           this.classList.remove("active");
         } else {
           moreText.classList.add("show");
-          this.innerHTML = '<i class="bi bi-dash-lg"></i>';
+          this.textContent = "-";
           this.classList.add("active");
         }
       };
+      const moreText = btn.closest(".content")?.querySelector<HTMLElement>(".more-text");
+      btn.textContent = moreText?.classList.contains("show") ? "-" : "+";
       btn.addEventListener("click", handler);
       listeners.push([btn, handler]);
     });

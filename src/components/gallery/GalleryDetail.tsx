@@ -7,14 +7,23 @@ import { Fancybox, FancyboxOptions } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import '@/src/styles/fancybox.css'
 
-function getYoutubeThumbnail(url: string): string {
+function getYoutubeId(url: string): string | null {
     const match = url.match(
-        /(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([^&?/]+)/
+        /(?:youtube\.com\/(?:embed\/|watch\?v=|shorts\/|live\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
     );
-    if (match?.[1]) {
-        return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-    }
-    return '/images/icons/video-placeholder.svg';
+    return match?.[1] ?? null;
+}
+
+function getYoutubeThumbnail(url: string): string {
+    const id = getYoutubeId(url);
+    return id
+        ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+        : '/images/icons/video-placeholder.svg';
+}
+
+function getYoutubeEmbedUrl(url: string): string {
+    const id = getYoutubeId(url);
+    return id ? `https://www.youtube.com/embed/${id}` : url;
 }
 
 interface GalleryItem {
@@ -44,6 +53,8 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
     // Check what types are available to conditionally show filter buttons
     const hasImages = allItems.some(isImageItem);
     const hasVideos = allItems.some(isVideoItem);
+    const onlyImage = hasImages && !hasVideos;
+    const onlyVideo = hasVideos && !hasImages;
 
     const galleryItems = useMemo(() => {
         return galleryUrls.map((item: GalleryItem) => {
@@ -73,10 +84,13 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
 
         const items = galleryItems.map((item) => {
             if (item.type === 'iframe') {
+                const isShort = /youtube\.com\/shorts\//.test(item.embedUrl!);
                 return {
-                    src: item.embedUrl,
+                    src: getYoutubeEmbedUrl(item.embedUrl!),
                     type: 'iframe',
                     caption: item.caption,
+                    width: isShort ? 405 : 960,
+                    height: isShort ? 720 : 540,
                 };
             }
 
@@ -109,15 +123,12 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
     const applyFilter = async (type: 'all' | 'images' | 'videos') => {
         if (activeFilter === type || isLoading) return;
 
-        // ✅ For 'all', just reset from original data — no API call needed
         if (type === 'all') {
             setGalleryUrls(allItems);
             setActiveFilter('all');
             return;
         }
 
-        // ✅ Client-side filtering first (instant, no API needed)
-        // Remove this block and keep only API call if server-side filtering is required
         const filtered = allItems.filter((item) =>
             type === 'images' ? isImageItem(item) : isVideoItem(item)
         );
@@ -148,6 +159,31 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                     <div className="gallery_list_header">
                         {data?.title && <h1>{data.title}</h1>}
                         <div className="gallery_tab">
+                            
+                            {hasImages && (
+                                <span
+                                    className={`${activeFilter === 'images' ? 'active' : ''} ${isLoading || onlyVideo || onlyImage ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                    onClick={(hasImages && hasVideos) ? () => applyFilter('images') : undefined}
+                                >
+                                    Photos
+                                    <figure>
+                                        <img src="/images/icons/yellow-gallery.svg" alt="icon" className="img-fluid" loading='lazy' />
+                                    </figure>
+                                </span>
+                            )}
+
+                            {hasVideos && (
+                                <span
+                                    className={`${activeFilter === 'videos' ? 'active' : ''} ${isLoading || onlyVideo || onlyImage ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
+                                    onClick={(hasImages && hasVideos) ? () => applyFilter('videos') : undefined}
+                                >
+                                    Video
+                                    <figure>
+                                        <img src="/images/icons/yellow-video.svg" alt="icon" className="img-fluid" loading='lazy' />
+                                    </figure>
+                                </span>
+                            )}
+                            
                             {/* ✅ Reset button only when filter is active */}
                             {activeFilter !== 'all' && (
                                 <button
@@ -160,31 +196,6 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                 </button>
                             )}
 
-                            {/* ✅ Only show Photos tab if images exist */}
-                            {hasImages && (
-                                <span
-                                    className={`${activeFilter === 'images' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
-                                    onClick={() => applyFilter('images')}
-                                >
-                                    Photos
-                                    <figure>
-                                        <img src="/images/icons/yellow-gallery.svg" alt="icon" className="img-fluid" loading='lazy' />
-                                    </figure>
-                                </span>
-                            )}
-
-                            {/* ✅ Only show Videos tab if videos exist */}
-                            {hasVideos && (
-                                <span
-                                    className={`${activeFilter === 'videos' ? 'active' : ''} ${isLoading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}`}
-                                    onClick={() => applyFilter('videos')}
-                                >
-                                    Video
-                                    <figure>
-                                        <img src="/images/icons/yellow-video.svg" alt="icon" className="img-fluid" loading='lazy' />
-                                    </figure>
-                                </span>
-                            )}
                         </div>
                     </div>
 

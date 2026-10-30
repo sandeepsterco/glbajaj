@@ -3,8 +3,9 @@
 .cus-tab .tabbed-content { }
 .cus-tab .tabs ul { margin: 0; border-bottom: .1rem solid var(--color-70); }
 .cus-tab .tabs ul li { margin-right: 8rem; }
-.cus-tab .tabs ul li a { font: var(--font-36); letter-spacing: -1.8px; color: var(--color-64); padding: 0 0 3.5rem 0; }
-.cus-tab .tabs ul li a:hover, .tabs ul li a.active { color: var(--color-64); border-bottom: .1rem solid var(--color-92); }
+.cus-tab .tabs ul li a, .cus-tab .tabs ul li button { font: var(--font-36); letter-spacing: -1.8px; color: var(--color-64); padding: 0 0 3.5rem 0; }
+.cus-tab .tabs ul li button { background: none; border: 0; cursor: pointer; }
+.cus-tab .tabs ul li a:hover, .cus-tab .tabs ul li a.active, .cus-tab .tabs ul li button:hover, .cus-tab .tabs ul li button.active { color: var(--color-64); border-bottom: .1rem solid var(--color-92); }
 .cus-tab .item { margin-bottom: 2px; }
 .cus-tab .item::before { cursor: pointer; font-weight: bold; background: #eee; padding: 0.5em; display: block; }
 .cus-tab .item.active::before { background: #444; color: #eee; }
@@ -96,6 +97,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-form{ margin-top: 0rem;}
 .form-container { background: var(--color-white); box-shadow: 0px 13px 34px #0000000D; opacity: 1; backdrop-filter: blur(3px); padding: 3.5rem; height: 100%; }
 .form-container .form-group { margin-bottom: 1.5rem; }
+.form-container .dob-label { display: block; margin-bottom: 0.6rem; font: var(--font-16); color: var(--color-black); }
 .form-container input, .form-container select, .form-container textarea { width: 100%; padding: 1.2rem; border: 1px solid #E1E1E1; font: var(--font-16); outline: none; color: var(--color-black); background:#fff; }
 .form-container input::placeholder { color: var(--color-black); }
 textarea::placeholder { color: var(--color-black); }
@@ -123,9 +125,7 @@ textarea::placeholder { color: var(--color-black); }
 .content { margin-top: 2rem; }
 .more-text { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .more-text.show { max-height: 1000px; }
-.toggle-btn i { transition: transform 0.3s ease; font:var(--font-16)}
-.toggle-btn.active i { transform: rotate(180deg); }
-button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); cursor: pointer; }
+button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); font: var(--font-16); cursor: pointer; }
 /* Curriculum */
 .program-detailsec1 { padding-block: 10rem 10rem; position: relative; }
 .curriculum-img { position: absolute; top: 0; margin-left: -30rem; }
@@ -216,7 +216,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .table-wrapper thead tr { background-color: var(--color-64); color: var(--color-white); }
 .table-wrapper thead tr th { font: var(--font-18); }
 .table-wrapper tbody tr td { font: var(--font-16); color: var(--color-33); }
-.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal; text-transform: capitalize; }
+.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal;  }
 /* Cell Styling */
 .table-wrapper td { padding: 1.5rem 2.5rem; border-bottom: 0; font-size: var(--font-16); }
 /* Zebra Striping */
@@ -270,8 +270,8 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .accordion-header h3 { margin: 0; font:var(--font-21); color: var(--color-33); font-weight: 700; }
 /* .icon { font-size: 2.3rem; color: #c49a4a; border: 1px solid #c49a4a26; padding: .8rem 1.4rem; }
 */
-.accordion-body { max-height: 0; overflow: hidden; padding: 0 3.5rem; background: var(--color-F5); }
-.accordion-item.active .accordion-body { max-height: 1500px; /* large enough value */ padding: 3rem 3.5rem 2rem; }
+.accordion-body { max-height: 0; overflow: hidden;  background: var(--color-F5); transition: all 0.3s ease; }
+.accordion-item.active .accordion-body { max-height: 1500px; }
 .accordion-item.active .icon { content: "−"; }
 /* Publication list */
 .pub-list { margin-top: 10px; }
@@ -329,10 +329,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
 .award-detail-text h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
 .award-detail-img { padding-inline: 0; order: 1; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
+.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 10rem; }
 .award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
 .award-detail-text1 figure { max-width: 60rem; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-text1 ul.insta_icons li a { margin-top: 3.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 0rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
 .award-detail-text1 ul.insta_icons li a img { width: 3rem; display: inline; }
 /* .award-detail-text1 { padding: 1rem 14rem; } */
@@ -616,7 +615,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .department-page .csr-sec3:before{ height: auto;}
     .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
     .award-detail-list1 .award-detail-text1 { padding-left: 0; }
-    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 4rem; gap: 4rem; }
+    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 7rem; gap: 4rem; }
     .award-detail-list1 .award-detail-text1{ padding-left:  0rem;}
     .award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 { padding-left: 0rem; }
 
@@ -726,4 +725,3 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
     .education-cell-grid { grid-template-columns: repeat(1, 1fr); }
 }
-

@@ -2,11 +2,15 @@ import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import BlogFeaturedSlider from "@/src/components/blogs/BlogFeaturedSlider";
 import BlogSidebar from "@/src/components/blogs/BlogSidebar";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import SocialShare from "@/src/components/common/SocialShare";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
 import { notFound } from "next/navigation";
+import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
+import { getPageSEO } from "@/src/lib/seo";
+import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 interface SearchParams {
   search?: string;
@@ -23,7 +27,8 @@ function buildFilterQuery(params: {
 }) {
   const parts: string[] = [];
   if (params.search) parts.push(`search=${encodeURIComponent(params.search)}`);
-  if (params.category) parts.push(`category=${encodeURIComponent(params.category)}`);
+  if (params.category)
+    parts.push(`category=${encodeURIComponent(params.category)}`);
   if (params.year) parts.push(`year=${encodeURIComponent(params.year)}`);
   if (params.month) parts.push(`month=${encodeURIComponent(params.month)}`);
   return parts.length ? `?${parts.join("&")}` : "";
@@ -37,19 +42,29 @@ function formatBlogDate(dateStr: string) {
   });
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return getPageSEO(`blogs/${slug}`);
+}
+
 function BlogSections({ sections }: { sections: any }) {
   if (!sections) return null;
   if (typeof sections === "string") {
     return <ReactParser html={sections} />;
   }
-  return sections?.map((item:any, idx:number) => (
+  return sections?.map((item: any, idx: number) => (
     <>
       {/* {item?.title && (
         <h3>{item.title}</h3>
       )} */}
-      {item?.editors?.length > 0 && item.editors.map((editorItem:any, editorIdx:number)=>(
-        <ReactParser key={editorIdx + idx} html={editorItem?.content} />
-      ))}
+      {item?.editors?.length > 0 &&
+        item.editors.map((editorItem: any, editorIdx: number) => (
+          <ReactParser key={editorIdx + idx} html={editorItem?.content} />
+        ))}
     </>
   ));
 }
@@ -73,8 +88,9 @@ export default async function BlogDetailPage({
   const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
   const listSlug = "blogs";
 
-  const [{ data, error }] = await Promise.all([
+  const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`blogs/${blogSlug}${filterQuery}`, fetchOptions),
+    getPageSEO(`blogs/${blogSlug}`),
   ]);
 
   if (error) notFound();
@@ -86,15 +102,66 @@ export default async function BlogDetailPage({
   const comments: any[] = data?.comments ?? [];
   const listingPath = `${BASE_URL}${listSlug}`;
 
+  const blogDetailSchemaArgs = {
+    blogUrl: `${BASE_URL}blogs/${blogSlug}` || "",
+    headline: details?.title || "",
+    summary: details?.description || "",
+    images: [details?.image],
+    datePublishedIso: details?.date || "",
+    dateModifiedIso: details?.date || "",
+  };
+
+  const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);
+
+  const globalSchemaArgs = {
+    canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
+    pageTitle: seoData?.title || "",
+    metaDescription: seoData?.description || "",
+    primaryImageUrl: details?.image || "",
+    datePublishedIso: details?.date || "",
+    dateModifiedIso: details?.date || "",
+    languageTag: "en-IN",
+    currentPageName: details?.title || "",
+    currentPageSlug: `${BASE_URL}blogs/${blogSlug}`,
+    parentMenus: [
+      {
+        title: "Blogs",
+        url: "blogs",
+      },
+    ],
+  };
+
+  const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
   return (
     <>
+      {seoData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schema),
+          }}
+        />
+      )}
+      {globalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      )}
+      {blogDetailSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetailSchema) }}
+        />
+      )}
       <section className="blog_details_banner">
         <div className="container-lg">
           <div className="txdcx_banner_img">
             <figure>
               <Image
                 src={details.image || "/images/blog-details-banner.webp"}
-                alt={details.title || "GL Bajaj"}
+                alt={details?.image_alt || details.title || "GL Bajaj"}
                 className="img-fluid w-100"
                 width={1200}
                 height={500}
@@ -102,7 +169,12 @@ export default async function BlogDetailPage({
               />
             </figure>
             <figcaption>
-              {details.date && <div className="date">{formatBlogDate(details.date)}</div>}
+              <div className="newst_details_header">
+                {details.date && (
+                  <div className="date">{formatBlogDate(details.date)}</div>
+                )}
+                
+              </div>
               {details.title && <h3>{details.title}</h3>}
               {details.description && <p>{details.description}</p>}
             </figcaption>
@@ -117,12 +189,28 @@ export default async function BlogDetailPage({
               {details.description && !details.sections && (
                 <blockquote>{details.description}</blockquote>
               )}
+              <SocialShare title={details.title || ""} />
 
               <BlogSections sections={details.sections} />
 
               <BlogFeaturedSlider blogs={featuredBlogs} listSlug={listSlug} />
 
               <BlogCommentForm blogSlug={blogSlug} />
+
+              {Array.isArray(details.tags) && details.tags.length > 0 && (
+                <div className="blog_detail_tags" aria-label="Blog tags">
+                  <h4>Tags:</h4>
+                  <ul>
+                    {details.tags.map((tag: any) => (
+                      <li key={tag.id}>
+                        <a href={`/${listSlug}?tag_id=${encodeURIComponent(String(tag.id))}`}>
+                          {tag.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* <div className="admin_form">
                 <div className="admin_header">

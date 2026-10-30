@@ -7,7 +7,7 @@ const getConferenceLists = async () => {
   return data;
 };
 
-export default async function PlacementRecord() {
+export default async function PlacementRecord({ pageName }: { pageName: string }) {
   const data = await getConferenceLists();
 
   const batch_groups = data?.placement;
@@ -37,7 +37,7 @@ export default async function PlacementRecord() {
                     <figure className="flash-effect-2">
                       <img
                         src={item.image ?? ""}
-                        alt={item?.name}
+                        alt={item?.alt || pageName}
                         data-aos="fade-up"
                         data-aos-delay="200"
                       />

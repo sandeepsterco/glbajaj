@@ -1221,7 +1221,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_testimonials .right .role { font: var(--font-12); font-weight: 400; color: var(--color-33); margin-top: 1rem; }
 .home_testimonials .right .tab_image_content { margin-top: 2rem; padding-bottom: 3rem; position: relative; padding-inline: 1rem; }
 .home_testimonials .right .tab_image_content:before { width: 100%; height: 0.3rem; }
-.home_testimonials .tab, .tabs_design1 .tab { font: var(--font-18); font-weight: 600; color: var(--color-black); }
+.home_testimonials .tab, .tabs_design1 .tab { font: var(--font-18); font-weight: 600; color: var(--color-black); line-height: 1.4;}
 .home_sessions_section { padding-block: 3rem 3.5rem; }
 .home_sessions_section .home_session_titl > h4 { font: var(--font-16); font-weight: 700; }
 .home_sessions_section .home_session_titl > h3 { font: var(--font-28); letter-spacing: -1.4px; font-weight: 400; margin-bottom: 4rem; }

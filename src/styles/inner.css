@@ -339,7 +339,7 @@
 .research-innovation-ipr-patents .value-education-sec2 .inner-iqac-function-grid-2{ align-items: flex-start;}
 .media_coverage { padding-block: 0; }
 .research-innovation-ipr-patents .media_coverage .media_grid{ margin-top: 7rem;}
-
+.research-innovation-iic .media_coverage { padding-block: 10rem; }
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 1rem 0 1rem 2.7rem; position: relative; }
@@ -2586,7 +2586,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
     .blog_cnt a { margin-left: 0; }
     .blog_listing { padding-block: 4rem 5rem; }
     .categories_section{padding: 2rem 0;}
-
 }
 
 .admin_form { background-color: var(--color-F4); padding: 3rem 2rem; margin-top: 5rem; font: var(--font-16); color: var(--color-black); }

@@ -94,9 +94,13 @@ export default function HomeHighlightsClient({ events, pageName }: HomeUpcomingE
                     </div>
 
                     <div className="right">
-                      <Link href={`${BASE_URL}happenings/media-coverage`}>
+                      <Link href="/happenings/media-coverage">
                         <div className="arrow_btn1">
-                          <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                          <img
+                            alt="see more icon"
+                            src="/images/home/slide_arrow_right.svg"
+                            loading="lazy"
+                          />
                         </div>
                       </Link>
                     </div>

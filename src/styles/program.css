@@ -354,6 +354,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 @media (min-width: 2300px) {
  .award-detail-text { padding-inline: 29rem 0; }
 .award-detail-text1 figure { margin-top: 13rem; }
+.award-detail-sec .award-detail-text { padding-inline: 0rem 0; }
  }
 .csr-sec { padding-block: 5rem 10rem; }
 .csr-txt h4 { color: var(--color-64); font-weight: 700; margin-bottom: 4rem; }
@@ -661,7 +662,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .exam_pdfsec{ width: 100%;}
     .txdcx_banner_img figcaption { bottom: 2rem; left: 2rem; }
     .txdcx_banner_img figure>img{ min-height: 30rem; object-fit: cover;}
-    .cont-mail a{ line-height: 2.3;}
+    /* .cont-mail a{ line-height: 2.3;} */
     .hierarchy-box{grid-template-columns: 100%;}
     .hierarchy-text{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(2, 1fr); }
@@ -669,6 +670,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .career-list { grid-template-columns: repeat(2, 1fr); padding-bottom: 3rem;}
    
     .txdcx_banner_img figcaption { right: 3rem; }
+    .privacy_policy, .terms-and-conditions-page {
+    padding-block: 6rem 6rem;
+}
+
 
 }
 

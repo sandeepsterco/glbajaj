@@ -291,7 +291,7 @@
 
 .news_details_grid.odd > *:first-child { order: 2; }
 .news_details_grid.odd > *:last-child { order: 1; }
-.common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 0rem;}
+.common_image_slider p{ font: var(--font-18); font-weight: 600; padding-top: 2rem; line-height: 1.4;}
 
 .news_details_grid.odd .news_details_cnt{text-align: left;}
 .news_details_gallery { margin-top:7rem; }
@@ -334,6 +334,12 @@
 .media_coverage .media_coverage_year{margin-bottom:6rem;}
 /* .media_grid_Bx figure img { max-width: 22rem; margin: 0 auto; }
 */
+
+
+.research-innovation-ipr-patents .value-education-sec2 .inner-iqac-function-grid-2{ align-items: flex-start;}
+.media_coverage { padding-block: 0; }
+.research-innovation-ipr-patents .media_coverage .media_grid{ margin-top: 7rem;}
+.research-innovation-iic .media_coverage { padding-block: 10rem; }
 .media_txt h5 { font: var(--font-16); font-weight: 600; margin-block: 0 1.5rem; }
 .media_txt p { font: var(--font-16); }
 .media_txt { padding: 1rem 0 1rem 2.7rem; position: relative; }
@@ -351,6 +357,12 @@
 .media_grid_Bx2 a{ margin-top: -3rem;}
 .media_grid_Bx3{ padding: 2rem 2rem; background:#ebebeb;}
 .media_txt p a:hover{ color: var(--color-64);}
+
+@media (max-width:1536px){
+    .media_grid_Bx figure{ height: auto;}
+}
+
+
 /* ==============Notices & Announcements page Start============= */
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
@@ -599,7 +611,7 @@
 .accredation_grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-inline: -4rem; padding-block: 5rem; }
 .accredation_bx { border-right: 1px solid rgba(174, 127, 44, 0.5); padding-inline: 4rem; }
 .accredation_bx figure{ min-height: 18rem;}
-.accredation_bx figure img { margin-bottom: 5rem; }
+.accredation_bx figure img { margin-bottom: 5rem; mix-blend-mode: multiply;}
 .accredation_bx:nth-child(2) figure { margin-top: 0rem; }
 .accredation_bx:nth-child(1) figure { margin-top: 0rem; }
 .accredation_bx:last-child { border-right: 0; }
@@ -684,7 +696,7 @@
 .tabs_section .acc-body { display: none; padding: 1rem; }
 .tabs_section .tab-content.active .acc-body { display: block; }
 .about_glbim_p { font: var(--font-24); }
-.tabs_section .acc-header { font: var(--font-18); }
+.tabs_section .acc-header { font: var(--font-18); line-height: 1.4;}
 .wipro-oracle-exe-center .tabs_section { padding-block:5rem; }
  }
 .sterco_tabs_sec .sterco_tab_main { position: relative; padding-block:4rem 8rem; }
@@ -1085,7 +1097,7 @@
 .accreditaion_media_wrapper .accreditaion_media_grid ul { grid-template-columns: repeat(2, 1fr); margin-top: 7rem;}
 .accreditaion_media_wrapper .accreditaion_media_grid ul li img{ border: 1px solid #eee;}
 .accreditaion_media_wrapper .accreditaion_media_grid2 ul li img{ border: 1px solid #eee;}
-.head_grid{ display: grid; grid-template-columns: 50% auto; gap: 4rem; background-color:#f6f6f6; padding: 2rem; margin-top:7rem; align-items: center;}
+.head_grid{ display: grid; grid-template-columns: 50% auto; gap: 4rem; background-color:#f6f6f6; padding: 2rem 0; margin-top:7rem; align-items: center;}
 .cont_sc h5{ font: var(--font-16); margin-bottom: 1.5rem; font-weight: 400;}
 .cont_sc a { align-items: center; gap: 1rem; display: flex; font: var(--font-16); }
 .cont_sc a img{ max-width: 2rem;}
@@ -1292,6 +1304,7 @@
 .transport-tabs .item.active .item-content { display: block; }
 .about_breadcrumb.menus { display: none; }
 .about_menu_bar { top: 0rem; }
+.tcex_btm_des.apply_now_contents{grid-template-columns:100%}
     
  }
 /* =============Transport Facilities  End============= */
@@ -1431,6 +1444,15 @@
 .medicl_faci_tabse .tab_content .acc-body { margin-top: -25rem; }
 .medicl_faci_tabse .tab_content .acc-body::before { right: -1rem; }
 
+.research-innovation-state-of-the-art .amatra_grid{ display: none;}
+.research-innovation-state-of-the-art .amatra_title{ margin-bottom: 0;}
+.research-innovation-state-of-the-art .media_coverage{ padding-block: 13rem;}
+.alumni-detail-sec{ padding-bottom: 10rem;}
+.research-innovation-state-of-the-art .amatra_gym{padding-block: 5rem 5rem;}
+@media (max-width:991px){
+    .research-innovation-state-of-the-art .media_coverage { padding-block: 8rem 5rem; }
+}
+
 /* ============= Campus Facilities End============= */
 /* *************************Kundan Css Start******************* */
 /* ============================= Iqac Page Styling css =========== */
@@ -1562,6 +1584,12 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .value-education-event { padding-top: 10rem; }
 .value-education-event h2 { font: var(--font-30); }
 .value-education-event .btn-grp { margin-top: 5.4rem; }
+
+
+
+
+
+
 /* =========== Bhashini Sec1 ======= */
 .bhashini-sec1 { margin-top: 13rem; margin-bottom: 11.9rem; }
 .bhashini-sec1 .bhashini-sec1-grid { display: grid; grid-template-columns: 25% auto; gap: 3rem; margin-inline: 3.55rem; }
@@ -1803,6 +1831,15 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .insp_contentsec h6 { margin-bottom: 4rem; font: var(--font-30); }
 .insp_imggrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
 .insp_contentsec p { padding-right: 11rem; }
+
+.research-innovation-iic-page .amatra_gym{padding-block: 0rem 10rem;}
+.research-innovation-iic-page .amatra_gym ul{ margin-bottom: 5rem;}
+.research-innovation-iic-page .res_publication.innovate{ padding-top: 5rem;}
+.research-innovation-iic-page .media_coverage .media_grid{ padding-top: 6rem;}
+
+
+
+
 @media (max-width: 991px) {
  .club_grid { grid-template-columns: repeat(1, 1fr); }
  .iqac-event .fac_mainpdf{grid-template-columns: repeat(2, 1fr); gap: 2rem;}
@@ -1837,6 +1874,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 
 .alumni_our_tem { padding-block: 12rem 16.4rem; }
 .alumni_our_tem .teamX_titlesec { margin-bottom: 9rem; }
+.alumni_overview .teamX_card .teamX_img img{ height: 25rem; object-fit: contain;}
 .alumni_committe_member.team-members-sec { margin-top: 0; border-bottom: none; border-top: 0.1rem solid #e3ccb9; padding-block: 12rem 13rem; }
 .alumni_committe_member.team-members-sec h5 { margin-bottom: 5rem; font-weight: bold; }
 .alumni_committe_member .team-members-grid { grid-template-columns: repeat(4, 1fr); }
@@ -1874,7 +1912,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alum_calcu_grids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4.2rem; }
 .alc_contextsec h5 { margin-bottom: 4rem; font-weight: bold; }
 .alc_contextsec { margin-bottom: 13rem; }
-.alumni-detail-sec .alu-detail-title { padding-block: 5rem 5rem; }
+.alumni-detail-sec .alu-detail-title { padding-block: 8rem; }
 /*Alumni-Chapters Page css Start */
 /* Kundan Css Start 12/05/2026 */
 .about_iic_grid { display: grid; grid-template-columns: 57.8% 42.1%; background-color: var(--color-F4); padding: 9.1rem 12.6rem; }
@@ -1901,6 +1939,18 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .mentor-bx p:first-child { color: var(--color-00);  margin-bottom: 1rem; }
 .mentor-bx p:last-child { color: var(--color-00);  font-weight: 600; margin-bottom: 0rem; }
 .mentor-bx p:last-child span{ color: var(--color-00);}
+
+@media (max-width:1536px){
+    .alumni_overview .teamX_card .teamX_img img { height: 36rem; }
+}
+
+@media (max-width:991px){
+    .alumni-detail-sec .alu-detail-title { padding-block: 4rem; }
+    .alumni-detail-content h3{ margin-bottom: 2rem;}
+    .alumni-detail-grid-reverse .alumni-detail-content h3 { margin-bottom:2rem; }
+    .alumni-detail-sec { padding-bottom: 5rem; }
+
+}
 
 .nss-ncc-aim { margin-top: 5rem; }
 .nss-ncc-aim-grid { display: grid; grid-template-columns: 42.5% 57.6%; margin-bottom: 9rem; }
@@ -2049,7 +2099,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .facility-image-grid .shaping_future_grid { grid-template-columns: repeat(3, 1fr); }
 .shaping_future.facility-image-grid .container { background-color: transparent; padding-top: 0; }
 .res_publication.innovate p { margin-top: 2rem; }
-.res_publication.innovate-student .res_publication_ttl { margin-top: 10rem; }
+.res_publication.innovate-student .res_publication_ttl { margin-top:5rem; }
 .publication-top { padding-bottom: 0; }
 .anti_ragging_inner { background-color: var(--color-F4); padding: 8.5rem 7.5rem 8.2rem 12.5rem; position: relative; }
 .anti_ragging_inner::after { content: ""; position: absolute; background: url(/images/fn-iqac.webp) bottom left no-repeat; width: 100%; bottom: 0; left: 0; height: 100%; }
@@ -2063,7 +2113,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
 .privacy_policy, .terms-and-conditions-page { padding-block: 8rem 10rem; }
-.privacy-policy h3, .terms-and-conditions-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height: 2.6rem; font-family: var(--font-tasa); margin-bottom:2rem; }
+.privacy-policy h3, .terms-and-conditions-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height:1.4; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul, .terms-and-conditions-page ul { padding-bottom: 3rem; }
 .privacy_box { margin-bottom: 2.5rem; }
 .research_and_incubation .center_icu_logosec { display: flex; padding-top: 3rem; flex-wrap: wrap;}
@@ -2529,6 +2579,15 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
     justify-content: center;
 }
 
+@media (max-width:991px){
+    .fm_gr_grid { grid-template-columns: repeat(1, 1fr); }
+    .career_form { padding-block: 5rem; }
+    .car_form_mainsec{padding: 2.5rem;}
+    .blog_cnt a { margin-left: 0; }
+    .blog_listing { padding-block: 4rem 5rem; }
+    .categories_section{padding: 2rem 0;}
+}
+
 .admin_form { background-color: var(--color-F4); padding: 3rem 2rem; margin-top: 5rem; font: var(--font-16); color: var(--color-black); }
 .admin_form .row { margin-inline: -0.5rem; }
 .admin_header { display: flex; gap: 3rem; align-items: flex-end; padding-bottom: 3rem; }
@@ -2546,6 +2605,11 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 /* best Practice page css */
 .best_prac_main { padding-block: 5rem 10rem; }
 .best_title { margin-bottom: 8.4rem; }
+.quality-initiatives-iqac-best-practices .best_prac_lft .best_pra_pdf { margin-top: 3rem;}
+.inc_high_rgt{ padding-block: 2rem;}
+.quality-initiatives-iqac-best-practices .the_pra_contebx h4 { margin-bottom: 2rem; }
+
+
 .best_prac_grid { display: grid; gap: 12.5rem; grid-template-columns: 34.1% auto; }
 .best_prac_lft> h4 { margin-bottom: 4rem; }
 .best_pra_pdf a { display: inline-flex; align-items: center; gap: 1rem; font: var(--font-16); font-weight: 600; border-bottom: 0.1rem solid #7070704D; padding-bottom: 2.5rem; position: relative; }

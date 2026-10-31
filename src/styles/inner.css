@@ -70,6 +70,9 @@
 
 .why-glbitm-committees-cells .head_commttesec .font36{margin-bottom:7.2rem;}
 
+.admissions-prospectus-page .pdf_iframe{padding:12rem 0 ;}
+.admissions-prospectus-page .pdf_iframe iframe{height: 100rem;}
+
 /* ── RESPONSIVE: convert to accordion on mobile ─────────── */
   @media (max-width: 768px) {
  .xtabs_nav { display: none; /* hide tab buttons */ }
@@ -2707,4 +2710,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .dep-left h6{font: var(--font-14);}
 .dep-left .cr-exp{margin:1rem 0; font: var(--font-14);}
 .cr-right{text-align: left; justify-content: start; margin-top:2rem;}
+.admissions-prospectus-page .pdf_iframe{padding:5rem 0;}
+.admissions-prospectus-page .pdf_iframe iframe{height:40rem}
 }

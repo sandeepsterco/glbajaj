@@ -216,6 +216,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .table-wrapper thead tr { background-color: var(--color-64); color: var(--color-white); }
 .table-wrapper thead tr th { font: var(--font-18); }
 .table-wrapper tbody tr td { font: var(--font-16); color: var(--color-33); }
+.table-wrapper tbody tr td .icons{display:flex; gap:0.5rem;}
+.table-wrapper tbody tr td .icons img{width:2rem}
+.table-wrapper tbody tr td .name{margin-bottom:1rem; display:block;}
 .table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal;  }
 /* Cell Styling */
 .table-wrapper td { padding: 1.5rem 2.5rem; border-bottom: 0; font-size: var(--font-16); }
@@ -294,7 +297,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .contact-icon { margin-right: 2rem; }
 .contact-info-txt p { margin-bottom: 0; }
 .contact-info-txt span { font: var(--font-12); letter-spacing: -0.36px; }
-.cont-mail a { color: var(--color-92); font-weight: 700; border-bottom: 1px dashed var(--color-92); padding-bottom: 1rem; }
+.cont-mail a,
+.contact-disc a.email { color: var(--color-92); font-weight: 700; border-bottom: 1px dashed var(--color-92); padding-bottom: 1rem; }
+.contact-disc a.email{border:none; padding:none;}
 .cont-mail a:hover { color: var(--color-64); }
 .contact-disc { padding-block: 3rem 5rem; }
 .contact-disc p a { font-weight: 700; color: var(--color-black); }

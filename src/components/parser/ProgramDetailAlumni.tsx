@@ -52,9 +52,7 @@ export default function ProgramDetailAlumni({ pageName }: { pageName: string }) 
   }
 
   if(!data?.length){
-    return (
-      <NoData />
-    )
+    return;
   }
 
   return (

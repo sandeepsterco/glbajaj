@@ -22,13 +22,10 @@
     .inspiration_grid { grid-template-columns: 60% auto; }
     .container .col-lg-10{ width: 100%;}
     /* .place_imgbox > figure { height: 50rem; } */
-<<<<<<< HEAD
     .happenings_page:before{width: 13.6rem;}
     .student_corner_overview .col-lg-4{ width: 50%;}
-=======
     .happenings_page:before{width: 13.6rem;}    
     .placements-training-placement-team .alumni_team .teamX_card:first-child .teamX_img{ width: 50%;}
->>>>>>> 2f9c9c3e5a68279d19a4fe7f4a7e07a644f63ab2
 
  }
 @media (max-width: 1399px) {

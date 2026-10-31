@@ -20,7 +20,7 @@ const fetchProgramPlacements = async (slug: string) => {
   return data?.program_details?.data?.['intern-placement'];
 };
 
-export default function ProgramDetailPlacements() {
+export default function ProgramDetailPlacements({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
 
@@ -57,7 +57,7 @@ export default function ProgramDetailPlacements() {
     <div className="home_placement_students deparment_page_placemen">
       <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian</h4>
+        <h4 className="top_placed">Top Placed GLBians</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -81,7 +81,7 @@ export default function ProgramDetailPlacements() {
         >
           {placementData.map((item: any, index: number) => (
             <SwiperSlide key={index}>
-              <figure><Image src={item.image} alt={item.name} width={349} height={409} loading="lazy" /></figure>
+              <figure><Image src={item.image} alt={item?.alt || pageName} width={349} height={409} loading="lazy" /></figure>
              <div className="placem_cnt"> <img
                 src={item?.logo_image}
                 className="placement_img"

@@ -2,9 +2,10 @@
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { SkeletonGroup } from "../../ui/Skeleton";
-import { API_URL, BASE_URL } from "@/src/config/config";
+import { API_URL, APPLY_NOW, BASE_URL } from "@/src/config/config";
 import Link from "next/link";
 import CourseSearch from "../../parser/CourseSearch";
+import { generateSlug } from "@/src/lib/generateSlug";
 
 interface MenuItem {
     type?: string;
@@ -25,33 +26,81 @@ interface MenuResponse {
     menuItems: MenuItem[];
 }
 
+const isSlugPlaceholder = (slug: string) => !slug.includes('sdfsdfsdfsdfsdfsdfsdfsdfsd');
+const isDepartment = (slug: string) => slug.includes('department');
+
+function getMenuHref(
+    item: MenuItem,
+    source: "header" | "sidebar",
+    ancestors: MenuItem[] = []
+) {
+    if (item.target_blank_url) return item.target_blank_url;
+    if (!item.slug) return "#";
+
+    const depth = ancestors.length;
+    if (depth === 0) return `${BASE_URL}${item.slug}`;
+
+    if (depth === 1) {
+        const prefix = source === "header"
+            ? item.slug && isSlugPlaceholder(item.slug) ? `${ancestors[0].slug}/` : ""
+            : `${generateSlug(ancestors[0].title ?? "")}/`;
+        return `${BASE_URL}${prefix}${item.slug}`;
+    }
+
+    const topItem = ancestors[0];
+    const parentItem = ancestors[1];
+    const parentNavigable = !!parentItem.slug && parentItem.slug !== "#";
+    const prefix = isSlugPlaceholder(item.slug) ? `${generateSlug(topItem.title ?? "")}/` : "";
+    const parentPrefix = parentNavigable
+        ? isDepartment(parentItem.slug as string) ? "" : `${parentItem.slug}/`
+        : "";
+    return `${BASE_URL}${prefix}${parentPrefix}${item.slug}`;
+}
+
 // Renders a group of menu items at the same level, tracks which one is open
-function MenuList({ items, depth = 0 }: { items: MenuItem[]; depth?: number }) {
+function MenuList({
+    items,
+    depth = 0,
+    source,
+    ancestors = [],
+}: {
+    items: MenuItem[];
+    depth?: number;
+    source: "header" | "sidebar";
+    ancestors?: MenuItem[];
+}) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
         <>
             {items.map((item, idx) => {
                 const isOpen = openIndex === idx;
-                const href = item.target_blank_url || (item.slug ? `/${item.slug}` : "#");
+                const href = getMenuHref(item, source, ancestors);
                 const isExternal = !!item.target_blank_url;
                 const hasChildren = item.has_children && item.children && item.children.length > 0;
 
                 if (hasChildren) {
                     return (
                         <li key={`${depth}-${idx}-${item.title}`} className={`drop_down ${isOpen ? "active" : ""}`}>
-                            <a
+                            <Link
                                 href={href}
                                 className="drop_btn"
+                                target={isExternal ? "_blank" : undefined}
+                                rel={isExternal ? "noopener noreferrer" : undefined}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setOpenIndex(isOpen ? null : idx);
                                 }}
                             >
                                 {item.title}
-                            </a>
+                            </Link>
                             <ul className={`submenu ${isOpen ? "open" : ""}`}>
-                                <MenuList items={item.children} depth={depth + 1} />
+                                <MenuList
+                                    items={item.children}
+                                    depth={depth + 1}
+                                    source={source}
+                                    ancestors={[...ancestors, item]}
+                                />
                             </ul>
                         </li>
                     );
@@ -59,12 +108,13 @@ function MenuList({ items, depth = 0 }: { items: MenuItem[]; depth?: number }) {
 
                 return (
                     <li key={`${depth}-${idx}-${item.title}`}>
-                        <a
+                        <Link
                             href={href}
-                            {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            target={isExternal ? "_blank" : undefined}
+                            rel={isExternal ? "noopener noreferrer" : undefined}
                         >
                             {item.title ?? item?.data?.name ?? ''}
-                        </a>
+                        </Link>
                     </li>
                 );
             })}
@@ -171,7 +221,14 @@ export default function MobileMenu() {
     if (!isMobile) return null;
 
     return (
-        <div className="fixed-bottom mobile-footer">
+        <div
+            className="fixed-bottom mobile-footer"
+            onClick={(event) => {
+                if (event.target instanceof Element && event.target.closest(".modal-new a:not(.drop_btn)")) {
+                    setActiveModal(null);
+                }
+            }}
+        >
 
             {/* Modal 1 - Programs */}
             <div className={`modal-new modal1 ${activeModal === "modal1" ? "show" : ""}`}>
@@ -196,7 +253,7 @@ export default function MobileMenu() {
                                                     <figcaption dangerouslySetInnerHTML={{__html:getValue('under_graduate')?.value ?? ''}} />
                                                     <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
                                                 </div>
-                                                <a href={getValue('under_graduate')?.url ?? ''} className="strech_link"></a>
+                                                <a href={`${BASE_URL}${getValue('under_graduate')?.url ?? ''}`} className="strech_link"></a>
                                             </li>
                                             <li>
                                                 <figure>
@@ -206,7 +263,7 @@ export default function MobileMenu() {
                                                     <figcaption dangerouslySetInnerHTML={{__html:getValue('post_graduate')?.value ?? ''}} />
                                                     <span><img src="/images/home/slide_arrow_right.svg" alt="" className="img-fluid" width={50} height={50} /></span>
                                                 </div>
-                                                <a href={getValue('post_graduate')?.url ?? ''} className="strech_link"></a>
+                                                <a href={`${BASE_URL}${getValue('post_graduate')?.url ?? ''}`} className="strech_link"></a>
                                             </li>
                                         </ul>
                                     )}
@@ -252,7 +309,7 @@ export default function MobileMenu() {
                             </div>
 
                             <div className="m-view">
-                                <a href={`${BASE_URL}admission/apply`} className="apply_online_btn">Apply Online</a>
+                                <a href={`${APPLY_NOW}`} className="apply_online_btn">Apply Online</a>
                                 <a href={getValue('prospectus').image ?? ''} target="_blank" className="download_prospectus_btn">{getValue('prospectus').value}</a>
                             </div>
                         </>
@@ -309,18 +366,19 @@ export default function MobileMenu() {
                             <SkeletonGroup count={6} wrapperClassName="!block" className="w-full h-[5rem] !mb-[0.5rem]" />
                         ) : (
                             <ul>
-                                <MenuList items={[...headerMenu, ...sidebarMenu]} depth={0} />
+                                <MenuList items={headerMenu} depth={0} source="header" />
+                                <MenuList items={sidebarMenu} depth={0} source="sidebar" />
                             </ul>
                         )}
                     </div>
 
                     <div className="others_mobile_menu">
                         <ul>
-                            <li><a href="/quick-links">Quick Links</a></li>
+                            <li><Link href={`${BASE_URL}quick-links`}>Quick Links</Link></li>
                             {loading["modal4"] ? (
                                 <SkeletonGroup count={6} wrapperClassName="!block" className="w-full h-[3rem] !mb-[0.8rem]" />
                             ) : (
-                                <MenuList items={footerMenu} depth={0} />
+                                <MenuList items={footerMenu} depth={0} source="header" />
                             )}
                         </ul>
                     </div>

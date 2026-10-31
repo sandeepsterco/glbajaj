@@ -18,7 +18,7 @@ const getDepartmentFaculty = async (slug: string) => {
     return data?.data?.modular?.faculty;
 }
 
-export default function DepartmentHomeFaculties() {
+export default function DepartmentHomeFaculties({ pageName }: { pageName: string }) {
     const pathname = usePathname();
     const slug = pathname.split('/').filter(Boolean).pop() ?? '';
 
@@ -61,7 +61,7 @@ export default function DepartmentHomeFaculties() {
                     <SwiperSlide key={item?.id || index}>
                         <div className="leader_card">
                             <figure>
-                                <Image src={item?.image || '/images/default/faculty.webp'} alt="leader" className="img-fluid w-100" height={255} width={287} loading="lazy" data-aos="fade-up" data-aos-delay="200"/>
+                                <Image src={item?.image || '/images/default/faculty.webp'} alt={item?.alt || pageName} className="img-fluid w-100" height={255} width={287} loading="lazy" data-aos="fade-up" data-aos-delay="200"/>
                             </figure>
                             {item?.name && (
                                 <h4 data-aos="fade-up" data-aos-delay="400">{item.name}</h4>

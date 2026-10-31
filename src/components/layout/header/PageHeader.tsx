@@ -1,17 +1,14 @@
-import Link from 'next/link';
 import NavLinks from './NavLinks';
-import React from 'react';
-import { buildBreadcrumbs } from '@/src/lib/buildBreadcrumbs';
+import { buildBreadcrumbs, type CustomTabs } from '@/src/lib/buildBreadcrumbs';
 import TruncatedBreadcrumbs from './TruncatedBreadcrumbs';
 
-export default function PageHeader({ data, slug, pathname, currentPageTitle, parentSlug }: { data: any; slug: string; pathname: string; currentPageTitle?: string; parentSlug?:string }) {
+export default function PageHeader({ data, slug, pathname, currentPageTitle, parentSlug, customTabs }: { data: any; slug: string; pathname: string; currentPageTitle?: string; parentSlug?:string; customTabs?: CustomTabs }) {
   const currentPage = data?.tabs?.find((tab: any) => tab.slug === data?.active_tab_slug);
   const activeSlug = data?.active_tab_slug;
-  const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle, parentSlug);
+  const breadcrumbs = buildBreadcrumbs(data, pathname, currentPageTitle, parentSlug, customTabs);
 
   const totalLength = currentPageTitle ? breadcrumbs?.length - 1 : breadcrumbs?.length - 2;
 
-  // Filter out falsy entries (buildBreadcrumbs can push `false` when currentPageTitle is absent)
   const cleanBreadcrumbs = (breadcrumbs ?? []).filter(Boolean);
 
   return (
@@ -36,7 +33,7 @@ export default function PageHeader({ data, slug, pathname, currentPageTitle, par
                 tabs={data.tabs}
                 parentSlug={parentSlug}
                 activeSlug={activeSlug}
-                tabTitle={data?.tab_title}
+                tabTitle={data?.tab_title || data?.page_title}
                 pathname={pathname}
               />
             </div>

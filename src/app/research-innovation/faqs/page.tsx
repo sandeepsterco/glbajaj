@@ -62,7 +62,7 @@ export default async function AdmissionOverviewPage() {
       )}
       
       <PageHeader pathname={`/research-innovation/faqs`} data={data?.data} slug={'research-innovation-faqs'} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>}
       
     </>
   );

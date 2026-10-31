@@ -16,15 +16,17 @@ export interface ResearchItem {
   image: string;
   slug?: string;
   no_detail?: boolean | number;
+  alt?: string;
 }
 
 type Props = {
   items: ResearchItem[];
   slug: string;
   parentSlug:string;
+  pageName: string;
 };
 
-export default function DepartmentResearchSlider({ items, slug, parentSlug }: Props) {
+export default function DepartmentResearchSlider({ items, slug, parentSlug, pageName }: Props) {
   const canLoop = items.length > SLIDES_PER_VIEW;
 
   return (
@@ -52,7 +54,7 @@ export default function DepartmentResearchSlider({ items, slug, parentSlug }: Pr
             <figure className="flash-effect-2">
               <Image
                 src={item.image}
-                alt={item.title ?? "department research image"}
+                alt={item.alt || pageName}
                 className="img-fluid w-100"
                 width={426}
                 height={318}

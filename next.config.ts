@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
       { protocol: "http", hostname: "**" },
       { protocol: 'https', hostname: 'img.youtube.com' },
     ],
-    unoptimized: true,
+    unoptimized: true,  
     // domains is deprecated, remotePatterns above covers it
   },
 
-  async headers() {
+  async headers() { 
     return [
       {
         source: "/(.*)",

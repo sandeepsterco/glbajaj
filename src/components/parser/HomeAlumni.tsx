@@ -8,7 +8,7 @@ import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 
-export default function HomeAlumni({homeData}:{homeData:any}) {
+export default function HomeAlumni({homeData, pageName}:{homeData:any; pageName:string}) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
                     className={`thumb ${index === activeIndex ? "active" : ""}`}
                     onClick={() => setActiveIndex(index)}
                   >
-                    <figure><Image src={item.image} alt={item.name} width={155} height={188} loading="lazy" /></figure>
+                    <figure><Image src={item.image} alt={item.alt || pageName} width={155} height={188} loading="lazy" /></figure>
                     <div className="thumb_info">
                       <p className="name">{item.name}</p>
                       <span className="designation">{item.branch}</span>
@@ -148,7 +148,7 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
                     width={600}
                     height={732}
                     loading="lazy"
-                    alt={activeItem.name}
+                    alt={activeItem.alt || pageName}
                   />
                 </figure>
               )}
@@ -211,7 +211,7 @@ export default function HomeAlumni({homeData}:{homeData:any}) {
                         width={600}
                         height={732}
                         loading="lazy"
-                        alt={item.name}
+                        alt={item.alt || pageName}
                       />
                       {/* Person info inside each slide on mobile */}
                       <div className="tab_image_content">

@@ -6,6 +6,7 @@ import type { MouseEvent } from "react";
 import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
+import SocialShare from "../common/SocialShare";
 
 function getLast12Months(): { label: string; year: string; month: string }[] {
   const months = [];
@@ -28,21 +29,22 @@ interface BlogTag {
 }
 
 export interface BlogFilterValues {
-  search: string;
-  category: string;
-  year: string;
-  month: string;
+  search?: string;
+  category?: string;
+  year?: string;
+  month?: string;
 }
 
 export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
 
 interface Props {
+  shareTitle?:string;
   featuredBlogs: any[];
   comments: any[];
-  currentCategory: string;
-  currentYear: string;
-  currentMonth: string;
-  currentSearch: string;
+  currentCategory?: string;
+  currentYear?: string;
+  currentMonth?: string;
+  currentSearch?: string;
   tags?: BlogTag[];
   currentTagSlug?: string;
   slug: string;
@@ -73,6 +75,7 @@ function FilterChip({ label, href, onRemove }: {
 }
 
 export default function BlogSidebar({
+  shareTitle,
   featuredBlogs,
   comments,
   currentCategory,
@@ -92,6 +95,7 @@ export default function BlogSidebar({
   const [searchInput, setSearchInput] = useState(currentSearch);
   const [categories, setCategories] = useState<any[]>([]);
   const filterBase = listingPath ?? pathname;
+  const listingHref = `${BASE_URL}${slug}`;
   const selectedCategoryParam = onFiltersChange
     ? currentCategory
     : searchParams.get("category") ?? currentCategory;
@@ -157,7 +161,7 @@ export default function BlogSidebar({
   };
 
   const handleSearch = () => {
-    applyFilterUpdates({ search: searchInput.trim() || null });
+    applyFilterUpdates({ search: searchInput?.trim() || null });
   };
 
   const archives = getLast12Months();
@@ -168,13 +172,20 @@ export default function BlogSidebar({
   const hasArchiveFilter = Boolean(currentYear);
   const selectedCategory = categories.find((cat) => {
     const catId = String(cat.id);
+    const catSlug = String(cat.slug ?? "").trim().toLowerCase();
     const catName = String(cat.name ?? "").trim().toLowerCase();
     const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
-    return selectedValue === catId || (catName && selectedValue === catName);
+    return selectedValue === catId || selectedValue === catSlug || (catName && selectedValue === catName);
   });
 
   return (
     <div className="blog_listing_right">
+      {shareTitle && (
+        <div className="newst_details_header">
+          <SocialShare title={shareTitle || ""} options={['facebook', 'whatsapp', 'linkedin', 'x']} showMenu={true} />
+        </div>
+      )}
+      
       {showSearch && (
         <div className="input-group mb-3">
           <input
@@ -225,7 +236,7 @@ export default function BlogSidebar({
         </div>
       )}
 
-      {comments.length > 0 && (
+      {comments && comments.length > 0 && (
         <div className="recent_comments">
           <h5 className="font21">Recent Comments</h5>
           {comments.map((raw: unknown, idx: number) => {
@@ -267,8 +278,8 @@ export default function BlogSidebar({
           <div className="blog_active_filters">
             <FilterChip
               label={archiveFilterLabel}
-              href={buildHref({ year: null })}
-              onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { year: null, month: null }) : undefined}
+              href={listingHref}
+              onRemove={listingPath ? (event) => handleFilterClick(event, { year: null, month: null }) : undefined}
             />
           </div>
         )}
@@ -279,7 +290,9 @@ export default function BlogSidebar({
             const href = buildHref({ year: arc.year });
             return (
               <li key={`${arc.year}-${arc.month}-${idx}`}>
-                <Link href={href} onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} className={isActive ? "active" : ""}>
+                <Link href={`${BASE_URL}${slug}/${arc.year}/${arc.month}`} 
+                // onClick={(event) => handleFilterClick(event, { year: arc.year, month: arc.month })} 
+                className={isActive ? "active" : ""}>
                   {arc.label}
                 </Link>
               </li>
@@ -291,6 +304,14 @@ export default function BlogSidebar({
       {tags.length > 0 && (
         <div className="categories_section">
           <h5 className="font21">Tags:</h5>
+          {currentTagSlug && (
+            <div className="blog_active_filters">
+              <FilterChip
+                label={tags.find((tag) => tag.slug === currentTagSlug)?.name ?? currentTagSlug.replace(/-/g, " ")}
+                href={listingHref}
+              />
+            </div>
+          )}
           <ul>
             {tags.map((tag, idx) => (
               <li key={tag.slug ?? tag.id ?? idx}>
@@ -304,7 +325,7 @@ export default function BlogSidebar({
             ))}
           </ul>
         </div>
-      )}
+      )} 
 
       {categories.length > 0 && (
         <div className="categories_section">
@@ -313,22 +334,25 @@ export default function BlogSidebar({
             <div className="blog_active_filters">
               <FilterChip
                 label={selectedCategory.name}
-                href={buildHref({ category: null })}
-                onRemove={onFiltersChange || listingPath ? (event) => handleFilterClick(event, { category: null }) : undefined}
+                href={listingHref}
+                onRemove={listingPath ? (event) => handleFilterClick(event, { category: null }) : undefined}
               />
             </div>
           )}
           <ul>
             {categories.map((cat: any) => {
               const catId = String(cat.id);
+              const catSlug = String(cat.slug);
+              const catName = String(cat.name ?? "").trim().toLowerCase();
               const selectedValue = String(selectedCategoryParam ?? "").trim().toLowerCase();
               const isActive =
                 selectedValue === catId ||
-                selectedValue === String(cat.name ?? "").trim().toLowerCase();
-              const href = buildHref({ category: catId });
+                selectedValue === catSlug.toLowerCase() ||
+                selectedValue === catName;
+              const href = `${BASE_URL}${slug}/category/${encodeURIComponent(catSlug)}`;
               return (
                 <li key={catId}>
-                  <Link href={href} onClick={(event) => handleFilterClick(event, { category: catId })} className={isActive ? "active" : ""}>
+                  <Link href={href} className={isActive ? "active" : ""}>
                     {cat.name}
                   </Link>
                 </li>

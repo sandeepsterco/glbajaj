@@ -25,9 +25,10 @@ function formatDateParts(dateStr: string) {
 
 interface HomeUpcomingEventsClientProps {
   events: UpcomingEventsResponse;
+  pageName:string;
 }
 
-export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClientProps) {
+export default function HomeHighlightsClient({ events, pageName }: HomeUpcomingEventsClientProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -73,7 +74,7 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                   <figure>
                     <img
                       src={event.image ?? ""}
-                      alt={event.title}
+                      alt={event.alt || pageName}
                       {...aos("200")}
                       loading="lazy"
                       width="723"
@@ -93,9 +94,13 @@ export default function HomeHighlightsClient({ events }: HomeUpcomingEventsClien
                     </div>
 
                     <div className="right">
-                      <Link href={`${BASE_URL}happenings/media-coverage`}>
+                      <Link href="/happenings/media-coverage">
                         <div className="arrow_btn1">
-                          <img alt="see more icon" src="/images/home/slide_arrow_right.svg" loading="lazy" />
+                          <img
+                            alt="see more icon"
+                            src="/images/home/slide_arrow_right.svg"
+                            loading="lazy"
+                          />
                         </div>
                       </Link>
                     </div>

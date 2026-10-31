@@ -1,7 +1,7 @@
 import { apiFetch } from "@/src/lib/api";
 import AboutLeadershipSlider, { type LeaderItem } from "./Aboutleadershipslider";
 
-export default async function AboutLeadership() {
+export default async function AboutLeadership({pageName}:{pageName:string}) {
   const { data, error } = await apiFetch(`leadership`);
 
   if (error) return null;
@@ -10,5 +10,5 @@ export default async function AboutLeadership() {
 
   if (!leaders.length) return null;
 
-  return <AboutLeadershipSlider leaders={leaders} />;
+  return <AboutLeadershipSlider leaders={leaders} pageName={pageName} />;
 }

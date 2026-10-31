@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 const SLIDES_PER_VIEW = 3;
 
 
-export default function HomePlacements({homeData}:{homeData:any}) {
+export default function HomePlacements({homeData, pageName}:{homeData:any; pageName:string}) {
 
   const placementData: any[] = homeData?.modular?.["intern-placement"] ?? [];
 
@@ -21,7 +21,7 @@ export default function HomePlacements({homeData}:{homeData:any}) {
     <div className="right_slider" suppressHydrationWarning>
       {/* <div className="home_placement_static_card">
         <div className="home_placement_top_bar"></div>
-        <h4 className="top_placed">Top Placed GLBian</h4>
+        <h4 className="top_placed">Top Placed GLBians</h4>
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`}>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -32,7 +32,7 @@ export default function HomePlacements({homeData}:{homeData:any}) {
       </div> */}
 
       <div className="slider_top" suppressHydrationWarning>
-        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="200" suppressHydrationWarning>Top Placed GLBian</h4> 
+        <h4 className="top_placed" data-aos="fade-up" data-aos-delay="200" suppressHydrationWarning>Top Placed GLBians</h4> 
 
         <div className={`slider_btns ${!canLoop ? "!hidden" : ""}`} data-aos="fade-up" data-aos-delay="200" suppressHydrationWarning>
           <div className="swiper-button-prev prev_swiper_btn"></div>
@@ -86,7 +86,7 @@ export default function HomePlacements({homeData}:{homeData:any}) {
             <figure className="flash-effect-2">
               <Image
                 src={item.image}
-                alt={item.name}
+                alt={item.alt || pageName}
                 width={349}
                 height={409}
                 loading="lazy"

@@ -1124,20 +1124,18 @@
   function toggleReadMore() {
     document.querySelectorAll(".toggle-btn:not([data-readmore-init])").forEach(function (btn) {
       btn.setAttribute("data-readmore-init", "1");
+      const content = btn.closest(".content");
+      const moreText = content.querySelector(".more-text");
+      btn.textContent = moreText.classList.contains("show") ? "-" : "+";
       btn.addEventListener("click", function () {
-        let content = this.closest(".content");
-        let dots = content.querySelector(".dots");
-        let moreText = content.querySelector(".more-text");
-  
+
         if (moreText.classList.contains("show")) {
-          // dots.style.display = "inline";
           moreText.classList.remove("show");
-          this.innerHTML = '<i class="bi bi-plus-lg"></i>';
+          this.textContent = "+";
           this.classList.remove("active");
         } else {
-          // dots.style.display = "none";
           moreText.classList.add("show");
-          this.innerHTML = '<i class="bi bi-dash-lg"></i>';
+          this.textContent = "-";
           this.classList.add("active");
         }
       });

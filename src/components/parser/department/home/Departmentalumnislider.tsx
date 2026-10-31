@@ -19,13 +19,15 @@ export interface AlumniItem {
   message: string;
   type: string;
   designation: string;
+  alt?: string;
 }
 
 type Props = {
   alumni: AlumniItem[];
+  pageName: string;
 };
 
-export default function DepartmentAlumniSlider({ alumni }: Props) {
+export default function DepartmentAlumniSlider({ alumni, pageName }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
@@ -65,7 +67,7 @@ export default function DepartmentAlumniSlider({ alumni }: Props) {
                   <img
                     src={item.image}
                     className="img-fluid w-100"
-                    alt={item.name}
+                    alt={item.alt || pageName}
                     data-aos="fade-up"
                     data-aos-delay="600"
                   />
@@ -105,7 +107,7 @@ export default function DepartmentAlumniSlider({ alumni }: Props) {
                   <Image
                     src={item.image}
                     className="img-fluid w-100"
-                    alt={item.name}
+                    alt={item.alt || pageName}
                     width={166}
                     height={186}
                     loading="lazy"

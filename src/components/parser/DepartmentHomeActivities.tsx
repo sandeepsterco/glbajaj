@@ -19,7 +19,7 @@ const fetchDepartmentActivitiesData = async (slug: string) => {
   return data;
 };
 
-export default function DepartmentHomeActivities() {
+export default function DepartmentHomeActivities({ pageName }: { pageName: string }) {
   const pathname = usePathname();
   const slug = pathname.split("/").filter(Boolean).pop() ?? "";
   const { data, isLoading } = useQuery({
@@ -69,7 +69,7 @@ export default function DepartmentHomeActivities() {
                 src={item.image}
                 width={380}
                 height={275}
-                alt={item.title}
+                alt={item?.alt || pageName}
                data-aos="fade-up" data-aos-delay="200"/>
             </figure>
             <div className="activities_caption">
@@ -78,7 +78,7 @@ export default function DepartmentHomeActivities() {
             {(item?.pdf || item?.slug) && (
               <Link
                 className="strech_link"
-                href={item?.pdf ? item.pdf : `${BASE_URL}news-events/${item.slug}`}
+                href={item?.pdf ? item.pdf : `${BASE_URL}happenings/news-events/${item.slug}`}
                 target={item?.pdf ? '_blank' : '_self'}
               />
             )}

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
+import { useSearchParams } from "next/navigation";
 
 type FieldErrors = Record<string, string[] | string>;
 
@@ -35,8 +35,19 @@ export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [fieldsData, setFieldsData] = useState<ContactFormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [submitState, setSubmitState] = useState({ status: "idle", message: "" });
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
+
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+    source_url:window.location.href
+  };
 
   const resetFields = () => {
     setFieldsData(INITIAL_FORM);
@@ -77,11 +88,12 @@ export default function ContactForm() {
 
     if (RECAPTCHA_SITE_KEY && !recaptchaToken) {
       setErrors({ recaptcha: ["Please complete the reCAPTCHA verification."] });
-      toast.error("Please complete the reCAPTCHA verification.");
+      setSubmitState({ status: "error", message: "Please complete the reCAPTCHA verification." });
       return;
     }
 
     setIsLoading(true);
+    setSubmitState({ status: "loading", message: "" });
 
     try {
       const response = await fetch(`${API_URL}contact-form`, {
@@ -92,6 +104,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           ...fieldsData,
+          ...utm,
           ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
         }),
       });
@@ -103,18 +116,24 @@ export default function ContactForm() {
           setErrors(data.errors);
         }
 
-        toast.error(data.description || "Failed to submit form");
+        setSubmitState({
+          status: "error",
+          message: data.description || "Something went wrong. Please try again.",
+        });
         resetRecaptcha();
         return;
       }
 
-      toast.success(data.description || "Thank you! Your message has been submitted.");
+      setSubmitState({
+        status: "success",
+        message: data.description || "Thank you! Your message has been submitted. We'll be in touch shortly.",
+      });
       resetFields();
       resetRecaptcha();
     } catch {
       resetFields();
       resetRecaptcha();
-      toast.error("Failed to submit form");
+      setSubmitState({ status: "error", message: "Network error. Please check your connection and try again." });
     } finally {
       setIsLoading(false);
     }
@@ -127,7 +146,7 @@ export default function ContactForm() {
 
         <form onSubmit={submitHandler} noValidate>
           <div className="form-group">
-            <input type="text" placeholder="Student Name" name="name" value={fieldsData.name} onChange={changeHandler} />
+            <input type="text" placeholder="Full Name*" name="name" value={fieldsData.name} onChange={changeHandler} />
             {getFieldError("name") ? <p className="field-error" role="alert">{getFieldError("name")}</p> : null}
           </div>
 
@@ -137,12 +156,12 @@ export default function ContactForm() {
           </div>
 
           <div className="form-group">
-            <input type="text" placeholder="Phone" name="phone" value={fieldsData.phone} onChange={changeHandler} />
+            <input type="number" placeholder="Phone" name="phone" value={fieldsData.phone} onChange={changeHandler} />
             {getFieldError("phone") ? <p className="field-error" role="alert">{getFieldError("phone")}</p> : null}
           </div>
 
           <div className="form-group">
-            <input type="email" placeholder="Email" name="email" value={fieldsData.email} onChange={changeHandler} />
+            <input type="email" placeholder="Email*" name="email" value={fieldsData.email} onChange={changeHandler} />
             {getFieldError("email") ? <p className="field-error" role="alert">{getFieldError("email")}</p> : null}
           </div>
 
@@ -180,12 +199,23 @@ export default function ContactForm() {
           ) : null}
 
           <button className="btn" type="submit" disabled={isLoading}>
-            {isLoading ? "Submitting..." : "Apply Now"}
+            {isLoading ? "Submitting..." : "Submit"}
           </button>
+
+          {submitState.status === "success" && (
+            <div className="form-feedback form-feedback--success" role="alert">
+              Thank you! Your details have been submitted successfully. Our admissions team will contact you shortly.
+            </div>
+          )}
+          {submitState.status === "error" && (
+            <div className="form-feedback form-feedback--error" role="alert">
+              {submitState.message}
+            </div>
+          )}
+
         </form>
       </div>
 
-      <ToastContainer position="top-right" />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -10,6 +10,10 @@ export default function Subscribe() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const searchParams = useSearchParams();
+
+    
 
     const handleSubscribe = async () => {
         const trimmed = email.trim();
@@ -33,7 +37,17 @@ export default function Subscribe() {
 
         setLoading(true);
 
-        const {data, error} = await apiFetch(`newsletter?email=${encodeURIComponent(trimmed)}`, {
+        const query = new URLSearchParams({
+            email: trimmed,
+            utm_source: searchParams.get("utm_source") ?? "",
+            utm_medium: searchParams.get("utm_medium") ?? "",
+            utm_campaign: searchParams.get("utm_campaign") ?? "",
+            utm_term: searchParams.get("utm_term") ?? "",
+            utm_content: searchParams.get("utm_content") ?? "",
+            source_url: window.location.href
+        });
+
+        const {data, error} = await apiFetch(`newsletter?${query.toString()}`, {
             method:"POST",
             cache:'no-store',
         })

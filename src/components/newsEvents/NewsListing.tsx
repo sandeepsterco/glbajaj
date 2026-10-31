@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/src/config/config";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function NewsListing({data, slug}:{data:any, slug:string}) {
@@ -7,8 +8,8 @@ export default function NewsListing({data, slug}:{data:any, slug:string}) {
             <div className="container25">
                 {data.map((item:any, idx:number)=>(
                     <div key={idx} className="news_list">
-                        <figure  className="flash-effect-2">
-                            <img src={item?.image || '/images/default/news-list.webp'} alt={item.heading || 'news'} className="img-fluid" />
+                        <figure className="flash-effect-2">
+                            <Image src={item?.image || '/images/default/news-list.webp'} alt={item.heading || 'news'} className="img-fluid" width={675} height={519} loading="lazy" />
                         </figure>
                         <div className="news_list_right">
                             {item?.date && <p className="date">{new Date(item.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}</p>}

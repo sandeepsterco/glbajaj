@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { State, City } from "country-state-city";
 import { API_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "../RecaptchaField";
 import type { Department } from "./ProgramDetailForm";
+import DateInput from "../../ui/DateInput";
 
 interface FormData {
   name: string;
@@ -98,8 +99,16 @@ export default function ProgramDetailFormClient({
   const [submitState, setSubmitState] = useState<SubmitState>({ status: "idle", message: "" });
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const searchParams = useSearchParams();
 
-  // Pre-select department when slug is available (detail page or list modal)
+  const utm = {
+    utm_source: searchParams.get("utm_source") ?? "",
+    utm_medium: searchParams.get("utm_medium") ?? "",
+    utm_campaign: searchParams.get("utm_campaign") ?? "",
+    utm_term: searchParams.get("utm_term") ?? "",
+    utm_content: searchParams.get("utm_content") ?? "",
+  };
+
   useEffect(() => {
     if (!defaultDepartmentSlug || departments.length === 0) return;
     const match = departments.some((d) => d.slug === defaultDepartmentSlug);
@@ -187,6 +196,8 @@ export default function ProgramDetailFormClient({
         state: formData.stateLabel,
         city: formData.city,
         department_name: selectedDept?.name ?? formData.department,
+        source_url:window.location.href,
+        ...utm,
         ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       };
 
@@ -237,6 +248,22 @@ export default function ProgramDetailFormClient({
       <p className="field-error" role="alert">{errors[field]}</p>
     ) : null;
 
+    const currentDate = new Date();
+
+    const maxDate = new Date(
+      currentDate.getFullYear() - 18,
+      currentDate.getMonth(),
+      currentDate.getDate()
+    );
+    
+    const maxDobDate = [
+      maxDate.getFullYear(),
+      String(maxDate.getMonth() + 1).padStart(2, "0"),
+      String(maxDate.getDate()).padStart(2, "0"),
+    ].join("-");
+    
+    const minDobDate = `${currentDate.getFullYear() - 80}-01-01`;
+
   return (
     <div className="program-form">
       <div className="form-container">
@@ -247,7 +274,7 @@ export default function ProgramDetailFormClient({
             <input
               type="text"
               name="name"
-              placeholder="Student Name"
+              placeholder="Student Name*"
               value={formData.name}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -261,7 +288,7 @@ export default function ProgramDetailFormClient({
             <input
               type="email"
               name="email"
-              placeholder="Student Email ID"
+              placeholder="Student Email ID*"
               value={formData.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -277,7 +304,7 @@ export default function ProgramDetailFormClient({
             <input
               type="tel"
               name="phone"
-              placeholder="Student Mobile No."
+              placeholder="Student Mobile No.*"
               value={formData.phone}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -288,23 +315,27 @@ export default function ProgramDetailFormClient({
           {fieldError("phone") && <div className="form-group">{fieldError("phone")}</div>}
 
           {/* Date of Birth */}
-          <div className={`form-group ${touched.dob && errors.dob ? "has-error" : ""}`}>
-            <input
-              type="date"
+          <div
+            className={`form-group ${
+              touched.dob && errors.dob ? "has-error" : ""
+            }`}
+          >
+            <DateInput
+              id="dob"
               name="dob"
-              placeholder="Date of Birth"
+              placeholder="Date of Birth*"
               value={formData.dob}
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isSubmitting}
-              max={new Date().toISOString().split("T")[0]}
+              min={minDobDate}
+              max={maxDobDate}
             />
+
             {fieldError("dob")}
           </div>
 
-          {/* State + City */}
           <div className="row">
-            {/* State */}
             <div className={`form-group ${touched.state && errors.state ? "has-error" : ""}`}>
               <select
                 name="state"
@@ -314,7 +345,7 @@ export default function ProgramDetailFormClient({
                 disabled={isSubmitting}
                 aria-label="State"
               >
-                <option value="">State</option>
+                <option value="">State*</option>
                 {INDIA_STATES.map(s => (
                   <option key={s.isoCode} value={s.isoCode}>{s.name}</option>
                 ))}
@@ -322,7 +353,6 @@ export default function ProgramDetailFormClient({
               {fieldError("state")}
             </div>
 
-            {/* City — populated after state chosen */}
             <div className={`form-group ${touched.city && errors.city ? "has-error" : ""}`}>
               <select
                 name="city"
@@ -334,8 +364,8 @@ export default function ProgramDetailFormClient({
               >
                 <option value="">
                   {formData.state
-                    ? cities.length > 0 ? "City" : "No cities found"
-                    : "City"}
+                    ? cities.length > 0 ? "City*" : "No cities found"
+                    : "City*"}
                 </option>
                 {cities.map(c => (
                   <option key={c.name} value={c.name}>{c.name}</option>
@@ -355,7 +385,7 @@ export default function ProgramDetailFormClient({
               disabled={isSubmitting}
               aria-label="Department"
             >
-              <option value="">Select Department</option>
+              <option value="">Select Department*</option>
               {departments.map(d => (
                 <option key={d.slug} value={d.slug}>{d.name}</option>
               ))}
@@ -395,7 +425,7 @@ export default function ProgramDetailFormClient({
           {/* Feedback */}
           {submitState.status === "success" && (
             <div className="form-feedback form-feedback--success" role="alert">
-              {submitState.message}
+              Thank you! Your details have been submitted successfully. Our admissions team will contact you shortly.
             </div>
           )}
           {submitState.status === "error" && (

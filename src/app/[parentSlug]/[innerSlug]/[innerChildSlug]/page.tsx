@@ -10,10 +10,10 @@ import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string; innerSlug: string; innerChildSlug: string }>;
+  params: Promise<{ parentSlug: string; innerSlug: string; innerChildSlug: string }>;
 }) {
-  const { innerChildSlug } = await params;
-  return await getPageSEO(innerChildSlug);
+  const { innerChildSlug, parentSlug, innerSlug } = await params;
+  return await getPageSEO(`${parentSlug}/${innerSlug}/${innerChildSlug}`);
 }
 
 export default async function DynamicSlugPage({
@@ -31,7 +31,7 @@ export default async function DynamicSlugPage({
   const resolvedSearchParams = await searchParams;
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`cms/${innerChildSlug}`),
-    getPageSEO(innerChildSlug),
+    getPageSEO(`${parentSlug}/${innerSlug}/${innerChildSlug}`),
   ]);
 
   if (error || !data?.status) {
@@ -39,8 +39,12 @@ export default async function DynamicSlugPage({
   }
 
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
-
+  const currentSlug = `${parentSlug}/${innerSlug}/${innerChildSlug}`;
   const pageData = data?.data;
+  const expectedPath = pageData?.full_url.replace(/^\/+|\/+$/g, "");
+  if(expectedPath !== currentSlug){
+    notFound();
+  }
 
   const globalSchemaArgs = {
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
@@ -63,9 +67,12 @@ export default async function DynamicSlugPage({
         url: innerSlug,
       },
     ],
-};
+  };
+  
 
 const globalSchema = buildGlobalSchema(globalSchemaArgs);
+
+  console.log('seoData',seoData);
 
   return (
     <>
@@ -78,11 +85,12 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
         />
       )}
       {globalSchema && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
-                    />
-                )}
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+            />
+        )}
+        
       <PageHeader
         pathname={`/${parentSlug}/${innerSlug}/${innerChildSlug}`}
         data={data?.data}
@@ -95,6 +103,7 @@ const globalSchema = buildGlobalSchema(globalSchemaArgs);
           html={combinedHtml}
           params={params}
           searchParams={resolvedSearchParams}
+          pageName={seoData.title}
         />
       )}
     </>

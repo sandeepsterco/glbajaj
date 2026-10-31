@@ -1,15 +1,12 @@
 "use client";
 
-// Client component: Swiper with external nav buttons needs refs and the browser.
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { BASE_URL } from "@/src/config/config";
 
-// Swiper core styles
 import "swiper/css";
 
 export interface LeaderItem {
@@ -17,43 +14,38 @@ export interface LeaderItem {
   about_image: string;
   designation?: string;
   slug?: string;
+  alt?: string;
 }
 
 type Props = {
   leaders: LeaderItem[];
+  pageName: string;
 };
 
-export default function AboutLeadershipSlider({ leaders }: Props) {
-  const prevRef = useRef<HTMLDivElement>(null);
-  const nextRef = useRef<HTMLDivElement>(null);
+export default function AboutLeadershipSlider({ leaders, pageName }: Props) {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const syncState = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
     <div className="about_leadership">
       <div className="leadership_slider" data-swiper-react>
         <Swiper
-          modules={[Navigation]}
           slidesPerView={1.2}
           spaceBetween={20}
           centeredSlides={false}
           loop={false}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+            syncState(swiper);
           }}
-          onBeforeInit={(swiper: SwiperType) => {
-            if (typeof swiper.params.navigation === "object") {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
-          }}
-          onSwiper={(swiper: SwiperType) => {
-            if (typeof swiper.params.navigation === "object") {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
-            swiper.navigation?.init();
-            swiper.navigation?.update();
-          }}
+          onSlideChange={syncState}
+          onResize={syncState}
           breakpoints={{
             768: { slidesPerView: 2.5, spaceBetween: 15 },
             1200: { slidesPerView: 3.5, spaceBetween: 23 },
@@ -65,7 +57,7 @@ export default function AboutLeadershipSlider({ leaders }: Props) {
                 <figure className="flash-effect">
                   <Image
                     src={item.about_image}
-                    alt={item.name}
+                    alt={item.alt || pageName}
                     className="img-fluid w-100"
                     width={475}
                     height={512}
@@ -87,11 +79,25 @@ export default function AboutLeadershipSlider({ leaders }: Props) {
       </div>
 
       <div className="navigation_btn">
-        <div ref={prevRef} className="swiper_prev_custom">
-          <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label="Previous"
+          className={`swiper_prev_custom ${isBeginning ? "swiper-button-disabled" : ""}`}
+          onClick={() => swiperRef.current?.slidePrev()}
+          onKeyDown={(e) => e.key === "Enter" && swiperRef.current?.slidePrev()}
+        >
+          <img src="/images/icons/arrow.svg" alt="" className="img-fluid" />
         </div>
-        <div ref={nextRef} className="swiper_next_custom">
-          <img src="/images/icons/arrow.svg" alt="arrow" className="img-fluid" />
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label="Next"
+          className={`swiper_next_custom ${isEnd ? "swiper-button-disabled" : ""}`}
+          onClick={() => swiperRef.current?.slideNext()}
+          onKeyDown={(e) => e.key === "Enter" && swiperRef.current?.slideNext()}
+        >
+          <img src="/images/icons/arrow.svg" alt="" className="img-fluid" />
         </div>
       </div>
     </div>

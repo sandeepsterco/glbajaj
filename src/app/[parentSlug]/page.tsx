@@ -36,6 +36,12 @@ export default async function DynamicSlugPage({
 
   const pageData = data?.data;
 
+  const currentSlug = `${parentSlug}`;
+  const expectedPath = pageData?.full_url.replace(/^\/+|\/+$/g, "");
+  if(expectedPath !== currentSlug){
+    notFound();
+  }
+
   const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
 
   const schemaArgs = {
@@ -110,7 +116,7 @@ export default async function DynamicSlugPage({
         />
       )}
       <PageHeader pathname={`/${parentSlug}`} data={data?.data} slug={parentSlug} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml}  pageName={seoData.title}/>}
       
     </>
   );

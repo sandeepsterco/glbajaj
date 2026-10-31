@@ -1,6 +1,6 @@
 import ReactParserDynamic from "../components/common/reactParser/ReactParserDynamic";
 
-export default async function HomeContent({data}:{data:any}) {
+export default async function HomeContent({data, pageName}:{data:any; pageName:string;}) {
   if (!data?.modular && !data?.cms) {
     return (
       <div className="min-h-[100vh] flex items-center justify-center">
@@ -15,7 +15,7 @@ export default async function HomeContent({data}:{data:any}) {
 
   return (
     <>
-      <ReactParserDynamic html={combinedHtml} homeData={data} />
+      <ReactParserDynamic html={combinedHtml} homeData={data} pageName={pageName} />
     </>
   );
 }

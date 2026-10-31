@@ -97,6 +97,7 @@ This is the minimum CSS that you will need in order for this to work
 .program-form{ margin-top: 0rem;}
 .form-container { background: var(--color-white); box-shadow: 0px 13px 34px #0000000D; opacity: 1; backdrop-filter: blur(3px); padding: 3.5rem; height: 100%; }
 .form-container .form-group { margin-bottom: 1.5rem; }
+.form-container .dob-label { display: block; margin-bottom: 0.6rem; font: var(--font-16); color: var(--color-black); }
 .form-container input, .form-container select, .form-container textarea { width: 100%; padding: 1.2rem; border: 1px solid #E1E1E1; font: var(--font-16); outline: none; color: var(--color-black); background:#fff; }
 .form-container input::placeholder { color: var(--color-black); }
 textarea::placeholder { color: var(--color-black); }
@@ -124,9 +125,7 @@ textarea::placeholder { color: var(--color-black); }
 .content { margin-top: 2rem; }
 .more-text { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .more-text.show { max-height: 1000px; }
-.toggle-btn i { transition: transform 0.3s ease; font:var(--font-16)}
-.toggle-btn.active i { transform: rotate(180deg); }
-button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); cursor: pointer; }
+button.toggle-btn { background-color: var(--color-white); border: none; padding: .5rem; margin-top: 1rem; box-shadow: 0px 2px 4px #0000001a; width: 4rem; height: 4rem; color: var(--color-dc); font: var(--font-16); cursor: pointer; }
 /* Curriculum */
 .program-detailsec1 { padding-block: 10rem 10rem; position: relative; }
 .curriculum-img { position: absolute; top: 0; margin-left: -30rem; }
@@ -217,7 +216,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .table-wrapper thead tr { background-color: var(--color-64); color: var(--color-white); }
 .table-wrapper thead tr th { font: var(--font-18); }
 .table-wrapper tbody tr td { font: var(--font-16); color: var(--color-33); }
-.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal; text-transform: capitalize; }
+.table-wrapper tbody tr td .icons{display:flex; gap:0.5rem;}
+.table-wrapper tbody tr td .icons img{width:2rem}
+.table-wrapper tbody tr td .name{margin-bottom:1rem; display:block;}
+.table-wrapper th { padding: 1.8rem 1.5rem; font-weight: normal;  }
 /* Cell Styling */
 .table-wrapper td { padding: 1.5rem 2.5rem; border-bottom: 0; font-size: var(--font-16); }
 /* Zebra Striping */
@@ -295,7 +297,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .contact-icon { margin-right: 2rem; }
 .contact-info-txt p { margin-bottom: 0; }
 .contact-info-txt span { font: var(--font-12); letter-spacing: -0.36px; }
-.cont-mail a { color: var(--color-92); font-weight: 700; border-bottom: 1px dashed var(--color-92); padding-bottom: 1rem; }
+.cont-mail a,
+.contact-disc a.email { color: var(--color-92); font-weight: 700; border-bottom: 1px dashed var(--color-92); padding-bottom: 1rem; }
+.contact-disc a.email{border:none; padding:none;}
 .cont-mail a:hover { color: var(--color-64); }
 .contact-disc { padding-block: 3rem 5rem; }
 .contact-disc p a { font-weight: 700; color: var(--color-black); }
@@ -330,10 +334,9 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .award-detail-text h3 { letter-spacing: -1.8px; color: var(--color-92); margin-bottom: 4rem; margin-top: 4rem; }
 .award-detail-text h3 span { letter-spacing: -1.8px; color: var(--color-92); display: block; }
 .award-detail-img { padding-inline: 0; order: 1; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
+.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 10rem; }
 .award-detail-list1:not(:has(.award-detail-img1 img)) { display: block; }
 .award-detail-text1 figure { max-width: 60rem; }
-.award-detail-list1 { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 7rem; }
 .award-detail-text1 ul.insta_icons li a { margin-top: 3.1rem; padding: .7rem; transition: all .3s; display: flex; position: relative; align-items: center; gap: 1.5rem; padding-inline: 0rem; color: var(--color-92); font: var(--font-21); font-weight: 700; }
 .award-detail-text1 ul.insta_icons li a img { width: 3rem; display: inline; }
 /* .award-detail-text1 { padding: 1rem 14rem; } */
@@ -356,6 +359,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 @media (min-width: 2300px) {
  .award-detail-text { padding-inline: 29rem 0; }
 .award-detail-text1 figure { margin-top: 13rem; }
+.award-detail-sec .award-detail-text { padding-inline: 0rem 0; }
  }
 .csr-sec { padding-block: 5rem 10rem; }
 .csr-txt h4 { color: var(--color-64); font-weight: 700; margin-bottom: 4rem; }
@@ -617,7 +621,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .department-page .csr-sec3:before{ height: auto;}
     .award-detail-list { grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
     .award-detail-list1 .award-detail-text1 { padding-left: 0; }
-    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 4rem; gap: 4rem; }
+    .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 7rem; gap: 4rem; }
     .award-detail-list1 .award-detail-text1{ padding-left:  0rem;}
     .award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 { padding-left: 0rem; }
 
@@ -663,7 +667,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .exam_pdfsec{ width: 100%;}
     .txdcx_banner_img figcaption { bottom: 2rem; left: 2rem; }
     .txdcx_banner_img figure>img{ min-height: 30rem; object-fit: cover;}
-    .cont-mail a{ line-height: 2.3;}
+    /* .cont-mail a{ line-height: 2.3;} */
     .hierarchy-box{grid-template-columns: 100%;}
     .hierarchy-text{ padding: 2rem;}
     .faculty_grid { grid-template-columns: repeat(2, 1fr); }
@@ -671,6 +675,10 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .career-list { grid-template-columns: repeat(2, 1fr); padding-bottom: 3rem;}
    
     .txdcx_banner_img figcaption { right: 3rem; }
+    .privacy_policy, .terms-and-conditions-page {
+    padding-block: 6rem 6rem;
+}
+
 
 }
 
@@ -727,4 +735,3 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .faculty_grid { grid-template-columns: repeat(1, 1fr); }
     .education-cell-grid { grid-template-columns: repeat(1, 1fr); }
 }
-

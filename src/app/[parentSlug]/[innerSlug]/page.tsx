@@ -40,7 +40,13 @@ export default async function DynamicSlugPage({
     notFound();
   }
 
+  const currentSlug = `${parentSlug}/${innerSlug}`;
+  
   const pageData = data?.data;
+  const expectedPath = pageData?.full_url.replace(/^\/+|\/+$/g, "");
+  if(expectedPath !== currentSlug){
+    notFound();
+  }
 
   const globalSchemaArgs = {
     canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
@@ -173,7 +179,7 @@ export default async function DynamicSlugPage({
         />
       )}
       <PageHeader pathname={`/${parentSlug}/${innerSlug}`} data={data?.data} slug={innerSlug} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams} />}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={params} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
     </>
   );
 }

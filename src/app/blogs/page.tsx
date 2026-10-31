@@ -8,7 +8,7 @@ import "@/src/styles/responsive1.css";
 import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
@@ -71,17 +71,15 @@ export default async function BlogsPage({
 
   const month = params.month || "";
 
+  if (category || year || month) redirect("/blogs");
+
   const hasFilters = Boolean(search || category || year || month);
 
   const query = buildBlogsQuery({
     page: currentPage,
-
     search,
-
     category,
-
     year,
-
     month,
   });
 

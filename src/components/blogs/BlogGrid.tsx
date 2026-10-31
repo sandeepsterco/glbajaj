@@ -9,7 +9,7 @@ export default function BlogGrid({ data, slug }: { data: any; slug: string }) {
         <Image
           src={data?.listing_image || data?.image || "/images/blog-listing-placeholder.webp"}
           className="img-fluid"
-          alt={data?.title || "blog"}
+          alt={data?.listing_image_alt || data?.title || 'Gl Bajaj'}
           width={400}
           height={250}
         />

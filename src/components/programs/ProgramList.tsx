@@ -65,7 +65,8 @@ function ProgramBox({
     <div className="program-box">
       <div className="program-text">
         <h6>
-          <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>{cleanName}</Link>
+        {cleanName}
+          {/* <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}></Link> */}
         </h6>
       </div>
       <div className="program-right">
@@ -82,13 +83,13 @@ function ProgramBox({
             Apply Now
           </Link>
         </div>
-        <div className="program-btn">
+        {/* <div className="program-btn">
           <Link href={`${BASE_URL}${parentSlug}/${currentSlug}/${program.slug}`}>
             <span>
               <img src="/images/icons/right-arrow.svg" alt="arrow" />
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -128,8 +129,8 @@ function ProgramGroupSection({
   );
 }
 
-export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string; currentSlug:string;}) {
-  const [paramsType, setParamsType] = useState<ProgramType>("all");
+export default function ProgramList({parentSlug, currentSlug, activeType="all"}:{parentSlug:string; currentSlug:string; activeType?:ProgramType;}) {
+  const [paramsType, setParamsType] = useState<ProgramType>(activeType);
   const [page, setPage] = useState(1);
   const [programsData, setProgramsData] = useState<ProgramsData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -170,16 +171,16 @@ export default function ProgramList({parentSlug, currentSlug}:{parentSlug:string
                 <ul>
                   {tabs.map(({ label, type }) => (
                     <li key={type}>
-                      <button
-                        type="button"
+                      <Link
                         className={paramsType === type ? "active" : ""}
-                        onClick={() => {
-                          setParamsType(type);
-                          setPage(1);
-                        }}
+                        href={`${BASE_URL}${parentSlug}/${currentSlug}/${type === "all" ? "" : type}`}
+                        // onClick={() => {
+                        //   setParamsType(type);
+                        //   setPage(1);
+                        // }}
                       >
                         {label}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>

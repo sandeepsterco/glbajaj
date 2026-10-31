@@ -1,5 +1,5 @@
-import CopyUrlButton from "@/src/components/common/CopyUrlButton";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import SocialShare from "@/src/components/common/SocialShare";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildJobPostingSchema } from "@/src/lib/schema/careerDetailSchema";
@@ -85,7 +85,7 @@ export default async function CareerDetailPage({ params }: { params: any }) {
                 {careerData?.data?.title && (
                     <div className="job-heading career_headings">
                         <h3 className="font36">{careerData?.data?.title}</h3>
-                        <CopyUrlButton />
+                        <SocialShare title={careerData?.data?.title || ""} />
                     </div>
                 )}
                     

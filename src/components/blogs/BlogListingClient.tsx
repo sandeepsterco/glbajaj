@@ -11,6 +11,7 @@ import BlogSidebar, {
 } from "./BlogSidebar";
 
 interface Props {
+  shareTitle?:string;
   initialBlogsData: any;
   initialFilters: BlogFilterValues;
   initialPage?: number;
@@ -38,6 +39,7 @@ async function fetchBlogs(filters: BlogFilterValues, page: number, tagSlug?: str
 }
 
 export default function BlogListingClient({
+  shareTitle,
   initialBlogsData,
   initialFilters,
   initialPage = 1,
@@ -96,8 +98,11 @@ export default function BlogListingClient({
   const allItems: any[] = Array.isArray(blogsResponse)
     ? blogsResponse
     : pagination?.data ?? [];
+
   const mainBlog = allItems[0] ?? null;
-  const gridBlogs = allItems.slice(1);
+  const topBlog = allItems.find((item)=>item.top_blog) || mainBlog;
+
+  const gridBlogs = allItems.filter((item)=>item.id !== topBlog.id);
   const featuredBlogs: any[] = blogsData?.featuredBlogs ?? [];
   const comments: any[] = blogsData?.comments ?? [];
   const tags = initialTags ?? Array.from(
@@ -111,17 +116,18 @@ export default function BlogListingClient({
 
   return (
     <>
-      {mainBlog && <BlogMain data={mainBlog} slug="blogs" />}
+      {mainBlog && <BlogMain data={topBlog} slug="blogs" />}
+
       <section className="blog_listing" aria-busy={loading}>
         <div className="container25">
           <div className="blog_listing_grid">
             <div className="blog_listing_left">
               {loading && <p aria-live="polite">Loading blogs...</p>}
-              {gridBlogs.length > 0
-                ? gridBlogs.map((blog: any, idx: number) => (
-                    <BlogGrid key={blog.slug ?? idx} data={blog} slug="blogs" />
-                  ))
-                : !mainBlog && !loading && <p>No blogs found.</p>}
+              {gridBlogs.map((blog: any, idx: number) => (
+                  <BlogGrid key={blog.slug ?? idx} data={blog} slug="blogs" />
+                ))
+              }
+
               {pagination && (
                 <PaginationWrapper
                   currentPage={pagination?.current_page || page}

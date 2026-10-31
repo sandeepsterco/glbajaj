@@ -57,7 +57,7 @@ export default function TruncatedBreadcrumbs({ breadcrumbs, totalLength }: Props
   const renderItem = (item: BreadcrumbItem) =>
     item.slug ? (
       <Link href={item.slug}>
-        <p className="breadcrumb_main about_breadcrump_text 11">{item.label}</p>
+        <p className="breadcrumb_main about_breadcrump_text">{item.label}</p>
       </Link>
     ) : (
       <p className="breadcrumb_main about_breadcrump_text">{item.label}</p>
@@ -95,27 +95,33 @@ export default function TruncatedBreadcrumbs({ breadcrumbs, totalLength }: Props
               <div
                 style={{
                   position: 'absolute',
-                  top: 'calc(100% + 8px)',
+                  top: '100%',
                   left: '0',
-                  background: 'var(--color-92)',
-                  borderRadius: '6px',
-                  minWidth: '180px',
-                  padding: '6px 0',
+                  paddingTop: '8px',
                   zIndex: 200,
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
                 }}
               >
-                {hiddenItems.map((item, i) =>
-                  item.slug ? (
-                    <Link key={i} href={item.slug} style={{ display: 'block', padding: '6px 14px', textDecoration: 'none' }}>
-                      <span className="breadcrumb_main about_breadcrump_text">{item.label}</span>
-                    </Link>
-                  ) : (
-                    <div key={i} style={{ padding: '6px 14px' }}>
-                      <span className="breadcrumb_main about_breadcrump_text">{item.label}</span>
-                    </div>
-                  )
-                )}
+                <div
+                  style={{
+                    background: 'var(--color-92)',
+                    borderRadius: '6px',
+                    minWidth: '180px',
+                    padding: '6px 0',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
+                  }}
+                >
+                  {hiddenItems.map((item, i) =>
+                    item.slug ? (
+                      <Link key={i} href={item.slug} style={{ display: 'block', padding: '6px 14px', textDecoration: 'none' }}>
+                        <span className="breadcrumb_main about_breadcrump_text">{item.label}</span>
+                      </Link>
+                    ) : (
+                      <div key={i} style={{ padding: '6px 14px' }}>
+                        <span className="breadcrumb_main about_breadcrump_text">{item.label}</span>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             )}
           </div>

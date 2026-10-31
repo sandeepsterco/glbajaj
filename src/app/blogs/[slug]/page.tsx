@@ -1,34 +1,37 @@
+import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import BlogFeaturedSlider from "@/src/components/blogs/BlogFeaturedSlider";
 import BlogSidebar from "@/src/components/blogs/BlogSidebar";
 import ReactParser from "@/src/components/common/reactParser/ReactParser";
+import SocialShare from "@/src/components/common/SocialShare";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import Image from "next/image";
 import BlogCommentForm from "@/src/components/blogs/BlogCommentForm";
-import BlogListingClient from "@/src/components/blogs/BlogListingClient";
 import { notFound } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 
 interface SearchParams {
-  page?: string;
   search?: string;
   category?: string;
   year?: string;
   month?: string;
 }
 
-interface BlogTag {
-  id?: number | string;
-  name: string;
-  slug: string;
-}
-
-interface TagListingBlog {
-  slug?: string;
-  tags?: BlogTag[];
-  [key: string]: unknown;
+function buildFilterQuery(params: {
+  search: string;
+  category: string;
+  year: string;
+  month: string;
+}) {
+  const parts: string[] = [];
+  if (params.search) parts.push(`search=${encodeURIComponent(params.search)}`);
+  if (params.category)
+    parts.push(`category=${encodeURIComponent(params.category)}`);
+  if (params.year) parts.push(`year=${encodeURIComponent(params.year)}`);
+  if (params.month) parts.push(`month=${encodeURIComponent(params.month)}`);
+  return parts.length ? `?${parts.join("&")}` : "";
 }
 
 function formatBlogDate(dateStr: string) {
@@ -37,6 +40,15 @@ function formatBlogDate(dateStr: string) {
     month: "long",
     day: "numeric",
   });
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return getPageSEO(`blogs/${slug}`);
 }
 
 function BlogSections({ sections }: { sections: any }) {
@@ -57,11 +69,6 @@ function BlogSections({ sections }: { sections: any }) {
   ));
 }
 
-export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
-  const { slug } = await params;
-  return await getPageSEO(`blogs/${slug}`);
-}
-
 export default async function BlogDetailPage({
   params,
   searchParams,
@@ -70,102 +77,29 @@ export default async function BlogDetailPage({
   searchParams: Promise<SearchParams>;
 }) {
   const { slug: blogSlug } = await params;
+  const queryParams = await searchParams;
+  const search = queryParams.search || "";
+  const category = queryParams.category || "";
+  const year = queryParams.year || "";
+  const month = queryParams.month || "";
+  const hasFilters = Boolean(search || category || year || month);
+
+  const filterQuery = buildFilterQuery({ search, category, year, month });
+  const fetchOptions = hasFilters ? { cache: "no-store" as const } : undefined;
   const listSlug = "blogs";
 
-  const [{ data }, seoData] = await Promise.all([
-    apiFetch(`blogs/${blogSlug}`),
+  const [{ data, error }, seoData] = await Promise.all([
+    apiFetch(`blogs/${blogSlug}${filterQuery}`, fetchOptions),
     getPageSEO(`blogs/${blogSlug}`),
   ]);
 
+  if (error) notFound();
+
   const details = data?.details;
-
-  if (!details) {
-    const queryParams = await searchParams;
-    const page = Number(queryParams.page) || 1;
-    const search = queryParams.search || "";
-    const category = queryParams.category || "";
-    const year = queryParams.year || "";
-    const month = queryParams.month || "";
-    const tagQuery = new URLSearchParams();
-    if (page > 1) tagQuery.set("page", String(page));
-    if (search) tagQuery.set("search", search);
-    if (category) tagQuery.set("category", category);
-    if (year) tagQuery.set("year", year);
-    if (month) tagQuery.set("month", month);
-    const queryString = tagQuery.toString();
-    const tagOptions = queryString
-      ? { cache: "no-store" as const }
-      : undefined;
-    const { data: tagData, error: tagError } = await apiFetch(
-      `blogs/tags/${encodeURIComponent(blogSlug)}${queryString ? `?${queryString}` : ""}`,
-      tagOptions
-    );
-    const tagBlogsResponse = tagData?.blogs;
-    const tagBlogs: TagListingBlog[] = Array.isArray(tagBlogsResponse)
-      ? (tagBlogsResponse as TagListingBlog[])
-      : Array.isArray(tagBlogsResponse?.data)
-        ? (tagBlogsResponse.data as TagListingBlog[])
-        : [];
-
-    if (tagError || !tagBlogsResponse) notFound();
-
-    const tagName =
-      tagBlogs
-        .flatMap((blog) => (Array.isArray(blog.tags) ? blog.tags : []))
-        .find((tag) => tag.slug === blogSlug)?.name ??
-      blogSlug.replace(/-/g, " ");
-    const tagList = Array.from(
-      new Map(
-        tagBlogs
-          .flatMap((blog) => (Array.isArray(blog.tags) ? blog.tags : []))
-          .filter((tag) => tag.slug)
-          .map((tag) => [tag.slug, tag])
-      ).values()
-    );
-    const tagGlobalSchema = buildGlobalSchema({
-      canonicalUrl: seoData?.alternates?.canonical || `${BASE_URL}blogs/${blogSlug}`,
-      pageTitle: seoData?.title || `${tagName} Blogs`,
-      metaDescription: seoData?.description || "",
-      primaryImageUrl: "",
-      datePublishedIso: "",
-      dateModifiedIso: "",
-      languageTag: "en-IN",
-      currentPageSlug: `${BASE_URL}blogs/${blogSlug}`,
-      currentPageName: `${tagName} Blogs`,
-      parentMenus: [{ title: "Blogs", url: "blogs" }],
-    });
-    return (
-      <>
-        {tagGlobalSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(tagGlobalSchema) }}
-          />
-        )}
-        <BlogListingClient
-          initialBlogsData={tagData}
-          initialFilters={{ search, category, year, month }}
-          initialPage={page}
-          tagSlug={blogSlug}
-          tags={tagList}
-        />
-      </>
-    );
-  }
+  if (!details) notFound();
 
   const featuredBlogs: any[] = data?.featuredBlogs ?? [];
   const comments: any[] = data?.comments ?? [];
-  const featuredTags = featuredBlogs.flatMap((blog) =>
-    Array.isArray(blog.tags) ? blog.tags : []
-  );
-  const detailTags = (Array.isArray(details.tags) ? details.tags : [])
-    .map((tag: any) => {
-      const matchingTag = featuredTags.find(
-        (featuredTag: any) => String(featuredTag.id) === String(tag.id)
-      );
-      return { ...tag, slug: tag.slug || matchingTag?.slug };
-    })
-    .filter((tag: any) => tag.slug);
   const listingPath = `${BASE_URL}${listSlug}`;
 
   const blogDetailSchemaArgs = {
@@ -175,7 +109,6 @@ export default async function BlogDetailPage({
     images: [details?.image],
     datePublishedIso: details?.date || "",
     dateModifiedIso: details?.date || "",
-    category: details?.category || "",
   };
 
   const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);
@@ -228,7 +161,7 @@ export default async function BlogDetailPage({
             <figure>
               <Image
                 src={details.image || "/images/blog-details-banner.webp"}
-                alt={details.title || "GL Bajaj"}
+                alt={details?.image_alt || details.title || "GL Bajaj"}
                 className="img-fluid w-100"
                 width={1200}
                 height={500}
@@ -236,9 +169,12 @@ export default async function BlogDetailPage({
               />
             </figure>
             <figcaption>
-              {details.date && (
-                <div className="date">{formatBlogDate(details.date)}</div>
-              )}
+              <div className="newst_details_header">
+                {details.date && (
+                  <div className="date">{formatBlogDate(details.date)}</div>
+                )}
+                
+              </div>
               {details.title && <h3>{details.title}</h3>}
               {details.description && <p>{details.description}</p>}
             </figcaption>
@@ -253,12 +189,28 @@ export default async function BlogDetailPage({
               {details.description && !details.sections && (
                 <blockquote>{details.description}</blockquote>
               )}
+              <SocialShare title={details.title || ""} />
 
               <BlogSections sections={details.sections} />
 
               <BlogFeaturedSlider blogs={featuredBlogs} listSlug={listSlug} />
 
               <BlogCommentForm blogSlug={blogSlug} />
+
+              {Array.isArray(details.tags) && details.tags.length > 0 && (
+                <div className="blog_detail_tags" aria-label="Blog tags">
+                  <h4>Tags:</h4>
+                  <ul>
+                    {details.tags.map((tag: any) => (
+                      <li key={tag.id}>
+                        <a href={`/${listSlug}?tag_id=${encodeURIComponent(String(tag.id))}`}>
+                          {tag.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* <div className="admin_form">
                 <div className="admin_header">
@@ -335,11 +287,10 @@ export default async function BlogDetailPage({
             <BlogSidebar
               featuredBlogs={featuredBlogs}
               comments={comments}
-              currentCategory=""
-              currentYear=""
-              currentMonth=""
-              currentSearch=""
-              tags={detailTags}
+              currentCategory={category}
+              currentYear={year}
+              currentMonth={month}
+              currentSearch={search}
               slug={listSlug}
               listingPath={listingPath}
               showSearch={false}

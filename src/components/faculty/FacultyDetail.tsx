@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ReactParser from "../common/reactParser/ReactParser";
 
-export default function FacultyDetail({ data }: { data: any }) {
+export default function FacultyDetail({ data, pageName }: { data: any; pageName:string }) {
     return (
         <section className="faculty-sec">
             <div className="container25">
@@ -54,7 +54,7 @@ export default function FacultyDetail({ data }: { data: any }) {
                 </div>
 
                 {data?.cms?.faculty_detail && (
-                    <ReactParser html={data.cms.faculty_detail} />
+                    <ReactParser html={data.cms.faculty_detail} pageName={pageName} />
                 )}
 
 

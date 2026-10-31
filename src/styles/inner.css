@@ -350,8 +350,7 @@
 .media_grid_Bx1 figure,
 .media_grid_Bx2 figure { text-align: center; height: 26.3rem; display: flex; align-items: center; }
 .media_grid_Bx1{ position: relative;}
-.media_grid_Bx1:before { content: ""; background-color: var(--color-FE); width: 24.6rem; height: 1rem; position: absolute; top: 0; left: 3rem; }
-
+.media_grid_Bx1:before { content: ""; background-color: var(--color-FE); width: 24.6rem; height: 1rem; position: absolute; top: 0; left: 3rem;}
 
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; mix-blend-mode: multiply; }
 .media_grid_Bx2 a{ margin-top: -3rem;}
@@ -360,10 +359,14 @@
 
 @media (max-width:1536px){
     .media_grid_Bx figure{ height: auto;}
+    .about-us-csr .blanket-list {
+        margin-right: 0rem;
+    }
 }
 
 
 /* ==============Notices & Announcements page Start============= */
+
 .notice_announcement { padding-block: 10rem; }
 .notice_grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
 .notice_list { background-color: var(--color-F5); padding: 2rem 3rem; position: relative; }
@@ -1006,6 +1009,14 @@
 /* ============== Research Publication start============= */
 .res_publication { padding-block: 10rem 0rem; }
 .res_publication:last-child { padding-bottom: 12rem; }
+.admissions-refund-policy .res_publication { padding-block: 2rem 0rem; }
+.admissions-refund-policy .table-description { padding-block: 10rem; }
+.academics-programs-bachelor-of-computer-applications .peo-img{ display: none;}
+
+
+
+
+
 .res_pub_title h4 { margin-bottom: 5rem; }
 .res_publi_list { display: flex; gap: 4rem; margin-bottom: 4rem; }
 .res_publi_list li a { gap: 2.6rem; font-weight: 600; display: inline-flex; padding-bottom: 2.3rem; border-bottom: 1px solid #d7d4d4; width: 100%; text-align: left;
@@ -1785,6 +1796,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .centbenfit_sec { padding-block: 5rem 10.4rem; background-color: var(--color-white); border-top: 0.1rem solid #d2ab67; border-bottom: 0.1rem solid #d2ab67; }
 .entbenfit_caption>h5 { font-weight: bold; margin-bottom: 2.6rem; color: var(--color-33); }
 .entbenfit_caption>p { color: var(--color-33); }
+.centbenfit_sec:not(:has(*)):not(:has(> :not(:empty))) { display: none !important; }
 .entbenfit_caption>ul { padding-right: 3.5rem; }
 .entbenfit_caption>ul>li { color: var(--color-33); }
 /* Center Committee Members */
@@ -1836,7 +1848,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .research-innovation-iic-page .amatra_gym ul{ margin-bottom: 5rem;}
 .research-innovation-iic-page .res_publication.innovate{ padding-top: 5rem;}
 .research-innovation-iic-page .media_coverage .media_grid{ padding-top: 6rem;}
-
+.academics-faculty .csr-sec{padding-block: 5rem 0;}
 
 
 
@@ -2048,9 +2060,10 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .dept_maingrid figure { margin-bottom: 1rem; }
 /* .place_imgbox>figure img { height: 35rem; margin: auto; }
 */
+
 .examinaer_sec { padding-block: 10rem 15rem; }
 .examinar_grid { display: grid; gap: 10rem; grid-template-columns: repeat(1, 1fr); }
-.exam_pdfsec ul{display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 7rem;}
+.exam_pdfsec ul{display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 7rem; padding-bottom: 3rem;}
 .exam_imgbox { background: linear-gradient(#643c24 0% 60%, #f4f7f4 60% 100%); padding-block: 3rem; padding-inline: 2rem; position: relative; }
 .exam_imgbox h6 { color: var(--color-white); padding-bottom: 1.5rem; line-height: 3.6rem; }
 .exam_pdfsec ul li { font: var(--font-21); border-bottom: 1px solid #d7d4d4; align-items: center; gap: 1rem; margin-bottom: 4rem; padding-bottom: 1rem; display: flex; }
@@ -2071,6 +2084,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .exam_pdfsec ul li a { display: flex; align-items: center; gap: 2rem }
 .exam_pdf_tite h4 { font: var(--font-21); margin-bottom: 4rem; font-weight: bold; }
 .anti_ragging_content h5 { margin-bottom: 1rem; font-weight: 600; }
+.academics-anti-ragging .anti_ragging_section{ margin-bottom: 0;}
 /* ============= student-Research ========= */
 .top-student-research .tp_ov_pattern { padding-top: 3rem ; }
 .projects-table { padding-bottom:10rem; padding-top: 0; }

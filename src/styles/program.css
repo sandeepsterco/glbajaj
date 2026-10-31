@@ -175,7 +175,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
 .counseling-text p { font: var(--font-16); color: var(--color-33); }
 /* .border { border-top: 1px solid #CCCCCC; margin: 3rem 0; border-bottom:0; }
 */
-.admission-text p strong { margin-bottom: 3rem; display: block; }
+.admission-text p strong { margin-bottom: 3rem; display: block; line-height: 1.4; }
 .counseling-text { padding-inline: 0 1rem; }
 .securing-box { background-color: var(--color-92); margin-top: 3.4rem; padding: 2.2rem; margin-left: -6rem; margin-right: -2rem; }
 .securing-box p { color: var(--color-white); margin-bottom: 0; }
@@ -586,7 +586,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .program-detailsec1 { padding-block: 5rem; }
     .curriculum-list { grid-template-columns: repeat(2, 1fr);}
     .eligibility { grid-template-columns: repeat(1, 1fr); gap: 0 5rem; margin-right: 0; padding-top: 5rem; display: grid; }
-    .eligibility-boxs { grid-template-columns: repeat(1, 1fr); display: grid; gap: 3rem; }
+    .eligibility-boxs { grid-template-columns: repeat(1, 1fr); display: grid; gap: 3rem; padding-bottom: 2rem; }
     .securing-box { background-color: var(--color-92); margin-top: 3.4rem; margin-left: 0; margin-right: 0; padding: 2.2rem; width: 100%; }
     .counseling-text { padding-inline: 0; }
     .application{ padding-top: 5rem;}
@@ -619,6 +619,14 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .award-detail-list1 { grid-template-columns: repeat(1, 1fr); margin-top: 7rem; gap: 4rem; }
     .award-detail-list1 .award-detail-text1{ padding-left:  0rem;}
     .award-detail-list1:has(.award-detail-img1 img) .award-detail-text1 { padding-left: 0rem; }
+    .courses_header { margin-bottom: 0; }
+    .bottom_slider { margin-top: 0;}
+    .program_detail_beyond{ padding-top: 0;}
+
+
+    .courses_header { margin-bottom: 0; }
+    .bottom_slider { margin-top: 0;}
+    .program_detail_beyond{ padding-top: 0;}
 
 }
 

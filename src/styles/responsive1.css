@@ -40,7 +40,7 @@
 
  }
 @media (max-width: 640px) {
- .teamX_grid { grid-template-columns: repeat(1, 1fr); }
+ .teamX_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem; }
  .our_recruiters .our_recruiters-grid li{padding: 3rem;}
  .ct_grd_bx .ct_info{ padding: 4rem 3rem 2rem;}
 .val_grid .val_box { padding: 3rem 2.5rem; }

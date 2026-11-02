@@ -229,7 +229,7 @@
 .collection_cnt h3 { margin-block:0rem 2rem; }
 .computer-center:after { display: none; }
 .computer-center { padding-block: 5rem; }
-.computer-lab-bg { margin-top: 5rem; padding: 5rem 2rem; grid-template-columns:100%; gap: 2rem; }
+.computer-lab-bg { margin-top: 5rem; padding:  2rem; grid-template-columns:100%; gap: 2rem; }
 .computer-lab-bg p { margin-block: 2rem; }
 .comuter-lab-bottom { margin: 0; padding-block: 5rem 0; }
 .computer-center-top:before { top: -5rem; }
@@ -781,6 +781,15 @@
 .hod_profile_bx figure { margin-top: 0; }
 .ats_textbox { grid-template-columns: 4rem auto; gap: 2rem; padding-top: 1rem; }
 
+
+
+
+
+
+
+
+
+
 .ats_slid_box { grid-template-columns: 100%; gap: 5rem; }
 .ats_thumbsec{ display: none;}
 .table_with_qr { flex-wrap: wrap; overflow: scroll; }
@@ -1093,7 +1102,7 @@
 .our-team-list .teamX_grid > :first-child{margin-top: 0rem;}
 .placements-team .our-team-list{ padding-top: 5rem;}
 .placements-team .teamX_card figure { margin-top: 0; }
-
+.computer-center .reports{margin-block: 0 4rem;}
 
 
  }

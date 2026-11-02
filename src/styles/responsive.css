@@ -84,7 +84,7 @@
 .governance-and-advisory-boards .cabIntroX_grid { grid-template-columns: repeat(2, 1fr); }
 .governance-and-advisory-boards .cabIntroX_sex { padding-bottom: 0; }
 .team-members-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-.committee_members { padding-block: 5rem; }
+.committee_members { padding-block:0 5rem; }
 .about_section h2 { letter-spacing:0rem; padding-right: 0; font: var(--font-28); }
 .inspiration_section h3 { font: var(--font-28); margin-bottom: 4rem; letter-spacing: 0; }
 .philosophy_section h2 { font: var(--font-28); letter-spacing: 0; }
@@ -1207,7 +1207,7 @@
 .tcex_btm_des .font36 { font: var(--font-24); font-weight: 600; line-height: 1.3; }
 .inspiration_section h3 { font: var(--font-24); font-weight: 600; line-height: 1.3; }
 .industrial_visit_section h3 { font: var(--font-24); font-weight: 600; line-height: 1.3; }
-.media_grid { grid-template-columns: repeat(1, 1fr); gap: 3rem;}
+.media_grid { grid-template-columns: repeat(1, 1fr); gap:5rem;}
 .faculty_header .form-select { max-width: 100%; }
 .faculty_header { flex-wrap: wrap; gap: 2rem; }
 .research_conduct h3 { font: var(--font-24); line-height: 1.3; font-weight: 600; }

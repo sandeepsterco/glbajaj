@@ -372,6 +372,10 @@
 
 }
 
+@media (max-width:991px){
+    .research-innovation-iic .media_coverage { padding-block: 5rem; }
+    
+}
 
 /* ==============Notices & Announcements page Start============= */
 
@@ -453,6 +457,7 @@
 /* ==============Faculty page Start============= */
 .faculty_section { padding-block: 11rem; }
 .faculty_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-block: 9rem 0rem; row-gap: 7rem; position: relative; }
+.alumni-testimonials .faculty_grid{ padding-top: 0;}
 .faculty_grid::before { background-image: url(/images/pattern/faculty-patch.webp); width: 20.7rem; height: auto; content: ""; position: absolute; top: 22rem; bottom: 22rem; margin: auto 0; right: -10rem; z-index: -1; background-size: contain; background-repeat: no-repeat; }
 .faculty_Bx { background-color: var(--color-F5); padding: 1.3rem; position: relative; }
 .faculty_Bx h5 { font: var(--font-18); color: var(--color-black); font-weight: 600; margin-block: 1.6rem 0.6rem; }
@@ -744,9 +749,10 @@
 .sterco_tab_btn { position: relative; display: block; padding: 0.5rem 2rem 0.5rem 1rem; border: none; background-color: transparent; cursor: pointer; text-align: left; line-height: 1; letter-spacing: -0.18rem; color: rgba(100, 60, 36, 0.5); font: var(--font-36); }
 .sterco_tab_btn::after { content: ""; position: absolute; top: 2.3rem; right: -2rem; width: 2rem; height: 2rem; background-image: url(/images/icons/right-chevron1.png); background-repeat: no-repeat; background-size: contain; /* filter: brightness(0) invert(1); */ }
 .sterco_tab_btn.active { color: var(--color-64); font-weight: 900; letter-spacing: 0; }
+
 /* .sterco_tab_btn::after { filter: brightness(0) invert(); } */
 @media (max-width:1536px){
-    .sterco_tabs_nav{ max-width: 63rem; padding-left: 8rem;}
+    .sterco_tabs_nav{ max-width: 63rem; padding-left: 0rem;}
 }
 
 /* =========================
@@ -755,20 +761,17 @@
 .sterco_tab_panel { display: none; }
 .sterco_tab_panel.active { display: block; }
 
-
-
-
-
-
-.sterco_accordion_content { position: relative; display: grid; grid-template-columns: 38% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 11rem 10rem; margin-top: -38rem; }
+/* .sterco_accordion_content{ display: none;} */
+/* .sterco_accordion_content.active { position: relative; display: grid; grid-template-columns: 38% auto; gap: 4rem; justify-content: space-between; align-items: flex-end; padding-block: 11rem 10rem; margin-top: -38rem; } */
 /* .sterco_accordion_content::before { content: ""; position: absolute; top: 10rem; bottom: 0; left: -15.5rem; right: -2.5rem; background-color: var(--color-F4); z-index: -1; }
 */
 .sterco_content_box { padding-right: 1rem; padding-bottom: 0rem; }
 .sterco_content_box p { margin-bottom: 0; }
 .sterco_accordion_content figure { margin: 0; padding-top: 5rem; }
-.sterco_accordion_content img { width: 100%; display: block; }
+.sterco_accordion_content img { width: 100%; display: block; min-height: 50rem;}
 .sterco_accordion_header { display: none; }
 .sterco_content_box a{ margin-top: 5rem;}
+.facilities-centre-for-innovation .committee_members{ padding-top: 5rem;}
 /* =========================
    MOBILE
 ========================= */
@@ -806,16 +809,7 @@
 .cse_banner_img figcaption p { color: var(--color-white); background-color: var(--color-92); padding: 0.5rem 1.5rem; display: inline-block; font: var(--font-21); font-weight: 500; }
 .our_cse { padding-block: 5rem; }
 .hod_profile_bx { background: linear-gradient(to bottom, #643c24 60%, #f4f7f4 0%); padding: 2.7rem 2.5rem; position: relative; /* z-index: 9;*/ }
-.hod_profile .hod_profile_bx:before{
-    content: "";
-    background: var(--color-AE);
-    z-index: -1;
-    width: 100%;
-    position: absolute;
-    top: 5rem;
-    bottom: -2.5rem;
-    right: -2.5rem;
-}
+.hod_profile .hod_profile_bx:before{ content: ""; background: var(--color-AE); z-index: -1; width: 100%; position: absolute; top: 5rem; bottom: -2.5rem; right: -2.5rem; }
 .navigation_btn { position: absolute; bottom: -3rem; right: 2rem; }
 .profile a { display: flex; align-items: center; gap: 1rem; font: var(--font-16); color: var(--color-33); }
 .hod_profile_bx figure { margin-top: 3rem; }
@@ -1522,7 +1516,7 @@
 .digital-patsala figure { position:relative; height: 100%; }
 .digital-patsala figure img{ height: 100%; object-fit: cover;}
 .digital-patsala figure span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); content: ""; z-index: 2; max-width: 5rem; }
-.digital-patsala figcaption { background: #000000a1; position: absolute; bottom: 1rem; left: 1rem; z-index: 2; padding: 2.5rem 1rem 1.8rem 3rem; width: 96%; margin-inline: auto; }
+.digital-patsala figcaption { background: #000000a1; position: absolute; bottom: 1rem; left: 1rem; z-index: 2; padding: 1.5rem 1rem 1.8rem 3rem; width: 96%; margin-inline: auto; }
 .digital-patsala figcaption h3 { font: var(--font-24); color: var(--color-white); margin-bottom: 0; line-height: 1.5; -webkit-line-clamp: 1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; }
 .dg-pathshala-btn { text-align: center; font-weight: 600; }
 .dg-pathshala-btn a { font-weight: 600; }
@@ -1821,6 +1815,14 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .feature-list .item h4 { font: var(--font-18); font-weight: 700; margin-bottom: 2rem; }
 .feature-list .item p { font: var(--font-16); color: var(--color-33); margin-bottom: 3rem; }
 .objective-pattern { margin-top: 9rem; }
+
+@media (max-width:1536px){
+    .wipro-oracle-exe-center .tab_content_left{ padding: 7.4rem 6.5rem 4rem 7rem; }
+    .wipro-oracle-exe-center .tabs_section:before{ height: 35rem;}
+    .wipro-oracle-exe-center { padding-block: 10rem 20rem; }
+
+}
+
 /* ********************Kundan Css End*********************** */
 /* ********************Anupam Css Start*********************** */
 /* Center for Innovation */
@@ -1907,7 +1909,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
  .facilities-academic-page  .comuter-lab-bottom-Cnt{ padding-top: 0rem;}
  .sterco_accordion_content figure { margin: 0; padding-top: 0; }
  .computer-lab-Cnt { padding-top: 0; }
-
+.research-innovation-iic-page .amatra_gym { padding-block: 0 5rem; }
  }
 /* Clubs & Societies Page css End */
 /* Alumni-Overview Page css start */
@@ -2538,6 +2540,12 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .fee-refund-policy .res_publication { padding-top: 0; }
 .fee-refund-policy .res_publication_ttl { display: none; }
 .fee-refund-policy .res_publication + .table-description { padding-block: 0 10rem; }
+
+@media (max-width:991px){
+    .testimonial_inner .extra_info{ margin-left: 0;}
+    .testimonial_inner .desc_content .des { font: var(--font-18); line-height: 1.4; }
+    .hod_right figure{ margin-top: 0;}
+}
 /* ============== blogs page listing ============= */
 .blog_right { display: flex; align-items: flex-end; padding-bottom: 3rem; }
 .blog_right .date { font: var(--font-16); margin-bottom: 3rem; display: block; }

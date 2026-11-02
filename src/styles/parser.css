@@ -437,7 +437,7 @@
 .home_testimonials .desc_content { display: flex; margin: 8rem 0 19rem; gap: 8.2rem; margin-left: 19.5rem; }
 .home_testimonials .quote-icon { font-size: 70px; color: #f3c26b; line-height: 0; margin-bottom: 10px; }
 .home_testimonials .desc { margin-top: 2.4rem; font: var(--font-21); line-height: 3rem; color: #333; flex: 1; display: none; }
-.home .home_testimonials .desc { max-height: 18rem; /* min-height: 25rem; */ }
+.home .home_testimonials .desc { max-height: 18rem; /* min-height: 25rem; */ line-height: 1.4; }
 .home_testimonials .desc.active { display: block; }
 .home_testimonials .desc .long_des,
 .home_testimonials .desc .short_des { margin-top: 4.6rem; margin-bottom: 0; }
@@ -605,6 +605,9 @@ h3 .arrow_btn1 img{ margin: 0 auto;}
 
 .home_testimonials .desc_content{ margin: 8rem 0 13rem 19.5rem;}
 .single_grid:not(:has(figure)) .content .bottom_data .desc{ max-width: 90%;}
+.home_testimonials .thumb-group{gap: 4rem; margin-right: 2rem;}
+
+
  }
 /* ==============HOD's Message page Start============= */
 /* ==============The Group page Start============= */
@@ -689,6 +692,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .homeFac_accHeader { display: block; font-weight: 600; cursor: pointer; }
 .homeFac_accBody { max-height: 0; overflow: hidden; transition: 0.4s; }
 .homeFac_pane.active .homeFac_accBody { max-height: 100%; }
+
  }
 /* =============Home Facilities  start============= */
 /* Institute Incubation Center start */
@@ -716,10 +720,11 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .examrules_section { padding-block: 10rem 15rem; background-color: var(--color-F4); position: relative; overflow: hidden; }
 .examrules_heading_wrap { position: relative; }
 .examrules_heading_wrap h4 { margin-bottom: 4rem; }
-.examrules_heading_wrap h5 { margin-bottom: 3rem; font-weight: 600; }
+.examrules_heading_wrap h5 { margin-bottom: 3rem; font-weight: 600; line-height: 1.3; }
 .examrules_heading_wrap > p { padding-bottom: 5.5rem; }
 .examrules_imgbox { margin: 0; }
 .examrules_text { padding-top: 5rem; }
+.exam_pdfsec ul li{margin-bottom: 2rem;}
 .exam-system-page { padding-block: 7rem 10rem; }
 .exam-system-page .kf_grid { grid-template-columns: repeat(2, 1fr); }
 /* Examinations - System of Evaluation css end */
@@ -1086,14 +1091,14 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .home_research_section .research_top { display: block; }
 .home_placement_students { display: block; }
 .home_placement_section { padding-block:3.5rem 4.5rem; }
-.home_courses_section { padding:4rem 0 0; }
+.home_courses_section { padding:0rem 0 0; }
 .home_courses_section .left_content { margin-left: 0; padding-top: 0; }
 .home_courses_section .grid { display: block; }
 /* .home_courses_section .left_content .courses_links { display: block; max-width: 100%; } */
 .home_courses_section .courses_links .course_link { display: block; padding-block: 2.6rem; }
 .home_courses_section .grid .right_imgage_col { display: none; }
 .home_courses_section .admission_data .links { display: none; }
-.home_courses_section .bottom_slider { margin-top: 5rem; position: relative; }
+.home_courses_section .bottom_slider { margin-top: 0rem; position: relative; }
 .home_courses_section .slider_btns { padding-right: 0; }
 .home_research_section .research_top { margin-inline: 0; }
 .home_courses_section .slider_btns { top: auto; left: 2.45rem; bottom: 12rem; position: absolute; gap: 1.3rem; }
@@ -1355,6 +1360,10 @@ main { overflow: hidden; }
 .exam-system-page { padding-block: 5rem; }
 .examrules_table_wrap .exam_tabsec > h4{ padding-top:2rem;}
 .res_publication { padding-block: 5rem; }
+.academics-examinations-evaluation .res_publication { padding-block: 5rem 0; }
+.academics-examinations-evaluation #cms-block-17pity1{ padding-bottom: 5rem;}
+.examrules_heading_wrap h4 { margin-bottom: 2rem; }
+
 .hod_grid{ display: flex; flex-direction: column-reverse;}
 .hod_section { padding-block: 5rem; overflow: hidden; }
 .hod_right { margin-top: 0; }

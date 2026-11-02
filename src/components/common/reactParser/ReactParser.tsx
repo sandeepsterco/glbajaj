@@ -37,6 +37,8 @@ const MEDIA_TAGS = new Set(["img", "video", "iframe", "input", "textarea", "sele
 
 const DOMPURIFY_ADD_ATTR = [
   "target",
+  "allowfullscreen",
+  "frameborder"
   // "data-aos",
   // "data-aos-delay",
   // "data-aos-duration",
@@ -71,6 +73,14 @@ const DOMPURIFY_ALLOWED_ATTR = [
   "data-aos-easing", "data-aos-once", "data-aos-mirror",
   "data-aos-anchor", "data-aos-anchor-placement", "loading", ""
 ];
+
+function removeIframeFallbackContent(html: string): string {
+  // DOMPurify drops iframes when their fallback contains nested elements.
+  return html.replace(
+    /(<iframe\b(?:"[^"]*"|'[^']*'|[^'">])*?>)[\s\S]*?(<\/iframe\s*>)/gi,
+    "$1$2"
+  );
+}
 
 function ParserWidgetFallback() {
   return (
@@ -288,20 +298,21 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
   return options;
 };
 
-// ---------------------------------------------------------------------------
-// ReactParser
-// ---------------------------------------------------------------------------
-
 export default function ReactParser({ html, homeData, params, searchParams, data, pageName }: { html: any; homeData?: any; params?:any; searchParams?:any; data?:any; pageName?:string }) {
   const sanitizedHtml = useMemo(
-    () =>
-      DOMPurify.sanitize(html, {
+    () => {
+      const htmlWithoutIframeFallback =
+        typeof html === "string" ? removeIframeFallbackContent(html) : html;
+
+      return DOMPurify.sanitize(htmlWithoutIframeFallback, {
         ADD_ATTR: DOMPURIFY_ADD_ATTR,
         ALLOWED_TAGS: DOMPURIFY_ALLOWED_TAGS,
         ALLOWED_ATTR: DOMPURIFY_ALLOWED_ATTR,
         ADD_DATA_URI_TAGS: ["img"],
         ALLOW_DATA_ATTR: true,
-      }),
+        ADD_TAGS: ["iframe"],
+      });
+    },
     [html]
   );
 

@@ -221,7 +221,14 @@ export default function MobileMenu() {
     if (!isMobile) return null;
 
     return (
-        <div className="fixed-bottom mobile-footer">
+        <div
+            className="fixed-bottom mobile-footer"
+            onClick={(event) => {
+                if (event.target instanceof Element && event.target.closest(".modal-new a:not(.drop_btn)")) {
+                    setActiveModal(null);
+                }
+            }}
+        >
 
             {/* Modal 1 - Programs */}
             <div className={`modal-new modal1 ${activeModal === "modal1" ? "show" : ""}`}>

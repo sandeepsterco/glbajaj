@@ -5,6 +5,7 @@ import { City, Country, ICity, ICountry, IState, State } from "country-state-cit
 import { BASE_URL, RECAPTCHA_SITE_KEY } from "@/src/config/config";
 import RecaptchaField from "./RecaptchaField";
 import { useRouter, useSearchParams } from "next/navigation";
+import DateInput from "@/src/components/ui/DateInput";
 
 type FieldErrors = Record<string, string[]>;
 
@@ -50,7 +51,7 @@ const INITIAL_FORM = (openingName: string): FormState => ({
   gender: "",
   marital_status: "",
   address: "",
-  country: "",
+  country: "India",
   state: "",
   city: "",
   zipcode: "",
@@ -75,13 +76,24 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedCountryCode, setSelectedCountryCode] = useState("");
+  const [selectedCountryCode, setSelectedCountryCode] = useState("IN");
   const [selectedStateCode, setSelectedStateCode] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaKey, setRecaptchaKey] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  const currentDate = new Date();
+  const maxDobDate = new Date(
+    currentDate.getFullYear() - 18,
+    currentDate.getMonth(),
+    currentDate.getDate()
+  )
+    .toISOString()
+    .split("T")[0];
+  
+  const minDobDate = `${currentDate.getFullYear() - 80}-01-01`;
 
   const utm = {
     utm_source: searchParams.get("utm_source") ?? "",
@@ -240,10 +252,9 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
         return;
       }
 
-      // setSuccessMessage(result.message || "Form submitted successfully.");
       router.push(`${BASE_URL}thank-you`);
       setForm(INITIAL_FORM(openingName));
-      setSelectedCountryCode("");
+      setSelectedCountryCode("IN");
       setSelectedStateCode("");
       resetFileInput();
       resetRecaptcha();
@@ -278,7 +289,15 @@ export default function ApplyNowForm({ openingName }: { openingName: string }) {
             {getError("last_name") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("last_name")}</p> : null}
           </div>
           <div className="form-group">
-            <input type="date" placeholder="Date of Birth" className="input_form" value={form.dob} onChange={handleInputChange("dob")} />
+            <DateInput
+              placeholder="Date of Birth"
+              className="input_form"
+              value={form.dob}
+              onChange={handleInputChange("dob")}
+              min={minDobDate}
+              max={maxDobDate}
+            />
+            {/* <input type="date" placeholder="Date of Birth" className="input_form" value={form.dob} onChange={handleInputChange("dob")} min={minDobDate} max={maxDobDate} /> */}
             {getError("dob") ? <p style={{ color: "#b91c1c", marginTop: "0.5rem" }}>{getError("dob")}</p> : null}
           </div>
           <div className="form-group">

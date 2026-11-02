@@ -78,7 +78,7 @@ export default function DepartmentHomeActivities({ pageName }: { pageName: strin
             {(item?.pdf || item?.slug) && (
               <Link
                 className="strech_link"
-                href={item?.pdf ? item.pdf : `${BASE_URL}news-events/${item.slug}`}
+                href={item?.pdf ? item.pdf : `${BASE_URL}happenings/news-events/${item.slug}`}
                 target={item?.pdf ? '_blank' : '_self'}
               />
             )}

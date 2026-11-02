@@ -123,6 +123,7 @@ export default function BlogListingClient({
           <div className="blog_listing_grid">
             <div className="blog_listing_left">
               {loading && <p aria-live="polite">Loading blogs...</p>}
+              {!gridBlogs.length && !loading && !topBlog && <p>No blog found.</p>}
               {gridBlogs.map((blog: any, idx: number) => (
                   <BlogGrid key={blog.slug ?? idx} data={blog} slug="blogs" />
                 ))

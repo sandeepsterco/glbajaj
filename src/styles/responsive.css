@@ -1253,10 +1253,8 @@
 .gl_bajaj_grid .club_textbox > h3{ font: var(--font-24); font-weight: 600;}
 .gallery_list { grid-template-columns: repeat(2 , 1fr); }
 .alumni-achivement h3{ font: var(--font-24); font-weight: 600; line-height: 1.2;}
-
 .acx_sec h3 { font: var(--font-24); font-weight: 600; }
 .acx_list{ margin-bottom: 4rem;}
-
 .incu_hig_title h4{ font: var(--font-24); font-weight: 600; }
 .inc_high_lft > h4 { margin-bottom: 2rem; }
 .inc_high_grid { gap: 3rem; }
@@ -1285,11 +1283,9 @@
 .navrang_sec .philosophy_right{ padding: 4rem;}
 .sports_gym_wrap h4{ font: var(--font-24); font-weight: 600;}
 .about_bottom h4{ font: var(--font-24); font-weight:500;}
-
 .sports_facilities_section { margin-top: 2rem; }
 .institute_cnt h5{ font: var(--font-24); font-weight: 600;}
 .gallery_list_section h1{ font: var(--font-24); font-weight: 600;}
-
 .international_relations_section h3{ font: var(--font-24); font-weight: 600;}
 .international_relations_section h2 { margin-bottom: 2rem; }
 .inter_relation_grid{ grid-template-columns: repeat(1, 1fr);}
@@ -1341,7 +1337,6 @@
 .about_menu_bar { top: 9rem; }
 .fac_mainpdf .left>h5 { font: var(--font-24); margin-bottom: 2rem;}
 .fac_mainpdf .right>h5 { font: var(--font-24); margin-bottom: 2rem;}
-
  }
 
 @media (max-width: 480px) {
@@ -1378,5 +1373,4 @@
 .lab_rgtswiper h4{ padding-right: 0; line-height: 1.2;}
 .cse_vision .hod_profile_bx .hod_info h4{ line-height: 1.3;}
 .social_buttons{top: auto; right: 0rem; bottom: 3rem; left: -4rem; transform: translateY(0%);}
-
  }

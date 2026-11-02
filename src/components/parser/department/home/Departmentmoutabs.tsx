@@ -67,7 +67,7 @@ export default function DepartmentMouTabs({ items, pageName }: Props) {
     <>
       {/* Dynamic Tabs */}
       <div className="mou_heading">
-        <h4 className="font24" data-aos="fade-up" data-aos-delay="200">Collaborations & MOUs</h4>
+        <h4 className="font24" data-aos="fade-up" data-aos-delay="200">Collaborations & MoUs</h4>
         <div className="tabs tabs_design1" data-aos="fade-up" data-aos-delay="400">
           {tabs.map((type) => (
             <div

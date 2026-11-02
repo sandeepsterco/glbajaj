@@ -1894,6 +1894,9 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .alumni_event .view_btns { text-align: center; margin-top: 4.6rem; }
 .btns { display: flex; gap: 0.5rem; }
 .award-sec.alumni_event { padding-block: 5rem 13rem; }
+.award-sec.alumni_event .alumni-events-year{margin-bottom:5rem;}
+.award-sec.alumni_event .font24{margin-bottom:0rem;}
+.award-sec.alumni_event .award-list{margin-top:3rem;}
 .alumni-detail-wrap { position: relative; }
 .alumni-detail-wrap::before { background-color: var(--color-F4); content: ""; width: 84%; height: 100%; position: absolute; top: 0; bottom: 0; margin: 0 auto; left: 0; right: 0; }
 .alumni-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; position: relative; padding-block: 8rem 0; }

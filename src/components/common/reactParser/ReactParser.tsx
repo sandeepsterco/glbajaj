@@ -148,7 +148,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     department_home_activities: () => pageAwareLazyComponent(() => import("../../parser/DepartmentHomeActivities")),
     digital_pathshala_videos: () => pageAwareLazyComponent(() => import("../../parser/DigitalPathshalaVideoGrid")),
     why_clubs_grid: () => pageAwareLazyComponent(() => import("../../parser/WhyClubsGrid"), { params, searchParams }),
-    alumni_events_meet: () => pageAwareLazyComponent(() => import("../../parser/AlumniEventsMeetGrid")),
+    alumni_events_meet: () => pageAwareLazyComponent(() => import("../../parser/AlumniEventsMeetGrid"), {data}),
     admission_programs: () => pageAwareLazyComponent(() => import("../../parser/admissions/AdmissionPrograms")),
     department_notifications: () => pageAwareLazyComponent(() => import("../../parser/DepartmentNotificationBar")),
     department_home_clubs: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeClubs"), { params, data }),
@@ -166,7 +166,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     program_detail_placements: () => pageAwareLazyComponent(() => import("../../parser/ProgramDetailPlacements")),
     department_home_research: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomeResearch"), { params, data }),
     home_course_right: () => pageAwareLazyComponent(() => import("../../parser/HomeCourseRight")),
-    alumni_achievement_list: () => pageAwareLazyComponent(() => import("../../parser/AlumniAchievementList")),
+    alumni_achievement_list: () => pageAwareLazyComponent(() => import("../../parser/AlumniAchievementList"), {data}),
     intern_slider: () => pageAwareLazyComponent(() => import("../../parser/internSlider/InternSlider")),
   };
 

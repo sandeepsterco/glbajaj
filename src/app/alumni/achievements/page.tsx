@@ -1,5 +1,4 @@
 import { apiFetch } from "@/src/lib/api";
-import NotFound from "@/src/app/not-found";
 import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
 import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
 import { getPageSEO } from "@/src/lib/seo";
@@ -15,12 +14,16 @@ export async function generateMetadata() {
 export default async function DynamicSlugPage({
   searchParams,
 }: {
-  searchParams?: any;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedSearchParams = await searchParams;
-  const [{ data, error }, seoData] = await Promise.all([
+  const requestedPage = Number(resolvedSearchParams?.page);
+  const alumniPage =
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const [{ data, error }, seoData, { data: alumniData }] = await Promise.all([
     apiFetch(`cms/achievements`),
     getPageSEO(`alumni/achievements`),
+    apiFetch(`alumni-achivement?page=${alumniPage}`),
   ]);
 
   if (error || !data?.status) {
@@ -87,7 +90,9 @@ export default async function DynamicSlugPage({
           <ReactParserDynamic
             html={combinedHtml}
             searchParams={resolvedSearchParams}
-           pageName={seoData.title}/>
+            pageName={seoData.title}
+            data={alumniData}
+          />
         )}
       </div>
     </>

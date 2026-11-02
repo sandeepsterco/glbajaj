@@ -19,9 +19,10 @@ export default async function DynamicSlugPage({
   searchParams?:any
 }) {
   const resolvedSearchParams = await searchParams;
-  const [{data, error}, seoData] = await Promise.all([
+  const [{data, error}, seoData, {data: eventsData}] = await Promise.all([
     apiFetch(`cms/alumni-events-meets`),
     getPageSEO('alumni/events'),
+    apiFetch(`alumni-events`),
   ]);
 
   if (error || !data?.status) {
@@ -79,7 +80,7 @@ export default async function DynamicSlugPage({
       )}
       <div className="happenings_page">
       <PageHeader pathname={`/alumni/alumni-events-meets`} data={data?.data} slug={'alumni-events-meets'} />
-      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={'alumni-events-meets'} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
+      {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={'alumni-events-meets'} searchParams={resolvedSearchParams}  pageName={seoData.title} data={eventsData} />}
       </div>
     </>
   );

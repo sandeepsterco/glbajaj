@@ -7,10 +7,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/src/lib/api";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { BASE_URL } from "@/src/config/config";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
@@ -19,42 +17,37 @@ interface Achievement {
   image?: string;
   designation?: string;
   description?: string;
-  name?:string;
+  name?: string;
   alt?: string;
-  mapping_items?:{
-    paragraph:{para:string}[]
+  slug?: string;
+  mapping_items?: {
+    paragraph: { para: string }[];
   }
 }
 
-const fetchAlumniAchievements = async (page: number) => {
-  const { data, error } = await apiFetch(`alumni-achivement?page=${page}`);
+interface AlumniAchievementData {
+  status?: boolean;
+  featured?: Achievement[];
+  alumni_achivement?: {
+    data?: Achievement[];
+    current_page?: number;
+    last_page?: number;
+  };
+}
 
-  if (error) {
-    throw new Error(error);
-  }
-
-  return data;
-};
-
-export default function AlumniAchievementList({ pageName }: { pageName: string }) {
+export default function AlumniAchievementList({
+  pageName,
+  data,
+}: {
+  pageName: string;
+  data?: AlumniAchievementData;
+}) {
   const pathname = usePathname();
   const pageslug = pathname.split("/").filter(Boolean);
   const parentSlug = pageslug[0];
   const currentSlug = pageslug[1];
 
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get("page")) || 1;
-
-  const {
-    data,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["alumni-achievement-list", page],
-    queryFn: () => fetchAlumniAchievements(page),
-  });
-
-  if (isLoading || isError || !data) {
+  if (!data?.status) {
     return null;
   }
 
@@ -64,11 +57,6 @@ export default function AlumniAchievementList({ pageName }: { pageName: string }
   // On any other page, show all of that page's items.
 
   const gridItems = data?.alumni_achivement?.data ?? [];
-
-
-    // page === 1
-    //   ? achievementData?.data?.slice(5) ?? []
-    //   : achievementData?.data ?? [];
 
   if (sliderItems.length === 0 && gridItems.length === 0) {
     return null;
@@ -157,7 +145,7 @@ export default function AlumniAchievementList({ pageName }: { pageName: string }
       {gridItems.length > 0 && (
         <>
           <div className="award-list achievements_grid">
-            {gridItems.map((item: any, idx: number) => (
+            {gridItems.map((item, idx) => (
               <div key={idx} className="award-box relative achievement_box">
                 <figure className="flash-effect">
                   <img

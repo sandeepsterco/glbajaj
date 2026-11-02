@@ -95,7 +95,7 @@ export default function DepartmentAlumniSlider({ alumni, pageName }: Props) {
           modules={[FreeMode, Thumbs, Mousewheel]}
           onSwiper={setThumbsSwiper}
           slidesPerView={4}
-          spaceBetween={56}
+          spaceBetween={35}
           freeMode={true}
           watchSlidesProgress={true}
           mousewheel={{ sensitivity: 1 }}

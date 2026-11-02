@@ -141,6 +141,7 @@ export default async function BlogsPage({
         <BlogListingClient
           initialBlogsData={blogsData}
           initialFilters={{ search, category, year, month }}
+          
         />
       </InnerPageLayoutWrapper>
     </>

@@ -316,7 +316,7 @@ export default function BlogSidebar({
             {tags.map((tag, idx) => (
               <li key={tag.slug ?? tag.id ?? idx}>
                 <Link
-                  href={`${BASE_URL}${slug}/${encodeURIComponent(tag.slug)}`}
+                  href={`${BASE_URL}${slug}/tags/${encodeURIComponent(tag.slug)}`}
                   className={tag.slug === currentTagSlug ? "active" : ""}
                 >
                   {tag.name}

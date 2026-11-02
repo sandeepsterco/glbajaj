@@ -255,6 +255,7 @@ export default function GalleryDetailPage({ gallery_data, slug }: { gallery_data
                                             />
                                         )}
                                     </figure>
+                                    {/* {item?.caption && <p className="caption">{item.caption}</p>} */}
                                 </div>
                             ))
                         )}

@@ -39,7 +39,7 @@ export default function DepartmentHomeCEO({ pageName }: { pageName: string }) {
     <Swiper
       modules={[Navigation]}
       slidesPerView={1.2}
-      spaceBetween={20}
+      spaceBetween={0}
       loop={shouldLoop}
       autoplay={false}
       breakpoints={{

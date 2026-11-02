@@ -156,7 +156,7 @@ export default function ContactForm() {
           </div>
 
           <div className="form-group">
-            <input type="number" placeholder="Phone" name="phone" value={fieldsData.phone} onChange={changeHandler} />
+            <input type="number" placeholder="Phone*" name="phone" value={fieldsData.phone} onChange={changeHandler} />
             {getFieldError("phone") ? <p className="field-error" role="alert">{getFieldError("phone")}</p> : null}
           </div>
 

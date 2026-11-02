@@ -160,7 +160,7 @@ const getParserOptions = (homeData: any, params?:any, searchParams?:any, data?:a
     program_detail_form: () => pageAwareLazyComponent(() => import("../../parser/programDetailForm/ProgramDetailForm")),
     department_home_placements: () => pageAwareLazyComponent(() => import("../../parser/department/home/DepartmentHomePlacements"), { data }),
     home_placements: () => pageAwareLazyComponent(() => import("../../parser/HomePlacements"), { homeData }),
-    career_job_listing: () => pageAwareLazyComponent(() => import("../../parser/CareerJobListing")),
+    career_job_listing: () => pageAwareLazyComponent(() => import("../../parser/CareerJobListing"), {data}),
     home_upcoming_events: () => pageAwareLazyComponent(() => import("../../parser/homeUpcomingEvents/HomeUpcomingEvents")),
     home_highlights: () => pageAwareLazyComponent(() => import("../../parser/homeHighlights/HomeHighlights")),
     program_detail_placements: () => pageAwareLazyComponent(() => import("../../parser/ProgramDetailPlacements")),

@@ -1,11 +1,8 @@
 "use client";
 
 import { BASE_URL } from "@/src/config/config";
-import { apiFetch } from "@/src/lib/api";
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { SkeletonGroup } from "../ui/Skeleton";
 import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
 type JobOpening = {
@@ -18,12 +15,6 @@ type JobOpening = {
 };
 
 const JOB_TYPES = ["Under Graduate", "Post Graduate"] as const;
-
-const fetchJobListing = async (page: number) => {
-  const { data, error } = await apiFetch(`job-openings?page=${page}`);
-  if (error) throw new Error(error);
-  return data?.job_openings ?? {};
-};
 
 function JobItem({
   job,
@@ -64,31 +55,12 @@ function JobItem({
   );
 }
 
-export default function CareerJobListing() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get("job_listing_page")) || 1;
-  const parentSlug = pathname.split("/").filter(Boolean).pop();
-  const hrefPrefix = `${BASE_URL}${parentSlug}`;
+export default function CareerJobListing({data}: {data: any}) {
+  const hrefPrefix = `${BASE_URL}careers`;
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["job_listing", page],
-    queryFn: () => fetchJobListing(page),
-  });
+  const jobs: JobOpening[] = data?.job_openings?.data ?? [];
 
-  const jobs: JobOpening[] = data?.data ?? [];
-
-  if (isLoading) {
-    return (
-      <SkeletonGroup
-        wrapperClassName="!mt-[3rem] !block"
-        count={1}
-        className="bg-gray-300 h-[50rem] w-full"
-      />
-    );
-  }
-
-  if (isError || !jobs.length) return null;
+  if (!jobs.length) return null;
 
   const jobsByType = JOB_TYPES.map((type) => ({
     type,

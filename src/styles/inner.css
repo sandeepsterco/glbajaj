@@ -358,7 +358,7 @@
 .media_grid_Bx1{ position: relative;}
 .media_grid_Bx1:before { content: ""; background-color: var(--color-FE); width: 24.6rem; height: 1rem; position: absolute; top: 0; left: 3rem;}
 
-.media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 22rem; margin: 0 auto; mix-blend-mode: multiply; }
+.media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: max-content; margin: 0 auto; max-height: 20rem; margin: 0 auto; mix-blend-mode: multiply; }
 .media_grid_Bx2 a{ margin-top: -3rem;}
 .media_grid_Bx3{ padding: 2rem 2rem; background:#ebebeb;}
 .media_txt p a:hover{ color: var(--color-64);}

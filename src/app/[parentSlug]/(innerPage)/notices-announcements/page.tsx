@@ -78,7 +78,7 @@ export default async function NoticesAnnouncement({
                                     {item?.title && (
                                         <p dangerouslySetInnerHTML={{ __html: item.title }} />
                                     )}
-                                    {item?.slug && (item?.no_detail !== 'true') && (
+                                    {item?.slug && (!item?.no_detail) && (
                                         <Link href={`${BASE_URL}notices-announcements/${item.slug}`} className="strech_link" />
                                     )}
                                 </div>

@@ -1434,12 +1434,10 @@ main { overflow: hidden; }
   .res_publi_list li a{ padding-block: 1.5rem;}
   .institute_cnt ul{grid-template-columns: repeat(1, 1fr);}
   .home_sessions_section .left_col .title{ min-height: 4rem;}
-
   .home_placement_student_slider .placement_img{height: auto;}
   .home_placement_info .placement,
   .home_placement_info .placement sup{color:var(--color-black)};
-  .home_placement_info{margin:0;}
-  
+  .home_placement_info{margin:0;}  
 }
 
 
@@ -1505,7 +1503,6 @@ main { overflow: hidden; }
 }
 
 
-
 @media (max-width:480px) {
  .home_sessions_section .data-overlay { top: 10%; }
  .examrules_text { padding-top: 2rem; }
@@ -1514,10 +1511,14 @@ main { overflow: hidden; }
  .grievance .res_publication .res_publication_ttl p:empty{ display: none;}
  .res_publication_ttl h4:empty{ display: none;}
  .grievance .res_publication .res_publication_ttl p{ padding-block:0 2rem; padding-top: 0;}
-.group_counter ul{ grid-template-columns: repeat(1, 1fr); }
+ .group_counter ul{ grid-template-columns: repeat(1, 1fr); }
+
  }
+
+
 @media (max-width:360px) {
  .home_testimonials .desc_content { gap: 2rem; }
-.home_sessions_section .data-overlay { top: 0rem; padding-top: 1rem; }
-.home_sessions_section .data-overlay { left: 45%; transform: translateX(-35%); }
+ .home_sessions_section .data-overlay { top: 0rem; padding-top: 1rem; }
+ .home_sessions_section .data-overlay { left: 45%; transform: translateX(-35%); }
+ 
  }

@@ -5,6 +5,7 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { apiFetch } from "@/src/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function NoticeAnnouncementDetailLayout({
     children,
@@ -16,10 +17,13 @@ export default async function NoticeAnnouncementDetailLayout({
     const { parentSlug, slug } = await params;
     const currentSlug = "notices-announcements";
 
-    // if (!slug) return <>{children}</>;
     const {data, error} = await apiFetch(`notice-and-announcements/${slug}`);
 
-    const currentPageTitle = data?.notice_and_announcement_details?.data?.title;
+    const announcementData = data?.notice_and_announcement_details?.data
+
+    if(announcementData?.no_detail) notFound();
+
+    const currentPageTitle = announcementData?.title;
     // return <h1>testing</h1>
 
     return <InnerPageLayoutWrapper slug={currentSlug}

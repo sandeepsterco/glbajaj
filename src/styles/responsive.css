@@ -139,7 +139,12 @@
 .philosophy_right { margin-top: 0; }
 .philosophy_grid { gap: 10rem; }
 .media_grid_Bx1 figure img, .media_grid_Bx2 figure img { max-width: 16rem; }
+
+
 .media_grid_Bx1 figure, .media_grid_Bx2 figure { height: 18rem; }
+.academics-page .media_grid_Bx2 figure  img{max-width: 100%;}
+.academics-page .media_grid{ gap:3rem;}
+
 .affiliations-sec .media_txt p { font: var(--font-16); line-height: 1.3; }
 .affiliations-sec { padding-block:8rem 5rem; }
 .media_grid { grid-template-columns: repeat(2, 1fr); }

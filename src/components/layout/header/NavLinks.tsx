@@ -13,7 +13,7 @@ interface Tab {
 interface NavLinksProps {
   tabs: Tab[];
   activeSlug: string;
-  tabTitle: string;
+  tabTitle?: string;
   pathname: string;
   parentSlug?:string;
 }
@@ -45,7 +45,9 @@ export default function NavLinks({ tabs, activeSlug, tabTitle, pathname, parentS
 
   return (
     <div className="inner_nav">
-      <div className="about_menu_label paragraph">{tabTitle}</div>
+      {tabTitle && (
+        <div className="about_menu_label paragraph">{tabTitle}</div>
+      )}
       <ul className="about_menu_links">
         {tabs.map((item, itemIdx) => {
           const href = buildHref(item);

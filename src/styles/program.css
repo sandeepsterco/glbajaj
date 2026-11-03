@@ -657,7 +657,7 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     .mission-Cnt { padding: 4rem; }
     .career-list { grid-template-columns: repeat(2, 1fr); padding-bottom: 3rem;}   
     .txdcx_banner_img figcaption { right: 3rem; }
-    .privacy_policy, .terms-and-conditions-page { padding-block: 6rem 6rem; }
+    /* .privacy_policy, .terms-and-conditions-page { padding-block: 6rem 6rem; } */
 
 }
 

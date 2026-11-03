@@ -457,6 +457,16 @@
 .home_testimonials .thumb .designation { font: var(--font-16); margin-top: 0rem; }
 .visionary_message figure > img{ width: 100%;}
 .acre_slider h3{ margin: 0 0 3rem 0rem;}
+
+
+@media (max-width:991px){
+.gallery_list.masonry { column-count: 2; display: block; }
+}
+
+@media (max-width:640px){
+.gallery_list.masonry { column-count: 1; display: block; }
+}
+
 /* =========================
    RIGHT SECTION
 ========================= */
@@ -609,6 +619,15 @@ h3 .arrow_btn1 img{ margin: 0 auto;}
 
 
  }
+
+
+ @media (max-width:991px){
+  .hod_grid{ gap: 5rem;}
+  .iicenter_section{padding-block: 5rem 15rem;}
+ }
+
+
+
 /* ==============HOD's Message page Start============= */
 /* ==============The Group page Start============= */
 .group_section { padding-block: 5rem 10rem; border-bottom: 1px solid rgba(192, 133, 82, 0.5); }
@@ -1317,7 +1336,7 @@ opacity: 0.65; position:absolute; bottom: 0; left: 0; right: 0; height: 16.4rem;
 .footer-trigger.active line { stroke: #d2ab67; }
 .right_slider .slider_btns .swiper-button-prev { left: auto; right: 0; }
 .homeFac_sec { padding-block: 0 3rem; }
-.main-images { position: relative; margin-top: 3rem; margin-inline: -1rem; }
+.main-images { position: relative; margin-top: 3rem; }
 .main_nv { position: absolute; top: 35%; bottom: 0; height: 5rem; z-index: 9; display: flex; align-items: center; justify-content: space-between; left: 0; right: 0; margin: 0 -2rem; }
 .home_sessions_section .data-overlay { padding:4rem 0; }
 .home .home_testimonials .desc { min-height: 100%; }
@@ -1401,7 +1420,7 @@ main { overflow: hidden; }
   .chairman_left h3{  margin-bottom: 3rem;}
   .chairman_left p { padding-right: 0; }
   .chairman_section{ border-bottom: 0; padding-bottom: 0;}
-  .hod_details { margin-top: 8rem; padding-top: 4rem; } 
+  .hod_details { margin-top: 2rem; padding-top: 4rem; } 
   .chairman_grid { display: flex; }
 }
 

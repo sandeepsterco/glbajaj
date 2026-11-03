@@ -563,8 +563,8 @@ button.toggle-btn { background-color: var(--color-white); border: none; padding:
     /* .csr-list-new{ display: grid; grid-template-columns: 100%;} */
     .blood_donation_Bx1 blockquote, .blood_donation_Bx blockquote{ font: var(--font-28); font-weight: 600; letter-spacing: 0;}
     .blood_donation_Bx1 { padding: 0; }
-    .csr-list-new .blood_donation_Bx1{ order: 2;}
-    .csr-list-new .common_image_slider{ order: 1;}
+    .csr-list-new .blood_donation_Bx1{ order: 2; padding: 0;}
+    .csr-list-new .common_image_slider{ order: 1; width: 100%;}
     .program-duration h3, .program-intake h3, .program-approvals h3{ font: var(--font-30); letter-spacing: 0; font-weight: 700;}
     .program-duration h5, .program-intake h5, .program-approvals h5{ font: var(--font-18); font-weight: 600;}
     .program-about { grid-template-columns: 100%; gap: 2.5rem; display: grid; }

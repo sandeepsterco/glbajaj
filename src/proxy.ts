@@ -10,7 +10,7 @@ export async function proxy(request: NextRequest) {
   if(!slug){
     return NextResponse.next();
   }
-
+ 
   try{
     const apiUrl = `${API_URL}redirect/${slug}`;
 

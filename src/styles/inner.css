@@ -2074,6 +2074,7 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
 .ncc-flag .csr-text h3 { color: var(--color-33); font: var(--font-30); line-height: 1.4; }
 .ncc-flag .csr-list-new { align-items: center; }
 .alumni-achivement { padding-block: 5rem 10rem; }
+.alumni-achivement .description{margin-top:1.3rem;}
 .alumni-achivement-grid { display: grid; grid-template-columns: 61.8% auto; overflow: hidden;}
 .alumni-achivement-cnt { padding-right: 15.7rem; }
 .alumni-achivement h3 { margin-block: 4rem 5rem; }

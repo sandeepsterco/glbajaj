@@ -27,10 +27,19 @@ export function buildBreadcrumbs(
 
   const isProgramsOffered = pathname.includes("programs");
   const isProgram = pathname.includes("program") && !pathname.includes("programs");
-  const isDepartments = pathname.includes("department");
-  const isDepartmentDetail = pathname.includes("department") && !pathname.includes("departments");
+  const segments = pathname.split("/").filter(Boolean);
+  const deptIdx = segments.findIndex((s) => s === "department" || s === "departments");
+  const isDepartments = deptIdx !== -1;
+
+  const isDepartmentDetail = isDepartments && segments.length > deptIdx + 1;
+  const deptSlug = breadcrumbData.department_slug ?? segments[deptIdx + 1];
+  const deptName =
+    breadcrumbData.department_name ??
+    (deptSlug ? deptSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "");
   const isPlacementsSubpage = pathname.startsWith("/placements/");
   const isAboutUsSubpage = pathname.startsWith("/about-us/");
+
+  
 
   let accumulated = "";
   const parentCrumbs = parent_menus.map((item) => {
@@ -60,11 +69,10 @@ export function buildBreadcrumbs(
     ...(isProgram ? [{ label: "Programs", slug: BASE_URL + "academics/"+ "programs" }] : []),
     ...(isDepartmentDetail ? [{ label: "Departments", slug: BASE_URL + "academics/"+ "departments" }] : []),
     ...(isDepartmentDetail
-      ? [
-          breadcrumbData.tab_title
-            ? { label: breadcrumbData.tab_title, slug: `${BASE_URL}${parentSlug}/departments/${breadcrumbData.department_slug}` }
-            : { label: breadcrumbData.department_name ?? "", slug: `${BASE_URL}${parentSlug}/departments/${breadcrumbData.department_slug}` },
-        ]
+      ? [{
+          label: deptName,
+          slug: `${BASE_URL}${parentSlug ?? "academics"}/departments/${deptSlug}`,
+        }]
       : []),
     {
       label: breadcrumbData.menu_title ?? breadcrumbData.page_title ?? "",

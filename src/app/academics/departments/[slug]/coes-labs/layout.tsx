@@ -10,13 +10,13 @@ import { notFound } from "next/navigation";
 export default async function LabsInnerPageLayout({children, params}:Readonly<{children:React.ReactNode, params:any}>){
     const {slug, page} = await params;
 
-    const {data, error} = await apiFetch(`department/${slug}/labs`);
+    const {data, error} = await apiFetch(`department/${slug}/coes-labs`);
 
     if(error) notFound();
 
     return(
         <div className="happenings_page">
-            <PageHeader pathname={`/academics/departments/${slug}/labs`} data={data.data} slug={slug} />
+            <PageHeader pathname={`/academics/departments/${slug}/coes-labs`} parentSlug={'academics'} data={data.data} slug={slug}  />
             {(data.data.cms.length == 0 && Object.keys(data.data.modular).length == 0) ? <ComingSoon /> : children}
         </div>
     )

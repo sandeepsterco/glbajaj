@@ -9,7 +9,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return await getPageSEO(`department/${slug}/labs`);
+  return await getPageSEO(`department/${slug}/coes-labs`);
 }
 
 export default async function DepartmentAboutPage({
@@ -19,12 +19,12 @@ export default async function DepartmentAboutPage({
 }) {
   const { slug } = await params;
   const [{ data }, seoData] = await Promise.all([
-    apiFetch(`department/${slug}/labs`),
-    getPageSEO(`department/${slug}/labs`),
+    apiFetch(`department/${slug}/coes-labs`),
+    getPageSEO(`department/${slug}/coes-labs`),
   ]);
 
   const cmsSections = data?.data?.cms;
-  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/labs`);
+  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/coes-labs`);
 
   return (
     <>
@@ -43,7 +43,7 @@ export default async function DepartmentAboutPage({
         />
       )}
       {Object.keys(cmsSections || {}).map((key: any) => {
-        return <ReactParser key={key} html={cmsSections[key]} />;
+        return <ReactParser key={key} html={cmsSections[key]} pageName={seoData.title} />;
       })}
     </>
 

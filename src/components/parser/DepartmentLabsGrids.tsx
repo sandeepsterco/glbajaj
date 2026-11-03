@@ -17,6 +17,7 @@ const fetchDepartmentLabsData = async (slug: string) => {
 
 export default function DepartmentLabsGrids({ pageName }: { pageName: string }) {
   const pathname = usePathname();
+  const fullPath = pathname.replace(/^\//, '');
   const slug = pathname.split("/").filter(Boolean).slice(-2, -1)[0] ?? "";;
 
   const { data, isLoading } = useQuery({
@@ -56,7 +57,7 @@ export default function DepartmentLabsGrids({ pageName }: { pageName: string }) 
                   </div>
                 )}
                 {item.slug && (
-                  <Link className="strech_link" href={`labs/${item.slug}`} />
+                  <Link className="strech_link" href={`${BASE_URL}${fullPath}/${item.slug}`} />
                 )}
               </div>
             ))}

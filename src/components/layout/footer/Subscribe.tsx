@@ -85,7 +85,7 @@ export default function Subscribe() {
         <div className="subscribe_box">
             <input
                 type="email"
-                placeholder="Enter Email to Subscribe" 
+                placeholder="Subscribe to Newsletter" 
                 value={email}    
                 onChange={(e)=>setEmail(e.target.value)}
                 onKeyDown={handleKeyDown}

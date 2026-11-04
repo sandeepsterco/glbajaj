@@ -28,12 +28,21 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "https://project-demo.in/gl-bajaj/api/:path*",
-      },
-    ];
+    return {
+      // beforeFiles so /sitemap.xml is not swallowed by [parentSlug]
+      beforeFiles: [
+        {
+          source: "/sitemap.xml",
+          destination: "/sitemap-proxy",
+        },
+      ],
+      afterFiles: [
+        {
+          source: "/api/:path*",
+          destination: "https://project-demo.in/gl-bajaj/api/:path*",
+        },
+      ],
+    };
   },
 };
 

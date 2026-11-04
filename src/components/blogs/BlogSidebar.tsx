@@ -7,6 +7,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import SocialShare from "../common/SocialShare";
+import type { IRecentBlogs } from "./BlogListingClient";
 
 function getLast12Months(): { label: string; year: string; month: string }[] {
   const months = [];
@@ -38,6 +39,7 @@ export interface BlogFilterValues {
 export const PENDING_BLOG_FILTERS_KEY = "pending-blog-filters";
 
 interface Props {
+  recentBlogs:IRecentBlogs[];
   shareTitle?:string;
   featuredBlogs: any[];
   comments: any[];
@@ -75,6 +77,7 @@ function FilterChip({ label, href, onRemove }: {
 }
 
 export default function BlogSidebar({
+  recentBlogs,
   shareTitle,
   featuredBlogs,
   comments,
@@ -210,9 +213,35 @@ export default function BlogSidebar({
         </div>
       )}
 
+      {recentBlogs.length > 0 && (
+        <div className="recent_post">
+          <h5>Recent Blogs</h5>
+          <ul>
+            {recentBlogs.map((blog: any, idx: number) => (
+              <li key={blog.slug ?? idx}>
+                <p>{blog.title}</p>
+                <span>
+                  <img
+                    src="/images/icons/arrow-right.svg"
+                    alt="arrow"
+                    className="img-fluid"
+                  />
+                </span>
+                {blog.slug && (
+                  <Link
+                    href={`${BASE_URL}${slug}/${blog.slug}`}
+                    className="strech_link"
+                  />
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {featuredBlogs.length > 0 && (
         <div className="recent_post">
-          <h5>Featured Posts</h5>
+          <h5>Featured Blogs</h5>
           <ul>
             {featuredBlogs.map((blog: any, idx: number) => (
               <li key={blog.slug ?? idx}>

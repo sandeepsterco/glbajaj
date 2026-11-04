@@ -14,7 +14,7 @@ export default function BlogMain({ data, slug }: { data: any; slug: string }) {
               <Link href={`${BASE_URL}${slug}/${data.slug}`}>
                 <figure className="flash-effect-2">
                   <Image
-                    src={data?.featured_image || data?.image || "/images/blog-list-banner.webp"}
+                    src={data?.featured_image || "/images/blog-list-banner.webp"}
                     alt={data?.featured_image_alt || data?.listing_image_alt || data?.title || 'Gl Bajaj'}
                     className="img-fluid w-100"
                     width={850}

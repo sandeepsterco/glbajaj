@@ -2651,6 +2651,19 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
     gap: 1rem;
 }
 
+.blog_left_bottom .feature_slider_thumbnail{
+    margin-bottom:1.5rem;
+}
+
+.blog_left_bottom .swiper-slide-next .feature_slider_thumbnail{
+    margin-left:auto;
+}
+
+.blog_left_bottom .swiper-slide-active .feature_slider_thumbnail{
+    margin-left:0;
+    margin-right:auto;
+}
+
 .comment_success .comment_success_icon{
     font-size: 2rem;
     color: #fff;

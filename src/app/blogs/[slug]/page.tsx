@@ -11,6 +11,8 @@ import { notFound } from "next/navigation";
 import { buildBlogDetailSchema } from "@/src/lib/schema/blogDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import React from "react";
+import type { IRecentBlogs } from "@/src/components/blogs/BlogListingClient";
 
 interface SearchParams {
   search?: string;
@@ -57,7 +59,7 @@ function BlogSections({ sections }: { sections: any }) {
     return <ReactParser html={sections} />;
   }
   return sections?.map((item: any, idx: number) => (
-    <>
+    <React.Fragment key={idx}>
       {/* {item?.title && (
         <h3>{item.title}</h3>
       )} */}
@@ -65,7 +67,7 @@ function BlogSections({ sections }: { sections: any }) {
         item.editors.map((editorItem: any, editorIdx: number) => (
           <ReactParser key={editorIdx + idx} html={editorItem?.content} />
         ))}
-    </>
+    </React.Fragment>
   ));
 }
 
@@ -110,7 +112,6 @@ export default async function BlogDetailPage({
     datePublishedIso: details?.date || "",
     dateModifiedIso: details?.date || "",
   };
-
   const blogDetailSchema = buildBlogDetailSchema(blogDetailSchemaArgs);
 
   const globalSchemaArgs = {
@@ -130,6 +131,8 @@ export default async function BlogDetailPage({
       },
     ],
   };
+
+  const recentBlogs:IRecentBlogs[]  = data?.recentBlogs ?? [];
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
@@ -193,7 +196,7 @@ export default async function BlogDetailPage({
 
               <BlogSections sections={details.sections} />
 
-              <BlogFeaturedSlider blogs={featuredBlogs} listSlug={listSlug} />
+              <BlogFeaturedSlider listSlug={listSlug} blogSlug={blogSlug} />
 
               <BlogCommentForm blogSlug={blogSlug} />
 
@@ -285,6 +288,7 @@ export default async function BlogDetailPage({
             </div>
 
             <BlogSidebar
+              recentBlogs={recentBlogs}
               featuredBlogs={featuredBlogs}
               comments={comments}
               currentCategory={category}

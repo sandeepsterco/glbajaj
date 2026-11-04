@@ -19,6 +19,12 @@ interface Props {
   tags?: { id?: number | string; name: string; slug: string }[];
 }
 
+export interface IRecentBlogs{
+  id:number;
+  title:string;
+  slug:string;
+}
+
 function buildBlogsQuery(filters: BlogFilterValues, page: number) {
   const params = new URLSearchParams({ page: String(page) });
   if (filters.search) params.set("search", filters.search);
@@ -114,6 +120,8 @@ export default function BlogListingClient({
     ).values(),
   );
 
+  const recentBlogs:IRecentBlogs[]  = blogsData?.recentBlogs ?? [];
+
   return (
     <>
       {mainBlog && <BlogMain data={topBlog} slug="blogs" />}
@@ -138,6 +146,7 @@ export default function BlogListingClient({
               )}
             </div>
             <BlogSidebar
+              recentBlogs={recentBlogs}
               featuredBlogs={featuredBlogs}
               comments={comments}
               currentCategory={filters.category}

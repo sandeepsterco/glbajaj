@@ -7,7 +7,7 @@ export default function BlogGrid({ data, slug }: { data: any; slug: string }) {
     <div className="blog_Bx">
       <figure className="flash-effect-2">
         <Image
-          src={data?.listing_image || data?.image || "/images/blog-listing-placeholder.webp"}
+          src={data?.listing_image || "/images/blog-listing-placeholder.webp"}
           className="img-fluid"
           alt={data?.listing_image_alt || data?.title || 'Gl Bajaj'}
           width={400}

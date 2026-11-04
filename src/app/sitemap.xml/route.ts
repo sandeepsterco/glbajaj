@@ -1,13 +1,15 @@
-const BACKEND_SITEMAP_URL =
-  "https://glbitm.project-demo.in/assets/sitemap/sitemap.xml";
+import { BACKEND_SITEMAP_URL } from "@/src/config/config";
 
 export const revalidate = 0;
 
 export async function GET(): Promise<Response> {
   try {
+    if (!BACKEND_SITEMAP_URL) {
+      return new Response("Unable to fetch sitemap", { status: 502 });
+    }
+
     const response = await fetch(BACKEND_SITEMAP_URL, {
       next: { revalidate },
-      cache:"no-store"
     });
 
     if (!response.ok || !response.body) {

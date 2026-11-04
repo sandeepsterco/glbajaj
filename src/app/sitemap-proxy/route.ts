@@ -1,5 +1,6 @@
 import { BACKEND_SITEMAP_URL } from "@/src/config/config";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export async function GET(): Promise<Response> {
@@ -9,7 +10,7 @@ export async function GET(): Promise<Response> {
     }
 
     const response = await fetch(BACKEND_SITEMAP_URL, {
-      next: { revalidate },
+      cache: "no-store",
     });
 
     if (!response.ok || !response.body) {

@@ -56,7 +56,9 @@ export default async function AdmissionPrograms() {
             <div className="program-box" key={program.slug}>
               <div className="program-text">
                 <h6>
-                  <a href={`/academics/programs/${program.slug}`}>{program.name}</a>
+                  {/* <a href={`/academics/programs/${program.slug}`}> */}
+                  {program.name}
+                  {/* </a> */}
                 </h6>
               </div>
               <div className="program-right">
@@ -76,13 +78,13 @@ export default async function AdmissionPrograms() {
                     departmentSlug={program.department_slug || program.slug}
                   />
                 </div>
-                <div className="program-btn">
+                {/* <div className="program-btn">
                   <Link href={`/academics/programs/${program.slug}`}>
                     <span>
                       <img src="/images/icons/right-arrow.svg" alt="arrow" />
                     </span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

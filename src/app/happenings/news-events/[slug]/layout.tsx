@@ -15,6 +15,8 @@ export default async function NewsEventsLayout({
   }) {
     const { slug } = await params;
 
+    if (/^\d+$/.test(slug)) return <>{children}</>;
+
     const {data, error} = await apiFetch(`news-and-events/${slug}`);
 
     const currentPageTitle = data?.news_and_events_details?.data?.heading;

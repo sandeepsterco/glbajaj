@@ -21,6 +21,7 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
               <DepartmentFilter
                 departments={departments}
                 currentDepartment={currentDepartment}
+                basePath="/happenings/news-events"
               />
             </div>
             <NoData heading="No news & events found" />
@@ -55,6 +56,7 @@ export default function MainNews({ data, slug, departments, currentDepartment }:
                 <DepartmentFilter
                   departments={departments}
                   currentDepartment={currentDepartment}
+                  basePath="/happenings/news-events"
                 />
               </div>
               <div className="news_cnt">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SkeletonGroup } from "../../ui/Skeleton";
 import PaginationWrapper from "../../common/pagination/PaginationWrapper";
+import { notFound } from "next/navigation";
 
 const getAchievement = async (page: number) => {
     const { data, error } = await apiFetch(`achivements?page=${page}`);
@@ -19,6 +20,8 @@ export default async function AchievementList({searchParams, pageName}:{searchPa
     const data = await getAchievement(page);
 
     const achievementData = data?.achivements;
+
+    if (page > 1 && !achievementData?.data?.length) notFound();
 
     return (
         <>
@@ -42,6 +45,7 @@ export default async function AchievementList({searchParams, pageName}:{searchPa
             <PaginationWrapper
                 currentPage={achievementData?.current_page || 1}
                 totalPages={achievementData?.last_page || 1}
+                basePath="/why-glbitm/achievements"
             />
         </>
     )

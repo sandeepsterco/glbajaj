@@ -1,17 +1,29 @@
 import TestimonialDetail from "@/src/components/testimonial/TestimonialDetail";
+import TestimonialListing from "@/src/components/testimonial/TestimonialListing";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+
+const TYPE_SLUG = "alumni";
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
+    if (isNumeric(slug)) return await getPageSEO("why-glbitm/testimonials");
     return await getPageSEO(`why-glbitm/testimonials/${slug}`);
 }
 
 export default async function TestimonialDetailPage({ params }: { params: any }) {
     const { slug } = await params;
+
+    if (isNumeric(slug)) {
+        const page = Number(slug);
+        if (page < 1) notFound();
+        if (page === 1) permanentRedirect(`/why-glbitm/testimonials/${TYPE_SLUG}`);
+        return <TestimonialListing typeSlug={TYPE_SLUG} page={page} />;
+    }
 
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`testimonial/${slug}`),

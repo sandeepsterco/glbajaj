@@ -2176,13 +2176,14 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .anti_ragging_grid { display: grid; grid-template-columns: 1fr; }
 /* .anti_ragging_grid .anti_ragging_img { padding-right: 15rem; margin-left: -23rem; }
 */
+
 .anti_ragging_grid h2 { margin-bottom: 4rem; }
 /* =============== Quick Link page css  */
 .res_publication.grievance-policy { padding-bottom: 0; }
 .res_publication.grievance-policy .res_publi_list { margin-bottom: 2rem; }
 .res_publi_list + p { color: var(--color-64); font-weight: 600; }
 .grievance .iicenter_section { padding-top: 5rem; }
-.privacy_policy, .terms-and-conditions-page { padding-block: 8rem 10rem; }
+.privacy_policy, .terms-and-conditions-page { padding-block: 8rem 10rem;}
 
 .privacy-policy h3, .terms-and-conditions-page h3 { color: var(--color-64); font: var(--font-24); font-weight: bold; line-height:1.4; font-family: var(--font-tasa); margin-bottom:2rem; }
 .privacy-policy ul, .terms-and-conditions-page ul { padding-bottom: 3rem; }
@@ -2213,7 +2214,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .manodarpan_section ul { color: var(--color-33); }
 .key_feature_yourdost ul { color: var(--color-33); }
 .institute_cnt h4 { padding-bottom: 3rem; }
-.key_feature_yourdost { }
 .key_feature_yourdost .csr-list2 { padding-block: 12rem 0rem; }
 .transpo_facili_main .xtabs_nav .xtab_btn { padding-bottom: 4.8rem; padding-block: 3.5rem; color: var(--color-black); }
 .transpo_facili_main .xtabs_nav .xtab_btn:nth-child(1) { padding-left: 0; }
@@ -2222,6 +2222,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .csr-sec.illuminate { padding-bottom: 5rem; }
 .workshop.illuminate-slider { border-top: none; padding-top: 0rem; }
 .student-research-pro { padding-bottom: 0; }
+
 /* ================  Courses & Admission-Overview  =============== */
 .courses_admission_bottom { padding-block: 6.2rem 0; }
 .courses_admission_bottom h4 { margin-bottom: 5rem; }
@@ -2281,10 +2282,7 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .in_essence_section blockquote { padding-bottom: 3rem; }
 .in_essence_section figure { margin-block: 8rem; }
 .in_essence_section figure:empty{ display: none;}
-.in_essence_section figure:has(img[src=""]) {
-    display: none;
-}
-
+.in_essence_section figure:has(img[src=""]) { display: none; }
 .clubs_table .table-wrapper { box-shadow: none;}
 .objective_clubs { padding-right: 7.8rem; }
 .objective_clubs ul{ padding-bottom: 3rem;}
@@ -2361,8 +2359,6 @@ section.table-description.project-gallery-top { padding-bottom: 0; }
 .glbcri_section .tp_ov_pattern { padding-block: 4rem 0; }
 .glbcri_section ul { color: var(--color-33); padding-right: 3rem; }
 .clbcri_grid_bx { display: grid; grid-template-columns:43% auto; background-color: var(--color-F4); padding-block: 9rem 8rem; position: relative; gap: 11.6rem; }
-
-
 
 .clb_grid_list{background-color: var(--color-F4); padding-block:0rem 8rem; position: relative; }
 .clb_grid_list::after { background-color: var(--color-F4); left: -10rem; top: 0; bottom: 0; width: 10rem; content: ""; position: absolute; }

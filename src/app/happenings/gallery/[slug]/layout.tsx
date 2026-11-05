@@ -5,6 +5,7 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 import { apiFetch } from "@/src/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function NewsEventsLayout({
     children,
@@ -16,9 +17,13 @@ export default async function NewsEventsLayout({
     const { slug } = await params;
     const currentSlug = 'gallery'
 
+    if (/^\d+$/.test(slug)) return <>{children}</>;
+
     const {data, error} = await apiFetch(`gallery/${slug}`);
 
-    const pageData = data.gallery_details?.data || {};
+    if(error) notFound();
+
+    const pageData = data?.gallery_details?.data || {};
 
     return <InnerPageLayoutWrapper slug={currentSlug} pathname={`/happenings/${currentSlug}/${slug}`} parentSlug="happenings" tabs={null} mainClass="happenings_page" currentPageTitle={pageData?.title || ''} showTabs={true}>{children}</InnerPageLayoutWrapper>;
 }

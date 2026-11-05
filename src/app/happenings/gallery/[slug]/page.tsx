@@ -1,10 +1,13 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import GalleryDetailPage from "@/src/components/gallery/GalleryDetail";
 import { apiFetch } from "@/src/lib/api"
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getPageSEO } from "@/src/lib/seo";
 import { BASE_URL } from "@/src/config/config";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
+import GalleryListing from "@/src/components/gallery/GalleryListing";
+
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({
     params,
@@ -12,6 +15,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
+    if (isNumeric(slug)) return getPageSEO("happenings/gallery");
     return getPageSEO(`happenings/gallery/${slug}`);
 }
 
@@ -21,6 +25,14 @@ export default async function GalleryDetail({
     params: Promise<{ slug: string }>;
 }) {
     const {slug} = await params;
+
+    // pagination: /happenings/gallery/2, /3 ...
+    if(isNumeric(slug)){
+        const page = Number(slug);
+        if (page < 1) notFound();
+        if (page === 1) permanentRedirect("/happenings/gallery");
+        return <GalleryListing page={page} />;
+    }
 
     const [{data, error}, seoData] = await Promise.all([
         apiFetch(`gallery/${slug}`),

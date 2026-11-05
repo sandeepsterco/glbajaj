@@ -1,17 +1,28 @@
+import AchievementsListing from "@/src/components/achievement/AchievementsListing";
 import AchievementDetail from "@/src/components/achievement/detail";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (isNumeric(slug)) return await getPageSEO("why-glbitm/achievements");
   return await getPageSEO(`why-glbitm/achievements/${slug}`);
 }
 
-export default async function AchievementDetailPage({params}:{params:any}){
+export default async function AchievementDetailPage({params, searchParams}:{params:any; searchParams: Promise<Record<string, any>>;}){
     const {slug} = await params;
+
+    if (isNumeric(slug)) {
+      const page = Number(slug);
+      if (page < 1) notFound();
+      if (page === 1) permanentRedirect("/why-glbitm/achievements");
+      return <AchievementsListing page={page} searchParams={(await searchParams) ?? {}} />;
+    }
 
     const [{data, error}, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`achivements/${slug}`),

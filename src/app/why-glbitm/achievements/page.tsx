@@ -1,79 +1,17 @@
-import { apiFetch } from "@/src/lib/api";
-import NotFound from "@/src/app/not-found";
-import ComingSoon from "@/src/components/common/comingSoon/ComingSoon";
-import ReactParserDynamic from "@/src/components/common/reactParser/ReactParserDynamic";
+import AchievementsListing from "@/src/components/achievement/AchievementsListing";
 import { getPageSEO } from "@/src/lib/seo";
-import PageHeader from "@/src/components/layout/header/PageHeader";
-import { notFound } from "next/navigation";
-import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
-import { BASE_URL } from "@/src/config/config";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata() {
-  return await getPageSEO('why-glbitm/achievements');
+  return await getPageSEO("why-glbitm/achievements");
 }
 
-export default async function DynamicSlugPage({
-  searchParams
-}: {
-  searchParams?:any
-}) {
-  const resolvedSearchParams = await searchParams;
-  const [{data, error}, seoData] = await Promise.all([
-    apiFetch(`cms/glb-achievements`),
-    getPageSEO('why-glbitm/achievements'),
-  ]);
+export default async function DynamicSlugPage({ searchParams }: { searchParams?: any }) {
+  const sp = (await searchParams) ?? {};
 
-  if (error || !data?.status) {
-    notFound();
-  }
+  // old links like ?page=3 -> /achievements/3
+  const legacyPage = Number(sp.page);
+  if (legacyPage > 1) redirect(`/why-glbitm/achievements/${legacyPage}`);
 
-  const pageData = data?.data;
-
-  const globalSchemaArgs = {
-    canonicalUrl:seoData?.alternates?.canonical || BASE_URL || '',
-    pageTitle:seoData?.title || '',
-    metaDescription:seoData?.description || '',
-    primaryImageUrl:"https://project-demo.in/glbitm/assets/img/modules/1/module_1789649006_6aabe06e9b5be.webp",
-    datePublishedIso:pageData?.created_at || '',
-    dateModifiedIso:pageData?.updated_at || '',
-    languageTag:'en-IN',
-    currentPageName:pageData?.page_title || '',
-    parentMenus:pageData?.parent_menus || [],
-    currentPageSlug:pageData?.current_page_slug
-  };
-
-  const combinedHtml = Object.values(data?.data?.sections ?? {}).join("");
-
-  const globalSchema = buildGlobalSchema(globalSchemaArgs);
-
-  let eventSchema;
-
-  return (
-    <>
-      {seoData?.schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(seoData.schema),
-          }}
-        />
-      )}
-      {eventSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
-        />
-      )}
-      {globalSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
-        />
-      )}
-      <div className="happenings_page">
-        <PageHeader pathname={`/why-glbitm/achievements`} data={data?.data} slug={'achievements'} />
-        {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} searchParams={resolvedSearchParams}  pageName={seoData.title}/>}
-      </div>
-    </>
-  );
+  return <AchievementsListing page={1} searchParams={sp} />;
 }

@@ -189,7 +189,7 @@ const Footer = async () => {
               <div className="relative flex items-center">
                 <input
                   type="email"
-                  placeholder="Enter Email to Subscribe"
+                  placeholder="Subscribe to Newsletter"
                   className="bg-transparent border border-white/50 text-white text-[13px] pl-[1.3rem] h-[5rem] w-[26.3rem] focus:outline-none focus:border-[#FECE49] transition-colors placeholder:text-[1.4rem] placeholder:leading-[2.1rem]"
                 />
                 <button

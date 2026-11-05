@@ -7,28 +7,36 @@ import "@/src/styles/parser.css";
 import { apiFetch } from "@/src/lib/api";
 
 export default async function MessageDetailLayout({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: Promise<{ slug: string }>;
-  }) {
-    const { slug } = await params;
-    if (!slug) return <>{children}</>;
-    const {data} = await apiFetch(`achivements/${slug}`);
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  
+  if (!slug || /^\d+$/.test(slug)) return <>{children}</>;
 
-    const currentPageTitle = data?.achivement_details?.data?.title;
+  const { data } = await apiFetch(`achivements/${slug}`);
+  const currentPageTitle = data?.achivement_details?.data?.title;
 
-    const customTabs = {
-      menu_title:'Achievements',
-      tabs:[
-        {
-        "title": "Why GLBITM",
-        "slug": "why-glbitm"
-        }
-      ]
-    }
+  const customTabs = {
+    menu_title: "Achievements",
+    tabs: [{ title: "Why GLBITM", slug: "why-glbitm" }],
+  };
 
-    return <InnerPageLayoutWrapper slug={'achievements'} pathname={`/why-glbitm/achievements/${slug}`} parentSlug="why-glbitm" tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle} customTabs={customTabs}>{children}</InnerPageLayoutWrapper>;
-
+  return (
+    <InnerPageLayoutWrapper
+      slug={"achievements"}
+      pathname={`/why-glbitm/achievements/${slug}`}
+      parentSlug="why-glbitm"
+      tabs={null}
+      mainClass="happenings_page"
+      showTabs={true}
+      currentPageTitle={currentPageTitle}
+      customTabs={customTabs}
+    >
+      {children}
+    </InnerPageLayoutWrapper>
+  );
 }

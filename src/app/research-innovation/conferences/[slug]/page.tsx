@@ -1,17 +1,29 @@
 import ApiErrorFallback from "@/src/components/common/ApiErrorFallback";
 import { ConferenceDetail } from "@/src/components/conference-symposium/ConferenceDetail";
+import ConferencesListing from "@/src/components/parser/conferenceLists/ConferencesListing";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata() {
     return getPageSEO("research-innovation/conferences/slug");
 }
 
-export default async function NewsDetailPage({params}:{params:Promise<{slug:string;}>}){
+export default async function NewsDetailPage({params, searchParams}:{params:Promise<{slug:string;}>; searchParams: Promise<Record<string, any>>;}){
     const {slug} = await params;
+
+    if (isNumeric(slug)) {
+        const page = Number(slug);
+        if (page < 1) notFound();
+        if (page === 1) permanentRedirect("/research-innovation/conferences");
+        return <ConferencesListing page={page} searchParams={(await searchParams) ?? {}} />;
+      }
+
+
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`research-conferences/${slug}`),
         apiFetch(`cms/conferences`),

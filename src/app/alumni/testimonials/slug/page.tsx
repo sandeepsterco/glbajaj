@@ -1,22 +1,47 @@
 import TestimonialDetail from "@/src/components/testimonial/TestimonialDetail";
+import TestimonialListing from "@/src/components/testimonial/TestimonialListing";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
-export async function generateMetadata({params}:{params: Promise<{ slug: string }>}) {
+const isNumeric = (s: string) => /^\d+$/.test(s);
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (isNumeric(slug)) return await getPageSEO("alumni/testimonials");
   return await getPageSEO(`alumni/testimonials/${slug}`);
 }
 
 export default async function TestimonialDetailPage({
   params,
 }: {
-  params: any;
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
+  // pagination: /alumni/testimonials/2, /3 ...
+  if (isNumeric(slug)) {
+    const page = Number(slug);
+    if (page < 1) notFound();
+    if (page === 1) permanentRedirect("/alumni/testimonials");
+    return (
+      <TestimonialListing
+        typeSlug="alumni"
+        page={page}
+        seoPath="alumni/testimonials"
+        basePath="/alumni/testimonials"
+        layoutSlug="alumni-testimonials"
+        pathname="/alumni/testimonials"
+        parentSlug={null}
+        showTabs={false}
+        parentMenus={[{ title: "Alumni", url: "alumni" }]}
+      />
+    );
+  }
+
+  // detail page (unchanged)
   const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
     apiFetch(`testimonial/${slug}`),
     apiFetch(`cms/testimonials`),
@@ -28,7 +53,7 @@ export default async function TestimonialDetailPage({
   const pageData = CmsData?.data;
   const modularData = data?.testimonial_details?.data;
 
-  const globalSchemaArgs = {
+  const globalSchema = buildGlobalSchema({
     canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
     pageTitle: seoData?.title || "",
     metaDescription: seoData?.description || "",
@@ -39,27 +64,17 @@ export default async function TestimonialDetailPage({
     currentPageName: modularData?.name || "",
     currentPageSlug: `${BASE_URL}alumni/testimonials/${slug}`,
     parentMenus: [
-      {
-        title: "Alumni",
-        url: "alumni",
-      },
-      {
-        title: "Testimonials",
-        url: "testimonials",
-      },
+      { title: "Alumni", url: "alumni" },
+      { title: "Testimonials", url: "testimonials" },
     ],
-  };
-
-  const globalSchema = buildGlobalSchema(globalSchemaArgs);
+  });
 
   return (
     <>
       {seoData?.schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(seoData.schema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
         />
       )}
       {globalSchema && (

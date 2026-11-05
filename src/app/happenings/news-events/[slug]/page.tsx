@@ -5,7 +5,10 @@ import { apiFetch } from "@/src/lib/api";
 import { buildNewsArticleSchema } from "@/src/lib/schema/newsDetailSchema";
 import { getPageSEO } from "@/src/lib/seo";
 import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import NewsEventsListing from "@/src/components/newsEvents/NewsEventsListing";
+
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({
     params,
@@ -13,11 +16,27 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
+    if (isNumeric(slug)) return getPageSEO("happenings/news-events");
     return getPageSEO(`news-and-events/${slug}`);
 }
 
-export default async function NewsDetailPage({params}:{params:any}){
+export default async function NewsDetailPage({params, searchParams}:{params:Promise<{slug:string}>; searchParams:Promise<{department?:string}>}){
     const {slug} = await params;
+
+    if (isNumeric(slug)) {
+        const { department } = await searchParams;
+        const page = Number(slug);
+        if (page < 1) notFound();
+        if (page === 1) {
+          permanentRedirect(
+            department
+              ? `/happenings/news-events?department=${encodeURIComponent(department)}`
+              : "/happenings/news-events"
+          );
+        }
+        return <NewsEventsListing page={page} department={department || ""} />;
+    }
+
     const currentSlug = 'news-events';
     const [{ data, error }, seoData] = await Promise.all([
         apiFetch(`news-and-events/${slug}`),

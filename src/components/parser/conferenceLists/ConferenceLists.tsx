@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationWrapper from "../../common/pagination/PaginationWrapper";
 import './conferenceList.css'
+import { notFound } from "next/navigation";
 
 const getConferenceLists = async (page: number) => {
     const { data, error } = await apiFetch(`research-conferences?page=${page}`);
@@ -22,14 +23,7 @@ export default async function ConferenceLists({params, searchParams, pageName}:{
     const currentSlug = 'conferences';
     const conferenceData = data?.research_conferences;
 
-    const handlePageChange = (page: number) => {
-        if (!conferenceData || page < 1 || page > conferenceData.last_page || page === currentPage) {
-            return;
-        }
-
-        const params = new URLSearchParams(searchParams.toString());
-        params.set("page", String(page));
-    };
+    if (currentPage > 1 && !conferenceData?.data?.length) notFound();
 
     return (
         <>
@@ -55,6 +49,7 @@ export default async function ConferenceLists({params, searchParams, pageName}:{
             <PaginationWrapper
                 currentPage={conferenceData?.current_page || 1}
                 totalPages={conferenceData?.last_page || 1}
+                basePath={`/${parentSlug}/${currentSlug}`}
             />
         </>
     )

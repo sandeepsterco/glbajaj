@@ -5,22 +5,30 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 interface Props {
   departments: { name: string; slug: string }[];
   currentDepartment: string;
+  basePath?: string;
 }
 
-export default function DepartmentFilter({ departments, currentDepartment }: Props) {
+export default function DepartmentFilter({ departments, currentDepartment, basePath, }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleChange = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (value) {
-      params.set("department", value);
-    } else {
-      params.delete("department");
+    if(basePath){
+      return router.push(
+        value ? `${basePath}?department=${encodeURIComponent(value)}` : basePath
+      );
+    }else{
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set("department", value);
+      } else {
+        params.delete("department");
+      }
+      params.delete("page"); 
+      router.push(`${pathname}?${params.toString()}`);
     }
-    params.delete("page"); // reset to page 1 on filter change
-    router.push(`${pathname}?${params.toString()}`);
+    
   };
 
   return (

@@ -1094,7 +1094,7 @@
 .botttom-sec .bottom_content .dark_bg h3{font: var(--font-30); letter-spacing: -0.5px;}
 .our-team-list .teamX_grid > :first-child { grid-column: 1; display: block; padding-inline: 1.5rem; }
 .placements-training-placement-team .alumni_team .teamX_card:first-child .teamX_img { width: 100%; }
-.about_top{padding: 1rem 0;}
+.about_top{padding:0;}
 .placements-industry-academia .tp_overview{padding-block:5rem 0rem;}
 .inner-iqac-function-Cnt h2 { margin-block: 0rem 2rem; }
 .careerg_title h4 { margin-bottom: 2rem; }
@@ -1108,7 +1108,9 @@
 .placements-team .our-team-list{ padding-top: 5rem;}
 .placements-team .teamX_card figure { margin-top: 0; }
 .computer-center .reports{margin-block: 0 4rem;}
-
+.about_menu_bar{ border-bottom: 0px;}
+.cus-tab .tabs ul{ border-bottom: 0;}
+.cus-tab .tabs ul li a{border-bottom: .1rem solid var(--color-92);}
 
  }
 

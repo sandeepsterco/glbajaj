@@ -1,17 +1,30 @@
 import TestimonialDetail from "@/src/components/testimonial/TestimonialDetail";
+import TestimonialListing from "@/src/components/testimonial/TestimonialListing";
 import { BASE_URL } from "@/src/config/config";
 import { apiFetch } from "@/src/lib/api";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { getPageSEO } from "@/src/lib/seo";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+
+const TYPE_SLUG = "students";
+const LISTING_SEO_PATH = "why-glbitm/testimonials/students";
+const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
+    if (isNumeric(slug)) return await getPageSEO(LISTING_SEO_PATH);
     return await getPageSEO(`why-glbitm/testimonials/${slug}`);
 }
 
-export default async function TestimonialDetailPage({ params }: { params: any }) {
+export default async function TestimonialDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
+
+    if (isNumeric(slug)) {
+        const page = Number(slug);
+        if (page < 1) notFound();
+        if (page === 1) permanentRedirect(`/why-glbitm/testimonials/${TYPE_SLUG}`);
+        return <TestimonialListing typeSlug={TYPE_SLUG} page={page} seoPath={LISTING_SEO_PATH} />;
+    }
 
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`testimonial/${slug}`),
@@ -24,35 +37,31 @@ export default async function TestimonialDetailPage({ params }: { params: any })
     const pageData = CmsData?.data;
     const modularData = data?.testimonial_details?.data;
 
-    const globalSchemaArgs = {
-        canonicalUrl: seoData?.alternates?.canonical || BASE_URL || '',
-        pageTitle: seoData?.title || '',
-        metaDescription: seoData?.description || '',
-        primaryImageUrl: modularData?.image || '',
-        datePublishedIso: modularData?.created_at || '',
-        dateModifiedIso: modularData?.updated_at || '',
-        languageTag: 'en-IN',
-        currentPageName: modularData?.name || '',
+    const globalSchema = buildGlobalSchema({
+        canonicalUrl: seoData?.alternates?.canonical || BASE_URL || "",
+        pageTitle: seoData?.title || "",
+        metaDescription: seoData?.description || "",
+        primaryImageUrl: modularData?.image || "",
+        datePublishedIso: modularData?.created_at || "",
+        dateModifiedIso: modularData?.updated_at || "",
+        languageTag: "en-IN",
+        currentPageName: modularData?.name || "",
         currentPageSlug: `${BASE_URL}why-glbitm/testimonials/${slug}`,
         parentMenus: [
             ...(pageData?.parent_menus ?? []),
             {
-            title: pageData?.page_title,
-            url: pageData?.current_page_slug,
-          },
+                title: pageData?.page_title,
+                url: pageData?.current_page_slug,
+            },
         ],
-    };
-
-    const globalSchema = buildGlobalSchema(globalSchemaArgs);
+    });
 
     return (
         <>
             {seoData?.schema && (
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(seoData.schema),
-                    }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(seoData.schema) }}
                 />
             )}
             {globalSchema && (
@@ -63,5 +72,5 @@ export default async function TestimonialDetailPage({ params }: { params: any })
             )}
             <TestimonialDetail data={data?.testimonial_details} />
         </>
-    )
+    );
 }

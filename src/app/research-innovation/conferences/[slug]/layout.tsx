@@ -5,16 +5,26 @@ import "@/src/styles/responsive.css";
 import "@/src/styles/program.css";
 import "@/src/styles/parser.css";
 
-export default async function NewsEventsLayout({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: Promise<{slug: string }>;
-  }) {
-    
-    const {slug } = await params;
-    if (!slug) return <>{children}</>;
+export default async function ConferenceDetailLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-    return <InnerPageLayoutWrapper slug={'conferences'} pathname={`/research-innovation/conferences/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true}>{children}</InnerPageLayoutWrapper>;
+  if (!slug || /^\d+$/.test(slug)) return <>{children}</>;
+
+  return (
+    <InnerPageLayoutWrapper
+      slug={"conferences"}
+      pathname={`/research-innovation/conferences/${slug}`}
+      tabs={null}
+      mainClass="happenings_page"
+      showTabs={true}
+    >
+      {children}
+    </InnerPageLayoutWrapper>
+  );
 }

@@ -1,10 +1,10 @@
 import { BASE_URL } from "@/src/config/config";
 import Image from "next/image";
 import Link from "next/link";
-import PaginationWrapper from "../common/pagination/PaginationWrapper"; // adjust import path
+import PaginationWrapper from "../common/pagination/PaginationWrapper";
 
-export default function GalleryList({data, currentPage='gallery', customClass, parentSlug, slug}:{data:any, currentPage?:string, customClass?:string, parentSlug?:string, slug?:string}){
-    const pagination = data; // current_page, last_page are at data level (data.others)
+export default function GalleryList({data, currentPage='gallery', customClass, parentSlug, slug, paginationBasePath}:{data:any, currentPage?:string, customClass?:string, parentSlug?:string, slug?:string; paginationBasePath?:string}){
+    const pagination = data;
 
     return(
         <section className={`gallery_list_section ${customClass ?? ''}`}>
@@ -41,10 +41,10 @@ export default function GalleryList({data, currentPage='gallery', customClass, p
                     ))}
                 </div>
 
-                {/* Pagination */}
                 <PaginationWrapper
                     currentPage={pagination?.current_page || 1}
                     totalPages={pagination?.last_page || 1}
+                    basePath={paginationBasePath}
                 />
             </div>
         </section>

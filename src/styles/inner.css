@@ -377,6 +377,7 @@
 @media (max-width:991px){
     .research-innovation-iic .media_coverage { padding-block: 5rem; }
     .student-corner-clubs .media_grid_Bx1 figure img { max-height:15rem; }    
+    .about_breadcrumb p{ padding-block: 0.8rem;}
 }
 
 /* ==============Notices & Announcements page Start============= */

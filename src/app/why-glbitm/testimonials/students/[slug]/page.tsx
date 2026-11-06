@@ -12,8 +12,8 @@ const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    if (isNumeric(slug)) return await getPageSEO(LISTING_SEO_PATH);
-    return await getPageSEO(`why-glbitm/testimonials/${slug}`);
+    if (isNumeric(slug)) return await getPageSEO(`${LISTING_SEO_PATH}/${slug}`);
+    return await getPageSEO(`${LISTING_SEO_PATH}/${slug}`);
 }
 
 export default async function TestimonialDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,7 +29,7 @@ export default async function TestimonialDetailPage({ params }: { params: Promis
     const [{ data, error }, { data: CmsData }, seoData] = await Promise.all([
         apiFetch(`testimonial/${slug}`),
         apiFetch(`cms/testimonials`),
-        getPageSEO(`why-glbitm/testimonials/${slug}`),
+        getPageSEO(`${LISTING_SEO_PATH}/${slug}`),
     ]);
 
     if (error) notFound();
@@ -46,7 +46,7 @@ export default async function TestimonialDetailPage({ params }: { params: Promis
         dateModifiedIso: modularData?.updated_at || "",
         languageTag: "en-IN",
         currentPageName: modularData?.name || "",
-        currentPageSlug: `${BASE_URL}why-glbitm/testimonials/${slug}`,
+        currentPageSlug: `${BASE_URL}${LISTING_SEO_PATH}/${slug}`,
         parentMenus: [
             ...(pageData?.parent_menus ?? []),
             {

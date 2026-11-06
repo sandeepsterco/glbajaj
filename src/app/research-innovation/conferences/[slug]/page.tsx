@@ -9,8 +9,13 @@ import { notFound, permanentRedirect } from "next/navigation";
 
 const isNumeric = (s: string) => /^\d+$/.test(s);
 
-export async function generateMetadata() {
-    return getPageSEO("research-innovation/conferences/slug");
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    return getPageSEO(`research-innovation/conferences/${slug}`);
 }
 
 export default async function NewsDetailPage({params, searchParams}:{params:Promise<{slug:string;}>; searchParams: Promise<Record<string, any>>;}){

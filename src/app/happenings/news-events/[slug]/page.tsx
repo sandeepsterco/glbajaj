@@ -16,7 +16,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    if (isNumeric(slug)) return getPageSEO("happenings/news-events");
+    if (isNumeric(slug)) return getPageSEO(`happenings/news-events/${slug}`);
     return getPageSEO(`news-and-events/${slug}`);
 }
 

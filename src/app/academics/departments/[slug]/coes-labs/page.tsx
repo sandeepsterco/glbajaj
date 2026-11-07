@@ -9,7 +9,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return await getPageSEO(`department/${slug}/coes-labs`);
+  return await getPageSEO(`academics/departments/${slug}/coes-labs`);
 }
 
 export default async function DepartmentAboutPage({
@@ -20,11 +20,11 @@ export default async function DepartmentAboutPage({
   const { slug } = await params;
   const [{ data }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/coes-labs`),
-    getPageSEO(`department/${slug}/coes-labs`),
+    getPageSEO(`academics/departments/${slug}/coes-labs`),
   ]);
 
   const cmsSections = data?.data?.cms;
-  const globalSchema = buildPageGlobalSchema(seoData, `department/${slug}/coes-labs`);
+  const globalSchema = buildPageGlobalSchema(seoData, `academics/departments/${slug}/coes-labs`);
 
   return (
     <>

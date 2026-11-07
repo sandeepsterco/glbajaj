@@ -17,7 +17,7 @@ export async function generateMetadata({
 }) {
     const { slug } = await params;
     if (isNumeric(slug)) return getPageSEO(`happenings/news-events/${slug}`);
-    return getPageSEO(`news-and-events/${slug}`);
+    return getPageSEO(`happenings/news-events/${slug}`);
 }
 
 export default async function NewsDetailPage({params, searchParams}:{params:Promise<{slug:string}>; searchParams:Promise<{department?:string}>}){
@@ -40,7 +40,7 @@ export default async function NewsDetailPage({params, searchParams}:{params:Prom
     const currentSlug = 'news-events';
     const [{ data, error }, seoData] = await Promise.all([
         apiFetch(`news-and-events/${slug}`),
-        getPageSEO(`news-and-events/${slug}`),
+        getPageSEO(`happenings/news-events/${slug}`),
     ])
     if (error) notFound();
 

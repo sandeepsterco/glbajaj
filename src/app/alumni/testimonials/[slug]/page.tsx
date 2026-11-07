@@ -21,7 +21,6 @@ export default async function TestimonialDetailPage({
 }) {
   const { slug } = await params;
 
-  // pagination: /alumni/testimonials/2, /3 ...
   if (isNumeric(slug)) {
     const page = Number(slug);
     if (page < 1) notFound();

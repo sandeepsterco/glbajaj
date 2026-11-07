@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return await getPageSEO(`department/${slug}/research`);
+  return await getPageSEO(`academics/departments/${slug}/research`);
 }
 
 export default async function DepartmentResearchPage({
@@ -22,7 +22,7 @@ export default async function DepartmentResearchPage({
   const { slug } = await params;
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`department/${slug}/research`),
-    getPageSEO(`department/${slug}/research`),
+    getPageSEO(`academics/departments/${slug}/research`),
   ]);
 
   const cmsSections = data?.data?.cms;

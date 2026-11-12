@@ -20,6 +20,17 @@ export default async function AlumniEventsDetailLayout({
 
     const currentPageTitle = data?.alumni_event_details?.data?.title;
 
-    return <InnerPageLayoutWrapper slug={'alumni-events-meets'} pathname={`/\${parentSlug}/alumni-events-meets/\${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle}>{children}</InnerPageLayoutWrapper>;
+    const customTabs = {
+      tabs: [
+        {
+          title: "Alumni",
+          url: "alumni",
+        },
+      ],
+    };
+
+    return <InnerPageLayoutWrapper slug={'alumni-events-meets'} pathname={`/alumni/events/${slug}`} tabs={null} mainClass="happenings_page" showTabs={true} currentPageTitle={currentPageTitle} parentSlug="alumni" customTabs={customTabs}>
+      {children}
+    </InnerPageLayoutWrapper>;
 
 }

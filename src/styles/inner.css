@@ -1923,12 +1923,10 @@ section.facilities_policy.iqac-event.institutional-distinctiveness { padding-bot
  .facilities-academic-page  .comuter-lab-bottom-Cnt{ padding-top: 0rem;}
  .sterco_accordion_content figure { margin: 0; padding-top: 0; }
  .computer-lab-Cnt { padding-top: 0; }
-.research-innovation-iic-page .amatra_gym { padding-block: 0 5rem; }
-.alumni-chapters .con_infoclub { padding-left: 0; }
+ .research-innovation-iic-page .amatra_gym { padding-block: 0 5rem; }
+ .alumni-chapters .con_infoclub { padding-left: 0; }
 .csr-text-list1 { padding: 0; }
 .clud_grid_box figure:empty{ display: none;}
-
-
  }
 /* Clubs & Societies Page css End */
 /* Alumni-Overview Page css start */

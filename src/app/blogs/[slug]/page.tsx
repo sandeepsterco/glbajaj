@@ -13,6 +13,7 @@ import { getPageSEO } from "@/src/lib/seo";
 import { buildGlobalSchema } from "@/src/lib/schema/globalSchema";
 import React from "react";
 import type { IRecentBlogs } from "@/src/components/blogs/BlogListingClient";
+import Link from "next/link";
 
 interface SearchParams {
   search?: string;
@@ -136,6 +137,8 @@ export default async function BlogDetailPage({
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
+  console.log('details',details);
+
   return (
     <>
       {seoData?.schema && (
@@ -206,9 +209,9 @@ export default async function BlogDetailPage({
                   <ul>
                     {details.tags.map((tag: any) => (
                       <li key={tag.id}>
-                        <a href={`/${listSlug}?tag_id=${encodeURIComponent(String(tag.id))}`}>
+                        <Link href={`${BASE_URL}${listSlug}/tags/${tag.slug}`}>
                           {tag.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

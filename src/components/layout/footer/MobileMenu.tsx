@@ -374,7 +374,7 @@ export default function MobileMenu() {
 
                     <div className="others_mobile_menu">
                         <ul>
-                            <li><Link href={`${BASE_URL}quick-links`}>Quick Links</Link></li>
+                            <li>Quick Links</li>
                             {loading["modal4"] ? (
                                 <SkeletonGroup count={6} wrapperClassName="!block" className="w-full h-[3rem] !mb-[0.8rem]" />
                             ) : (

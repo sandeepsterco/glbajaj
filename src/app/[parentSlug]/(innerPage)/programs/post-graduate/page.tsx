@@ -12,7 +12,7 @@ import { buildPageGlobalSchema } from "@/src/lib/schema/globalSchema";
 import { BASE_URL } from "@/src/config/config";
 
 export async function generateMetadata() {
-  return await getPageSEO(`academics/programs`);
+  return await getPageSEO(`academics/programs/post-graduate`);
 }
 
 export default async function ProgramsPostGraduatePage({params}:{params:Promise<{parentSlug:string}>}) {
@@ -21,7 +21,7 @@ export default async function ProgramsPostGraduatePage({params}:{params:Promise<
   const [{ data }, {data:ProgramsData}, seoData] = await Promise.all([
     apiFetch(`cms/programs-offered`),
     apiFetch(`programs`),
-    getPageSEO(`academics/programs`),
+    getPageSEO(`academics/programs/post-graduate`),
   ]);
 
   const programsData = ProgramsData?.programs?.data || [];

@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string; innerslug: string }>;
 }) {
   const { slug, innerslug } = await params;
-  return await getPageSEO(`department/${slug}/research/${innerslug}`);
+  return await getPageSEO(`academics/departments/${slug}/research/${innerslug}`);
 }
 
 export default async function DepartmentLabsDetail({
@@ -23,12 +23,12 @@ export default async function DepartmentLabsDetail({
 
   const [{ data, error }, seoData] = await Promise.all([
     apiFetch(`research/${innerslug}`),
-    getPageSEO(`department/${slug}/research/${innerslug}`),
+    getPageSEO(`academics/departments/${slug}/research/${innerslug}`),
   ]);
   const researchData = data?.research_details?.cms;
   const globalSchema = buildPageGlobalSchema(
     seoData,
-    `department/${slug}/research/${innerslug}`,
+    `academics/departments/${slug}/research/${innerslug}`,
   );
 
   if (error) notFound();

@@ -10,7 +10,7 @@ const isNumeric = (s: string) => /^\d+$/.test(s);
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (isNumeric(slug)) return await getPageSEO("why-glbitm/achievements");
+  if (isNumeric(slug)) return await getPageSEO(`why-glbitm/achievements/${slug}`);
   return await getPageSEO(`why-glbitm/achievements/${slug}`);
 }
 

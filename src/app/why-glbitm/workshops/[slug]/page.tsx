@@ -58,6 +58,7 @@ export default async function GalleryDetail({
                 slug={currentSlug}
                 pathname={`/why-glbitm/workshops/${slug}`}
                 tabs={null}
+                parentSlug="why-glbitm"
                 mainClass="happenings_page"
                 showTabs={true}
                 currentPageTitle={workshopsData?.data?.title}

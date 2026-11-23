@@ -1,4 +1,4 @@
-import { SEO_URL } from "@/src/config/config";
+import { BASE_URL, SEO_URL } from "@/src/config/config";
 import { cache } from "react";
 
 // ✅ Explicit type — TypeScript knows schema is always present (or null)
@@ -37,12 +37,23 @@ function defaultSchema(): Record<string, any> {
   };
 }
 
-function defaultSEO(): SEOResult {
+function getCanonicalUrl(slug: string): string {
+  const baseUrl = BASE_URL?.replace(/\/+$/, "");
+  const path = slug === "home" ? "" : slug.replace(/^\/+|\/+$/g, "");
+
+  if (!baseUrl) {
+    return path ? `/${path}` : "/";
+  }
+
+  return path ? `${baseUrl}/${path}` : `${baseUrl}/`;
+}
+
+function defaultSEO(slug = ""): SEOResult {
   return {
     title: "GL Bajaj",
     description: "GL Bajaj",
     keywords: "GL Bajaj",
-    alternates: { canonical: "/" },
+    alternates: { canonical: getCanonicalUrl(slug) },
     robots: {
       index: true,
       follow: true,
@@ -110,6 +121,8 @@ async function fetchPageSEO(slug: string): Promise<SEOResult> {
     const index = pageRobots?.index ?? globalRobots?.index ?? true;
     const follow = pageRobots?.follow ?? globalRobots?.follow ?? true;
 
+    const canonical = data.data.alternates?.canonical || getCanonicalUrl(slug);
+
     return {
       title: data.data.title,
       description: data.data.description,
@@ -120,20 +133,20 @@ async function fetchPageSEO(slug: string): Promise<SEOResult> {
         googleBot: { index, follow },
       },
       alternates: {
-        canonical: data.data.alternates?.canonical || slug,
+        canonical,
       },
       openGraph: {
         title: data.data.openGraph?.title || data.data.title || "GL Bajaj",
         description: data.data.openGraph?.description || data.data.description || "GL Bajaj",
         type: data.data.openGraph?.type || "website",
         images: data.data.openGraph?.images || [],
-        url: data.data.openGraph?.url || data.data.alternates?.canonical || slug || "GL Bajaj",
+        url: data.data.openGraph?.url || canonical,
       },
       schema: data.data.schema || defaultSchema(),
     };
   } catch {
     const globalRobots = await globalRobotsPromise;
-    return { ...defaultSEO(), robots: globalRobots ?? defaultSEO().robots };
+    return { ...defaultSEO(slug), robots: globalRobots ?? defaultSEO(slug).robots };
   }
 }
 

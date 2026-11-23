@@ -5,7 +5,7 @@ import TestimonialListing from "@/src/components/testimonial/TestimonialListing"
 const TYPE_SLUG = "alumni";
 
 export async function generateMetadata() {
-  return await getPageSEO("why-glbitm/testimonials");
+  return await getPageSEO("why-glbitm/testimonials/alumni");
 }
 
 export default async function TestimonialAlumniPage({

@@ -54,6 +54,13 @@ export default async function DynamicSlugPage({
 
   const globalSchema = buildGlobalSchema(globalSchemaArgs);
 
+  pageData.parent_menus = [
+    {
+      title: "Alumni",
+      url: "alumni",
+    },
+  ];
+
   let eventSchema;
 
   return (
@@ -79,7 +86,7 @@ export default async function DynamicSlugPage({
         />
       )}
       <div className="happenings_page">
-      <PageHeader pathname={`/alumni/alumni-events-meets`} data={data?.data} slug={'alumni-events-meets'} />
+      <PageHeader pathname={`/alumni/alumni-events-meets`} data={pageData} slug={'alumni-events-meets'} parentSlug="alumni" />
       {data?.data?.sections?.length == 0 ? <ComingSoon /> : <ReactParserDynamic html={combinedHtml} params={'alumni-events-meets'} searchParams={resolvedSearchParams}  pageName={seoData.title} data={eventsData} />}
       </div>
     </>
